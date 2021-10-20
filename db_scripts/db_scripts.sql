@@ -26,7 +26,7 @@ USE booking;
 CREATE TABLE categorias (
   categoria_id SMALLINT UNSIGNED NOT NULL AUTO_INCREMENT,
   titulo VARCHAR(50) NOT NULL,
-  Descripcion VARCHAR(200) NOT NULL,
+  descripcion VARCHAR(200) NOT NULL,
   URL_imagen TEXT,
   PRIMARY KEY  (categoria_id)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
