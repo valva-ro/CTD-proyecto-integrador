@@ -3,6 +3,7 @@
   display: flex;
   align-items: center;
   min-height: 300px;
+  width: 100%;
   border-radius: 10px;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border: 1px solid #dfe4ea;
@@ -59,7 +60,7 @@
   opacity: 50%;
 }
 
-.tipoYCalificacion .estrellas {
+.estrellas {
   color: var(--color-principal);
   margin: 0 0.25rem;
 }
@@ -151,12 +152,6 @@
 .botonPrincipal:hover {
   background-color: #1fa39a;
   cursor: pointer;
-}
-
-@media (max-width: 768px) {
-  .tarjetaAlojamiento {
-    width: 92vw;
-  }
 }
 
 @media (max-width: 480px) {
