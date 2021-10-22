@@ -1,0 +1,48 @@
+.footerFijo{
+    display: block;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+}
+
+.contenedorFooter {
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--color-principal);
+    padding: 15px 50px;
+}
+
+.footerIzquierda{
+    color: var(--color-5);
+    font-weight: 700;
+    font-size: 14px;
+}
+
+.footerDerecha {
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--color-5);
+    
+    font-weight: 700;
+    font-size: 28px;
+    gap: 30px;
+}
+
+.footerDerecha i{
+    cursor: pointer;
+}
+
+@media screen and (max-width:480px) {
+
+    .contenedorFooter {
+        padding: 20px;
+    }
+
+    .footerDerecha{
+        display: none;
+    }
+    
+}

@@ -1,0 +1,137 @@
+.headerFijo{
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+
+.contenedorHeader {
+    display:flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    background-color: var(--color-5);
+    padding: 12px 32px;
+}
+
+.headerIzquierda{
+    display:flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 12px;
+}
+
+.headerIzquierda a{
+    display: flex;
+    align-items: flex-end;
+}
+
+.headerIzquierda p{
+    color: var(--color-2);
+    font-weight: 300;
+    font-style: italic;
+    font-size: 20px;
+    padding-bottom: 6px;
+}
+
+.headerDerecha{
+    display:flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 12px;
+}
+
+.headerDerecha input[type="submit"]{
+    background-color: var(--color-5);
+    border:1px solid var(--color-principal);
+    border-radius: 5px;
+    color: var(--color-principal);
+    font-size: 16px;
+    font-weight: 700;
+    outline: none;
+    padding: 1.5vh 5vw; 
+
+}
+
+.headerDerechaVersion2{
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    position: relative;
+}
+
+.avatar{
+    background-color: var(--color-2);
+    color: var(--color-5);
+    border-radius: 50%;
+    font-size: 20px;
+    font-weight: 700;
+    padding: 7px;
+}
+
+.saludo{
+    color: rgba(0, 0, 0, 0.5);
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.nombre{
+    color: var(--color-principal);
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.cerrar{
+    columns: var(--color-2);
+    cursor:pointer;
+    font-size: 22px;
+    font-weight: 700;
+    padding: 5px;
+    position: absolute;
+    right: 0;
+    top:-20px;
+}
+
+.menuHamburguesa{
+    display: none;
+} 
+
+@media screen and (max-width:768px) {
+
+    .contenedorHeader {
+        padding: 25px 30px;
+    }
+
+    .headerIzquierda p{
+        display: none;
+    }
+
+}
+
+@media screen and (max-width:480px) {
+
+    .headerFijo{
+        box-shadow: 2px 2px 6px var(--color-3);
+    }
+
+    .contenedorHeader{
+        align-items: center;
+    }
+
+    .headerDerecha{
+        display: none;
+    }
+
+    .headerDerechaVersion2{
+        display: none;
+    }
+
+    .menuHamburguesa{
+        display: block;
+        color: var(--color-3);
+        cursor: pointer;
+        font-size: 36px;
+    }
+
+}

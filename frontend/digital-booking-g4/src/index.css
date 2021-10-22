@@ -6,19 +6,27 @@
   --color-2: #383B58;
   --color-3: #545776;
   --color-4: #F3F1ED;
+  --color-5: #FFFFFF;
 }
 
 * {
   font-family: var(--fuente);
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
-}
+  box-sizing: border-box;  
+  font-weight: 500; 
+  padding: 0;   
+  margin: 0; 
+}  
 
-li {
-  list-style: none;
-}
+li {   
+   list-style: none; 
+}  
 
 a {
-  text-decoration: none;
+  text-decoration: none; 
+}
+
+input{
+   border-radius: 5px;
+   border: none;
+   outline: none;
 }

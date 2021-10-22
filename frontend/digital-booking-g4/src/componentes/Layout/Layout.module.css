@@ -1,0 +1,14 @@
+main{
+    background-color: var(--color-4);
+    margin-top: 76px;
+    margin-bottom: 58px; 
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+@media screen and (max-width:768px) {
+    main{
+        margin-top: 102px;
+    }
+}
