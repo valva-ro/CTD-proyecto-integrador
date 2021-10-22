@@ -6,6 +6,7 @@
   font-size: 1.5rem;
   font-weight: bold;
   padding: 10px 0;
+  margin-bottom: 1vh;
 }
 
 .recomendaciones {
@@ -18,7 +19,7 @@
 }
 
 .alojamiento {
-  margin-bottom: 2vw;
+    margin-bottom: 2.5vh;
 }
 
 @media (max-width: 1000px) {
