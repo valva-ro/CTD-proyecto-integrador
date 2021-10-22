@@ -3,9 +3,9 @@
 :root {
   --fuente: 'Roboto', sans-serif;
   --color-principal: #1DBEB4;
-  --color-2: #383B58;
-  --color-3: #545776;
-  --color-4: #F3F1ED;
+  --color-2: #263238;
+  --color-3: #607D8B;
+  --color-4: #FFFBE2;
 }
 
 * {
