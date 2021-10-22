@@ -6,6 +6,7 @@
   --color-2: #383B58;
   --color-3: #545776;
   --color-4: #F3F1ED;
+  --color-5: #fff;
 }
 
 * {
@@ -21,4 +22,8 @@ li {
 
 a {
   text-decoration: none;
+}
+
+input {
+  border-radius: 5px;
 }
