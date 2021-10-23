@@ -1,6 +1,5 @@
 /* MAIN */
-main {
-  /* background-color: var(--color-4); */
+.mainForm {
   height: calc(100vh - 154px);
   display: flex;
   align-items: center;

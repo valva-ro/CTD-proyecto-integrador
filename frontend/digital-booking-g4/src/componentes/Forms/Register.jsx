@@ -1,10 +1,10 @@
 import FilledButton from "../Buttons/FilledButton";
 import OutlinedButton from "../Buttons/OutlinedButton";
-import styles from './Form.module.css';
+import styles from "./Form.module.css";
 
 export default function Register() {
-    return (
-      <main>
+  return (
+    <div className={styles.mainForm}>
       <div className={styles.contenedorForm}>
         <h1>Crear cuenta</h1>
         <form className={styles.formRegister}>
@@ -36,10 +36,11 @@ export default function Register() {
             <input type="password" name="repetirContrasenia" />
           </label>
           <FilledButton>Crear cuenta</FilledButton>
-          <p>¿Ya tienes cuenta? <a href="./login.html">Iniciar sesión</a></p>
+          <p>
+            ¿Ya tienes cuenta? <a href="./login.html">Iniciar sesión</a>
+          </p>
         </form>
       </div>
-    </main>
-    );
-  }
-  
+    </div>
+  );
+}

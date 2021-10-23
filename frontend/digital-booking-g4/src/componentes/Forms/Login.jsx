@@ -1,9 +1,9 @@
-import FilledButton from '../Buttons/FilledButton';
-import styles from './Form.module.css';
+import FilledButton from "../Buttons/FilledButton";
+import styles from "./Form.module.css";
 
 export default function Login() {
   return (
-    <main>
+    <div className={styles.mainForm}>
       <div className={styles.contenedorForm}>
         <h1>Iniciar sesión</h1>
         <form className={styles.formLogin}>
@@ -26,6 +26,6 @@ export default function Login() {
           </p>
         </form>
       </div>
-    </main>
+    </div>
   );
 }
