@@ -1,12 +1,20 @@
-import Login from "./componentes/Forms/Login";
-import Register from "./componentes/Forms/Register";
-
 function App() {
   return (
-    <>
-    <Login></Login>
-    <Register></Register>
-    </>
+    <div className="App">
+      <header className="App-header">
+        <p>
+          Edit and save to reloadAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA.
+        </p>
+        <a
+          className="App-link"
+          href="https://reactjs.org/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Learn React
+        </a>
+      </header>
+    </div>
   );
 }
 

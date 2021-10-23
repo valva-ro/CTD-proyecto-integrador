@@ -1,5 +1,4 @@
 import FilledButton from "../Buttons/FilledButton";
-import OutlinedButton from "../Buttons/OutlinedButton";
 import styles from "./Form.module.css";
 
 export default function Register() {
