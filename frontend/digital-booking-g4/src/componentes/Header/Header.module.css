@@ -41,58 +41,6 @@
     gap: 12px;
 }
 
-.headerDerecha input[type="submit"]{
-    background-color: var(--color-5);
-    border:1px solid var(--color-principal);
-    border-radius: 5px;
-    color: var(--color-principal);
-    font-size: 16px;
-    font-weight: 700;
-    outline: none;
-    padding: 1.5vh 5vw; 
-
-}
-
-.headerDerechaVersion2{
-    display:flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 12px;
-    position: relative;
-}
-
-.avatar{
-    background-color: var(--color-2);
-    color: var(--color-5);
-    border-radius: 50%;
-    font-size: 20px;
-    font-weight: 700;
-    padding: 7px;
-}
-
-.saludo{
-    color: rgba(0, 0, 0, 0.5);
-    font-size: 16px;
-    font-weight: 700;
-}
-
-.nombre{
-    color: var(--color-principal);
-    font-size: 16px;
-    font-weight: 700;
-}
-
-.cerrar{
-    columns: var(--color-2);
-    cursor:pointer;
-    font-size: 22px;
-    font-weight: 700;
-    padding: 5px;
-    position: absolute;
-    right: 0;
-    top:-20px;
-}
-
 .menuHamburguesa{
     display: none;
 } 
@@ -120,10 +68,6 @@
     }
 
     .headerDerecha{
-        display: none;
-    }
-
-    .headerDerechaVersion2{
         display: none;
     }
 

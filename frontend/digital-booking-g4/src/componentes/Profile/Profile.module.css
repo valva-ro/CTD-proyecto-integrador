@@ -1,0 +1,72 @@
+.contenedorProfile{
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    position: relative;
+}
+
+.avatar{
+    background-color: var(--color-2);
+    color: var(--color-5);
+    border-radius: 50%;
+    font-size: 20px;
+    font-weight: 700;
+    padding: 7px;
+}
+
+.saludo{
+    color: rgba(0, 0, 0, 0.5);
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.nombre{
+    color: var(--color-principal);
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.cerrar{
+    color: var(--color-2);
+    cursor:pointer;
+    font-size: 22px;
+    font-weight: 700;
+    padding: 5px;
+    position: absolute;
+    right: 0;
+    top:-20px;
+}
+
+@media screen and (max-width:480px) {
+    .contenedorProfile{
+        display:flex; 
+        flex-direction: column;
+        justify-content: flex-end;
+        align-items: flex-end;
+    }
+
+    .contenedorNombre{
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        align-items: flex-end;
+    }
+
+    .avatar{
+        background-color: var(--color-5);
+        color: var(--color-3);
+    }
+
+    .saludo{
+        color: var(--color-5);
+    }
+
+    .nombre{
+        color: var(--color-2);
+    }
+
+    .cerrar{
+        display: none; /*no lo uso porque la funcionalidad es cerrar sesión y aquí debe cerrar pantalla*/
+    }
+}
