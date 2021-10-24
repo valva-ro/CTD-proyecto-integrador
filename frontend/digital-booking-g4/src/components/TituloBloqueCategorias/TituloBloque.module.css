@@ -1,0 +1,11 @@
+/*****************Titulo Bloque*****************/
+/*______Titulo______*/
+.subtituloBloque{
+    color: var(--color-2);
+    font-size: 1.5rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 1.75rem;
+    margin-left: 3%;
+    margin-top: 2%;
+}

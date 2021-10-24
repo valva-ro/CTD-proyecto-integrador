@@ -1,8 +1,8 @@
-import TituloBloque from './components/BloqueCategorias/TituloBloque';
-import Tarjetas from './components/BloqueCategorias/Tarjetas';
-import datos from './datosCategorias.json';
+import TituloBloque from '../TituloBloqueCategorias/TituloBloque';
+import Tarjetas from '../TarjetasCategorias/Tarjetas';
+import datos from '../../datosCategorias.json';
 
-import styles from './components/BloqueCategorias/BloqueCategorias.module.css';
+import styles from './BloqueCategorias.module.css';
 
 export default function BloqueCategorias(){
   return (

@@ -1,4 +1,4 @@
-import styles from './BloqueCategorias.module.css';
+import styles from './TituloBloque.module.css';
 
 export default function TituloBloque() {
     return (

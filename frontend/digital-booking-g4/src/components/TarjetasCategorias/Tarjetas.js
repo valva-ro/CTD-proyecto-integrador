@@ -1,4 +1,4 @@
-import styles from './BloqueCategorias.module.css';
+import styles from './Tarjetas.module.css';
 
 export default function Tarjetas(props) {
     return (
