@@ -6,7 +6,7 @@ import styles from './components/BloqueCategorias/BloqueCategorias.module.css';
 
 export default function BloqueCategorias(){
   return (
-    <div className={styles.bloqueCategorias}>
+    <section className={styles.bloqueCategorias}>
       <TituloBloque />
       <div className={styles.listadoTarjetas}>            
       {
@@ -15,5 +15,5 @@ export default function BloqueCategorias(){
         )  
       }
       </div>
-    </div>)
+    </section>)
 }

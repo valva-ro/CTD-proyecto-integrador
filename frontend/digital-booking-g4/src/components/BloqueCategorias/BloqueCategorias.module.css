@@ -30,48 +30,48 @@ a {
 }
 /*______Titulo______*/
 .subtituloBloque{
+    color: var(--color-2);
+    font-size: 1.5rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 1.75rem;
     margin-left: 3%;
     margin-top: 2%;
-    font-weight: 700;
-    font-style: normal;
-    font-size: 24px;
-    line-height: 28px;
-    color: var(--color-2);
 }
 
 /*______Contenedor/tarjeta______*/
 .listadoTarjetas {
     display: flex;
     flex-wrap: wrap;
-    width: 100%;
     gap: 2.5rem;
+    width: 100%;
 }
 /*______Tarjeta entera______*/
 .tarjeta {
-    background-position: top;
     background-color: var(--color-5);
-    border-radius: 10px;
+    background-position: top;
     border: 1px solid var(--color-4);
+    border-radius: 10px;
     box-shadow: 0 4px 4px rgb(0 0 0 / 25%);
+    height: 15.4rem;
     margin: 1% auto;
     position: relative;
-    height: 15.4rem;
-    width: 19.3rem; 
     transition: transform 0.5s;   
+    width: 19.3rem; 
 }
 /*______Efecto tarjeta______*/
 .tarjeta:hover{
-    transform: scale(1.05);
     box-shadow: 4px 8px 12px rgb(0 0 0 / 25%);
+    transform: scale(1.05);
 }
 /*______Fondo tarjeta (portada)______*/
 .fotoPortada {
     border-radius: 8px 8px 0 0;
+    height: 11.45rem;
     left: 0;
     position: absolute;
-    top: 0;
+    top: 0;  
     width: 19.3rem;
-    height: 11.45rem;
 }
 /*______Contenedor/escrito______*/
 .contenidoTarjeta {
@@ -81,20 +81,20 @@ a {
 }
 /*______Nombre categoria______*/
 .contenidoTarjeta h2{ /*.Hotel, .Hostel, .Departamento, .BedAndBreakfast */
-    text-transform: capitalize;
-    margin-left: 3.87%;
-    font-weight: 700;
+    font-size: 1.25rem;
     font-style: normal;
-    font-size: 20px;
-    line-height: 23px;
+    font-weight: 700;
+    line-height: 1.438rem;
+    margin-left: 3.87%;
+    text-transform: capitalize;
 }
 /*______Descripcion categoria______*/
 .contenidoTarjeta p{   /*.descripcion*/
-    margin-left: 3.87%;
-    font-weight: 700;
+    font-size: 0.875rem;
     font-style: normal;
-    font-size: 14px;
-    line-height: 16px;
+    font-weight: 700;
+    line-height: 1rem;
+    margin-left: 3.87%;
     opacity: 0.6;
 }
 
