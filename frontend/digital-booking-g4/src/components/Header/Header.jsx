@@ -5,8 +5,6 @@ import styles from "./Header.module.css";
 import logo from "./logo1.png";
 
 export default function Header() {
-
-    
     
     return(
         <header className={styles.headerFijo}>
