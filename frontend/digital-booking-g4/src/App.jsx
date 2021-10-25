@@ -1,5 +1,5 @@
-import Layout from "./componentes/Layout/Layout";
-//import Home from "./componentes/Home/Home";
+import Layout from "./components/Layout/Layout";
+//import Home from "./components/Home/Home";
 //import { Router, Route, IndexRoute, brouserHistory } from "react-router-3"
 
 function App() {

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import FilledButton from "../Buttons/FilledButton";
 import styles from "./TarjetaAlojamiento.module.css";
 
 export default function TarjetaAlojamiento({
@@ -44,7 +45,6 @@ export default function TarjetaAlojamiento({
             <div className={styles.detalle}>Muy bueno</div>
           </div>
         </div>
-
         <div className={styles.informacionDetalle}>
           <div className={styles.ubicacion}>
             <i className="fas fa-map-marker-alt"></i>
@@ -57,27 +57,24 @@ export default function TarjetaAlojamiento({
             <i className="fas fa-swimmer"></i>
           </div>
         </div>
-
-        <div className={styles.informacionAdicional}>
-          <p>
-            {descripcion.length <= 85 ? (
-              descripcion
-            ) : (
-              <>
-                {esVerMas && descripcion.length > 85
-                  ? descripcion.slice(0, 85)
-                  : descripcion}
-                ...
-                <span onClick={toggleVerMas} className={styles.verMas}>
-                  {esVerMas ? " leer más" : " leer menos"}
-                </span>
-              </>
-            )}
-          </p>
-        </div>
-        <button className={styles.botonPrincipal} onClick={toggleVerMas}>
+        <p>
+          {descripcion.length <= 85 ? (
+            descripcion
+          ) : (
+            <>
+              {esVerMas && descripcion.length > 85
+                ? descripcion.slice(0, 85)
+                : descripcion}
+              ...
+              <span onClick={toggleVerMas} className={styles.verMas}>
+                {esVerMas ? " leer más" : " leer menos"}
+              </span>
+            </>
+          )}
+        </p>
+        <FilledButton onClick={toggleVerMas} styles={styles.btnVerMas}>
           Ver más
-        </button>
+        </FilledButton>
       </div>
     </div>
   );

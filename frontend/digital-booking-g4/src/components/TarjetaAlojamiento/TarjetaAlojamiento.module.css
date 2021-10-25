@@ -2,7 +2,7 @@
   background-color: white;
   display: flex;
   align-items: center;
-  min-height: 300px;
+  height: 300px;
   width: 100%;
   border-radius: 10px;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -39,8 +39,12 @@
 }
 
 .descripcionAlojamiento {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   width: 55%;
-  padding: 2%;
+  padding: 2.5%;
+  height: 100%;
 }
 
 .informacionPrincipal {
@@ -137,21 +141,9 @@
   cursor: pointer;
 }
 
-.botonPrincipal {
-  background-color: var(--color-principal);
-  color: white;
-  border-radius: 5px;
-  outline: none;
-  border: none;
-  padding: 0.75rem;
+.btnVerMas {
   width: 100%;
-  margin-top: 1rem;
-  transition: background-color ease-in-out 250ms;
-}
-
-.botonPrincipal:hover {
-  background-color: #1fa39a;
-  cursor: pointer;
+  margin-top: 1.5rem;
 }
 
 @media (max-width: 480px) {

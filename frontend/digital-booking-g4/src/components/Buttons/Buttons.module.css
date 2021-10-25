@@ -7,7 +7,12 @@
   font-size: 1rem;
   font-weight: 700;
   padding: 1.4vh 5vw;
+  transition: background-color ease-in-out 250ms;
 }
+.btnPleno:hover {
+  background-color: #1fa39a;
+}
+
 .btnEnLinea {
   background-color: var(--color-5);
   border: solid 1px var(--color-principal);
@@ -16,4 +21,10 @@
   font-size: 1rem;
   font-weight: 700;
   padding: 1.4vh 5vw;
+  transition: color ease-in-out 250ms,
+              border-color ease-in-out 250ms;
+}
+.btnEnLinea:hover {
+  border-color: #1fa39a;
+  color: #1fa39a;
 }
