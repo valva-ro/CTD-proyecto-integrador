@@ -1,5 +1,5 @@
 .tarjetaAlojamiento {
-  background-color: white;
+  background-color: var(--color-5);
   display: flex;
   align-items: center;
   height: 300px;
@@ -78,7 +78,7 @@
 .puntajeNumerico {
   background-color: var(--color-2);
   border-radius: 10px;
-  color: white;
+  color: var(--color-5);
   font-size: 1.1rem;
   text-align: center;
   font-weight: bold;
