@@ -62,9 +62,9 @@ form p a {
   font-size: 0.9rem;
 }
 form p {
-  text-align: center;
   color: var(--color-2);
   font-weight: 700;
+  text-align: center;
 }
 form a {
   color: #4285f4;
