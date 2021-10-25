@@ -17,7 +17,7 @@
 .footerIzquierda{
     color: var(--color-5);
     font-weight: 700;
-    font-size: 14px;
+    font-size: 0.875rem;
 }
 
 .footerDerecha {
@@ -27,7 +27,7 @@
     color: var(--color-5);
     
     font-weight: 700;
-    font-size: 28px;
+    font-size: 1.75rem;
     gap: 30px;
 }
 

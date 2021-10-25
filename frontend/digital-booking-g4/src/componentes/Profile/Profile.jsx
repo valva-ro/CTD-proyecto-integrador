@@ -9,7 +9,7 @@ export default function Profile() {
                 <p className={styles.saludo}>Hola,</p>
                 <p className={styles.nombre}>Bruno Rodriguez</p>
             </div>
-            <p className={styles.cerrar}>X</p>
+            <span className={styles.cerrar}>X</span>
         </div>
     );
 }
