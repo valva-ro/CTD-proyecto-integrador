@@ -1,0 +1,31 @@
+/*****************Bloque categorias*****************/
+/*______Todo el bloque______*/
+.bloqueCategorias{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+/*______Contenedor/tarjeta______*/
+.listadoTarjetas {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 1rem;
+    width: 100%;
+}
+
+/*****************Responsive*****************/
+/*______Tablet______*/
+@media screen and (max-width:1045px) {
+    .bloqueCategorias {
+        /* padding: 4vh 4vw; */
+    } 
+}
+
+/*______Mobile______*/
+@media screen and (max-width:480px) {
+    .bloqueCategorias {
+        /* padding: 2vh 4vw; */
+    } 
+}

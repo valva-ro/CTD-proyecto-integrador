@@ -35,6 +35,11 @@ section {
   padding: 15px 50px;
 }
 
+@media screen and (max-width:768px) {
+  section {
+    padding: 20px 30px;
+  }
+}
 
 ::-webkit-scrollbar {
   width: 1rem;

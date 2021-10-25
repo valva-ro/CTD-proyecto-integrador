@@ -1,12 +1,6 @@
 .alojamientos {
+  margin-top: 1rem;
   columns: 2;
-}
-
-.titulo {
-  font-size: 1.5rem;
-  font-weight: bold;
-  padding: 10px 0;
-  margin-bottom: 1vh;
 }
 
 .recomendaciones {

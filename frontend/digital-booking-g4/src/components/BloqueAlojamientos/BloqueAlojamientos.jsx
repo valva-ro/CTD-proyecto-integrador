@@ -1,15 +1,17 @@
 import React from "react";
 import TarjetaAlojamiento from "../TarjetaAlojamiento/TarjetaAlojamiento";
-import alojamientos from "../../resources/alojamientos.json";
-import styles from "./ListadoAlojamientos.module.css";
+import TituloBloque from "../TituloBloque/TituloBloque";
 
-export default function ListadoAlojamientos() {
+import alojamientos from "../../resources/alojamientos.json";
+import styles from "./BloqueAlojamientos.module.css";
+
+export default function BloqueAlojamientos() {
   return (
     <section className={styles.recomendaciones}>
-      <h2 className={styles.titulo}>Recomendaciones</h2>
+      <TituloBloque>Recomendaciones</TituloBloque>
       <ul className={styles.alojamientos}>
         {alojamientos.map((alojamiento, i) => (
-          <li key={i} className={styles.alojamiento}> 
+          <li key={i} className={styles.alojamiento}>
             <TarjetaAlojamiento
               key={`alojamiento-${i}`}
               titulo={alojamiento.title}
