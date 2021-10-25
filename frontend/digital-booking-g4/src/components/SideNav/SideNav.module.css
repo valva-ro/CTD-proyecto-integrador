@@ -2,7 +2,7 @@
     display: block;
     color: var(--color-3);
     cursor: pointer;
-    font-size: 2.25 rem;
+    font-size: 2.25rem;
 }
 
 .menuDrawer{
@@ -14,12 +14,11 @@
     right: 0;
     bottom: 0;
     transform: translateX(75vw);
-    transition: transform .7s; 
 }
 
 .isOpened{
-    transform: translateX(0); 
-    transition: transform .7s;
+    transform: translateX(-75vw); 
+    transition: transform .7s; 
 }
 
 .header{
@@ -55,7 +54,7 @@
     justify-content: flex-end;
     align-items: center;  
     font-weight: 700;
-    font-size: 1.75 rem;
+    font-size: 1.75rem;
     gap: 20px;
     padding: 15px 10px;
 }

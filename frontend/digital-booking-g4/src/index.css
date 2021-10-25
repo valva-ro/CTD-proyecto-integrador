@@ -47,14 +47,15 @@ section {
 
 ::-webkit-scrollbar-track {
   background: var(--color-5);
+  box-shadow: inset 2px 2px 4px 2px #00000036;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--color-principal);
+  background: var(--color-3);
   border-radius: 5px;
-  box-shadow: 2px 2px 4px 2px #00000069;
+  box-shadow: 1px 1px 2px 1px #00000069;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #1fa39a;
+  background: var(--color-2);
 }
