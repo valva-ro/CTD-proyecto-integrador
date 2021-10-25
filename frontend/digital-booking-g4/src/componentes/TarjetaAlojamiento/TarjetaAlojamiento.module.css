@@ -1,0 +1,171 @@
+.tarjetaAlojamiento {
+  background-color: white;
+  display: flex;
+  align-items: center;
+  min-height: 300px;
+  width: 100%;
+  border-radius: 10px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border: 1px solid #dfe4ea;
+  color: var(--color-2);
+  transition: all ease-in-out 300ms;
+}
+
+.tarjetaAlojamiento:hover {
+  box-shadow: 4px 8px 12px rgba(0, 0, 0, 0.25);
+  transform: scale(1.01);
+}
+
+.tarjetaAlojamiento p {
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.imagenAlojamiento {
+  position: relative;
+  background-position: center;
+  width: 45%;
+  min-height: 300px;
+  height: 100%;
+  border-radius: 10px;
+}
+
+.corazon {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  color: white;
+  font-size: 1.5rem;
+}
+
+.descripcionAlojamiento {
+  width: 55%;
+  padding: 2%;
+}
+
+.informacionPrincipal {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.tipoYCalificacion {
+  display: flex;
+  align-items: center;
+  font-size: 0.9rem;
+}
+
+.tipoYCalificacion h4 {
+  text-transform: uppercase;
+  opacity: 50%;
+}
+
+.estrellas {
+  color: var(--color-principal);
+  margin: 0 0.25rem;
+}
+
+.puntajeAlojamiento {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.puntajeNumerico {
+  background-color: var(--color-2);
+  border-radius: 10px;
+  color: white;
+  font-size: 1.1rem;
+  text-align: center;
+  font-weight: bold;
+  padding: 4%;
+  width: 42%;
+}
+
+.informacionDetalle a {
+  color: var(--color-principal);
+  text-transform: uppercase;
+}
+
+.informacionDetalle {
+  display: flex;
+  flex-direction: column;
+}
+
+.servicios {
+  margin-bottom: 0.75rem;
+}
+
+.servicios i {
+  font-size: 1.25rem;
+}
+
+.servicios i:first-child {
+  margin-right: 0.5rem;
+}
+
+.servicios i:nth-child(2) {
+  margin-left: 0.5rem;
+}
+
+.ubicacion {
+  display: flex;
+  margin: 0.5rem 0;
+}
+
+.ubicacion i {
+  margin-right: 0.5rem;
+  font-size: 1.25rem;
+}
+
+.ubicacion a {
+  margin-left: 0.25rem;
+  transition: color ease-in-out 250ms;
+}
+
+.ubicacion a:hover {
+  color: #1fa39a;
+}
+
+.verMas {
+  color: var(--color-principal);
+  transition: color ease-in-out 250ms;
+}
+
+.verMas:hover {
+  color: #1fa39a;
+  cursor: pointer;
+}
+
+.botonPrincipal {
+  background-color: var(--color-principal);
+  color: white;
+  border-radius: 5px;
+  outline: none;
+  border: none;
+  padding: 0.75rem;
+  width: 100%;
+  margin-top: 1rem;
+  transition: background-color ease-in-out 250ms;
+}
+
+.botonPrincipal:hover {
+  background-color: #1fa39a;
+  cursor: pointer;
+}
+
+@media (max-width: 480px) {
+  .tarjetaAlojamiento {
+    flex-direction: column;
+  }
+
+  .imagenAlojamiento {
+    height: 240px;
+    width: 100%;
+  }
+
+  .descripcionAlojamiento {
+    width: 100%;
+    padding: 4%;
+  }
+}

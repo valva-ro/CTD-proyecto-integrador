@@ -1,0 +1,66 @@
+[
+    {
+        "title": "Hotel España",
+        "img": "https://images.unsplash.com/photo-1568495248636-6432b97bd949?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8aG90ZWwlMjByb29tfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=60",
+        "category": "hotel",
+        "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae minima illum omnis suscipit vel laborum commodi provident eveniet harum voluptatem quam cumque, nam maiores?",
+        "location": "Capital Federal",
+        "stars": "4"
+    },
+    {
+        "title": "Vivac Hostel",
+        "img": "https://images.unsplash.com/photo-1520277739336-7bf67edfa768?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8aG9zdGVsJTIwcm9vbXxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=60",
+        "category": "hostel",
+        "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae minima illum omnis suscipit vel laborum commodi provident eveniet harum voluptatem quam cumque, nam maiores?",
+        "location": "Capital Federal",
+        "stars": "3"
+    },
+    {
+        "title": "Los Angelitos",
+        "img": "https://images.unsplash.com/photo-1531088009183-5ff5b7c95f91?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTl8fGJlZCUyMGFuZCUyMGJyZWFrZmFzdHxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=60",
+        "category": "bed & breakfast",
+        "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae minima illum omnis suscipit vel laborum commodi provident eveniet harum voluptatem quam cumque, nam maiores?",
+        "location": "Capital Federal",
+        "stars": "4"
+    },
+    {
+        "title": "Departamento en ",
+        "img": "https://images.unsplash.com/photo-1502462456379-a6dbfdd0faef?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTd8fGFwcGFydG1lbnR8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=60",
+        "category": "departamento",
+        "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae minima illum omnis suscipit vel laborum commodi provident eveniet harum voluptatem quam cumque, nam maiores?",
+        "location": "Capital Federal",
+        "stars": "5"
+    },
+    {
+        "title": "Hotel Atlantic",
+        "img": "https://images.unsplash.com/photo-1618773928121-c32242e63f39?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTF8fGhvdGVsJTIwcm9vbXxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=60",
+        "category": "hotel",
+        "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae minima illum omnis suscipit vel laborum commodi provident eveniet harum voluptatem quam cumque, nam maiores?",
+        "location": "Capital Federal",
+        "stars": "5"
+    },
+    {
+        "title": "Elefante Rosa Hostel",
+        "img": "https://images.unsplash.com/photo-1555854877-bab0e564b8d5?ixid=MnwxMjA3fDB8MHxzZWFyY2h8OHx8aG9zdGVsJTIwcm9vbXxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=60",
+        "category": "hostel",
+        "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae minima illum omnis suscipit vel laborum commodi provident eveniet harum voluptatem quam cumque, nam maiores?",
+        "location": "Capital Federal",
+        "stars": "4"
+    },
+    {
+        "title": "La Casa del Sol",
+        "img": "https://images.unsplash.com/photo-1521120367316-e47e63ca9913?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8YmVkJTIwYW5kJTIwYnJlYWtmYXN0fGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=60",
+        "category": "bed & breakfast",
+        "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae minima illum omnis suscipit vel laborum commodi provident eveniet harum voluptatem quam cumque, nam maiores?",
+        "location": "Capital Federal",
+        "stars": "3"
+    },
+    {
+        "title": "Departamento en Recoleta",
+        "img": "https://images.unsplash.com/photo-1583377519891-1eea1c2e3947?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8YXBwYXJ0bWVudHxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=60",
+        "category": "departamento",
+        "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae minima illum omnis suscipit vel laborum commodi provident eveniet harum voluptatem quam cumque, nam maiores?",
+        "location": "Capital Federal",
+        "stars": "4"
+    }
+]
