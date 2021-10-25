@@ -34,3 +34,22 @@ input {
 section {
   padding: 15px 50px;
 }
+
+
+::-webkit-scrollbar {
+  width: 1rem;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-5);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-principal);
+  border-radius: 5px;
+  box-shadow: 2px 2px 4px 2px #00000069;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #1fa39a;
+}
