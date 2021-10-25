@@ -27,31 +27,29 @@ a {
     display: flex;
     flex-wrap: wrap;
     gap: 1rem;
+    padding: 2vh 2vw;
 }
 
 /*______Contenedor/tarjeta______*/
 .listadoTarjetas {
     display: flex;
     flex-wrap: wrap;
-    gap: 2.5rem;
+    justify-content: space-between;
+    gap: 2rem;
     width: 100%;
 }
 
 /*****************Responsive*****************/
 /*______Tablet______*/
 @media screen and (max-width:768px) {
-    .listadoTarjetas {
-        gap: 0.6rem;
-        margin-left: 1.5%;
-        margin-right: 1.5%;
-    }
+    .bloqueCategorias {
+        padding: 4vh 4vw;
+    } 
 }
 
 /*______Mobile______*/
 @media screen and (max-width:480px) {
-    .listadoTarjetas {
-        gap: 1rem;
-        margin-left: 1.5%;
-        margin-right: 1.5%;
+    .bloqueCategorias {
+        padding: 2vh 4vw;
     } 
 }
