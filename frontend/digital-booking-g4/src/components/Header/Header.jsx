@@ -1,23 +1,52 @@
 import React, { useState } from "react";
 import SideNav from "../SideNav/SideNav";
 import Profile from "../Profile/Profile";
+import OutlinedButton from "../Buttons/OutlinedButton"
 import styles from "./Header.module.css";
 import logo from "./logo1.png";
+import { Link } from "react-router-3"
 
 export default function Header() {
+    const [estaLogueado, setEstaLogueado] = useState(false);
+
+    const pathname = window.location.pathname
+    
+    const RenderComponent = () => {
+        switch (pathname) {
+            case "/":
+                return(
+                    <>
+                        <Link to="/register"><OutlinedButton>Crear cuenta</OutlinedButton></Link>
+                        <Link to="/login"><OutlinedButton>Iniciar sesión</OutlinedButton></Link>
+                    </> 
+                )  
+            case "/login":
+                return(
+                    <>
+                        <Link to="/register"><OutlinedButton>Crear cuenta</OutlinedButton></Link>
+                    </> 
+                )
+            case "/register":
+                return(
+                    <>
+                        <Link to="/login"><OutlinedButton>Iniciar sesión</OutlinedButton></Link>
+                    </> 
+                )          
+        }
+    }
     
     return(
         <header className={styles.headerFijo}>
             <div className={styles.contenedorHeader}>
                 <div className={styles.headerIzquierda}>
-                    <a href="#"><img src={logo} alt="logo"/></a> 
-                    <a href="#"><p>Sentite como en tu hogar</p></a>    
+                    <Link to="/"><img src={logo} alt="logo"/></Link>
+                    <Link to="/"><p>Sentite como en tu hogar</p></Link>
                 </div>
                 <div className={styles.menuHamburguesa}>
                     <SideNav/>
                 </div>
                 <div className={styles.headerDerecha}>
-                    <Profile/> {/* aqui hay que hacer la renderización del heder que corresponda según página de navegación */}
+                    { estaLogueado ? <Profile /> : <RenderComponent/> } 
                 </div>                
             </div>
         </header>

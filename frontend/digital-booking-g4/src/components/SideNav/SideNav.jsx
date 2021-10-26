@@ -4,7 +4,7 @@ import Options from "./Options";
 import styles from "./SideNav.module.css";
 
 export default function SideNav() {
-    const [estaLogueado, setEstaLogueado] = useState(false);
+    const [estaLogueado, setEstaLogueado] = useState(true);
     const [isOpened, setIsOpened] = useState(false);
 
     return (
