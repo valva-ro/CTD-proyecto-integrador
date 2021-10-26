@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from "react";
 import Profile from "../Profile/Profile";
+import Options from "./Options";
 import styles from "./SideNav.module.css";
 
 export default function SideNav() {
@@ -7,7 +8,7 @@ export default function SideNav() {
     const [isOpened, setIsOpened] = useState(false);
 
     return (
-      <section>
+      <>
         <div
           className={styles.menuHamburguesa}
           onClick={() => setIsOpened(true)}
@@ -17,22 +18,24 @@ export default function SideNav() {
         <div className={styles.menuDrawer}>
           <div className={isOpened ? styles.isOpened : null}>
             <div className={styles.header}>
-              <p
+              <span
                 className={styles.cerrarSideNav}
                 onClick={() => setIsOpened(false)}
               >
                 X
-              </p>
-              {estaLogueado ? <Profile /> : <span>MENÚ</span>}
+              </span>
+              {estaLogueado ? <Profile /> : <span className={styles.menuWord}>MENÚ</span>}
             </div>
             <div className={styles.main}>
-              <p>Iniciar sesión</p>
-              {estaLogueado ? (
-                <p>
-                  {" "}
+              <div className={styles.opciones}>
+                <Options contenido={"Crear cuenta"}/> {/* TODO: renderizar lo que corresponda según pagina */}
+                <Options contenido={"Iniciar sesión"}/> {/* TODO: renderizar lo que corresponda según pagina */}
+              </div>
+              {estaLogueado ? 
+                <p className={styles.cerrarSesion}>
                   ¿Deseas<span> cerrar sesión</span>?
                 </p>
-              ) : null}
+              : null}
             </div>
             <div className={styles.footer}>
               <i className="bx bxl-facebook-circle"></i>
@@ -42,6 +45,6 @@ export default function SideNav() {
             </div>
           </div>
         </div>
-      </section>
+      </>
     );
 }
