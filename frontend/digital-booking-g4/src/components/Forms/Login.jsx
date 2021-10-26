@@ -34,6 +34,7 @@ export default function Login() {
           email == usuarioHarcodeado.email
         ) {
           //lógica de redirección hacia la home
+          //window.location.href = "http://localhost:3000/home"
           console.log("Redirigiendo a la home...");
         } else {
           const msjError = document.createTextNode(

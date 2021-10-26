@@ -5,6 +5,7 @@ main {
   align-items: center;
   display: flex;
   height: calc(100vh - 134px);
+  background-color: var(--color-4);
 }
 .contenedorForm {
   margin: 0 auto;
@@ -83,7 +84,7 @@ form a {
     min-height: calc(100vh - 160px);
   }
   .mainForm {
-    height: calc(100vh - 160px);
+    height: calc(100vh - 160px); 
   }
   .contenedorForm {
     width: 50vw;
