@@ -2,8 +2,6 @@ package com.grupo4.categorias.controller;
 
 import org.springframework.stereotype.Controller;
 
-import java.util.List;
-
 @Controller
 public interface CRUDController<T> {
     /* Obligatorias */

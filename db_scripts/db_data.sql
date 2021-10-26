@@ -17,7 +17,9 @@ USE booking;
 --
 -- Dumping data for table `categorias`
 --
-
 SET AUTOCOMMIT=0;
-INSERT INTO categorias VALUES (1,'Hotel','Este es un hotel jaja','https://www.arablog.co/wp-content/uploads/2016/12/hotel1320x742-1024x576.jpg');
+INSERT INTO categorias VALUES (1,"Hoteles","807.105 hoteles","https://images.unsplash.com/photo-1618773928121-c32242e63f39?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTd8fGhvdGVsfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1");
+INSERT INTO categorias VALUES (2,"Hostels","807.105 hostels","https://images.unsplash.com/photo-1555854877-bab0e564b8d5?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8aG9zdGVsfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1");
+INSERT INTO categorias VALUES (3,"Bed & Breakfasts","807.105 B&B's","https://images.unsplash.com/photo-1531088009183-5ff5b7c95f91?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1");
+INSERT INTO categorias VALUES (4,"Departamentos","807.105 departamentos","https://images.unsplash.com/photo-1499916078039-922301b0eb9b?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1");
 COMMIT;
