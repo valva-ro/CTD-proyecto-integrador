@@ -1,7 +1,10 @@
+main {
+  min-height: calc(100vh - 140px);
+}
 .mainForm {
   align-items: center;
   display: flex;
-  height: calc(100vh - 154px);
+  height: calc(100vh - 134px);
 }
 .contenedorForm {
   margin: 0 auto;
@@ -69,8 +72,19 @@ form p {
 form a {
   color: #4285f4;
 }
+.credencialesInvalidas{
+  text-align: end;
+  color: red;
+  font-size: .85rem;
+}
 
 @media (max-width: 768px) {
+  main {
+    min-height: calc(100vh - 160px);
+  }
+  .mainForm {
+    height: calc(100vh - 160px);
+  }
   .contenedorForm {
     width: 50vw;
   }
