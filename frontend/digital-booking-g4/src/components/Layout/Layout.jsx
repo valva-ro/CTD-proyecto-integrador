@@ -5,7 +5,6 @@ import Home from "../Home/Home";
 import SideNav from "../SideNav/SideNav";
 
 import style from "./Layout.module.css";
-import Login from "../Forms/Login";
 
 export default function Layout(){
     return (
@@ -13,7 +12,7 @@ export default function Layout(){
         <Header></Header>
         {/* TODO: agregar ruteo */}
         <main>
-          <Login/>  
+          <Home/>
         </main>
         <Footer></Footer>
       </>
