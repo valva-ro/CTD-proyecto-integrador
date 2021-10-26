@@ -58,7 +58,6 @@ public class CategoriaService implements CRUDService<CategoriaDTO> {
         }
         return categoriaActualizada;
     }
-
     @Override
     public void eliminar(Long id) throws ResourceNotFoundException, BadRequestException {
         if (id < 1)
@@ -69,20 +68,27 @@ public class CategoriaService implements CRUDService<CategoriaDTO> {
     }
 
     private void validarCamposRequeridosCreacion(CategoriaDTO categoriaDTO) throws BadRequestException {
-        if (categoriaDTO.getTitulo().isEmpty() || categoriaDTO.getTitulo().isBlank())
-            throw new BadRequestException(String.format(Mensajes.ERROR_CREACION_CAMPO_REQUERIDO, "categoría", "título"));
-        if (categoriaDTO.getDescripcion().isEmpty() || categoriaDTO.getDescripcion().isBlank())
-            throw new BadRequestException(String.format(Mensajes.ERROR_CREACION_CAMPO_REQUERIDO, "categoría", "descripción"));
-        if (categoriaDTO.getUrlImagen().isEmpty() || categoriaDTO.getUrlImagen().isBlank())
-            throw new BadRequestException(String.format(Mensajes.ERROR_CREACION_CAMPO_REQUERIDO, "categoría", "URL de la imagen"));
+        if (categoriaDTO == null) {
+            throw new BadRequestException(String.format(Mensajes.ERROR_DTO_NO_EXISTE, "Categoría"));
+        } else {
+            if (categoriaDTO.getTitulo().isEmpty() || categoriaDTO.getTitulo().isBlank())
+                throw new BadRequestException(String.format(Mensajes.ERROR_CREACION_CAMPO_REQUERIDO, "categoría", "título"));
+            if (categoriaDTO.getDescripcion().isEmpty() || categoriaDTO.getDescripcion().isBlank())
+                throw new BadRequestException(String.format(Mensajes.ERROR_CREACION_CAMPO_REQUERIDO, "categoría", "descripción"));
+            if (categoriaDTO.getUrlImagen().isEmpty() || categoriaDTO.getUrlImagen().isBlank())
+                throw new BadRequestException(String.format(Mensajes.ERROR_CREACION_CAMPO_REQUERIDO, "categoría", "URL de la imagen"));
+        }
     }
 
     private void validarCamposRequeridosActualizacion(CategoriaDTO categoriaDTO) throws BadRequestException {
-        if (categoriaDTO.getId() == null)
-            throw new BadRequestException(Mensajes.ERROR_ID_ES_NULL);
-        if (categoriaDTO.getId() < 1)
-            throw new BadRequestException(Mensajes.ERROR_ID_FUERA_DE_RANGO);
-
+        if (categoriaDTO == null) {
+            throw new BadRequestException(String.format(Mensajes.ERROR_DTO_NO_EXISTE, "Categoría"));
+        } else {
+            if (categoriaDTO.getId() == null)
+                throw new BadRequestException(Mensajes.ERROR_ID_ES_NULL);
+            if (categoriaDTO.getId() < 1)
+                throw new BadRequestException(Mensajes.ERROR_ID_FUERA_DE_RANGO);
+        }
     }
 
     private CategoriaDTO actualizar(CategoriaDTO categoriaDTO, Categoria entidad) {
