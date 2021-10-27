@@ -18,6 +18,10 @@
     height: 6.4vh ;
     position: relative;
 }
+.dateContainer{    
+    width: 35.89311859443631vw;
+    height: 6.4vh ;
+}
 .input{
     width:  30.89311859443631vw;     
     height: 6.4vh ; 
@@ -28,20 +32,51 @@
     left: 9px;
     bottom: 3px;
     font-size: 28px;
-    color: #545776;
+    color: var(--color-2--opaco);
     z-index: 1;
 }
 .gpsEmpty{
     position: absolute;
-    left: 11px;
+    left: 9px;
     bottom: 3px;
     font-size: 28px;
-    color: var(--color-3);
+    color: var(--color-2);
     z-index: 1;
 
 }
 .inputs{
     display: flex;
     gap: 0.5rem;    
-    justify-content:center
+    justify-content:center;
+}
+
+@media (max-width: 768px ){
+    .letter{font-size: 1.874rem;}
+    .cityContainer{
+        width: 254px;
+        height: 40px  ;
+    }
+    .dateContainer{
+        max-width: 254px;
+        max-height: 40px  ;   
+    }
+    .boxing{padding: 30px 10px;}
+ 
+    .inputs{gap: 1.2rem; 
+            }  
+    .gps{bottom: 5px;}
+
+    .input{
+        width: 254px;     
+        height: 40px ; 
+        padding: 1rem 2.4rem;    
+    }
+ }
+@media (max-width: 460px){
+    .gps{bottom: 3px}
+    .boxing{padding: 20px 10px;}
+    .inputs{flex-direction: column;}
+    .input{width: 95vw;}
+    .inputs{gap: 0.5rem;} 
+    .letter{font-size: 1.574rem;}
 }
