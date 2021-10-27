@@ -6,6 +6,7 @@
     display: flex;
     flex-direction: column;
 }
+
 .letter{
     color: var(--color-4);
     text-align: center;
