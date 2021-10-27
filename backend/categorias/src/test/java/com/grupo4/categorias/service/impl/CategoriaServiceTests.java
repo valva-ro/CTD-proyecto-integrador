@@ -11,6 +11,7 @@ import org.springframework.test.annotation.DirtiesContext;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+//TODO aplicar estas 2 lineas a todas clases de tests
 @SpringBootTest(properties = "spring.profiles.active:test")
 @DirtiesContext(classMode = DirtiesContext.ClassMode.BEFORE_EACH_TEST_METHOD)
 public class CategoriaServiceTests {

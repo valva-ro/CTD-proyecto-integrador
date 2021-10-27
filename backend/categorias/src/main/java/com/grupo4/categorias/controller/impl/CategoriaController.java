@@ -6,7 +6,6 @@ import com.grupo4.categorias.exceptions.Mensajes;
 import com.grupo4.categorias.exceptions.ResourceNotFoundException;
 import com.grupo4.categorias.model.CategoriaDTO;
 import com.grupo4.categorias.service.CRUDService;
-import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
