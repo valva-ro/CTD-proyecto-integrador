@@ -5,7 +5,7 @@ import { useHistory, Link } from "react-router-dom";
 
 const usuarioHarcodeado = {
   email: "brodriguez@gmail.com",
-  password: "12341234"
+  password: "12341234",
 };
 
 function validarContrasenia(contrasenia) {
@@ -46,44 +46,47 @@ export default function Login() {
   }
 
   return (
-    <div className={styles.mainForm}>
-      <div className={styles.contenedorForm}>
-        <h1>Iniciar sesión</h1>
-        <form onSubmit={handleSubmit} className={styles.formLogin}>
-          <label>
-            Correo electrónico
-            <input
-              type="email"
-              name="correo"
-              onChange={(evt) => setEmail(evt.target.value)}
-            />
-          </label>
-          <label>
-            Contraseña
-            <div className={styles.contenedorOjo}>
+    <>
+      {console.log(usuarioHarcodeado)}
+      <div className={styles.mainForm}>
+        <div className={styles.contenedorForm}>
+          <h1>Iniciar sesión</h1>
+          <form onSubmit={handleSubmit} className={styles.formLogin}>
+            <label>
+              Correo electrónico
               <input
-                type="password"
-                name="contrasenia"
-                onChange={(evt) => setPassword(evt.target.value)}
+                type="email"
+                name="correo"
+                onChange={(evt) => setEmail(evt.target.value)}
               />
-              <span className={styles.iconoOjo}>
-                <i className="fas fa-eye-slash"></i>
-              </span>
-            </div>
-          </label>
-          <p className={styles.credencialesInvalidas}>
-            {
-              isError ? "Por favor, vuelva a intentarlo. Sus credenciales son inválidas." : null
-            }
-          </p>
-          <FilledButton onClick={() => validarCampos()}>
-            Iniciar sesión
-          </FilledButton>
-          <p>
-            ¿Aún no tienes cuenta? <Link to="/register">Registrate</Link>
-          </p>
-        </form>
+            </label>
+            <label>
+              Contraseña
+              <div className={styles.contenedorOjo}>
+                <input
+                  type="password"
+                  name="contrasenia"
+                  onChange={(evt) => setPassword(evt.target.value)}
+                />
+                <span className={styles.iconoOjo}>
+                  <i className="fas fa-eye-slash"></i>
+                </span>
+              </div>
+            </label>
+            <p className={styles.credencialesInvalidas}>
+              {isError
+                ? "Por favor, vuelva a intentarlo. Sus credenciales son inválidas."
+                : null}
+            </p>
+            <FilledButton onClick={() => validarCampos()}>
+              Iniciar sesión
+            </FilledButton>
+            <p>
+              ¿Aún no tienes cuenta? <Link to="/register">Registrate</Link>
+            </p>
+          </form>
+        </div>
       </div>
-    </div>
+    </>
   );
 }
