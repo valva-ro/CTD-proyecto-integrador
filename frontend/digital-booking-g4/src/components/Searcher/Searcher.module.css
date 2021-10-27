@@ -46,7 +46,7 @@
     position: absolute;
     font-size: 28px;
     z-index: 1;
-    bottom: 15%;
+
     left: 13px;
     color: var(--color-2--opaco);
     align-items: center;
@@ -55,7 +55,7 @@
     position: absolute;
     font-size: 28px;
     z-index: 1;
-    bottom: 15%;
+
     left: 13px;
     color: var(--color-2);
 }
