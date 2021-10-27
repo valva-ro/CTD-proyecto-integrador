@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import FilledButton from "../Buttons/FilledButton";
 import styles from "./Form.module.css";
+import { useHistory, Link } from "react-router-dom";
 
 const usuarioHarcodeado = {
   email: "brodriguez@gmail.com",
@@ -23,6 +24,7 @@ export default function Login() {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState("");
   const [isError, setIsError] = useState(false);
+  const history = useHistory();
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -34,7 +36,7 @@ export default function Login() {
         password == usuarioHarcodeado.password &&
         email == usuarioHarcodeado.email
       ) {
-        window.location.href = "http://localhost:3000"; //acá poner el puerto con el que estén trabajando localmente
+        history.push("/");
       } else {
         setIsError(true);
       }
@@ -69,7 +71,7 @@ export default function Login() {
               </span>
             </div>
           </label>
-          <p className={`mensajeError ${styles.credencialesInvalidas}`}>
+          <p className={styles.credencialesInvalidas}>
             {
               isError ? "Por favor, vuelva a intentarlo. Sus credenciales son inválidas." : null
             }
@@ -78,7 +80,7 @@ export default function Login() {
             Iniciar sesión
           </FilledButton>
           <p>
-            ¿Aún no tienes cuenta? <a href="./register.html">Registrate</a>
+            ¿Aún no tienes cuenta? <Link to="/register">Registrate</Link>
           </p>
         </form>
       </div>

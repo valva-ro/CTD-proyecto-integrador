@@ -6,6 +6,7 @@ main {
   display: flex;
   height: calc(100vh - 134px);
   background-color: var(--color-4);
+  margin-top: 82px;
 }
 .contenedorForm {
   margin: 0 auto;
@@ -85,6 +86,7 @@ form a {
   }
   .mainForm {
     height: calc(100vh - 160px); 
+    margin-top: 102px;
   }
   .contenedorForm {
     width: 50vw;
