@@ -3,21 +3,20 @@ package com.grupo4.categorias.service.impl;
 import com.grupo4.categorias.exceptions.BadRequestException;
 import com.grupo4.categorias.exceptions.ResourceNotFoundException;
 import com.grupo4.categorias.model.CategoriaDTO;
+import com.grupo4.categorias.service.CRUDService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.DirtiesContext;
-import org.springframework.test.context.ActiveProfiles;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-@SpringBootTest
+@SpringBootTest(properties = "spring.profiles.active:test")
 @DirtiesContext(classMode = DirtiesContext.ClassMode.BEFORE_EACH_TEST_METHOD)
-@ActiveProfiles("test")
 public class CategoriaServiceTests {
 
     @Autowired
-    private CategoriaService categoriaService;
+    private CRUDService<CategoriaDTO> categoriaService;
 
     private final CategoriaDTO categoriaPorCrear = new CategoriaDTO("Hotel", "807.105 hoteles", "https://via.placeholder.com/300");
     private final CategoriaDTO categoriaCreada = new CategoriaDTO(1L, "Hotel", "807.105 hoteles", "https://via.placeholder.com/300");
