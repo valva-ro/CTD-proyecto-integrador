@@ -26,8 +26,6 @@
     padding: 0px;
     width: 0px;
     height: 0px;
-    font-weight: 0px !important;
-    box-shadow: 0px !important;
 }
 
 .dateContainer div div input {
@@ -108,8 +106,7 @@
     .dateIconEmpty,
     .dateIcon {
         left: 16px;
-        bottom: -1px;
-        top: 5px;
+        top: 1px;
     }
 
     .boxing {
@@ -135,6 +132,9 @@
 
 @media (max-width: 480px) {
 
+    .boxing{
+        top: 130px;
+    }
     .gps,
     .gpsEmpty {
         bottom: 5px;
