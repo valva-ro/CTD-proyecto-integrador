@@ -18,6 +18,12 @@
     position: relative;
 }.dateContainer{
     position: relative;
+    margin: 0px;
+    padding: 0px;
+    width: 0px;
+    height: 0px;
+    font-weight: 0px !important;
+    box-shadow: 0px !important;
 }
 .dateContainer div div input{   
       position: relative;
@@ -72,7 +78,12 @@
  
     margin-left: 8px;
 }
-
+.applyContainer{
+    display: block;
+    text-align:end;
+    margin: 20px   
+    
+}
 @media (max-width: 768px ){
     .letter{font-size: 1.874rem;}
     .cityContainer{
@@ -103,6 +114,8 @@
  }
 @media (max-width: 480px){
     .gps{bottom: 5px}
+    .dateContainer{margin: -4px;}
+    .gpsEmpty{bottom: 5px}
     .boxing{padding: 20px 10px;}
     .inputs{flex-direction: column;}
     .input{width: 95vw;}

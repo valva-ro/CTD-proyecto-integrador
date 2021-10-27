@@ -13,7 +13,8 @@ export default function Searcher() {
   const [startDate, endDate] = dateRange;
   const [quantityMonth, setQuantityMonth] = useState(2)
   const [iconGps, setIconGps] = useState(styles.gps)
-  const [iconDate, setIconDate]= useState(styles.dateIcon)
+  const [iconDate, setIconDate] = useState(styles.dateIcon)
+  const [close, setClose] = useState(false)
   useEffect(() => {
     if (window.screen.width <= 480) {
       setQuantityMonth(1)
@@ -21,19 +22,24 @@ export default function Searcher() {
       setQuantityMonth(2)
     }
   }, [quantityMonth])
-  const styleChange = (input) =>{
-      if (!input.target.value== "") {
-        setIconDate(styles.dateIconEmpty)
-      } else {
-        setIconDate(styles.dateIcon)
-      }
+  const closeDate = () => {
+    setClose(true);
+    setClose(false)
+    
   }
-  const styleChangeClick=(input) =>{
-      if(input!==false){
-        setIconDate(styles.dateIconEmpty)
-      } else {
-        setIconDate(styles.dateIcon)
-      }
+  const styleChange = (input) => {
+    if (!input.target.value == "") {
+      setIconDate(styles.dateIconEmpty)
+    } else {
+      setIconDate(styles.dateIcon)
+    }
+  }
+  const styleChangeClick = (input) => {
+    if (input !== false) {
+      setIconDate(styles.dateIconEmpty)
+    } else {
+      setIconDate(styles.dateIcon)
+    }
   }
 
   const onType = (input) => {
@@ -58,23 +64,23 @@ export default function Searcher() {
 
 
         <div className={styles.dateContainer}>
-          <span className={iconDate}><i class="far fa-calendar-alt"></i></span> 
-          </div>
-           <DatePicker  onSelect={(e)=> styleChangeClick(e) } onChangeRaw={(e)=> styleChange(e) }
-            dateFormat="dd/MM/yyyy"
-            placeholderText="Check in  -  Check out"
-            locale={es}
-            selectsRange={true}
-            startDate={startDate}
-            endDate={endDate}
-            shouldCloseOnSelect={false}
-            monthsShown={quantityMonth}
-            onChange={(update) => {
-              setDateRange(update);
-            }}
-          />
-        
-        <FilledButton >Buscar</FilledButton>
+          <span className={iconDate}><i class="far fa-calendar-alt"></i></span>
+        </div>
+        <DatePicker onSelect={(e) => styleChangeClick(e)} onChangeRaw={(e) => styleChange(e)}
+          dateFormat="dd/MM/yyyy"
+          placeholderText="Check in  -  Check out"
+          locale={es}
+          selectsRange={true}
+          startDate={startDate}
+          endDate={endDate}
+          shouldCloseOnSelect={close}
+          monthsShown={quantityMonth}
+          onChange={(update) => {
+            setDateRange(update);
+          }}
+        ><div className={styles.applyContainer}><FilledButton  onClick={() => closeDate()}>Enviar</FilledButton></div>
+        </DatePicker>
+        <FilledButton>Buscar</FilledButton>
       </div>
     </div>)
 }
