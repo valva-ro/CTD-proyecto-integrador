@@ -4,7 +4,7 @@ import Profile from "../Profile/Profile";
 import OutlinedButton from "../Buttons/OutlinedButton"
 import styles from "./Header.module.css";
 import logo from "./logo1.png";
-import { Link } from "react-router-3"
+import { Link } from "react-router-dom"
 
 export default function Header() {
     const [estaLogueado, setEstaLogueado] = useState(false);

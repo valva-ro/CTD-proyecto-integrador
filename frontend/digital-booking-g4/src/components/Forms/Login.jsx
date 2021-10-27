@@ -3,8 +3,8 @@ import FilledButton from "../Buttons/FilledButton";
 import styles from "./Form.module.css";
 
 const usuarioHarcodeado = {
-  email: "kevin@gmail.com",
-  password: "12341234",
+  email: "brodriguez@gmail.com",
+  password: "12341234"
 };
 
 function validarContrasenia(contrasenia) {
