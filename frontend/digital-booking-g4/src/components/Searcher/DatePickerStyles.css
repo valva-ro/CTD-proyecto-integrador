@@ -114,7 +114,7 @@ div.react-datepicker__header:not(.react-datepicker__header--has-time-select) {
   div.react-datepicker__day-name,
   div.react-datepicker__day,
   div.react-datepicker__time-name {
-    margin: 0.65vh 1vw;
+    margin: 0.6vh .8vw;
     font-size: 0.9rem;
   }
 }
