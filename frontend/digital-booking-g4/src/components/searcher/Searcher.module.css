@@ -1,0 +1,47 @@
+
+.boxing{
+    background-color: var(--color-2);
+    padding: 2.9vh 14.3vw 3.3vh 14.3vw;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+}
+.letter{
+    color: var(--color-4);
+    text-align: center;
+    font-size: 2.25rem;
+    padding: 0 0 3.3vh 0;
+    
+}
+.cityContainer{
+    width: 35.89311859443631vw;
+    height: 6.4vh ;
+    position: relative;
+}
+.input{
+    width:  30.89311859443631vw;     
+    height: 6.4vh ; 
+    padding: 1rem 2.4rem;    
+}
+.gps {
+    position: absolute;
+    left: 9px;
+    bottom: 3px;
+    font-size: 28px;
+    color: #545776;
+    z-index: 1;
+}
+.gpsEmpty{
+    position: absolute;
+    left: 11px;
+    bottom: 3px;
+    font-size: 28px;
+    color: var(--color-3);
+    z-index: 1;
+
+}
+.inputs{
+    display: flex;
+    gap: 0.5rem;    
+    justify-content:center
+}
