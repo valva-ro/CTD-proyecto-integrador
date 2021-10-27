@@ -1,4 +1,4 @@
-.btnPleno {
+.filledButton {
   background-color: var(--color-principal);
   border: none;
   color: var(--color-5);
@@ -9,11 +9,11 @@
   padding: 1.4vh 5vw;
   transition: background-color ease-in-out 250ms;
 }
-.btnPleno:hover {
+.filledButton:hover {
   background-color: #1fa39a;
 }
 
-.btnEnLinea {
+.outlinedButton {
   background-color: var(--color-5);
   border: solid 1px var(--color-principal);
   color: var(--color-principal);
@@ -21,10 +21,9 @@
   font-size: 1rem;
   font-weight: 700;
   padding: 1.4vh 5vw;
-  transition: color ease-in-out 250ms,
-              border-color ease-in-out 250ms;
+  transition: all ease-in-out 350ms;
 }
-.btnEnLinea:hover {
-  border-color: #1fa39a;
-  color: #1fa39a;
+.outlinedButton:hover {
+  background-color: var(--color-principal);
+  color: var(--color-5);
 }

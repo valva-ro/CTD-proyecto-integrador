@@ -1,20 +1,14 @@
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
-import Profile from "../Profile/Profile";
-import Home from "../Home/Home";
-import SideNav from "../SideNav/SideNav";
 
-import style from "./Layout.module.css";
-
-export default function Layout(){
+export default function Layout(props){
     return (
       <>
-        <Header></Header>
-        {/* TODO: agregar ruteo */}
+        <Header/>
         <main>
-          <Home/>
+          {props.children}
         </main>
-        <Footer></Footer>
+        <Footer/>
       </>
     );
 }

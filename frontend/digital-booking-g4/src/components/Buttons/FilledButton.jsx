@@ -4,7 +4,7 @@ export default function FilledButton(props) {
   return (
     <input
       type="submit"
-      className={`${styles.btnPleno} ${props.styles}`}
+      className={`${styles.filledButton} ${props.styles}`}
       value={props.children}
       onClick={props.onClick}
     />
