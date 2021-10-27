@@ -34,6 +34,7 @@
     font-size: 28px;
     color: var(--color-2--opaco);
     z-index: 1;
+    align-items: center;
 }
 .dateIcon{
     position: absolute;
@@ -42,6 +43,7 @@
     bottom: 15%;
     left: 13px;
     color: var(--color-2--opaco);
+    align-items: center;
 }
 .dateIconEmpty{
     position: absolute;
@@ -52,6 +54,7 @@
     color: var(--color-2);
 }
 .gpsEmpty{
+    align-items: center;
     position: absolute;
     left: 9px;
     bottom: 10%;
@@ -98,7 +101,7 @@
         bottom: 8px;
     }
  }
-@media (max-width: 460px){
+@media (max-width: 480px){
     .gps{bottom: 5px}
     .boxing{padding: 20px 10px;}
     .inputs{flex-direction: column;}

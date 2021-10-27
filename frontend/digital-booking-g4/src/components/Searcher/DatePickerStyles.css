@@ -105,7 +105,7 @@ div.react-datepicker__header:not(.react-datepicker__header--has-time-select) {
     height: 47px ; 
   }
 }
-@media (max-width: 460px){
+@media (max-width: 480px){
   div.react-datepicker__input-container input{
     padding: 1rem 2.4rem;
     width:  95vw;    
