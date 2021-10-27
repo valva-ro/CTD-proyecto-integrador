@@ -2,12 +2,16 @@ import FilledButton from "../Buttons/FilledButton";
 import styles from "./Form.module.css";
 import { Link } from "react-router-dom";
 
+function handleSubmit(e) {
+  e.preventDefault();
+}
+
 export default function Register() {
   return (
     <div className={styles.mainForm}>
       <div className={styles.contenedorForm}>
         <h1>Crear cuenta</h1>
-        <form className={styles.formRegister}>
+        <form className={styles.formRegister} onSubmit={handleSubmit}>
           <div>
             <label>
               Nombre

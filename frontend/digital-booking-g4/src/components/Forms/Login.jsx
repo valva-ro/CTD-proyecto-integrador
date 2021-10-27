@@ -1,7 +1,8 @@
-import { useEffect, useState } from "react";
+import { useState, useContext } from "react";
 import FilledButton from "../Buttons/FilledButton";
 import styles from "./Form.module.css";
 import { useHistory, Link } from "react-router-dom";
+import loggedContext from "../../contexts/loggedContext";
 
 const usuarioHarcodeado = {
   email: "brodriguez@gmail.com",
@@ -25,6 +26,7 @@ export default function Login() {
   const [password, setPassword] = useState("");
   const [isError, setIsError] = useState(false);
   const history = useHistory();
+  const { isLogged, setIsLogged } = useContext(loggedContext);
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -36,6 +38,7 @@ export default function Login() {
         password == usuarioHarcodeado.password &&
         email == usuarioHarcodeado.email
       ) {
+        setIsLogged(true);
         history.push("/");
       } else {
         setIsError(true);
@@ -45,13 +48,14 @@ export default function Login() {
     }
   }
 
+  console.log(usuarioHarcodeado);
+
   return (
     <>
-      {console.log(usuarioHarcodeado)}
       <div className={styles.mainForm}>
         <div className={styles.contenedorForm}>
           <h1>Iniciar sesión</h1>
-          <form onSubmit={handleSubmit} className={styles.formLogin}>
+          <form className={styles.formLogin} onSubmit={handleSubmit}>
             <label>
               Correo electrónico
               <input
