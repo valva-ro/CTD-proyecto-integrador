@@ -1,7 +1,7 @@
 import React from 'react'
 import { useState, useEffect } from "react";
 import styles from "./Searcher.module.css"
-import FilledButton from "../Buttons/FilledButton"
+import FilledButton from "../components/Buttons/FilledButton"
 import DatePicker, { registerLocale } from "react-datepicker";
 import es from "date-fns/locale/es";
 import "react-datepicker/dist/react-datepicker.css";
