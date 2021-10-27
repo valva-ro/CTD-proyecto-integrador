@@ -1,5 +1,5 @@
 import React from "react";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import styles from "./Searcher.module.css";
 import FilledButton from "../Buttons/FilledButton";
 import DatePicker, { registerLocale } from "react-datepicker";
@@ -13,7 +13,8 @@ export default function Searcher() {
   const [quantityMonth, setQuantityMonth] = useState(2);
   const [iconGps, setIconGps] = useState(styles.gps);
   const [iconDate, setIconDate] = useState(styles.dateIcon);
-  
+  let datePickerRef = useRef(null);
+
   useEffect(() => {
     if (window.screen.width <= 480) {
       setQuantityMonth(1);
@@ -21,6 +22,10 @@ export default function Searcher() {
       setQuantityMonth(2);
     }
   }, [quantityMonth]);
+
+  const closeCalendar = () => {
+    datePickerRef.setOpen(false);
+  };
 
   const styleChange = (input) => {
     if (!input.target.value == "") {
@@ -83,8 +88,12 @@ export default function Searcher() {
           onChange={(update) => {
             setDateRange(update);
           }}
-        />
-
+          ref={(r) => datePickerRef = r}
+        >
+          <div className={styles.applyContainer}>
+            <FilledButton onClick={() => closeCalendar()}>Aplicar</FilledButton>
+          </div>
+        </DatePicker>
         <FilledButton>Buscar</FilledButton>
       </div>
     </div>
