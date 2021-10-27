@@ -1,0 +1,20 @@
+[2021-10-27 12:59:27] [ERROR] [GlobalExceptionsHandler:17] Ha ocurrido un error en la creación de 'categoría', 'título' no puede estar vacío
+[2021-10-27 13:03:17] [ERROR] [GlobalExceptionsHandler:17] Ha ocurrido un error en la creación de 'categoría', 'título' no puede estar vacío
+[2021-10-27 13:03:58] [ERROR] [GlobalExceptionsHandler:17] Ha ocurrido un error en la creación de 'categoría', 'descripción' no puede estar vacío
+[2021-10-27 13:04:20] [ERROR] [GlobalExceptionsHandler:17] Ha ocurrido un error en la creación de 'categoría', 'descripción' no puede estar vacío
+[2021-10-27 13:06:50] [ERROR] [GlobalExceptionsHandler:17] Ha ocurrido un error en la creación de 'categoría', 'URL de la imagen' no puede estar vacío
+[2021-10-27 13:25:21] [ERROR] [GlobalExceptionsHandler:17] Ha ocurrido un error en la creación de 'categoría', 'descripción' no puede estar vacío
+[2021-10-27 13:25:58] [ERROR] [GlobalExceptionsHandler:17] Ha ocurrido un error en la creación de 'categoría', 'URL de la imagen' no puede estar vacío
+[2021-10-27 13:42:38] [ERROR] [GlobalExceptionsHandler:23] La 'categoría' con id 15 no está registrado en la base de datos.
+[2021-10-27 15:40:06] [ERROR] [GlobalExceptionsHandler:23] La 'categoría' con id 995 no está registrado en la base de datos.
+[2021-10-27 15:44:04] [ERROR] [GlobalExceptionsHandler:17] Ha ocurrido un error en la creación de 'categoría', 'título' no puede estar vacío
+[2021-10-27 15:44:10] [ERROR] [GlobalExceptionsHandler:17] Ha ocurrido un error en la creación de 'categoría', 'título' no puede estar vacío
+[2021-10-27 15:44:19] [ERROR] [GlobalExceptionsHandler:17] Ha ocurrido un error en la creación de 'categoría', 'descripción' no puede estar vacío
+[2021-10-27 15:44:25] [ERROR] [GlobalExceptionsHandler:17] Ha ocurrido un error en la creación de 'categoría', 'descripción' no puede estar vacío
+[2021-10-27 15:44:32] [ERROR] [GlobalExceptionsHandler:17] Ha ocurrido un error en la creación de 'categoría', 'URL de la imagen' no puede estar vacío
+[2021-10-27 15:44:36] [ERROR] [GlobalExceptionsHandler:17] Ha ocurrido un error en la creación de 'categoría', 'URL de la imagen' no puede estar vacío
+[2021-10-27 15:46:34] [ERROR] [GlobalExceptionsHandler:23] La 'categoría' con id 8 no está registrado en la base de datos.
+[2021-10-27 15:46:42] [ERROR] [GlobalExceptionsHandler:23] La 'categoría' con id 5 no está registrado en la base de datos.
+[2021-10-27 15:47:36] [ERROR] [GlobalExceptionsHandler:23] La 'categoría' con id 15 no está registrado en la base de datos.
+[2021-10-27 15:47:48] [ERROR] [GlobalExceptionsHandler:23] La 'categoría' con id 5 no está registrado en la base de datos.
+[2021-10-27 15:47:59] [ERROR] [GlobalExceptionsHandler:23] La 'categoría' con id 995 no está registrado en la base de datos.
