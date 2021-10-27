@@ -1,5 +1,5 @@
 import React from 'react'
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import styles from "./Searcher.module.css"
 import FilledButton from "../Buttons/FilledButton"
 import DatePicker, { registerLocale } from "react-datepicker";
@@ -11,21 +11,39 @@ registerLocale("es", es);
 export default function Searcher() {
   const [dateRange, setDateRange] = useState([null, null]);
   const [startDate, endDate] = dateRange;
-  const [quantityMonth, setQuantityMonth ]= useState(2)
-  const [iconCss, setIconCss]= useState(styles.gps)
-  
-/*   if(window.screen.with<=460){
-setQuantityMonth(2)
-  }else{
-    setQuantityMonth(1)
-  } */
-  
- const   onType = (input)=>{
- if (!input.target.value==""){
- setIconCss(styles.gpsEmpty)}else{
-   setIconCss(styles.gps)
- }
-}
+  const [quantityMonth, setQuantityMonth] = useState(2)
+  const [iconGps, setIconGps] = useState(styles.gps)
+  const [iconDate, setIconDate]= useState(styles.dateIcon)
+  useEffect(() => {
+    if (window.screen.width <= 480) {
+      setQuantityMonth(1)
+    } else {
+      setQuantityMonth(2)
+    }
+  }, [quantityMonth])
+  const styleChange = (input) =>{
+      if (!input.target.value== "") {
+        setIconDate(styles.dateIconEmpty)
+      } else {
+        setIconDate(styles.dateIcon)
+      }
+  }
+  const styleChangeClick=(input) =>{
+      if(input!==false){
+        setIconDate(styles.dateIconEmpty)
+      } else {
+        setIconDate(styles.dateIcon)
+      }
+  }
+
+  const onType = (input) => {
+    if (!input.target.value == "") {
+      setIconGps(styles.gpsEmpty)
+    } else {
+      setIconGps(styles.gps)
+    }
+  }
+
 
   return (
     <div className={styles.boxing}>
@@ -34,16 +52,15 @@ setQuantityMonth(2)
       <div className={styles.inputs} >
 
         <div className={styles.cityContainer}>
-        <span className={iconCss  }><i class="fas fa-map-marker-alt"></i></span>
-
-        
-          <input placeholder="¿A dónde vamos?" type="search" className={styles.input} onKeyUp={(e)=>onType(e)} />
+          <span className={iconGps}><i class="fas fa-map-marker-alt"></i></span>
+          <input placeholder="¿A dónde vamos?" type="search" className={styles.input} onKeyUp={(e) => onType(e)} />
         </div>
-       
-     
- <div className={styles.dateContainer}>
- {/* <span className={styles.gps}><i class="far fa-calendar-alt"></i></span> 
-  */}         <DatePicker
+
+
+        <div className={styles.dateContainer}>
+          <span className={iconDate}><i class="far fa-calendar-alt"></i></span> 
+          </div>
+           <DatePicker  onSelect={(e)=> styleChangeClick(e) } onChangeRaw={(e)=> styleChange(e) }
             dateFormat="dd/MM/yyyy"
             placeholderText="Check in  -  Check out"
             locale={es}
@@ -55,9 +72,9 @@ setQuantityMonth(2)
             onChange={(update) => {
               setDateRange(update);
             }}
-          /> 
-</div>
-        <FilledButton>Buscar</FilledButton>
+          />
+        
+        <FilledButton >Buscar</FilledButton>
       </div>
     </div>)
 }

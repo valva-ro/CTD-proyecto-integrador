@@ -3,7 +3,7 @@ import SideNav from "../SideNav/SideNav";
 import Profile from "../Profile/Profile";
 import styles from "./Header.module.css";
 import logo from "./logo1.png";
-import Searcher from "../searcher/Searcher"
+import Searcher from "../Searcher/Searcher"
 export default function Header() {
     
     return(
