@@ -1,0 +1,10 @@
+com\grupo4\categorias\exceptions\BadRequestException.class
+com\grupo4\categorias\service\impl\CategoriaService.class
+com\grupo4\categorias\exceptions\ResourceNotFoundException.class
+com\grupo4\categorias\exceptions\Mensajes.class
+com\grupo4\categorias\persistence\entites\Categoria.class
+com\grupo4\categorias\controller\CRUDController.class
+com\grupo4\categorias\model\CategoriaDTO.class
+com\grupo4\categorias\persistence\repository\ICategoriaRepository.class
+com\grupo4\categorias\service\CRUDService.class
+com\grupo4\categorias\CategoriasApplication.class
