@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import FilledButton from "../Buttons/FilledButton";
 import styles from "./Form.module.css";
-
+import profileContext from "../../contexts/profileContext";
 const usuarioHarcodeado = {
   email: "kevin@gmail.com",
   password: "12341234",
@@ -28,23 +28,21 @@ export default function Login() {
   }
 
   function validarCampos() {
-      if (validarContrasenia(password) && validarEmail(email)) {
-        if (
-          password == usuarioHarcodeado.password &&
-          email == usuarioHarcodeado.email
-        ) {
-          //lógica de redirección hacia la home
-          //window.location.href = "http://localhost:3000/home"
-          console.log("Redirigiendo a la home...");
-        } else {
-          const msjError = document.createTextNode(
-            "Por favor, vuelva a intentarlo sus credenciales son inválidas."
-          );
-          document.querySelector(".mensajeError").appendChild(msjError);
-        }
+    const msjError = "Por favor, vuelva a intentarlo. Sus credenciales son inválidas."
+    const contenedorError = document.querySelector(".mensajeError");
+    if (validarContrasenia(password) && validarEmail(email)) {
+      if (
+        password == usuarioHarcodeado.password &&
+        email == usuarioHarcodeado.email
+      ) {
+        window.location.href = "http://localhost:3001"; //acá poner el puerto con el que estén trabajando localmente
+      } else {
+        contenedorError.innerHTML = msjError;
       }
+    } else {
+      contenedorError.innerHTML = msjError;
     }
-
+  }
 
   return (
     <div className={styles.mainForm}>
@@ -53,20 +51,26 @@ export default function Login() {
         <form onSubmit={handleSubmit} className={styles.formLogin}>
           <label>
             Correo electrónico
-            <input type="email" name="correo" onChange={evt => setEmail(evt.target.value)} />
+            <input
+              type="email"
+              name="correo"
+              onChange={(evt) => setEmail(evt.target.value)}
+            />
           </label>
           <label>
             Contraseña
             <div className={styles.contenedorOjo}>
-              <input type="password" name="contrasenia" onChange={evt => setPassword(evt.target.value)} />
+              <input
+                type="password"
+                name="contrasenia"
+                onChange={(evt) => setPassword(evt.target.value)}
+              />
               <span className={styles.iconoOjo}>
                 <i className="fas fa-eye-slash"></i>
               </span>
             </div>
           </label>
-          <p className={`mensajeError ${styles.credencialesInvalidas}`}>
-            
-          </p>
+          <p className={`mensajeError ${styles.credencialesInvalidas}`}></p>
           <FilledButton onClick={() => validarCampos()}>
             Iniciar sesión
           </FilledButton>
