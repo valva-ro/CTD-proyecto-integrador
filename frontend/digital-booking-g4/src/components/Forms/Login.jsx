@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import FilledButton from "../Buttons/FilledButton";
 import styles from "./Form.module.css";
-import profileContext from "../../contexts/profileContext";
+
 const usuarioHarcodeado = {
   email: "kevin@gmail.com",
   password: "12341234",
@@ -22,25 +22,24 @@ function validarEmail(email) {
 export default function Login() {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState("");
+  const [isError, setIsError] = useState(false);
 
   function handleSubmit(e) {
     e.preventDefault();
   }
 
   function validarCampos() {
-    const msjError = "Por favor, vuelva a intentarlo. Sus credenciales son inválidas."
-    const contenedorError = document.querySelector(".mensajeError");
     if (validarContrasenia(password) && validarEmail(email)) {
       if (
         password == usuarioHarcodeado.password &&
         email == usuarioHarcodeado.email
       ) {
-        window.location.href = "http://localhost:3001"; //acá poner el puerto con el que estén trabajando localmente
+        window.location.href = "http://localhost:3000"; //acá poner el puerto con el que estén trabajando localmente
       } else {
-        contenedorError.innerHTML = msjError;
+        setIsError(true);
       }
     } else {
-      contenedorError.innerHTML = msjError;
+      setIsError(true);
     }
   }
 
@@ -70,7 +69,11 @@ export default function Login() {
               </span>
             </div>
           </label>
-          <p className={`mensajeError ${styles.credencialesInvalidas}`}></p>
+          <p className={`mensajeError ${styles.credencialesInvalidas}`}>
+            {
+              isError ? "Por favor, vuelva a intentarlo. Sus credenciales son inválidas." : null
+            }
+          </p>
           <FilledButton onClick={() => validarCampos()}>
             Iniciar sesión
           </FilledButton>
