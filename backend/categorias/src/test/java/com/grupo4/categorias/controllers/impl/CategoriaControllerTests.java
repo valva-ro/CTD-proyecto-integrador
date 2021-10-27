@@ -56,9 +56,9 @@ public class CategoriaControllerTests {
 
         //Act
         MvcResult response = mockMvc.perform(MockMvcRequestBuilders.post("/categorias/crear")
-                .contentType(MediaType.APPLICATION_JSON)
-                .characterEncoding("utf-8")
-                .content(JsonMapper.mapObjectToJson(categoria)))
+                    .contentType(MediaType.APPLICATION_JSON)
+                    .characterEncoding("utf-8")
+                    .content(JsonMapper.mapObjectToJson(categoria)))
                 .andDo(MockMvcResultHandlers.print())
                 .andExpect(MockMvcResultMatchers.status().isOk()).andReturn();
 
