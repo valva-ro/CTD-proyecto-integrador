@@ -1,5 +1,6 @@
 import FilledButton from "../Buttons/FilledButton";
 import styles from "./Form.module.css";
+import { Link } from "react-router-dom";
 
 export default function Register() {
   return (
@@ -36,7 +37,7 @@ export default function Register() {
           </label>
           <FilledButton>Crear cuenta</FilledButton>
           <p>
-            ¿Ya tienes cuenta? <a href="./login.html">Iniciar sesión</a>
+            ¿Ya tienes cuenta? <Link to="/login">Iniciar sesión</Link>
           </p>
         </form>
       </div>

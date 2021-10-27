@@ -1,9 +1,8 @@
 import React, {useEffect, useState} from "react";
 import Profile from "../Profile/Profile";
 import Options from "./Options";
-import { Link } from "react-router-3";
+import { Link } from "react-router-dom";
 import styles from "./SideNav.module.css";
-
 
 export default function SideNav() {
   const [estaLogueado, setEstaLogueado] = useState(true);

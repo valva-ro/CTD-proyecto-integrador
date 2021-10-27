@@ -4,7 +4,7 @@ export default function OutlinedButton(props) {
   return (
     <input
       type="submit"
-      className={`${styles.btnEnLinea} ${props.styles}`}
+      className={`${styles.outlinedButton} ${props.styles}`}
       value={props.children}
       onClick={props.onClick}
     />
