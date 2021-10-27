@@ -3,7 +3,7 @@ import SideNav from "../SideNav/SideNav";
 import Profile from "../Profile/Profile";
 import styles from "./Header.module.css";
 import logo from "./logo1.png";
-import Searcher from "../Searcher/Searcher"
+
 export default function Header() {
     
     return(
@@ -20,7 +20,7 @@ export default function Header() {
                     <Profile/> {/* aqui hay que hacer la renderización del heder que corresponda según página de navegación */}
                 </div>                
             </div>
-<Searcher/>
+
         </header>
     );
 }
