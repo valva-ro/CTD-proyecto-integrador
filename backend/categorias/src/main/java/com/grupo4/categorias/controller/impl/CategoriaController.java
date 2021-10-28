@@ -20,8 +20,6 @@ import java.util.List;
 @RequestMapping("/categorias")
 public class CategoriaController implements CRUDController<CategoriaDTO> {
 
-    //TODO realizar documentación en Swagger, se dejan listas notations de operación y respuestas
-
     @Qualifier("categoriaService")
     private final CRUDService<CategoriaDTO> categoriaService;
 
