@@ -1,0 +1,13 @@
+[2021-10-27 18:31:34] [ERROR] [GlobalExceptionsHandler:17] Ha ocurrido un error en la creación de 'categoría', 'título' no puede estar vacío
+[2021-10-27 18:31:39] [ERROR] [GlobalExceptionsHandler:17] Ha ocurrido un error en la creación de 'categoría', 'título' no puede estar vacío
+[2021-10-27 18:32:03] [ERROR] [GlobalExceptionsHandler:17] Ha ocurrido un error en la creación de 'categoría', 'descripción' no puede estar vacío
+[2021-10-27 18:32:07] [ERROR] [GlobalExceptionsHandler:17] Ha ocurrido un error en la creación de 'categoría', 'descripción' no puede estar vacío
+[2021-10-27 18:32:15] [ERROR] [GlobalExceptionsHandler:17] Ha ocurrido un error en la creación de 'categoría', 'URL de la imagen' no puede estar vacío
+[2021-10-27 18:32:18] [ERROR] [GlobalExceptionsHandler:17] Ha ocurrido un error en la creación de 'categoría', 'URL de la imagen' no puede estar vacío
+[2021-10-27 18:32:29] [ERROR] [GlobalExceptionsHandler:23] La 'categoría' con id 7 no está registrado en la base de datos.
+[2021-10-27 18:32:33] [ERROR] [GlobalExceptionsHandler:23] La 'categoría' con id 6 no está registrado en la base de datos.
+[2021-10-27 18:33:07] [ERROR] [GlobalExceptionsHandler:23] La 'categoría' con id 6 no está registrado en la base de datos.
+[2021-10-27 18:34:56] [ERROR] [GlobalExceptionsHandler:23] La 'categoría' con id 6 no está registrado en la base de datos.
+[2021-10-27 18:51:46] [ERROR] [GlobalExceptionsHandler:17] Ha ocurrido un error, 'Categoría' o uno de sus campos no puede ser nulo
+[2021-10-27 18:51:54] [ERROR] [GlobalExceptionsHandler:17] Ha ocurrido un error, 'Categoría' o uno de sus campos no puede ser nulo
+[2021-10-27 18:51:58] [ERROR] [GlobalExceptionsHandler:17] Ha ocurrido un error, 'Categoría' o uno de sus campos no puede ser nulo

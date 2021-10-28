@@ -43,9 +43,6 @@ public class CategoriaControllerTests {
         mockMvc.perform(MockMvcRequestBuilders.get("/categorias/todas"))
                 .andDo(MockMvcResultHandlers.print())
                 .andExpect(MockMvcResultMatchers.status().isOk());
-                //Assert
-                //.andExpect(MockMvcResultMatchers.jsonPath("$.length").value(0));
-
     }
 
     @Test
@@ -53,12 +50,11 @@ public class CategoriaControllerTests {
         //Arrange
         CategoriaDTO categoriaEsperada = categoria;
         categoriaEsperada.setId(1L);
-
         //Act
         MvcResult response = mockMvc.perform(MockMvcRequestBuilders.post("/categorias/crear")
-                .contentType(MediaType.APPLICATION_JSON)
-                .characterEncoding("utf-8")
-                .content(JsonMapper.mapObjectToJson(categoria)))
+                    .contentType(MediaType.APPLICATION_JSON)
+                    .characterEncoding("utf-8")
+                    .content(JsonMapper.mapObjectToJson(categoria)))
                 .andDo(MockMvcResultHandlers.print())
                 .andExpect(MockMvcResultMatchers.status().isOk()).andReturn();
 
