@@ -13,9 +13,17 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<name>categorias</name>
 	<description>API Rest para categorias</description>
+
 	<properties>
 		<java.version>11</java.version>
+        <lombok-version>1.18.12</lombok-version>
+        <mysql-version>8.0.27</mysql-version>
+        <log4j-version>1.2.17</log4j-version>
+		<springfox-boot-version>3.0.0</springfox-boot-version>
+		<swagger-version>3.0.0</swagger-version>
+		<swagger-ui-version>3.0.0</swagger-ui-version>
 	</properties>
+
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -28,12 +36,14 @@
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
+			<version>${lombok-version}</version>
 			<optional>true</optional>
+			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
-			<version>8.0.27</version>
+			<version>${mysql-version}</version>
 		</dependency>
 		<dependency>
 			<groupId>com.h2database</groupId>
@@ -58,22 +68,22 @@
 		<dependency>
 			<groupId>log4j</groupId>
 			<artifactId>log4j</artifactId>
-			<version>1.2.17</version>
+			<version>${log4j-version}</version>
 		</dependency>
 		<dependency>
 			<groupId>io.springfox</groupId>
 			<artifactId>springfox-swagger2</artifactId>
-			<version>3.0.0</version>
+			<version>${swagger-version}</version>
 		</dependency>
 		<dependency>
 			<groupId>io.springfox</groupId>
 			<artifactId>springfox-boot-starter</artifactId>
-			<version>3.0.0</version>
+			<version>${springfox-boot-version}</version>
 		</dependency>
 		<dependency>
 			<groupId>io.springfox</groupId>
 			<artifactId>springfox-swagger-ui</artifactId>
-			<version>2.9.2</version>
+			<version>${swagger-ui-version}</version>
 		</dependency>
 	</dependencies>
 
@@ -83,11 +93,13 @@
 				<directory>src/main/resources</directory>
 			</resource>
 		</resources>
+
 		<testResources>
 			<testResource>
 				<directory>src/test/resources</directory>
 			</testResource>
 		</testResources>
+
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
@@ -104,5 +116,4 @@
 			</plugin>
 		</plugins>
 	</build>
-
 </project>

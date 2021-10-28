@@ -9,6 +9,7 @@ import java.util.List;
 @Service
 public interface CRUDService<T> {
      T crear(T t) throws BadRequestException;
+     T buscarPorId(Long id) throws BadRequestException, ResourceNotFoundException;
      List<T> consultarTodos();
      T actualizar(T t) throws BadRequestException, ResourceNotFoundException;
      void eliminar(Long id) throws ResourceNotFoundException, BadRequestException;
