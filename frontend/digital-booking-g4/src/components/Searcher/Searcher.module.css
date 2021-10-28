@@ -118,6 +118,7 @@
 @media (max-width: 480px) {
   .boxing {
     top: 102px;
+    position: absolute;
   }
   .gps,
   .gpsEmpty {
