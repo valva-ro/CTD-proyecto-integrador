@@ -68,41 +68,35 @@ public class CategoriaService implements CRUDService<CategoriaDTO> {
     }
 
     private void validarCamposRequeridosCreacion(CategoriaDTO categoriaDTO) throws BadRequestException {
-        if (categoriaDTO == null || categoriaDTO.getTitulo() == null || categoriaDTO.getDescripcion() == null || categoriaDTO.getUrlImagen() == null) {
+        if (categoriaDTO == null) {
             throw new BadRequestException(String.format(Mensajes.ERROR_DTO_NO_EXISTE, "Categoría"));
         } else {
-            if (categoriaDTO.getTitulo().isEmpty() || categoriaDTO.getTitulo().isBlank())
+            if (categoriaDTO.getTitulo() == null || categoriaDTO.getTitulo().isEmpty() || categoriaDTO.getTitulo().isBlank())
                 throw new BadRequestException(String.format(Mensajes.ERROR_CREACION_CAMPO_REQUERIDO, "categoría", "título"));
-            if (categoriaDTO.getDescripcion().isEmpty() || categoriaDTO.getDescripcion().isBlank())
+            if (categoriaDTO.getDescripcion() == null ||categoriaDTO.getDescripcion().isEmpty() || categoriaDTO.getDescripcion().isBlank())
                 throw new BadRequestException(String.format(Mensajes.ERROR_CREACION_CAMPO_REQUERIDO, "categoría", "descripción"));
-            if (categoriaDTO.getUrlImagen().isEmpty() || categoriaDTO.getUrlImagen().isBlank())
+            if (categoriaDTO.getUrlImagen() == null || categoriaDTO.getUrlImagen().isEmpty() || categoriaDTO.getUrlImagen().isBlank())
                 throw new BadRequestException(String.format(Mensajes.ERROR_CREACION_CAMPO_REQUERIDO, "categoría", "URL de la imagen"));
         }
     }
 
     private void validarCamposRequeridosActualizacion(CategoriaDTO categoriaDTO) throws BadRequestException {
-        if (categoriaDTO == null || categoriaDTO.getTitulo() == null || categoriaDTO.getDescripcion() == null || categoriaDTO.getUrlImagen() == null) {
+        if (categoriaDTO == null) {
             throw new BadRequestException(String.format(Mensajes.ERROR_DTO_NO_EXISTE, "Categoría"));
         } else {
             if (categoriaDTO.getId() == null)
                 throw new BadRequestException(Mensajes.ERROR_ID_ES_NULL);
             if (categoriaDTO.getId() < 1)
                 throw new BadRequestException(Mensajes.ERROR_ID_FUERA_DE_RANGO);
-            if (categoriaDTO.getTitulo().isEmpty() || categoriaDTO.getTitulo().isBlank())
-                throw new BadRequestException(String.format(Mensajes.ERROR_CREACION_CAMPO_REQUERIDO, "categoría", "título"));
-            if (categoriaDTO.getDescripcion().isEmpty() || categoriaDTO.getDescripcion().isBlank())
-                throw new BadRequestException(String.format(Mensajes.ERROR_CREACION_CAMPO_REQUERIDO, "categoría", "descripción"));
-            if (categoriaDTO.getUrlImagen().isEmpty() || categoriaDTO.getUrlImagen().isBlank())
-                throw new BadRequestException(String.format(Mensajes.ERROR_CREACION_CAMPO_REQUERIDO, "categoría", "URL de la imagen"));
         }
     }
 
     private CategoriaDTO actualizar(CategoriaDTO categoriaDTO, Categoria entidad) {
-        if (categoriaDTO.getTitulo() != null && !categoriaDTO.getTitulo().isEmpty())
+        if (categoriaDTO.getTitulo() != null && !categoriaDTO.getTitulo().isEmpty() && !categoriaDTO.getTitulo().isBlank())
             entidad.setTitulo(categoriaDTO.getTitulo());
-        if (categoriaDTO.getDescripcion() != null && !categoriaDTO.getDescripcion().isEmpty())
+        if (categoriaDTO.getDescripcion() != null && !categoriaDTO.getDescripcion().isEmpty() && !categoriaDTO.getDescripcion().isBlank())
             entidad.setDescripcion(categoriaDTO.getDescripcion());
-        if (categoriaDTO.getUrlImagen() != null && !categoriaDTO.getUrlImagen().isEmpty())
+        if (categoriaDTO.getUrlImagen() != null && !categoriaDTO.getUrlImagen().isEmpty() && !categoriaDTO.getUrlImagen().isBlank())
             entidad.setUrlImagen(categoriaDTO.getUrlImagen());
         Categoria entidadActualizada = categoriaRepository.save(entidad);
         return mapper.convertValue(entidadActualizada, CategoriaDTO.class);

@@ -1,6 +1,5 @@
 package com.grupo4.categorias.controllers.impl;
 
-import com.grupo4.categorias.controller.impl.CategoriaController;
 import com.grupo4.categorias.model.CategoriaDTO;
 import com.grupo4.categorias.utils.JsonMapper;
 import org.junit.jupiter.api.BeforeEach;
@@ -24,9 +23,6 @@ public class CategoriaControllerTests {
 
     @Autowired
     private MockMvc mockMvc;
-
-    @Autowired
-    private CategoriaController categoriaController;
     private CategoriaDTO categoria;
 
     @BeforeEach
