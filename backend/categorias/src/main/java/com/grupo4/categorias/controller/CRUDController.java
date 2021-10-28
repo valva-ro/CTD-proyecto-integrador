@@ -9,9 +9,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 @Controller
 public interface CRUDController<T> {
-
-    ResponseEntity<?> obtenerTodasLasCategorias() throws BadRequestException, ResourceNotFoundException;
-    ResponseEntity<?> crearNuevaCategoria(@RequestBody T t) throws BadRequestException, ResourceNotFoundException;
-    ResponseEntity<?> actualizarCategoria(@RequestBody T t) throws BadRequestException, ResourceNotFoundException;
-    ResponseEntity<?> eliminarCategoria(@PathVariable Long t) throws BadRequestException, ResourceNotFoundException;
+    ResponseEntity<?> obtenerTodos() throws BadRequestException, ResourceNotFoundException;
+    ResponseEntity<?> crear(@RequestBody T t) throws BadRequestException, ResourceNotFoundException;
+    ResponseEntity<?> actualizar(@RequestBody T t) throws BadRequestException, ResourceNotFoundException;
+    ResponseEntity<?> eliminar(@PathVariable Long t) throws BadRequestException, ResourceNotFoundException;
 }
