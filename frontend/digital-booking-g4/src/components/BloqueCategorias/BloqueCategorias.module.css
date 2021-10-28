@@ -4,6 +4,7 @@
     display: flex;
     flex-wrap: wrap;
     gap: 1rem;
+    margin-top: 261.89px;
 }
 
 /*______Contenedor/tarjeta______*/
@@ -13,6 +14,7 @@
     justify-content: space-between;
     gap: 1rem;
     width: 100%;
+
 }
 
 /*****************Responsive*****************/
@@ -27,5 +29,6 @@
 @media screen and (max-width:480px) {
     .bloqueCategorias {
         /* padding: 2vh 4vw; */
+        margin-top: 422.13px;
     } 
 }
