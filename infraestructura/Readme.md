@@ -1,3 +1,3 @@
-#Infraestructura 
+# Infraestructura 
 
-(Esquema)["./img/Untitled-Diagram.drawio.png"]
+![Esquema](./img/infraestructura.png)
