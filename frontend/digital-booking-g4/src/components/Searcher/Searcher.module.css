@@ -1,154 +1,162 @@
 .boxing {
-    background-color: var(--color-2);
-    padding: 2.9vh 14.3vw 3.3vh 14.3vw;
-    width: 100vw;
-    display: flex;
-    flex-direction: column;
-    position: fixed;
-    top: 82px;
-    z-index: 1;
+  background-color: var(--color-2);
+  padding: 2.9vh 14.3vw 3.3vh 14.3vw;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  top: 82px;
+  z-index: 1;
 }
 .letter {
-    color: var(--color-4);
-    text-align: center;
-    font-size: 2.25rem;
-    padding: 0 0 3.3vh 0;
+  color: var(--color-4);
+  text-align: center;
+  font-size: 2.25rem;
+  padding: 0 0 3.3vh 0;
 }
 .cityContainer {
-    position: relative;
+  position: relative;
 }
 .dateContainer {
-    position: relative;
-    margin: 0px;
-    padding: 0px;
-    width: 0px;
-    height: 0px;
+  position: relative;
+  margin: 0px;
+  padding: 0px;
+  width: 0px;
+  height: 0px;
 }
 .dateContainer div div input {
-    position: relative;
+  position: relative;
 }
 .input {
-    min-width: 30.89311859443631vw;
-    max-height: 6.4vh;
-    padding: 1rem 2.4rem;
+  min-width: 30.89311859443631vw;
+  max-height: 6.4vh;
+  padding: 1rem 2.4rem;
 }
 .gps {
-    position: absolute;
-    left: 9px;
-    top: 15%;
-    font-size: 28px;
-    color: var(--color-2--opaco);
-    z-index: 1;
-    align-items: center;
+  position: absolute;
+  left: 9px;
+  top: 15%;
+  font-size: 28px;
+  color: var(--color-2--opaco);
+  z-index: 1;
+  align-items: center;
 }
 .dateIcon {
-    position: absolute;
-    font-size: 28px;
-    z-index: 1;
-    left: 0.813rem;
-    top: 10%;
-    color: var(--color-2--opaco);
-
+  position: absolute;
+  font-size: 28px;
+  z-index: 1;
+  left: 0.813rem;
+  top: 7px;
+  color: var(--color-2--opaco);
 }
 .dateIconEmpty {
-    position: absolute;
-    font-size: 28px;
-    z-index: 1;
-    left: 0.813rem;
-    top: 0.4vh;
-    color: var(--color-2);
+  position: absolute;
+  font-size: 28px;
+  z-index: 1;
+  left: 0.813rem;
+  top: 0.4vh;
+  color: var(--color-2);
 }
 .gpsEmpty {
-    align-items: center;
-    position: absolute;
-    left: 0.563rem;
-    top: .2vh;
-    font-size: 1.75rem;
-    color: var(--color-2);
-    z-index: 1;
+  align-items: center;
+  position: absolute;
+  left: 0.563rem;
+  top: 0.2vh;
+  font-size: 1.75rem;
+  color: var(--color-2);
+  z-index: 1;
 }
 .inputs {
-    display: flex;
-    gap: 0.25rem;
-    justify-content: center;
+  display: flex;
+  gap: 0.25rem;
+  justify-content: center;
 }
 .inputs input:nth-child(4) {
-    margin-left: 8px;
+  margin-left: 8px;
 }
 .applyContainer {
-    display: block;
-    text-align: end;
-    margin: 20px;
+  display: block;
+  text-align: end;
+  margin: 20px;
 }
+
+@media (max-width: 1024px) {
+  .letter {
+    font-size: 1.874rem;
+  }
+}
+
 @media (max-width: 768px) {
-    .letter {
-        font-size: 1.874rem;
-    }
-    .cityContainer {
-        min-width: 18.301610541727673vw;
-
-    }
-    .dateIconEmpty,
-    .dateIcon {
-        left: 16px;
-        top: 1px;
-    }
-    .boxing {
-        padding: 30px 10px;
-    }
-    .inputs {
-        gap: 0.5rem;
-        padding: 0 5vw;
-
-    }
-    .gps,
-    .gpsEmpty {
-        bottom: 8px;
-    }
-    .input {
-        width: 18.301610541727673vw;
-        height: 47px;
-        padding: 1rem 2.4rem;
-    }
+  .letter {
+    font-size: 1.874rem;
+  }
+  .cityContainer {
+    min-width: 18.301610541727673vw;
+  }
+  .dateIconEmpty,
+  .dateIcon {
+    left: 16px;
+  }
+  .boxing {
+    padding: 30px 10px;
+  }
+  .inputs {
+    gap: 0.5rem;
+    padding: 0 5vw;
+  }
+  .gps,
+  .gpsEmpty {
+    bottom: 8px;
+  }
+  .input {
+    width: 18.301610541727673vw;
+    height: 47px;
+    padding: 1rem 2.4rem;
+  }
 }
 
 @media (max-width: 480px) {
-    .boxing {
-        top: 102px;
-    }
-    .gps,
-    .gpsEmpty {
-        bottom: 5px;
-    }
-    .cityContainer {
-        height: 6vh;
-    }
-    .dateContainer {
-        margin: -4px;
-    }
-    .boxing {
-        padding: 20px 0px;
-    }
-    .inputs {
-        flex-direction: column;
-        gap: 0.6rem;
-        padding: 10px;
-    }
-    .input {
-        width: 95vw;
-    }
-    .letter {
-        font-size: 1.574rem;
-    }
-    .inputs input:nth-child(4) {
-        margin-left: 0px;
-    }
-    .dateIcon,
-    .dateIconEmpty {
-        top: 5px;
-        left: 10px;
-    }
-    .applyContainer {
-        margin: 10px;
-    }
+  .boxing {
+    top: 102px;
+  }
+  .gps,
+  .gpsEmpty {
+    bottom: 5px;
+  }
+  .cityContainer {
+    height: 6vh;
+  }
+  .dateContainer {
+    margin: -4px;
+  }
+  .boxing {
+    padding: 20px 0px;
+  }
+  .inputs {
+    flex-direction: column;
+    gap: 0.6rem;
+    padding: 10px;
+  }
+  .input {
+    width: 95vw;
+  }
+  .letter {
+    font-size: 1.574rem;
+  }
+  .inputs input:nth-child(4) {
+    margin-left: 0px;
+  }
+  .dateIcon,
+  .dateIconEmpty {
+    left: 10px;
+  }
+  .dateIcon {
+    top: 12px;
+  }
+  .dateIconEmpty {
+    top: 7px;
+  }
+  .applyContainer {
+    margin: 10px;
+  }
 }

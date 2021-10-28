@@ -27,7 +27,7 @@
 /*______Mobile______*/
 @media screen and (max-width:480px) {
     .bloqueCategorias {
-        padding: 2vh 4vw;
+        /* padding: 2vh 4vw; */
         margin-top: 422.13px;
     } 
 }
