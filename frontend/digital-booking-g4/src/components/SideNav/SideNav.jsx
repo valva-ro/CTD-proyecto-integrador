@@ -1,16 +1,18 @@
-import React, {useEffect, useState} from "react";
+import React, {useEffect, useState, useContext} from "react";
 import Profile from "../Profile/Profile";
 import Options from "./Options";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import styles from "./SideNav.module.css";
+import loggedContext from "../../contexts/loggedContext";
+
 
 export default function SideNav() {
-  const [estaLogueado, setEstaLogueado] = useState(true);
+  const { isLogged, setIsLogged } = useContext(loggedContext);
+  const location = useLocation();
   const [isOpened, setIsOpened] = useState(false);
   
   const RenderComponent = () => {
-    const pathname = window.location.pathname
-    switch (pathname) {
+    switch (location.pathname) {
       case "/":
         return(
             <>
@@ -49,15 +51,15 @@ export default function SideNav() {
             >
               X
             </span>
-            {estaLogueado ? <Profile /> : <span className={styles.menuWord}>MENÚ</span>}
+            {isLogged ? <Profile /> : <span className={styles.menuWord}>MENÚ</span>}
           </div>
           <div className={styles.main}>
-            {!estaLogueado ? 
+            {!isLogged ? 
               <div className={styles.opciones}>
                 <RenderComponent/> 
               </div> :
               <p className={styles.cerrarSesion}>
-                ¿Deseas<span> cerrar sesión</span>?
+                ¿Deseas<span onClick={() => setIsLogged(false)}> cerrar sesión</span>?
               </p>
             }
           </div>
