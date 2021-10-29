@@ -4,4 +4,4 @@
 
 - [Link para casos de prueba](https://docs.google.com/spreadsheets/d/1RrgfydWOFJYb82cFC6F8qcCgBWdM6ulboiBwaWzee7M/edit?usp=sharing)
 
-- [Link para Postman] (https://www.postman.com/equipo-manija/workspace/digital-booking/)
+- [Link para Postman](https://www.postman.com/equipo-manija/workspace/digital-booking/)
