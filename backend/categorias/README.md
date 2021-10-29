@@ -26,7 +26,15 @@
 
 ## Documentación
 
-Una vez que la aplicación esté corriendo se puede visualizar la documentación de la API en 
+Una vez que la aplicación esté corriendo se puede visualizar la documentación completa de la API con JSONs de ejemplo en 
 [http://localhost:8080/swagger-ui/](http://localhost:8080/swagger-ui/).
 
 ![Swagger UI](./img/swagger.png)
+
+| Método | Endpoint | Descripción |
+| ------ | -------- | ----------- | 
+| GET    | `/categorias/todas` | Obtiene un array con todas las categorias | 
+| GET    | `/categorias/{id}`  | Busca una categoría por ID | 
+| POST   | `/categorias/crear` | Agrega una nueva categoría |
+| PUT    | `/categorias/actualizar` | Actualiza una categoría existente | 
+| DELETE | `/categorias/eliminar/{id}` | Elimina una categoría existente por ID |
