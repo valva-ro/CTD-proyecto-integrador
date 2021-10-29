@@ -1,6 +1,6 @@
 import React from "react";
-import TarjetaAlojamiento from "../TarjetaAlojamiento/TarjetaAlojamiento";
-import TituloBloque from "../TituloBloque/TituloBloque";
+import TarjetaAlojamiento from "./TarjetaAlojamiento/TarjetaAlojamiento";
+import TituloBloque from "../TituloBloque/TituloBloque.jsx";
 
 import alojamientos from "../../resources/alojamientos.json";
 import styles from "./BloqueAlojamientos.module.css";

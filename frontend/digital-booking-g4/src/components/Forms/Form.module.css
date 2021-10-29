@@ -85,6 +85,9 @@ form p {
 form a {
   color: #4285f4;
 }
+form a:hover {
+  color: #1059ce;
+}
 .credencialesInvalidas{
   text-align: end;
   color: red;

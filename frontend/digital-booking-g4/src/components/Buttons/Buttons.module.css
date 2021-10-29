@@ -10,7 +10,7 @@
   transition: background-color ease-in-out 250ms;
 }
 .filledButton:hover {
-  background-color: #1fa39a;
+  background-color: var(--color-principal-opaco);
 }
 
 .outlinedButton {

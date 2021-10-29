@@ -123,7 +123,7 @@
 }
 
 .ubicacion a:hover {
-  color: #1fa39a;
+  color: var(--color-principal-opaco);
 }
 
 .verMas {
@@ -132,7 +132,7 @@
 }
 
 .verMas:hover {
-  color: #1fa39a;
+  color: var(--color-principal-opaco);
   cursor: pointer;
 }
 

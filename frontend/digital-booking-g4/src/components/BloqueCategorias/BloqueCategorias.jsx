@@ -1,5 +1,5 @@
-import TituloBloque from '../TituloBloque/TituloBloque';
-import TarjetaCategoria from "../TarjetaCategoria/TarjetaCategoria.jsx";
+import TituloBloque from "../TituloBloque/TituloBloque.jsx";
+import TarjetaCategoria from "./TarjetaCategoria/TarjetaCategoria.jsx";
 import datos from '../../resources/datosCategorias.json';
 
 import styles from './BloqueCategorias.module.css';

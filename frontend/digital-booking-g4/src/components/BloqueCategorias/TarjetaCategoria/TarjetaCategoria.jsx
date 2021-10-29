@@ -3,11 +3,6 @@ import styles from "./TarjetaCategoria.module.css";
 export default function TarjetaCategoria(props) {
   return (
     <div className={styles.tarjeta}>
-      {/* <img
-        className={styles.fotoPortada}
-        src={props.fotoPortada}
-        alt="fondo de portada"
-      ></img> */}
       <div
         className={styles.fotoPortada}
         style={{

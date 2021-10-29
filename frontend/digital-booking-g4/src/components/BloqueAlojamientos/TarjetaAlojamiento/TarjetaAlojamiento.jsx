@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import FilledButton from "../Buttons/FilledButton";
+import FilledButton from "../../Buttons/FilledButton";
 import styles from "./TarjetaAlojamiento.module.css";
 
 export default function TarjetaAlojamiento({
