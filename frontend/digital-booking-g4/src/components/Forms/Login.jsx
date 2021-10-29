@@ -11,7 +11,6 @@ const usuarioHarcodeado = {
 
 function validarContrasenia(contrasenia) {
   const longitudCorrecta = contrasenia.length > 6;
-
   return longitudCorrecta;
 }
 
@@ -55,28 +54,36 @@ export default function Login() {
       <div className={styles.mainForm}>
         <div className={styles.contenedorForm}>
           <h1>Iniciar sesión</h1>
-          <form className={styles.formLogin} onSubmit={handleSubmit}>
-            <label>
-              Correo electrónico
-              <input
-                type="email"
-                name="correo"
-                onChange={(evt) => setEmail(evt.target.value)}
-              />
-            </label>
-            <label>
-              Contraseña
-              <div className={styles.contenedorOjo}>
+          <form
+            className={styles.formLogin}
+            onSubmit={handleSubmit}
+            noValidate="novalidate"
+          >
+            <div className={styles.contenedorInput}>
+              <label>
+                Correo electrónico
                 <input
-                  type="password"
-                  name="contrasenia"
-                  onChange={(evt) => setPassword(evt.target.value)}
+                  type="email"
+                  name="correo"
+                  onChange={(evt) => setEmail(evt.target.value)}
                 />
-                <span className={styles.iconoOjo}>
-                  <i className="fas fa-eye-slash"></i>
-                </span>
-              </div>
-            </label>
+              </label>
+            </div>
+            <div className={styles.contenedorInput}>
+              <label>
+                Contraseña
+                <div className={styles.contenedorOjo}>
+                  <input
+                    type="password"
+                    name="contrasenia"
+                    onChange={(evt) => setPassword(evt.target.value)}
+                  />
+                  <span className={styles.iconoOjo}>
+                    <i className="fas fa-eye-slash"></i>
+                  </span>
+                </div>
+              </label>
+            </div>
             <p className={styles.credencialesInvalidas}>
               {isError
                 ? "Por favor, vuelva a intentarlo. Sus credenciales son inválidas."

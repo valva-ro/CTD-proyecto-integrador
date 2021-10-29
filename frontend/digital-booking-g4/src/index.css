@@ -30,8 +30,18 @@ a {
 
 input {
   border-radius: 5px;
-  border: none;
+  border: 3px solid white;
   outline: none;
+}
+
+input:focus {
+  border: solid 3px var(--color-principal);
+}
+
+/* Permite modificar el background de un input cuando se usa el autocompletado sugreido por el navegador*/
+input:-webkit-autofill {
+  box-shadow:0 0 0 50px white inset; 
+  -webkit-box-shadow:0 0 0 50px white inset; 
 }
 
 section {
