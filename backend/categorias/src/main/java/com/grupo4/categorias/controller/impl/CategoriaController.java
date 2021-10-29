@@ -52,13 +52,13 @@ public class CategoriaController implements CRUDController<CategoriaDTO> {
     }
 
     @Override
-    @ApiOperation(value = "Crea una nueva categoria")
+    @ApiOperation(value = "Busca una categoria por ID")
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "Success"),
             @ApiResponse(code = 404, message = "Not found"),
             @ApiResponse(code = 400, message = "Bad Request")
     })
-    @PostMapping("/buscar/{id}")
+    @GetMapping("/buscar/{id}")
     public ResponseEntity<CategoriaDTO> buscarPorId(@PathVariable Long id) throws BadRequestException, ResourceNotFoundException {
         CategoriaDTO categoria = categoriaService.buscarPorId(id);
         return ResponseEntity.ok(categoria);
