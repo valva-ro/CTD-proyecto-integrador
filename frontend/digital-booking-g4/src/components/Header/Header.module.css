@@ -46,7 +46,7 @@
     display: none;
 } 
 
-@media screen and (max-width:768px) {
+@media screen and (max-width:860px) {
 
     .contenedorHeader {
         padding: 25px 30px;

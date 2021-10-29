@@ -86,7 +86,7 @@
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 860px) {
   .letter {
     font-size: 1.874rem;
   }
@@ -112,6 +112,12 @@
     width: 18.301610541727673vw;
     height: 47px;
     padding: 1rem 2.4rem;
+  }
+}
+
+@media (max-width: 633px) {
+  .letter {
+    font-size: 1.6rem;
   }
 }
 

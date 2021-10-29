@@ -17,17 +17,9 @@
 }
 
 /*****************Responsive*****************/
-/*______Tablet______*/
-@media screen and (max-width:1045px) {
-    /* .bloqueCategorias {
-        padding: 4vh 4vw;
-    }   */
-}
-
 /*______Mobile______*/
 @media screen and (max-width:480px) {
     .bloqueCategorias {
-        /* padding: 2vh 4vw; */
         margin-top: 422.13px;
     } 
 }

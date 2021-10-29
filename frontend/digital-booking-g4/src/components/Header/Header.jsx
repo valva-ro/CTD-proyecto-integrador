@@ -50,7 +50,7 @@ export default function Header() {
           <Link to="/">
             <div className={styles.headerIzquierda}>
               <img src={logo} alt="logo" />
-              <p>Sentite como en tu hogar</p>
+              <p>Hospedamos tu próximo sueño</p>
             </div>
           </Link>
           <div className={styles.menuHamburguesa}>

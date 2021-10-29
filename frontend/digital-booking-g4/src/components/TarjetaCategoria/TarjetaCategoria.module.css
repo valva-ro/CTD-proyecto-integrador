@@ -66,6 +66,12 @@
     }
 }
 
+@media screen and (max-width:828px) {
+    .tarjeta {
+        width: 42vw; 
+    }
+}
+
 /*______Mobile______*/
 @media screen and (max-width:480px) {
     .fotoPortada{
