@@ -31,9 +31,7 @@ public class CategoriaController implements CRUDController<CategoriaDTO> {
     @Override
     @ApiOperation(value = "Lista todas las categorias")
     @ApiResponses(value = {
-            @ApiResponse(code = 200, message = "Success"),
-            @ApiResponse(code = 404, message = "Not Found"),
-            @ApiResponse(code = 400, message = "Bad Request")
+            @ApiResponse(code = 200, message = "Success")
     })
     @GetMapping("/todas")
     public ResponseEntity<List<CategoriaDTO>> obtenerTodos() {
@@ -51,6 +49,19 @@ public class CategoriaController implements CRUDController<CategoriaDTO> {
     public ResponseEntity<CategoriaDTO> crear(@RequestBody CategoriaDTO categoria) throws BadRequestException {
         CategoriaDTO categoriaNueva = categoriaService.crear(categoria);
         return ResponseEntity.ok(categoriaNueva);
+    }
+
+    @Override
+    @ApiOperation(value = "Busca una categoria por ID")
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Success"),
+            @ApiResponse(code = 404, message = "Not found"),
+            @ApiResponse(code = 400, message = "Bad Request")
+    })
+    @GetMapping("/buscar/{id}")
+    public ResponseEntity<CategoriaDTO> buscarPorId(@PathVariable Long id) throws BadRequestException, ResourceNotFoundException {
+        CategoriaDTO categoria = categoriaService.buscarPorId(id);
+        return ResponseEntity.ok(categoria);
     }
 
     @Override

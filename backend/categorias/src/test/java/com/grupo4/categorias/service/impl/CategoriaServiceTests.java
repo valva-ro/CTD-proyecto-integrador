@@ -8,10 +8,10 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.DirtiesContext;
+import org.springframework.transaction.annotation.Transactional;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-//TODO aplicar estas 2 lineas a todas clases de tests
 @SpringBootTest(properties = "spring.profiles.active:test")
 @DirtiesContext(classMode = DirtiesContext.ClassMode.BEFORE_EACH_TEST_METHOD)
 public class CategoriaServiceTests {
@@ -75,5 +75,23 @@ public class CategoriaServiceTests {
     @Test
     public void test09NoSePuedeActualizarCategoriaInexistente() {
         assertThrows(ResourceNotFoundException.class, () -> categoriaService.actualizar(categoriaPorActualizar));
+    }
+
+    @Test
+    @Transactional
+    public void test10BuscarCategoriaPorIdExistente() throws BadRequestException, ResourceNotFoundException {
+        categoriaService.crear(categoriaPorCrear);
+        CategoriaDTO categoriaEncontrada = categoriaService.buscarPorId(1L);
+        assertEquals(categoriaCreada, categoriaEncontrada);
+    }
+
+    @Test
+    public void test11BuscarCategoriaPorIdInexistente() {
+        assertThrows(ResourceNotFoundException.class, () -> categoriaService.buscarPorId(1L));
+    }
+
+    @Test
+    public void test12BuscarCategoriaPorIdInvalido() {
+        assertThrows(BadRequestException.class, () -> categoriaService.buscarPorId(-1L));
     }
 }

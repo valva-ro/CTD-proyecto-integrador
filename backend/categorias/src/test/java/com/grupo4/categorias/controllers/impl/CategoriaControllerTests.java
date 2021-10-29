@@ -27,10 +27,7 @@ public class CategoriaControllerTests {
 
     @BeforeEach
     public void reset(){
-        categoria = CategoriaDTO.builder()
-                .descripcion("Esta es la descripcion de hotel")
-                .titulo("Hoteles")
-                .urlImagen("www.imagenhotel.com/imagen").build();
+        categoria = new CategoriaDTO("Hoteles", "Esta es la descripcion de hotel", "www.imagenhotel.com/imagen");
     }
 
     @Test

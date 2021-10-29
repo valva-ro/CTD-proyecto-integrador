@@ -36,6 +36,16 @@ public class CategoriaService implements CRUDService<CategoriaDTO> {
     }
 
     @Override
+    public CategoriaDTO buscarPorId(Long id) throws BadRequestException, ResourceNotFoundException {
+        if (id < 1)
+            throw new BadRequestException(Mensajes.ERROR_ID_FUERA_DE_RANGO);
+        if (!categoriaRepository.existsById(id))
+            throw new ResourceNotFoundException(String.format(Mensajes.ERROR_NO_EXISTE, "La 'categoría'", id));
+        Categoria categoria = categoriaRepository.getById(id);
+        return mapper.convertValue(categoria, CategoriaDTO.class);
+    }
+
+    @Override
     public List<CategoriaDTO> consultarTodos() {
         List<Categoria> entidades = categoriaRepository.findAll();
         List<CategoriaDTO> dtos = new ArrayList<>();
