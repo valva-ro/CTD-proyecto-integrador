@@ -31,7 +31,7 @@ Una vez que la aplicación esté corriendo se puede visualizar la documentación
 | Método | Endpoint | Descripción |
 | ------ | -------- | ----------- | 
 | GET    | `/categorias/todas` | Obtiene un array con todas las categorias | 
-| GET    | `/categorias/{id}`  | Busca una categoría por ID | 
+| GET    | `/categorias/buscar/{id}`  | Busca una categoría por ID | 
 | POST   | `/categorias/crear` | Agrega una nueva categoría |
 | PUT    | `/categorias/actualizar` | Actualiza una categoría existente | 
 | DELETE | `/categorias/eliminar/{id}` | Elimina una categoría existente por ID |
