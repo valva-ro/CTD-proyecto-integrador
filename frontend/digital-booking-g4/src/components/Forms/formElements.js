@@ -1,4 +1,5 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const colores = {
   error: "#bb2929",
@@ -12,11 +13,22 @@ const ContenedorInput = styled.div`
   gap: 0;
 `;
 
+const GrupoInput = styled.div`
+  position: relative;
+  z-index: 90;
+`;
+
 const Label = styled.label`
   color: var(--color-2);
   font-weight: 700;
   margin-top: 20px;
   cursor: pointer;
+
+  ${(props) =>
+    props.valido === "false" &&
+    css`
+      color: ${colores.error};
+    `}
 `;
 
 const Input = styled.input`
@@ -28,6 +40,18 @@ const Input = styled.input`
   width: 100%;
   margin-top: 5px;
   transition: 0.3s ease all;
+
+  ${(props) =>
+    props.valido === "true" &&
+    css`
+      border: 3px solid trasnparent;
+    `}
+
+  ${(props) =>
+    props.valido === "false" &&
+    css`
+      border: 3px solid ${colores.error} !important;
+    `}
 `;
 
 //Falta ver como evitar que el texto estire el input
@@ -36,6 +60,35 @@ const LeyendaError = styled.p`
   color: ${colores.error};
   margin-top: 5px;
   display: none;
+
+  ${(props) =>
+    props.valido === "true" &&
+    css`
+      display: none;
+    `}
+
+  ${(props) =>
+    props.valido === "false" &&
+    css`
+      display: block;
+    `}
 `;
 
-export { Label, Input, LeyendaError, ContenedorInput };
+const IconoOjoClave = styled(FontAwesomeIcon)`
+  position: absolute;
+  right: 10px;
+  bottom: 12px;
+  z-index: 100;
+  font-size: 1.1rem;
+  color: #bebebe;
+  cursor: pointer;
+`;
+
+export {
+  Label,
+  Input,
+  LeyendaError,
+  ContenedorInput,
+  GrupoInput,
+  IconoOjoClave,
+};

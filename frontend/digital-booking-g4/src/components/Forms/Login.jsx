@@ -25,8 +25,8 @@ function validarEmail(email) {
 }
 
 export default function Login() {
-  const [email, setEmail] = useState();
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState({campo: "", valido: null});
+  const [password, setPassword] = useState({campo: "", valido: null});
   const [isError, setIsError] = useState(false);
   const history = useHistory();
   const { isLogged, setIsLogged } = useContext(loggedContext);
@@ -64,26 +64,20 @@ export default function Login() {
             noValidate="novalidate"
           >
             <InputComponent
+              estado={email}
+              cambiarEstado={setEmail}
               tipo="email"
               label="Correo electrónico"
               name="correo"
-              onChange="{(evt) => setEmail(evt.target.value.trim())}"
             />
-            <ContenedorInput>
-              <Label>
-                Contraseña
-                <div className={styles.contenedorOjo}>
-                  <Input
-                    type="password"
-                    name="contrasenia"
-                    onChange={(evt) => setPassword(evt.target.value)}
-                  />
-                  <span className={styles.iconoOjo}>
-                    <i className="fas fa-eye-slash"></i>
-                  </span>
-                </div>
-              </Label>
-            </ContenedorInput>
+            <InputComponent
+            estado={password}
+            cambiarEstado={setPassword}
+            tipo="password"
+            label="Contraseña"
+            name="contrasenia"
+            tieneIcono={true}
+          />
 
             {isError ? (
               <div className={styles.credencialesContainer}>

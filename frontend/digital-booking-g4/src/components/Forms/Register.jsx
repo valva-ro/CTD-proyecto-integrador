@@ -3,38 +3,55 @@ import styles from "./Form.module.css";
 import { Link, useHistory } from "react-router-dom";
 import { useState } from "react";
 import { Label, Input, LeyendaError, ContenedorInput } from "./FormElements";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import InputComponent from "./formComponents/Input";
 
-function validarContrasenia(contrasenia) {
-  const longitudCorrecta = contrasenia.length > 6;
-  return longitudCorrecta;
-}
-
-function validarMismaContrasenia(contrasenia, repetirContrasenia) {
-  const coincidentes = contrasenia == repetirContrasenia;
-  return coincidentes;
-}
-
-function validarEmail(email) {
-  const expresion = /[A-z]+@[A-z]+.[A-z]{3}/;
-  const test = expresion.test(email);
-  return test;
-}
-
-function handleSubmit(e) {
-  e.preventDefault();
-}
-
 export default function Register() {
-  const [name, setName] = useState();
-  const [surname, setSurname] = useState();
-  const [email, setEmail] = useState();
-  const [password, setPassword] = useState("");
-  const [repeatPassword, setRepeatPassword] = useState("");
+  const [name, setName] = useState({ campo: "", valido: null });
+  const [surname, setSurname] = useState({ campo: "", valido: null });
+  const [email, setEmail] = useState({ campo: "", valido: null });
+  const [password, setPassword] = useState({ campo: "", valido: null });
+  const [repeatPassword, setRepeatPassword] = useState({
+    campo: "",
+    valido: null,
+  });
+  const [formularioValido, cambiarFormularioValido] = useState(null);
   const history = useHistory();
 
-  function validarCampos() {
-    console.log("Validando campos...");
+  const expresiones = {
+    nombre: /^[a-zA-ZÀ-ÿ\s]{2,25}$/,
+    apellido: /^[a-zA-ZÀ-ÿ\s]{2,25}$/,
+    clave: /^.{7,20}$/,
+    correo: /[A-z]+@[A-z]+.[A-z]{3}/,
+  };
+
+  function validarRepeatPassword() {
+    if (password.campo.length > 6) {
+      if (password.campo !== repeatPassword.campo) {
+        setRepeatPassword((prevState) => {
+          return { ...prevState, valido: "false" };
+        });
+      } else {
+        setRepeatPassword((prevState) => {
+          return { ...prevState, valido: "true" };
+        });
+      }
+    }
+  }
+
+  function handleSubmit(e) {
+    e.preventDefault();
+
+    if (
+      name.valido === "true" &&
+      surname.valido === "true" &&
+      email.valido === "true" &&
+      password.valido === "true" &&
+      repeatPassword.valido === "true"
+    ) {
+      history.push("/login")
+    }
   }
 
   return (
@@ -44,59 +61,57 @@ export default function Register() {
         <form
           className={styles.formRegister}
           onSubmit={handleSubmit}
-          novalidate="novalidate"
+          noValidate="novalidate"
         >
           <div>
             <InputComponent
+              estado={name}
+              cambiarEstado={setName}
               tipo="text"
               label="Nombre"
               name="nombre"
-              onChange="{(evt) => setName(evt.target.value.trim())}"
-              leyendaError="El nombre debe tener entre 2 y 16 caracteres."
+              expresionRegular={expresiones.nombre}
+              leyendaError="El nombre sólo debe contener letras y espacios. Entre 2 y 25 caracteres."
             />
             <InputComponent
+              estado={surname}
+              cambiarEstado={setSurname}
               tipo="text"
               label="Apellido"
               name="apellido"
-              onChange="{(evt) => setSurname(evt.target.value.trim())}"
-              leyendaError="El apellido debe tener entre 2 y 16 caracteres."
+              expresionRegular={expresiones.apellido}
+              leyendaError="El apellido sólo debe contener letras y espacios. Entre 2 y 25 caracteres."
             />
           </div>
-            <InputComponent
-              tipo="email"
-              label="Correo electrónico"
-              name="correo"
-              onChange="{(evt) => setEmail(evt.target.value.trim())}"
-              leyendaError="Formato de correo inválido."
-            />
-          <ContenedorInput>
-            <Label>
-              Contraseña
-              <div className={styles.contenedorOjo}>
-                <Input
-                  type="password"
-                  name="contrasenia"
-                  onChange={(evt) => setPassword(evt.target.value.trim())}
-                />
-                <span className={styles.iconoOjo}>
-                  <i className="fas fa-eye-slash"></i>
-                </span>
-              </div>
-            </Label>
-            <LeyendaError>
-              La contraseña debe tener más de 6 caracteres
-            </LeyendaError>
-          </ContenedorInput>
           <InputComponent
-              tipo="password"
-              label="Confirmar contraseña"
-              name="repetirContrasenia"
-              onChange="{(evt) => setRepeatPassword(evt.target.value.trim())}"
-              leyendaError="La contraseñas no coinciden."
-            />
-          <FilledButton onClick={() => validarCampos()}>
-            Crear cuenta
-          </FilledButton>
+            estado={email}
+            cambiarEstado={setEmail}
+            tipo="email"
+            label="Correo electrónico"
+            name="correo"
+            expresionRegular={expresiones.correo}
+            leyendaError="Formato de correo inválido."
+          />
+          <InputComponent
+            estado={password}
+            cambiarEstado={setPassword}
+            tipo="password"
+            label="Contraseña"
+            name="contrasenia"
+            expresionRegular={expresiones.clave}
+            leyendaError="La contraseña debe tener entre 7 y 20 caracteres."
+            tieneIcono={true}
+          />
+          <InputComponent
+            estado={repeatPassword}
+            cambiarEstado={setRepeatPassword}
+            tipo="password"
+            label="Confirmar contraseña"
+            name="repetirContrasenia"
+            leyendaError="La contraseñas no coinciden."
+            funcion={validarRepeatPassword}
+          />
+          <FilledButton>Crear cuenta</FilledButton>
           <p>
             ¿Ya tienes cuenta? <Link to="/login">Iniciar sesión</Link>
           </p>
