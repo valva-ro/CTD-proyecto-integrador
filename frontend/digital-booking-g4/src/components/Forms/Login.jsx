@@ -3,6 +3,9 @@ import FilledButton from "../Buttons/FilledButton";
 import styles from "./Form.module.css";
 import { useHistory, Link } from "react-router-dom";
 import loggedContext from "../../contexts/loggedContext";
+import { Label, Input } from "./formElements";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faExclamationTriangle } from "@fortawesome/free-solid-svg-icons";
 
 const usuarioHarcodeado = {
   email: "brodriguez@gmail.com",
@@ -60,20 +63,20 @@ export default function Login() {
             noValidate="novalidate"
           >
             <div className={styles.contenedorInput}>
-              <label>
+              <Label>
                 Correo electrónico
-                <input
+                <Input
                   type="email"
                   name="correo"
                   onChange={(evt) => setEmail(evt.target.value)}
                 />
-              </label>
+              </Label>
             </div>
             <div className={styles.contenedorInput}>
-              <label>
+              <Label>
                 Contraseña
                 <div className={styles.contenedorOjo}>
-                  <input
+                  <Input
                     type="password"
                     name="contrasenia"
                     onChange={(evt) => setPassword(evt.target.value)}
@@ -82,13 +85,23 @@ export default function Login() {
                     <i className="fas fa-eye-slash"></i>
                   </span>
                 </div>
-              </label>
+              </Label>
             </div>
-            <p className={styles.credencialesInvalidas}>
-              {isError
-                ? "Por favor, vuelva a intentarlo. Sus credenciales son inválidas."
-                : null}
-            </p>
+
+            {isError ? (
+              <div className={styles.credencialesContainer}>
+                <FontAwesomeIcon icon={faExclamationTriangle} />
+                <p className={styles.credencialesInvalidas}>
+                  Por favor, vuelva a intentarlo. Sus credenciales son
+                  inválidas.
+                </p>
+              </div>
+            ) : null}
+
+            {/* {isError
+                ? <p className={styles.credencialesInvalidas}>Por favor, vuelva a intentarlo. Suscredenciales son inválidas.</p>
+                : null} */}
+
             <FilledButton onClick={() => validarCampos()}>
               Iniciar sesión
             </FilledButton>

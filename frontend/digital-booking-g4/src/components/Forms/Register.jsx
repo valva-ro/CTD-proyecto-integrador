@@ -2,6 +2,7 @@ import FilledButton from "../Buttons/FilledButton";
 import styles from "./Form.module.css";
 import { Link, useHistory } from "react-router-dom";
 import { useState } from "react";
+import { Label, Input, LeyendaError } from "./formElements";
 
 function validarContrasenia(contrasenia) {
   const longitudCorrecta = contrasenia.length > 6;
@@ -46,44 +47,44 @@ export default function Register() {
         >
           <div>
             <div className={styles.contenedorInput}>
-              <label>
+              <Label>
                 Nombre
-                <input
+                <Input
                   type="text"
                   name="nombre"
                   onChange={(evt) => setName(evt.target.value.trim())}
                 />
-              </label>
-              <p className="nameMessage"></p>
+              </Label>
+              <LeyendaError></LeyendaError>
             </div>
             <div className={styles.contenedorInput}>
-              <label>
+              <Label>
                 Apellido
-                <input
+                <Input
                   type="text"
                   name="apellido"
                   onChange={(evt) => setSurname(evt.target.value.trim())}
                 />
-              </label>
-              <p className="nameMessage"></p>
+              </Label>
+              <LeyendaError></LeyendaError>
             </div>
           </div>
           <div className={styles.contenedorInput}>
-            <label>
+            <Label>
               Correo electrónico
-              <input
+              <Input
                 type="email"
                 name="correo"
                 onChange={(evt) => setEmail(evt.target.value.trim())}
               />
-            </label>
-            <p className="emailMessage"></p>
+            </Label>
+            <LeyendaError></LeyendaError>
           </div>
           <div className={styles.contenedorInput}>
-            <label>
+            <Label>
               Contraseña
               <div className={styles.contenedorOjo}>
-                <input
+                <Input
                   type="password"
                   name="contrasenia"
                   onChange={(evt) => setPassword(evt.target.value.trim())}
@@ -92,19 +93,19 @@ export default function Register() {
                   <i className="fas fa-eye-slash"></i>
                 </span>
               </div>
-            </label>
-            <p className="pwMessage"></p>
+            </Label>
+            <LeyendaError>La contraseña debe tener más de 6 caracteres</LeyendaError>
           </div>
           <div className={styles.contenedorInput}>
-            <label>
+            <Label>
               Confirmar contraseña
-              <input
+              <Input
                 type="password"
                 name="repetirContrasenia"
                 onChange={(evt) => setRepeatPassword(evt.target.value.trim())}
               />
-            </label>
-            <p className="repeatPwMessage"></p>
+            </Label>
+            <LeyendaError></LeyendaError>
           </div>
           <FilledButton onClick={() => validarCampos()}>
             Crear cuenta
