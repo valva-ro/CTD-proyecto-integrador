@@ -3,7 +3,6 @@ import FilledButton from "../Buttons/FilledButton";
 import styles from "./Form.module.css";
 import { useHistory, Link } from "react-router-dom";
 import loggedContext from "../../contexts/loggedContext";
-import { ContenedorInput, Label, Input } from "./FormElements";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faExclamationTriangle } from "@fortawesome/free-solid-svg-icons";
 import InputComponent from "./formComponents/Input";

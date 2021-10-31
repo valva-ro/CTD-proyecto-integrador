@@ -2,9 +2,6 @@ import FilledButton from "../Buttons/FilledButton";
 import styles from "./Form.module.css";
 import { Link, useHistory } from "react-router-dom";
 import { useState } from "react";
-import { Label, Input, LeyendaError, ContenedorInput } from "./FormElements";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import InputComponent from "./formComponents/Input";
 
 export default function Register() {
@@ -16,7 +13,6 @@ export default function Register() {
     campo: "",
     valido: null,
   });
-  const [formularioValido, cambiarFormularioValido] = useState(null);
   const history = useHistory();
 
   const expresiones = {

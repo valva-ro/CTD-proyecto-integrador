@@ -79,7 +79,7 @@ const IconoOjoClave = styled(FontAwesomeIcon)`
   right: 10px;
   bottom: 12px;
   z-index: 100;
-  font-size: 1.1rem;
+  font-size: 18px;
   color: #bebebe;
   cursor: pointer;
 `;
