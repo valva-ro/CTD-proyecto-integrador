@@ -18,12 +18,6 @@ main {
   font-weight: 700;
   text-align: center;
 }
-.contenedorInput {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: 0;
-}
 .contenedorOjo {
   position: relative;
 }

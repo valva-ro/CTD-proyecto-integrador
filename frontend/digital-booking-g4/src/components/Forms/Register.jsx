@@ -2,7 +2,8 @@ import FilledButton from "../Buttons/FilledButton";
 import styles from "./Form.module.css";
 import { Link, useHistory } from "react-router-dom";
 import { useState } from "react";
-import { Label, Input, LeyendaError } from "./formElements";
+import { Label, Input, LeyendaError, ContenedorInput } from "./FormElements";
+import InputComponent from "./formComponents/Input";
 
 function validarContrasenia(contrasenia) {
   const longitudCorrecta = contrasenia.length > 6;
@@ -33,7 +34,7 @@ export default function Register() {
   const history = useHistory();
 
   function validarCampos() {
-   console.log("Validando campos...");
+    console.log("Validando campos...");
   }
 
   return (
@@ -46,41 +47,29 @@ export default function Register() {
           novalidate="novalidate"
         >
           <div>
-            <div className={styles.contenedorInput}>
-              <Label>
-                Nombre
-                <Input
-                  type="text"
-                  name="nombre"
-                  onChange={(evt) => setName(evt.target.value.trim())}
-                />
-              </Label>
-              <LeyendaError></LeyendaError>
-            </div>
-            <div className={styles.contenedorInput}>
-              <Label>
-                Apellido
-                <Input
-                  type="text"
-                  name="apellido"
-                  onChange={(evt) => setSurname(evt.target.value.trim())}
-                />
-              </Label>
-              <LeyendaError></LeyendaError>
-            </div>
+            <InputComponent
+              tipo="text"
+              label="Nombre"
+              name="nombre"
+              onChange="{(evt) => setName(evt.target.value.trim())}"
+              leyendaError="El nombre debe tener entre 2 y 16 caracteres."
+            />
+            <InputComponent
+              tipo="text"
+              label="Apellido"
+              name="apellido"
+              onChange="{(evt) => setSurname(evt.target.value.trim())}"
+              leyendaError="El apellido debe tener entre 2 y 16 caracteres."
+            />
           </div>
-          <div className={styles.contenedorInput}>
-            <Label>
-              Correo electrónico
-              <Input
-                type="email"
-                name="correo"
-                onChange={(evt) => setEmail(evt.target.value.trim())}
-              />
-            </Label>
-            <LeyendaError></LeyendaError>
-          </div>
-          <div className={styles.contenedorInput}>
+            <InputComponent
+              tipo="email"
+              label="Correo electrónico"
+              name="correo"
+              onChange="{(evt) => setEmail(evt.target.value.trim())}"
+              leyendaError="Formato de correo inválido."
+            />
+          <ContenedorInput>
             <Label>
               Contraseña
               <div className={styles.contenedorOjo}>
@@ -94,19 +83,17 @@ export default function Register() {
                 </span>
               </div>
             </Label>
-            <LeyendaError>La contraseña debe tener más de 6 caracteres</LeyendaError>
-          </div>
-          <div className={styles.contenedorInput}>
-            <Label>
-              Confirmar contraseña
-              <Input
-                type="password"
-                name="repetirContrasenia"
-                onChange={(evt) => setRepeatPassword(evt.target.value.trim())}
-              />
-            </Label>
-            <LeyendaError></LeyendaError>
-          </div>
+            <LeyendaError>
+              La contraseña debe tener más de 6 caracteres
+            </LeyendaError>
+          </ContenedorInput>
+          <InputComponent
+              tipo="password"
+              label="Confirmar contraseña"
+              name="repetirContrasenia"
+              onChange="{(evt) => setRepeatPassword(evt.target.value.trim())}"
+              leyendaError="La contraseñas no coinciden."
+            />
           <FilledButton onClick={() => validarCampos()}>
             Crear cuenta
           </FilledButton>

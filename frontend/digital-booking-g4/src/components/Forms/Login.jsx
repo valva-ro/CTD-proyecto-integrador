@@ -3,9 +3,10 @@ import FilledButton from "../Buttons/FilledButton";
 import styles from "./Form.module.css";
 import { useHistory, Link } from "react-router-dom";
 import loggedContext from "../../contexts/loggedContext";
-import { Label, Input } from "./formElements";
+import { ContenedorInput, Label, Input } from "./FormElements";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faExclamationTriangle } from "@fortawesome/free-solid-svg-icons";
+import InputComponent from "./formComponents/Input";
 
 const usuarioHarcodeado = {
   email: "brodriguez@gmail.com",
@@ -62,17 +63,13 @@ export default function Login() {
             onSubmit={handleSubmit}
             noValidate="novalidate"
           >
-            <div className={styles.contenedorInput}>
-              <Label>
-                Correo electrónico
-                <Input
-                  type="email"
-                  name="correo"
-                  onChange={(evt) => setEmail(evt.target.value)}
-                />
-              </Label>
-            </div>
-            <div className={styles.contenedorInput}>
+            <InputComponent
+              tipo="email"
+              label="Correo electrónico"
+              name="correo"
+              onChange="{(evt) => setEmail(evt.target.value.trim())}"
+            />
+            <ContenedorInput>
               <Label>
                 Contraseña
                 <div className={styles.contenedorOjo}>
@@ -86,7 +83,7 @@ export default function Login() {
                   </span>
                 </div>
               </Label>
-            </div>
+            </ContenedorInput>
 
             {isError ? (
               <div className={styles.credencialesContainer}>
@@ -97,11 +94,6 @@ export default function Login() {
                 </p>
               </div>
             ) : null}
-
-            {/* {isError
-                ? <p className={styles.credencialesInvalidas}>Por favor, vuelva a intentarlo. Suscredenciales son inválidas.</p>
-                : null} */}
-
             <FilledButton onClick={() => validarCampos()}>
               Iniciar sesión
             </FilledButton>

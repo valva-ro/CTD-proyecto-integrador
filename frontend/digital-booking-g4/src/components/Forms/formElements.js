@@ -5,6 +5,13 @@ const colores = {
   exito: "#1ed12d",
 };
 
+const ContenedorInput = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+`;
+
 const Label = styled.label`
   color: var(--color-2);
   font-weight: 700;
@@ -28,6 +35,7 @@ const LeyendaError = styled.p`
   text-align: start;
   color: ${colores.error};
   margin-top: 5px;
+  display: none;
 `;
 
-export { Label, Input, LeyendaError };
+export { Label, Input, LeyendaError, ContenedorInput };
