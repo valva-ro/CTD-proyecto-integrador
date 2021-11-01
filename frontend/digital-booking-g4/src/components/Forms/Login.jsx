@@ -24,8 +24,8 @@ function validarEmail(email) {
 }
 
 export default function Login() {
-  const [email, setEmail] = useState({campo: "", valido: null});
-  const [password, setPassword] = useState({campo: "", valido: null});
+  const [email, setEmail] = useState({ campo: "", valido: null });
+  const [password, setPassword] = useState({ campo: "", valido: null });
   const [isError, setIsError] = useState(false);
   const history = useHistory();
   const { isLogged, setIsLogged } = useContext(loggedContext);
@@ -70,13 +70,13 @@ export default function Login() {
               name="correo"
             />
             <InputComponent
-            estado={password}
-            cambiarEstado={setPassword}
-            tipo="password"
-            label="Contraseña"
-            name="contrasenia"
-            tieneIcono={true}
-          />
+              estado={password}
+              cambiarEstado={setPassword}
+              tipo="password"
+              label="Contraseña"
+              name="contrasenia"
+              tieneIcono={true}
+            />
 
             {isError ? (
               <div className={styles.credencialesContainer}>
