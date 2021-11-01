@@ -18,12 +18,8 @@ main {
   font-weight: 700;
   text-align: center;
 }
-label input[type="password"] {
-  font-size: 2rem;
-  letter-spacing: 0.2vw;
-  padding-top: .5px;
-  padding-bottom: .5px;
-  /* max-height: 44px; */
+input[type="password"] {
+  letter-spacing: 0.4vw;
 }
 form div {
   display: flex;

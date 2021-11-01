@@ -41,6 +41,10 @@ const Input = styled.input`
   margin-top: 5px;
   transition: 0.3s ease all;
 
+  @media (max-width: 480px) {
+    
+  }
+
   ${(props) =>
     props.valido === "true" &&
     css`

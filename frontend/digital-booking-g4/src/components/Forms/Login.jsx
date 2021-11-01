@@ -29,7 +29,7 @@ export default function Login() {
   const [password, setPassword] = useState({ campo: "", valido: null });
   const [isError, setIsError] = useState(false);
   const history = useHistory();
-  const { isLogged, setIsLogged } = useContext(loggedContext);
+  const { setIsLogged } = useContext(loggedContext);
 
   function handleSubmit(e) {
     e.preventDefault();
