@@ -49,8 +49,11 @@ export default function Header() {
         <div className={styles.contenedorHeader}>
           <Link to="/">
             <div className={styles.headerIzquierda}>
-              <img src={logo} alt="logo" />
-              <p>Hospedamos tu próximo sueño</p>
+              <img className={styles.logoImg} src={logo} alt="logo" />
+              <div>
+                <h1>Hosting<span>Book</span></h1>
+                <p>Hospedamos tu próximo sueño</p>
+              </div>
             </div>
           </Link>
           <div className={styles.menuHamburguesa}>
