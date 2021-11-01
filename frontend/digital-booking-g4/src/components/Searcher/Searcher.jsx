@@ -77,7 +77,7 @@ export default function Searcher() {
       setCitylist(null)
     }
     if (newLocations.length > 0) {
-      setCitylist(<ul className={styles.cities}>
+      setCitylist(<ul className={styles.cities} onMouseMove={setCitylist(null)}>
         {newLocations.map((city, index) => {
           return <li key={index} onClick={()=> setInput(input,city)}>
 
@@ -99,7 +99,7 @@ export default function Searcher() {
 
   }
 
-  return (<div className={styles.globalContainer}>
+  return (<div className={styles.globalContainer} >
     <div className={styles.boxing}>
       <h2 className={styles.letter}>
         Busca ofertas en hoteles, casas y mucho más
@@ -125,7 +125,7 @@ export default function Searcher() {
           <span className={iconDate}>
             <i className="far fa-calendar-alt"></i>
           </span>
-          {cityList}
+         <div onBlur={()=>setCitylist(null)}>{cityList}</div> 
         </div>
         <DatePicker
           onSelect={(e) => styleChangeClick(e)}
