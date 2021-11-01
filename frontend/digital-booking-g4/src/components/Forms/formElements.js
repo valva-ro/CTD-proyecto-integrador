@@ -82,7 +82,7 @@ const IconoOjoClave = styled(FontAwesomeIcon)`
   font-size: 18px;
   color: #bebebe;
   cursor: pointer;
-  transition: color ease .2s;
+  transition: color ease 0.2s;
 
   &:hover {
     color: var(--color-2);

@@ -7,13 +7,12 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faExclamationTriangle } from "@fortawesome/free-solid-svg-icons";
 import InputComponent from "./formComponents/Input";
 
-
 const usuarioHarcodeado = {
   email: "brodriguez@gmail.com",
   password: "12341234",
 };
 
-// Lo comento porque como ya están las validaciones en el register no tendría sentido volver a validar, lo que si tiene sentido validar es contra la base de datos harcodeada para comprobar autenticidad 
+// Lo comento porque como ya están las validaciones en el register no tendría sentido volver a validar, lo que si tiene sentido validar es contra la base de datos harcodeada para comprobar autenticidad
 // function validarContrasenia(contrasenia) {
 //   const longitudCorrecta = contrasenia.length > 6;
 //   return longitudCorrecta;
@@ -38,15 +37,15 @@ export default function Login() {
 
   function validarCampos() {
     // if (validarContrasenia(password) && validarEmail(email)) {
-      if (
-        password.campo == usuarioHarcodeado.password &&
-        email.campo == usuarioHarcodeado.email
-      ) {
-        setIsLogged(true);
-        history.push("/");
-      } else {
-        setIsError(true);
-      }
+    if (
+      password.campo == usuarioHarcodeado.password &&
+      email.campo == usuarioHarcodeado.email
+    ) {
+      setIsLogged(true);
+      history.push("/");
+    } else {
+      setIsError(true);
+    }
     // } else {
     //   setIsError(true);
     // }

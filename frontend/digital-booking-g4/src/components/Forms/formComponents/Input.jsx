@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import {
   ContenedorInput,
   GrupoInput,
@@ -21,11 +21,11 @@ export default function InputComponent({
   funcion,
   tieneIcono,
 }) {
-  const [ isVisible, setIsVisible] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
 
   const toggleVisibility = () => {
     setIsVisible(!isVisible);
-  }
+  };
 
   const onChange = (e) => {
     cambiarEstado({ ...estado, campo: e.target.value.trim() });
@@ -59,7 +59,11 @@ export default function InputComponent({
             onBlur={validacion}
             valido={estado.valido}
           />
-          {!tieneIcono ? null : isVisible ? <IconoOjoClave icon={faEye} onClick={toggleVisibility}/> : <IconoOjoClave icon={faEyeSlash} onClick={toggleVisibility}/>}
+          {!tieneIcono ? null : isVisible ? (
+            <IconoOjoClave icon={faEye} onClick={toggleVisibility} />
+          ) : (
+            <IconoOjoClave icon={faEyeSlash} onClick={toggleVisibility} />
+          )}
         </GrupoInput>
       </Label>
       <LeyendaError valido={estado.valido}>{leyendaError}</LeyendaError>

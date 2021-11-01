@@ -46,7 +46,7 @@ export default function Register() {
       password.valido === "true" &&
       repeatPassword.valido === "true"
     ) {
-      history.push("/login")
+      history.push("/login");
     }
   }
 
