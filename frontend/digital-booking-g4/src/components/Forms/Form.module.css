@@ -21,8 +21,9 @@ main {
 label input[type="password"] {
   font-size: 2rem;
   letter-spacing: 0.2vw;
-  padding-top: 0;
-  padding-bottom: 0;
+  padding-top: .5px;
+  padding-bottom: .5px;
+  /* max-height: 44px; */
 }
 form div {
   display: flex;

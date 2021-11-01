@@ -7,21 +7,23 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faExclamationTriangle } from "@fortawesome/free-solid-svg-icons";
 import InputComponent from "./formComponents/Input";
 
+
 const usuarioHarcodeado = {
   email: "brodriguez@gmail.com",
   password: "12341234",
 };
 
-function validarContrasenia(contrasenia) {
-  const longitudCorrecta = contrasenia.length > 6;
-  return longitudCorrecta;
-}
+// Lo comento porque como ya están las validaciones en el register no tendría sentido volver a validar, lo que si tiene sentido validar es contra la base de datos harcodeada para comprobar autenticidad 
+// function validarContrasenia(contrasenia) {
+//   const longitudCorrecta = contrasenia.length > 6;
+//   return longitudCorrecta;
+// }
 
-function validarEmail(email) {
-  const expresion = /[A-z]+@[A-z]+.[A-z]{3}/;
-  const test = expresion.test(email);
-  return test;
-}
+// function validarEmail(email) {
+//   const expresion = /[A-z]+@[A-z]+.[A-z]{3}/;
+//   const test = expresion.test(email);
+//   return test;
+//}
 
 export default function Login() {
   const [email, setEmail] = useState({ campo: "", valido: null });
@@ -35,19 +37,19 @@ export default function Login() {
   }
 
   function validarCampos() {
-    if (validarContrasenia(password) && validarEmail(email)) {
+    // if (validarContrasenia(password) && validarEmail(email)) {
       if (
-        password == usuarioHarcodeado.password &&
-        email == usuarioHarcodeado.email
+        password.campo == usuarioHarcodeado.password &&
+        email.campo == usuarioHarcodeado.email
       ) {
         setIsLogged(true);
         history.push("/");
       } else {
         setIsError(true);
       }
-    } else {
-      setIsError(true);
-    }
+    // } else {
+    //   setIsError(true);
+    // }
   }
 
   console.log(usuarioHarcodeado);
