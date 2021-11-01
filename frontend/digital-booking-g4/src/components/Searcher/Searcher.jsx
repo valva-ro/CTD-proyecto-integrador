@@ -77,7 +77,7 @@ export default function Searcher() {
       setCitylist(null)
     }
     if (newLocations.length > 0) {
-      setCitylist(<ul className={styles.cities} onBlur={()=>setCitylist(null)}>
+      setCitylist(<ul className={styles.cities}>
         {newLocations.map((city, index) => {
           return <li key={index} onClick={()=> setInput(input,city)}>
 
