@@ -12,7 +12,7 @@ main {
   margin: 0 auto;
   width: 33%;
 }
-.contenedorForm h1 {
+.contenedorForm h2 {
   color: var(--color-principal);
   font-size: 1.8rem;
   font-weight: 700;
@@ -91,7 +91,21 @@ form a:hover {
 }
 
 @media (max-width: 480px) {
+  .mainForm {
+    height: calc(100vh - 139px);
+    margin-top: 82px;
+  }
   .contenedorForm {
     width: 70vw;
   }
+  h2 {
+    font-size: 1.4rem;
+  }
+  form input[type="submit"] {
+    margin-top: 20px;
+  }
+
+  /* input {
+    padding: 5px 40px 5px 15px;
+  } */
 }

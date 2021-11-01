@@ -57,7 +57,7 @@ export default function Login() {
     <>
       <div className={styles.mainForm}>
         <div className={styles.contenedorForm}>
-          <h1>Iniciar sesión</h1>
+          <h2>Iniciar sesión</h2>
           <form
             className={styles.formLogin}
             onSubmit={handleSubmit}

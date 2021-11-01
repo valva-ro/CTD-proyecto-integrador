@@ -53,7 +53,7 @@ export default function Register() {
   return (
     <div className={styles.mainForm}>
       <div className={styles.contenedorForm}>
-        <h1>Crear cuenta</h1>
+        <h2>Crear cuenta</h2>
         <form
           className={styles.formRegister}
           onSubmit={handleSubmit}
@@ -67,7 +67,7 @@ export default function Register() {
               label="Nombre"
               name="nombre"
               expresionRegular={expresiones.nombre}
-              leyendaError="El nombre sólo debe contener letras y espacios. Entre 2 y 25 caracteres."
+              leyendaError="El nombre sólo debe contener letras. Entre 2 y 25 caracteres."
             />
             <InputComponent
               estado={surname}
@@ -76,7 +76,7 @@ export default function Register() {
               label="Apellido"
               name="apellido"
               expresionRegular={expresiones.apellido}
-              leyendaError="El apellido sólo debe contener letras y espacios. Entre 2 y 25 caracteres."
+              leyendaError="El apellido sólo debe contener letras. Entre 2 y 25 caracteres."
             />
           </div>
           <InputComponent

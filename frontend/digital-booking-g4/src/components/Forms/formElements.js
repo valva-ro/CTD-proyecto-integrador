@@ -24,6 +24,11 @@ const Label = styled.label`
   margin-top: 20px;
   cursor: pointer;
 
+  @media (max-width: 480px) {
+    font-size: .9rem;
+    margin-top: 7px;
+  }
+
   ${(props) =>
     props.valido === "false" &&
     css`
@@ -36,13 +41,13 @@ const Input = styled.input`
   box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.15);
   color: var(--color-2);
   font-size: 1rem;
-  padding: 10px 40px 10px 15px;
+  padding: 1vh 40px 1vh 15px;
   width: 100%;
   margin-top: 5px;
   transition: 0.3s ease all;
 
   @media (max-width: 480px) {
-    
+    padding: .8vh 40px .8vh 15px;
   }
 
   ${(props) =>
@@ -58,12 +63,15 @@ const Input = styled.input`
     `}
 `;
 
-//Falta ver como evitar que el texto estire el input
 const LeyendaError = styled.p`
   text-align: start;
   color: ${colores.error};
   margin-top: 5px;
   display: none;
+
+  @media (max-width: 480px) {
+    font-size: .75rem;
+  }
 
   ${(props) =>
     props.valido === "true" &&
@@ -87,6 +95,11 @@ const IconoOjoClave = styled(FontAwesomeIcon)`
   color: #bebebe;
   cursor: pointer;
   transition: color ease 0.2s;
+
+  @media (max-width: 480px) {
+    font-size: 16px;
+    bottom: 10px
+  }
 
   &:hover {
     color: var(--color-2);
