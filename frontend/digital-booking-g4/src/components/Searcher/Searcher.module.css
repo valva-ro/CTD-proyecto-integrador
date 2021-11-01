@@ -1,3 +1,8 @@
+.globalContainer {
+  position: relative;
+
+}
+
 .boxing {
   background-color: var(--color-2);
   padding: 2.9vh 14.3vw 3.3vh 14.3vw;
@@ -8,15 +13,64 @@
   top: 82px;
   z-index: 1;
 }
+
 .letter {
   color: var(--color-4);
   text-align: center;
   font-size: 2.25rem;
   padding-bottom: 3.3vh;
 }
+
 .cityContainer {
   position: relative;
 }
+
+.cities {
+  z-index: 1;
+  position: absolute;
+  top: 7vh;
+  right: 0.6vh;
+  width: 30.89311859443631vw;
+  background-color: var(--color-5);
+  padding: 0.8vh 0.7320644216691069vw;
+  max-height: 40.64vh;
+  overflow: auto;
+
+}
+
+.cities li {
+  display: flex;
+  border-width: 0px;
+  border-bottom-width: 1px;
+  border-style: solid;
+  border-color: var(--color-principal);
+  padding: 1.76vh;
+}
+
+.searchWords {
+  display: flex;
+  flex-direction: column;
+  padding-left: 10.97px;
+}
+
+.cities li i {
+  position: relative;
+  right: 0.7320644216691069vw;
+  top: .8vh;
+  font-size: 1.438rem;
+
+  
+}
+
+.city {
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.country {
+  font-size: 0.875rem;
+  color: var(--color-3);}
+
 .dateContainer {
   position: relative;
   margin: 0px;
@@ -24,14 +78,18 @@
   width: 0px;
   height: 0px;
 }
+
 .dateContainer div div input {
   position: relative;
 }
+
 .input {
   min-width: 30.89311859443631vw;
   max-height: 6.4vh;
   padding: 1rem 2.4rem;
+  padding-left: 2rem;
 }
+
 .gps {
   position: absolute;
   left: 9px;
@@ -41,6 +99,7 @@
   z-index: 1;
   align-items: center;
 }
+
 .dateIcon {
   position: absolute;
   font-size: 1.75rem;
@@ -49,6 +108,7 @@
   top: 7px;
   color: var(--color-2--opaco);
 }
+
 .dateIconEmpty {
   position: absolute;
   font-size: 1.75rem;
@@ -57,6 +117,7 @@
   top: 0.4vh;
   color: var(--color-2);
 }
+
 .gpsEmpty {
   align-items: center;
   position: absolute;
@@ -66,14 +127,17 @@
   color: var(--color-2);
   z-index: 1;
 }
+
 .inputs {
   display: flex;
   gap: 0.25rem;
   justify-content: center;
 }
+
 .inputs input:nth-child(4) {
   margin-left: 8px;
 }
+
 .applyContainer {
   display: block;
   text-align: end;
@@ -90,74 +154,101 @@
   .letter {
     font-size: 1.874rem;
   }
+
   .cityContainer {
     min-width: 18.301610541727673vw;
   }
+
   .dateIconEmpty,
   .dateIcon {
     left: 16px;
   }
+
   .boxing {
     padding: 30px 10px;
   }
+
   .inputs {
     gap: 0.5rem;
     padding: 0 5vw;
   }
+
   .gps,
   .gpsEmpty {
     bottom: 8px;
   }
+
   .input {
     width: 18.301610541727673vw;
     height: 47px;
-    padding: 1rem 2.4rem;
+    padding-left: 2rem;
   }
 }
 
 @media (max-width: 480px) {
-  .boxing {
+  .globalContainer {
     top: 102px;
     position: absolute;
   }
+  .cities{
+    left: 0.8vh;
+    width: 95vw ;
+    top: 0px;
+  }
+
   .gps,
   .gpsEmpty {
     bottom: 5px;
   }
+
   .cityContainer {
     height: 6vh;
   }
+
   .dateContainer {
     margin: -4px;
   }
+
   .boxing {
     padding: 20px 0px;
   }
+
   .inputs {
     flex-direction: column;
     gap: 0.6rem;
     padding: 10px;
   }
+
   .input {
     width: 95vw;
   }
+
   .letter {
     font-size: 1.574rem;
   }
+
   .inputs input:nth-child(4) {
     margin-left: 0px;
   }
+
   .dateIcon,
   .dateIconEmpty {
     left: 10px;
   }
+
   .dateIcon {
     top: 12px;
   }
+
   .dateIconEmpty {
     top: 7px;
   }
+
   .applyContainer {
     margin: 10px;
+  }
+
+  .MuiSvgIcon-root {
+    visibility: hidden;
   }
 }
