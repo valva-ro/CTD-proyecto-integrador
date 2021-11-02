@@ -33,7 +33,7 @@ public class CategoriaController implements CRUDController<CategoriaDTO> {
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "Success")
     })
-    @GetMapping("/todas")
+    @GetMapping
     public ResponseEntity<List<CategoriaDTO>> obtenerTodos() {
         List<CategoriaDTO> categoria = categoriaService.consultarTodos();
         return ResponseEntity.ok(categoria);
@@ -45,7 +45,7 @@ public class CategoriaController implements CRUDController<CategoriaDTO> {
             @ApiResponse(code = 200, message = "Success"),
             @ApiResponse(code = 400, message = "Bad Request")
     })
-    @PostMapping("/crear")
+    @PostMapping
     public ResponseEntity<CategoriaDTO> crear(@RequestBody CategoriaDTO categoria) throws BadRequestException {
         CategoriaDTO categoriaNueva = categoriaService.crear(categoria);
         return ResponseEntity.ok(categoriaNueva);
@@ -58,7 +58,7 @@ public class CategoriaController implements CRUDController<CategoriaDTO> {
             @ApiResponse(code = 404, message = "Not found"),
             @ApiResponse(code = 400, message = "Bad Request")
     })
-    @GetMapping("/buscar/{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<CategoriaDTO> buscarPorId(@PathVariable Long id) throws BadRequestException, ResourceNotFoundException {
         CategoriaDTO categoria = categoriaService.buscarPorId(id);
         return ResponseEntity.ok(categoria);
@@ -71,7 +71,7 @@ public class CategoriaController implements CRUDController<CategoriaDTO> {
             @ApiResponse(code = 404, message = "Not found"),
             @ApiResponse(code = 400, message = "Bad Request")
     })
-    @PutMapping("/actualizar")
+    @PutMapping
     public ResponseEntity<CategoriaDTO> actualizar(@RequestBody CategoriaDTO categoria) throws BadRequestException, ResourceNotFoundException {
         CategoriaDTO categoriaActualizada = categoriaService.actualizar(categoria);
         return ResponseEntity.ok(categoriaActualizada);
@@ -84,7 +84,7 @@ public class CategoriaController implements CRUDController<CategoriaDTO> {
             @ApiResponse(code = 404, message = "Not found"),
             @ApiResponse(code = 400, message = "Bad Request")
     })
-    @DeleteMapping("/eliminar/{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<String> eliminar(@PathVariable Long id) throws BadRequestException, ResourceNotFoundException {
         categoriaService.eliminar(id);
         return ResponseEntity.ok(String.format(Mensajes.ELIMINADO_CON_EXITO,"Categoria", id));
