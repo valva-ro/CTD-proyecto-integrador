@@ -4,7 +4,7 @@ import loggedContext from "../../contexts/loggedContext";
 
 
 export default function Profile() {
-    const {isLogged , setIsLogged} = useContext(loggedContext);
+    const { setIsLogged} = useContext(loggedContext);
 
     return(
         <div className={styles.contenedorProfile}>

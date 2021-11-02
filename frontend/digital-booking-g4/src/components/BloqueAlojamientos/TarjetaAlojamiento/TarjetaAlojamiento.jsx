@@ -15,7 +15,7 @@ export default function TarjetaAlojamiento({
 
   let estrellas = [];
   for (let i = 0; i < cantEstrellas; i++) {
-    estrellas.push(<i className="fas fa-star"></i>);
+    estrellas.push(<i key={`estrellas-${i}`} className="fas fa-star"></i>);
   }
 
   return (
@@ -49,7 +49,7 @@ export default function TarjetaAlojamiento({
           <div className={styles.ubicacion}>
             <i className="fas fa-map-marker-alt"></i>
             <p>
-              {ubicacion} <a href="#">Mostrar en el mapa</a>
+              {ubicacion} <a href="#">Mostrar en el mapa</a> {/* esto tira warning*/}
             </p>
           </div>
           <div className={styles.servicios}>

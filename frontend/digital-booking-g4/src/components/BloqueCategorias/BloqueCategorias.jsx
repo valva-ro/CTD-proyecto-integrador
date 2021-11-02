@@ -10,8 +10,8 @@ export default function BloqueCategorias(){
       <TituloBloque>Buscar por tipo de alojamiento</TituloBloque>
       <div className={styles.listadoTarjetas}>            
       {
-        datos.map((dato)=> 
-          <TarjetaCategoria fotoPortada={dato.fotoPortada} nombre={dato.nombre} descripcion={dato.descripcion}/>
+        datos.map((dato,i )=> 
+          <TarjetaCategoria key={`categoria-${i}`} fotoPortada={dato.fotoPortada} nombre={dato.nombre} descripcion={dato.descripcion}/>
         )  
       }
       </div>
