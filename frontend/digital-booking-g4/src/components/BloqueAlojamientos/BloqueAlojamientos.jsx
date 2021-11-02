@@ -13,7 +13,6 @@ export default function BloqueAlojamientos() {
         {alojamientos.map((alojamiento, i) => (
           <li key={i} className={styles.alojamiento}>
             <TarjetaAlojamiento
-              key={`alojamiento-${i}`}
               titulo={alojamiento.title}
               imagen={alojamiento.img}
               categoria={alojamiento.category}
