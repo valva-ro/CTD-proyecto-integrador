@@ -2,6 +2,6 @@ import React from "react"
 
 export default function Options(props){
     return(
-        <p>{props.contenido}</p>
+        <p onClick={props.onClick}>{props.contenido}</p>
     )
 }
