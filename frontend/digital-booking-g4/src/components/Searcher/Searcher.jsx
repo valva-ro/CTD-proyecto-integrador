@@ -3,7 +3,7 @@ import { useState, useEffect, useRef } from "react";
 import styles from "./Searcher.module.css";
 import FilledButton from "../Buttons/FilledButton";
 import DatePicker, { registerLocale } from "react-datepicker";
-import cities from "./cities.json"
+import cities from "../../resources/cities.json"
 import es from "date-fns/locale/es";
 import "react-datepicker/dist/react-datepicker.css";
 
@@ -77,7 +77,7 @@ export default function Searcher() {
       setCitylist(null)
     }
     if (newLocations.length > 0) {
-      setCitylist(<ul className={styles.cities} onMouseMove={setCitylist(null)}>
+      setCitylist(<ul onFocusCapture className={styles.cities} >
         {newLocations.map((city, index) => {
           return <li key={index} onClick={()=> setInput(input,city)}>
 
@@ -112,7 +112,6 @@ export default function Searcher() {
           <input
             placeholder="¿A dónde vamos?"
             type="text"
-            onblur={()=> console.log("123")}
             className={styles.input}
             onKeyUp={(e) => lister(e, onType(e))}
             
@@ -125,7 +124,7 @@ export default function Searcher() {
           <span className={iconDate}>
             <i className="far fa-calendar-alt"></i>
           </span>
-         <div onBlur={()=>setCitylist(null)}>{cityList}</div> 
+         {cityList}
         </div>
         <DatePicker
           onSelect={(e) => styleChangeClick(e)}
