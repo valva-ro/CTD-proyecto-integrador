@@ -38,8 +38,8 @@ export default function Login() {
   function validarCampos() {
     // if (validarContrasenia(password) && validarEmail(email)) {
     if (
-      password.campo == usuarioHarcodeado.password &&
-      email.campo == usuarioHarcodeado.email
+      password.campo === usuarioHarcodeado.password &&
+      email.campo === usuarioHarcodeado.email
     ) {
       setIsLogged(true);
       history.push("/");

@@ -49,7 +49,7 @@ export default function TarjetaAlojamiento({
           <div className={styles.ubicacion}>
             <i className="fas fa-map-marker-alt"></i>
             <p>
-              {ubicacion} <a href="#">Mostrar en el mapa</a>
+              {ubicacion} <a href="#">Mostrar en el mapa</a> {/* esto tira warning*/}
             </p>
           </div>
           <div className={styles.servicios}>

@@ -28,7 +28,7 @@ export default function Searcher() {
   };
 
   const styleChange = (input) => {
-    if (!input.target.value == "") {
+    if (!input.target.value === "") {
       setIconDate(styles.dateIconEmpty);
     } else {
       setIconDate(styles.dateIcon);
@@ -44,7 +44,7 @@ export default function Searcher() {
   };
 
   const onType = (input) => {
-    if (!input.target.value == "") {
+    if (!input.target.value === "") {
       setIconGps(styles.gpsEmpty);
     } else {
       setIconGps(styles.gps);
@@ -59,7 +59,7 @@ export default function Searcher() {
       <div className={styles.inputs}>
         <div className={styles.cityContainer}>
           <span className={iconGps}>
-            <i class="fas fa-map-marker-alt"></i>
+            <i className="fas fa-map-marker-alt"></i>
           </span>
           <input
             placeholder="¿A dónde vamos?"
@@ -71,7 +71,7 @@ export default function Searcher() {
 
         <div className={styles.dateContainer}>
           <span className={iconDate}>
-            <i class="far fa-calendar-alt"></i>
+            <i className="far fa-calendar-alt"></i>
           </span>
         </div>
         <DatePicker

@@ -13,7 +13,7 @@ export default function Header() {
 
   const RenderComponent = () => {
     switch (location.pathname) {
-      case "/":
+      default:
         return (
           <>
             <Link to="/register">
@@ -26,19 +26,15 @@ export default function Header() {
         );
       case "/login":
         return (
-          <>
             <Link to="/register">
               <OutlinedButton>Crear cuenta</OutlinedButton>
             </Link>
-          </>
         );
       case "/register":
         return (
-          <>
             <Link to="/login">
               <OutlinedButton>Iniciar sesión</OutlinedButton>
             </Link>
-          </>
         );
     }
   };
