@@ -1,6 +1,5 @@
 .globalContainer {
   position: relative;
-
 }
 
 .boxing {
@@ -21,60 +20,8 @@
   padding-bottom: 3.3vh;
 }
 
-.cityContainer {
-  position: relative;
-}
-
-.cities {
-  z-index: 1;
-  position: absolute;
-  top: 7vh;
-  right: 0.6vh;
-  width: 30.89311859443631vw;
-  background-color: var(--color-5);
-  padding: 0.8vh 0.7320644216691069vw;
-  max-height: 40.64vh;
-  overflow: auto;
-
-}
-
-.cities li {
-  display: flex;
-  border-width: 0px;
-  border-bottom-width: 1px;
-  border-style: solid;
-  border-color: var(--color-principal);
-  padding: 1.76vh;
-}
-
-.searchWords {
-  display: flex;
-  flex-direction: column;
-  padding-left: 10.97px;
-}
-
-.cities li i {
-  position: relative;
-  right: 0.7320644216691069vw;
-  top: .8vh;
-  font-size: 1.438rem;
-  color: var(--color-3);
-  
-}
-
-.city {
-  font-size: 1rem;
-  font-weight: bold;
-}
-
-.country {
-  font-size: 0.875rem;
-  color: var(--color-3);}
-
 .dateContainer {
   position: relative;
-  margin: 0px;
-  padding: 0px;
   width: 0px;
   height: 0px;
 }
@@ -90,42 +37,18 @@
   padding-left: 2rem;
 }
 
-.gps {
+.dateIcon,
+.dateIconEmpty {
   position: absolute;
-  left: 9px;
-  top: 15%;
-  font-size: 1.75rem;
+  left: 0.863rem;
+  top: .9vh;
+  font-size: 1.6rem;
   color: var(--color-2--opaco);
   z-index: 1;
-  align-items: center;
-}
-
-.dateIcon {
-  position: absolute;
-  font-size: 1.75rem;
-  z-index: 1;
-  left: 0.813rem;
-  top: 7px;
-  color: var(--color-2--opaco);
 }
 
 .dateIconEmpty {
-  position: absolute;
-  font-size: 1.75rem;
-  z-index: 1;
-  left: 0.813rem;
-  top: 0.4vh;
   color: var(--color-2);
-}
-
-.gpsEmpty {
-  align-items: center;
-  position: absolute;
-  left: 0.563rem;
-  top: 0.2vh;
-  font-size: 1.75rem;
-  color: var(--color-2);
-  z-index: 1;
 }
 
 .inputs {
@@ -153,10 +76,6 @@
 @media (max-width: 768px) {
   .letter {
     font-size: 1.874rem;
-  }
-
-  .cityContainer {
-    min-width: 18.301610541727673vw;
   }
 
   .dateIconEmpty,
@@ -190,19 +109,10 @@
     top: 102px;
     position: absolute;
   }
-  .cities{
-    left: 0.8vh;
-    width: 95vw ;
-    top: 0px;
-  }
 
   .gps,
   .gpsEmpty {
     bottom: 5px;
-  }
-
-  .cityContainer {
-    height: 6vh;
   }
 
   .dateContainer {
@@ -246,9 +156,5 @@
 
   .applyContainer {
     margin: 10px;
-  }
-
-  .MuiSvgIcon-root {
-    visibility: hidden;
   }
 }

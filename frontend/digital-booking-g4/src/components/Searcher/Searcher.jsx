@@ -1,22 +1,19 @@
-import React from "react";
-import { useState, useEffect, useRef } from "react";
-import styles from "./Searcher.module.css";
+import React, { useState, useEffect, useRef } from "react";
 import FilledButton from "../Buttons/FilledButton";
 import DatePicker, { registerLocale } from "react-datepicker";
 import cities from "../../resources/cities.json"
+import CityInput from "./CityInput/CityInput";
 import es from "date-fns/locale/es";
 import "react-datepicker/dist/react-datepicker.css";
-
+import styles from "./Searcher.module.css";
 
 registerLocale("es", es);
 
 export default function Searcher() {
+  const [quantityMonth, setQuantityMonth] = useState(2);
+  const [iconDate, setIconDate] = useState(styles.dateIcon);
   const [dateRange, setDateRange] = useState([null, null]);
   const [startDate, endDate] = dateRange;
-  const [quantityMonth, setQuantityMonth] = useState(2);
-  const [iconGps, setIconGps] = useState(styles.gps);
-  const [iconDate, setIconDate] = useState(styles.dateIcon);
-  const [cityList, setCitylist] = useState(null)
   let datePickerRef = useRef(null);
 
   useEffect(() => {
@@ -32,8 +29,7 @@ export default function Searcher() {
   };
 
   const styleChange = (input) => {
-
-    if (!input.target.value == "") {
+    if (!input.target.value === "") {
       setIconDate(styles.dateIconEmpty);
     } else {
       setIconDate(styles.dateIcon);
@@ -48,110 +44,44 @@ export default function Searcher() {
     }
   };
 
-  const onType = (input) => {
-
-    if (!input.target.value == "") {
-      setIconGps(styles.gpsEmpty);
-    } else {
-      setIconGps(styles.gps);
-    }
-  };
-  const lister = (input) => {
-    const validate = (frase) => {
-      if (frase.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "")
-        .includes((input.target.value).toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, ""))
-        && input.target.value != "") {
-        return true
-      } else {
-        return false
-      }
-    }
-    const newLocations = cities.filter(location =>
-      validate(location.country)
-      || validate(location.city)
-      || validate(location.city + " " + location.country)
-      || validate(location.country + " " + location.city)
-    )
-    const setInput= (input,city) =>{
-      input.target.value=city.city+", "+city.country
-      setCitylist(null)
-    }
-    if (newLocations.length > 0) {
-      setCitylist(<ul onFocusCapture className={styles.cities} >
-        {newLocations.map((city, index) => {
-          return <li key={index} onClick={()=> setInput(input,city)}>
-
-            <i class="fas fa-map-marker-alt"></i>
-            <div className={styles.searchWords}>
-              <p className={styles.city}>{city.city}</p >
-              <p className={styles.country}>{city.country}</p>
-            </div>
-          </li>
-        })}
-      </ul>)
-    
-
-    } else {
-      setCitylist(null)
-     
-    }
-
-
-  }
-
-  return (<div className={styles.globalContainer} >
-    <div className={styles.boxing}>
-      <h2 className={styles.letter}>
-        Busca ofertas en hoteles, casas y mucho más
-      </h2>
-      <div className={styles.inputs}>
-        <div className={styles.cityContainer}>
-          <span className={iconGps}>
-            <i class="fas fa-map-marker-alt"></i>
-          </span>
-          <input
-            placeholder="¿A dónde vamos?"
-            type="text"
-            className={styles.input}
-            onKeyUp={(e) => lister(e, onType(e))}
-            
-          />
-
-
-        </div>
-
-        <div className={styles.dateContainer}>
-          <span className={iconDate}>
-            <i className="far fa-calendar-alt"></i>
-          </span>
-         {cityList}
-        </div>
-        <DatePicker
-          onSelect={(e) => styleChangeClick(e)}
-          onChangeRaw={(e) => styleChange(e)}
-          dateFormat="dd 'de' MMM."
-          placeholderText="Check in  -  Check out"
-          locale={es}
-          selectsRange={true}
-          startDate={startDate}
-          endDate={endDate}
-          shouldCloseOnSelect={false}
-          monthsShown={quantityMonth}
-          onChange={(update) => {
-            setDateRange(update);
-          }}
-          ref={(r) => datePickerRef = r}
-        >
-          <div className={styles.applyContainer}>
-            <FilledButton onClick={() => closeCalendar()}>Aplicar</FilledButton>
+  return (
+    <div className={styles.globalContainer}>
+      <div className={styles.boxing}>
+        <h2 className={styles.letter}>
+          Busca ofertas en hoteles, casas y mucho más
+        </h2>
+        <div className={styles.inputs}>
+          <CityInput/>
+          <div className={styles.dateContainer}>
+            <span className={iconDate}>
+              <i className="far fa-calendar-alt"></i>
+            </span>
           </div>
-        </DatePicker>
-        <FilledButton>Buscar</FilledButton>
-
+          <DatePicker
+            onSelect={(e) => styleChangeClick(e)}
+            onChangeRaw={(e) => styleChange(e)}
+            dateFormat="dd 'de' MMM."
+            placeholderText="Check in  -  Check out"
+            locale={es}
+            selectsRange={true}
+            startDate={startDate}
+            endDate={endDate}
+            shouldCloseOnSelect={false}
+            monthsShown={quantityMonth}
+            onChange={(update) => {
+              setDateRange(update);
+            }}
+            ref={(r) => (datePickerRef = r)}
+          >
+            <div className={styles.applyContainer}>
+              <FilledButton onClick={() => closeCalendar()}>
+                Aplicar
+              </FilledButton>
+            </div>
+          </DatePicker>
+          <FilledButton>Buscar</FilledButton>
+        </div>
       </div>
-
     </div>
-
-  </div>
   );
 }
