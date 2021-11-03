@@ -1,3 +1,5 @@
+import { useState } from "react";
+import useOnClickAndDoubleClick from "../../../hooks/useOnClickAndDoubleClick";
 import styles from "./TarjetaCategoria.module.css";
 
 export default function TarjetaCategoria({
@@ -9,16 +11,29 @@ export default function TarjetaCategoria({
   onClickHandler,
   onToggleSelect,
 }) {
-  const estaSeleccionada = indiceTarjetaActiva === item;
+  const [clicks, setClicks] = useState(0);
+  const [estaSeleccionada, setEstaSeleccionada] = useState(
+    indiceTarjetaActiva === item
+  );
   const clickHandler = () => {
-    onClickHandler();
+    onClickHandler(nombre);
     onToggleSelect(item);
+    setEstaSeleccionada(indiceTarjetaActiva === item);
   };
+
+  const doubleClickHandler = () => {
+    onClickHandler("");
+    onToggleSelect(null);
+    setEstaSeleccionada(false);
+  };
+
   return (
     <div
       className={estaSeleccionada ? styles.tarjetaSeleccionada : styles.tarjeta}
-      onClick={clickHandler}
-      // onDoubleClick={}
+      onClick={useOnClickAndDoubleClick(
+        clickHandler,
+        doubleClickHandler
+      )}
     >
       <div
         className={styles.fotoPortada}
