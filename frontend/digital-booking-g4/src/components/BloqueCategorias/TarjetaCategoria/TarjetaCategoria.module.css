@@ -23,7 +23,7 @@
 }
 
 .tarjetaSeleccionada {
-  border: 2px solid var(--color-principal);
+  box-shadow: 4px 4px 12px var(--color-principal);
 }
 
 /*______Fondo tarjeta (portada)______*/
