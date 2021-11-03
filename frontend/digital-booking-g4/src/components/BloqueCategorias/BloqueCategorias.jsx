@@ -6,7 +6,7 @@ import datos from "../../resources/datosCategorias.json";
 import styles from "./BloqueCategorias.module.css";
 
 export default function BloqueCategorias({ setCategoriaActual }) {
-  const [indiceTarjetaActiva, setIndiceTarjetaActiva] = useState(null);
+  const [tarjetaActiva, setTarjetaActiva] = useState(null);
   return (
     <section className={styles.bloqueCategorias}>
       <TituloBloque>Buscar por tipo de alojamiento</TituloBloque>
@@ -15,14 +15,12 @@ export default function BloqueCategorias({ setCategoriaActual }) {
           <TarjetaCategoria
             key={`categoria-${i}`}
             item={i}
-            indiceTarjetaActiva={indiceTarjetaActiva}
+            indiceTarjetaActiva={tarjetaActiva}
             nombre={dato.nombre}
             fotoPortada={dato.fotoPortada}
             descripcion={dato.descripcion}
-            onClickHandler={(categoriaActual) =>
-              setCategoriaActual(categoriaActual)
-            }
-            onToggleSelect={(index) => setIndiceTarjetaActiva(index)}
+            onClickHandler={() => setCategoriaActual(dato.nombre)}
+            onToggleSelect={() => setTarjetaActiva(i)}
           />
         ))}
       </div>
