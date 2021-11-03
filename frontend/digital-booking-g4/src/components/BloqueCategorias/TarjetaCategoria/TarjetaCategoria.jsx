@@ -18,6 +18,7 @@ export default function TarjetaCategoria({
     <div
       className={estaSeleccionada ? styles.tarjetaSeleccionada : styles.tarjeta}
       onClick={clickHandler}
+      // onDoubleClick={}
     >
       <div
         className={styles.fotoPortada}

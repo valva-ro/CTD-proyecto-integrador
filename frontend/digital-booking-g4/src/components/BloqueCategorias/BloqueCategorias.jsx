@@ -7,9 +7,6 @@ import styles from "./BloqueCategorias.module.css";
 
 export default function BloqueCategorias({ setCategoriaActual }) {
   const [tarjetaActiva, setTarjetaActiva] = useState(null);
-  const toggleSelect = (index) => {
-    setTarjetaActiva(index);
-  };
   return (
     <section className={styles.bloqueCategorias}>
       <TituloBloque>Buscar por tipo de alojamiento</TituloBloque>
@@ -23,7 +20,7 @@ export default function BloqueCategorias({ setCategoriaActual }) {
             fotoPortada={dato.fotoPortada}
             descripcion={dato.descripcion}
             onClickHandler={() => setCategoriaActual(dato.nombre)}
-            onToggleSelect={toggleSelect}
+            onToggleSelect={() => setTarjetaActiva(i)}
           />
         ))}
       </div>

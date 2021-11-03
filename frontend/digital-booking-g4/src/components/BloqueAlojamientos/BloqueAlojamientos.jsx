@@ -15,9 +15,17 @@ export default function BloqueAlojamientos({ categoriaActual }) {
   return (
     <section className={styles.recomendaciones}>
       <TituloBloque>
-        {categoriaActual === "" ? "Recomendaciones" : capitalizeFirstLetter(categoriaActual)}
+        {categoriaActual === ""
+          ? "Recomendaciones"
+          : capitalizeFirstLetter(categoriaActual)}
       </TituloBloque>
-      <ul className={styles.alojamientos}>
+      <ul
+        className={
+          alojamientosFiltrados.length < 2
+            ? styles.alojamientosUnaColumna
+            : styles.alojamientos
+        }
+      >
         {alojamientosFiltrados.map((alojamiento, i) => (
           <li key={i} className={styles.alojamiento}>
             <TarjetaAlojamiento

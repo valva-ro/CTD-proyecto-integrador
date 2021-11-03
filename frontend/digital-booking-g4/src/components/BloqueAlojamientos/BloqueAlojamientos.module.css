@@ -3,6 +3,12 @@
   columns: 2;
 }
 
+.alojamientosUnaColumna {
+  margin-top: 1rem;
+  columns: 1;
+  width: 50%;
+}
+
 .recomendaciones {
   background-color: rgb(56, 59, 88, 0.1);
   display: flex;
