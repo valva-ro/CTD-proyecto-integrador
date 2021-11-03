@@ -94,4 +94,6 @@ public class CategoriaServiceTests {
     public void test12BuscarCategoriaPorIdInvalido() {
         assertThrows(BadRequestException.class, () -> categoriaService.buscarPorId(-1L));
     }
+
+
 }

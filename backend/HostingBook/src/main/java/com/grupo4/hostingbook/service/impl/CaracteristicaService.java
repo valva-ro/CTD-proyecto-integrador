@@ -86,7 +86,7 @@ public class CaracteristicaService implements CRUDService<CaracteristicaDTO> {
         if (caracteristicaDTO == null) {
             throw new BadRequestException(String.format(Mensajes.ERROR_DTO_NO_EXISTE, "Característica"));
         } else {
-            if (caracteristicaDTO.getNombre() == null)
+            if (caracteristicaDTO.getId() == null)
                 throw new BadRequestException(Mensajes.ERROR_ID_ES_NULL);
             if (caracteristicaDTO.getId() < 1)
                 throw new BadRequestException(Mensajes.ERROR_ID_FUERA_DE_RANGO);
