@@ -5,23 +5,30 @@ import TituloBloque from "../TituloBloque/TituloBloque.jsx";
 import alojamientos from "../../resources/alojamientos.json";
 import styles from "./BloqueAlojamientos.module.css";
 
-export default function BloqueAlojamientos() {
+export default function BloqueAlojamientos({ categoriaActual }) {
+  const alojamientosFiltrados =
+    categoriaActual === ""
+      ? alojamientos
+      : alojamientos.filter(
+          (alojamiento) => alojamiento.category === categoriaActual
+        );
   return (
     <section className={styles.recomendaciones}>
       <TituloBloque>Recomendaciones</TituloBloque>
       <ul className={styles.alojamientos}>
-        {alojamientos.map((alojamiento, i) => (
-          <li key={i} className={styles.alojamiento}>
-            <TarjetaAlojamiento
-              titulo={alojamiento.title}
-              imagen={alojamiento.img}
-              categoria={alojamiento.category}
-              descripcion={alojamiento.description}
-              ubicacion={alojamiento.location}
-              cantEstrellas={alojamiento.stars}
-            />
-          </li>
-        ))}
+        {alojamientosFiltrados
+          .map((alojamiento, i) => (
+            <li key={i} className={styles.alojamiento}>
+              <TarjetaAlojamiento
+                titulo={alojamiento.title}
+                imagen={alojamiento.img}
+                categoria={alojamiento.category}
+                descripcion={alojamiento.description}
+                ubicacion={alojamiento.location}
+                cantEstrellas={alojamiento.stars}
+              />
+            </li>
+          ))}
       </ul>
     </section>
   );
