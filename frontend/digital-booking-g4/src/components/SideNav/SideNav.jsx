@@ -1,4 +1,4 @@
-import React, {useEffect, useState, useContext} from "react";
+import React, {useState, useContext} from "react";
 import Profile from "../Profile/Profile";
 import Options from "./Options";
 import { Link, useLocation } from "react-router-dom";
@@ -13,24 +13,20 @@ export default function SideNav() {
   
   const RenderComponent = () => {
     switch (location.pathname) {
-      case "/":
+      default:
         return(
             <>
-              <Link to="/register"><Options contenido={"Crear cuenta"}/></Link>
-              <Link to="/login"><Options contenido={"Iniciar sesión"}/></Link>
+              <Link to="/register"><Options contenido={"Crear cuenta"} onClick={() => setIsOpened(false)}/></Link>
+              <Link to="/login"><Options contenido={"Iniciar sesión"} onClick={() => setIsOpened(false)}/></Link>
             </> 
         )  
       case "/login":
         return(
-            <>
-              <Link to="/register"><Options contenido={"Crear cuenta"}/></Link>
-            </> 
+              <Link to="/register"><Options contenido={"Crear cuenta"} onClick={() => setIsOpened(false)}/></Link>
         )
       case "/register":
         return(
-            <>
-              <Link to="/login"><Options contenido={"Iniciar sesión"}/></Link>
-            </> 
+              <Link to="/login"><Options contenido={"Iniciar sesión"} onClick={() => setIsOpened(false)}/></Link>
         )          
     }
   }
@@ -42,6 +38,7 @@ export default function SideNav() {
       >
         <i className="bx bx-menu"></i>
       </div>
+      <div className={isOpened ? styles.opacity : null} onClick={() => setIsOpened(false)}></div>
       <div className={styles.menuDrawer}>
         <div className={isOpened ? styles.isOpened : null}>
           <div className={styles.header}>
