@@ -16,6 +16,7 @@ SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL';
 
+DROP SCHEMA IF EXISTS booking;
 CREATE SCHEMA booking;
 USE booking;
 
@@ -23,13 +24,26 @@ USE booking;
 -- Table structure for table `categorias`
 --
 
+DROP TABLE IF EXISTS booking.categorias;
 CREATE TABLE categorias (
   categoria_id SMALLINT UNSIGNED NOT NULL AUTO_INCREMENT,
   titulo VARCHAR(50) NOT NULL,
   descripcion VARCHAR(200) NOT NULL,
-  URL_imagen TEXT,
+  URL_imagen TEXT  NOT NULL ,
   PRIMARY KEY  (categoria_id)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Table structure for table `imagenes`
+--
+DROP TABLE IF EXISTS booking.imagenes;
+CREATE TABLE imagenes (
+  imagen_id SMALLINT UNSIGNED NOT NULL AUTO_INCREMENT COMMENT 'id de la tabla imagenes', 
+  imagen_titulo VARCHAR(50) NOT NULL  COMMENT 'titulo de la imagen',
+  imagen_URL TEXT NOT NULL COMMENT 'url de la imagen',
+  PRIMARY KEY  (imagen_id)
+)ENGINE=InnoDB DEFAULT CHARSET=utf8;
+--ver si en esta US se agregan claves foráneas o hay alguna particular
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
