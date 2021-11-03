@@ -23,3 +23,17 @@ INSERT INTO categorias VALUES (2,"Hostels","807.105 hostels","https://images.uns
 INSERT INTO categorias VALUES (3,"Bed & Breakfasts","807.105 B&B's","https://images.unsplash.com/photo-1531088009183-5ff5b7c95f91?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1");
 INSERT INTO categorias VALUES (4,"Departamentos","807.105 departamentos","https://images.unsplash.com/photo-1499916078039-922301b0eb9b?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1");
 COMMIT;
+
+INSERT INTO ciudades (nombre, pais) VALUES ('Capital Federal','Argentina');
+INSERT INTO ciudades (nombre, pais) VALUES ('Buenos Aires','Argentina');
+INSERT INTO ciudades (nombre, pais) VALUES ('Córdoba','Argentina');
+INSERT INTO ciudades (nombre, pais) VALUES ('Salta','Argentina');
+INSERT INTO ciudades (nombre, pais) VALUES ('Mendoza','Argentina');
+INSERT INTO ciudades (nombre, pais) VALUES ('Mar del Plata','Argentina');
+INSERT INTO ciudades (nombre, pais) VALUES ('Rosario','Argentina');
+INSERT INTO ciudades (nombre, pais) VALUES ('Bogotá','Colombia');
+INSERT INTO ciudades (nombre, pais) VALUES ('Medellín','Colombia');
+INSERT INTO ciudades (nombre, pais) VALUES ('Cali','Colombia');
+INSERT INTO ciudades (nombre, pais) VALUES ('Cartagena','Colombia');
+INSERT INTO ciudades (nombre, pais) VALUES ('Barranquilla','Colombia');
+COMMIT;

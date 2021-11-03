@@ -22,14 +22,22 @@ USE booking;
 --
 -- Table structure for table `categorias`
 --
-
+DROP TABLE IF EXISTS categorias;
 CREATE TABLE categorias (
   categoria_id SMALLINT UNSIGNED NOT NULL AUTO_INCREMENT,
   titulo VARCHAR(50) NOT NULL,
   descripcion VARCHAR(200) NOT NULL,
   URL_imagen TEXT,
   PRIMARY KEY  (categoria_id)
-)ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+DROP TABLE IF EXISTS ciudades;
+CREATE TABLE ciudades (
+  ciudad_id SMALLINT UNSIGNED NOT NULL AUTO_INCREMENT,
+  nombre VARCHAR(50) NOT NULL,
+  pais VARCHAR(50) NOT NULL,
+  PRIMARY KEY  (ciudad_id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
