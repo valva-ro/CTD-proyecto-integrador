@@ -23,3 +23,13 @@ INSERT INTO categorias VALUES (2,"Hostels","807.105 hostels","https://images.uns
 INSERT INTO categorias VALUES (3,"Bed & Breakfasts","807.105 B&B's","https://images.unsplash.com/photo-1531088009183-5ff5b7c95f91?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1");
 INSERT INTO categorias VALUES (4,"Departamentos","807.105 departamentos","https://images.unsplash.com/photo-1499916078039-922301b0eb9b?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1");
 COMMIT;
+
+--
+-- Dumping data for table `imagenes`
+--
+SET AUTOCOMMIT=0;
+INSERT INTO imagenes VALUES (1,"Habitación","https://www.cataloniahotels.com/es/blog/wp-content/uploads/2016/05/habitaci%C3%B3n-doble-catalonia-620x412.jpg");
+INSERT INTO imagenes VALUES (2,"Cocina","https://www.mountainhosteltarter.com/wp-content/uploads/2017/09/mountain-hostel-tarter-andorra-kitchen-8.jpg");
+INSERT INTO imagenes VALUES (3,"Baño","https://www.revista80dias.es/images/2014/12/roca-nivaria-bano-suite.jpg");
+INSERT INTO imagenes VALUES (4,"Pileta","http://descubrirturismo.com/wp-content/uploads/2018/10/Hilton-Spa-2.jpg");
+COMMIT;
