@@ -1,0 +1,61 @@
+.searchWords {
+  display: flex;
+  flex-direction: column;
+  padding-left: 10.97px;
+}
+
+.cities {
+  z-index: 10;
+  position: absolute;
+  top: 6vh;
+  width: 30.89311859443631vw;
+  background-color: var(--color-5);
+  padding: 0.8vh 0.7320644216691069vw;
+  max-height: 40.64vh;
+  overflow: auto;
+}
+
+.cities li {
+  display: flex;
+  border-width: 0px;
+  border-bottom-width: 1px;
+  border-style: solid;
+  border-color: var(--color-principal);
+  padding: 1.76vh;
+  transition: background-color 250ms ease-in ;
+}
+
+.cities li:hover {
+  cursor: pointer;
+  background-color: var(--color-principal-opaco);
+}
+
+.cities li i {
+  position: relative;
+  right: 0.7320644216691069vw;
+  top: 0.8vh;
+  font-size: 1.438rem;
+  color: var(--color-3);
+}
+
+.city {
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.country {
+  font-size: 0.875rem;
+  color: var(--color-3);
+}
+
+@media (max-width: 768px) {
+  .cities {
+    top: 6.4vh;
+  }
+}
+
+@media (max-width: 480px) {
+  .cities {
+    width: 95vw;
+  }
+}
