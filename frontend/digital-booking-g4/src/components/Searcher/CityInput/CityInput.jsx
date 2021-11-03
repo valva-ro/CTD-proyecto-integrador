@@ -18,7 +18,6 @@ export default function CityInput() {
     } else {
       setIconGps(styles.gps);
     }
-    console.log("Text: " + inputText + "    State: " + inputContent);
   };
 
   const lister = (input) => {
