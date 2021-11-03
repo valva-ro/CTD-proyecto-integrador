@@ -50,7 +50,7 @@ public class CiudadDTO {
         if (this == o) return true;
         if (!(o instanceof CiudadDTO)) return false;
         CiudadDTO ciudadDTO = (CiudadDTO) o;
-        return id.equals(ciudadDTO.id) && Objects.equals(nombre, ciudadDTO.nombre) && Objects.equals(pais, ciudadDTO.pais);
+        return Objects.equals(id, ciudadDTO.id) && Objects.equals(nombre, ciudadDTO.nombre) && Objects.equals(pais, ciudadDTO.pais);
     }
 
     @Override

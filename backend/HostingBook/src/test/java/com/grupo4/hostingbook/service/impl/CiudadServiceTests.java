@@ -21,7 +21,7 @@ public class CiudadServiceTests {
 
     private final CiudadDTO ciudadPorCrear = new CiudadDTO("Manizales", "Colombia");
     private final CiudadDTO ciudadCreada = new CiudadDTO(1L, "Manizales", "Colombia");
-    private final CiudadDTO ciudadPorActualizar = new CiudadDTO(1L,"", "Colombia");
+    private final CiudadDTO ciudadPorActualizar = new CiudadDTO(1L,"Pereira", "");
     private final CiudadDTO ciudadActualizada = new CiudadDTO(1L, "Pereira", "Colombia");
 
     @Test

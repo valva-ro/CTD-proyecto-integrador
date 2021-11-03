@@ -41,9 +41,9 @@ public class Ciudad {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (!(o instanceof Ciudad)) return false;
         Ciudad ciudad = (Ciudad) o;
-        return id.equals(ciudad.id) && Objects.equals(nombre, ciudad.nombre) && Objects.equals(pais, ciudad.pais);
+        return Objects.equals(id, ciudad.id) && Objects.equals(nombre, ciudad.nombre) && Objects.equals(pais, ciudad.pais);
     }
 
     @Override
