@@ -15,6 +15,15 @@
     gap: 1rem;
     width: 100%;
 }
+/*______Error fetch______*/
+.sinResultados {
+    text-align: center;
+    padding: 12vh 0;
+    margin-top: 32vh;    ;
+    width: 100%;
+    color: var(--color-3);
+  }
+
 
 /*****************Responsive*****************/
 /*______Mobile______*/
