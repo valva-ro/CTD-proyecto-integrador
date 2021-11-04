@@ -17,26 +17,28 @@ export default function BloqueCategorias() {
     setDatos(data.items)
     if (data.isLoaded) {
       setDatos(data.items)
-    } 
+    }
 
   })
-  if (data.isLoaded) {
-    return (
-      <section className={styles.bloqueCategorias}>
-        <TituloBloque>Buscar por tipo de alojamiento</TituloBloque>
-        <div className={styles.listadoTarjetas}>
-          {
-            datos.map((dato, i) =>
-              <TarjetaCategoria key={`categoria-${i}`} fotoPortada={dato.urlImagen} nombre={dato.titulo} descripcion={dato.descripcion} />
-            )
-          }
-        </div>
-      </section>)
-  } else {
-    return (
-      <h2 className={styles.sinResultados}>Error al cargar las categorias</h2>
+  return (
+    <section className={styles.bloqueCategorias}>
 
-    )
-  }
+
+      <TituloBloque>Buscar por tipo de alojamiento</TituloBloque>
+      {!data.isLoaded ?
+        <h2 className={styles.sinResultados}>Error al cargar las categorias</h2> : (
+          <div className={styles.listadoTarjetas}>
+            {
+              datos.map((dato, i) =>
+                <TarjetaCategoria key={`categoria-${i}`} fotoPortada={dato.urlImagen} nombre={dato.titulo} descripcion={dato.descripcion} />
+              )
+            }
+          </div>)
+      }
+
+
+
+    </section>)
+
 
 }
