@@ -23,4 +23,10 @@ public class GlobalExceptionsHandler {
         logger.error(e.getMessage());
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
     }
+
+    @ExceptionHandler({NotImplementedException.class})
+    public ResponseEntity<String> procesarErrorNotImplemented(NotImplementedException e) {
+        logger.error(e.getMessage());
+        return ResponseEntity.status(HttpStatus.NOT_IMPLEMENTED).body(e.getMessage());
+    }
 }
