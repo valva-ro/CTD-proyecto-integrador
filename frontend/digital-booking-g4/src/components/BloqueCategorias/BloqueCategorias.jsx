@@ -17,13 +17,7 @@ export default function BloqueCategorias() {
     setDatos(data.items)
     if (data.isLoaded) {
       setDatos(data.items)
-    } else {
-      
-
-      setDatos(err.BloqueCategoriaserr)
-      
-    }
-
+    } 
 
   })
   if (data.isLoaded) {
@@ -40,9 +34,9 @@ export default function BloqueCategorias() {
       </section>)
   } else {
     return (
-    <h2 className={styles.sinResultados}>Error al cargar las categorias</h2>
-            
+      <h2 className={styles.sinResultados}>Error al cargar las categorias</h2>
+
     )
   }
-  
+
 }
