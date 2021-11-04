@@ -36,8 +36,8 @@ public class CiudadController implements CRUDController<CiudadDTO> {
     })
     @GetMapping
     public ResponseEntity<List<CiudadDTO>> obtenerTodos() {
-        List<CiudadDTO> ciudad = ciudadService.consultarTodos();
-        return ResponseEntity.ok(ciudad);
+        List<CiudadDTO> ciudades = ciudadService.consultarTodos();
+        return ResponseEntity.ok(ciudades);
     }
 
     @Override
