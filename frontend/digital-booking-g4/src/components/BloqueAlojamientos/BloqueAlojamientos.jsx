@@ -25,29 +25,37 @@ export default function BloqueAlojamientos({ categoriaActual }) {
     <section className={styles.recomendaciones}>
       <TituloBloque>
         {categoriaActual === ""
-          ? "Recomendaciones"
-          : capitalizeFirstLetter(categoriaActual)}
+          ? currentCity === ""
+            ? "Recomendaciones"
+            : `Recomendaciones en ${currentCity}`
+          : currentCity === ""
+          ? `${capitalizeFirstLetter(categoriaActual)}`
+          : `${capitalizeFirstLetter(categoriaActual)} en ${currentCity}`}
       </TituloBloque>
-      <ul
-        className={
-          alojamientosFiltrados.length < 2
-            ? styles.alojamientosUnaColumna
-            : styles.alojamientos
-        }
-      >
-        {alojamientosFiltrados.map((alojamiento, i) => (
-          <li key={i} className={styles.alojamiento}>
-            <TarjetaAlojamiento
-              titulo={alojamiento.title}
-              imagen={alojamiento.img}
-              categoria={alojamiento.category}
-              descripcion={alojamiento.description}
-              ubicacion={alojamiento.location}
-              cantEstrellas={alojamiento.stars}
-            />
-          </li>
-        ))}
-      </ul>
+      {alojamientosFiltrados.length === 0 ? (
+        <h2 className={styles.sinResultados}>No se encontraron resultados</h2>
+      ) : (
+        <ul
+          className={
+            alojamientosFiltrados.length < 2
+              ? styles.alojamientosUnaColumna
+              : styles.alojamientos
+          }
+        >
+          {alojamientosFiltrados.map((alojamiento, i) => (
+            <li key={i} className={styles.alojamiento}>
+              <TarjetaAlojamiento
+                titulo={alojamiento.title}
+                imagen={alojamiento.img}
+                categoria={alojamiento.category}
+                descripcion={alojamiento.description}
+                ubicacion={alojamiento.location}
+                cantEstrellas={alojamiento.stars}
+              />
+            </li>
+          ))}
+        </ul>
+      )}
     </section>
   );
 }

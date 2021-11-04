@@ -21,6 +21,13 @@
   margin-bottom: 2.5vh;
 }
 
+.sinResultados {
+  text-align: center;
+  padding: 12vh 0;
+  width: 100%;
+  color: var(--color-3);
+}
+
 @media (max-width: 1300px) {
   .alojamientosUnaColumna {
     width: 100%;
