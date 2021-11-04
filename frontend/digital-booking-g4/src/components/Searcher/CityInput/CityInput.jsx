@@ -4,7 +4,7 @@ import useClickOutside from "../../../hooks/useOnClickOutside";
 import cities from "../../../resources/cities.json";
 import styles from "./CityInput.module.css";
 
-export default function CityInput() {
+export default function CityInput({ setOnChangeCity }) {
   const [iconGps, setIconGps] = useState(styles.gpsEmpty);
   const [cityList, setCityList] = useState(null);
   const [inputContent, setInputContent] = useState("");
@@ -12,7 +12,7 @@ export default function CityInput() {
 
   useClickOutside(wrapperRef, () => setCityList(null));
 
-  const onType = (inputText) => {
+  const changeIconStyle = (inputText) => {
     if (inputText === "") {
       setIconGps(styles.gpsEmpty);
     } else {
@@ -27,6 +27,7 @@ export default function CityInput() {
           locations={cities}
           input={input}
           setCityList={setCityList}
+          setOnChangeCity={setOnChangeCity}
         />
       );
     } else {
@@ -47,8 +48,11 @@ export default function CityInput() {
           className={styles.input}
           onKeyUp={(e) => {
             lister(e);
-            onType(e.target.value);
+            changeIconStyle(e.target.value);
             setInputContent(e.target.value);
+          }}
+          onChange={(e) => {
+            setOnChangeCity(e.target.value);
           }}
         />
       </div>
