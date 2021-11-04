@@ -23,3 +23,12 @@ INSERT INTO categorias VALUES (2,"Hostels","807.105 hostels","https://images.uns
 INSERT INTO categorias VALUES (3,"Bed & Breakfasts","807.105 B&B's","https://images.unsplash.com/photo-1531088009183-5ff5b7c95f91?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1");
 INSERT INTO categorias VALUES (4,"Departamentos","807.105 departamentos","https://images.unsplash.com/photo-1499916078039-922301b0eb9b?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1");
 COMMIT;
+
+--
+-- Dumping data for table `caracteristicas`
+--
+INSERT INTO caracteristicas VALUES(1,"Wifi","fas fa-wifi");
+INSERT INTO caracteristicas VALUES(2,"Televisor","fas fa-tv-retro");
+INSERT INTO caracteristicas VALUES(3,"Estacionamiento Gratuito","fas fa-car");
+INSERT INTO caracteristicas VALUES(4,"Apto mascotas","fas fa-paw");
+COMMIT;

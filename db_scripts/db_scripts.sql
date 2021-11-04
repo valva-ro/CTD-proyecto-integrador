@@ -31,6 +31,10 @@ CREATE TABLE categorias (
   PRIMARY KEY  (categoria_id)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+
+--
+-- Table structure for table `caracteristicas`
+--
 CREATE TABLE caracteristicas (
   caracteristica_id INT UNSIGNED NOT NULL AUTO_INCREMENT,
   nombre VARCHAR(50) NOT NULL,
