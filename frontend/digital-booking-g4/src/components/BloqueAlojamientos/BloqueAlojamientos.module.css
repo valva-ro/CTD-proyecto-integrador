@@ -18,7 +18,13 @@
 }
 
 .alojamiento {
-    margin-bottom: 2.5vh;
+  margin-bottom: 2.5vh;
+}
+
+@media (max-width: 1300px) {
+  .alojamientosUnaColumna {
+    width: 100%;
+  }
 }
 
 @media (max-width: 1120px) {

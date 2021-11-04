@@ -1,11 +1,11 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useContext } from "react";
 import FilledButton from "../Buttons/FilledButton";
 import DatePicker, { registerLocale } from "react-datepicker";
-import cities from "../../resources/cities.json"
 import CityInput from "./CityInput/CityInput";
 import es from "date-fns/locale/es";
 import "react-datepicker/dist/react-datepicker.css";
 import styles from "./Searcher.module.css";
+import currentCityContext from "../../contexts/currentCityContext";
 
 registerLocale("es", es);
 
@@ -13,9 +13,12 @@ export default function Searcher() {
   const [quantityMonth, setQuantityMonth] = useState(2);
   const [iconDate, setIconDate] = useState(styles.dateIcon);
   const [dateRange, setDateRange] = useState([null, null]);
+  const [onChangeCity, setOnChangeCity] = useState("");
+  const [selectedCity, setSelectedCity] = useState("");
+  const { setCurrentCity } = useContext(currentCityContext);
   const [startDate, endDate] = dateRange;
   let datePickerRef = useRef(null);
-
+  
   useEffect(() => {
     if (window.screen.width <= 480) {
       setQuantityMonth(1);
@@ -23,7 +26,11 @@ export default function Searcher() {
       setQuantityMonth(2);
     }
   }, [quantityMonth]);
-
+  
+  useEffect(() => {
+    setCurrentCity(selectedCity);
+  }, [setCurrentCity, selectedCity]);
+  
   const closeCalendar = () => {
     datePickerRef.setOpen(false);
   };
@@ -44,6 +51,10 @@ export default function Searcher() {
     }
   };
 
+  const handleSubmit = () => {
+    setSelectedCity(onChangeCity);
+  }
+
   return (
     <div className={styles.globalContainer}>
       <div className={styles.boxing}>
@@ -51,7 +62,7 @@ export default function Searcher() {
           Busca ofertas en hoteles, casas y mucho más
         </h2>
         <div className={styles.inputs}>
-          <CityInput/>
+          <CityInput setOnChangeCity={setOnChangeCity} />
           <div className={styles.dateContainer}>
             <span className={iconDate}>
               <i className="far fa-calendar-alt"></i>
@@ -79,7 +90,9 @@ export default function Searcher() {
               </FilledButton>
             </div>
           </DatePicker>
-          <FilledButton>Buscar</FilledButton>
+          <FilledButton onClick={handleSubmit}>
+            Buscar
+          </FilledButton>
         </div>
       </div>
     </div>

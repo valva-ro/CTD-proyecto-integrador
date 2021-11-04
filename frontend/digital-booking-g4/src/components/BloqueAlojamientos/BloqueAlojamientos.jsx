@@ -1,17 +1,26 @@
-import React from "react";
+import React, { useContext } from "react";
 import TarjetaAlojamiento from "./TarjetaAlojamiento/TarjetaAlojamiento";
 import TituloBloque from "../TituloBloque/TituloBloque.jsx";
+import currentCityContext from "../../contexts/currentCityContext";
 
 import alojamientos from "../../resources/alojamientos.json";
 import styles from "./BloqueAlojamientos.module.css";
 
 export default function BloqueAlojamientos({ categoriaActual }) {
-  const alojamientosFiltrados =
-    categoriaActual === ""
-      ? alojamientos
-      : alojamientos.filter(
-          (alojamiento) => alojamiento.category === categoriaActual
-        );
+  const { currentCity } = useContext(currentCityContext);
+  const alojamientosFiltrados = alojamientos.filter((alojamiento) => {
+    let pasaElFiltro = true;
+    if (categoriaActual !== "" && currentCity !== "") {
+      pasaElFiltro =
+        categoriaActual === alojamiento.category &&
+        currentCity === alojamiento.location;
+    } else if (currentCity !== "") {
+      pasaElFiltro = currentCity === alojamiento.location;
+    } else if (categoriaActual !== "") {
+      pasaElFiltro = categoriaActual === alojamiento.category;
+    }
+    return pasaElFiltro;
+  });
   return (
     <section className={styles.recomendaciones}>
       <TituloBloque>

@@ -1,10 +1,10 @@
 import React from "react";
 import styles from "./DropDownMenu.module.css";
 
-export default function DropDownMenu({ locations, setCityList, input }) {
-
+export default function DropDownMenu({ locations, setCityList, input, setOnChangeCity }) {
   function setInput(input, city) {
     input.target.value = city.city + ", " + city.country;
+    setOnChangeCity(city.city);
     setCityList(null);
   }
 
