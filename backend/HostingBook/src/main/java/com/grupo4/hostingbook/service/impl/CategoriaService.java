@@ -65,6 +65,7 @@ public class CategoriaService implements CRUDService<CategoriaDTO> {
         }
         return categoriaActualizada;
     }
+
     @Override
     public void eliminar(Long id) throws ResourceNotFoundException, BadRequestException {
         validarId(id);

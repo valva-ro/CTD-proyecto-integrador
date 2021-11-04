@@ -1,15 +1,13 @@
-.globalContainer {
-  position: relative;
-}
-
 .boxing {
   background-color: var(--color-2);
-  padding: 2.9vh 14.3vw 3.3vh 14.3vw;
+  padding: 6vh 14vw;
   width: 100vw;
+  min-height: 150px;
+  max-height: 225px;
   display: flex;
   flex-direction: column;
   position: fixed;
-  top: 82px;
+  top: 92px;
   z-index: 1;
 }
 

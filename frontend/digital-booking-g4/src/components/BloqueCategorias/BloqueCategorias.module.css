@@ -1,25 +1,43 @@
 /*****************Bloque categorias*****************/
 /*______Todo el bloque______*/
-.bloqueCategorias{
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1rem;
-    margin-top: 261.89px;
+.bloqueCategorias {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: calc(92px + 12vh + 3.3vh + 1.4vh + 10vh);
 }
 
 /*______Contenedor/tarjeta______*/
 .listadoTarjetas {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    gap: 1rem;
-    width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 1rem;
+  width: 100%;
 }
 
 /*****************Responsive*****************/
 /*______Mobile______*/
-@media screen and (max-width:480px) {
-    .bloqueCategorias {
-        margin-top: 380px;
-    } 
+@media screen and (max-width: 480px) {
+  .bloqueCategorias {
+    margin-top: 380px;
+  }
+}
+
+@media screen and (max-height: 850px) {
+  .bloqueCategorias {
+    margin-top: calc(92px + 12vh + 3.3vh + 1.4vh + 5vh);
+  }
+}
+
+@media screen and (max-height: 600px) {
+  .bloqueCategorias {
+    margin-top: calc(92px + 12vh + 3.3vh + 1.4vh + 12vh);
+  }
+}
+
+@media screen and (max-height: 480px) {
+  .bloqueCategorias {
+    margin-top: calc(92px + 12vh + 3.3vh + 1.4vh + 15vh);
+  }
 }
