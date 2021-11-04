@@ -20,8 +20,8 @@ class CaracteristicaServiceTest {
 
     private final CaracteristicaDTO caracteristicaPorCrear = new CaracteristicaDTO("Wifi", "https://www.google.com/");
     private final CaracteristicaDTO caracteristicaCreada = new CaracteristicaDTO(1L, "Wifi", "https://www.google.com/");
-    private final CaracteristicaDTO caracteristicaPorActualizar = new CaracteristicaDTO(1L, "","");
-    private final CaracteristicaDTO caracteristicaActualizada = new CaracteristicaDTO(1L, "Wifi","https://www.google.com/");
+    private final CaracteristicaDTO caracteristicaPorActualizar = new CaracteristicaDTO(1L, "Guaifai","");
+    private final CaracteristicaDTO caracteristicaActualizada = new CaracteristicaDTO(1L, "Guaifai","https://www.google.com/");
 
     @Test
     public void test01ConsultarListaVacia() {
