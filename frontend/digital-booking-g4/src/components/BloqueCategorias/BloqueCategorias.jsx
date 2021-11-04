@@ -3,7 +3,7 @@ import TarjetaCategoria from "./TarjetaCategoria/TarjetaCategoria.jsx";
 import useFetch from "../../hooks/useFetch.js";
 import styles from './BloqueCategorias.module.css';
 import { useEffect, useState } from "react";
-import err from "../../resources/err.json"
+
 
 export default function BloqueCategorias() {
 
