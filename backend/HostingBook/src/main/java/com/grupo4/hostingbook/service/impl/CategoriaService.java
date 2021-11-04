@@ -77,7 +77,7 @@ public class CategoriaService implements CRUDService<CategoriaDTO> {
         } else {
             if (categoriaDTO.getTitulo() == null || categoriaDTO.getTitulo().isEmpty() || categoriaDTO.getTitulo().isBlank())
                 throw new BadRequestException(String.format(Mensajes.ERROR_CREACION_CAMPO_REQUERIDO, "categoría", "título"));
-            if (categoriaDTO.getDescripcion() == null ||categoriaDTO.getDescripcion().isEmpty() || categoriaDTO.getDescripcion().isBlank())
+            if (categoriaDTO.getDescripcion() == null || categoriaDTO.getDescripcion().isEmpty() || categoriaDTO.getDescripcion().isBlank())
                 throw new BadRequestException(String.format(Mensajes.ERROR_CREACION_CAMPO_REQUERIDO, "categoría", "descripción"));
             if (categoriaDTO.getUrlImagen() == null || categoriaDTO.getUrlImagen().isEmpty() || categoriaDTO.getUrlImagen().isBlank())
                 throw new BadRequestException(String.format(Mensajes.ERROR_CREACION_CAMPO_REQUERIDO, "categoría", "URL de la imagen"));
