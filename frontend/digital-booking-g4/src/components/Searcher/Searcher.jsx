@@ -25,7 +25,7 @@ export default function Searcher() {
     } else {
       setQuantityMonth(2);
     }
-  }, [quantityMonth]);
+  });
   
   useEffect(() => {
     setCurrentCity(selectedCity);
@@ -69,7 +69,7 @@ export default function Searcher() {
             </span>
           </div>
           <DatePicker
-            onSelect={(e) => styleChangeClick(e)}
+                        onSelect={(e) => styleChangeClick(e)}
             onChangeRaw={(e) => styleChange(e)}
             dateFormat="dd 'de' MMM."
             placeholderText="Check in  -  Check out"

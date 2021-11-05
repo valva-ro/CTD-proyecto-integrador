@@ -16,7 +16,6 @@ export default function DropDownMenu({ locations, setCityList, input, setOnChang
       )
 
     const isFiltrated = filtrated.length > 0
-    console.log(isFiltrated);
     return { filtrated, isFiltrated }
   }
 
