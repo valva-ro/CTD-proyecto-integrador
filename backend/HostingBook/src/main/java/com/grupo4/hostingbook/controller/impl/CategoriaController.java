@@ -18,6 +18,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/categorias")
+@CrossOrigin(origins = "*", methods= {RequestMethod.GET,RequestMethod.POST})
 public class CategoriaController implements CRUDController<CategoriaDTO> {
 
     @Qualifier("CategoriaService")

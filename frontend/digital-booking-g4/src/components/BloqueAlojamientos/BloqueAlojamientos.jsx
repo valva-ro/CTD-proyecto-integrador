@@ -2,7 +2,6 @@ import React, { useContext } from "react";
 import TarjetaAlojamiento from "./TarjetaAlojamiento/TarjetaAlojamiento";
 import TituloBloque from "../TituloBloque/TituloBloque.jsx";
 import currentCityContext from "../../contexts/currentCityContext";
-
 import alojamientos from "../../resources/alojamientos.json";
 import styles from "./BloqueAlojamientos.module.css";
 
@@ -29,8 +28,8 @@ export default function BloqueAlojamientos({ categoriaActual }) {
             ? "Recomendaciones"
             : `Recomendaciones en ${currentCity}`
           : currentCity === ""
-          ? `${capitalizeFirstLetter(categoriaActual)}`
-          : `${capitalizeFirstLetter(categoriaActual)} en ${currentCity}`}
+            ? `${capitalizeFirstLetter(categoriaActual)}`
+            : `${capitalizeFirstLetter(categoriaActual)} en ${currentCity}`}
       </TituloBloque>
       {alojamientosFiltrados.length === 0 ? (
         <h2 className={styles.sinResultados}>No se encontraron resultados</h2>
