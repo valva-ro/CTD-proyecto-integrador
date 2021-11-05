@@ -51,8 +51,6 @@ CREATE TABLE imagenes (
   PRIMARY KEY  (imagen_id)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-
-
 --
 -- Table structure for table `caracteristicas`
 --
@@ -66,4 +64,3 @@ CREATE TABLE caracteristicas (
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
-
