@@ -24,7 +24,7 @@
         "stars": "4"
     },
     {
-        "title": "Dpto. en La Plata",
+        "title": "Dpto. en Bariloche",
         "img": "https://images.unsplash.com/photo-1502462456379-a6dbfdd0faef?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTd8fGFwcGFydG1lbnR8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=60",
         "category": "departamentos",
         "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae minima illum omnis suscipit vel laborum commodi provident eveniet harum voluptatem quam cumque, nam maiores?",
@@ -56,7 +56,7 @@
         "stars": "3"
     },
     {
-        "title": "Dpto. en Recoleta",
+        "title": "Dpto. en Bogotá",
         "img": "https://images.unsplash.com/photo-1583377519891-1eea1c2e3947?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8YXBwYXJ0bWVudHxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=60",
         "category": "departamentos",
         "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae minima illum omnis suscipit vel laborum commodi provident eveniet harum voluptatem quam cumque, nam maiores?",
