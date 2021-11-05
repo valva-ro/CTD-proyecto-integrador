@@ -6,7 +6,7 @@
   filter: drop-shadow(0px 2px 4px rgba(0, 0, 0, 0.12));
   font-size: 1rem;
   font-weight: 700;
-  padding: 1.4vh 5vw;
+  padding: 0 5vw;
   transition: all ease-in-out 250ms;
 }
 .filledButton:hover {

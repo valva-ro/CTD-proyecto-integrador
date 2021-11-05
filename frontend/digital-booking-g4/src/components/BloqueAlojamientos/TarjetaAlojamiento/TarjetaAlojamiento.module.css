@@ -139,6 +139,7 @@
 .btnVerMas {
   width: 100%;
   margin-top: 1.5rem;
+  padding: 10px 0;
 }
 
 @media (max-width: 480px) {
