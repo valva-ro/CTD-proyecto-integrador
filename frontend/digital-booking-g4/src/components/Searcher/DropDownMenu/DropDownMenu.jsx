@@ -3,8 +3,8 @@ import styles from "./DropDownMenu.module.css";
 
 export default function DropDownMenu({ locations, setCityList, input, setOnChangeCity }) {
   function setInput(input, city) {
-    input.target.value = city.city + ", " + city.country;
-    setOnChangeCity(city.city);
+    input.target.value = city.nombre + ", " + city.pais;
+    setOnChangeCity(city.nombre);
     setCityList(null);
   }
 
@@ -24,18 +24,18 @@ export default function DropDownMenu({ locations, setCityList, input, setOnChang
       {locations
         .filter(
           (location) =>
-            validate(location.country) ||
-            validate(location.city) ||
-            validate(location.city + " " + location.country) ||
-            validate(location.country + " " + location.city)
+            validate(location.pais) ||
+            validate(location.nombre) ||
+            validate(location.nombre + " " + location.pais) ||
+            validate(location.pais + " " + location.nombre)
         )
-        .map((city, index) => {
+        .map((location, index) => {
           return (
-            <li key={index} onClick={() => setInput(input, city)}>
+            <li key={index} onClick={() => setInput(input, location)}>
               <i className="fas fa-map-marker-alt"></i>
               <div className={styles.searchWords}>
-                <p className={styles.city}>{city.city}</p>
-                <p className={styles.country}>{city.country}</p>
+                <p className={styles.city}>{location.nombre}</p>
+                <p className={styles.country}>{location.pais}</p>
               </div>
             </li>
           );
