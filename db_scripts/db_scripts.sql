@@ -50,8 +50,12 @@ CREATE TABLE imagenes (
   imagen_URL TEXT NOT NULL COMMENT "url de la imagen",
   PRIMARY KEY  (imagen_id)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
---ver si en esta US se agregan claves foráneas o hay alguna particular
 
+
+
+--
+-- Table structure for table `caracteristicas`
+--
 CREATE TABLE caracteristicas (
   caracteristica_id INT UNSIGNED NOT NULL AUTO_INCREMENT,
   nombre VARCHAR(50) NOT NULL,

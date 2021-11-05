@@ -18,12 +18,11 @@ USE booking;
 -- Dumping data for table `categorias`
 --
 SET AUTOCOMMIT=0;
-INSERT INTO categorias (titulo, descripcion, URL_imagen) VALUES ("Hoteles","807.105 hoteles","https://images.unsplash.com/photo-1618773928121-c32242e63f39?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTd8fGhvdGVsfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1");
-INSERT INTO categorias (titulo, descripcion, URL_imagen) VALUES ("Hostels","807.105 hostels","https://images.unsplash.com/photo-1555854877-bab0e564b8d5?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8aG9zdGVsfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1");
-INSERT INTO categorias (titulo, descripcion, URL_imagen) VALUES ("Bed & Breakfasts","807.105 B&B"s","https://images.unsplash.com/photo-1531088009183-5ff5b7c95f91?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1");
-INSERT INTO categorias (titulo, descripcion, URL_imagen) VALUES ("Departamentos","807.105 departamentos","https://images.unsplash.com/photo-1499916078039-922301b0eb9b?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1");
+INSERT INTO categorias VALUES (1,"Hoteles","807.105 hoteles","https://images.unsplash.com/photo-1618773928121-c32242e63f39?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTd8fGhvdGVsfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1");
+INSERT INTO categorias VALUES (2,"Hostels","807.105 hostels","https://images.unsplash.com/photo-1555854877-bab0e564b8d5?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8aG9zdGVsfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1");
+INSERT INTO categorias VALUES (3,"Bed & Breakfasts","807.105 B&B's","https://images.unsplash.com/photo-1531088009183-5ff5b7c95f91?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1");
+INSERT INTO categorias VALUES (4,"Departamentos","807.105 departamentos","https://images.unsplash.com/photo-1499916078039-922301b0eb9b?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1");
 COMMIT;
-
 --
 -- Dumping data for table `ciudades`
 --
@@ -50,4 +49,14 @@ INSERT INTO imagenes VALUES (1,"Habitación","https://www.cataloniahotels.com/es
 INSERT INTO imagenes VALUES (2,"Cocina","https://www.mountainhosteltarter.com/wp-content/uploads/2017/09/mountain-hostel-tarter-andorra-kitchen-8.jpg");
 INSERT INTO imagenes VALUES (3,"Baño","https://www.revista80dias.es/images/2014/12/roca-nivaria-bano-suite.jpg");
 INSERT INTO imagenes VALUES (4,"Pileta","http://descubrirturismo.com/wp-content/uploads/2018/10/Hilton-Spa-2.jpg");
+COMMIT;
+
+--
+-- Dumping data for table `caracteristicas`
+--
+SET AUTOCOMMIT=0;
+INSERT INTO caracteristicas VALUES(1,"Wifi","fas fa-wifi");
+INSERT INTO caracteristicas VALUES(2,"Televisor","fas fa-tv-retro");
+INSERT INTO caracteristicas VALUES(3,"Estacionamiento Gratuito","fas fa-car");
+INSERT INTO caracteristicas VALUES(4,"Apto mascotas","fas fa-paw");
 COMMIT;
