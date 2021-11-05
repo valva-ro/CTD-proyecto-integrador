@@ -29,6 +29,7 @@
 
 .input {
   display: flex;
+  
 }
 
 .dateIcon,
@@ -49,6 +50,7 @@
   display: flex;
   gap: 0.25rem;
   justify-content: center;
+  height: 38px;
 }
 
 .inputs input:nth-child(4) {

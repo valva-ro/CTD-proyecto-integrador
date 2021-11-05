@@ -19,9 +19,8 @@ div.react-datepicker {
 }
 
 div.react-datepicker__input-container input {
-  padding: 1rem 2.4rem;
+  padding: 0.5rem 2.4rem;
   min-width: 30.89311859443631vw;
-  max-height: 6.4vh;
 }
 
 div.react-datepicker-wrapper {
@@ -121,7 +120,6 @@ div.react-datepicker__header:not(.react-datepicker__header--has-time-select) {
 @media (max-width: 768px) {
   div.react-datepicker__input-container input {
     width: 18.301610541727673vw;
-    height: 47px;
   }
 
   div.react-datepicker__day-name,

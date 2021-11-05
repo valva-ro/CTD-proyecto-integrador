@@ -4,8 +4,7 @@
 
 .input {
   min-width: 30.89311859443631vw;
-  max-height: 6.4vh;
-  padding: 1rem 2.4rem;
+  padding: 0.5rem 2.4rem;
   padding-left: 2rem;
 }
 
@@ -35,7 +34,6 @@
 
   .input {
     width: 18.301610541727673vw;
-    height: 47px;
     padding-left: 2.4rem;
   }
 }
