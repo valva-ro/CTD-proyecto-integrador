@@ -8,6 +8,7 @@ public class CiudadDTO implements Serializable {
     private Long id;
     private String nombre;
     private String pais;
+    //TODO revisar los test al agregar las demás atributos.
 
     public CiudadDTO(){}
 
