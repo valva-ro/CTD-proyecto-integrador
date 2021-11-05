@@ -14,7 +14,7 @@
 
 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
-SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE="TRADITIONAL";
+SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL';
 
 DROP SCHEMA IF EXISTS booking;
 CREATE SCHEMA booking;
@@ -28,16 +28,19 @@ CREATE TABLE categorias (
   categoria_id SMALLINT UNSIGNED NOT NULL AUTO_INCREMENT,
   titulo VARCHAR(50) NOT NULL,
   descripcion VARCHAR(200) NOT NULL,
-  URL_imagen TEXT  NOT NULL ,
-  PRIMARY KEY  (categoria_id)
+  URL_imagen TEXT NOT NULL,
+  PRIMARY KEY (categoria_id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Table structure for table `ciudades`
+--
 DROP TABLE IF EXISTS ciudades;
 CREATE TABLE ciudades (
-  ciudad_id SMALLINT UNSIGNED NOT NULL AUTO_INCREMENT,
+  ciudad_id INT UNSIGNED NOT NULL AUTO_INCREMENT,
   nombre VARCHAR(50) NOT NULL,
   pais VARCHAR(50) NOT NULL,
-  PRIMARY KEY  (ciudad_id)
+  PRIMARY KEY (ciudad_id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -45,21 +48,62 @@ CREATE TABLE ciudades (
 --
 DROP TABLE IF EXISTS imagenes;
 CREATE TABLE imagenes (
-  imagen_id SMALLINT UNSIGNED NOT NULL AUTO_INCREMENT COMMENT "id de la tabla imagenes", 
+  imagen_id INT UNSIGNED NOT NULL AUTO_INCREMENT COMMENT "id de la tabla imagenes", 
   imagen_titulo VARCHAR(50) NOT NULL  COMMENT "titulo de la imagen",
   imagen_URL TEXT NOT NULL COMMENT "url de la imagen",
-  PRIMARY KEY  (imagen_id)
-)ENGINE=InnoDB DEFAULT CHARSET=utf8;
---ver si en esta US se agregan claves foráneas o hay alguna particular
+  fk_producto INT UNSIGNED NOT NULL,
+  PRIMARY KEY (imagen_id),
+  CONSTRAINT productos
+		FOREIGN KEY (fk_producto)
+		REFERENCES booking.productos (producto_id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Table structure for table `caracteristicas`
+--
 CREATE TABLE caracteristicas (
   caracteristica_id INT UNSIGNED NOT NULL AUTO_INCREMENT,
   nombre VARCHAR(50) NOT NULL,
-  icono TEXT,
+  icono TEXT NOT NULL,
   PRIMARY KEY (caracteristica_id)
-)ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Table structure for table `productos`
+--
+DROP TABLE IF EXISTS productos;
+CREATE TABLE productos (
+	producto_id INT UNSIGNED NOT NULL AUTO_INCREMENT,
+    nombre VARCHAR(50) NOT NULL,
+    descripcion VARCHAR(50) NOT NULL,
+    fk_categoria SMALLINT UNSIGNED NOT NULL,
+    fk_ciudad INT UNSIGNED NOT NULL,
+    PRIMARY KEY  (producto_id),
+    CONSTRAINT categorias
+		FOREIGN KEY (fk_categoria)
+		REFERENCES booking.categorias (categoria_id),
+	CONSTRAINT ciudades
+		FOREIGN KEY (fk_ciudad)
+		REFERENCES booking.ciudades (ciudad_id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Table structure for table `producto_caracteristica`
+--
+DROP TABLE IF EXISTS producto_caracteristica;
+CREATE TABLE producto_caracteristica (
+	producto_caracteristica_id INT UNSIGNED NOT NULL AUTO_INCREMENT,
+    producto_id INT UNSIGNED NOT NULL,
+    caracteristica_id INT UNSIGNED NOT NULL,
+    PRIMARY KEY  (producto_caracteristica_id),
+    CONSTRAINT producto_caracteristica_producto_id_foreign
+		FOREIGN KEY (producto_id)
+		REFERENCES booking.productos (producto_id),
+	CONSTRAINT producto_caracteristica_caracteristica_id_foreign
+		FOREIGN KEY (caracteristica_id)
+		REFERENCES booking.caracteristicas (caracteristica_id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
-
