@@ -11,12 +11,14 @@ export default function BloqueAlojamientos({ categoriaActual }) {
     let pasaElFiltro = true;
     if (categoriaActual !== "" && currentCity !== "") {
       pasaElFiltro =
-        categoriaActual === alojamiento.category &&
-        currentCity === alojamiento.location;
+        categoriaActual.toLowerCase() === alojamiento.category.toLowerCase() &&
+        currentCity.toLowerCase() === alojamiento.location.toLowerCase();
     } else if (currentCity !== "") {
-      pasaElFiltro = currentCity === alojamiento.location;
+      pasaElFiltro =
+        currentCity.toLowerCase() === alojamiento.location.toLowerCase();
     } else if (categoriaActual !== "") {
-      pasaElFiltro = categoriaActual === alojamiento.category;
+      pasaElFiltro =
+        categoriaActual.toLowerCase() === alojamiento.category.toLowerCase();
     }
     return pasaElFiltro;
   });
@@ -28,8 +30,8 @@ export default function BloqueAlojamientos({ categoriaActual }) {
             ? "Recomendaciones"
             : `Recomendaciones en ${currentCity}`
           : currentCity === ""
-            ? `${capitalizeFirstLetter(categoriaActual)}`
-            : `${capitalizeFirstLetter(categoriaActual)} en ${currentCity}`}
+          ? `${capitalizeFirstLetter(categoriaActual)}`
+          : `${capitalizeFirstLetter(categoriaActual)} en ${currentCity}`}
       </TituloBloque>
       {alojamientosFiltrados.length === 0 ? (
         <h2 className={styles.sinResultados}>No se encontraron resultados</h2>

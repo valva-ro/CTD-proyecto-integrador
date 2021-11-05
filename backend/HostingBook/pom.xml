@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.grupo4</groupId>
-	<artifactId>hostingbooking</artifactId>
+	<artifactId>hostingbook</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>hostingbooking</name>
+	<name>hostingbook</name>
 	<description>API Rest para HostingBooking</description>
 
 	<properties>
