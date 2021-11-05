@@ -1,7 +1,9 @@
 package com.grupo4.hostingbook.persistence.entites;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 @Entity
 @Table(name = "ciudades")
@@ -13,6 +15,9 @@ public class Ciudad {
     private Long id;
     private String nombre;
     private String pais;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "ciudades")
+    private Set<Producto> productos = new HashSet<>();
 
     public Long getId() {
         return id;

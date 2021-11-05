@@ -1,8 +1,9 @@
 package com.grupo4.hostingbook.model;
 
+import java.io.Serializable;
 import java.util.Objects;
 
-public class CategoriaDTO {
+public class CategoriaDTO implements Serializable {
 
     private Long id;
     private String titulo;

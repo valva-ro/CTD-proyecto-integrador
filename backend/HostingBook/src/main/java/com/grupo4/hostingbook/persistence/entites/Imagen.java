@@ -15,6 +15,10 @@ public class Imagen {
     @Column(name="imagen_URL")
     private String imagenUrl;
 
+    @OneToMany
+    @JoinColumn(name = "fk_producto", nullable = false)
+    private Producto producto;
+
     public Long getImagenId() {
         return imagenId;
     }

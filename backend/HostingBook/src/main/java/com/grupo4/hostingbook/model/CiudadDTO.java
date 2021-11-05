@@ -1,8 +1,9 @@
 package com.grupo4.hostingbook.model;
 
+import java.io.Serializable;
 import java.util.Objects;
 
-public class CiudadDTO {
+public class CiudadDTO implements Serializable {
 
     private Long id;
     private String nombre;

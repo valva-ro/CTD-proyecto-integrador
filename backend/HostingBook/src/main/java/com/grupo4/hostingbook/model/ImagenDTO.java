@@ -1,8 +1,9 @@
 package com.grupo4.hostingbook.model;
 
+import java.io.Serializable;
 import java.util.Objects;
 
-public class ImagenDTO {
+public class ImagenDTO implements Serializable {
 
     private Long imagenId;
     private String imagenTitulo;
