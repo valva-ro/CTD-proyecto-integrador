@@ -1,7 +1,25 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styles from "./DropDownMenu.module.css";
 
 export default function DropDownMenu({ locations, setCityList, input, setOnChangeCity }) {
+  const [ulClassname, setUlclassName] = useState(null)
+
+
+  function filt(locations) {
+    const filtrated =
+      locations.filter(
+        (location) =>
+          validate(location.country) ||
+          validate(location.city) ||
+          validate(location.city + " " + location.country) ||
+          validate(location.country + " " + location.city)
+      )
+
+    const isFiltrated = filtrated.length > 0
+    console.log(isFiltrated);
+    return { filtrated, isFiltrated }
+  }
+
   function setInput(input, city) {
     input.target.value = city.city + ", " + city.country;
     setOnChangeCity(city.city);
@@ -18,17 +36,15 @@ export default function DropDownMenu({ locations, setCityList, input, setOnChang
     );
     return inputNoEstaVacio && tieneSubstringDelInput;
   }
+  useEffect(() => {
+
+    filt(locations).isFiltrated ? setUlclassName(styles.cities) : setUlclassName(null)
+  }, [input.target.value.split("").length])
+
 
   return (
-    <ul className={styles.cities}>
-      {locations
-        .filter(
-          (location) =>
-            validate(location.country) ||
-            validate(location.city) ||
-            validate(location.city + " " + location.country) ||
-            validate(location.country + " " + location.city)
-        )
+    <ul className={ulClassname}>
+      {filt(locations).filtrated
         .map((city, index) => {
           return (
             <li key={index} onClick={() => setInput(input, city)}>
