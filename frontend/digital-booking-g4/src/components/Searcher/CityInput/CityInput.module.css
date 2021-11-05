@@ -1,6 +1,5 @@
 .cityContainer {
   position: relative;
-  height: 6vh;
 }
 
 .input {
@@ -37,7 +36,7 @@
   .input {
     width: 18.301610541727673vw;
     height: 47px;
-    padding-left: 2rem;
+    padding-left: 2.4rem;
   }
 }
 
@@ -47,12 +46,9 @@
     bottom: 5px;
   }
 
-  .cityContainer {
-    height: 6vh;
-  }
-
   .input {
-    width: 95vw;
+    position: relative;
+    width: 100%;
   }
 
   .applyContainer {

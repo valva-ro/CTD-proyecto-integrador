@@ -4,7 +4,7 @@
     display: flex;
     flex-wrap: wrap;
     gap: 1rem;
-    margin-top: 261.89px;
+    margin-top: 264px;
 }
 
 /*______Contenedor/tarjeta______*/
@@ -17,9 +17,24 @@
 }
 
 /*****************Responsive*****************/
+
+@media screen and (max-width: 1024px) {
+    .bloqueCategorias {
+        margin-top: 256px;
+    } 
+
+}
+
+/*______Tablet______*/
+@media screen and (max-width:860px) {
+    .bloqueCategorias {
+        margin-top: 279px;
+    } 
+}
+
 /*______Mobile______*/
 @media screen and (max-width:480px) {
     .bloqueCategorias {
-        margin-top: 380px;
+        margin-top: 386.56px;
     } 
 }

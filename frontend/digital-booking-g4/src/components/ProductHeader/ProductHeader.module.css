@@ -1,0 +1,70 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@700&display=swap');
+
+.contenedorHeader {
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--color-3);
+    margin-top: 92px;
+    padding: 10px 50px;
+    width: 100vw;
+}
+
+.headerIzquierda {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 2px;
+}
+
+.headerIzquierda p:nth-of-type(1){
+    color: var(--color-4);
+    font-family: Quicksand;
+    font-size: 0.875rem;
+    text-transform: uppercase;
+}
+
+.headerIzquierda p:nth-of-type(2){
+    color: var(--color-5);
+    font-size: 1.5rem;
+}
+
+.headerDerecha a {
+    color: var(--color-5);
+}
+
+.headerDerecha a:hover {
+    color: var(--color-principal);
+}
+
+.headerDerecha span i{
+    font-size: 2.5rem;
+}
+
+@media screen and (max-width:860px) {
+
+    .contenedorHeader {
+        padding: 10px 30px;
+        margin-top: 112px;
+    }
+
+    .headerDerecha span i{
+        font-size: 2.25rem;
+    }
+
+}
+
+@media screen and (max-width:480px) {
+
+    .contenedorHeader{
+        align-items: center;
+        margin-top: 82px;
+        padding: 10px 30px;
+        box-shadow: 2px 2px 6px var(--color-3);
+    }
+
+    .headerDerecha span i{
+        font-size: 2rem;
+    }
+
+}
