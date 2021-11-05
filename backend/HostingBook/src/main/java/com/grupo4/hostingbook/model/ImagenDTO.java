@@ -8,7 +8,6 @@ public class ImagenDTO implements Serializable {
     private Long imagenId;
     private String imagenTitulo;
     private String imagenUrl;
-    //TODO revisar los test al agregar las demás atributos.
 
     public ImagenDTO() {}
 

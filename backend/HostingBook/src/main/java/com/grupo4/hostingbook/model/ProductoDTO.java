@@ -76,6 +76,38 @@ public class ProductoDTO implements Serializable {
         this.descripcion = descripcion;
     }
 
+    public CategoriaDTO getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(CategoriaDTO categoria) {
+        this.categoria = categoria;
+    }
+
+    public CiudadDTO getCiudad() {
+        return ciudad;
+    }
+
+    public void setCiudad(CiudadDTO ciudad) {
+        this.ciudad = ciudad;
+    }
+
+    public Set<ImagenDTO> getImagenes() {
+        return imagenes;
+    }
+
+    public void setImagenes(Set<ImagenDTO> imagenes) {
+        this.imagenes = imagenes;
+    }
+
+    public Set<CaracteristicaDTO> getCaracteristicas() {
+        return caracteristicas;
+    }
+
+    public void setCaracteristicas(Set<CaracteristicaDTO> caracteristicas) {
+        this.caracteristicas = caracteristicas;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

@@ -14,7 +14,7 @@ public class Caracteristica {
     private String nombre;
     private String icono;
 
-    @ManyToMany(mappedBy = "producto_caracteristica")
+    @ManyToMany(mappedBy = "caracteristicas")
     private Set<Producto> productos;
 
     public Long getId() {

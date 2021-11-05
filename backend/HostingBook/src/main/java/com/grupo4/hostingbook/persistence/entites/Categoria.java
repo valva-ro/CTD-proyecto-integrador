@@ -18,7 +18,7 @@ public class Categoria {
     @Column(name="url_imagen")
     private String urlImagen;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "categorias")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "categoria")
     private Set<Producto> productos = new HashSet<>();
 
     public Long getId() {

@@ -1,14 +1,17 @@
 package com.grupo4.hostingbook.model;
 
+import com.grupo4.hostingbook.persistence.entites.Producto;
+
 import java.io.Serializable;
 import java.util.Objects;
+import java.util.Set;
 
 public class CiudadDTO implements Serializable {
 
     private Long id;
     private String nombre;
     private String pais;
-    //TODO revisar los test al agregar las demás atributos.
+    private Set<ProductoDTO> productos;
 
     public CiudadDTO(){}
 
@@ -21,6 +24,13 @@ public class CiudadDTO implements Serializable {
         this.id = id;
         this.nombre = nombre;
         this.pais = pais;
+    }
+
+    public CiudadDTO(Long id, String nombre, String pais, Set<ProductoDTO> productos) {
+        this.id = id;
+        this.nombre = nombre;
+        this.pais = pais;
+        this.productos = productos;
     }
 
     public Long getId() {

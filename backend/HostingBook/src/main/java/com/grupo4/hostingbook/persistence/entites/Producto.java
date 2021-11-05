@@ -1,5 +1,7 @@
 package com.grupo4.hostingbook.persistence.entites;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Objects;
@@ -15,15 +17,16 @@ public class Producto {
     private String nombre;
     private String descripcion;
 
-    @OneToMany
-    @JoinColumn(name = "fk_categoria", nullable = false)
+    @ManyToOne
+    @JoinColumn(name = "fk_categoria")
     private Categoria categoria;
 
-    @OneToMany
-    @JoinColumn(name = "fk_ciudades", nullable = false)
+    @ManyToOne
+    @JoinColumn(name = "fk_ciudades")
     private Ciudad ciudad;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "productos")
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "fk_producto")
     private Set<Imagen> imagenes = new HashSet<>();
 
     @ManyToMany
@@ -58,6 +61,37 @@ public class Producto {
         this.descripcion = descripcion;
     }
 
+    public Categoria getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(Categoria categoria) {
+        this.categoria = categoria;
+    }
+
+    public Ciudad getCiudad() {
+        return ciudad;
+    }
+
+    public void setCiudad(Ciudad ciudad) {
+        this.ciudad = ciudad;
+    }
+
+    public Set<Imagen> getImagenes() {
+        return imagenes;
+    }
+
+    public void setImagenes(Set<Imagen> imagenes) {
+        this.imagenes = imagenes;
+    }
+
+    public Set<Caracteristica> getCaracteristicas() {
+        return caracteristicas;
+    }
+
+    public void setCaracteristicas(Set<Caracteristica> caracteristicas) {
+        this.caracteristicas = caracteristicas;
+    }
 
     @Override
     public boolean equals(Object o) {

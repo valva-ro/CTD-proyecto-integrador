@@ -16,7 +16,7 @@ public class Ciudad {
     private String nombre;
     private String pais;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "ciudades")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "ciudad")
     private Set<Producto> productos = new HashSet<>();
 
     public Long getId() {
