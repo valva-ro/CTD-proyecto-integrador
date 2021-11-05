@@ -11,8 +11,8 @@
 .gps,
 .gpsEmpty {
   position: absolute;
-  left: 0.563rem;
-  top: .9vh;
+  left: 10px;
+  top: 5px;
   font-size: 1.6rem;
   color: var(--color-2);
   z-index: 1;
@@ -27,11 +27,6 @@
     min-width: 18.301610541727673vw;
   }
 
-  .gps,
-  .gpsEmpty {
-    bottom: 8px;
-  }
-
   .input {
     width: 18.301610541727673vw;
     padding-left: 2.4rem;
@@ -39,11 +34,6 @@
 }
 
 @media (max-width: 480px) {
-  .gps,
-  .gpsEmpty {
-    bottom: 5px;
-  }
-
   .input {
     position: relative;
     width: 100%;

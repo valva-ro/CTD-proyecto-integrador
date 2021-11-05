@@ -1,20 +1,19 @@
-
 .boxing {
   background-color: var(--color-3);
-  padding: 25px 0;
+  padding: 25px;
   width: 100vw;
-  display: flex;
-  flex-direction: column;
   position: fixed;
   top: 92px;
   z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
 .letter {
   color: var(--color-5);
   text-align: center;
   font-size: 2.25rem;
-  padding-bottom: 25px;
 }
 
 .dateContainer {
@@ -29,14 +28,13 @@
 
 .input {
   display: flex;
-  
 }
 
 .dateIcon,
 .dateIconEmpty {
   position: absolute;
-  left: 0.863rem;
-  top: .9vh;
+  left: 18px;
+  top: 4px;
   font-size: 1.6rem;
   color: var(--color-2--opaco);
   z-index: 1;
@@ -48,7 +46,7 @@
 
 .inputs {
   display: flex;
-  gap: 0.25rem;
+  gap: 8px;
   justify-content: center;
   height: 38px;
 }
@@ -63,37 +61,19 @@
   margin: 20px;
 }
 
-@media (max-width: 1024px) {
-  .letter {
-    font-size: 1.874rem;
-  }
-}
-
 @media (max-width: 860px) {
   .letter {
     font-size: 1.874rem;
   }
 
-  .dateIconEmpty,
-  .dateIcon {
-    left: 16px;
-  }
-
   .boxing {
     padding: 30px 10px;
-    position: fixed;
     top: 112px;
-    
   }
 
   .inputs {
     gap: 0.5rem;
     padding: 0 5vw;
-  }
-
-  .gps,
-  .gpsEmpty {
-    bottom: 8px;
   }
 
   .input {
@@ -103,60 +83,31 @@
   }
 }
 
-@media (max-width: 633px) {
+@media (max-width: 480px) {
+  .dateIcon,
+  .dateIconEmpty {
+    position: absolute;
+    left: 12px;
+    top: 6px;
+  }
   .letter {
     font-size: 1.6rem;
   }
-}
 
-@media (max-width: 480px) {
-  .gps,
-  .gpsEmpty {
-    bottom: 5px;
+  .boxing {
+    top: 82px;
   }
 
   .dateContainer {
     margin: -4px;
   }
 
-  .boxing {
-    padding: 20px 0px;
-    position: absolute;
-    top: 82px;
-  }
-
   .inputs {
     flex-direction: column;
-    gap: 0.6rem;
-    padding: 10px;
-  }
-
-  .input {
-    width: 95vw;
-  }
-
-  .letter {
-    font-size: 1.574rem;
+    margin: 40px 0;
   }
 
   .inputs input:nth-child(4) {
     margin-left: 0px;
-  }
-
-  .dateIcon,
-  .dateIconEmpty {
-    left: 10px;
-  }
-
-  .dateIcon {
-    top: 12px;
-  }
-
-  .dateIconEmpty {
-    top: 7px;
-  }
-
-  .applyContainer {
-    margin: 10px;
   }
 }
