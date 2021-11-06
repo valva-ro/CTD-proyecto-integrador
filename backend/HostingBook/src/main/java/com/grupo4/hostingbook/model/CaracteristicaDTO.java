@@ -50,13 +50,13 @@ public class CaracteristicaDTO {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof CaracteristicaDTO)) return false;
+        if (o == null || getClass() != o.getClass()) return false;
         CaracteristicaDTO that = (CaracteristicaDTO) o;
-        return Objects.equals(getId(), that.getId()) && Objects.equals(getNombre(), that.getNombre()) && Objects.equals(getIcono(), that.getIcono());
+        return id.equals(that.id) && nombre.equals(that.nombre) && icono.equals(that.icono);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId(), getNombre(), getIcono());
+        return Objects.hash(id, nombre, icono);
     }
 }
