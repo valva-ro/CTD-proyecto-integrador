@@ -31,6 +31,7 @@
 
 .headerDerecha a {
     color: var(--color-5);
+    transition: all ease-in-out 250ms;
 }
 
 .headerDerecha a:hover {
