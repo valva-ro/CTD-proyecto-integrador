@@ -51,7 +51,8 @@ public class CategoriaController implements CRUDController<CategoriaDTO> {
     @Override
     @ApiOperation(value = "Busca una categoria por ID")
     @ApiResponses(value = { @ApiResponse(code = 200, message = "Success"),
-            @ApiResponse(code = 404, message = "Not found"), @ApiResponse(code = 400, message = "Bad Request") })
+                            @ApiResponse(code = 404, message = "Not found"), 
+                            @ApiResponse(code = 400, message = "Bad Request") })
     @GetMapping("/{id}")
     public ResponseEntity<CategoriaDTO> buscarPorId(@PathVariable Long id)
             throws BadRequestException, ResourceNotFoundException {
@@ -62,7 +63,8 @@ public class CategoriaController implements CRUDController<CategoriaDTO> {
     @Override
     @ApiOperation(value = "Actualiza una categoría")
     @ApiResponses(value = { @ApiResponse(code = 200, message = "Success"),
-            @ApiResponse(code = 404, message = "Not found"), @ApiResponse(code = 400, message = "Bad Request") })
+                            @ApiResponse(code = 404, message = "Not found"), 
+                            @ApiResponse(code = 400, message = "Bad Request") })
     @PutMapping
     public ResponseEntity<CategoriaDTO> actualizar(@RequestBody CategoriaDTO categoria)
             throws BadRequestException, ResourceNotFoundException {
@@ -73,7 +75,8 @@ public class CategoriaController implements CRUDController<CategoriaDTO> {
     @Override
     @ApiOperation(value = "Elimina una categoría")
     @ApiResponses(value = { @ApiResponse(code = 200, message = "Success"),
-            @ApiResponse(code = 404, message = "Not found"), @ApiResponse(code = 400, message = "Bad Request") })
+                            @ApiResponse(code = 404, message = "Not found"), 
+                            @ApiResponse(code = 400, message = "Bad Request") })
     @DeleteMapping("/{id}")
     public ResponseEntity<String> eliminar(@PathVariable Long id)
             throws BadRequestException, ResourceNotFoundException {
