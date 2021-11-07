@@ -6,14 +6,15 @@ import styles from "./BloqueCategorias.module.css";
 
 export default function BloqueCategorias({ setCategoriaActual }) {
   const [tarjetaActiva, setTarjetaActiva] = useState(null);
-  const [datos, setDatos] = useState([]);
+  const [categorias, setCategorias] = useState([]);
   const data = useFetch("categorias");
 
   useEffect(() => {
     if (data.isLoaded) {
-      setDatos(data.items);
+      setCategorias(data.items);
     }
-  });
+  }, [data.isLoaded, data.items]);
+
   return (
     <section className={styles.bloqueCategorias}>
       <TituloBloque>Buscar por tipo de alojamiento</TituloBloque>
@@ -21,7 +22,7 @@ export default function BloqueCategorias({ setCategoriaActual }) {
         <h2 className={styles.sinResultados}>Error al cargar las categorias</h2>
       ) : (
         <div className={styles.listadoTarjetas}>
-          {datos.map((dato, i) => (
+          {categorias.map((dato, i) => (
             <TarjetaCategoria
               key={`categoria-${i}`}
               item={i}

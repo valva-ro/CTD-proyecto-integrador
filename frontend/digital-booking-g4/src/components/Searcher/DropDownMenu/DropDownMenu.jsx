@@ -23,8 +23,8 @@ export default function DropDownMenu({
   }
 
   function setInput(input, city) {
-    input.target.value = city.city + ", " + city.country;
-    setOnChangeCity(city.city);
+    input.target.value = city.nombre + ", " + city.pais;
+    setOnChangeCity(city.nombre);
     setCityList(null);
   }
 
