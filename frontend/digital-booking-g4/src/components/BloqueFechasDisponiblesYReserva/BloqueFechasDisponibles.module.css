@@ -47,7 +47,6 @@
   }
   .agregarReservas p {
     width: 100%;
-    text-align: center;
     display: block;
     margin: 0;
   }
@@ -57,7 +56,8 @@
 }
 @media (max-width: 600px) {
   .bloqueFechasDisponiblesContainer {
-      height: 520px;
+      height: 550px;
+      padding: 25px 20px;
   }
   .reservasContenido {
     gap: 20px;
