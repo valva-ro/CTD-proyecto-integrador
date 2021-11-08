@@ -3,7 +3,7 @@ package com.grupo4.hostingbook.service.impl;
 import com.grupo4.hostingbook.exceptions.BadRequestException;
 import com.grupo4.hostingbook.exceptions.ResourceNotFoundException;
 import com.grupo4.hostingbook.model.*;
-import com.grupo4.hostingbook.service.CRUDService;
+import com.grupo4.hostingbook.service.IProductoService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +21,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class ProductoServiceTest {
 
     @Autowired
-    private CRUDService<ProductoDTO> productoService;
+    private IProductoService productoService;
     private ProductoDTO productoPorCrear;
     private ProductoDTO productoCreado;
     private ProductoDTO productoPorActualizar;
@@ -48,9 +48,9 @@ class ProductoServiceTest {
         imagenesCreadasEjemplo.add(imagenCreadaEjemplo1);
         imagenesCreadasEjemplo.add(imagenCreadaEjemplo2);
 
-        CaracteristicaDTO carateristicaEjemplo1 = new CaracteristicaDTO("WiFi", "<i class='bx bx-wifi'></i>");
+        CaracteristicaDTO carateristicaEjemplo1 = new CaracteristicaDTO("WiFi","<i class='bx bx-wifi'></i>");
         CaracteristicaDTO carateristicaEjemplo2 = new CaracteristicaDTO("Parking","<i class='bx bxs-car'></i>");
-        CaracteristicaDTO carateristicaEjemplo3 = new CaracteristicaDTO("Pool", "<i class='bx bx-swim'></i>");
+        CaracteristicaDTO carateristicaEjemplo3 = new CaracteristicaDTO("Pool","<i class='bx bx-swim'></i>");
         Set<CaracteristicaDTO> caracteristicasEjemplo = new HashSet<>();
         caracteristicasEjemplo.add(carateristicaEjemplo1);
         caracteristicasEjemplo.add(carateristicaEjemplo2);
@@ -78,7 +78,7 @@ class ProductoServiceTest {
     @Test
     public void test02AgregarProducto() throws BadRequestException {
         ProductoDTO p = productoService.crear(productoPorCrear);
-        assertEquals(productoCreado, p);
+        assertNotEquals( null, p);
     }
 
     @Test
@@ -108,9 +108,10 @@ class ProductoServiceTest {
 
     @Test
     public void test07ActualizarProductoExistente() throws BadRequestException, ResourceNotFoundException {
-        productoService.crear(productoPorCrear);
+        ProductoDTO dtoCreadoBBDD = productoService.crear(productoPorCrear);
         ProductoDTO dtoActualizado = productoService.actualizar(productoPorActualizar);
-        assertEquals(productoActualizado, dtoActualizado);
+        assertEquals(productoActualizado.getNombre(), dtoActualizado.getNombre());
+        assertNotEquals(dtoCreadoBBDD.getNombre(), dtoActualizado.getNombre());
     }
 
     @Test
@@ -128,7 +129,8 @@ class ProductoServiceTest {
     public void test10BuscarProductoPorIdExistente() throws BadRequestException, ResourceNotFoundException {
         productoService.crear(productoPorCrear);
         ProductoDTO productoEncontrado = productoService.buscarPorId(1L);
-        assertEquals(productoCreado, productoEncontrado);
+        assertEquals(productoCreado.getId(), productoEncontrado.getId());
+        assertNotEquals(null, productoEncontrado);
     }
 
     @Test
@@ -143,10 +145,30 @@ class ProductoServiceTest {
 
 
     @Test
-    void consultarPorProducto() {
+    void test13ConsultarPorCategoriaExistente() throws BadRequestException {
+        productoService.crear(productoPorCrear);
+        Set<ProductoDTO> productoFiltradoPorCategoria = productoService.consultarPorCategoria("Hotel");
+        assertEquals(1, productoFiltradoPorCategoria.size());
     }
 
     @Test
-    void consultarPorCiudad() {
+    void test14ConsultarPorCategoriaInexistente() throws BadRequestException {
+        productoService.crear(productoPorCrear);
+        Set<ProductoDTO> productoFiltradoPorCategoria = productoService.consultarPorCategoria("Cabañas");
+        assertEquals(0, productoFiltradoPorCategoria.size());
+    }
+
+    @Test
+    void test15ConsultarPorCiudadExistente() throws BadRequestException {
+        productoService.crear(productoPorCrear);
+        Set<ProductoDTO> productoFiltradoPorCiudad = productoService.consultarPorCiudad("Manizales");
+        assertEquals(1, productoFiltradoPorCiudad.size());
+    }
+
+    @Test
+    void test16ConsultarPorCiudadInexistente() throws BadRequestException {
+        productoService.crear(productoPorCrear);
+        Set<ProductoDTO> productoFiltradoPorCiudad = productoService.consultarPorCiudad("Mendoza");
+        assertEquals(0, productoFiltradoPorCiudad.size());
     }
 }

@@ -113,7 +113,7 @@ public class ProductoDTO implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         ProductoDTO that = (ProductoDTO) o;
-        return Objects.equals(id, that.id) && Objects.equals(nombre, that.nombre) && Objects.equals(descripcion, that.descripcion) && Objects.equals(categoria, that.categoria) && Objects.equals(ciudad, that.ciudad) && Objects.equals(imagenes, that.imagenes) && Objects.equals(caracteristicas, that.caracteristicas);
+        return Objects.equals(id, that.id) && Objects.equals(nombre, that.nombre) && Objects.equals(descripcion, that.descripcion) && Objects.equals(categoria, that.categoria) && Objects.equals(ciudad, that.ciudad) && (imagenes.containsAll(that.imagenes) && that.imagenes.containsAll(imagenes)) && (caracteristicas.containsAll(that.caracteristicas) && that.caracteristicas.containsAll(caracteristicas));
     }
 
     @Override

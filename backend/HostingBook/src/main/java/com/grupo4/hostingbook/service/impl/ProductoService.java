@@ -11,13 +11,14 @@ import com.grupo4.hostingbook.persistence.entites.Producto;
 
 import com.grupo4.hostingbook.persistence.repository.IProductoRepository;
 import com.grupo4.hostingbook.service.CRUDService;
+import com.grupo4.hostingbook.service.IProductoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
 
 @Service
-public class ProductoService implements CRUDService<ProductoDTO> {
+public class ProductoService implements IProductoService {
 
     private final IProductoRepository productoRepository;
     private final ObjectMapper mapper;
@@ -73,6 +74,7 @@ public class ProductoService implements CRUDService<ProductoDTO> {
         productoRepository.deleteById(id);
     }
 
+    @Override
     public Set<ProductoDTO> consultarPorCategoria(String tituloCategoria){
         Set<Producto> entidades = productoRepository.buscarProductosPorCategoria(tituloCategoria);
         Set<ProductoDTO> dtos = new HashSet<>();
@@ -82,6 +84,7 @@ public class ProductoService implements CRUDService<ProductoDTO> {
         return dtos;
     }
 
+    @Override
     public Set<ProductoDTO> consultarPorCiudad(String nombreCiudad){
         Set<Producto> entidades = productoRepository.buscarProductosPorCiudad(nombreCiudad);
         Set<ProductoDTO> dtos = new HashSet<>();
