@@ -1,4 +1,10 @@
-import React, { useState, useEffect, useRef, useContext } from "react";
+import React, {
+  useState,
+  useEffect,
+  useLayoutEffect,
+  useRef,
+  useContext,
+} from "react";
 import FilledButton from "../Buttons/FilledButton";
 import DatePicker, { registerLocale } from "react-datepicker";
 import CityInput from "./CityInput/CityInput";
@@ -10,6 +16,7 @@ import currentCityContext from "../../contexts/currentCityContext";
 registerLocale("es", es);
 
 export default function Searcher() {
+  const [anchoPantalla, setAnchoPantalla] = useState(window.innerWidth);
   const [quantityMonth, setQuantityMonth] = useState(2);
   const [iconDate, setIconDate] = useState(styles.dateIcon);
   const [dateRange, setDateRange] = useState([null, null]);
@@ -18,19 +25,20 @@ export default function Searcher() {
   const { setCurrentCity } = useContext(currentCityContext);
   const [startDate, endDate] = dateRange;
   let datePickerRef = useRef(null);
-  
-  useEffect(() => {
-    if (window.screen.width <= 480) {
-      setQuantityMonth(1);
-    } else {
-      setQuantityMonth(2);
+
+  useLayoutEffect(() => {
+    function updateSize() {
+      setAnchoPantalla(window.innerWidth);
     }
-  });
-  
+    window.addEventListener("resize", updateSize);
+    updateSize();
+    return () => window.removeEventListener("resize", updateSize);
+  }, []);
+
   useEffect(() => {
     setCurrentCity(selectedCity);
   }, [setCurrentCity, selectedCity]);
-  
+
   const closeCalendar = () => {
     datePickerRef.setOpen(false);
   };
@@ -53,7 +61,7 @@ export default function Searcher() {
 
   const handleSubmit = () => {
     setSelectedCity(onChangeCity);
-  }
+  };
 
   return (
     <div className={styles.globalContainer}>
@@ -69,7 +77,7 @@ export default function Searcher() {
             </span>
           </div>
           <DatePicker
-                        onSelect={(e) => styleChangeClick(e)}
+            onSelect={(e) => styleChangeClick(e)}
             onChangeRaw={(e) => styleChange(e)}
             dateFormat="dd 'de' MMM."
             placeholderText="Check in  -  Check out"
@@ -78,7 +86,7 @@ export default function Searcher() {
             startDate={startDate}
             endDate={endDate}
             shouldCloseOnSelect={false}
-            monthsShown={quantityMonth}
+            monthsShown={anchoPantalla <= 480 ? 1 : 2}
             onChange={(update) => {
               setDateRange(update);
             }}
@@ -90,9 +98,7 @@ export default function Searcher() {
               </FilledButton>
             </div>
           </DatePicker>
-          <FilledButton onClick={handleSubmit}>
-            Buscar
-          </FilledButton>
+          <FilledButton onClick={handleSubmit}>Buscar</FilledButton>
         </div>
       </div>
     </div>
