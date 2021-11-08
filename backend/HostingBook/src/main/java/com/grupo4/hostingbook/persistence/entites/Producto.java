@@ -17,19 +17,24 @@ public class Producto {
     private String nombre;
     private String descripcion;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "fk_categoria")
     private Categoria categoria;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "fk_ciudades")
     private Ciudad ciudad;
 
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "fk_producto")
     private Set<Imagen> imagenes = new HashSet<>();
 
-    @ManyToMany
+    @ManyToMany (
+            cascade = {
+                CascadeType.PERSIST,
+                CascadeType.MERGE
+            }
+    )
     @JoinTable(
             name = "producto_caracteristica",
             joinColumns = @JoinColumn(name = "producto_id"),

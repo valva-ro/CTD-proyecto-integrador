@@ -69,4 +69,13 @@ public class CiudadDTO implements Serializable {
     public int hashCode() {
         return Objects.hash(id, nombre, pais);
     }
+
+    @Override
+    public String toString() {
+        return "CiudadDTO{" +
+                "id=" + id +
+                ", nombre='" + nombre + '\'' +
+                ", pais='" + pais + '\'' +
+                '}';
+    }
 }

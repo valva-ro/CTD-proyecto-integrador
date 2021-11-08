@@ -16,7 +16,7 @@ public class Ciudad {
     private String nombre;
     private String pais;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "ciudad")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "ciudad", fetch = FetchType.EAGER)
     private Set<Producto> productos = new HashSet<>();
 
     public Long getId() {
@@ -55,4 +55,5 @@ public class Ciudad {
     public int hashCode() {
         return Objects.hash(id, nombre, pais);
     }
+
 }

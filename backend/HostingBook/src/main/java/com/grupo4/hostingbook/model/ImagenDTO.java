@@ -58,4 +58,13 @@ public class ImagenDTO implements Serializable {
     public int hashCode() {
         return Objects.hash(imagenId, imagenTitulo, imagenUrl);
     }
+
+    @Override
+    public String toString() {
+        return "ImagenDTO{" +
+                "imagenId=" + imagenId +
+                ", imagenTitulo='" + imagenTitulo + '\'' +
+                ", imagenUrl='" + imagenUrl + '\'' +
+                '}';
+    }
 }

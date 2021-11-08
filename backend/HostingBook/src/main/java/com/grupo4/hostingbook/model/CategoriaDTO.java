@@ -80,4 +80,14 @@ public class CategoriaDTO implements Serializable {
     public int hashCode() {
         return Objects.hash(id, titulo, descripcion, urlImagen);
     }
+
+    @Override
+    public String toString() {
+        return "CategoriaDTO{" +
+                "id=" + id +
+                ", titulo='" + titulo + '\'' +
+                ", descripcion='" + descripcion + '\'' +
+                ", urlImagen='" + urlImagen + '\'' +
+                '}';
+    }
 }

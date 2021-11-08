@@ -120,4 +120,29 @@ public class ProductoDTO implements Serializable {
     public int hashCode() {
         return Objects.hash(id, nombre, descripcion, categoria, ciudad, imagenes, caracteristicas);
     }
+
+    @Override
+    public String toString() {
+        Set<ImagenDTO> imagenesToString = new HashSet<>();
+        for (ImagenDTO i: imagenes) {
+            i.toString();
+            imagenesToString.add(i);
+        }
+
+        Set<CaracteristicaDTO> caracteristicasToString = new HashSet<>();
+        for (CaracteristicaDTO c: caracteristicas) {
+            c.toString();
+            caracteristicasToString.add(c);
+        }
+
+        return "ProductoDTO{" +
+                "id=" + id +
+                ", nombre='" + nombre + '\'' +
+                ", descripcion='" + descripcion + '\'' +
+                ", categoria=" + categoria.toString() +
+                ", ciudad=" + ciudad.toString() +
+                ", imagenes=" + imagenesToString +
+                ", caracteristicas=" + caracteristicasToString +
+                '}';
+    }
 }

@@ -72,4 +72,13 @@ public class CaracteristicaDTO implements Serializable {
     public int hashCode() {
         return Objects.hash(getId(), getNombre(), getIcono());
     }
+
+    @Override
+    public String toString() {
+        return "CaracteristicaDTO{" +
+                "id=" + id +
+                ", nombre='" + nombre + '\'' +
+                ", icono='" + icono + '\'' +
+                '}';
+    }
 }
