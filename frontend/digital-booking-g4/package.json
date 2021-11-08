@@ -6,11 +6,8 @@
     "@fortawesome/fontawesome-svg-core": "^1.2.36",
     "@fortawesome/free-solid-svg-icons": "^5.15.4",
     "@fortawesome/react-fontawesome": "^0.1.16",
-    "@testing-library/jest-dom": "^5.14.1",
-    "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
     "date-fns": "^2.25.0",
-    "material-ui-search-bar": "^1.0.0",
     "react": "^17.0.2",
     "react-datepicker": "^4.3.0",
     "react-dom": "^17.0.2",
@@ -43,5 +40,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@testing-library/jest-dom": "^5.15.0",
+    "@testing-library/react": "^12.1.2"
   }
 }
