@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import FilledButton from "../../Buttons/FilledButton";
+import Estrellas from "../../Estrellas/Estrellas";
 import styles from "./TarjetaAlojamiento.module.css";
 
 export default function TarjetaAlojamiento({
@@ -8,15 +9,10 @@ export default function TarjetaAlojamiento({
   descripcion,
   categoria,
   ubicacion,
-  cantEstrellas,
+  puntaje,
 }) {
   const [esVerMas, setEsVerMas] = useState(true);
   const toggleVerMas = () => setEsVerMas(!esVerMas);
-
-  let estrellas = [];
-  for (let i = 0; i < cantEstrellas; i++) {
-    estrellas.push(<i key={`estrellas-${i}`} className="fas fa-star"></i>);
-  }
 
   return (
     <div className={styles.tarjetaAlojamiento}>
@@ -34,9 +30,7 @@ export default function TarjetaAlojamiento({
           <div className={styles.nombreAlojamiento}>
             <div className={styles.tipoYCalificacion}>
               <h4>{categoria}</h4>
-              <span className={styles.estrellas} aria-label="Estrellas">
-                {estrellas}
-              </span>
+              <Estrellas puntaje={puntaje}/>
             </div>
             <h2>{titulo}</h2>
           </div>

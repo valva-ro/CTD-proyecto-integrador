@@ -51,7 +51,7 @@ export default function BloqueAlojamientos({ categoriaActual }) {
                 categoria={alojamiento.category}
                 descripcion={alojamiento.description}
                 ubicacion={alojamiento.location}
-                cantEstrellas={alojamiento.stars}
+                puntaje={alojamiento.points}
               />
             </li>
           ))}

@@ -59,6 +59,7 @@
 .tipoYCalificacion h4 {
   text-transform: uppercase;
   opacity: 50%;
+  margin-right: 8px;
 }
 
 .estrellas {

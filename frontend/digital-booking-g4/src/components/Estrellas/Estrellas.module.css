@@ -1,0 +1,12 @@
+.estrellas {
+    display: flex;
+    gap: .1rem;
+}
+
+.estrellaLlena {
+  color: var(--color-principal);
+}
+
+.estrellaVacia {
+  color: #bebebe;
+}
