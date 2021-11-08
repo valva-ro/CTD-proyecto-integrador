@@ -1,5 +1,6 @@
 import { useState } from "react";
 import ProductoModalCarousel from "../ProductoModalCarousel/ProductoModalCarousel";
+import FilledButton from "../Buttons/FilledButton";
 import styles from "./ProductoImagenes.module.css";
 
 export default function ProductoImagenesDesktop({ imagenes }) {
@@ -24,9 +25,9 @@ export default function ProductoImagenesDesktop({ imagenes }) {
             <img src={imagen.src} alt={imagen.alt} key={i} />
           ))}
         </div>
-        <span className={styles.verMas} onClick={abrirCarousel}>
+        <FilledButton styles={styles.verMas} onClick={abrirCarousel}>
           Ver más
-        </span>
+        </FilledButton>
         <ProductoModalCarousel
           estaAbierto={estaCarouselAbierto}
           onCloseRequest={cerrarCarousel}

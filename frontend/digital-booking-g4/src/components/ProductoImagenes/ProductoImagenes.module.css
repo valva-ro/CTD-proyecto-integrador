@@ -42,17 +42,13 @@
 }
 
 .verMas {
-  text-decoration: underline;
-  color: white;
+  font-size: .9rem;
+  font-weight: 500;
   position: absolute;
-  bottom: 3%;
-  right: 1.5%;
-  transition: color ease-in-out 250ms;
-}
-
-.verMas:hover {
-  cursor: pointer;
-  color: var(--color-principal);
+  bottom: 2.75%;
+  right: .75%;
+  width: 70px;
+  padding: 4px;
 }
 
 .contenedorMobile {
