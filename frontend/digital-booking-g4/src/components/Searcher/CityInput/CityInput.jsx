@@ -1,18 +1,25 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import DropDownMenu from "../DropDownMenu/DropDownMenu";
 import useClickOutside from "../../../hooks/useOnClickOutside";
-import cities from "../../../resources/cities.json";
+import useFetch from "../../../hooks/useFetch.js";
 import styles from "./CityInput.module.css";
 
-export default function CityInput() {
+export default function CityInput({ setOnChangeCity }) {
   const [iconGps, setIconGps] = useState(styles.gpsEmpty);
   const [cityList, setCityList] = useState(null);
   const [inputContent, setInputContent] = useState("");
+  const [ciudades, setCiudades] = useState([]);
   const wrapperRef = useRef(null);
-
+  const data = useFetch("ciudades");
   useClickOutside(wrapperRef, () => setCityList(null));
 
-  const onType = (inputText) => {
+  useEffect(() => {
+    if (data.isLoaded) {
+      setCiudades(data.items);
+    }
+  }, [data.isLoaded, data.items]);
+
+  const changeIconStyle = (inputText) => {
     if (inputText === "") {
       setIconGps(styles.gpsEmpty);
     } else {
@@ -21,12 +28,13 @@ export default function CityInput() {
   };
 
   const lister = (input) => {
-    if (cities.length > 0) {
+    if (ciudades.length > 0) {
       setCityList(
         <DropDownMenu
-          locations={cities}
+          locations={ciudades}
           input={input}
           setCityList={setCityList}
+          setOnChangeCity={setOnChangeCity}
         />
       );
     } else {
@@ -47,8 +55,11 @@ export default function CityInput() {
           className={styles.input}
           onKeyUp={(e) => {
             lister(e);
-            onType(e.target.value);
+            changeIconStyle(e.target.value);
             setInputContent(e.target.value);
+          }}
+          onChange={(e) => {
+            setOnChangeCity(e.target.value);
           }}
         />
       </div>
