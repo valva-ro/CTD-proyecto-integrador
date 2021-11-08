@@ -1,14 +1,18 @@
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
+import Producto from "../Producto/Producto";
 
 export default function Layout(props){
     return (
       <>
-        <Header/>
+        <Header />
         <main>
-          {props.children}
+          {/* {props.children}
+           */}
+
+          <Producto />
         </main>
-        <Footer/>
+        <Footer />
       </>
     );
 }

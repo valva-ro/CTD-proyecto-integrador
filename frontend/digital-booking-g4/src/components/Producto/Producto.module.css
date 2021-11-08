@@ -1,0 +1,22 @@
+.sectionImagenes {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+  /* TODO: mover esto a la clase que contenga todo cuando se haga el merge */
+  margin-top: 92px;
+}
+
+@media screen and (max-width: 860px) {
+  .sectionImagenes {
+  /* TODO: mover esto a la clase que contenga todo cuando se haga el merge */
+    margin-top: 112px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .sectionImagenes {
+    padding: 0;
+    margin-top: 82px;
+  }
+}
