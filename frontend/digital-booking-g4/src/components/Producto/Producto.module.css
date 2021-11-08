@@ -17,6 +17,11 @@
 @media screen and (max-width: 768px) {
   .sectionImagenes {
     padding: 0;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .sectionImagenes {
     margin-top: 82px;
   }
 }

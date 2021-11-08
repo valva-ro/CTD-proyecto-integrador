@@ -1,6 +1,7 @@
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import styles from "./ProductoImagenes.module.css";
+import "./CarouselStyles.css";
 
 export default function ProductoImagenesMobile({ imagenes }) {
   return (
@@ -14,7 +15,8 @@ export default function ProductoImagenesMobile({ imagenes }) {
           infiniteLoop={true}
           dynamicHeight={true}
           showArrows={false}
-          showStatus={false}
+          showStatus={true}
+          interval={3000}
           useKeyboardArrows={true}
           showThumbs={false}
           stopOnHover={true}
