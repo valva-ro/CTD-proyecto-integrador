@@ -5,7 +5,7 @@
         "category": "hoteles",
         "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae minima illum omnis suscipit vel laborum commodi provident eveniet harum voluptatem quam cumque, nam maiores?",
         "location": "Buenos Aires",
-        "stars": "4"
+        "points": "9"
     },
     {
         "title": "Vivac Hostel",
@@ -13,7 +13,7 @@
         "category": "hostels",
         "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae minima illum omnis suscipit vel laborum commodi provident eveniet harum voluptatem quam cumque, nam maiores?",
         "location": "Buenos Aires",
-        "stars": "3"
+        "points": "7.5"
     },
     {
         "title": "Los Angelitos",
@@ -21,7 +21,7 @@
         "category": "bed & breakfasts",
         "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae minima illum omnis suscipit vel laborum commodi provident eveniet harum voluptatem quam cumque, nam maiores?",
         "location": "Mendoza",
-        "stars": "4"
+        "points": "6"
     },
     {
         "title": "Dpto. en Bariloche",
@@ -29,7 +29,7 @@
         "category": "departamentos",
         "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae minima illum omnis suscipit vel laborum commodi provident eveniet harum voluptatem quam cumque, nam maiores?",
         "location": "San Carlos de Bariloche",
-        "stars": "5"
+        "points": "7"
     },
     {
         "title": "Hotel Atlantic",
@@ -37,7 +37,7 @@
         "category": "hoteles",
         "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae minima illum omnis suscipit vel laborum commodi provident eveniet harum voluptatem quam cumque, nam maiores?",
         "location": "San Carlos de Bariloche",
-        "stars": "5"
+        "points": "9"
     },
     {
         "title": "Elefante Rosa Hostel",
@@ -45,7 +45,7 @@
         "category": "hostels",
         "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae minima illum omnis suscipit vel laborum commodi provident eveniet harum voluptatem quam cumque, nam maiores?",
         "location": "Córdoba",
-        "stars": "4"
+        "points": "6.5"
     },
     {
         "title": "La Casa del Sol",
@@ -53,7 +53,7 @@
         "category": "bed & breakfasts",
         "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae minima illum omnis suscipit vel laborum commodi provident eveniet harum voluptatem quam cumque, nam maiores?",
         "location": "Córdoba",
-        "stars": "3"
+        "points": "8"
     },
     {
         "title": "Dpto. en Bogotá",
@@ -61,6 +61,6 @@
         "category": "departamentos",
         "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae minima illum omnis suscipit vel laborum commodi provident eveniet harum voluptatem quam cumque, nam maiores?",
         "location": "Bogotá",
-        "stars": "4"
+        "points": "8.5"
     }
 ]
