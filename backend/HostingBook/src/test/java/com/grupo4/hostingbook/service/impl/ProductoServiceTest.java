@@ -36,33 +36,12 @@ class ProductoServiceTest {
         CiudadDTO ciudadEjemplo = new CiudadDTO("Manizales", "Colombia");
         CiudadDTO ciudadCreadaEjemplo = new CiudadDTO(1L,"Manizales", "Colombia");
 
-        ImagenDTO imagenEjemplo1 = new ImagenDTO("Habitación doble", "https://via.placeholder.com/300");
-        ImagenDTO imagenEjemplo2 = new ImagenDTO("Baño", "https://via.placeholder.com/300");
-        Set<ImagenDTO> imagenesEjemplo = new HashSet<>();
-        imagenesEjemplo.add(imagenEjemplo1);
-        imagenesEjemplo.add(imagenEjemplo2);
+        Set<ImagenDTO> imagenesEjemplo = Set.of(new ImagenDTO("Habitación doble", "https://via.placeholder.com/300"),new ImagenDTO("Baño", "https://via.placeholder.com/300"));
+        Set<ImagenDTO> imagenesCreadasEjemplo = Set.of(new ImagenDTO(1L,"Habitación doble", "https://via.placeholder.com/300"),new ImagenDTO(2L,"Baño", "https://via.placeholder.com/300"));
 
-        ImagenDTO imagenCreadaEjemplo1 = new ImagenDTO(1L,"Habitación doble", "https://via.placeholder.com/300");
-        ImagenDTO imagenCreadaEjemplo2 = new ImagenDTO(2L,"Baño", "https://via.placeholder.com/300");
-        Set<ImagenDTO> imagenesCreadasEjemplo = new HashSet<>();
-        imagenesCreadasEjemplo.add(imagenCreadaEjemplo1);
-        imagenesCreadasEjemplo.add(imagenCreadaEjemplo2);
 
-        CaracteristicaDTO carateristicaEjemplo1 = new CaracteristicaDTO("WiFi","<i class='bx bx-wifi'></i>");
-        CaracteristicaDTO carateristicaEjemplo2 = new CaracteristicaDTO("Parking","<i class='bx bxs-car'></i>");
-        CaracteristicaDTO carateristicaEjemplo3 = new CaracteristicaDTO("Pool","<i class='bx bx-swim'></i>");
-        Set<CaracteristicaDTO> caracteristicasEjemplo = new HashSet<>();
-        caracteristicasEjemplo.add(carateristicaEjemplo1);
-        caracteristicasEjemplo.add(carateristicaEjemplo2);
-        caracteristicasEjemplo.add(carateristicaEjemplo3);
-
-        CaracteristicaDTO carateristicaCreadaEjemplo1 = new CaracteristicaDTO(1L,"WiFi", "<i class='bx bx-wifi'></i>");
-        CaracteristicaDTO carateristicaCreadaEjemplo2 = new CaracteristicaDTO(2L,"Parking","<i class='bx bxs-car'></i>");
-        CaracteristicaDTO carateristicaCreadaEjemplo3 = new CaracteristicaDTO(3L,"Pool", "<i class='bx bx-swim'></i>");
-        Set<CaracteristicaDTO> caracteristicasCreadasEjemplo = new HashSet<>();
-        caracteristicasCreadasEjemplo.add(carateristicaCreadaEjemplo1);
-        caracteristicasCreadasEjemplo.add(carateristicaCreadaEjemplo2);
-        caracteristicasCreadasEjemplo.add(carateristicaCreadaEjemplo3);
+        Set<CaracteristicaDTO> caracteristicasEjemplo = Set.of(new CaracteristicaDTO("WiFi","<i class='bx bx-wifi'></i>"),new CaracteristicaDTO("Parking","<i class='bx bxs-car'></i>"),new CaracteristicaDTO("Pool","<i class='bx bx-swim'></i>"));
+        Set<CaracteristicaDTO> caracteristicasCreadasEjemplo = Set.of(new CaracteristicaDTO(1L,"WiFi", "<i class='bx bx-wifi'></i>"),new CaracteristicaDTO(2L,"Parking","<i class='bx bxs-car'></i>"), new CaracteristicaDTO(3L,"Pool", "<i class='bx bx-swim'></i>"));
 
         productoPorCrear = new ProductoDTO("Hotel Melia", "Servicio all inclusive con vista al mar", categoriaEjemplo, ciudadEjemplo, imagenesEjemplo, caracteristicasEjemplo);
         productoCreado = new ProductoDTO(1L,"Hotel Melia", "Servicio all inclusive con vista al mar", categoriaCreadaEjemplo, ciudadCreadaEjemplo, imagenesCreadasEjemplo, caracteristicasCreadasEjemplo);

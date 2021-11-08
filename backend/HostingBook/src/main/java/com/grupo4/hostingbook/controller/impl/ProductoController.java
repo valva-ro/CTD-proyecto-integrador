@@ -1,11 +1,11 @@
 package com.grupo4.hostingbook.controller.impl;
 
-import com.grupo4.hostingbook.controller.CRUDController;
+import com.grupo4.hostingbook.controller.IProductoController;
 import com.grupo4.hostingbook.exceptions.BadRequestException;
 import com.grupo4.hostingbook.exceptions.Mensajes;
 import com.grupo4.hostingbook.exceptions.ResourceNotFoundException;
 import com.grupo4.hostingbook.model.ProductoDTO;
-import com.grupo4.hostingbook.service.CRUDService;
+import com.grupo4.hostingbook.service.IProductoService;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
@@ -15,16 +15,16 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Set;
 
 @RestController
 @RequestMapping("/productos")
-public class ProductoController implements CRUDController<ProductoDTO> {
+public class ProductoController implements IProductoController {
 
-    @Qualifier("ProductoService")
-    private final CRUDService<ProductoDTO> productoService;
+    private final IProductoService productoService;
 
     @Autowired
-    public ProductoController(CRUDService<ProductoDTO> productoService) {
+    public ProductoController(IProductoService productoService) {
         this.productoService = productoService;
     }
 
@@ -88,5 +88,28 @@ public class ProductoController implements CRUDController<ProductoDTO> {
     public ResponseEntity<String> eliminar(@PathVariable Long id) throws BadRequestException, ResourceNotFoundException {
         productoService.eliminar(id);
         return ResponseEntity.ok(String.format(Mensajes.ELIMINADO_CON_EXITO,"Producto", id));
+    }
+
+    @Override
+    @ApiOperation(value = "Lista todos los productos según la categoria especificada")
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Success")
+    })
+    @GetMapping("/getByCategoria")
+    public ResponseEntity<?> obtenerPorCategoria(@RequestBody String tituloCategoria) throws BadRequestException, ResourceNotFoundException {
+        Set<ProductoDTO> productos = productoService.consultarPorCategoria(tituloCategoria);
+        return ResponseEntity.ok(productos);
+    }
+
+
+    @Override
+    @ApiOperation(value = "Lista todos los productos según la ciudad especificada")
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Success")
+    })
+    @GetMapping("/getByCiudad")
+    public ResponseEntity<?> obtenerPorCiudad(@RequestBody String nombreCiudad) throws BadRequestException, ResourceNotFoundException {
+        Set<ProductoDTO> productos = productoService.consultarPorCiudad(nombreCiudad);
+        return ResponseEntity.ok(productos);
     }
 }
