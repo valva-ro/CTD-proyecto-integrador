@@ -88,7 +88,7 @@ export default function Login() {
                 </p>
               </div>
             ) : null}
-            <FilledButton onClick={() => validarCampos()}>
+            <FilledButton onClick={() => validarCampos()} testId="loginBtn">
               Iniciar sesión
             </FilledButton>
             <p>

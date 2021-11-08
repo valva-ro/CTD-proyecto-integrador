@@ -1,0 +1,36 @@
+import React from "react";
+import "@testing-library/jest-dom/extend-expect";
+import { render, screen, queryByAttribute } from "@testing-library/react";
+import { MemoryRouter } from "react-router-dom";
+import Header from "./Header";
+import loggedContext from "../../contexts/loggedContext";
+
+const perfilEsperado = {
+  nombre: "Bruno",
+  apellido: "Rodriguez",
+};
+
+describe("Header tests en la home", function () {
+
+  test("Se renderiza el componente Profile cuando el usuario está logueado", () => {
+    const dom = render(
+      <loggedContext.Provider value={{ isLogged: true }}>
+        <Header />
+      </loggedContext.Provider>,
+      { wrapper: MemoryRouter }
+    );
+
+    expect(screen.queryAllByText(`${perfilEsperado.nombre} ${perfilEsperado.apellido}`)[0]).toBeInTheDocument();
+  });
+
+  test("No se renderiza el componente contenido cuando el usuario no está logueado", () => {
+    const dom = render(
+      <loggedContext.Provider value={{ isLogged: false }}>
+        <Header />
+      </loggedContext.Provider>,
+      { wrapper: MemoryRouter }
+    );
+    
+    expect(screen.queryAllByText(`${perfilEsperado.nombre} ${perfilEsperado.apellido}`)[0]).toBeUndefined();
+  });
+});
