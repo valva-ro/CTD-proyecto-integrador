@@ -12,28 +12,19 @@ import es from "date-fns/locale/es";
 import "react-datepicker/dist/react-datepicker.css";
 import styles from "./Searcher.module.css";
 import currentCityContext from "../../contexts/currentCityContext";
+import useScreenWidth from "../../hooks/useScreenWidth";
 
 registerLocale("es", es);
 
 export default function Searcher() {
-  const [anchoPantalla, setAnchoPantalla] = useState(window.innerWidth);
-  const [quantityMonth, setQuantityMonth] = useState(2);
   const [iconDate, setIconDate] = useState(styles.dateIcon);
   const [dateRange, setDateRange] = useState([null, null]);
   const [onChangeCity, setOnChangeCity] = useState("");
   const [selectedCity, setSelectedCity] = useState("");
   const { setCurrentCity } = useContext(currentCityContext);
   const [startDate, endDate] = dateRange;
+  const anchoPantalla = useScreenWidth();
   let datePickerRef = useRef(null);
-
-  useLayoutEffect(() => {
-    function updateSize() {
-      setAnchoPantalla(window.innerWidth);
-    }
-    window.addEventListener("resize", updateSize);
-    updateSize();
-    return () => window.removeEventListener("resize", updateSize);
-  }, []);
 
   useEffect(() => {
     setCurrentCity(selectedCity);

@@ -1,4 +1,5 @@
 import React, { useState, useLayoutEffect } from "react";
+import useScreenWidth from "../../hooks/useScreenWidth";
 import Estrellas from "../Estrellas/Estrellas";
 import styles from "./ProductoUbicacion.module.css";
 
@@ -6,15 +7,7 @@ export default function ProductoUbicacion({
   ubicacion = "Capital Federal, Buenos Aires, Argentina",
   puntaje = 8,
 }) {
-  const [anchoPantalla, setAnchoPantalla] = useState(window.innerWidth);
-  useLayoutEffect(() => {
-    function updateSize() {
-      setAnchoPantalla(window.innerWidth);
-    }
-    window.addEventListener("resize", updateSize);
-    updateSize();
-    return () => window.removeEventListener("resize", updateSize);
-  }, []);
+  const anchoPantalla = useScreenWidth(); 
   return (
     <section className={styles.ubicacionContainer}>
       <div>
