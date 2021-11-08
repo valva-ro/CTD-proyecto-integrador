@@ -4,12 +4,16 @@
   width: 100%;
   padding: 1rem 2rem;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  background-color: #EBEBEE;
+}
+
+.ubicacionContainer div p {
+  color: var(--color-3);
 }
 
 .ubicacion {
   display: flex;
   gap: 6px;
-  color: var(--color-2);
 }
 
 .distancia {
@@ -24,6 +28,12 @@
 .ubicacion i,
 .detalleYEstrellas {
   color: var(--color-3);
+}
+
+.detalleYEstrellas {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
 }
 
 .puntajeNumerico {
