@@ -53,6 +53,7 @@
 .previousArrow:hover,
 .nextArrow:hover {
   background-color: var(--color-principal-opaco);
+  cursor: pointer;
 }
 
 .previousArrow {
