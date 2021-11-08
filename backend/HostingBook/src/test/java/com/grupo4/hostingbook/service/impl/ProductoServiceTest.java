@@ -48,7 +48,7 @@ class ProductoServiceTest {
         imagenesCreadasEjemplo.add(imagenCreadaEjemplo1);
         imagenesCreadasEjemplo.add(imagenCreadaEjemplo2);
 
-        CaracteristicaDTO carateristicaEjemplo1 = new CaracteristicaDTO("WiFi", "<i class='bx bx-wifi' ></i>");
+        CaracteristicaDTO carateristicaEjemplo1 = new CaracteristicaDTO("WiFi", "<i class='bx bx-wifi'></i>");
         CaracteristicaDTO carateristicaEjemplo2 = new CaracteristicaDTO("Parking","<i class='bx bxs-car'></i>");
         CaracteristicaDTO carateristicaEjemplo3 = new CaracteristicaDTO("Pool", "<i class='bx bx-swim'></i>");
         Set<CaracteristicaDTO> caracteristicasEjemplo = new HashSet<>();
@@ -56,7 +56,7 @@ class ProductoServiceTest {
         caracteristicasEjemplo.add(carateristicaEjemplo2);
         caracteristicasEjemplo.add(carateristicaEjemplo3);
 
-        CaracteristicaDTO carateristicaCreadaEjemplo1 = new CaracteristicaDTO(1L,"WiFi", "<i class='bx bx-wifi' ></i>");
+        CaracteristicaDTO carateristicaCreadaEjemplo1 = new CaracteristicaDTO(1L,"WiFi", "<i class='bx bx-wifi'></i>");
         CaracteristicaDTO carateristicaCreadaEjemplo2 = new CaracteristicaDTO(2L,"Parking","<i class='bx bxs-car'></i>");
         CaracteristicaDTO carateristicaCreadaEjemplo3 = new CaracteristicaDTO(3L,"Pool", "<i class='bx bx-swim'></i>");
         Set<CaracteristicaDTO> caracteristicasCreadasEjemplo = new HashSet<>();
@@ -66,7 +66,7 @@ class ProductoServiceTest {
 
         productoPorCrear = new ProductoDTO("Hotel Melia", "Servicio all inclusive con vista al mar", categoriaEjemplo, ciudadEjemplo, imagenesEjemplo, caracteristicasEjemplo);
         productoCreado = new ProductoDTO(1L,"Hotel Melia", "Servicio all inclusive con vista al mar", categoriaCreadaEjemplo, ciudadCreadaEjemplo, imagenesCreadasEjemplo, caracteristicasCreadasEjemplo);
-        productoPorActualizar = new ProductoDTO(1l,"Hotel Grand Meliá", "", null, null, null, null);
+        productoPorActualizar = new ProductoDTO(1L,"Hotel Grand Meliá", "", null, null, null, null);
         productoActualizado = new ProductoDTO(1L, "Hotel Grand Meliá", "Servicio all inclusive con vista al mar", categoriaCreadaEjemplo, ciudadCreadaEjemplo, imagenesCreadasEjemplo, caracteristicasCreadasEjemplo);
     }
 
