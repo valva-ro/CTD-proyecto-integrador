@@ -10,6 +10,7 @@
   --color-3: #545776;
   --color-4: #f3f1ed;
   --color-5: #ffffff;
+  --color-background-gris: rgb(56, 59, 88, 0.1);
 }
 
 * {
