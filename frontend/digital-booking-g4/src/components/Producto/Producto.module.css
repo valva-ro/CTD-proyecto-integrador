@@ -1,0 +1,8 @@
+.sinResultados {
+  position: absolute;
+  top: 35%;
+  text-align: center;
+  padding: 12vh 0;
+  width: 100%;
+  color: var(--color-3);
+}

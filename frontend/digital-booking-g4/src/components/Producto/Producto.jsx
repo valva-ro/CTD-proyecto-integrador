@@ -1,4 +1,4 @@
-import { useHistory, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import ProductoHeader from "../ProductoHeader/ProductoHeader";
 import ProductoImagenes from "../ProductoImagenes/ProductoImagenes.jsx";
 import styles from "./Producto.module.css";
@@ -9,12 +9,20 @@ export default function Producto() {
   const { id } = useParams();
   // TODO: cambiar esto por el GET a la API
   const obtenerAlojamiento = () => {
-    return alojamientos[id - 1];
+    if (id < alojamientos.length) return alojamientos[id - 1];
   };
   return (
     <>
-      <ProductoHeader alojamiento={obtenerAlojamiento()} />
-      <ProductoImagenes alojamiento={obtenerAlojamiento()} />
+      {id >= alojamientos.length ? (
+        <h2 className={styles.sinResultados}>
+          El alojamiento que estás buscando no existe
+        </h2>
+      ) : (
+        <>
+          <ProductoHeader alojamiento={obtenerAlojamiento()} />
+          <ProductoImagenes alojamiento={obtenerAlojamiento()} />
+        </>
+      )}
     </>
   );
 }
