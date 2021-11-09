@@ -228,7 +228,13 @@ public class ProductoControllerTests {
 
     @Test
     public void test14obtenerProductosPorCategoria() throws Exception {
-        //Act
+        //Arrange
+        mockMvc.perform(MockMvcRequestBuilders
+                .post("/productos")
+                .contentType(MediaType.APPLICATION_JSON)
+                .characterEncoding("utf-8")
+                .content(JsonMapper.mapObjectToJson(producto)));
+        //Act & Assert
         mockMvc.perform(MockMvcRequestBuilders.get("/productos/getByCategoria")
                 .contentType(MediaType.APPLICATION_JSON)
                 .characterEncoding("utf-8")
@@ -237,15 +243,55 @@ public class ProductoControllerTests {
                 .andExpect(MockMvcResultMatchers.status().isOk());
     }
 
+    @Test
+    public void test15obtenerProductosPorCategoriaInexistente() throws Exception {
+        //Arrange
+        mockMvc.perform(MockMvcRequestBuilders
+                .post("/productos")
+                .contentType(MediaType.APPLICATION_JSON)
+                .characterEncoding("utf-8")
+                .content(JsonMapper.mapObjectToJson(producto)));
+        //Act & Assert
+        mockMvc.perform(MockMvcRequestBuilders.get("/productos/getByCategoria")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .characterEncoding("utf-8")
+                        .content("Cabaña"))
+                .andDo(MockMvcResultHandlers.print())
+                .andExpect(MockMvcResultMatchers.status().isNotFound());
+    }
+
 
     @Test
-    public void test15obtenerProductosPorCiudad() throws Exception {
-        //Act
+    public void test16obtenerProductosPorCiudad() throws Exception {
+        //Arrange
+        mockMvc.perform(MockMvcRequestBuilders
+                .post("/productos")
+                .contentType(MediaType.APPLICATION_JSON)
+                .characterEncoding("utf-8")
+                .content(JsonMapper.mapObjectToJson(producto)));
+        //Act & Assert
         mockMvc.perform(MockMvcRequestBuilders.get("/productos/getByCiudad")
                         .contentType(MediaType.APPLICATION_JSON)
                         .characterEncoding("utf-8")
                         .content("Manizales"))
                 .andDo(MockMvcResultHandlers.print())
                 .andExpect(MockMvcResultMatchers.status().isOk());
+    }
+
+    @Test
+    public void test17obtenerProductosPorCiudadInexistente() throws Exception {
+        //Arrange
+        mockMvc.perform(MockMvcRequestBuilders
+                .post("/productos")
+                .contentType(MediaType.APPLICATION_JSON)
+                .characterEncoding("utf-8")
+                .content(JsonMapper.mapObjectToJson(producto)));
+        //Act & Assert
+        mockMvc.perform(MockMvcRequestBuilders.get("/productos/getByCiudad")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .characterEncoding("utf-8")
+                        .content("Mendoza"))
+                .andDo(MockMvcResultHandlers.print())
+                .andExpect(MockMvcResultMatchers.status().isNotFound());
     }
 }

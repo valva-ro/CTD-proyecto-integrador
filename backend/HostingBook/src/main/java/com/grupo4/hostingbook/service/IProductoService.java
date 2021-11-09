@@ -12,7 +12,7 @@ import java.util.Set;
 @Service
 public interface IProductoService extends CRUDService<ProductoDTO> {
 
-     Set<ProductoDTO> consultarPorCategoria(String titulo);
+     Set<ProductoDTO> consultarPorCategoria(String titulo) throws ResourceNotFoundException;
 
-     Set<ProductoDTO> consultarPorCiudad(String nombreCiudad);
+     Set<ProductoDTO> consultarPorCiudad(String nombreCiudad) throws ResourceNotFoundException;
 }

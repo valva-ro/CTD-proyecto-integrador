@@ -124,30 +124,28 @@ class ProductoServiceTest {
 
 
     @Test
-    void test13ConsultarPorCategoriaExistente() throws BadRequestException {
+    void test13ConsultarPorCategoriaExistente() throws BadRequestException, ResourceNotFoundException {
         productoService.crear(productoPorCrear);
         Set<ProductoDTO> productoFiltradoPorCategoria = productoService.consultarPorCategoria("Hotel");
         assertEquals(1, productoFiltradoPorCategoria.size());
     }
 
     @Test
-    void test14ConsultarPorCategoriaInexistente() throws BadRequestException {
+    void test14ConsultarPorCategoriaInexistente() throws BadRequestException, ResourceNotFoundException {
         productoService.crear(productoPorCrear);
-        Set<ProductoDTO> productoFiltradoPorCategoria = productoService.consultarPorCategoria("Cabañas");
-        assertEquals(0, productoFiltradoPorCategoria.size());
+        assertThrows(ResourceNotFoundException.class, () -> productoService.consultarPorCategoria("Cabañas"));
     }
 
     @Test
-    void test15ConsultarPorCiudadExistente() throws BadRequestException {
+    void test15ConsultarPorCiudadExistente() throws BadRequestException, ResourceNotFoundException {
         productoService.crear(productoPorCrear);
         Set<ProductoDTO> productoFiltradoPorCiudad = productoService.consultarPorCiudad("Manizales");
         assertEquals(1, productoFiltradoPorCiudad.size());
     }
 
     @Test
-    void test16ConsultarPorCiudadInexistente() throws BadRequestException {
+    void test16ConsultarPorCiudadInexistente() throws BadRequestException, ResourceNotFoundException {
         productoService.crear(productoPorCrear);
-        Set<ProductoDTO> productoFiltradoPorCiudad = productoService.consultarPorCiudad("Mendoza");
-        assertEquals(0, productoFiltradoPorCiudad.size());
+        assertThrows(ResourceNotFoundException.class, () -> productoService.consultarPorCiudad("Mendoza"));
     }
 }

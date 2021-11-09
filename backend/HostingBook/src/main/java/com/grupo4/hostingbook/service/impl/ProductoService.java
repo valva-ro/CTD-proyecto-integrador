@@ -75,23 +75,34 @@ public class ProductoService implements IProductoService {
     }
 
     @Override
-    public Set<ProductoDTO> consultarPorCategoria(String tituloCategoria){
-        Set<Producto> entidades = productoRepository.buscarProductosPorCategoria(tituloCategoria);
-        Set<ProductoDTO> dtos = new HashSet<>();
-        for (Producto entidad : entidades) {
-            dtos.add(mapper.convertValue(entidad, ProductoDTO.class));
+    public Set<ProductoDTO> consultarPorCategoria(String tituloCategoria) throws ResourceNotFoundException {
+        for (Producto p: productoRepository.findAll()) {
+            if( tituloCategoria.equalsIgnoreCase(p.getCategoria().getTitulo())){
+                Set<Producto> entidades = productoRepository.buscarProductosPorCategoria(tituloCategoria);
+                Set<ProductoDTO> dtos = new HashSet<>();
+                for (Producto entidad : entidades) {
+                    dtos.add(mapper.convertValue(entidad, ProductoDTO.class));
+                }
+                return dtos;
+            }
         }
-        return dtos;
+        throw new ResourceNotFoundException(String.format(Mensajes.ERROR_CRITERIO_DE_BUSQUEDA_NO_EXISTE, "La categoría", tituloCategoria));
     }
 
+
     @Override
-    public Set<ProductoDTO> consultarPorCiudad(String nombreCiudad){
-        Set<Producto> entidades = productoRepository.buscarProductosPorCiudad(nombreCiudad);
-        Set<ProductoDTO> dtos = new HashSet<>();
-        for (Producto entidad : entidades) {
-            dtos.add(mapper.convertValue(entidad, ProductoDTO.class));
+    public Set<ProductoDTO> consultarPorCiudad(String nombreCiudad) throws ResourceNotFoundException {
+        for (Producto p: productoRepository.findAll()) {
+            if( nombreCiudad.equalsIgnoreCase(p.getCiudad().getNombre())) {
+                Set<Producto> entidades = productoRepository.buscarProductosPorCiudad(nombreCiudad);
+                Set<ProductoDTO> dtos = new HashSet<>();
+                for (Producto entidad : entidades) {
+                    dtos.add(mapper.convertValue(entidad, ProductoDTO.class));
+                }
+                return dtos;
+            }
         }
-        return dtos;
+        throw new ResourceNotFoundException(String.format(Mensajes.ERROR_CRITERIO_DE_BUSQUEDA_NO_EXISTE, "La ciudad", nombreCiudad));
     }
 
     private void validarCamposRequeridosCreacion(ProductoDTO productoDTO) throws BadRequestException {
