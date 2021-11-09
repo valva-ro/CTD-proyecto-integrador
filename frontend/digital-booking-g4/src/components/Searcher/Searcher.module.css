@@ -1,7 +1,7 @@
 .boxing {
   background-color: var(--color-3);
   padding: 25px;
-  width: 100vw; 
+  width: 100%; 
   position: fixed;
   top: 92px;
   z-index: 1;
@@ -110,5 +110,6 @@
 
   .inputs input:nth-child(4) {
     margin-left: 0px;
+    padding: 6.5px 5vw; 
   }
 }
