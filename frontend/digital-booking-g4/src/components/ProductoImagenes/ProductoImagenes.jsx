@@ -20,11 +20,11 @@ export default function ProductoImagenes({ alojamiento }) {
         <div
           className={styles.imagenPrincipal}
           style={{
-            backgroundImage: `url(${alojamiento.img})`,
+            backgroundImage: `url(${alojamiento.imgs[0].src})`,
           }}
         ></div>
         <div className={styles.imagenesSecundarias}>
-          {alojamiento.imgs.slice(0, 4).map((imagen, i) => (
+          {alojamiento.imgs.slice(1, 5).map((imagen, i) => (
             <div
               className={styles.imagenSecundaria}
               style={{
