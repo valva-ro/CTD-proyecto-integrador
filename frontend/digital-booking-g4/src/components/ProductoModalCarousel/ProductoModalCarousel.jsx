@@ -21,6 +21,7 @@ export default function ProductoModalCarousel({
           X
         </span>
         <Carousel
+          infiniteLoop={true}
           dynamicHeight={true}
           showArrows={true}
           showStatus={false}
