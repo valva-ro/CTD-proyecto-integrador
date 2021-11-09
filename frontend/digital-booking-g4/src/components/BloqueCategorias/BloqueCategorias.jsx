@@ -19,7 +19,9 @@ export default function BloqueCategorias({ setCategoriaActual }) {
     <section className={styles.bloqueCategorias}>
       <TituloBloque>Buscar por tipo de alojamiento</TituloBloque>
       {!data.isLoaded ? (
-        <h2 className={styles.sinResultados}>Error al cargar las categorias</h2>
+        <h2 className={styles.sinResultados}>Hubo un error al cargar los tipos de alojamiento</h2>
+      ) : data.items.length === 0 ? (
+        <h2 className={styles.sinResultados}>Ups, no encontramos ningún tipo de alojamiento</h2>
       ) : (
         <div className={styles.listadoTarjetas}>
           {categorias.map((dato, i) => (
