@@ -51,4 +51,5 @@ public class Imagen {
     public int hashCode() {
         return Objects.hash(imagenId, imagenTitulo, imagenUrl);
     }
+
 }

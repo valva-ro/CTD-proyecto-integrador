@@ -1,4 +1,4 @@
-package com.grupo4.hostingbook.controllers.impl;
+package com.grupo4.hostingbook.controller.impl;
 
 import com.grupo4.hostingbook.model.CiudadDTO;
 import com.grupo4.hostingbook.utils.JsonMapper;

@@ -1,13 +1,16 @@
 package com.grupo4.hostingbook.model;
 
+import java.io.Serializable;
 import java.util.Objects;
+import java.util.Set;
 
-public class CategoriaDTO {
+public class CategoriaDTO implements Serializable {
 
     private Long id;
     private String titulo;
     private String descripcion;
     private String urlImagen;
+    private Set<ProductoDTO> productos;
 
     public CategoriaDTO() {}
 
@@ -22,6 +25,14 @@ public class CategoriaDTO {
         this.titulo = titulo;
         this.descripcion = descripcion;
         this.urlImagen = urlImagen;
+    }
+
+    public CategoriaDTO(Long id, String titulo, String descripcion, String urlImagen, Set<ProductoDTO> productos) {
+        this.id = id;
+        this.titulo = titulo;
+        this.descripcion = descripcion;
+        this.urlImagen = urlImagen;
+        this.productos = productos;
     }
 
     public Long getId() {
@@ -67,5 +78,15 @@ public class CategoriaDTO {
     @Override
     public int hashCode() {
         return Objects.hash(id, titulo, descripcion, urlImagen);
+    }
+
+    @Override
+    public String toString() {
+        return "CategoriaDTO{" +
+                "id=" + id +
+                ", titulo='" + titulo + '\'' +
+                ", descripcion='" + descripcion + '\'' +
+                ", urlImagen='" + urlImagen + '\'' +
+                '}';
     }
 }

@@ -8,4 +8,5 @@ public interface Mensajes {
     String ERROR_ID_ES_NULL = "El id no puede estar vacío";
     String ERROR_DTO_NO_EXISTE = "Ha ocurrido un error, '%s' o uno de sus campos no puede ser nulo";
     String ERROR_FUNCIONALIDAD_SIN_DESARROLLAR = "Esta funcionalidad no ha sido implementada.";
+    String ERROR_CRITERIO_DE_BUSQUEDA_NO_EXISTE = "%s denominada '%s' no está registrada en la base de datos.";
 }
