@@ -12,10 +12,10 @@ export default function DropDownMenu({
   function filt(locations) {
     const filtrated = locations.filter(
       (location) =>
-        validate(location.country) ||
-        validate(location.city) ||
-        validate(location.city + " " + location.country) ||
-        validate(location.country + " " + location.city)
+        validate(location.pais) ||
+        validate(location.nombre) ||
+        validate(location.nombre + " " + location.pais) ||
+        validate(location.pais + " " + location.nombre)
     );
 
     const isFiltrated = filtrated.length > 0;
@@ -51,8 +51,8 @@ export default function DropDownMenu({
           <li key={index} onClick={() => setInput(input, city)}>
             <i className="fas fa-map-marker-alt"></i>
             <div className={styles.searchWords}>
-              <p className={styles.city}>{city.city}</p>
-              <p className={styles.country}>{city.country}</p>
+              <p className={styles.city}>{city.nombre}</p>
+              <p className={styles.country}>{city.pais}</p>
             </div>
           </li>
         );
@@ -62,7 +62,7 @@ export default function DropDownMenu({
 }
 
 function normalizarFrase(frase) {
-  return frase
+   return frase 
     .toLowerCase()
     .normalize("NFD")
     .replace(/[\u0300-\u036f]/g, "");

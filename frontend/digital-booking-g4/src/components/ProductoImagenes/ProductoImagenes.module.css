@@ -1,0 +1,79 @@
+.imagenes {
+  position: relative;
+  display: flex;
+  gap: 12px;
+  height: 50vh;
+}
+
+.imagenes img {
+  border-radius: 8px;
+}
+
+.iconos {
+  display: flex;
+  gap: 1rem;
+}
+
+.iconos i {
+  color: var(--color-3);
+  font-size: 1.5rem;
+  transition: color ease-in-out 250ms;
+}
+
+.iconos i:hover {
+  color: var(--color-principal);
+}
+
+.imagenPrincipal {
+  width: 50%;
+  height: 100%;
+}
+
+.imagenesSecundarias {
+  width: 50%;
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.imagenesSecundarias img {
+  width: calc(50% - 6px);
+  height: calc(50% - 6px);
+}
+
+.verMas {
+  font-size: .9rem;
+  font-weight: 500;
+  position: absolute;
+  bottom: 2.75%;
+  right: .75%;
+  width: 70px;
+  padding: 4px;
+}
+
+.contenedorMobile {
+  position: relative;
+}
+
+.contenedorMobile .iconos {
+  position: absolute;
+  top: 1rem;
+  left: 0;
+  z-index: 2;
+}
+
+.contenedorMobile .iconos i {
+  color: white;
+}
+
+@media screen and (max-width: 768px) {
+  .iconos {
+    margin-left: 1rem;
+  }
+}
+
+@media screen and (max-height: 615px) {
+  .imagenes {
+    height: 50vh;
+  }
+}
