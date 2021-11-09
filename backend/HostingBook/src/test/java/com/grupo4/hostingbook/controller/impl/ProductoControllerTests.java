@@ -1,7 +1,6 @@
 package com.grupo4.hostingbook.controller.impl;
 
 import com.grupo4.hostingbook.model.*;
-import com.grupo4.hostingbook.model.ProductoDTO;
 import com.grupo4.hostingbook.utils.JsonMapper;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -14,7 +13,6 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
-
 
 import java.util.Set;
 

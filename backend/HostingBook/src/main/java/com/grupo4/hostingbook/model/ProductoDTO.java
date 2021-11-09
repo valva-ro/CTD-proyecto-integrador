@@ -1,10 +1,5 @@
 package com.grupo4.hostingbook.model;
 
-import com.grupo4.hostingbook.persistence.entites.Caracteristica;
-import com.grupo4.hostingbook.persistence.entites.Categoria;
-import com.grupo4.hostingbook.persistence.entites.Ciudad;
-import com.grupo4.hostingbook.persistence.entites.Imagen;
-
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Objects;

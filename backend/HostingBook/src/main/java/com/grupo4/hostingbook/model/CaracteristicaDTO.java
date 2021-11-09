@@ -1,8 +1,5 @@
 package com.grupo4.hostingbook.model;
 
-import com.grupo4.hostingbook.persistence.entites.Producto;
-
-import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Objects;
 import java.util.Set;

@@ -8,9 +8,7 @@ import com.grupo4.hostingbook.model.ProductoDTO;
 import com.grupo4.hostingbook.persistence.entites.Categoria;
 import com.grupo4.hostingbook.persistence.entites.Ciudad;
 import com.grupo4.hostingbook.persistence.entites.Producto;
-
 import com.grupo4.hostingbook.persistence.repository.IProductoRepository;
-import com.grupo4.hostingbook.service.CRUDService;
 import com.grupo4.hostingbook.service.IProductoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
