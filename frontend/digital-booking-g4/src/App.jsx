@@ -19,7 +19,7 @@ function App() {
               <Route exact path="/" component={Home} />
               <Route path="/login" component={Login} />
               <Route path="/register" component={Register} />
-              <Route path="/product" component={Producto} />
+              <Route path="/product/:id" component={Producto} />
             </Switch>
           </Layout>
         </BrowserRouter>

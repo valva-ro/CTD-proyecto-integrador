@@ -11,6 +11,12 @@
   color: var(--color-2);
 }
 
+.direccionContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
 .ubicacion {
   display: flex;
   gap: 6px;
@@ -47,4 +53,16 @@
   font-weight: bold;
   padding: 0 14px;
   height: 38.667px;
+}
+
+@media screen and (max-width: 860px) {
+  .ubicacionContainer {
+    padding: 1rem 30px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .distancia {
+    display: none;
+  }
 }

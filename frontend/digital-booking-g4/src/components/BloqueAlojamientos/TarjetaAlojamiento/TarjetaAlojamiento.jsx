@@ -1,25 +1,31 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import FilledButton from "../../Buttons/FilledButton";
 import Estrellas from "../../Estrellas/Estrellas";
 import styles from "./TarjetaAlojamiento.module.css";
 
-export default function TarjetaAlojamiento({
-  titulo,
-  imagen,
-  descripcion,
-  categoria,
-  ubicacion,
-  puntaje,
-}) {
+export default function TarjetaAlojamiento({ alojamiento }) {
+  const { id,
+          title, 
+          img, 
+          description, 
+          category, 
+          location, 
+          points } = alojamiento;
+
   const [esVerMas, setEsVerMas] = useState(true);
   const toggleVerMas = () => setEsVerMas(!esVerMas);
+  
+  const abrirPaginaProducto = () => {
+
+  }
 
   return (
     <div className={styles.tarjetaAlojamiento}>
       <div
         className={styles.imagenAlojamiento}
         style={{
-          backgroundImage: `url(${imagen})`,
+          backgroundImage: `url(${img})`,
         }}
       >
         <i className={`fas fa-heart ${styles.corazon}`}></i>
@@ -29,10 +35,10 @@ export default function TarjetaAlojamiento({
         <div className={styles.informacionPrincipal}>
           <div className={styles.nombreAlojamiento}>
             <div className={styles.tipoYCalificacion}>
-              <h4>{categoria}</h4>
-              <Estrellas puntaje={puntaje}/>
+              <h4>{category}</h4>
+              <Estrellas puntaje={points} />
             </div>
-            <h2>{titulo}</h2>
+            <h2>{title}</h2>
           </div>
           <div className={styles.puntajeAlojamiento}>
             <div className={styles.puntajeNumerico}>8</div>
@@ -43,7 +49,7 @@ export default function TarjetaAlojamiento({
           <div className={styles.ubicacion}>
             <i className="fas fa-map-marker-alt"></i>
             <p>
-              {ubicacion} <a href="#">Mostrar en el mapa</a> {/* esto tira warning*/}
+              {location} <a href="#">Mostrar en el mapa</a>
             </p>
           </div>
           <div className={styles.servicios}>
@@ -52,13 +58,13 @@ export default function TarjetaAlojamiento({
           </div>
         </div>
         <p>
-          {descripcion.length <= 85 ? (
-            descripcion
+          {description.length <= 85 ? (
+            description
           ) : (
             <>
-              {esVerMas && descripcion.length > 85
-                ? descripcion.slice(0, 85)
-                : descripcion}
+              {esVerMas && description.length > 85
+                ? description.slice(0, 85)
+                : description}
               ...
               <span onClick={toggleVerMas} className={styles.verMas}>
                 {esVerMas ? " leer más" : " leer menos"}
@@ -66,9 +72,9 @@ export default function TarjetaAlojamiento({
             </>
           )}
         </p>
-        <FilledButton onClick={toggleVerMas} styles={styles.btnVerMas}>
-          Ver más
-        </FilledButton>
+        <Link to={`product/${id}`}>
+          <FilledButton styles={styles.btnVerMas}>Ver más</FilledButton>
+        </Link>
       </div>
     </div>
   );
