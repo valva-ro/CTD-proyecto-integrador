@@ -9,10 +9,6 @@
         "points": "9",
         "imgs": [
             {
-                "src": "https://via.placeholder.com/400x200/FF0000/FFFFFF?text=Principal",
-                "alt": "Placeholder principal"
-            },
-            {
                 "src": "https://via.placeholder.com/400x200/0000FF/FFFFFF?text=Secundaria%201",
                 "alt": "Placeholder 1"
             },
@@ -47,10 +43,6 @@
         "location": "Buenos Aires",
         "points": "7.5",
         "imgs": [
-            {
-                "src": "https://via.placeholder.com/400x200/FF0000/FFFFFF?text=Principal",
-                "alt": "Placeholder principal"
-            },
             {
                 "src": "https://via.placeholder.com/400x200/0000FF/FFFFFF?text=Secundaria%201",
                 "alt": "Placeholder 1"
@@ -87,10 +79,6 @@
         "points": "6",
         "imgs": [
             {
-                "src": "https://via.placeholder.com/400x200/FF0000/FFFFFF?text=Principal",
-                "alt": "Placeholder principal"
-            },
-            {
                 "src": "https://via.placeholder.com/400x200/0000FF/FFFFFF?text=Secundaria%201",
                 "alt": "Placeholder 1"
             },
@@ -125,10 +113,6 @@
         "location": "San Carlos de Bariloche",
         "points": "7",
         "imgs": [
-            {
-                "src": "https://via.placeholder.com/400x200/FF0000/FFFFFF?text=Principal",
-                "alt": "Placeholder principal"
-            },
             {
                 "src": "https://via.placeholder.com/400x200/0000FF/FFFFFF?text=Secundaria%201",
                 "alt": "Placeholder 1"
@@ -165,10 +149,6 @@
         "points": "9",
         "imgs": [
             {
-                "src": "https://via.placeholder.com/400x200/FF0000/FFFFFF?text=Principal",
-                "alt": "Placeholder principal"
-            },
-            {
                 "src": "https://via.placeholder.com/400x200/0000FF/FFFFFF?text=Secundaria%201",
                 "alt": "Placeholder 1"
             },
@@ -203,10 +183,6 @@
         "location": "Córdoba",
         "points": "6.5",
         "imgs": [
-            {
-                "src": "https://via.placeholder.com/400x200/FF0000/FFFFFF?text=Principal",
-                "alt": "Placeholder principal"
-            },
             {
                 "src": "https://via.placeholder.com/400x200/0000FF/FFFFFF?text=Secundaria%201",
                 "alt": "Placeholder 1"
@@ -243,10 +219,6 @@
         "points": "8",
         "imgs": [
             {
-                "src": "https://via.placeholder.com/400x200/FF0000/FFFFFF?text=Principal",
-                "alt": "Placeholder principal"
-            },
-            {
                 "src": "https://via.placeholder.com/400x200/0000FF/FFFFFF?text=Secundaria%201",
                 "alt": "Placeholder 1"
             },
@@ -281,10 +253,6 @@
         "location": "Bogotá",
         "points": "8.5",
         "imgs": [
-            {
-                "src": "https://via.placeholder.com/400x200/FF0000/FFFFFF?text=Principal",
-                "alt": "Placeholder principal"
-            },
             {
                 "src": "https://via.placeholder.com/400x200/0000FF/FFFFFF?text=Secundaria%201",
                 "alt": "Placeholder 1"

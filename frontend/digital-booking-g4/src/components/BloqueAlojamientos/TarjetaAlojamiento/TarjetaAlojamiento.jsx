@@ -5,7 +5,7 @@ import Estrellas from "../../Estrellas/Estrellas";
 import styles from "./TarjetaAlojamiento.module.css";
 
 export default function TarjetaAlojamiento({ alojamiento }) {
-  const { id,
+  const { id, 
           title, 
           img, 
           description, 
@@ -15,10 +15,6 @@ export default function TarjetaAlojamiento({ alojamiento }) {
 
   const [esVerMas, setEsVerMas] = useState(true);
   const toggleVerMas = () => setEsVerMas(!esVerMas);
-  
-  const abrirPaginaProducto = () => {
-
-  }
 
   return (
     <div className={styles.tarjetaAlojamiento}>
@@ -49,7 +45,16 @@ export default function TarjetaAlojamiento({ alojamiento }) {
           <div className={styles.ubicacion}>
             <i className="fas fa-map-marker-alt"></i>
             <p>
-              {location} <a href="#">Mostrar en el mapa</a>
+              {location}
+              {/* 
+                TODO: acá tendríamos que agregar a continuación del id del 
+                producto un #ubicacion o lo que corresponda al ID de esa 
+                sección en el producto.
+                De esa manera cuando el usuario haga click no solo lo lleva 
+                a la página del producto, sino que además scrollea hasta el 
+                mapa.
+              */}
+              <Link to={`product/${id}`}>Mostrar en el mapa</Link>
             </p>
           </div>
           <div className={styles.servicios}>

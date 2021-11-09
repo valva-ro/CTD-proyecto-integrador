@@ -13,7 +13,7 @@
   height: 50vh;
 }
 
-.imagenes img {
+.imagenesDesktop img {
   border-radius: 8px;
 }
 
@@ -32,9 +32,13 @@
   color: var(--color-principal);
 }
 
-.imagenPrincipal {
+.imagenPrincipal, .imagenSecundaria {
   width: 50%;
   height: 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  border-radius: 8px;
 }
 
 .imagenesSecundarias {
@@ -44,7 +48,7 @@
   flex-wrap: wrap;
 }
 
-.imagenesSecundarias img {
+.imagenesSecundarias .imagenSecundaria {
   width: calc(50% - 6px);
   height: calc(50% - 6px);
 }

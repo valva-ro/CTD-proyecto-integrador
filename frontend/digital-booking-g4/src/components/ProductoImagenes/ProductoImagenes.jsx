@@ -17,14 +17,21 @@ export default function ProductoImagenes({ alojamiento }) {
         <i className="bx bx-heart"></i>
       </div>
       <div className={styles.imagenesDesktop}>
-        <img
-          src={alojamiento.imgs[0].src}
-          alt={alojamiento.imgs[0].alt}
+        <div
           className={styles.imagenPrincipal}
-        />
+          style={{
+            backgroundImage: `url(${alojamiento.img})`,
+          }}
+        ></div>
         <div className={styles.imagenesSecundarias}>
-          {alojamiento.imgs.slice(1, 5).map((imagen, i) => (
-            <img src={imagen.src} alt={imagen.alt} key={i} />
+          {alojamiento.imgs.slice(0, 4).map((imagen, i) => (
+            <div
+              className={styles.imagenSecundaria}
+              style={{
+                backgroundImage: `url(${imagen.src})`,
+              }}
+              key={i}
+            ></div>
           ))}
         </div>
         <FilledButton styles={styles.verMas} onClick={abrirCarousel}>
