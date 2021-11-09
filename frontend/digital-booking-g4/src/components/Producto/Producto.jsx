@@ -1,3 +1,4 @@
+import ProductoHeader from "../ProductoHeader/ProductoHeader";
 import ProductoImagenesDesktop from "../ProductoImagenes/ProductoImagenesDesktop.jsx";
 import ProductoImagenesTablet from "../ProductoImagenes/ProductoImagenesTablet.jsx";
 import ProductoImagenesMobile from "../ProductoImagenes/ProductoImagenesMobile.jsx";
@@ -40,8 +41,9 @@ export default function Producto({ imagenes = mockImgs }) {
   const anchoPantalla = useScreenWidth();
 
   return (
+    <>
+    <ProductoHeader/>
     <section className={styles.sectionImagenes}>
-      {/* TODO: agregar el resto de componentes relacionados al producto */}
       {anchoPantalla > 768 ? (
         <ProductoImagenesDesktop imagenes={imagenes} />
       ) : anchoPantalla > 480 ? (
@@ -50,5 +52,6 @@ export default function Producto({ imagenes = mockImgs }) {
         <ProductoImagenesMobile imagenes={imagenes} />
       )}
     </section>
+    </>
   );
 }
