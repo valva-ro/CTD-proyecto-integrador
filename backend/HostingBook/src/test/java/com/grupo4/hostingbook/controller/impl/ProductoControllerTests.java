@@ -235,10 +235,10 @@ public class ProductoControllerTests {
                 .characterEncoding("utf-8")
                 .content(JsonMapper.mapObjectToJson(producto)));
         //Act & Assert
-        mockMvc.perform(MockMvcRequestBuilders.get("/productos/getByCategoria")
+        mockMvc.perform(MockMvcRequestBuilders.get("/productos/categoria")
+                .param("title", "Hotel")
                 .contentType(MediaType.APPLICATION_JSON)
-                .characterEncoding("utf-8")
-                .content("Hotel"))
+                .characterEncoding("utf-8"))
                 .andDo(MockMvcResultHandlers.print())
                 .andExpect(MockMvcResultMatchers.status().isOk());
     }
@@ -252,10 +252,10 @@ public class ProductoControllerTests {
                 .characterEncoding("utf-8")
                 .content(JsonMapper.mapObjectToJson(producto)));
         //Act & Assert
-        mockMvc.perform(MockMvcRequestBuilders.get("/productos/getByCategoria")
+        mockMvc.perform(MockMvcRequestBuilders.get("/productos/categoria")
+                        .param("title", "Cabaña")
                         .contentType(MediaType.APPLICATION_JSON)
-                        .characterEncoding("utf-8")
-                        .content("Cabaña"))
+                        .characterEncoding("utf-8"))
                 .andDo(MockMvcResultHandlers.print())
                 .andExpect(MockMvcResultMatchers.status().isNotFound());
     }
@@ -270,10 +270,10 @@ public class ProductoControllerTests {
                 .characterEncoding("utf-8")
                 .content(JsonMapper.mapObjectToJson(producto)));
         //Act & Assert
-        mockMvc.perform(MockMvcRequestBuilders.get("/productos/getByCiudad")
+        mockMvc.perform(MockMvcRequestBuilders.get("/productos/ciudad")
+                        .param("name", "Manizales")
                         .contentType(MediaType.APPLICATION_JSON)
-                        .characterEncoding("utf-8")
-                        .content("Manizales"))
+                        .characterEncoding("utf-8"))
                 .andDo(MockMvcResultHandlers.print())
                 .andExpect(MockMvcResultMatchers.status().isOk());
     }
@@ -287,10 +287,10 @@ public class ProductoControllerTests {
                 .characterEncoding("utf-8")
                 .content(JsonMapper.mapObjectToJson(producto)));
         //Act & Assert
-        mockMvc.perform(MockMvcRequestBuilders.get("/productos/getByCiudad")
+        mockMvc.perform(MockMvcRequestBuilders.get("/productos/ciudad")
+                        .param("name", "Buenos Aires")
                         .contentType(MediaType.APPLICATION_JSON)
-                        .characterEncoding("utf-8")
-                        .content("Mendoza"))
+                        .characterEncoding("utf-8"))
                 .andDo(MockMvcResultHandlers.print())
                 .andExpect(MockMvcResultMatchers.status().isNotFound());
     }

@@ -42,6 +42,16 @@ INSERT INTO ciudades (nombre, pais) VALUES ('Barranquilla','Colombia');
 COMMIT;
 
 --
+-- Dumping data for table `productos`
+--
+SET AUTOCOMMIT=0;
+INSERT INTO productos (nombre, descripcion, fk_categoria, fk_ciudad) VALUES ("Habitación Luxury 1","Habitación de lujo", 1, 1);
+INSERT INTO productos (nombre, descripcion, fk_categoria, fk_ciudad) VALUES ("Habitación Luxury 2","Habitación de lujo", 1, 1);
+INSERT INTO productos (nombre, descripcion, fk_categoria, fk_ciudad) VALUES ("Habitación Luxury 3","Habitación de lujo", 1, 4);
+INSERT INTO productos (nombre, descripcion, fk_categoria, fk_ciudad) VALUES ("Departamento Pequeño","Departamento unipersonal", 4, 4);
+COMMIT;
+
+--
 -- Dumping data for table `imagenes`
 --
 SET AUTOCOMMIT=0;
@@ -58,16 +68,6 @@ SET AUTOCOMMIT=0;
 INSERT INTO caracteristicas (nombre, icono) VALUES ("Wifi","<i class='bx bx-wifi' ></i>");
 INSERT INTO caracteristicas (nombre, icono) VALUES ("Parqueadero","<i class='bx bxs-car'></i>");
 INSERT INTO caracteristicas (nombre, icono) VALUES ("Piscina","<i class='bx bx-swim'></i>");
-COMMIT;
-
---
--- Dumping data for table `productos`
---
-SET AUTOCOMMIT=0;
-INSERT INTO productos (nombre, descripcion, fk_categoria, fk_ciudad) VALUES ("Habitación Luxury 1","Habitación de lujo", 1, 1);
-INSERT INTO productos (nombre, descripcion, fk_categoria, fk_ciudad) VALUES ("Habitación Luxury 2","Habitación de lujo", 1, 1);
-INSERT INTO productos (nombre, descripcion, fk_categoria, fk_ciudad) VALUES ("Habitación Luxury 3","Habitación de lujo", 1, 4);
-INSERT INTO productos (nombre, descripcion, fk_categoria, fk_ciudad) VALUES ("Departamento Pequeño","Departamento unipersonal", 4, 4);
 COMMIT;
 
 --

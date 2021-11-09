@@ -95,9 +95,9 @@ public class ProductoController implements IProductoController {
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "Success")
     })
-    @GetMapping("/getByCategoria")
-    public ResponseEntity<?> obtenerPorCategoria(@RequestBody String tituloCategoria) throws BadRequestException, ResourceNotFoundException {
-        Set<ProductoDTO> productos = productoService.consultarPorCategoria(tituloCategoria);
+    @GetMapping("/categoria")
+    public ResponseEntity<?> obtenerPorCategoria(@RequestParam String title) throws BadRequestException, ResourceNotFoundException {
+        Set<ProductoDTO> productos = productoService.consultarPorCategoria(title);
         return ResponseEntity.ok(productos);
     }
 
@@ -107,9 +107,9 @@ public class ProductoController implements IProductoController {
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "Success")
     })
-    @GetMapping("/getByCiudad")
-    public ResponseEntity<?> obtenerPorCiudad(@RequestBody String nombreCiudad) throws BadRequestException, ResourceNotFoundException {
-        Set<ProductoDTO> productos = productoService.consultarPorCiudad(nombreCiudad);
+    @GetMapping("/ciudad")
+    public ResponseEntity<?> obtenerPorCiudad(@RequestParam String name) throws BadRequestException, ResourceNotFoundException {
+        Set<ProductoDTO> productos = productoService.consultarPorCiudad(name);
         return ResponseEntity.ok(productos);
     }
 }

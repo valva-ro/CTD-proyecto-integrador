@@ -15,7 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-@Service
+@Service("CategoriaService")
 public class CategoriaService implements CRUDService<CategoriaDTO> {
 
     private final ICategoriaRepository categoriaRepository;
