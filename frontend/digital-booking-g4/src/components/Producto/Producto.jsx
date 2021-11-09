@@ -10,11 +10,11 @@ export default function Producto() {
   const { id } = useParams();
   // TODO: cambiar esto por el GET a la API
   const obtenerAlojamiento = () => {
-    if (id < alojamientos.length) return alojamientos[id - 1];
+    if (id <= alojamientos.length) return alojamientos[id - 1];
   };
   return (
     <>
-      {id >= alojamientos.length ? (
+      {id >= alojamientos.length+1 ? (
         <h2 className={styles.sinResultados}>
           El alojamiento que estás buscando no existe
         </h2>

@@ -7,7 +7,7 @@ import styles from "./TarjetaAlojamiento.module.css";
 export default function TarjetaAlojamiento({ alojamiento }) {
   const { id, 
           title, 
-          img, 
+          imgs, 
           description, 
           category, 
           location, 
@@ -21,7 +21,7 @@ export default function TarjetaAlojamiento({ alojamiento }) {
       <div
         className={styles.imagenAlojamiento}
         style={{
-          backgroundImage: `url(${img})`,
+          backgroundImage: `url(${imgs[0].src})`,
         }}
       >
         <i className={`fas fa-heart ${styles.corazon}`}></i>
@@ -37,7 +37,7 @@ export default function TarjetaAlojamiento({ alojamiento }) {
             <h2>{title}</h2>
           </div>
           <div className={styles.puntajeAlojamiento}>
-            <div className={styles.puntajeNumerico}>8</div>
+            <div className={styles.puntajeNumerico}>{points}</div>
             <div className={styles.detalle}>Muy bueno</div>
           </div>
         </div>

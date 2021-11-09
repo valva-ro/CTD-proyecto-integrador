@@ -6,6 +6,7 @@ import Producto from "./components/Producto/Producto.jsx";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import loggedContext from "./contexts/loggedContext";
 import { useState } from "react";
+import ScrollToTop from "./components/ScrollToTop";
 
 function App() {
   const [isLogged, setIsLogged] = useState(false);
@@ -14,6 +15,7 @@ function App() {
     <loggedContext.Provider value={{ isLogged, setIsLogged }}>
       <div className="App">
         <BrowserRouter>
+        <ScrollToTop />
           <Layout>
             <Switch>
               <Route exact path="/" component={Home} />
