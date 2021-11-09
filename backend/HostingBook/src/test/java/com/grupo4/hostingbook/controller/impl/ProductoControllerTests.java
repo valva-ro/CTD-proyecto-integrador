@@ -225,4 +225,27 @@ public class ProductoControllerTests {
                         .characterEncoding("utf-8"))
                 .andExpect(MockMvcResultMatchers.status().isNotFound());
     }
+
+    @Test
+    public void test14obtenerProductosPorCategoria() throws Exception {
+        //Act
+        mockMvc.perform(MockMvcRequestBuilders.get("/productos/getByCategoria")
+                .contentType(MediaType.APPLICATION_JSON)
+                .characterEncoding("utf-8")
+                .content("Hotel"))
+                .andDo(MockMvcResultHandlers.print())
+                .andExpect(MockMvcResultMatchers.status().isOk());
+    }
+
+
+    @Test
+    public void test15obtenerProductosPorCiudad() throws Exception {
+        //Act
+        mockMvc.perform(MockMvcRequestBuilders.get("/productos/getByCiudad")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .characterEncoding("utf-8")
+                        .content("Manizales"))
+                .andDo(MockMvcResultHandlers.print())
+                .andExpect(MockMvcResultMatchers.status().isOk());
+    }
 }
