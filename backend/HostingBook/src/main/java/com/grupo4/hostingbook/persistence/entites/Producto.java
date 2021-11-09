@@ -20,7 +20,7 @@ public class Producto {
     private Categoria categoria;
 
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "fk_ciudades")
+    @JoinColumn(name = "fk_ciudad")
     private Ciudad ciudad;
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
