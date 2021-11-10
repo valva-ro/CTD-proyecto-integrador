@@ -6,12 +6,12 @@ import styles from "./TarjetaAlojamiento.module.css";
 
 export default function TarjetaAlojamiento({ alojamiento }) {
   const { id, 
-          title, 
-          imgs, 
-          description, 
-          category, 
-          location, 
-          points } = alojamiento;
+          nombre, 
+          descripcion,  
+          categoria, 
+          ciudad, 
+          imagenes,
+        caracteristicas } = alojamiento;
 
   const [esVerMas, setEsVerMas] = useState(true);
   const toggleVerMas = () => setEsVerMas(!esVerMas);
@@ -21,7 +21,7 @@ export default function TarjetaAlojamiento({ alojamiento }) {
       <div
         className={styles.imagenAlojamiento}
         style={{
-          backgroundImage: `url(${imgs[0].src})`,
+          backgroundImage: `url(${imagenes[0].imagenUrl})`,
         }}
       >
         <i className={`fas fa-heart ${styles.corazon}`}></i>
@@ -31,13 +31,13 @@ export default function TarjetaAlojamiento({ alojamiento }) {
         <div className={styles.informacionPrincipal}>
           <div className={styles.nombreAlojamiento}>
             <div className={styles.tipoYCalificacion}>
-              <h4>{category}</h4>
-              <Estrellas puntaje={points} />
+              <h4>{categoria.titulo}</h4>
+              <Estrellas puntaje={8} />
             </div>
-            <h2>{title}</h2>
+            <h2>{nombre}</h2>
           </div>
           <div className={styles.puntajeAlojamiento}>
-            <div className={styles.puntajeNumerico}>{points}</div>
+            <div className={styles.puntajeNumerico}>{8}</div>
             <div className={styles.detalle}>Muy bueno</div>
           </div>
         </div>
@@ -45,7 +45,7 @@ export default function TarjetaAlojamiento({ alojamiento }) {
           <div className={styles.ubicacion}>
             <i className="fas fa-map-marker-alt"></i>
             <p>
-              {location}
+              {ciudad.nombre}
               {/* 
                 TODO: acá tendríamos que agregar a continuación del id del 
                 producto un #ubicacion o lo que corresponda al ID de esa 
@@ -58,18 +58,21 @@ export default function TarjetaAlojamiento({ alojamiento }) {
             </p>
           </div>
           <div className={styles.servicios}>
-            <i className="fas fa-wifi"></i>
-            <i className="fas fa-swimmer"></i>
+            {
+              caracteristicas.map((caracteristica, i) => 
+                <i key={`caracteristica-${i}`} className={`${caracteristica.icono}`}></i>
+              )
+            }
           </div>
         </div>
         <p>
-          {description.length <= 85 ? (
-            description
+          {descripcion.length <= 85 ? (
+            descripcion
           ) : (
             <>
-              {esVerMas && description.length > 85
-                ? description.slice(0, 85)
-                : description}
+              {esVerMas && descripcion.length > 85
+                ? descripcion.slice(0, 85)
+                : descripcion}
               ...
               <span onClick={toggleVerMas} className={styles.verMas}>
                 {esVerMas ? " leer más" : " leer menos"}
