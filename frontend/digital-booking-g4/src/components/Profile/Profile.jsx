@@ -13,9 +13,15 @@ export default function Profile({ nombre = "Bruno", apellido = "Rodriguez" }) {
       <p className={styles.avatar}>{iniciales}</p>
       <div className={styles.contenedorNombre}>
         <p className={styles.saludo}>Hola,</p>
-        <p className={styles.nombre}>{`${nombreCapitalized} ${apellidoCapitalized}`}</p>
+        <p
+          className={styles.nombre}
+        >{`${nombreCapitalized} ${apellidoCapitalized}`}</p>
       </div>
-      <span className={styles.cerrar} id="cerrarSesion" onClick={() => setIsLogged(false)}>
+      <span
+        className={styles.cerrar}
+        data-testid="btnCerrarSesion"
+        onClick={() => setIsLogged(false)}
+      >
         X
       </span>
     </div>

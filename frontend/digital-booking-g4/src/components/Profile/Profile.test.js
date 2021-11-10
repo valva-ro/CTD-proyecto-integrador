@@ -28,7 +28,8 @@ describe("Profile tests", function () {
       `${perfilEsperado.nombre} ${perfilEsperado.apellido}`
     );
   });
-    test("Se renderiza el componente mostrando las iniciales", () => {
+
+  test("Se renderiza el componente mostrando las iniciales", () => {
     const componente = render(
       <loggedContext.Provider value={{ isLogged: true }}>
         <Profile
