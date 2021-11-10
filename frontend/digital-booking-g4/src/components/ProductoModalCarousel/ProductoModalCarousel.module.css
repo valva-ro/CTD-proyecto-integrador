@@ -21,7 +21,7 @@
 }
 
 .close {
-  transition: color ease-in-out 250ms;
+  transition: color ease-in-out 50ms;
   color: var(--color-5);
   font-size: 1.5rem;
   position: absolute;
@@ -47,7 +47,7 @@
   outline: none;
   border: none;
   border-radius: 50%;
-  transition: background-color ease-in-out 250ms;
+  transition: background-color ease-in-out 50ms;
 }
 
 .previousArrow:hover,
