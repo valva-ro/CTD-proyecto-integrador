@@ -52,8 +52,11 @@ public class ProductoService implements IProductoService {
     @Override
     public ProductoDTO buscarPorId(Long id) throws BadRequestException, ResourceNotFoundException {
         validarId(id);
-        Producto producto = productoRepository.getById(id);
-        return mapper.convertValue(producto, ProductoDTO.class);
+        if (!productoRepository.existsById(id)) {
+            throw new ResourceNotFoundException(
+                    String.format(Mensajes.ERROR_NO_EXISTE, "El 'producto'", id));
+        }
+        return mapper.convertValue(productoRepository.findById(id).get(), ProductoDTO.class);
     }
 
     @Override

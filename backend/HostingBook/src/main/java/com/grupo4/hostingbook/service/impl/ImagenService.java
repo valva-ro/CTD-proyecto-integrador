@@ -16,7 +16,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class ImagenService  implements CRUDService<ImagenDTO> {
+public class ImagenService implements CRUDService<ImagenDTO> {
 
     private final IImagenRepository imagenRepository;
     private final ObjectMapper mapper;
@@ -41,8 +41,10 @@ public class ImagenService  implements CRUDService<ImagenDTO> {
     @Override
     public ImagenDTO buscarPorId(Long id) throws BadRequestException, ResourceNotFoundException {
         validarId(id);
-        Imagen imagen = imagenRepository.getById(id);
-        return mapper.convertValue(imagen, ImagenDTO.class);
+        if (!imagenRepository.existsById(id)) {
+            throw new ResourceNotFoundException(String.format(Mensajes.ERROR_NO_EXISTE, "La 'imagen'", id));
+        }
+        return mapper.convertValue(imagenRepository.findById(id).get(), ImagenDTO.class);
     }
 
     @Override
@@ -62,12 +64,14 @@ public class ImagenService  implements CRUDService<ImagenDTO> {
         Optional<Imagen> i = imagenRepository.findById(imagenDTO.getId());
         if (i.isPresent()) {
             Imagen entidad = i.get();
-            imagenActualizada = actualizar(imagenDTO,entidad);
+            imagenActualizada = actualizar(imagenDTO, entidad);
         } else {
-            throw new ResourceNotFoundException(String.format(Mensajes.ERROR_NO_EXISTE, "La 'imagen'", imagenDTO.getId()));
+            throw new ResourceNotFoundException(
+                    String.format(Mensajes.ERROR_NO_EXISTE, "La 'imagen'", imagenDTO.getId()));
         }
         return imagenActualizada;
     }
+
     @Override
     public void eliminar(Long id) throws ResourceNotFoundException, BadRequestException {
         validarId(id);
@@ -78,10 +82,14 @@ public class ImagenService  implements CRUDService<ImagenDTO> {
         if (imagenDTO == null) {
             throw new BadRequestException(String.format(Mensajes.ERROR_DTO_NO_EXISTE, "Imagen"));
         } else {
-            if (imagenDTO.getImagenTitulo() == null || imagenDTO.getImagenTitulo().isEmpty() || imagenDTO.getImagenTitulo().isBlank())
-                throw new BadRequestException(String.format(Mensajes.ERROR_CREACION_CAMPO_REQUERIDO, "imagen", "título"));
-            if (imagenDTO.getImagenUrl() == null || imagenDTO.getImagenUrl().isEmpty() || imagenDTO.getImagenUrl().isBlank())
-                throw new BadRequestException(String.format(Mensajes.ERROR_CREACION_CAMPO_REQUERIDO, "imagen", "URL de la imagen"));
+            if (imagenDTO.getImagenTitulo() == null || imagenDTO.getImagenTitulo().isEmpty()
+                    || imagenDTO.getImagenTitulo().isBlank())
+                throw new BadRequestException(
+                        String.format(Mensajes.ERROR_CREACION_CAMPO_REQUERIDO, "imagen", "título"));
+            if (imagenDTO.getImagenUrl() == null || imagenDTO.getImagenUrl().isEmpty()
+                    || imagenDTO.getImagenUrl().isBlank())
+                throw new BadRequestException(
+                        String.format(Mensajes.ERROR_CREACION_CAMPO_REQUERIDO, "imagen", "URL de la imagen"));
         }
     }
 
@@ -97,9 +105,11 @@ public class ImagenService  implements CRUDService<ImagenDTO> {
     }
 
     private ImagenDTO actualizar(ImagenDTO imagenDTO, Imagen entidad) {
-        if (imagenDTO.getImagenTitulo() != null && !imagenDTO.getImagenTitulo().isEmpty() && !imagenDTO.getImagenTitulo().isBlank())
+        if (imagenDTO.getImagenTitulo() != null && !imagenDTO.getImagenTitulo().isEmpty()
+                && !imagenDTO.getImagenTitulo().isBlank())
             entidad.setImagenTitulo(imagenDTO.getImagenTitulo());
-        if (imagenDTO.getImagenUrl() != null && !imagenDTO.getImagenUrl().isEmpty() && !imagenDTO.getImagenUrl().isBlank())
+        if (imagenDTO.getImagenUrl() != null && !imagenDTO.getImagenUrl().isEmpty()
+                && !imagenDTO.getImagenUrl().isBlank())
             entidad.setImagenUrl(imagenDTO.getImagenUrl());
         Imagen entidadActualizada = imagenRepository.save(entidad);
         return mapper.convertValue(entidadActualizada, ImagenDTO.class);

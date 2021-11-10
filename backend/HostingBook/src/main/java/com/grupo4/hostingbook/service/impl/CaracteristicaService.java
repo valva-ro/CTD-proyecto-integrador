@@ -38,8 +38,10 @@ public class CaracteristicaService implements CRUDService<CaracteristicaDTO> {
     @Override
     public CaracteristicaDTO buscarPorId(Long id) throws BadRequestException, ResourceNotFoundException {
         validarId(id);
-        Caracteristica caracteristica = caracteristicaRepository.getById(id);
-        return mapper.convertValue(caracteristica, CaracteristicaDTO.class);
+        if (!caracteristicaRepository.existsById(id)) {
+            throw new ResourceNotFoundException(String.format(Mensajes.ERROR_NO_EXISTE, "La 'característica'", id));
+        }
+        return mapper.convertValue(caracteristicaRepository.findById(id).get(), CaracteristicaDTO.class);
     }
 
     @Override
