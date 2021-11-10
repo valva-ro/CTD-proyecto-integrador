@@ -65,7 +65,7 @@ public class CaracteristicaDTO implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         CaracteristicaDTO that = (CaracteristicaDTO) o;
-        return id.equals(that.id) && nombre.equals(that.nombre) && icono.equals(that.icono);
+        return Objects.equals(id, that.id) && nombre.equals(that.nombre) && icono.equals(that.icono);
     }
 
     @Override
