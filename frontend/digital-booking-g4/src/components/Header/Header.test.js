@@ -34,7 +34,7 @@ describe("Header tests en la home", function () {
     expect(screen.queryAllByText(`${perfilEsperado.nombre} ${perfilEsperado.apellido}`)[0]).toBeUndefined();
   });
 
-  test("Al hacer click en la X ce cierra la sesión del usuario", () => {
+  test("Al hacer click en la X se cierra la sesión del usuario", () => {
     let isLogged = true;
     const setIsLogged = boolean => isLogged = boolean;
     render(
@@ -46,8 +46,6 @@ describe("Header tests en la home", function () {
 
     expect(isLogged).toBeTruthy();
 
-    // No funciona, el isLogged queda true
-    // const btnCerrarSesion = screen.queryAllByText("X")[0];
     const btnCerrarSesion = screen.queryAllByTestId("btnCerrarSesion")[0];
     fireEvent.click(btnCerrarSesion);
 
