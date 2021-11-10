@@ -1,7 +1,10 @@
 import { useParams } from "react-router-dom";
 import ProductoHeader from "../ProductoHeader/ProductoHeader";
 import ProductoImagenes from "../ProductoImagenes/ProductoImagenes.jsx";
-import ProductoFechasDisponibles from "../ProductoFechasDisponibles/ProductoFechasDisponibles";
+import ProductoDescripcion from "../ProductoDescripcion/ProductoDescripcion.jsx";
+import ProductoCaracteristicas from "../ProductoCaracteristicas/ProductoCaracteristicas.jsx";
+import ProductoFechasDisponibles from "../ProductoFechasDisponibles/ProductoFechasDisponibles.jsx";
+import ProductoPoliticas from "../ProductoPoliticas/ProductoPoliticas.jsx";
 import styles from "./Producto.module.css";
 import alojamientos from "../../resources/alojamientos.json";
 
@@ -22,6 +25,9 @@ export default function Producto() {
         <>
           <ProductoHeader alojamiento={obtenerAlojamiento()} />
           <ProductoImagenes alojamiento={obtenerAlojamiento()} />
+          <ProductoDescripcion />
+          <ProductoCaracteristicas/>
+          <ProductoPoliticas />
           <ProductoFechasDisponibles />
         </>
       )}
