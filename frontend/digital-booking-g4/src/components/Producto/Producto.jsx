@@ -25,9 +25,9 @@ export default function Producto() {
         <>
           <ProductoHeader alojamiento={obtenerAlojamiento()} />
           <ProductoImagenes alojamiento={obtenerAlojamiento()} />
-          <ProductoDescripcion />
-          <ProductoCaracteristicas/>
-          <ProductoPoliticas />
+          <ProductoDescripcion alojamiento={obtenerAlojamiento()} />
+          <ProductoCaracteristicas alojamiento={obtenerAlojamiento()} />
+          <ProductoPoliticas alojamiento = {obtenerAlojamiento()} />
           <ProductoFechasDisponibles />
         </>
       )}
