@@ -1,66 +1,306 @@
 [
     {
+        "id": 1,
         "title": "Hotel España",
-        "img": "https://images.unsplash.com/photo-1568495248636-6432b97bd949?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8aG90ZWwlMjByb29tfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=60",
         "category": "hoteles",
         "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae minima illum omnis suscipit vel laborum commodi provident eveniet harum voluptatem quam cumque, nam maiores?",
         "location": "Buenos Aires",
-        "points": "9"
+        "points": "9",
+        "imgs": [
+            {
+                "src": "https://images.unsplash.com/photo-1568495248636-6432b97bd949?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8aG90ZWwlMjByb29tfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=60",
+                "alt": "Principal"
+            },
+            {
+                "src": "https://via.placeholder.com/400x200/0000FF/FFFFFF?text=Secundaria%201",
+                "alt": "Placeholder 1"
+            },
+            {
+                "src": "https://via.placeholder.com/400x200/0000FF/FFFFFF?text=Secundaria%202",
+                "alt": "Placeholder 2"
+            },
+            {
+                "src": "https://via.placeholder.com/400x200/0000FF/FFFFFF?text=Secundaria%203",
+                "alt": "Placeholder 3"
+            },
+            {
+                "src": "https://via.placeholder.com/400x200/0000FF/FFFFFF?text=Secundaria%204",
+                "alt": "Placeholder 4"
+            },
+            {
+                "src": "https://via.placeholder.com/400x200/0000FF/FFFFFF?text=Secundaria%205",
+                "alt": "Placeholder 5"
+            },
+            {
+                "src": "https://via.placeholder.com/400x200/0000FF/FFFFFF?text=Secundaria%206",
+                "alt": "Placeholder 6"
+            }
+        ]
     },
     {
+        "id": 2,
         "title": "Vivac Hostel",
-        "img": "https://images.unsplash.com/photo-1520277739336-7bf67edfa768?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8aG9zdGVsJTIwcm9vbXxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=60",
         "category": "hostels",
         "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae minima illum omnis suscipit vel laborum commodi provident eveniet harum voluptatem quam cumque, nam maiores?",
         "location": "Buenos Aires",
-        "points": "7.5"
+        "points": "7.5",
+        "imgs": [
+            {
+                "src": "https://images.unsplash.com/photo-1520277739336-7bf67edfa768?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8aG9zdGVsJTIwcm9vbXxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=60",
+                "alt": "Principal"
+            },
+            {
+                "src": "https://via.placeholder.com/400x200/0000FF/FFFFFF?text=Secundaria%201",
+                "alt": "Placeholder 1"
+            },
+            {
+                "src": "https://via.placeholder.com/400x200/0000FF/FFFFFF?text=Secundaria%202",
+                "alt": "Placeholder 2"
+            },
+            {
+                "src": "https://via.placeholder.com/400x200/0000FF/FFFFFF?text=Secundaria%203",
+                "alt": "Placeholder 3"
+            },
+            {
+                "src": "https://via.placeholder.com/400x200/0000FF/FFFFFF?text=Secundaria%204",
+                "alt": "Placeholder 4"
+            },
+            {
+                "src": "https://via.placeholder.com/400x200/0000FF/FFFFFF?text=Secundaria%205",
+                "alt": "Placeholder 5"
+            },
+            {
+                "src": "https://via.placeholder.com/400x200/0000FF/FFFFFF?text=Secundaria%206",
+                "alt": "Placeholder 6"
+            }
+        ]
     },
     {
+        "id": 3,
         "title": "Los Angelitos",
-        "img": "https://images.unsplash.com/photo-1531088009183-5ff5b7c95f91?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTl8fGJlZCUyMGFuZCUyMGJyZWFrZmFzdHxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=60",
         "category": "bed & breakfasts",
         "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae minima illum omnis suscipit vel laborum commodi provident eveniet harum voluptatem quam cumque, nam maiores?",
         "location": "Mendoza",
-        "points": "6"
+        "points": "6",
+        "imgs": [
+            {
+                "src": "https://images.unsplash.com/photo-1531088009183-5ff5b7c95f91?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTl8fGJlZCUyMGFuZCUyMGJyZWFrZmFzdHxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=60",
+                "alt": "Principal"
+            },
+            {
+                "src": "https://via.placeholder.com/400x200/0000FF/FFFFFF?text=Secundaria%201",
+                "alt": "Placeholder 1"
+            },
+            {
+                "src": "https://via.placeholder.com/400x200/0000FF/FFFFFF?text=Secundaria%202",
+                "alt": "Placeholder 2"
+            },
+            {
+                "src": "https://via.placeholder.com/400x200/0000FF/FFFFFF?text=Secundaria%203",
+                "alt": "Placeholder 3"
+            },
+            {
+                "src": "https://via.placeholder.com/400x200/0000FF/FFFFFF?text=Secundaria%204",
+                "alt": "Placeholder 4"
+            },
+            {
+                "src": "https://via.placeholder.com/400x200/0000FF/FFFFFF?text=Secundaria%205",
+                "alt": "Placeholder 5"
+            },
+            {
+                "src": "https://via.placeholder.com/400x200/0000FF/FFFFFF?text=Secundaria%206",
+                "alt": "Placeholder 6"
+            }
+        ]
     },
     {
+        "id": 4,
         "title": "Dpto. en Bariloche",
-        "img": "https://images.unsplash.com/photo-1502462456379-a6dbfdd0faef?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTd8fGFwcGFydG1lbnR8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=60",
         "category": "departamentos",
         "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae minima illum omnis suscipit vel laborum commodi provident eveniet harum voluptatem quam cumque, nam maiores?",
         "location": "San Carlos de Bariloche",
-        "points": "7"
+        "points": "7",
+        "imgs": [
+            {
+                "src": "https://images.unsplash.com/photo-1502462456379-a6dbfdd0faef?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTd8fGFwcGFydG1lbnR8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=60",
+                "alt": "Principal"
+            },
+            {
+                "src": "https://via.placeholder.com/400x200/0000FF/FFFFFF?text=Secundaria%201",
+                "alt": "Placeholder 1"
+            },
+            {
+                "src": "https://via.placeholder.com/400x200/0000FF/FFFFFF?text=Secundaria%202",
+                "alt": "Placeholder 2"
+            },
+            {
+                "src": "https://via.placeholder.com/400x200/0000FF/FFFFFF?text=Secundaria%203",
+                "alt": "Placeholder 3"
+            },
+            {
+                "src": "https://via.placeholder.com/400x200/0000FF/FFFFFF?text=Secundaria%204",
+                "alt": "Placeholder 4"
+            },
+            {
+                "src": "https://via.placeholder.com/400x200/0000FF/FFFFFF?text=Secundaria%205",
+                "alt": "Placeholder 5"
+            },
+            {
+                "src": "https://via.placeholder.com/400x200/0000FF/FFFFFF?text=Secundaria%206",
+                "alt": "Placeholder 6"
+            }
+        ]
     },
     {
+        "id": 5,
         "title": "Hotel Atlantic",
-        "img": "https://images.unsplash.com/photo-1618773928121-c32242e63f39?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTF8fGhvdGVsJTIwcm9vbXxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=60",
         "category": "hoteles",
         "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae minima illum omnis suscipit vel laborum commodi provident eveniet harum voluptatem quam cumque, nam maiores?",
         "location": "San Carlos de Bariloche",
-        "points": "9"
+        "points": "9",
+        "imgs": [
+            {
+                "src": "https://images.unsplash.com/photo-1618773928121-c32242e63f39?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTF8fGhvdGVsJTIwcm9vbXxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=60",
+                "alt": "Principal"
+            },
+            {
+                "src": "https://via.placeholder.com/400x200/0000FF/FFFFFF?text=Secundaria%201",
+                "alt": "Placeholder 1"
+            },
+            {
+                "src": "https://via.placeholder.com/400x200/0000FF/FFFFFF?text=Secundaria%202",
+                "alt": "Placeholder 2"
+            },
+            {
+                "src": "https://via.placeholder.com/400x200/0000FF/FFFFFF?text=Secundaria%203",
+                "alt": "Placeholder 3"
+            },
+            {
+                "src": "https://via.placeholder.com/400x200/0000FF/FFFFFF?text=Secundaria%204",
+                "alt": "Placeholder 4"
+            },
+            {
+                "src": "https://via.placeholder.com/400x200/0000FF/FFFFFF?text=Secundaria%205",
+                "alt": "Placeholder 5"
+            },
+            {
+                "src": "https://via.placeholder.com/400x200/0000FF/FFFFFF?text=Secundaria%206",
+                "alt": "Placeholder 6"
+            }
+        ]
     },
     {
+        "id": 6,
         "title": "Elefante Rosa Hostel",
-        "img": "https://images.unsplash.com/photo-1555854877-bab0e564b8d5?ixid=MnwxMjA3fDB8MHxzZWFyY2h8OHx8aG9zdGVsJTIwcm9vbXxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=60",
         "category": "hostels",
         "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae minima illum omnis suscipit vel laborum commodi provident eveniet harum voluptatem quam cumque, nam maiores?",
         "location": "Córdoba",
-        "points": "6.5"
+        "points": "6.5",
+        "imgs": [
+            {
+                "src": "https://images.unsplash.com/photo-1555854877-bab0e564b8d5?ixid=MnwxMjA3fDB8MHxzZWFyY2h8OHx8aG9zdGVsJTIwcm9vbXxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=60",
+                "alt": "Principal"
+            },
+            {
+                "src": "https://via.placeholder.com/400x200/0000FF/FFFFFF?text=Secundaria%201",
+                "alt": "Placeholder 1"
+            },
+            {
+                "src": "https://via.placeholder.com/400x200/0000FF/FFFFFF?text=Secundaria%202",
+                "alt": "Placeholder 2"
+            },
+            {
+                "src": "https://via.placeholder.com/400x200/0000FF/FFFFFF?text=Secundaria%203",
+                "alt": "Placeholder 3"
+            },
+            {
+                "src": "https://via.placeholder.com/400x200/0000FF/FFFFFF?text=Secundaria%204",
+                "alt": "Placeholder 4"
+            },
+            {
+                "src": "https://via.placeholder.com/400x200/0000FF/FFFFFF?text=Secundaria%205",
+                "alt": "Placeholder 5"
+            },
+            {
+                "src": "https://via.placeholder.com/400x200/0000FF/FFFFFF?text=Secundaria%206",
+                "alt": "Placeholder 6"
+            }
+        ]
     },
     {
+        "id": 7,
         "title": "La Casa del Sol",
-        "img": "https://images.unsplash.com/photo-1521120367316-e47e63ca9913?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8YmVkJTIwYW5kJTIwYnJlYWtmYXN0fGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=60",
         "category": "bed & breakfasts",
         "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae minima illum omnis suscipit vel laborum commodi provident eveniet harum voluptatem quam cumque, nam maiores?",
         "location": "Córdoba",
-        "points": "8"
+        "points": "8",
+        "imgs": [
+            {
+                "src": "https://images.unsplash.com/photo-1521120367316-e47e63ca9913?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8YmVkJTIwYW5kJTIwYnJlYWtmYXN0fGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=60",
+                "alt": "Principal"
+            },
+            {
+                "src": "https://via.placeholder.com/400x200/0000FF/FFFFFF?text=Secundaria%201",
+                "alt": "Placeholder 1"
+            },
+            {
+                "src": "https://via.placeholder.com/400x200/0000FF/FFFFFF?text=Secundaria%202",
+                "alt": "Placeholder 2"
+            },
+            {
+                "src": "https://via.placeholder.com/400x200/0000FF/FFFFFF?text=Secundaria%203",
+                "alt": "Placeholder 3"
+            },
+            {
+                "src": "https://via.placeholder.com/400x200/0000FF/FFFFFF?text=Secundaria%204",
+                "alt": "Placeholder 4"
+            },
+            {
+                "src": "https://via.placeholder.com/400x200/0000FF/FFFFFF?text=Secundaria%205",
+                "alt": "Placeholder 5"
+            },
+            {
+                "src": "https://via.placeholder.com/400x200/0000FF/FFFFFF?text=Secundaria%206",
+                "alt": "Placeholder 6"
+            }
+        ]
     },
     {
+        "id": 8,
         "title": "Dpto. en Bogotá",
-        "img": "https://images.unsplash.com/photo-1583377519891-1eea1c2e3947?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8YXBwYXJ0bWVudHxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=60",
         "category": "departamentos",
         "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae minima illum omnis suscipit vel laborum commodi provident eveniet harum voluptatem quam cumque, nam maiores?",
         "location": "Bogotá",
-        "points": "8.5"
+        "points": "8.5",
+        "imgs": [
+            {
+                "src": "https://images.unsplash.com/photo-1583377519891-1eea1c2e3947?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8YXBwYXJ0bWVudHxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=60",
+                "alt": "Principal"
+            },
+            {
+                "src": "https://via.placeholder.com/400x200/0000FF/FFFFFF?text=Secundaria%201",
+                "alt": "Placeholder 1"
+            },
+            {
+                "src": "https://via.placeholder.com/400x200/0000FF/FFFFFF?text=Secundaria%202",
+                "alt": "Placeholder 2"
+            },
+            {
+                "src": "https://via.placeholder.com/400x200/0000FF/FFFFFF?text=Secundaria%203",
+                "alt": "Placeholder 3"
+            },
+            {
+                "src": "https://via.placeholder.com/400x200/0000FF/FFFFFF?text=Secundaria%204",
+                "alt": "Placeholder 4"
+            },
+            {
+                "src": "https://via.placeholder.com/400x200/0000FF/FFFFFF?text=Secundaria%205",
+                "alt": "Placeholder 5"
+            },
+            {
+                "src": "https://via.placeholder.com/400x200/0000FF/FFFFFF?text=Secundaria%206",
+                "alt": "Placeholder 6"
+            }
+        ]
     }
 ]

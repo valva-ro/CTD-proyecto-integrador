@@ -1,7 +1,6 @@
 import React, {
   useState,
   useEffect,
-  useLayoutEffect,
   useRef,
   useContext,
 } from "react";
@@ -78,6 +77,7 @@ export default function Searcher() {
             endDate={endDate}
             shouldCloseOnSelect={false}
             monthsShown={anchoPantalla <= 480 ? 1 : 2}
+            minDate={new Date()}
             onChange={(update) => {
               setDateRange(update);
             }}

@@ -1,12 +1,15 @@
 package com.grupo4.hostingbook.model;
 
+import java.io.Serializable;
 import java.util.Objects;
+import java.util.Set;
 
-public class CiudadDTO {
+public class CiudadDTO implements Serializable {
 
     private Long id;
     private String nombre;
     private String pais;
+    private Set<ProductoDTO> productos;
 
     public CiudadDTO(){}
 
@@ -19,6 +22,13 @@ public class CiudadDTO {
         this.id = id;
         this.nombre = nombre;
         this.pais = pais;
+    }
+
+    public CiudadDTO(Long id, String nombre, String pais, Set<ProductoDTO> productos) {
+        this.id = id;
+        this.nombre = nombre;
+        this.pais = pais;
+        this.productos = productos;
     }
 
     public Long getId() {
@@ -56,5 +66,14 @@ public class CiudadDTO {
     @Override
     public int hashCode() {
         return Objects.hash(id, nombre, pais);
+    }
+
+    @Override
+    public String toString() {
+        return "CiudadDTO{" +
+                "id=" + id +
+                ", nombre='" + nombre + '\'' +
+                ", pais='" + pais + '\'' +
+                '}';
     }
 }

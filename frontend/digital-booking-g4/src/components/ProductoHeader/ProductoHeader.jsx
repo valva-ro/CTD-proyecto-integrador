@@ -2,13 +2,13 @@ import { Link } from "react-router-dom";
 import ProductoUbicacion from "../ProductoUbicacion/ProductoUbicacion";
 import styles from "./ProductoHeader.module.css";
 
-export default function ProductHeader() {
+export default function ProductHeader({ alojamiento }) {
   return (
     <>
       <div className={styles.contenedorHeader}>
         <div className={styles.headerIzquierda}>
-          <p>Hotel</p>
-          <p>Hermitage Hotel</p>
+          <p>{alojamiento.category}</p>
+          <p>{alojamiento.title}</p>
         </div>
         <div className={styles.headerDerecha}>
           <Link to="/">
@@ -18,7 +18,7 @@ export default function ProductHeader() {
           </Link>
         </div>
       </div>
-      <ProductoUbicacion />
+      <ProductoUbicacion alojamiento={alojamiento}/>
     </>
   );
 }

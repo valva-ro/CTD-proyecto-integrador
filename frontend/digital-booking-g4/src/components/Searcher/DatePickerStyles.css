@@ -252,7 +252,7 @@ div.react-datepicker-wrapper {
     background-color: transparent;
   }
 }
-@media (max-width: 600px) {
+@media (max-width: 740px) {
   .calendarContainer {
     height: 310px;
   }

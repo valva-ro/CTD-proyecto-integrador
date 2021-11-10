@@ -1,57 +1,30 @@
+import { useParams } from "react-router-dom";
 import ProductoHeader from "../ProductoHeader/ProductoHeader";
-import ProductoImagenesDesktop from "../ProductoImagenes/ProductoImagenesDesktop.jsx";
-import ProductoImagenesTablet from "../ProductoImagenes/ProductoImagenesTablet.jsx";
-import ProductoImagenesMobile from "../ProductoImagenes/ProductoImagenesMobile.jsx";
-import useScreenWidth from "../../hooks/useScreenWidth";
+import ProductoImagenes from "../ProductoImagenes/ProductoImagenes.jsx";
+import ProductoFechasDisponibles from "../ProductoFechasDisponibles/ProductoFechasDisponibles";
 import styles from "./Producto.module.css";
+import alojamientos from "../../resources/alojamientos.json";
 
-// TODO: consumir esta info de la API
-const mockImgs = [
-  {
-    src: "https://via.placeholder.com/400x200/FF0000/FFFFFF?text=Principal",
-    alt: "Placeholder principal",
-  },
-  {
-    src: "https://via.placeholder.com/400x200/0000FF/FFFFFF?text=Secundaria%201",
-    alt: "Placeholder 1",
-  },
-  {
-    src: "https://via.placeholder.com/400x200/0000FF/FFFFFF?text=Secundaria%202",
-    alt: "Placeholder 2",
-  },
-  {
-    src: "https://via.placeholder.com/400x200/0000FF/FFFFFF?text=Secundaria%203",
-    alt: "Placeholder 3",
-  },
-  {
-    src: "https://via.placeholder.com/400x200/0000FF/FFFFFF?text=Secundaria%204",
-    alt: "Placeholder 4",
-  },
-  {
-    src: "https://via.placeholder.com/400x200/0000FF/FFFFFF?text=Secundaria%205",
-    alt: "Placeholder 5",
-  },
-  {
-    src: "https://via.placeholder.com/400x200/0000FF/FFFFFF?text=Secundaria%206",
-    alt: "Placeholder 6",
-  },
-];
-
-export default function Producto({ imagenes = mockImgs }) {
-  const anchoPantalla = useScreenWidth();
-
+export default function Producto() {
+  // Para obtener el ID de la url
+  const { id } = useParams();
+  // TODO: cambiar esto por el GET a la API
+  const obtenerAlojamiento = () => {
+    if (id <= alojamientos.length) return alojamientos[id - 1];
+  };
   return (
     <>
-    <ProductoHeader/>
-    <section className={styles.sectionImagenes}>
-      {anchoPantalla > 768 ? (
-        <ProductoImagenesDesktop imagenes={imagenes} />
-      ) : anchoPantalla > 480 ? (
-        <ProductoImagenesTablet imagenes={imagenes} />
+      {id >= alojamientos.length+1 ? (
+        <h2 className={styles.sinResultados}>
+          El alojamiento que estás buscando no existe
+        </h2>
       ) : (
-        <ProductoImagenesMobile imagenes={imagenes} />
+        <>
+          <ProductoHeader alojamiento={obtenerAlojamiento()} />
+          <ProductoImagenes alojamiento={obtenerAlojamiento()} />
+          <ProductoFechasDisponibles />
+        </>
       )}
-    </section>
     </>
   );
 }

@@ -1,16 +1,17 @@
-import React, {useEffect, useState} from "react";
 import TituloBloque from "../TituloBloque/TituloBloque";
-import DatePicker, { CalendarContainer, registerLocale } from "react-datepicker";
+import DatePicker, {
+  CalendarContainer,
+  registerLocale,
+} from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import styles from "./BloqueFechasDisponibles.module.css";
+import styles from "./ProductoFechasDisponibles.module.css";
 import FilledButton from "../Buttons/FilledButton";
 import es from "date-fns/locale/es";
-import { subDays } from "date-fns";
+import useScreenWidth from "../../hooks/useScreenWidth";
 
 registerLocale("es", es);
 
-export default function BloqueFechasDisponibles() {
-
+export default function ProductoFechasDisponibles() {
   const excludeDates = [
     //año, mes, dia --> el mes está corrido. ej: 11 = diciembre / 12 = enero
     new Date(2021, 2, 12),
@@ -39,7 +40,9 @@ export default function BloqueFechasDisponibles() {
     new Date(2021, 11, 21),
     new Date(2021, 11, 28),
     new Date(2021, 11, 29),
-  ]
+  ];
+
+  const anchoPantalla = useScreenWidth();
 
   const MyContainer = ({ className, children }) => {
     return (
@@ -49,19 +52,18 @@ export default function BloqueFechasDisponibles() {
     );
   };
 
-  console.log(es);
   return (
-    <div className={styles.bloqueFechasDisponiblesContainer}>
+    <section className={styles.bloqueFechasDisponiblesContainer}>
       <TituloBloque>Fechas disponibles</TituloBloque>
       <div className={styles.reservasContenido}>
-        <DatePicker 
-        monthsShown={window.screen.width <= 600 ? 1 : 2} 
-        inline 
-        calendarContainer={MyContainer}
-        locale={es}
-        dateFormatCalendar="MMMM"
-        formatWeekDay={nameOfDay => nameOfDay.substr(0,1)}
-        excludeDates={excludeDates}
+        <DatePicker
+          monthsShown={anchoPantalla <= 740 ? 1 : 2}
+          inline
+          calendarContainer={MyContainer}
+          locale={es}
+          formatWeekDay={(nameOfDay) => nameOfDay.substr(0, 1)}
+          excludeDates={excludeDates}
+          minDate={new Date()}
         />
         <div className={styles.agregarReservas}>
           <p>Agregá tus fechas de viaje para obtener precios exactos</p>
@@ -70,6 +72,6 @@ export default function BloqueFechasDisponibles() {
           </FilledButton>
         </div>
       </div>
-    </div>
+    </section>
   );
 }

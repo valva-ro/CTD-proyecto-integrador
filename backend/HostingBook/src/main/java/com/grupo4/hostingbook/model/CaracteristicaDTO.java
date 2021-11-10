@@ -1,14 +1,17 @@
 package com.grupo4.hostingbook.model;
 
-import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Objects;
+import java.util.Set;
 
 
-public class CaracteristicaDTO {
+public class CaracteristicaDTO implements Serializable {
 
     private Long id;
     private String nombre;
     private String icono;
+    private Set<ProductoDTO> productos;
+
 
     public CaracteristicaDTO() {}
 
@@ -21,6 +24,13 @@ public class CaracteristicaDTO {
         this.id = id;
         this.nombre = nombre;
         this.icono = icono;
+    }
+
+    public CaracteristicaDTO(Long id, String nombre, String icono, Set<ProductoDTO> productos) {
+        this.id = id;
+        this.nombre = nombre;
+        this.icono = icono;
+        this.productos = productos;
     }
 
     public Long getId() {
@@ -58,5 +68,14 @@ public class CaracteristicaDTO {
     @Override
     public int hashCode() {
         return Objects.hash(id, nombre, icono);
+    }
+
+    @Override
+    public String toString() {
+        return "CaracteristicaDTO{" +
+                "id=" + id +
+                ", nombre='" + nombre + '\'' +
+                ", icono='" + icono + '\'' +
+                '}';
     }
 }

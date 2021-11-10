@@ -2,6 +2,7 @@ package com.grupo4.hostingbook.persistence.entites;
 
 import javax.persistence.*;
 import java.util.Objects;
+import java.util.Set;
 
 @Entity
 @Table(name = "caracteristicas")
@@ -12,6 +13,9 @@ public class Caracteristica {
     private Long id;
     private String nombre;
     private String icono;
+
+    @ManyToMany(mappedBy = "caracteristicas")
+    private Set<Producto> productos;
 
     public Long getId() {
         return id;

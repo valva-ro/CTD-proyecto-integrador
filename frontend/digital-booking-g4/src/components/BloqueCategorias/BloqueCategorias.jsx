@@ -15,25 +15,39 @@ export default function BloqueCategorias({ setCategoriaActual }) {
     }
   }, [data.isLoaded, data.items]);
 
+  const toggleSelect = (indiceTarjeta, tituloCategoria) => {
+    if (indiceTarjeta === tarjetaActiva) {
+      setCategoriaActual("");
+      setTarjetaActiva(null);
+    }
+    else  {
+      setTarjetaActiva(indiceTarjeta);
+      setCategoriaActual(tituloCategoria);  
+    }
+  }
+
   return (
     <section className={styles.bloqueCategorias}>
       <TituloBloque>Buscar por tipo de alojamiento</TituloBloque>
       {!data.isLoaded ? (
-        <h2 className={styles.sinResultados}>Hubo un error al cargar los tipos de alojamiento</h2>
+        <h2 className={styles.sinResultados}>
+          Hubo un error al cargar los tipos de alojamiento
+        </h2>
       ) : data.items.length === 0 ? (
-        <h2 className={styles.sinResultados}>Ups, no encontramos ningún tipo de alojamiento</h2>
+        <h2 className={styles.sinResultados}>
+          Ups, no encontramos ningún tipo de alojamiento
+        </h2>
       ) : (
         <div className={styles.listadoTarjetas}>
           {categorias.map((dato, i) => (
             <TarjetaCategoria
               key={`categoria-${i}`}
-              item={i}
+              indice={i}
               indiceTarjetaActiva={tarjetaActiva}
               fotoPortada={dato.urlImagen}
               nombre={dato.titulo}
               descripcion={dato.descripcion}
-              onClickHandler={() => setCategoriaActual(dato.titulo)}
-              onToggleSelect={() => setTarjetaActiva(i)}
+              onToggleSelect={toggleSelect}
             />
           ))}
         </div>

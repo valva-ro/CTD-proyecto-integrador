@@ -34,8 +34,8 @@ public class CategoriaController implements CRUDController<CategoriaDTO> {
     @ApiResponses(value = { @ApiResponse(code = 200, message = "Success") })
     @GetMapping
     public ResponseEntity<List<CategoriaDTO>> obtenerTodos() {
-        List<CategoriaDTO> categoria = categoriaService.consultarTodos();
-        return ResponseEntity.ok(categoria);
+        List<CategoriaDTO> categorias = categoriaService.consultarTodos();
+        return ResponseEntity.ok(categorias);
     }
 
     @Override

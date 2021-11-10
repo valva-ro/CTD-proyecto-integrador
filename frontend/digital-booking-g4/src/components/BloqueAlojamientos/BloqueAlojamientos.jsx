@@ -45,14 +45,7 @@ export default function BloqueAlojamientos({ categoriaActual }) {
         >
           {alojamientosFiltrados.map((alojamiento, i) => (
             <li key={i} className={styles.alojamiento}>
-              <TarjetaAlojamiento
-                titulo={alojamiento.title}
-                imagen={alojamiento.img}
-                categoria={alojamiento.category}
-                descripcion={alojamiento.description}
-                ubicacion={alojamiento.location}
-                puntaje={alojamiento.points}
-              />
+              <TarjetaAlojamiento alojamiento={alojamiento} />
             </li>
           ))}
         </ul>

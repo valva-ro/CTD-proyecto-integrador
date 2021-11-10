@@ -1,8 +1,7 @@
 .bloqueFechasDisponiblesContainer {
   background-color: var(--color-background-gris);
   width: 100%;
-  padding: 15px 20px;
-  margin-top: 500px;
+  margin-bottom: 58px;
 }
 .bloqueFechasDisponiblesContainer h3 {
   margin-bottom: 20px;
@@ -54,7 +53,7 @@
     max-height: 51px;
   }
 }
-@media (max-width: 600px) {
+@media (max-width: 740px) {
   .bloqueFechasDisponiblesContainer {
       height: 550px;
       padding: 25px 20px;
