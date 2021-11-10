@@ -7,6 +7,7 @@ export default function FilledButton(props) {
       className={`${styles.filledButton} ${props.styles}`}
       value={props.children}
       onClick={props.onClick}
+      data-testid={props.testId}
     />
   );
 }

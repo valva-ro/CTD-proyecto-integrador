@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Footer tests Devuelve el footer correctamente 1`] = `
+<footer
+  className="footerFijo"
+>
+  <div
+    className="contenedorFooter"
+  >
+    <div
+      className="footerIzquierda"
+    >
+      <p>
+        ©2021 Digital Booking
+      </p>
+    </div>
+    <div
+      className="footerDerecha"
+    >
+      <i
+        className="bx bxl-facebook-circle"
+      />
+      <i
+        className="bx bxl-linkedin"
+      />
+      <i
+        className="bx bxl-twitter"
+      />
+      <i
+        className="bx bxl-instagram-alt"
+      />
+    </div>
+  </div>
+</footer>
+`;

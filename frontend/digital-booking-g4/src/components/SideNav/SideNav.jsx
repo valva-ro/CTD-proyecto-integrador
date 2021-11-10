@@ -5,7 +5,6 @@ import { Link, useLocation } from "react-router-dom";
 import styles from "./SideNav.module.css";
 import loggedContext from "../../contexts/loggedContext";
 
-
 export default function SideNav() {
   const { isLogged, setIsLogged } = useContext(loggedContext);
   const location = useLocation();
