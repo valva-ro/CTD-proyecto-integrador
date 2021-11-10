@@ -5,29 +5,33 @@ import java.util.Objects;
 
 public class ImagenDTO implements Serializable {
 
-    private Long imagenId;
+    private Long id;
     private String imagenTitulo;
     private String imagenUrl;
 
     public ImagenDTO() {}
+
+    public ImagenDTO(Long id) {
+        this.id = id;
+    }
 
     public ImagenDTO(String imagenTitulo, String imagenUrl) {
         this.imagenTitulo = imagenTitulo;
         this.imagenUrl = imagenUrl;
     }
 
-    public ImagenDTO(Long imagenId, String imagenTitulo, String imagenUrl) {
-        this.imagenId = imagenId;
+    public ImagenDTO(Long id, String imagenTitulo, String imagenUrl) {
+        this.id = id;
         this.imagenTitulo = imagenTitulo;
         this.imagenUrl = imagenUrl;
     }
 
-    public Long getImagenId() {
-        return imagenId;
+    public Long getId() {
+        return id;
     }
 
-    public void setImagenId(Long imagenId) {
-        this.imagenId = imagenId;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getImagenTitulo() {
@@ -51,18 +55,18 @@ public class ImagenDTO implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         ImagenDTO imagenDTO = (ImagenDTO) o;
-        return Objects.equals(imagenId, imagenDTO.imagenId) && Objects.equals(imagenTitulo, imagenDTO.imagenTitulo) && Objects.equals(imagenUrl, imagenDTO.imagenUrl);
+        return Objects.equals(id, imagenDTO.id) && Objects.equals(imagenTitulo, imagenDTO.imagenTitulo) && Objects.equals(imagenUrl, imagenDTO.imagenUrl);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(imagenId, imagenTitulo, imagenUrl);
+        return Objects.hash(id, imagenTitulo, imagenUrl);
     }
 
     @Override
     public String toString() {
         return "ImagenDTO{" +
-                "imagenId=" + imagenId +
+                "imagenId=" + id +
                 ", imagenTitulo='" + imagenTitulo + '\'' +
                 ", imagenUrl='" + imagenUrl + '\'' +
                 '}';

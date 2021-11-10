@@ -63,6 +63,7 @@ export default function ProductoFechasDisponibles() {
           locale={es}
           formatWeekDay={(nameOfDay) => nameOfDay.substr(0, 1)}
           excludeDates={excludeDates}
+          minDate={new Date()}
         />
         <div className={styles.agregarReservas}>
           <p>Agregá tus fechas de viaje para obtener precios exactos</p>

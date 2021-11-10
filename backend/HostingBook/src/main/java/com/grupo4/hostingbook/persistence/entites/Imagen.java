@@ -10,17 +10,17 @@ public class Imagen {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="imagen_id")
-    private Long imagenId;
+    private Long id;
     private String imagenTitulo;
     @Column(name="imagen_URL")
     private String imagenUrl;
 
-    public Long getImagenId() {
-        return imagenId;
+    public Long getId() {
+        return id;
     }
 
-    public void setImagenId(Long imagenId) {
-        this.imagenId = imagenId;
+    public void setId(Long imagenId) {
+        this.id = imagenId;
     }
 
     public String getImagenTitulo() {
@@ -44,12 +44,12 @@ public class Imagen {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Imagen imagen = (Imagen) o;
-        return Objects.equals(imagenId, imagen.imagenId) && Objects.equals(imagenTitulo, imagen.imagenTitulo) && Objects.equals(imagenUrl, imagen.imagenUrl);
+        return Objects.equals(id, imagen.id) && Objects.equals(imagenTitulo, imagen.imagenTitulo) && Objects.equals(imagenUrl, imagen.imagenUrl);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(imagenId, imagenTitulo, imagenUrl);
+        return Objects.hash(id, imagenTitulo, imagenUrl);
     }
 
 }

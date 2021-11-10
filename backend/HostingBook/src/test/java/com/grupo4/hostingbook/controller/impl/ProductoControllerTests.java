@@ -1,6 +1,11 @@
 package com.grupo4.hostingbook.controller.impl;
 
+import com.grupo4.hostingbook.exceptions.BadRequestException;
 import com.grupo4.hostingbook.model.*;
+import com.grupo4.hostingbook.service.impl.CaracteristicaService;
+import com.grupo4.hostingbook.service.impl.CategoriaService;
+import com.grupo4.hostingbook.service.impl.CiudadService;
+import com.grupo4.hostingbook.service.impl.ImagenService;
 import com.grupo4.hostingbook.utils.JsonMapper;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -10,13 +15,16 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Set;
 
-
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 @SpringBootTest(properties = "spring.profiles.active:test")
 @DirtiesContext(classMode = DirtiesContext.ClassMode.BEFORE_EACH_TEST_METHOD)
@@ -25,32 +33,49 @@ public class ProductoControllerTests {
 
     @Autowired
     private MockMvc mockMvc;
-    private ProductoDTO producto;
-    private ProductoDTO productoCreado;
+    @Autowired
+    private ProductoController productoController;
+    @Autowired
+    private CategoriaService categoriaService;
+    @Autowired
+    private CiudadService ciudadService;
+    @Autowired
+    private ImagenService imagenService;
+    @Autowired
+    private CaracteristicaService caracteristicaService;
+    private ProductoDTO productoPorCrear;
+    private ProductoDTO productoPorActualizar;
+    private ProductoDTO productoActualizado;
 
     @BeforeEach
-    public void reset(){
-        CategoriaDTO categoriaEjemplo = new CategoriaDTO("Hotel", "807.105 hoteles", "https://via.placeholder.com/300");
-        CategoriaDTO categoriaCreadaEjemplo = new CategoriaDTO(1L,"Hotel", "807.105 hoteles", "https://via.placeholder.com/300");
+    public void reset() throws BadRequestException {
+        CategoriaDTO categoria;
+        CategoriaDTO categoriaCreada;
+        CiudadDTO ciudad;
+        CiudadDTO ciudadCreada;
+        ImagenDTO imagen1 = new ImagenDTO("Habitación", "https://via.placeholder.com/300");
+        CaracteristicaDTO caracteristica1 = new CaracteristicaDTO("WiFi","bx bx-wifi");
+        Set<ImagenDTO> imagenes;
+        Set<ImagenDTO> imagenesCreadas;
+        Set<CaracteristicaDTO> caracteristicas;
+        Set<CaracteristicaDTO> caracteristicasCreadas;
 
-        CiudadDTO ciudadEjemplo = new CiudadDTO("Manizales", "Colombia");
-        CiudadDTO ciudadCreadaEjemplo = new CiudadDTO(1L,"Manizales", "Colombia");
+        categoria = new CategoriaDTO("Hotel", "807.105 hoteles", "https://via.placeholder.com/300");
+        categoriaCreada = categoriaService.crear(categoria);
+        ciudad = new CiudadDTO("Manizales", "Colombia");
+        ciudadCreada = ciudadService.crear(ciudad);
+        imagenes = Set.of(imagen1);
+        imagenesCreadas = Set.of(imagenService.crear(imagen1));
+        caracteristicas = Set.of(caracteristica1);
+        caracteristicasCreadas = Set.of(caracteristicaService.crear(caracteristica1));
 
-        Set<ImagenDTO> imagenesEjemplo = Set.of(new ImagenDTO("Habitación doble", "https://via.placeholder.com/300"),new ImagenDTO("Baño", "https://via.placeholder.com/300"));
-        Set<ImagenDTO> imagenesCreadasEjemplo = Set.of(new ImagenDTO(1L,"Habitación doble", "https://via.placeholder.com/300"),new ImagenDTO(2L,"Baño", "https://via.placeholder.com/300"));
-
-
-        Set<CaracteristicaDTO> caracteristicasEjemplo = Set.of(new CaracteristicaDTO("WiFi","<i class='bx bx-wifi'></i>"),new CaracteristicaDTO("Parking","<i class='bx bxs-car'></i>"),new CaracteristicaDTO("Pool","<i class='bx bx-swim'></i>"));
-        Set<CaracteristicaDTO> caracteristicasCreadasEjemplo = Set.of(new CaracteristicaDTO(1L,"WiFi", "<i class='bx bx-wifi'></i>"),new CaracteristicaDTO(2L,"Parking","<i class='bx bxs-car'></i>"), new CaracteristicaDTO(3L,"Pool", "<i class='bx bx-swim'></i>"));
-
-        producto = new ProductoDTO("Hotel Melia", "Servicio all inclusive con vista al mar", categoriaEjemplo, ciudadEjemplo, imagenesEjemplo, caracteristicasEjemplo);
-        productoCreado = new ProductoDTO(1L,"Hotel Melia", "Servicio all inclusive con vista al mar", categoriaCreadaEjemplo, ciudadCreadaEjemplo, imagenesCreadasEjemplo, caracteristicasCreadasEjemplo);
-
+        productoPorCrear = new ProductoDTO("Hotel Melia", "Servicio all inclusive con vista al mar", categoria, ciudad, imagenes, caracteristicas);
+        productoPorActualizar = new ProductoDTO(1L,"Hotel Grand Meliá", "", null, null, null, null);
+        productoActualizado = new ProductoDTO(1L, "Hotel Grand Meliá", "Servicio all inclusive con vista al mar", categoriaCreada, ciudadCreada, imagenesCreadas, caracteristicasCreadas);
     }
 
     @Test
     public void test01obtenerTodosLosProductos() throws Exception {
-        //Act
         mockMvc.perform(MockMvcRequestBuilders.get("/productos"))
                 .andDo(MockMvcResultHandlers.print())
                 .andExpect(MockMvcResultMatchers.status().isOk());
@@ -58,111 +83,84 @@ public class ProductoControllerTests {
 
     @Test
     public void test02crearProducto() throws Exception {
-        //Act
-        mockMvc.perform(MockMvcRequestBuilders.post("/productos")
+        MvcResult response = mockMvc.perform(MockMvcRequestBuilders.post("/productos")
                     .contentType(MediaType.APPLICATION_JSON)
                     .characterEncoding("utf-8")
-                    .content(JsonMapper.mapObjectToJson(producto)))
+                    .content(JsonMapper.mapObjectToJson(productoPorCrear)))
                 .andDo(MockMvcResultHandlers.print())
                 .andExpect(MockMvcResultMatchers.status().isOk()).andReturn();
+
+        ProductoDTO respuesta = JsonMapper.mapJsonToObject(response.getResponse().getContentAsString(), ProductoDTO.class);
+        assertNotNull(respuesta.getId());
     }
 
     @Test
     public void test03crearProductoConDatosInvalidos() throws Exception {
-        //Arrange
-        producto.setNombre(" ");
-        //Act
+        productoPorCrear.setNombre(" ");
+
         mockMvc.perform(MockMvcRequestBuilders.post("/productos")
                         .contentType(MediaType.APPLICATION_JSON)
                         .characterEncoding("utf-8")
-                        .content(JsonMapper.mapObjectToJson(producto)))
+                        .content(JsonMapper.mapObjectToJson(productoPorCrear)))
                 .andDo(MockMvcResultHandlers.print())
                 .andExpect(MockMvcResultMatchers.status().isBadRequest());
     }
 
     @Test
+    @Transactional
     public void test04actualizarProducto() throws Exception{
-        //Arrange
-        mockMvc.perform(MockMvcRequestBuilders
-                .post("/productos")
-                .contentType(MediaType.APPLICATION_JSON)
-                .characterEncoding("utf-8")
-                .content(JsonMapper.mapObjectToJson(producto)));
-        ProductoDTO productoActualizado = productoCreado;
-        productoActualizado.setNombre("Nuevo nombre");
-        //Act
-        mockMvc.perform(MockMvcRequestBuilders
+        productoController.crear(productoPorCrear);
+
+        MvcResult response = mockMvc.perform(MockMvcRequestBuilders
                         .put("/productos")
                         .contentType(MediaType.APPLICATION_JSON)
                         .characterEncoding("utf-8")
-                        .content(JsonMapper.mapObjectToJson(productoActualizado)))
+                        .content(JsonMapper.mapObjectToJson(productoPorActualizar)))
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andReturn();
+
+        ProductoDTO respuesta = JsonMapper.mapJsonToObject(response.getResponse().getContentAsString(), ProductoDTO.class);
+        assertEquals(productoActualizado.getDescripcion(), respuesta.getDescripcion());
     }
 
     @Test
     public void test06actualizarProductoSinId() throws Exception{
-        //Arrange
-        mockMvc.perform(MockMvcRequestBuilders
-                .post("/productos")
-                .contentType(MediaType.APPLICATION_JSON)
-                .characterEncoding("utf-8")
-                .content(JsonMapper.mapObjectToJson(producto)));
-        ProductoDTO productoActualizado = producto;
-        productoActualizado.setNombre("Nuevo nombre");
-        //Act & Assert
         mockMvc.perform(MockMvcRequestBuilders
                         .put("/productos")
                         .contentType(MediaType.APPLICATION_JSON)
                         .characterEncoding("utf-8")
-                        .content(JsonMapper.mapObjectToJson(producto)))
+                        .content(JsonMapper.mapObjectToJson(productoPorCrear)))
                 .andExpect(MockMvcResultMatchers.status().isBadRequest());
     }
 
     @Test
     public void test07actualizarProductoConIdInvalido() throws Exception{
-        //Arrange
-        mockMvc.perform(MockMvcRequestBuilders
-                .post("/productos")
-                .contentType(MediaType.APPLICATION_JSON)
-                .characterEncoding("utf-8")
-                .content(JsonMapper.mapObjectToJson(producto)));
-        ProductoDTO productoActualizado = producto;
+        ProductoDTO productoActualizado = productoPorCrear;
         productoActualizado.setId(-1L);
-        productoActualizado.setNombre("Nuevo nombre");
-        //Act & Assert
+
         mockMvc.perform(MockMvcRequestBuilders
                         .put("/productos")
                         .contentType(MediaType.APPLICATION_JSON)
                         .characterEncoding("utf-8")
-                        .content(JsonMapper.mapObjectToJson(producto)))
+                        .content(JsonMapper.mapObjectToJson(productoPorCrear)))
                 .andExpect(MockMvcResultMatchers.status().isBadRequest());
     }
 
     @Test
     public void test08actualizarProductoConIdInexistente() throws Exception{
-        //Arrange
-        ProductoDTO productoActualizado = producto;
+        ProductoDTO productoActualizado = productoPorCrear;
         productoActualizado.setId(1L);
-        productoActualizado.setNombre("Nuevo nombre");
-        //Act & Assert
+
         mockMvc.perform(MockMvcRequestBuilders
                         .put("/productos")
                         .contentType(MediaType.APPLICATION_JSON)
                         .characterEncoding("utf-8")
-                        .content(JsonMapper.mapObjectToJson(producto)))
+                        .content(JsonMapper.mapObjectToJson(productoPorCrear)))
                 .andExpect(MockMvcResultMatchers.status().isNotFound());
     }
 
     @Test
     public void test09actualizarConStringVacio() throws Exception{
-        //Arrange
-        mockMvc.perform(MockMvcRequestBuilders
-                .post("/productos")
-                .contentType(MediaType.APPLICATION_JSON)
-                .characterEncoding("utf-8")
-                .content(JsonMapper.mapObjectToJson(producto)));
-        //Act & Assert
         mockMvc.perform(MockMvcRequestBuilders
                         .put("/productos")
                         .contentType(MediaType.APPLICATION_JSON)
@@ -173,13 +171,6 @@ public class ProductoControllerTests {
 
     @Test
     public void test10actualizarConStringLlenoDeEspacios() throws Exception{
-        //Arrange
-        mockMvc.perform(MockMvcRequestBuilders
-                .post("/productos")
-                .contentType(MediaType.APPLICATION_JSON)
-                .characterEncoding("utf-8")
-                .content(JsonMapper.mapObjectToJson(producto)));
-        //Act & Assert
         mockMvc.perform(MockMvcRequestBuilders
                         .put("/productos")
                         .contentType(MediaType.APPLICATION_JSON)
@@ -190,13 +181,8 @@ public class ProductoControllerTests {
 
     @Test
     public void test11eliminarConIdExistente() throws Exception{
-        //Arrange
-        mockMvc.perform(MockMvcRequestBuilders
-                .post("/productos")
-                .contentType(MediaType.APPLICATION_JSON)
-                .characterEncoding("utf-8")
-                .content(JsonMapper.mapObjectToJson(producto)));
-        //Act & Assert
+        productoController.crear(productoPorCrear);
+
         mockMvc.perform(MockMvcRequestBuilders
                         .delete("/productos/1")
                         .contentType(MediaType.APPLICATION_JSON)
@@ -206,7 +192,6 @@ public class ProductoControllerTests {
 
     @Test
     public void test12eliminarConIdInvalido() throws Exception {
-        //Act & Assert
         mockMvc.perform(MockMvcRequestBuilders
                         .delete("/productos/-1")
                         .contentType(MediaType.APPLICATION_JSON)
@@ -216,7 +201,6 @@ public class ProductoControllerTests {
 
     @Test
     public void test13eliminarConIdInexistente() throws Exception {
-        //Act & Assert
         mockMvc.perform(MockMvcRequestBuilders
                         .delete("/productos/1")
                         .contentType(MediaType.APPLICATION_JSON)
@@ -226,13 +210,8 @@ public class ProductoControllerTests {
 
     @Test
     public void test14obtenerProductosPorCategoria() throws Exception {
-        //Arrange
-        mockMvc.perform(MockMvcRequestBuilders
-                .post("/productos")
-                .contentType(MediaType.APPLICATION_JSON)
-                .characterEncoding("utf-8")
-                .content(JsonMapper.mapObjectToJson(producto)));
-        //Act & Assert
+        productoController.crear(productoPorCrear);
+
         mockMvc.perform(MockMvcRequestBuilders.get("/productos/categoria")
                 .param("title", "Hotel")
                 .contentType(MediaType.APPLICATION_JSON)
@@ -243,13 +222,8 @@ public class ProductoControllerTests {
 
     @Test
     public void test15obtenerProductosPorCategoriaInexistente() throws Exception {
-        //Arrange
-        mockMvc.perform(MockMvcRequestBuilders
-                .post("/productos")
-                .contentType(MediaType.APPLICATION_JSON)
-                .characterEncoding("utf-8")
-                .content(JsonMapper.mapObjectToJson(producto)));
-        //Act & Assert
+        productoController.crear(productoPorCrear);
+
         mockMvc.perform(MockMvcRequestBuilders.get("/productos/categoria")
                         .param("title", "Cabaña")
                         .contentType(MediaType.APPLICATION_JSON)
@@ -258,16 +232,10 @@ public class ProductoControllerTests {
                 .andExpect(MockMvcResultMatchers.status().isNotFound());
     }
 
-
     @Test
     public void test16obtenerProductosPorCiudad() throws Exception {
-        //Arrange
-        mockMvc.perform(MockMvcRequestBuilders
-                .post("/productos")
-                .contentType(MediaType.APPLICATION_JSON)
-                .characterEncoding("utf-8")
-                .content(JsonMapper.mapObjectToJson(producto)));
-        //Act & Assert
+        productoController.crear(productoPorCrear);
+
         mockMvc.perform(MockMvcRequestBuilders.get("/productos/ciudad")
                         .param("name", "Manizales")
                         .contentType(MediaType.APPLICATION_JSON)
@@ -278,18 +246,69 @@ public class ProductoControllerTests {
 
     @Test
     public void test17obtenerProductosPorCiudadInexistente() throws Exception {
-        //Arrange
-        mockMvc.perform(MockMvcRequestBuilders
-                .post("/productos")
-                .contentType(MediaType.APPLICATION_JSON)
-                .characterEncoding("utf-8")
-                .content(JsonMapper.mapObjectToJson(producto)));
-        //Act & Assert
+        productoController.crear(productoPorCrear);
+
         mockMvc.perform(MockMvcRequestBuilders.get("/productos/ciudad")
                         .param("name", "Buenos Aires")
                         .contentType(MediaType.APPLICATION_JSON)
                         .characterEncoding("utf-8"))
                 .andDo(MockMvcResultHandlers.print())
                 .andExpect(MockMvcResultMatchers.status().isNotFound());
+    }
+
+    @Test
+    @Transactional
+    public void test18buscarPorIdExistente() throws Exception {
+        productoController.crear(productoPorCrear);
+
+        MvcResult response = mockMvc.perform(MockMvcRequestBuilders.get("/productos/1")
+                        .param("name", "Buenos Aires")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .characterEncoding("utf-8"))
+                .andDo(MockMvcResultHandlers.print())
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andReturn();
+        ProductoDTO respuesta = JsonMapper.mapJsonToObject(response.getResponse().getContentAsString(), ProductoDTO.class);
+        assertNotNull(respuesta);
+    }
+
+    @Test
+    public void test19buscarPorIdInexistente() throws Exception {
+        mockMvc.perform(MockMvcRequestBuilders.get("/productos/1")
+                        .param("name", "Buenos Aires")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .characterEncoding("utf-8"))
+                .andDo(MockMvcResultHandlers.print())
+                .andExpect(MockMvcResultMatchers.status().isNotFound());
+    }
+
+    @Test
+    public void test20buscarPorIdInvalido() throws Exception {
+        mockMvc.perform(MockMvcRequestBuilders.get("/productos/-1")
+                        .param("name", "Buenos Aires")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .characterEncoding("utf-8"))
+                .andDo(MockMvcResultHandlers.print())
+                .andExpect(MockMvcResultMatchers.status().isBadRequest());
+    }
+
+    @Test
+    public void test21crearProductoConEntidadesInexistentesEnBD() throws Exception {
+        CategoriaDTO categoria = new CategoriaDTO("Hotel", "Hotel", "https://via.placeholder.com/300");
+        CiudadDTO ciudad = new CiudadDTO("Ciudad", "Pais");
+        Set<ImagenDTO> imagenes = Set.of(new ImagenDTO("Imagen", "www.imagen.com"));
+        Set<CaracteristicaDTO> caracteristicas = Set.of(new CaracteristicaDTO("Caracteristica", "Icono"));
+        ProductoDTO productoConEntidadesNuevas = new ProductoDTO("Producto nuevo", "Descripción", categoria, ciudad, imagenes, caracteristicas);
+
+        MvcResult response = mockMvc.perform(MockMvcRequestBuilders.post("/productos")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .characterEncoding("utf-8")
+                        .content(JsonMapper.mapObjectToJson(productoConEntidadesNuevas)))
+                .andDo(MockMvcResultHandlers.print())
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andReturn();
+
+        ProductoDTO respuesta = JsonMapper.mapJsonToObject(response.getResponse().getContentAsString(), ProductoDTO.class);
+        assertNotNull(respuesta.getId());
     }
 }
