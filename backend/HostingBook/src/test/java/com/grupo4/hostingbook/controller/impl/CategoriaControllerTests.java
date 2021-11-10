@@ -14,8 +14,10 @@ import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
+import org.springframework.transaction.annotation.Transactional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 @SpringBootTest(properties = "spring.profiles.active:test")
 @DirtiesContext(classMode = DirtiesContext.ClassMode.BEFORE_EACH_TEST_METHOD)
@@ -24,6 +26,8 @@ public class CategoriaControllerTests {
 
     @Autowired
     private MockMvc mockMvc;
+    @Autowired
+    private CategoriaController categoriaController;
     private CategoriaDTO categoria;
 
     @BeforeEach
@@ -72,11 +76,7 @@ public class CategoriaControllerTests {
     @Test
     public void test04actualizarCategoria() throws Exception{
         //Arrange
-        mockMvc.perform(MockMvcRequestBuilders
-                .post("/categorias")
-                .contentType(MediaType.APPLICATION_JSON)
-                .characterEncoding("utf-8")
-                .content(JsonMapper.mapObjectToJson(categoria)));
+        categoriaController.crear(categoria);
         CategoriaDTO categoriaActualizada = categoria;
         categoriaActualizada.setId(1L);
         categoriaActualizada.setTitulo("Nuevo titulo");
@@ -94,15 +94,6 @@ public class CategoriaControllerTests {
 
     @Test
     public void test06actualizarCategoriaSinId() throws Exception{
-        //Arrange
-        mockMvc.perform(MockMvcRequestBuilders
-                .post("/categorias")
-                .contentType(MediaType.APPLICATION_JSON)
-                .characterEncoding("utf-8")
-                .content(JsonMapper.mapObjectToJson(categoria)));
-        CategoriaDTO categoriaActualizada = categoria;
-        categoriaActualizada.setTitulo("Nuevo titulo");
-        //Act & Assert
         mockMvc.perform(MockMvcRequestBuilders
                         .put("/categorias")
                         .contentType(MediaType.APPLICATION_JSON)
@@ -113,16 +104,7 @@ public class CategoriaControllerTests {
 
     @Test
     public void test07actualizarCategoriaConIdInvalido() throws Exception{
-        //Arrange
-        mockMvc.perform(MockMvcRequestBuilders
-                .post("/categorias")
-                .contentType(MediaType.APPLICATION_JSON)
-                .characterEncoding("utf-8")
-                .content(JsonMapper.mapObjectToJson(categoria)));
-        CategoriaDTO categoriaActualizada = categoria;
-        categoriaActualizada.setId(-1L);
-        categoriaActualizada.setTitulo("Nuevo titulo");
-        //Act & Assert
+        categoria.setId(-1L);
         mockMvc.perform(MockMvcRequestBuilders
                         .put("/categorias")
                         .contentType(MediaType.APPLICATION_JSON)
@@ -133,11 +115,7 @@ public class CategoriaControllerTests {
 
     @Test
     public void test08actualizarCategoriaConIdInexistente() throws Exception{
-        //Arrange
-        CategoriaDTO categoriaActualizada = categoria;
-        categoriaActualizada.setId(1L);
-        categoriaActualizada.setTitulo("Nuevo titulo");
-        //Act & Assert
+        categoria.setId(1L);
         mockMvc.perform(MockMvcRequestBuilders
                         .put("/categorias")
                         .contentType(MediaType.APPLICATION_JSON)
@@ -148,12 +126,6 @@ public class CategoriaControllerTests {
 
     @Test
     public void test09actualizarConStringVacio() throws Exception{
-        //Arrange
-        mockMvc.perform(MockMvcRequestBuilders
-                .post("/categorias")
-                .contentType(MediaType.APPLICATION_JSON)
-                .characterEncoding("utf-8")
-                .content(JsonMapper.mapObjectToJson(categoria)));
         //Act & Assert
         mockMvc.perform(MockMvcRequestBuilders
                         .put("/categorias")
@@ -165,12 +137,6 @@ public class CategoriaControllerTests {
 
     @Test
     public void test10actualizarConStringLlenoDeEspacios() throws Exception{
-        //Arrange
-        mockMvc.perform(MockMvcRequestBuilders
-                .post("/categorias")
-                .contentType(MediaType.APPLICATION_JSON)
-                .characterEncoding("utf-8")
-                .content(JsonMapper.mapObjectToJson(categoria)));
         //Act & Assert
         mockMvc.perform(MockMvcRequestBuilders
                         .put("/categorias")
@@ -182,13 +148,7 @@ public class CategoriaControllerTests {
 
     @Test
     public void test11eliminarConIdExistente() throws Exception{
-        //Arrange
-        mockMvc.perform(MockMvcRequestBuilders
-                .post("/categorias")
-                .contentType(MediaType.APPLICATION_JSON)
-                .characterEncoding("utf-8")
-                .content(JsonMapper.mapObjectToJson(categoria)));
-        //Act & Assert
+        categoriaController.crear(categoria);
         mockMvc.perform(MockMvcRequestBuilders
                         .delete("/categorias/1")
                         .contentType(MediaType.APPLICATION_JSON)
@@ -198,7 +158,6 @@ public class CategoriaControllerTests {
 
     @Test
     public void test12eliminarConIdInvalido() throws Exception {
-        //Act & Assert
         mockMvc.perform(MockMvcRequestBuilders
                         .delete("/categorias/-1")
                         .contentType(MediaType.APPLICATION_JSON)
@@ -208,11 +167,42 @@ public class CategoriaControllerTests {
 
     @Test
     public void test13eliminarConIdInexistente() throws Exception {
-        //Act & Assert
         mockMvc.perform(MockMvcRequestBuilders
                         .delete("/categorias/1")
                         .contentType(MediaType.APPLICATION_JSON)
                         .characterEncoding("utf-8"))
                 .andExpect(MockMvcResultMatchers.status().isNotFound());
+    }
+
+    @Test
+    public void test14buscarPorIdInexistente() throws Exception {
+        mockMvc.perform(MockMvcRequestBuilders
+                        .get("/categorias/1")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .characterEncoding("utf-8"))
+                .andExpect(MockMvcResultMatchers.status().isNotFound());
+    }
+
+    @Test
+    public void test14buscarPorIdInvalido() throws Exception {
+        mockMvc.perform(MockMvcRequestBuilders
+                        .get("/categorias/-1")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .characterEncoding("utf-8"))
+                .andExpect(MockMvcResultMatchers.status().isBadRequest());
+    }
+
+    @Test
+    @Transactional
+    public void test14buscarPorIdExistente() throws Exception {
+        categoriaController.crear(categoria);
+        MvcResult response = mockMvc.perform(MockMvcRequestBuilders
+                        .get("/categorias/1")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .characterEncoding("utf-8"))
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andReturn();
+        CategoriaDTO respuesta = JsonMapper.mapJsonToObject(response.getResponse().getContentAsString(), CategoriaDTO.class);
+        assertNotNull(respuesta);
     }
 }

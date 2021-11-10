@@ -13,6 +13,10 @@ public class CiudadDTO implements Serializable {
 
     public CiudadDTO(){}
 
+    public CiudadDTO(Long id) {
+        this.id = id;
+    }
+
     public CiudadDTO(String nombre, String pais) {
         this.nombre = nombre;
         this.pais = pais;

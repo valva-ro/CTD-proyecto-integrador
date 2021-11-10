@@ -46,7 +46,7 @@ public class CategoriaController implements CRUDController<CategoriaDTO> {
             @ApiResponse(code = 400, message = "Bad Request")
     })
     @PostMapping
-    public ResponseEntity<CategoriaDTO> crear(@RequestBody CategoriaDTO categoria) throws BadRequestException {
+    public ResponseEntity<CategoriaDTO> crear(@RequestBody CategoriaDTO categoria) throws BadRequestException, ResourceNotFoundException {
         CategoriaDTO categoriaNueva = categoriaService.crear(categoria);
         return ResponseEntity.ok(categoriaNueva);
     }

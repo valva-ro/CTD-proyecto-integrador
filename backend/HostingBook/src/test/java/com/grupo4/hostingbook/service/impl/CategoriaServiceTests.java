@@ -30,13 +30,13 @@ public class CategoriaServiceTests {
     }
 
     @Test
-    public void test02AgregarCategoria() throws BadRequestException {
+    public void test02AgregarCategoria() throws BadRequestException, ResourceNotFoundException {
         CategoriaDTO c = categoriaService.crear(categoriaPorCrear);
         assertEquals(categoriaCreada, c);
     }
 
     @Test
-    public void test03ObtenerTodasLasCategorias() throws BadRequestException {
+    public void test03ObtenerTodasLasCategorias() throws BadRequestException, ResourceNotFoundException {
         categoriaService.crear(categoriaPorCrear);
         assertNotEquals(0, categoriaService.consultarTodos().size());
     }

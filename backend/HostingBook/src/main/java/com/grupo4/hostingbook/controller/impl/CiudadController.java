@@ -4,6 +4,7 @@ import com.grupo4.hostingbook.controller.CRUDController;
 import com.grupo4.hostingbook.exceptions.BadRequestException;
 import com.grupo4.hostingbook.exceptions.Mensajes;
 import com.grupo4.hostingbook.exceptions.NotImplementedException;
+import com.grupo4.hostingbook.exceptions.ResourceNotFoundException;
 import com.grupo4.hostingbook.model.CiudadDTO;
 import com.grupo4.hostingbook.service.CRUDService;
 import io.swagger.annotations.ApiOperation;
@@ -46,7 +47,7 @@ public class CiudadController implements CRUDController<CiudadDTO> {
             @ApiResponse(code = 400, message = "Bad Request")
     })
     @PostMapping
-    public ResponseEntity<CiudadDTO> crear(@RequestBody CiudadDTO ciudad) throws BadRequestException {
+    public ResponseEntity<CiudadDTO> crear(@RequestBody CiudadDTO ciudad) throws BadRequestException, ResourceNotFoundException {
         CiudadDTO ciudadNueva = ciudadService.crear(ciudad);
         return ResponseEntity.ok(ciudadNueva);
     }

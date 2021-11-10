@@ -14,6 +14,10 @@ public class CategoriaDTO implements Serializable {
 
     public CategoriaDTO() {}
 
+    public CategoriaDTO(Long id) {
+        this.id = id;
+    }
+
     public CategoriaDTO(String titulo, String descripcion, String urlImagen) {
         this.titulo = titulo;
         this.descripcion = descripcion;

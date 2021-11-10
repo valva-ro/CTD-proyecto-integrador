@@ -20,7 +20,7 @@ public class Producto {
     private Categoria categoria;
 
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "fk_ciudades")
+    @JoinColumn(name = "fk_ciudad")
     private Ciudad ciudad;
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
@@ -39,6 +39,22 @@ public class Producto {
             inverseJoinColumns = @JoinColumn(name = "caracteristica_id")
     )
     private Set<Caracteristica> caracteristicas = new HashSet<>();
+
+    public Producto() {}
+
+    public Producto(String nombre, String descripcion) {
+        this.nombre = nombre;
+        this.descripcion = descripcion;
+    }
+
+    public Producto(String nombre, String descripcion, Categoria categoria, Ciudad ciudad, Set<Imagen> imagenes, Set<Caracteristica> caracteristicas) {
+        this.nombre = nombre;
+        this.descripcion = descripcion;
+        this.categoria = categoria;
+        this.ciudad = ciudad;
+        this.imagenes = imagenes;
+        this.caracteristicas = caracteristicas;
+    }
 
     public Long getId() {
         return id;
