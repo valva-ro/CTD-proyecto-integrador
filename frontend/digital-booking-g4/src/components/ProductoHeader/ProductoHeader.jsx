@@ -7,18 +7,18 @@ export default function ProductHeader({ alojamiento }) {
     <>
       <div className={styles.contenedorHeader}>
         <div className={styles.headerIzquierda}>
-          <p>{alojamiento.category}</p>
-          <p>{alojamiento.title}</p>
+          <p>{alojamiento.categoria.titulo}</p>
+          <p>{alojamiento.nombre}</p>
         </div>
         <div className={styles.headerDerecha}>
           <Link to="/">
             <span>
-              <i class="fas fa-chevron-left"></i>
+              <i className="fas fa-chevron-left"></i>
             </span>
           </Link>
         </div>
       </div>
-      <ProductoUbicacion alojamiento={alojamiento}/>
+      <ProductoUbicacion alojamiento={alojamiento}/> 
     </>
   );
 }
