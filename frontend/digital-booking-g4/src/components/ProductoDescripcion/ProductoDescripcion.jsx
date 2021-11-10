@@ -13,7 +13,7 @@ export default function ProductoDescripcion({ alojamiento }) {
               return <p key={i}>{parrafo}</p>;
             })
           ) : (
-            <h2>No hay informacion del producto</h2>
+            <p>No hay informacion del producto</p>
           )}
         </div>
       </>

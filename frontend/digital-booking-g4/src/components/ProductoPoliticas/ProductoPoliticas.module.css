@@ -1,0 +1,40 @@
+.bloqueProductoPoliticas {
+    width: 100%;
+    margin-bottom: 58px;
+}
+
+.bloqueProductoPoliticas hr {
+    color: var(--color-principal);
+}
+
+.bloqueProductoPoliticas p {
+    width: 100%;
+    margin-bottom: 20px;
+    font-size: 0,875rem;
+}
+
+.contenedorProductoPoliticas {
+    display: grid;
+}
+
+.linea {
+    border-top: 1px solid --color-principal;
+    height: 2px;
+    padding: 0;
+    margin: 20px auto0 auto;
+    width: 100%;
+}
+
+.secciones {
+
+}
+
+/*****************Subtitulo de cada sección*****************/
+/*______Subtitulo______*/
+.subtituloSecciones {
+    color: var(--color-3);
+    font-size: 1.25rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 1.75rem;
+}

@@ -14,6 +14,21 @@
                 "El Hotel es un hotel sofisticado de 4 estrellas que goza de una ubicación tranquila, a poca distancia de prestigiosas galerías de arte, teatros, museos y zonas comerciales. Además, hay WiFi gratuita. El establecimiento sirve un desayuno variado de 07:00 a 10:30."
             ]
         },
+        "policies":{
+            "rules": [
+                "Check-out: 10:00",
+                "No se permiten fiestas",
+                "No fumar"
+            ],
+            "safeAndHealth": [
+                "Se aplican las pautas de distanciamiento social y otras normas relacionadas con el coronavirus",
+                "Detector de humo",
+                "Depósito de seguridad"
+            ],
+            "cancel": [
+                "Agregá las fechas de tu viaje para obtener los detalles de cancelación de esta estadía"
+            ]
+        },
         "imgs": [
             {
                 "src": "https://images.unsplash.com/photo-1568495248636-6432b97bd949?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8aG90ZWwlMjByb29tfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=60",
@@ -58,6 +73,21 @@
                 "Esta es la info del producto 2",
                 "Continuo otro párrafo del producto 2",
                 "Párrafo final del producto 2"
+            ]
+        },
+        "policies":{
+            "rules": [
+                "Check-out: 10:00",
+                "No se permiten fiestas",
+                "Se permite fumar"
+            ],
+            "safeAndHealth": [
+                "Se aplican las pautas de distanciamiento social y otras normas relacionadas con el coronavirus",
+                "Detector de humo",
+                "Depósito de seguridad"
+            ],
+            "cancel": [
+                "Agregá las fechas de tu viaje para obtener los detalles de cancelación de esta estadía"
             ]
         },
         "imgs": [
@@ -106,6 +136,21 @@
                 "Párrafo final del producto 3"
             ]
         },
+        "policies":{
+            "rules": [
+                "Check-out: 10:00",
+                "Se permiten reuniones familiares",
+                "No fumar"
+            ],
+            "safeAndHealth": [
+                "Se aplican las pautas de distanciamiento social y otras normas relacionadas con el coronavirus",
+                "Detector de humo",
+                "Depósito de seguridad"
+            ],
+            "cancel": [
+                "Agregá las fechas de tu viaje para obtener los detalles de cancelación de esta estadía"
+            ]
+        },
         "imgs": [
             {
                 "src": "https://images.unsplash.com/photo-1531088009183-5ff5b7c95f91?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTl8fGJlZCUyMGFuZCUyMGJyZWFrZmFzdHxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=60",
@@ -150,6 +195,21 @@
                 "Esta es la info del producto 4",
                 "Continuo otro párrafo del producto 4",
                 "Párrafo final del producto 4"
+            ]
+        },
+        "policies":{
+            "rules": [
+                "Check-out: 09:00",
+                "No se permiten fiestas",
+                "No fumar"
+            ],
+            "safeAndHealth": [
+                "Se aplican las pautas de distanciamiento social y otras normas relacionadas con el coronavirus",
+                "Detector de humo",
+                "Depósito de seguridad"
+            ],
+            "cancel": [
+                "Agregá las fechas de tu viaje para obtener los detalles de cancelación de esta estadía"
             ]
         },
         "imgs": [
@@ -198,6 +258,20 @@
                 "Párrafo final del producto 5"
             ]
         },
+        "policies":{
+            "rules": [
+                "Check-out: 10:00",
+                "No se permiten fiestas",
+                "No fumar"
+            ],
+            "safeAndHealth": [
+                "Se aplican las pautas de distanciamiento social y otras normas relacionadas con el coronavirus",
+                "Depósito de seguridad"
+            ],
+            "cancel": [
+                "Agregá las fechas de tu viaje para obtener los detalles de cancelación de esta estadía"
+            ]
+        },
         "imgs": [
             {
                 "src": "https://images.unsplash.com/photo-1618773928121-c32242e63f39?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTF8fGhvdGVsJTIwcm9vbXxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=60",
@@ -242,6 +316,20 @@
                 "Esta es la info del producto 6",
                 "Continuo otro párrafo del producto 6",
                 "Párrafo final del producto 6"
+            ]
+        },
+        "policies":{
+            "rules": [
+                "Check-out: 10:00",
+                "No se permiten fiestas",
+                "No fumar"
+            ],
+            "safeAndHealth": [
+                "Se aplican las pautas de distanciamiento social y otras normas relacionadas con el coronavirus",
+                "Detector de humo"
+            ],
+            "cancel": [
+                "Agregá las fechas de tu viaje para obtener los detalles de cancelación de esta estadía"
             ]
         },
         "imgs": [
@@ -290,6 +378,21 @@
                 "Párrafo final del producto 7"
             ]
         },
+        "policies":{
+            "rules": [
+                "Check-out: 11:00",
+                "No se permiten fiestas",
+                "No fumar"
+            ],
+            "safeAndHealth": [
+                "Se aplican las pautas de distanciamiento social y otras normas relacionadas con el coronavirus",
+                "Detector de humo",
+                "Depósito de seguridad"
+            ],
+            "cancel": [
+                "Agregá las fechas de tu viaje para obtener los detalles de cancelación de esta estadía"
+            ]
+        },
         "imgs": [
             {
                 "src": "https://images.unsplash.com/photo-1521120367316-e47e63ca9913?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8YmVkJTIwYW5kJTIwYnJlYWtmYXN0fGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=60",
@@ -334,6 +437,21 @@
                 "Esta es la info del producto 8",
                 "Continuo otro párrafo del producto 8",
                 "Párrafo final del producto 8"
+            ]
+        },
+        "policies":{
+            "rules": [
+                "Check-out: 08:00",
+                "No se permiten fiestas",
+                "No fumar"
+            ],
+            "safeAndHealth": [
+                "Se aplican las pautas de distanciamiento social y otras normas relacionadas con el coronavirus",
+                "Detector de humo",
+                "Depósito de seguridad"
+            ],
+            "cancel": [
+                "Agregá las fechas de tu viaje para obtener los detalles de cancelación de esta estadía"
             ]
         },
         "imgs": [

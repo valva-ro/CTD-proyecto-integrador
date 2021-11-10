@@ -6,7 +6,7 @@
 .bloqueProductoDescripcion p {
     width: 100%;
     margin-bottom: 20px;
-    font-size: 14px;
+    font-size: 0,875rem;
 }
 
 .bloqueProductoInfo {
