@@ -16,12 +16,18 @@ export default function TarjetaAlojamiento({ alojamiento }) {
   const [esVerMas, setEsVerMas] = useState(true);
   const toggleVerMas = () => setEsVerMas(!esVerMas);
 
+  const buscarImagenPrincipal = () => {
+    return imagenes.find(imagen => {
+      return imagen.imagenTitulo === "Principal";
+    })
+  }
+
   return (
     <div className={styles.tarjetaAlojamiento}>
       <div
         className={styles.imagenAlojamiento}
         style={{
-          backgroundImage: `url(${imagenes[0].imagenUrl})`,
+          backgroundImage: `url(${buscarImagenPrincipal().imagenUrl})`,
         }}
       >
         <i className={`fas fa-heart ${styles.corazon}`}></i>
@@ -46,15 +52,7 @@ export default function TarjetaAlojamiento({ alojamiento }) {
             <i className="fas fa-map-marker-alt"></i>
             <p>
               {ciudad.nombre}
-              {/* 
-                TODO: acá tendríamos que agregar a continuación del id del 
-                producto un #ubicacion o lo que corresponda al ID de esa 
-                sección en el producto.
-                De esa manera cuando el usuario haga click no solo lo lleva 
-                a la página del producto, sino que además scrollea hasta el 
-                mapa.
-              */}
-              <Link to={`product/${id}`}>Mostrar en el mapa</Link>
+              <Link to={`product/${id}#mapa`}>Mostrar en el mapa</Link>
             </p>
           </div>
           <div className={styles.servicios}>
