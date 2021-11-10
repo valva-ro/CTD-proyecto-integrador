@@ -71,7 +71,7 @@
 @media screen and (max-width:480px) {
 
     .headerFijo{
-        box-shadow: 2px 2px 6px var(--color-3);
+        box-shadow: 2px 2px 6px var(--color-2);
     }
 
     .contenedorHeader{
@@ -87,10 +87,5 @@
         display: block;
     }
 
-    .headerIzquierda h1 {
-        display: block;
-        margin-bottom: 10px;
-        font-size: 1.60rem;
-    }
 
 }

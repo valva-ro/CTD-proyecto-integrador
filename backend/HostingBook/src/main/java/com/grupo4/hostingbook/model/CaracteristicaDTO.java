@@ -1,14 +1,17 @@
 package com.grupo4.hostingbook.model;
 
-import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Objects;
+import java.util.Set;
 
 
-public class CaracteristicaDTO {
+public class CaracteristicaDTO implements Serializable {
 
     private Long id;
     private String nombre;
     private String icono;
+    private Set<ProductoDTO> productos;
+
 
     public CaracteristicaDTO() {}
 
@@ -21,6 +24,13 @@ public class CaracteristicaDTO {
         this.id = id;
         this.nombre = nombre;
         this.icono = icono;
+    }
+
+    public CaracteristicaDTO(Long id, String nombre, String icono, Set<ProductoDTO> productos) {
+        this.id = id;
+        this.nombre = nombre;
+        this.icono = icono;
+        this.productos = productos;
     }
 
     public Long getId() {
@@ -50,13 +60,22 @@ public class CaracteristicaDTO {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof CaracteristicaDTO)) return false;
+        if (o == null || getClass() != o.getClass()) return false;
         CaracteristicaDTO that = (CaracteristicaDTO) o;
-        return Objects.equals(getId(), that.getId()) && Objects.equals(getNombre(), that.getNombre()) && Objects.equals(getIcono(), that.getIcono());
+        return id.equals(that.id) && nombre.equals(that.nombre) && icono.equals(that.icono);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId(), getNombre(), getIcono());
+        return Objects.hash(id, nombre, icono);
+    }
+
+    @Override
+    public String toString() {
+        return "CaracteristicaDTO{" +
+                "id=" + id +
+                ", nombre='" + nombre + '\'' +
+                ", icono='" + icono + '\'' +
+                '}';
     }
 }

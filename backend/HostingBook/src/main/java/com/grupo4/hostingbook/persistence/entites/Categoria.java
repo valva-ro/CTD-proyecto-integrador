@@ -1,7 +1,9 @@
 package com.grupo4.hostingbook.persistence.entites;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 @Entity
 @Table(name = "categorias")
@@ -15,6 +17,9 @@ public class Categoria {
     private String descripcion;
     @Column(name="url_imagen")
     private String urlImagen;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "categoria", fetch = FetchType.EAGER)
+    private Set<Producto> productos = new HashSet<>();
 
     public Long getId() {
         return id;
@@ -60,4 +65,5 @@ public class Categoria {
     public int hashCode() {
         return Objects.hash(id, titulo, descripcion, urlImagen);
     }
+
 }

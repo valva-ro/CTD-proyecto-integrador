@@ -1,21 +1,19 @@
 .boxing {
-  background-color: var(--color-2);
-  padding: 6vh 14vw;
-  width: 100vw;
-  min-height: 150px;
-  max-height: 225px;
-  display: flex;
-  flex-direction: column;
+  background-color: var(--color-3);
+  padding: 25px;
+  width: 100%; 
   position: fixed;
   top: 92px;
   z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
 .letter {
   color: var(--color-5);
   text-align: center;
   font-size: 2.25rem;
-  padding-bottom: 3.3vh;
 }
 
 .dateContainer {
@@ -29,17 +27,14 @@
 }
 
 .input {
-  min-width: 30.89311859443631vw;
-  max-height: 6.4vh;
-  padding: 1rem 2.4rem;
-  padding-left: 2rem;
+  display: flex;
 }
 
 .dateIcon,
 .dateIconEmpty {
   position: absolute;
-  left: 0.863rem;
-  top: .9vh;
+  left: 18px;
+  top: 4px;
   font-size: 1.6rem;
   color: var(--color-2--opaco);
   z-index: 1;
@@ -51,12 +46,14 @@
 
 .inputs {
   display: flex;
-  gap: 0.25rem;
+  gap: 8px;
   justify-content: center;
+  height: 38px;
 }
 
 .inputs input:nth-child(4) {
   margin-left: 8px;
+  padding: 0 5vw;
 }
 
 .applyContainer {
@@ -65,34 +62,19 @@
   margin: 20px;
 }
 
-@media (max-width: 1024px) {
-  .letter {
-    font-size: 1.874rem;
-  }
-}
-
 @media (max-width: 860px) {
   .letter {
     font-size: 1.874rem;
   }
 
-  .dateIconEmpty,
-  .dateIcon {
-    left: 16px;
-  }
-
   .boxing {
     padding: 30px 10px;
+    top: 112px;
   }
 
   .inputs {
     gap: 0.5rem;
     padding: 0 5vw;
-  }
-
-  .gps,
-  .gpsEmpty {
-    bottom: 8px;
   }
 
   .input {
@@ -102,63 +84,32 @@
   }
 }
 
-@media (max-width: 633px) {
+@media (max-width: 480px) {
+  .dateIcon,
+  .dateIconEmpty {
+    position: absolute;
+    left: 12px;
+    top: 6px;
+  }
   .letter {
     font-size: 1.6rem;
   }
-}
 
-@media (max-width: 480px) {
-  .globalContainer {
-    top: 102px;
-    position: absolute;
-  }
-
-  .gps,
-  .gpsEmpty {
-    bottom: 5px;
+  .boxing {
+    top: 82px;
   }
 
   .dateContainer {
     margin: -4px;
   }
 
-  .boxing {
-    padding: 20px 0px;
-  }
-
   .inputs {
     flex-direction: column;
-    gap: 0.6rem;
-    padding: 10px;
-  }
-
-  .input {
-    width: 95vw;
-  }
-
-  .letter {
-    font-size: 1.574rem;
+    margin: 40px 0;
   }
 
   .inputs input:nth-child(4) {
     margin-left: 0px;
-  }
-
-  .dateIcon,
-  .dateIconEmpty {
-    left: 10px;
-  }
-
-  .dateIcon {
-    top: 12px;
-  }
-
-  .dateIconEmpty {
-    top: 7px;
-  }
-
-  .applyContainer {
-    margin: 10px;
+    padding: 6.5px 5vw; 
   }
 }

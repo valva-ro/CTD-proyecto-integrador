@@ -2,9 +2,8 @@ package com.grupo4.hostingbook.controller.impl;
 
 import com.grupo4.hostingbook.controller.CRUDController;
 import com.grupo4.hostingbook.exceptions.BadRequestException;
-import com.grupo4.hostingbook.exceptions.NotImplementedException;
 import com.grupo4.hostingbook.exceptions.Mensajes;
-import com.grupo4.hostingbook.exceptions.ResourceNotFoundException;
+import com.grupo4.hostingbook.exceptions.NotImplementedException;
 import com.grupo4.hostingbook.model.CiudadDTO;
 import com.grupo4.hostingbook.service.CRUDService;
 import io.swagger.annotations.ApiOperation;
@@ -19,6 +18,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/ciudades")
+@CrossOrigin(origins = "*", methods = { RequestMethod.GET, RequestMethod.POST })
 public class CiudadController implements CRUDController<CiudadDTO> {
 
     @Qualifier("CiudadService")

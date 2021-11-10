@@ -10,6 +10,7 @@ import com.grupo4.hostingbook.persistence.repository.ICaracteristicaRepository;
 import com.grupo4.hostingbook.service.CRUDService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;

@@ -1,29 +1,27 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import FilledButton from "../../Buttons/FilledButton";
+import Estrellas from "../../Estrellas/Estrellas";
 import styles from "./TarjetaAlojamiento.module.css";
 
-export default function TarjetaAlojamiento({
-  titulo,
-  imagen,
-  descripcion,
-  categoria,
-  ubicacion,
-  cantEstrellas,
-}) {
+export default function TarjetaAlojamiento({ alojamiento }) {
+  const { id, 
+          title, 
+          imgs, 
+          description, 
+          category, 
+          location, 
+          points } = alojamiento;
+
   const [esVerMas, setEsVerMas] = useState(true);
   const toggleVerMas = () => setEsVerMas(!esVerMas);
-
-  let estrellas = [];
-  for (let i = 0; i < cantEstrellas; i++) {
-    estrellas.push(<i key={`estrellas-${i}`} className="fas fa-star"></i>);
-  }
 
   return (
     <div className={styles.tarjetaAlojamiento}>
       <div
         className={styles.imagenAlojamiento}
         style={{
-          backgroundImage: `url(${imagen})`,
+          backgroundImage: `url(${imgs[0].src})`,
         }}
       >
         <i className={`fas fa-heart ${styles.corazon}`}></i>
@@ -33,15 +31,13 @@ export default function TarjetaAlojamiento({
         <div className={styles.informacionPrincipal}>
           <div className={styles.nombreAlojamiento}>
             <div className={styles.tipoYCalificacion}>
-              <h4>{categoria}</h4>
-              <span className={styles.estrellas} aria-label="Estrellas">
-                {estrellas}
-              </span>
+              <h4>{category}</h4>
+              <Estrellas puntaje={points} />
             </div>
-            <h2>{titulo}</h2>
+            <h2>{title}</h2>
           </div>
           <div className={styles.puntajeAlojamiento}>
-            <div className={styles.puntajeNumerico}>8</div>
+            <div className={styles.puntajeNumerico}>{points}</div>
             <div className={styles.detalle}>Muy bueno</div>
           </div>
         </div>
@@ -49,7 +45,16 @@ export default function TarjetaAlojamiento({
           <div className={styles.ubicacion}>
             <i className="fas fa-map-marker-alt"></i>
             <p>
-              {ubicacion} <a href="#">Mostrar en el mapa</a> {/* esto tira warning*/}
+              {location}
+              {/* 
+                TODO: acá tendríamos que agregar a continuación del id del 
+                producto un #ubicacion o lo que corresponda al ID de esa 
+                sección en el producto.
+                De esa manera cuando el usuario haga click no solo lo lleva 
+                a la página del producto, sino que además scrollea hasta el 
+                mapa.
+              */}
+              <Link to={`product/${id}`}>Mostrar en el mapa</Link>
             </p>
           </div>
           <div className={styles.servicios}>
@@ -58,13 +63,13 @@ export default function TarjetaAlojamiento({
           </div>
         </div>
         <p>
-          {descripcion.length <= 85 ? (
-            descripcion
+          {description.length <= 85 ? (
+            description
           ) : (
             <>
-              {esVerMas && descripcion.length > 85
-                ? descripcion.slice(0, 85)
-                : descripcion}
+              {esVerMas && description.length > 85
+                ? description.slice(0, 85)
+                : description}
               ...
               <span onClick={toggleVerMas} className={styles.verMas}>
                 {esVerMas ? " leer más" : " leer menos"}
@@ -72,9 +77,9 @@ export default function TarjetaAlojamiento({
             </>
           )}
         </p>
-        <FilledButton onClick={toggleVerMas} styles={styles.btnVerMas}>
-          Ver más
-        </FilledButton>
+        <Link to={`product/${id}`}>
+          <FilledButton styles={styles.btnVerMas}>Ver más</FilledButton>
+        </Link>
       </div>
     </div>
   );
