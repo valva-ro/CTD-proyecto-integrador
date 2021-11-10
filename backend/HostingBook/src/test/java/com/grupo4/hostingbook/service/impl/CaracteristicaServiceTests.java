@@ -14,7 +14,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 @SpringBootTest(properties = "spring.profiles.active:test")
 @DirtiesContext(classMode = DirtiesContext.ClassMode.BEFORE_EACH_TEST_METHOD)
-class CaracteristicaServiceTest {
+class CaracteristicaServiceTests {
 
     @Autowired
     private CaracteristicaService caracteristicaService;

@@ -4,7 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.grupo4.hostingbook.exceptions.BadRequestException;
 import com.grupo4.hostingbook.exceptions.Mensajes;
 import com.grupo4.hostingbook.exceptions.ResourceNotFoundException;
-import com.grupo4.hostingbook.model.ProductoDTO;
+import com.grupo4.hostingbook.model.*;
 import com.grupo4.hostingbook.persistence.entites.Categoria;
 import com.grupo4.hostingbook.persistence.entites.Ciudad;
 import com.grupo4.hostingbook.persistence.entites.Producto;
@@ -20,26 +20,43 @@ public class ProductoService implements IProductoService {
 
     private final IProductoRepository productoRepository;
     private final ObjectMapper mapper;
+    private final CategoriaService categoriaService;
+    private final CiudadService ciudadService;
+    private final ImagenService imagenService;
+    private final CaracteristicaService caracteristicaService;
 
     @Autowired
-    public ProductoService(IProductoRepository productoRepository, ObjectMapper mapper) {
+    public ProductoService(IProductoRepository productoRepository, ObjectMapper mapper, CategoriaService categoriaService, CiudadService ciudadService, ImagenService imagenService, CaracteristicaService caracteristicaService) {
         this.productoRepository = productoRepository;
         this.mapper = mapper;
+        this.categoriaService = categoriaService;
+        this.ciudadService = ciudadService;
+        this.imagenService = imagenService;
+        this.caracteristicaService = caracteristicaService;
     }
 
     @Override
-    public ProductoDTO crear(ProductoDTO productoDTO) throws BadRequestException {
+    public ProductoDTO crear(ProductoDTO productoDTO) throws BadRequestException, ResourceNotFoundException {
         validarCamposRequeridosCreacion(productoDTO);
-        Producto entidadProducto = mapper.convertValue(productoDTO, Producto.class);
-        Producto guardada = productoRepository.save(entidadProducto);
-        return mapper.convertValue(guardada, ProductoDTO.class);
+        Producto entidadProducto;
+        Producto guardado;
+        if (entidadesSonPersistibles(productoDTO)) {
+            entidadProducto = mapper.convertValue(productoDTO, Producto.class);
+        } else {
+            entidadProducto = agregarEntidadesRelacionadas(productoDTO);
+        }
+        guardado = productoRepository.save(entidadProducto);
+        return mapper.convertValue(guardado, ProductoDTO.class);
     }
 
     @Override
     public ProductoDTO buscarPorId(Long id) throws BadRequestException, ResourceNotFoundException {
         validarId(id);
-        Producto producto = productoRepository.getById(id);
-        return mapper.convertValue(producto, ProductoDTO.class);
+        if (!productoRepository.existsById(id)) {
+            throw new ResourceNotFoundException(
+                    String.format(Mensajes.ERROR_NO_EXISTE, "El 'producto'", id));
+        }
+        return mapper.convertValue(productoRepository.findById(id).get(), ProductoDTO.class);
     }
 
     @Override
@@ -75,7 +92,7 @@ public class ProductoService implements IProductoService {
     @Override
     public Set<ProductoDTO> consultarPorCategoria(String tituloCategoria) throws ResourceNotFoundException {
         for (Producto p: productoRepository.findAll()) {
-            if( tituloCategoria.equalsIgnoreCase(p.getCategoria().getTitulo())){
+            if (tituloCategoria.equalsIgnoreCase(p.getCategoria().getTitulo())) {
                 Set<Producto> entidades = productoRepository.buscarProductosPorCategoria(tituloCategoria);
                 Set<ProductoDTO> dtos = new HashSet<>();
                 for (Producto entidad : entidades) {
@@ -149,5 +166,52 @@ public class ProductoService implements IProductoService {
             throw new ResourceNotFoundException(String.format(Mensajes.ERROR_NO_EXISTE, "El 'producto'", id));
     }
 
+    private boolean entidadesSonPersistibles(ProductoDTO productoDTO) {
+        boolean productoPersistible = productoDTO.getId() == null;
+        boolean ciudadPersistible = productoDTO.getCiudad().getId() == null;
+        boolean categoriaPersistible = productoDTO.getCategoria().getId() == null;
+        boolean imagenesPersistibles = true;
+        boolean caracteristicasPersistibles = true;
+        for (ImagenDTO img : productoDTO.getImagenes()) {
+            if (img.getId() == null) {
+                imagenesPersistibles = false;
+                break;
+            }
+        }
+        for (CaracteristicaDTO caracteristica : productoDTO.getCaracteristicas()) {
+            if (caracteristica.getId() == null) {
+                caracteristicasPersistibles = false;
+                break;
+            }
+        }
+        return productoPersistible && ciudadPersistible && categoriaPersistible && imagenesPersistibles && caracteristicasPersistibles;
+    }
 
+    private Producto agregarEntidadesRelacionadas(ProductoDTO productoDTO) throws BadRequestException, ResourceNotFoundException {
+        if (productoDTO.getCiudad().getId() != null) {
+            CiudadDTO ciudadEnBD = ciudadService.buscarPorId(productoDTO.getCiudad().getId());
+            productoDTO.setCiudad(ciudadEnBD);
+        }
+        if (productoDTO.getCategoria().getId() != null) {
+            CategoriaDTO categoriaEnBD = categoriaService.buscarPorId(productoDTO.getCategoria().getId());
+            productoDTO.setCategoria(categoriaEnBD);
+        }
+        Set<ImagenDTO> imagenesEnBD = new HashSet<>();
+        Set<CaracteristicaDTO> caracteristicasEnBD = new HashSet<>();
+        for (ImagenDTO img : productoDTO.getImagenes()) {
+            if (img.getId() != null) {
+                ImagenDTO imgEnBD = imagenService.buscarPorId(img.getId());
+                imagenesEnBD.add(imgEnBD);
+            }
+        }
+        for (CaracteristicaDTO caracteristica : productoDTO.getCaracteristicas()) {
+            if (caracteristica.getId() != null) {
+                CaracteristicaDTO caracteristicaEnBD = caracteristicaService.buscarPorId(caracteristica.getId());
+                caracteristicasEnBD.add(caracteristicaEnBD);
+            }
+        }
+        productoDTO.setImagenes(imagenesEnBD);
+        productoDTO.setCaracteristicas(caracteristicasEnBD);
+        return mapper.convertValue(productoDTO, Producto.class);
+    }
 }
