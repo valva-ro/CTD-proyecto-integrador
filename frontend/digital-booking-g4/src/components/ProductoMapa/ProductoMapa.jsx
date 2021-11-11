@@ -19,17 +19,17 @@ const center = {
 
 export default function ProductoMapa({ alojamiento }) {
   // TODO: este location hay que cambiarlo y usar el atributo de la API
-  const { location } = alojamiento;
+  const { ciudad } = alojamiento;
   const { isLoaded } = useJsApiLoader({
     id: "google-map-script",
     googleMapsApiKey: "AIzaSyA2h8uPorI_NWnVFI5NfeI45GfjpJ4EIxE",
   });
 
   return (
-    <section className={styles.containerUbicacion}>
+    <section className={styles.containerUbicacion} id="mapa">
       <TituloBloque>¿Dónde vas a estar?</TituloBloque>
-      <hr className={styles.separador} />
-      <h4 className={styles.textoUbicacion}>{location}</h4>
+      <hr/>
+      <h4 className={styles.textoUbicacion}>{`${ciudad.nombre}, ${ciudad.pais}`}</h4>
       {isLoaded ? (
         <GoogleMap mapContainerStyle={containerStyle} center={center} zoom={15}>
           <Marker position={center} />

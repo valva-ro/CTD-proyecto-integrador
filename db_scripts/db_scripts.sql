@@ -61,6 +61,7 @@ CREATE TABLE imagenes (
 --
 -- Table structure for table `caracteristicas`
 --
+DROP TABLE IF EXISTS caracteristicas;
 CREATE TABLE caracteristicas (
   caracteristica_id INT UNSIGNED NOT NULL AUTO_INCREMENT,
   nombre VARCHAR(50) NOT NULL,
@@ -75,7 +76,7 @@ DROP TABLE IF EXISTS productos;
 CREATE TABLE productos (
 	producto_id INT UNSIGNED NOT NULL AUTO_INCREMENT,
     nombre VARCHAR(50) NOT NULL,
-    descripcion VARCHAR(250) NOT NULL,
+    descripcion VARCHAR(500) NOT NULL,
     fk_categoria SMALLINT UNSIGNED NOT NULL,
     fk_ciudad INT UNSIGNED NOT NULL,
     PRIMARY KEY  (producto_id),

@@ -1,0 +1,48 @@
+.ProductoCaracteristicas {
+    height: 240px;
+}
+hr {
+    border-bottom: 1px solid var(--color-principal);
+    width: 100%;
+    margin: 8px 0;
+}
+.caracteristicasContainer {  
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    height: 150px;
+    margin-top: 40px;
+}
+.caracteristicaItem {
+    height: 50px;
+    width: 25%;
+}
+.caracteristicaItem div {
+    display: flex;
+    align-items: center;
+    align-self: center;
+}
+.caracteristicaItem i {
+    font-size: 1.5rem;
+    color: var(--color-principal);
+    margin-right: 15px;
+}
+.caracteristicaItem span {
+    font-size: 1.1rem;
+}
+@media (max-width: 1000px){
+    .caracteristicaItem {
+        width: 50%;
+    }
+    .ProductoCaracteristicas {
+        height: 315px;
+    }
+}
+@media (max-width: 480px) {
+    .caracteristicaItem span {
+        font-size: 1rem;
+    }
+    .caracteristicaItem i {
+        font-size: 1.3rem;
+    }
+}

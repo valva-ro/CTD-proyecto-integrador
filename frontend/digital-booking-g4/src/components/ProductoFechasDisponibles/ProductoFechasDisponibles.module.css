@@ -55,7 +55,6 @@
 @media (max-width: 740px) {
   .bloqueFechasDisponiblesContainer {
       height: 550px;
-      padding: 25px 20px;
   }
   .reservasContenido {
     gap: 20px;

@@ -18,6 +18,7 @@ import java.util.Set;
 
 @RestController
 @RequestMapping("/productos")
+@CrossOrigin(origins = "*", methods = { RequestMethod.GET, RequestMethod.POST })
 public class ProductoController implements IProductoController {
 
     private final IProductoService productoService;
