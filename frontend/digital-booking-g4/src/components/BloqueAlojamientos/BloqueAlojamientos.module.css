@@ -1,6 +1,11 @@
 .alojamientos {
   margin-top: 1rem;
   columns: 2;
+  padding-bottom: 12px;
+}
+
+.alojamientos li {
+    break-inside: avoid-column;
 }
 
 .alojamientosUnaColumna {
