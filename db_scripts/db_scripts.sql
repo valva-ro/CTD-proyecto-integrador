@@ -119,9 +119,9 @@ CREATE TABLE tipo_politica(
 --
 -- Table structure for table `politica`
 --
-DROP TABLE IF EXISTS politica;
-CREATE TABLE politica(
-	politica_id INT UNSIGNED NOT NULL AUTO_INCREMENT,
+DROP TABLE IF EXISTS politicas;
+CREATE TABLE politicas(
+	  politica_id INT UNSIGNED NOT NULL AUTO_INCREMENT,
     nombre VARCHAR(200) NOT NULL,
     fk_tipo_politica SMALLINT UNSIGNED NOT NULL,
 	PRIMARY KEY  (politica_id), 
@@ -141,7 +141,7 @@ CREATE TABLE politica_producto(
     PRIMARY KEY  (politica_producto_id), 
 	CONSTRAINT politica_producto_politica_id_foreign
 		FOREIGN KEY (politica_id)
-        REFERENCES booking.politica (politica_id),
+        REFERENCES booking.politicas (politica_id),
 	CONSTRAINT politica_producto_producto_id_foreign
 		FOREIGN KEY (producto_id)
 		REFERENCES booking.productos (producto_id)

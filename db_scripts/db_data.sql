@@ -251,23 +251,23 @@ COMMIT;
 -- Dumping data for table `politica`
 --
 SET AUTOCOMMIT=0;
-INSERT INTO politica (nombre,fk_tipo_politica) VALUES ("Check-in: 10:00",1);
-INSERT INTO politica (nombre,fk_tipo_politica) VALUES ("Check-out: 20:00",1);
-INSERT INTO politica (nombre,fk_tipo_politica) VALUES ("Dejar organizado antes de salir",1);
-INSERT INTO politica (nombre,fk_tipo_politica) VALUES ("No se permiten fiestas",1);
-INSERT INTO politica (nombre,fk_tipo_politica) VALUES ("No fumar",1);
-INSERT INTO politica (nombre,fk_tipo_politica) VALUES ("No se permiten mascotas",1);
+INSERT INTO politicas (nombre,fk_tipo_politica) VALUES ("Check-in: 10:00",1);
+INSERT INTO politicas (nombre,fk_tipo_politica) VALUES ("Check-out: 20:00",1);
+INSERT INTO politicas (nombre,fk_tipo_politica) VALUES ("Dejar organizado antes de salir",1);
+INSERT INTO politicas (nombre,fk_tipo_politica) VALUES ("No se permiten fiestas",1);
+INSERT INTO politicas (nombre,fk_tipo_politica) VALUES ("No fumar",1);
+INSERT INTO politicas (nombre,fk_tipo_politica) VALUES ("No se permiten mascotas",1);
 
-INSERT INTO politica (nombre,fk_tipo_politica) VALUES ("Se aplican las pautas de distanciamiento social y otras normas relacionadas con el coronavirus",2);
-INSERT INTO politica (nombre,fk_tipo_politica) VALUES ("Detector de humo",2);
-INSERT INTO politica (nombre,fk_tipo_politica) VALUES ("Deposito de seguridad",2);
-INSERT INTO politica (nombre,fk_tipo_politica) VALUES ("Usar mascarilla en los pasillos",2);
-INSERT INTO politica (nombre,fk_tipo_politica) VALUES ("Enfermeria en la primera planta",2);
-INSERT INTO politica (nombre,fk_tipo_politica) VALUES ("Puertas con seguro de contraseña",2);
+INSERT INTO politicas (nombre,fk_tipo_politica) VALUES ("Se aplican las pautas de distanciamiento social y otras normas relacionadas con el coronavirus",2);
+INSERT INTO politicas (nombre,fk_tipo_politica) VALUES ("Detector de humo",2);
+INSERT INTO politicas (nombre,fk_tipo_politica) VALUES ("Deposito de seguridad",2);
+INSERT INTO politicas (nombre,fk_tipo_politica) VALUES ("Usar mascarilla en los pasillos",2);
+INSERT INTO politicas (nombre,fk_tipo_politica) VALUES ("Enfermeria en la primera planta",2);
+INSERT INTO politicas (nombre,fk_tipo_politica) VALUES ("Puertas con seguro de contraseña",2);
 
-INSERT INTO politica (nombre,fk_tipo_politica) VALUES ("Agregá las fechas de tu viaje para obtener los detalles de cancelación de esta estadía",3);
-INSERT INTO politica (nombre,fk_tipo_politica) VALUES ("Cancelación con almenos 48 horas de anticipación",3);
-INSERT INTO politica (nombre,fk_tipo_politica) VALUES ("Añadir documentación relacionada con la reservación en el momento de la solicitud",3);
+INSERT INTO politicas (nombre,fk_tipo_politica) VALUES ("Agregá las fechas de tu viaje para obtener los detalles de cancelación de esta estadía",3);
+INSERT INTO politicas (nombre,fk_tipo_politica) VALUES ("Cancelación con almenos 48 horas de anticipación",3);
+INSERT INTO politicas (nombre,fk_tipo_politica) VALUES ("Añadir documentación relacionada con la reservación en el momento de la solicitud",3);
 COMMIT;
 
 --

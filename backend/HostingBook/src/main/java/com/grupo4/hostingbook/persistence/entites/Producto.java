@@ -33,6 +33,18 @@ public class Producto {
             }
     )
     @JoinTable(
+            name = "politica_producto",
+            joinColumns = @JoinColumn(name = "producto_id"),
+            inverseJoinColumns = @JoinColumn(name = "politica_id")
+    )
+    private Set<Politica> politicas = new HashSet<>();
+
+    @ManyToMany (
+            cascade = {
+                    CascadeType.MERGE
+            }
+    )
+    @JoinTable(
             name = "producto_caracteristica",
             joinColumns = @JoinColumn(name = "producto_id"),
             inverseJoinColumns = @JoinColumn(name = "caracteristica_id")
@@ -44,6 +56,14 @@ public class Producto {
     public Producto(String nombre, String descripcion) {
         this.nombre = nombre;
         this.descripcion = descripcion;
+    }
+
+    public Set<Politica> getPoliticas() {
+        return politicas;
+    }
+
+    public void setPoliticas(Set<Politica> politicas) {
+        this.politicas = politicas;
     }
 
     public Producto(String nombre, String descripcion, Categoria categoria, Ciudad ciudad, Set<Imagen> imagenes, Set<Caracteristica> caracteristicas) {
