@@ -11,3 +11,7 @@ hr {
 .textoUbicacion {
   margin: 18px 0;
 }
+
+.gm-control-active {
+  background-color: var(--color-principal);
+}
