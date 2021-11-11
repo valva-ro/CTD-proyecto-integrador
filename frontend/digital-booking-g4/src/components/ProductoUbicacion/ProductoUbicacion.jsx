@@ -7,18 +7,18 @@ export default function ProductoUbicacion({ alojamiento }) {
       <div className={styles.direccionContainer}>
         <div className={styles.ubicacion}>
           <i className="fas fa-map-marker-alt"></i>
-          <p>{alojamiento.location}</p>
+          <p>{`${alojamiento.ciudad.nombre}, ${alojamiento.ciudad.pais}`}</p>
         </div>
         <p className={styles.distancia}>
-          {distanciaCentro(alojamiento.location)}
+          {distanciaCentro(alojamiento.ciudad.nombre)}
         </p>
       </div>
       <div className={styles.detalle}>
         <div className={styles.detalleYEstrellas}>
           <div className={styles.detalleCalificacion}>Muy bueno</div>
-          <Estrellas puntaje={alojamiento.points} />
+          <Estrellas puntaje={8} />
         </div>
-        <div className={styles.puntajeNumerico}>{alojamiento.points}</div>
+        <div className={styles.puntajeNumerico}>{8}</div>
       </div>
     </section>
   );

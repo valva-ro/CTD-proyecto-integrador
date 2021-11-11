@@ -30,13 +30,13 @@ public class CiudadServiceTests {
     }
 
     @Test
-    public void test02AgregarCiudad() throws BadRequestException {
+    public void test02AgregarCiudad() throws BadRequestException, ResourceNotFoundException {
         CiudadDTO c = ciudadService.crear(ciudadPorCrear);
         assertEquals(ciudadCreada, c);
     }
 
     @Test
-    public void test03ObtenerTodasLasCiudades() throws BadRequestException {
+    public void test03ObtenerTodasLasCiudades() throws BadRequestException, ResourceNotFoundException {
         ciudadService.crear(ciudadPorCrear);
         assertNotEquals(0, ciudadService.consultarTodos().size());
     }

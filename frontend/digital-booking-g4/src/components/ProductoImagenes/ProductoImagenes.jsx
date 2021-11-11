@@ -9,7 +9,23 @@ export default function ProductoImagenes({ alojamiento }) {
   const [carruselEstaAbierto, setCarruselEstaAbierto] = useState(false);
   const cerrarCarousel = () => setCarruselEstaAbierto(false);
   const abrirCarousel = () => setCarruselEstaAbierto(true);
+  const { imagenes } = alojamiento;
 
+  const obtenerImagenPrincipal = () => {
+    return imagenes.find(imagen => {
+      return imagen.imagenTitulo === "Principal";
+    })
+  }
+
+  const obtenerImagenesSecundarias = () => {
+    return imagenes.filter((img) => img.imagenTitulo !== "Principal");
+  }
+
+  const imagenesOrdenadas = () => {
+    return [obtenerImagenPrincipal(), ...obtenerImagenesSecundarias()];
+  }
+
+  console.log("Alojamiento desde ProductoImagenes: "+JSON.stringify(imagenes));
   return (
     <section className={styles.sectionImagenes}>
       <div className={styles.iconos}>
@@ -20,15 +36,15 @@ export default function ProductoImagenes({ alojamiento }) {
         <div
           className={styles.imagenPrincipal}
           style={{
-            backgroundImage: `url(${alojamiento.imgs[0].src})`,
+            backgroundImage: `url(${obtenerImagenPrincipal().imagenUrl})`
           }}
         ></div>
         <div className={styles.imagenesSecundarias}>
-          {alojamiento.imgs.slice(1, 5).map((imagen, i) => (
+          {obtenerImagenesSecundarias().slice(0, 4).map((imagen, i) => (
             <div
               className={styles.imagenSecundaria}
               style={{
-                backgroundImage: `url(${imagen.src})`,
+                backgroundImage: `url(${imagen.imagenUrl})`,
               }}
               key={i}
             ></div>
@@ -40,7 +56,7 @@ export default function ProductoImagenes({ alojamiento }) {
         <ProductoModalCarousel
           estaAbierto={carruselEstaAbierto}
           onCloseRequest={cerrarCarousel}
-          imagenes={alojamiento.imgs}
+          imagenes={imagenesOrdenadas()}
         />
       </div>
       <div className={styles.contenedorTabletMobile}>
@@ -48,7 +64,7 @@ export default function ProductoImagenes({ alojamiento }) {
           <i className="bx bx-share-alt"></i>
           <i className="bx bx-heart"></i>
         </div>
-        {carruselTabletMobile(alojamiento.imgs)}
+        {carruselTabletMobile(imagenesOrdenadas())}
       </div>
     </section>
   );
@@ -68,10 +84,10 @@ const carruselTabletMobile = (imagenes) => (
     swipeable={true}
     transitionTime={750}
   >
-    {imagenes.map((imagen) => {
+    {imagenes.map((imagen, i) => {
       return (
-        <div className={styles.imagen}>
-          <img src={imagen.src} alt={imagen.alt} />
+        <div key={`imagen-${i}`}className={styles.imagen}>
+          <img src={imagen.urlImagen} alt={imagen.imagenTitulo} />
         </div>
       );
     })}

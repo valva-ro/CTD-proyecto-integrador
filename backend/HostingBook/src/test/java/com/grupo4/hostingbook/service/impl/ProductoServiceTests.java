@@ -7,7 +7,6 @@ import com.grupo4.hostingbook.service.IProductoService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.transaction.annotation.Transactional;
@@ -18,27 +17,18 @@ import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest(properties = "spring.profiles.active:test")
 @DirtiesContext(classMode = DirtiesContext.ClassMode.BEFORE_EACH_TEST_METHOD)
-class ProductoServiceTest {
+class ProductoServiceTests {
 
     @Autowired
     private IProductoService productoService;
-
     @Autowired
-    @Qualifier("CiudadService")
-    private CiudadService ciudadService;
-
-    @Autowired
-    @Qualifier("CategoriaService")
     private CategoriaService categoriaService;
-
-    private CategoriaDTO categoriaEjemplo;
-    private CategoriaDTO categoriaCreadaEjemplo;
-    private CiudadDTO ciudadEjemplo;
-    private CiudadDTO ciudadCreadaEjemplo;
-    private Set<ImagenDTO> imagenesEjemplo;
-    private Set<ImagenDTO> imagenesCreadasEjemplo;
-    private Set<CaracteristicaDTO> caracteristicasEjemplo;
-    private Set<CaracteristicaDTO> caracteristicasCreadasEjemplo;
+    @Autowired
+    private CiudadService ciudadService;
+    @Autowired
+    private ImagenService imagenService;
+    @Autowired
+    private CaracteristicaService caracteristicaService;
 
     private ProductoDTO productoPorCrear;
     private ProductoDTO productoCreado;
@@ -46,25 +36,33 @@ class ProductoServiceTest {
     private ProductoDTO productoActualizado;
 
     @BeforeEach
-    public void setUp(){
+    public void setUp() throws BadRequestException {
+        CategoriaDTO categoria;
+        CategoriaDTO categoriaCreada;
+        CiudadDTO ciudad;
+        CiudadDTO ciudadCreada;
+        ImagenDTO imagen1 = new ImagenDTO("Habitación doble", "https://via.placeholder.com/300");
+        ImagenDTO imagen2 = new ImagenDTO("Baño", "https://via.placeholder.com/300");
+        CaracteristicaDTO caracteristica1 = new CaracteristicaDTO("WiFi","<i class='bx bx-wifi'></i>");
+        CaracteristicaDTO caracteristica2 = new CaracteristicaDTO("Parking","<i class='bx bxs-car'></i>");
+        Set<ImagenDTO> imagenesCreadas;
+        Set<ImagenDTO> imagenes;
+        Set<CaracteristicaDTO> caracteristicasCreadas;
+        Set<CaracteristicaDTO> caracteristicas;
 
-        categoriaEjemplo = new CategoriaDTO("Hotel", "807.105 hoteles", "https://via.placeholder.com/300");
-        categoriaCreadaEjemplo = new CategoriaDTO(1L,"Hotel", "807.105 hoteles", "https://via.placeholder.com/300");
+        categoria = new CategoriaDTO("Hotel", "807.105 hoteles", "https://via.placeholder.com/300");
+        categoriaCreada = categoriaService.crear(categoria);
+        ciudad = new CiudadDTO("Manizales", "Colombia");
+        ciudadCreada = ciudadService.crear(ciudad);
+        imagenes = Set.of(imagen1, imagen2);
+        imagenesCreadas = Set.of(imagenService.crear(imagen1), imagenService.crear(imagen2));
+        caracteristicas = Set.of(caracteristica1, caracteristica2);
+        caracteristicasCreadas = Set.of(caracteristicaService.crear(caracteristica1), caracteristicaService.crear(caracteristica2));
 
-        ciudadEjemplo = new CiudadDTO("Manizales", "Colombia");
-        ciudadCreadaEjemplo = new CiudadDTO(1L,"Manizales", "Colombia");
-
-        imagenesEjemplo = Set.of(new ImagenDTO("Habitación doble", "https://via.placeholder.com/300"),new ImagenDTO("Baño", "https://via.placeholder.com/300"));
-        imagenesCreadasEjemplo = Set.of(new ImagenDTO(1L,"Habitación doble", "https://via.placeholder.com/300"),new ImagenDTO(2L,"Baño", "https://via.placeholder.com/300"));
-
-
-        caracteristicasEjemplo = Set.of(new CaracteristicaDTO("WiFi","<i class='bx bx-wifi'></i>"),new CaracteristicaDTO("Parking","<i class='bx bxs-car'></i>"),new CaracteristicaDTO("Pool","<i class='bx bx-swim'></i>"));
-        caracteristicasCreadasEjemplo = Set.of(new CaracteristicaDTO(1L,"WiFi", "<i class='bx bx-wifi'></i>"),new CaracteristicaDTO(2L,"Parking","<i class='bx bxs-car'></i>"), new CaracteristicaDTO(3L,"Pool", "<i class='bx bx-swim'></i>"));
-
-        productoPorCrear = new ProductoDTO("Hotel Melia", "Servicio all inclusive con vista al mar", categoriaEjemplo, ciudadEjemplo, imagenesEjemplo, caracteristicasEjemplo);
-        productoCreado = new ProductoDTO(1L,"Hotel Melia", "Servicio all inclusive con vista al mar", categoriaCreadaEjemplo, ciudadCreadaEjemplo, imagenesCreadasEjemplo, caracteristicasCreadasEjemplo);
+        productoPorCrear = new ProductoDTO("Hotel Melia", "Servicio all inclusive con vista al mar", categoria, ciudad, imagenes, caracteristicas);
+        productoCreado = new ProductoDTO(1L,"Hotel Melia", "Servicio all inclusive con vista al mar", categoriaCreada, ciudadCreada, imagenesCreadas, caracteristicasCreadas);
         productoPorActualizar = new ProductoDTO(1L,"Hotel Grand Meliá", "", null, null, null, null);
-        productoActualizado = new ProductoDTO(1L, "Hotel Grand Meliá", "Servicio all inclusive con vista al mar", categoriaCreadaEjemplo, ciudadCreadaEjemplo, imagenesCreadasEjemplo, caracteristicasCreadasEjemplo);
+        productoActualizado = new ProductoDTO(1L, "Hotel Grand Meliá", "Servicio all inclusive con vista al mar", categoriaCreada, ciudadCreada, imagenesCreadas, caracteristicasCreadas);
     }
 
     @Test
@@ -73,13 +71,13 @@ class ProductoServiceTest {
     }
 
     @Test
-    public void test02AgregarProducto() throws BadRequestException {
+    public void test02AgregarProducto() throws BadRequestException, ResourceNotFoundException {
         ProductoDTO p = productoService.crear(productoPorCrear);
         assertNotEquals( null, p);
     }
 
     @Test
-    public void test03ObtenerTodosLosProductos() throws BadRequestException {
+    public void test03ObtenerTodosLosProductos() throws BadRequestException, ResourceNotFoundException {
         productoService.crear(productoPorCrear);
         assertNotEquals(0, productoService.consultarTodos().size());
     }
@@ -149,7 +147,7 @@ class ProductoServiceTest {
     }
 
     @Test
-    void test14ConsultarPorCategoriaInexistente() throws BadRequestException {
+    void test14ConsultarPorCategoriaInexistente() throws BadRequestException, ResourceNotFoundException {
         productoService.crear(productoPorCrear);
         assertThrows(ResourceNotFoundException.class, () -> productoService.consultarPorCategoria("Cabañas"));
     }
@@ -162,24 +160,8 @@ class ProductoServiceTest {
     }
 
     @Test
-    void test16ConsultarPorCiudadInexistente() throws BadRequestException {
+    void test16ConsultarPorCiudadInexistente() throws BadRequestException, ResourceNotFoundException {
         productoService.crear(productoPorCrear);
         assertThrows(ResourceNotFoundException.class, () -> productoService.consultarPorCiudad("Mendoza"));
     }
-
-    /*@Test
-    void test17CrearProductoAPartirDeCiudadYCategoriaExistente() throws BadRequestException, ResourceNotFoundException {
-        CiudadDTO ciudadCreada = ciudadService.crear(ciudadEjemplo);
-        CategoriaDTO categoriaCreada = categoriaService.crear(categoriaEjemplo);
-        ProductoDTO producto = new ProductoDTO();
-        producto.setNombre("El Hamilton");
-        producto.setDescripcion("Hotel para una familia de 4 personas.");
-        producto.setCategoria(categoriaCreada);
-        producto.setCiudad(ciudadCreada);
-        producto.setImagenes(imagenesCreadasEjemplo);
-        producto.setCaracteristicas(caracteristicasCreadasEjemplo);
-
-        ProductoDTO productoCreadoBDD = productoService.crear(producto);
-        assertNotNull(productoService.buscarPorId(productoCreadoBDD.getId()));
-    }*/
 }

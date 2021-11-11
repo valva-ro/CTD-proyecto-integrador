@@ -23,6 +23,7 @@ INSERT INTO categorias (titulo, descripcion, URL_imagen) VALUES ("Hostels","807.
 INSERT INTO categorias (titulo, descripcion, URL_imagen) VALUES ("Bed & Breakfasts","807.105 B&B's","https://images.unsplash.com/photo-1531088009183-5ff5b7c95f91?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1");
 INSERT INTO categorias (titulo, descripcion, URL_imagen) VALUES ("Departamentos","807.105 departamentos","https://images.unsplash.com/photo-1499916078039-922301b0eb9b?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1");
 COMMIT;
+
 --
 -- Dumping data for table `ciudades`
 --
@@ -38,26 +39,147 @@ INSERT INTO ciudades (nombre, pais) VALUES ('Medellín','Colombia');
 INSERT INTO ciudades (nombre, pais) VALUES ('Cali','Colombia');
 INSERT INTO ciudades (nombre, pais) VALUES ('Cartagena','Colombia');
 INSERT INTO ciudades (nombre, pais) VALUES ('Barranquilla','Colombia');
+INSERT INTO ciudades (nombre, pais) VALUES ('San Carlos de Bariloche','Argentina');
 COMMIT;
 
 --
 -- Dumping data for table `productos`
 --
 SET AUTOCOMMIT=0;
-INSERT INTO productos (nombre, descripcion, fk_categoria, fk_ciudad) VALUES ("Habitación Luxury 1","Habitación de lujo", 1, 1);
-INSERT INTO productos (nombre, descripcion, fk_categoria, fk_ciudad) VALUES ("Habitación Luxury 2","Habitación de lujo", 1, 1);
-INSERT INTO productos (nombre, descripcion, fk_categoria, fk_ciudad) VALUES ("Habitación Luxury 3","Habitación de lujo", 1, 4);
-INSERT INTO productos (nombre, descripcion, fk_categoria, fk_ciudad) VALUES ("Departamento Pequeño","Departamento unipersonal", 4, 4);
+INSERT INTO productos (nombre, descripcion, fk_categoria, fk_ciudad) VALUES ("Meliá","Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae minima illum omnis suscipit vel laborum commodi provident eveniet harum voluptatem quam cumque, nam maiores?", 1, 2);
+INSERT INTO productos (nombre, descripcion, fk_categoria, fk_ciudad) VALUES ("Palladium","Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae minima illum omnis suscipit vel laborum commodi provident eveniet harum voluptatem quam cumque, nam maiores?", 1, 8);
+INSERT INTO productos (nombre, descripcion, fk_categoria, fk_ciudad) VALUES ("La Casa del Sol","Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae minima illum omnis suscipit vel laborum commodi provident eveniet harum voluptatem quam cumque, nam maiores?", 3, 4);
+INSERT INTO productos (nombre, descripcion, fk_categoria, fk_ciudad) VALUES ("Easy Start","Departamento unipersonal", 1, 4);
+INSERT INTO productos (nombre, descripcion, fk_categoria, fk_ciudad) VALUES ("Hotel España","Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae minima illum omnis suscipit vel laborum commodi provident eveniet harum voluptatem quam cumque, nam maiores?", 1, 1);
+INSERT INTO productos (nombre, descripcion, fk_categoria, fk_ciudad) VALUES ("La Surfería","Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae minima illum omnis suscipit vel laborum commodi provident eveniet harum voluptatem quam cumque, nam maiores?", 2, 6);
+INSERT INTO productos (nombre, descripcion, fk_categoria, fk_ciudad) VALUES ("Vivac Hostel","Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae minima illum omnis suscipit vel laborum commodi provident eveniet harum voluptatem quam cumque, nam maiores?", 2, 5);
+INSERT INTO productos (nombre, descripcion, fk_categoria, fk_ciudad) VALUES ("Los Angelitos","Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae minima illum omnis suscipit vel laborum commodi provident eveniet harum voluptatem quam cumque, nam maiores?", 3, 9);
+INSERT INTO productos (nombre, descripcion, fk_categoria, fk_ciudad) VALUES ("Doña María","Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae minima illum omnis suscipit vel laborum commodi provident eveniet harum voluptatem quam cumque, nam maiores?", 4, 11);
+INSERT INTO productos (nombre, descripcion, fk_categoria, fk_ciudad) VALUES ("Dpto. en Bariloche","Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae minima illum omnis suscipit vel laborum commodi provident eveniet harum voluptatem quam cumque, nam maiores?", 4, 13);
+INSERT INTO productos (nombre, descripcion, fk_categoria, fk_ciudad) VALUES ("El Enemigo","Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae minima illum omnis suscipit vel laborum commodi provident eveniet harum voluptatem quam cumque, nam maiores?", 3, 10);
+INSERT INTO productos (nombre, descripcion, fk_categoria, fk_ciudad) VALUES ("Las Perdices","Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae minima illum omnis suscipit vel laborum commodi provident eveniet harum voluptatem quam cumque, nam maiores?", 2, 9);
+INSERT INTO productos (nombre, descripcion, fk_categoria, fk_ciudad) VALUES ("Casa Petrini","Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae minima illum omnis suscipit vel laborum commodi provident eveniet harum voluptatem quam cumque, nam maiores?", 2, 1);
+INSERT INTO productos (nombre, descripcion, fk_categoria, fk_ciudad) VALUES ("Ana Bistró","Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae minima illum omnis suscipit vel laborum commodi provident eveniet harum voluptatem quam cumque, nam maiores?", 3, 8);
 COMMIT;
 
 --
 -- Dumping data for table `imagenes`
 --
 SET AUTOCOMMIT=0;
+-- Producto 1
 INSERT INTO imagenes (imagen_titulo, imagen_URL, fk_producto) VALUES ("Habitación","https://www.cataloniahotels.com/es/blog/wp-content/uploads/2016/05/habitaci%C3%B3n-doble-catalonia-620x412.jpg",1);
+INSERT INTO imagenes (imagen_titulo, imagen_URL, fk_producto) VALUES ("Baño","https://www.revista80dias.es/images/2014/12/roca-nivaria-bano-suite.jpg",1);
 INSERT INTO imagenes (imagen_titulo, imagen_URL, fk_producto) VALUES ("Cocina","https://www.mountainhosteltarter.com/wp-content/uploads/2017/09/mountain-hostel-tarter-andorra-kitchen-8.jpg",1);
+INSERT INTO imagenes (imagen_titulo, imagen_URL, fk_producto) VALUES ("Pileta","http://descubrirturismo.com/wp-content/uploads/2018/10/Hilton-Spa-2.jpg",1);
+INSERT INTO imagenes (imagen_titulo, imagen_URL, fk_producto) VALUES ("Habitación","https://www.cataloniahotels.com/es/blog/wp-content/uploads/2016/05/habitaci%C3%B3n-doble-catalonia-620x412.jpg",1);
+INSERT INTO imagenes (imagen_titulo, imagen_URL, fk_producto) VALUES ("Habitación","https://www.cataloniahotels.com/es/blog/wp-content/uploads/2016/05/habitaci%C3%B3n-doble-catalonia-620x412.jpg",1);
+INSERT INTO imagenes (imagen_titulo, imagen_URL, fk_producto) VALUES ("Principal","https://www.revista80dias.es/images/2014/12/roca-nivaria-bano-suite.jpg",1);
+-- Producto 2
+INSERT INTO imagenes (imagen_titulo, imagen_URL, fk_producto) VALUES ("Habitación","https://www.cataloniahotels.com/es/blog/wp-content/uploads/2016/05/habitaci%C3%B3n-doble-catalonia-620x412.jpg",2);
 INSERT INTO imagenes (imagen_titulo, imagen_URL, fk_producto) VALUES ("Baño","https://www.revista80dias.es/images/2014/12/roca-nivaria-bano-suite.jpg",2);
+INSERT INTO imagenes (imagen_titulo, imagen_URL, fk_producto) VALUES ("Cocina","https://www.mountainhosteltarter.com/wp-content/uploads/2017/09/mountain-hostel-tarter-andorra-kitchen-8.jpg",2);
+INSERT INTO imagenes (imagen_titulo, imagen_URL, fk_producto) VALUES ("Pileta","http://descubrirturismo.com/wp-content/uploads/2018/10/Hilton-Spa-2.jpg",2);
+INSERT INTO imagenes (imagen_titulo, imagen_URL, fk_producto) VALUES ("Habitación","https://www.cataloniahotels.com/es/blog/wp-content/uploads/2016/05/habitaci%C3%B3n-doble-catalonia-620x412.jpg",2);
+INSERT INTO imagenes (imagen_titulo, imagen_URL, fk_producto) VALUES ("Habitación","https://www.cataloniahotels.com/es/blog/wp-content/uploads/2016/05/habitaci%C3%B3n-doble-catalonia-620x412.jpg",2);
+INSERT INTO imagenes (imagen_titulo, imagen_URL, fk_producto) VALUES ("Principal","https://www.revista80dias.es/images/2014/12/roca-nivaria-bano-suite.jpg",2);
+-- Producto 3
+INSERT INTO imagenes (imagen_titulo, imagen_URL, fk_producto) VALUES ("Habitación","https://www.cataloniahotels.com/es/blog/wp-content/uploads/2016/05/habitaci%C3%B3n-doble-catalonia-620x412.jpg",3);
+INSERT INTO imagenes (imagen_titulo, imagen_URL, fk_producto) VALUES ("Baño","https://www.revista80dias.es/images/2014/12/roca-nivaria-bano-suite.jpg",1);
+INSERT INTO imagenes (imagen_titulo, imagen_URL, fk_producto) VALUES ("Cocina","https://www.mountainhosteltarter.com/wp-content/uploads/2017/09/mountain-hostel-tarter-andorra-kitchen-8.jpg",3);
+INSERT INTO imagenes (imagen_titulo, imagen_URL, fk_producto) VALUES ("Pileta","http://descubrirturismo.com/wp-content/uploads/2018/10/Hilton-Spa-2.jpg",3);
+INSERT INTO imagenes (imagen_titulo, imagen_URL, fk_producto) VALUES ("Habitación","https://www.cataloniahotels.com/es/blog/wp-content/uploads/2016/05/habitaci%C3%B3n-doble-catalonia-620x412.jpg",3);
+INSERT INTO imagenes (imagen_titulo, imagen_URL, fk_producto) VALUES ("Habitación","https://www.cataloniahotels.com/es/blog/wp-content/uploads/2016/05/habitaci%C3%B3n-doble-catalonia-620x412.jpg",3);
+INSERT INTO imagenes (imagen_titulo, imagen_URL, fk_producto) VALUES ("Principal","https://www.mountainhosteltarter.com/wp-content/uploads/2017/09/mountain-hostel-tarter-andorra-kitchen-8.jpg",3);
+-- Producto 4
+INSERT INTO imagenes (imagen_titulo, imagen_URL, fk_producto) VALUES ("Habitación","https://www.cataloniahotels.com/es/blog/wp-content/uploads/2016/05/habitaci%C3%B3n-doble-catalonia-620x412.jpg",4);
+INSERT INTO imagenes (imagen_titulo, imagen_URL, fk_producto) VALUES ("Baño","https://www.revista80dias.es/images/2014/12/roca-nivaria-bano-suite.jpg",4);
+INSERT INTO imagenes (imagen_titulo, imagen_URL, fk_producto) VALUES ("Cocina","https://www.mountainhosteltarter.com/wp-content/uploads/2017/09/mountain-hostel-tarter-andorra-kitchen-8.jpg",4);
 INSERT INTO imagenes (imagen_titulo, imagen_URL, fk_producto) VALUES ("Pileta","http://descubrirturismo.com/wp-content/uploads/2018/10/Hilton-Spa-2.jpg",4);
+INSERT INTO imagenes (imagen_titulo, imagen_URL, fk_producto) VALUES ("Pileta","http://descubrirturismo.com/wp-content/uploads/2018/10/Hilton-Spa-2.jpg",4);
+INSERT INTO imagenes (imagen_titulo, imagen_URL, fk_producto) VALUES ("Pileta","http://descubrirturismo.com/wp-content/uploads/2018/10/Hilton-Spa-2.jpg",4);
+INSERT INTO imagenes (imagen_titulo, imagen_URL, fk_producto) VALUES ("Principal","http://descubrirturismo.com/wp-content/uploads/2018/10/Hilton-Spa-2.jpg",4);
+-- Producto 5
+INSERT INTO imagenes (imagen_titulo, imagen_URL, fk_producto) VALUES ("Habitación","https://www.cataloniahotels.com/es/blog/wp-content/uploads/2016/05/habitaci%C3%B3n-doble-catalonia-620x412.jpg",5);
+INSERT INTO imagenes (imagen_titulo, imagen_URL, fk_producto) VALUES ("Baño","https://www.revista80dias.es/images/2014/12/roca-nivaria-bano-suite.jpg",5);
+INSERT INTO imagenes (imagen_titulo, imagen_URL, fk_producto) VALUES ("Cocina","https://www.mountainhosteltarter.com/wp-content/uploads/2017/09/mountain-hostel-tarter-andorra-kitchen-8.jpg",5);
+INSERT INTO imagenes (imagen_titulo, imagen_URL, fk_producto) VALUES ("Pileta","http://descubrirturismo.com/wp-content/uploads/2018/10/Hilton-Spa-2.jpg",5);
+INSERT INTO imagenes (imagen_titulo, imagen_URL, fk_producto) VALUES ("Habitación","https://www.cataloniahotels.com/es/blog/wp-content/uploads/2016/05/habitaci%C3%B3n-doble-catalonia-620x412.jpg",5);
+INSERT INTO imagenes (imagen_titulo, imagen_URL, fk_producto) VALUES ("Habitación","https://www.cataloniahotels.com/es/blog/wp-content/uploads/2016/05/habitaci%C3%B3n-doble-catalonia-620x412.jpg",5);
+INSERT INTO imagenes (imagen_titulo, imagen_URL, fk_producto) VALUES ("Principal","https://www.cataloniahotels.com/es/blog/wp-content/uploads/2016/05/habitaci%C3%B3n-doble-catalonia-620x412.jpg",5);
+-- Producto 6
+INSERT INTO imagenes (imagen_titulo, imagen_URL, fk_producto) VALUES ("Habitación","https://www.cataloniahotels.com/es/blog/wp-content/uploads/2016/05/habitaci%C3%B3n-doble-catalonia-620x412.jpg",6);
+INSERT INTO imagenes (imagen_titulo, imagen_URL, fk_producto) VALUES ("Baño","https://www.revista80dias.es/images/2014/12/roca-nivaria-bano-suite.jpg",6);
+INSERT INTO imagenes (imagen_titulo, imagen_URL, fk_producto) VALUES ("Cocina","https://www.mountainhosteltarter.com/wp-content/uploads/2017/09/mountain-hostel-tarter-andorra-kitchen-8.jpg",6);
+INSERT INTO imagenes (imagen_titulo, imagen_URL, fk_producto) VALUES ("Pileta","http://descubrirturismo.com/wp-content/uploads/2018/10/Hilton-Spa-2.jpg",6);
+INSERT INTO imagenes (imagen_titulo, imagen_URL, fk_producto) VALUES ("Habitación","https://www.cataloniahotels.com/es/blog/wp-content/uploads/2016/05/habitaci%C3%B3n-doble-catalonia-620x412.jpg",6);
+INSERT INTO imagenes (imagen_titulo, imagen_URL, fk_producto) VALUES ("Habitación","https://www.cataloniahotels.com/es/blog/wp-content/uploads/2016/05/habitaci%C3%B3n-doble-catalonia-620x412.jpg",6);
+INSERT INTO imagenes (imagen_titulo, imagen_URL, fk_producto) VALUES ("Principal","https://www.mountainhosteltarter.com/wp-content/uploads/2017/09/mountain-hostel-tarter-andorra-kitchen-8.jpg",6);
+-- Producto 7
+INSERT INTO imagenes (imagen_titulo, imagen_URL, fk_producto) VALUES ("Habitación","https://www.cataloniahotels.com/es/blog/wp-content/uploads/2016/05/habitaci%C3%B3n-doble-catalonia-620x412.jpg",7);
+INSERT INTO imagenes (imagen_titulo, imagen_URL, fk_producto) VALUES ("Baño","https://www.revista80dias.es/images/2014/12/roca-nivaria-bano-suite.jpg",7);
+INSERT INTO imagenes (imagen_titulo, imagen_URL, fk_producto) VALUES ("Cocina","https://www.mountainhosteltarter.com/wp-content/uploads/2017/09/mountain-hostel-tarter-andorra-kitchen-8.jpg",7);
+INSERT INTO imagenes (imagen_titulo, imagen_URL, fk_producto) VALUES ("Pileta","http://descubrirturismo.com/wp-content/uploads/2018/10/Hilton-Spa-2.jpg",7);
+INSERT INTO imagenes (imagen_titulo, imagen_URL, fk_producto) VALUES ("Habitación","https://www.cataloniahotels.com/es/blog/wp-content/uploads/2016/05/habitaci%C3%B3n-doble-catalonia-620x412.jpg",7);
+INSERT INTO imagenes (imagen_titulo, imagen_URL, fk_producto) VALUES ("Habitación","https://www.cataloniahotels.com/es/blog/wp-content/uploads/2016/05/habitaci%C3%B3n-doble-catalonia-620x412.jpg",7);
+INSERT INTO imagenes (imagen_titulo, imagen_URL, fk_producto) VALUES ("Principal","https://www.revista80dias.es/images/2014/12/roca-nivaria-bano-suite.jpg",7);
+-- Producto 8
+INSERT INTO imagenes (imagen_titulo, imagen_URL, fk_producto) VALUES ("Habitación","https://www.cataloniahotels.com/es/blog/wp-content/uploads/2016/05/habitaci%C3%B3n-doble-catalonia-620x412.jpg",8);
+INSERT INTO imagenes (imagen_titulo, imagen_URL, fk_producto) VALUES ("Baño","https://www.revista80dias.es/images/2014/12/roca-nivaria-bano-suite.jpg",8);
+INSERT INTO imagenes (imagen_titulo, imagen_URL, fk_producto) VALUES ("Cocina","https://www.mountainhosteltarter.com/wp-content/uploads/2017/09/mountain-hostel-tarter-andorra-kitchen-8.jpg",8);
+INSERT INTO imagenes (imagen_titulo, imagen_URL, fk_producto) VALUES ("Pileta","http://descubrirturismo.com/wp-content/uploads/2018/10/Hilton-Spa-2.jpg",8);
+INSERT INTO imagenes (imagen_titulo, imagen_URL, fk_producto) VALUES ("Habitación","https://www.cataloniahotels.com/es/blog/wp-content/uploads/2016/05/habitaci%C3%B3n-doble-catalonia-620x412.jpg",8);
+INSERT INTO imagenes (imagen_titulo, imagen_URL, fk_producto) VALUES ("Habitación","https://www.cataloniahotels.com/es/blog/wp-content/uploads/2016/05/habitaci%C3%B3n-doble-catalonia-620x412.jpg",8);
+INSERT INTO imagenes (imagen_titulo, imagen_URL, fk_producto) VALUES ("Principal","http://descubrirturismo.com/wp-content/uploads/2018/10/Hilton-Spa-2.jpg",8);
+-- Producto 9
+INSERT INTO imagenes (imagen_titulo, imagen_URL, fk_producto) VALUES ("Habitación","https://www.cataloniahotels.com/es/blog/wp-content/uploads/2016/05/habitaci%C3%B3n-doble-catalonia-620x412.jpg",9);
+INSERT INTO imagenes (imagen_titulo, imagen_URL, fk_producto) VALUES ("Baño","https://www.revista80dias.es/images/2014/12/roca-nivaria-bano-suite.jpg",9);
+INSERT INTO imagenes (imagen_titulo, imagen_URL, fk_producto) VALUES ("Cocina","https://www.mountainhosteltarter.com/wp-content/uploads/2017/09/mountain-hostel-tarter-andorra-kitchen-8.jpg",9);
+INSERT INTO imagenes (imagen_titulo, imagen_URL, fk_producto) VALUES ("Pileta","http://descubrirturismo.com/wp-content/uploads/2018/10/Hilton-Spa-2.jpg",9);
+INSERT INTO imagenes (imagen_titulo, imagen_URL, fk_producto) VALUES ("Habitación","https://www.cataloniahotels.com/es/blog/wp-content/uploads/2016/05/habitaci%C3%B3n-doble-catalonia-620x412.jpg",9);
+INSERT INTO imagenes (imagen_titulo, imagen_URL, fk_producto) VALUES ("Habitación","https://www.cataloniahotels.com/es/blog/wp-content/uploads/2016/05/habitaci%C3%B3n-doble-catalonia-620x412.jpg",9);
+INSERT INTO imagenes (imagen_titulo, imagen_URL, fk_producto) VALUES ("Principal","https://www.cataloniahotels.com/es/blog/wp-content/uploads/2016/05/habitaci%C3%B3n-doble-catalonia-620x412.jpg",9);
+-- Producto 10
+INSERT INTO imagenes (imagen_titulo, imagen_URL, fk_producto) VALUES ("Habitación","https://www.cataloniahotels.com/es/blog/wp-content/uploads/2016/05/habitaci%C3%B3n-doble-catalonia-620x412.jpg",10);
+INSERT INTO imagenes (imagen_titulo, imagen_URL, fk_producto) VALUES ("Baño","https://www.revista80dias.es/images/2014/12/roca-nivaria-bano-suite.jpg",10);
+INSERT INTO imagenes (imagen_titulo, imagen_URL, fk_producto) VALUES ("Cocina","https://www.mountainhosteltarter.com/wp-content/uploads/2017/09/mountain-hostel-tarter-andorra-kitchen-8.jpg",10);
+INSERT INTO imagenes (imagen_titulo, imagen_URL, fk_producto) VALUES ("Pileta","http://descubrirturismo.com/wp-content/uploads/2018/10/Hilton-Spa-2.jpg",10);
+INSERT INTO imagenes (imagen_titulo, imagen_URL, fk_producto) VALUES ("Habitación","https://www.cataloniahotels.com/es/blog/wp-content/uploads/2016/05/habitaci%C3%B3n-doble-catalonia-620x412.jpg",10);
+INSERT INTO imagenes (imagen_titulo, imagen_URL, fk_producto) VALUES ("Habitación","https://www.cataloniahotels.com/es/blog/wp-content/uploads/2016/05/habitaci%C3%B3n-doble-catalonia-620x412.jpg",10);
+INSERT INTO imagenes (imagen_titulo, imagen_URL, fk_producto) VALUES ("Principal","https://www.mountainhosteltarter.com/wp-content/uploads/2017/09/mountain-hostel-tarter-andorra-kitchen-8.jpg",10);
+-- Producto 11
+INSERT INTO imagenes (imagen_titulo, imagen_URL, fk_producto) VALUES ("Habitación","https://www.cataloniahotels.com/es/blog/wp-content/uploads/2016/05/habitaci%C3%B3n-doble-catalonia-620x412.jpg",11);
+INSERT INTO imagenes (imagen_titulo, imagen_URL, fk_producto) VALUES ("Baño","https://www.revista80dias.es/images/2014/12/roca-nivaria-bano-suite.jpg",11);
+INSERT INTO imagenes (imagen_titulo, imagen_URL, fk_producto) VALUES ("Cocina","https://www.mountainhosteltarter.com/wp-content/uploads/2017/09/mountain-hostel-tarter-andorra-kitchen-8.jpg",11);
+INSERT INTO imagenes (imagen_titulo, imagen_URL, fk_producto) VALUES ("Pileta","http://descubrirturismo.com/wp-content/uploads/2018/10/Hilton-Spa-2.jpg",11);
+INSERT INTO imagenes (imagen_titulo, imagen_URL, fk_producto) VALUES ("Habitación","https://www.cataloniahotels.com/es/blog/wp-content/uploads/2016/05/habitaci%C3%B3n-doble-catalonia-620x412.jpg",11);
+INSERT INTO imagenes (imagen_titulo, imagen_URL, fk_producto) VALUES ("Habitación","https://www.cataloniahotels.com/es/blog/wp-content/uploads/2016/05/habitaci%C3%B3n-doble-catalonia-620x412.jpg",11);
+INSERT INTO imagenes (imagen_titulo, imagen_URL, fk_producto) VALUES ("Principal","https://www.mountainhosteltarter.com/wp-content/uploads/2017/09/mountain-hostel-tarter-andorra-kitchen-8.jpg",11);
+-- Producto 12
+INSERT INTO imagenes (imagen_titulo, imagen_URL, fk_producto) VALUES ("Habitación","https://www.cataloniahotels.com/es/blog/wp-content/uploads/2016/05/habitaci%C3%B3n-doble-catalonia-620x412.jpg",12);
+INSERT INTO imagenes (imagen_titulo, imagen_URL, fk_producto) VALUES ("Baño","https://www.revista80dias.es/images/2014/12/roca-nivaria-bano-suite.jpg",12);
+INSERT INTO imagenes (imagen_titulo, imagen_URL, fk_producto) VALUES ("Cocina","https://www.mountainhosteltarter.com/wp-content/uploads/2017/09/mountain-hostel-tarter-andorra-kitchen-8.jpg",12);
+INSERT INTO imagenes (imagen_titulo, imagen_URL, fk_producto) VALUES ("Pileta","http://descubrirturismo.com/wp-content/uploads/2018/10/Hilton-Spa-2.jpg",12);
+INSERT INTO imagenes (imagen_titulo, imagen_URL, fk_producto) VALUES ("Habitación","https://www.cataloniahotels.com/es/blog/wp-content/uploads/2016/05/habitaci%C3%B3n-doble-catalonia-620x412.jpg",12);
+INSERT INTO imagenes (imagen_titulo, imagen_URL, fk_producto) VALUES ("Habitación","https://www.cataloniahotels.com/es/blog/wp-content/uploads/2016/05/habitaci%C3%B3n-doble-catalonia-620x412.jpg",12);
+INSERT INTO imagenes (imagen_titulo, imagen_URL, fk_producto) VALUES ("Principal","https://www.mountainhosteltarter.com/wp-content/uploads/2017/09/mountain-hostel-tarter-andorra-kitchen-8.jpg",12);
+-- Producto 13
+INSERT INTO imagenes (imagen_titulo, imagen_URL, fk_producto) VALUES ("Habitación","https://www.cataloniahotels.com/es/blog/wp-content/uploads/2016/05/habitaci%C3%B3n-doble-catalonia-620x412.jpg",13);
+INSERT INTO imagenes (imagen_titulo, imagen_URL, fk_producto) VALUES ("Baño","https://www.revista80dias.es/images/2014/12/roca-nivaria-bano-suite.jpg",13);
+INSERT INTO imagenes (imagen_titulo, imagen_URL, fk_producto) VALUES ("Cocina","https://www.mountainhosteltarter.com/wp-content/uploads/2017/09/mountain-hostel-tarter-andorra-kitchen-8.jpg",13);
+INSERT INTO imagenes (imagen_titulo, imagen_URL, fk_producto) VALUES ("Pileta","http://descubrirturismo.com/wp-content/uploads/2018/10/Hilton-Spa-2.jpg",13);
+INSERT INTO imagenes (imagen_titulo, imagen_URL, fk_producto) VALUES ("Habitación","https://www.cataloniahotels.com/es/blog/wp-content/uploads/2016/05/habitaci%C3%B3n-doble-catalonia-620x412.jpg",13);
+INSERT INTO imagenes (imagen_titulo, imagen_URL, fk_producto) VALUES ("Habitación","https://www.cataloniahotels.com/es/blog/wp-content/uploads/2016/05/habitaci%C3%B3n-doble-catalonia-620x412.jpg",13);
+INSERT INTO imagenes (imagen_titulo, imagen_URL, fk_producto) VALUES ("Principal","https://www.mountainhosteltarter.com/wp-content/uploads/2017/09/mountain-hostel-tarter-andorra-kitchen-8.jpg",13);
+-- Producto 14
+INSERT INTO imagenes (imagen_titulo, imagen_URL, fk_producto) VALUES ("Habitación","https://www.cataloniahotels.com/es/blog/wp-content/uploads/2016/05/habitaci%C3%B3n-doble-catalonia-620x412.jpg",14);
+INSERT INTO imagenes (imagen_titulo, imagen_URL, fk_producto) VALUES ("Baño","https://www.revista80dias.es/images/2014/12/roca-nivaria-bano-suite.jpg",14);
+INSERT INTO imagenes (imagen_titulo, imagen_URL, fk_producto) VALUES ("Cocina","https://www.mountainhosteltarter.com/wp-content/uploads/2017/09/mountain-hostel-tarter-andorra-kitchen-8.jpg",14);
+INSERT INTO imagenes (imagen_titulo, imagen_URL, fk_producto) VALUES ("Pileta","http://descubrirturismo.com/wp-content/uploads/2018/10/Hilton-Spa-2.jpg",14);
+INSERT INTO imagenes (imagen_titulo, imagen_URL, fk_producto) VALUES ("Habitación","https://www.cataloniahotels.com/es/blog/wp-content/uploads/2016/05/habitaci%C3%B3n-doble-catalonia-620x412.jpg",14);
+INSERT INTO imagenes (imagen_titulo, imagen_URL, fk_producto) VALUES ("Habitación","https://www.cataloniahotels.com/es/blog/wp-content/uploads/2016/05/habitaci%C3%B3n-doble-catalonia-620x412.jpg",14);
+INSERT INTO imagenes (imagen_titulo, imagen_URL, fk_producto) VALUES ("Principal","https://www.mountainhosteltarter.com/wp-content/uploads/2017/09/mountain-hostel-tarter-andorra-kitchen-8.jpg",14);
+
+
 COMMIT;
 
 --
@@ -65,7 +187,18 @@ COMMIT;
 --
 SET AUTOCOMMIT=0;
 INSERT INTO caracteristicas (nombre, icono) VALUES ("Wifi","fas fa-wifi");
-INSERT INTO caracteristicas (nombre, icono) VALUES ("Televisor","fas fa-tv-retro");
-INSERT INTO caracteristicas (nombre, icono) VALUES ("Estacionamiento Gratuito","fas fa-car");
-INSERT INTO caracteristicas (nombre, icono) VALUES ("Apto mascotas","fas fa-paw");
+INSERT INTO caracteristicas (nombre, icono) VALUES ("Parqueadero","bx bxs-car");
+INSERT INTO caracteristicas (nombre, icono) VALUES ("Piscina","fas fa-swimmer");
+COMMIT;
+
+--
+-- Dumping data for table `producto_caracteristica`
+--
+SET AUTOCOMMIT=0;
+INSERT INTO producto_caracteristica (producto_id, caracteristica_id) VALUES (1,2);
+INSERT INTO producto_caracteristica (producto_id, caracteristica_id) VALUES (3,1);
+INSERT INTO producto_caracteristica (producto_id, caracteristica_id) VALUES (3,3);
+INSERT INTO producto_caracteristica (producto_id, caracteristica_id) VALUES (2,1);
+INSERT INTO producto_caracteristica (producto_id, caracteristica_id) VALUES (4,2);
+INSERT INTO producto_caracteristica (producto_id, caracteristica_id) VALUES (4,3);
 COMMIT;

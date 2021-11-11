@@ -40,8 +40,8 @@ export default function ProductoModalCarousel({
           {imagenes.map((imagen, i) => {
             return (
               <div className={styles.imagen} key={i}>
-                <img src={imagen.src} alt={imagen.alt} />
-                <p className="legend">{imagen.alt}</p>
+                <img src={imagen.imagenUrl} alt={imagen.imagenTitulo} />
+                <p className="legend">{imagen.imagenTitulo}</p>
               </div>
             );
           })}

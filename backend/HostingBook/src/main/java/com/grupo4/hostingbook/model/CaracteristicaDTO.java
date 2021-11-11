@@ -12,10 +12,13 @@ public class CaracteristicaDTO implements Serializable {
     private String icono;
     private Set<ProductoDTO> productos;
 
-
     public CaracteristicaDTO() {}
 
-    public CaracteristicaDTO( String nombre, String icono) {
+    public CaracteristicaDTO(Long id) {
+        this.id = id;
+    }
+
+    public CaracteristicaDTO(String nombre, String icono) {
         this.nombre = nombre;
         this.icono = icono;
     }

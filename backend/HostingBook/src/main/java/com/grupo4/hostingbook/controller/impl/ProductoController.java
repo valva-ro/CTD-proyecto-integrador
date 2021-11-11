@@ -18,6 +18,7 @@ import java.util.Set;
 
 @RestController
 @RequestMapping("/productos")
+@CrossOrigin(origins = "*", methods = { RequestMethod.GET, RequestMethod.POST })
 public class ProductoController implements IProductoController {
 
     private final IProductoService productoService;
@@ -33,7 +34,7 @@ public class ProductoController implements IProductoController {
             @ApiResponse(code = 200, message = "Success")
     })
     @GetMapping
-    public ResponseEntity<List<ProductoDTO>> obtenerTodos() throws BadRequestException, ResourceNotFoundException {
+    public ResponseEntity<List<ProductoDTO>> obtenerTodos() {
         List<ProductoDTO> productos = productoService.consultarTodos();
         return ResponseEntity.ok(productos);
     }
@@ -45,7 +46,7 @@ public class ProductoController implements IProductoController {
             @ApiResponse(code = 400, message = "Bad Request")
     })
     @PostMapping
-    public ResponseEntity<ProductoDTO> crear(@RequestBody ProductoDTO producto) throws BadRequestException {
+    public ResponseEntity<ProductoDTO> crear(@RequestBody ProductoDTO producto) throws BadRequestException, ResourceNotFoundException {
         ProductoDTO productoNuevo = productoService.crear(producto);
         return ResponseEntity.ok(productoNuevo);
     }
@@ -95,7 +96,7 @@ public class ProductoController implements IProductoController {
             @ApiResponse(code = 200, message = "Success")
     })
     @GetMapping("/categoria")
-    public ResponseEntity<?> obtenerPorCategoria(@RequestParam String title) throws BadRequestException, ResourceNotFoundException {
+    public ResponseEntity<?> obtenerPorCategoria(@RequestParam String title) throws ResourceNotFoundException {
         Set<ProductoDTO> productos = productoService.consultarPorCategoria(title);
         return ResponseEntity.ok(productos);
     }
@@ -107,7 +108,7 @@ public class ProductoController implements IProductoController {
             @ApiResponse(code = 200, message = "Success")
     })
     @GetMapping("/ciudad")
-    public ResponseEntity<?> obtenerPorCiudad(@RequestParam String name) throws BadRequestException, ResourceNotFoundException {
+    public ResponseEntity<?> obtenerPorCiudad(@RequestParam String name) throws ResourceNotFoundException {
         Set<ProductoDTO> productos = productoService.consultarPorCiudad(name);
         return ResponseEntity.ok(productos);
     }
