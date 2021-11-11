@@ -121,10 +121,10 @@ CREATE TABLE tipo_politica(
 --
 DROP TABLE IF EXISTS politica;
 CREATE TABLE politica(
-	politica_id SMALLINT UNSIGNED NOT NULL AUTO_INCREMENT,
-    nombre VARCHAR(50) NOT NULL,
+	politica_id INT UNSIGNED NOT NULL AUTO_INCREMENT,
+    nombre VARCHAR(200) NOT NULL,
     fk_tipo_politica SMALLINT UNSIGNED NOT NULL,
-	PRIMARY KEY  (tipo_politica_id), 
+	PRIMARY KEY  (politica_id), 
 	CONSTRAINT politica_tipo_politica_id_foreign
 		FOREIGN KEY (fk_tipo_politica)
 		REFERENCES booking.tipo_politica (tipo_politica_id)
@@ -133,16 +133,19 @@ CREATE TABLE politica(
 --
 -- Table structure for table `politica_producto`
 --
+DROP TABLE IF EXISTS  politica_producto;
 CREATE TABLE politica_producto(
 	politica_producto_id INT UNSIGNED NOT NULL AUTO_INCREMENT,
     politica_id INT UNSIGNED NOT NULL,
     producto_id INT UNSIGNED NOT NULL,
-	CONSTRAINT politica_producto_producto_id_foreign
-		FOREIGN KEY (producto_id)
-		REFERENCES booking.productos (producto_id),
+    PRIMARY KEY  (politica_producto_id), 
 	CONSTRAINT politica_producto_politica_id_foreign
 		FOREIGN KEY (politica_id)
-        REFERENCES booking.politica (politica_id)
+        REFERENCES booking.politica (politica_id),
+	CONSTRAINT politica_producto_producto_id_foreign
+		FOREIGN KEY (producto_id)
+		REFERENCES booking.productos (producto_id)
+
 	
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
