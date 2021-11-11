@@ -1,25 +1,39 @@
 /*****************Bloque categorias*****************/
 /*______Todo el bloque______*/
-.bloqueCategorias{
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1rem;
-    margin-top: 261.89px;
+.bloqueCategorias {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 244px;
 }
 
 /*______Contenedor/tarjeta______*/
 .listadoTarjetas {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    gap: 1rem;
-    width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 1rem;
+  width: 100%;
+}
+/*______Error fetch______*/
+.sinResultados {
+  text-align: center;
+  padding: 12vh 0;
+  width: 100%;
+  color: var(--color-3);
 }
 
 /*****************Responsive*****************/
+/*______Tablet______*/
+@media screen and (max-width: 860px) {
+  .bloqueCategorias {
+    margin-top: 260px;
+  }
+}
+
 /*______Mobile______*/
-@media screen and (max-width:480px) {
-    .bloqueCategorias {
-        margin-top: 422.13px;
-    } 
+@media screen and (max-width: 480px) {
+  .bloqueCategorias {
+    margin-top: 340.56px;
+  }
 }

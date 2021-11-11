@@ -1,3 +1,8 @@
+.logoImg {
+    width: 62px;
+    height: 62px;
+}
+
 .headerFijo{
     display: block;
     position: fixed;
@@ -5,6 +10,7 @@
     left: 0;
     width: 100%;
     z-index: 999;
+    box-shadow: 2px 2px 6px var(--color-3);
 }
 
 .contenedorHeader {
@@ -19,7 +25,7 @@
     display:flex;
     justify-content: space-between;
     align-items: flex-end;
-    gap: 12px;
+    gap: 15px;
 }
 
 .headerIzquierda a{
@@ -31,10 +37,15 @@
     color: var(--color-2);
     font-weight: 300;
     font-style: italic;
-    font-size: 1.25rem;
-    padding-bottom: 6px;
+    font-size: 1.2rem;
 }
-
+.headerIzquierda h1 {
+    font-weight: 700;
+    color: var(--color-2)
+}
+.headerIzquierda h1 span{
+    color: var(--color-principal)
+}
 .headerDerecha{
     display:flex;
     justify-content: space-between;
@@ -52,7 +63,7 @@
         padding: 25px 30px;
     }
 
-    .headerIzquierda p{
+    .headerIzquierda p, .headerIzquierda h1 {
         display: none;
     }
 
@@ -61,11 +72,12 @@
 @media screen and (max-width:480px) {
 
     .headerFijo{
-        box-shadow: 2px 2px 6px var(--color-3);
+        box-shadow: 2px 2px 6px var(--color-2);
     }
 
     .contenedorHeader{
         align-items: center;
+        padding: 10px 30px;
     }
 
     .headerDerecha{
@@ -75,5 +87,6 @@
     .menuHamburguesa{
         display: block;
     }
+
 
 }

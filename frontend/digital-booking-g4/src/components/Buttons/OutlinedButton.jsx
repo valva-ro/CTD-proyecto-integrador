@@ -7,6 +7,7 @@ export default function OutlinedButton(props) {
       className={`${styles.outlinedButton} ${props.styles}`}
       value={props.children}
       onClick={props.onClick}
+      data-testid={props.testId}
     />
   );
 }

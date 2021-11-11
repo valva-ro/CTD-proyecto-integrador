@@ -1,0 +1,17 @@
+.containerUbicacion {
+    margin-top: 16px;
+}
+
+hr {
+  border-bottom: 1px solid var(--color-principal);
+  width: 100%;
+  margin: 8px 0;
+}
+
+.textoUbicacion {
+  margin: 18px 0;
+}
+
+.gm-control-active {
+  background-color: var(--color-principal);
+}

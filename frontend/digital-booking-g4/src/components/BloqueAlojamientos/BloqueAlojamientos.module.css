@@ -1,10 +1,21 @@
 .alojamientos {
   margin-top: 1rem;
   columns: 2;
+  padding-bottom: 12px;
+}
+
+.alojamientos li {
+    break-inside: avoid-column;
+}
+
+.alojamientosUnaColumna {
+  margin-top: 1rem;
+  columns: 1;
+  width: 50%;
 }
 
 .recomendaciones {
-  background-color: rgb(56, 59, 88, 0.1);
+  background-color: var(--color-background-gris);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -12,7 +23,20 @@
 }
 
 .alojamiento {
-    margin-bottom: 2.5vh;
+  margin-bottom: 2.5vh;
+}
+
+.sinResultados {
+  text-align: center;
+  padding: 12vh 0;
+  width: 100%;
+  color: var(--color-3);
+}
+
+@media (max-width: 1300px) {
+  .alojamientosUnaColumna {
+    width: 100%;
+  }
 }
 
 @media (max-width: 1120px) {

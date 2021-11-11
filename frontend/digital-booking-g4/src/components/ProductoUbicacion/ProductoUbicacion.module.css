@@ -1,0 +1,68 @@
+.ubicacionContainer {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 1rem 50px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  background-color: var(--color-background-gris);
+}
+
+.ubicacionContainer div p {
+  color: var(--color-2);
+}
+
+.direccionContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.ubicacion {
+  display: flex;
+  gap: 6px;
+}
+
+.distancia {
+  padding-left: 18px;
+}
+
+.detalle {
+  display: flex;
+  gap: 8px;
+}
+
+.ubicacion i,
+.detalleYEstrellas {
+  color: var(--color-3);
+}
+
+.detalleYEstrellas {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.puntajeNumerico {
+  display: flex;
+  align-items: center;
+  background-color: var(--color-3);
+  border-radius: 10px;
+  color: var(--color-5);
+  font-size: 1.25rem;
+  text-align: center;
+  font-weight: bold;
+  padding: 0 14px;
+  height: 38.667px;
+}
+
+@media screen and (max-width: 860px) {
+  .ubicacionContainer {
+    padding: 1rem 30px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .distancia {
+    display: none;
+  }
+}

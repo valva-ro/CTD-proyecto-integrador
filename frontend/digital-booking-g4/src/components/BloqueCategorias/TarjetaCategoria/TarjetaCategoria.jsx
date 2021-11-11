@@ -1,17 +1,28 @@
 import styles from "./TarjetaCategoria.module.css";
 
-export default function TarjetaCategoria(props) {
+export default function TarjetaCategoria({
+  fotoPortada,
+  indice,
+  indiceTarjetaActiva,
+  nombre,
+  descripcion,
+  onToggleSelect,
+}) {
+  const estaSeleccionada = indiceTarjetaActiva === indice;
   return (
-    <div className={styles.tarjeta}>
+    <div
+      className={estaSeleccionada ? styles.tarjetaSeleccionada : styles.tarjeta}
+      onClick={() => onToggleSelect(indice, nombre)}
+    >
       <div
         className={styles.fotoPortada}
         style={{
-          backgroundImage: `url(${props.fotoPortada})`,
+          backgroundImage: `url(${fotoPortada})`,
         }}
       ></div>
       <div className={styles.contenidoTarjeta}>
-        <h2 className={styles.hotel}>{props.nombre}</h2>
-        <p className={styles.descripcion}>{props.descripcion}</p>
+        <h2 className={styles.hotel}>{nombre}</h2>
+        <p className={styles.descripcion}>{descripcion}</p>
       </div>
     </div>
   );

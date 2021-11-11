@@ -1,21 +1,29 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import FilledButton from "../../Buttons/FilledButton";
+import Estrellas from "../../Estrellas/Estrellas";
 import styles from "./TarjetaAlojamiento.module.css";
 
-export default function TarjetaAlojamiento({
-  titulo,
-  imagen,
-  descripcion,
-  categoria,
-  ubicacion,
-  cantEstrellas,
-}) {
+export default function TarjetaAlojamiento({ alojamiento }) {
+  const { id, 
+          nombre, 
+          descripcion,  
+          categoria, 
+          ciudad, 
+          imagenes,
+        caracteristicas } = alojamiento;
+
   const [esVerMas, setEsVerMas] = useState(true);
   const toggleVerMas = () => setEsVerMas(!esVerMas);
 
-  let estrellas = [];
-  for (let i = 0; i < cantEstrellas; i++) {
-    estrellas.push(<i className="fas fa-star"></i>);
+  const buscarImagenPrincipal = () => {
+    let imagen = imagenes.find(imagen => {
+      return imagen.imagenTitulo === "Principal";
+    })
+    if (imagen == null) {
+      imagen = imagenes[0];
+    }
+    return imagen;
   }
 
   return (
@@ -23,7 +31,7 @@ export default function TarjetaAlojamiento({
       <div
         className={styles.imagenAlojamiento}
         style={{
-          backgroundImage: `url(${imagen})`,
+          backgroundImage: `url(${buscarImagenPrincipal().imagenUrl})`,
         }}
       >
         <i className={`fas fa-heart ${styles.corazon}`}></i>
@@ -33,15 +41,13 @@ export default function TarjetaAlojamiento({
         <div className={styles.informacionPrincipal}>
           <div className={styles.nombreAlojamiento}>
             <div className={styles.tipoYCalificacion}>
-              <h4>{categoria}</h4>
-              <span className={styles.estrellas} aria-label="Estrellas">
-                {estrellas}
-              </span>
+              <h4>{categoria.titulo}</h4>
+              <Estrellas puntaje={8} />
             </div>
-            <h2>{titulo}</h2>
+            <h2>{nombre}</h2>
           </div>
           <div className={styles.puntajeAlojamiento}>
-            <div className={styles.puntajeNumerico}>8</div>
+            <div className={styles.puntajeNumerico}>{8}</div>
             <div className={styles.detalle}>Muy bueno</div>
           </div>
         </div>
@@ -49,12 +55,16 @@ export default function TarjetaAlojamiento({
           <div className={styles.ubicacion}>
             <i className="fas fa-map-marker-alt"></i>
             <p>
-              {ubicacion} <a href="#">Mostrar en el mapa</a>
+              {ciudad.nombre}
+              <Link to={`product/${id}#mapa`}>Mostrar en el mapa</Link>
             </p>
           </div>
           <div className={styles.servicios}>
-            <i className="fas fa-wifi"></i>
-            <i className="fas fa-swimmer"></i>
+            {
+              caracteristicas.map((caracteristica, i) => 
+                <i key={`caracteristica-${i}`} className={`${caracteristica.icono}`}></i>
+              )
+            }
           </div>
         </div>
         <p>
@@ -72,9 +82,9 @@ export default function TarjetaAlojamiento({
             </>
           )}
         </p>
-        <FilledButton onClick={toggleVerMas} styles={styles.btnVerMas}>
-          Ver más
-        </FilledButton>
+        <Link to={`product/${id}`}>
+          <FilledButton styles={styles.btnVerMas}>Ver más</FilledButton>
+        </Link>
       </div>
     </div>
   );

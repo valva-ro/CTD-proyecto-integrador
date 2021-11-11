@@ -19,6 +19,8 @@
 .imagenAlojamiento {
   position: relative;
   background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
   width: 45%;
   min-height: 300px;
   height: 100%;
@@ -57,6 +59,7 @@
 .tipoYCalificacion h4 {
   text-transform: uppercase;
   opacity: 50%;
+  margin-right: 8px;
 }
 
 .estrellas {
@@ -93,18 +96,16 @@
 
 .servicios {
   margin-bottom: 0.75rem;
+  
 }
 
 .servicios i {
   font-size: 1.25rem;
+  margin-left: 12px;
 }
 
 .servicios i:first-child {
-  margin-right: 0.5rem;
-}
-
-.servicios i:nth-child(2) {
-  margin-left: 0.5rem;
+  margin-left: 0;
 }
 
 .ubicacion {
@@ -119,7 +120,7 @@
 
 .ubicacion a {
   margin-left: 0.25rem;
-  transition: color ease-in-out 250ms;
+  transition: color ease-in-out 50ms;
 }
 
 .ubicacion a:hover {
@@ -139,6 +140,7 @@
 .btnVerMas {
   width: 100%;
   margin-top: 1.5rem;
+  padding: 10px 0;
 }
 
 @media (max-width: 480px) {
