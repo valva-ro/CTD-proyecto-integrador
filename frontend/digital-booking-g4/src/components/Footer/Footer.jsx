@@ -8,7 +8,7 @@ export default function Footer () {
         <footer className={styles.footerFijo}>
             <div className={styles.contenedorFooter}>
                 <div className={styles.footerIzquierda}>
-                    <p>©2021 Digital Booking</p>
+                    <p>©2021 Hosting Book</p>
                 </div>
                 <div className={styles.footerDerecha}>
                     <i className='bx bxl-facebook-circle' ></i>
