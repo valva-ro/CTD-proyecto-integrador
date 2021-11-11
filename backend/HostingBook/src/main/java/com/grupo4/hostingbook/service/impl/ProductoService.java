@@ -5,9 +5,7 @@ import com.grupo4.hostingbook.exceptions.BadRequestException;
 import com.grupo4.hostingbook.exceptions.Mensajes;
 import com.grupo4.hostingbook.exceptions.ResourceNotFoundException;
 import com.grupo4.hostingbook.model.*;
-import com.grupo4.hostingbook.persistence.entites.Categoria;
-import com.grupo4.hostingbook.persistence.entites.Ciudad;
-import com.grupo4.hostingbook.persistence.entites.Producto;
+import com.grupo4.hostingbook.persistence.entites.*;
 import com.grupo4.hostingbook.persistence.repository.IProductoRepository;
 import com.grupo4.hostingbook.service.IProductoService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,15 +36,8 @@ public class ProductoService implements IProductoService {
     @Override
     public ProductoDTO crear(ProductoDTO productoDTO) throws BadRequestException, ResourceNotFoundException {
         validarCamposRequeridosCreacion(productoDTO);
-        Producto entidadProducto;
-        Producto guardado;
-        if (entidadesSonPersistibles(productoDTO)) {
-            entidadProducto = mapper.convertValue(productoDTO, Producto.class);
-        } else {
-            entidadProducto = agregarEntidadesRelacionadas(productoDTO);
-        }
-        guardado = productoRepository.save(entidadProducto);
-        return mapper.convertValue(guardado, ProductoDTO.class);
+        Producto guardado = productoRepository.save(mapper.convertValue(productoDTO, Producto.class));
+        return setearEntidadesDeLaBaseDeDatos(guardado);
     }
 
     @Override
@@ -91,33 +82,29 @@ public class ProductoService implements IProductoService {
 
     @Override
     public Set<ProductoDTO> consultarPorCategoria(String tituloCategoria) throws ResourceNotFoundException {
-        for (Producto p: productoRepository.findAll()) {
-            if (tituloCategoria.equalsIgnoreCase(p.getCategoria().getTitulo())) {
-                Set<Producto> entidades = productoRepository.buscarProductosPorCategoria(tituloCategoria);
-                Set<ProductoDTO> dtos = new HashSet<>();
-                for (Producto entidad : entidades) {
-                    dtos.add(mapper.convertValue(entidad, ProductoDTO.class));
-                }
-                return dtos;
-            }
+        Set<Producto> entidades = productoRepository.buscarProductosPorCategoria(tituloCategoria);
+        Set<ProductoDTO> dtos = new HashSet<>();
+        for (Producto entidad : entidades) {
+            dtos.add(mapper.convertValue(entidad, ProductoDTO.class));
         }
-        throw new ResourceNotFoundException(String.format(Mensajes.ERROR_CRITERIO_DE_BUSQUEDA_NO_EXISTE, "La categoría", tituloCategoria));
+        if (dtos.size() == 0) {
+            throw new ResourceNotFoundException(String.format(Mensajes.ERROR_CRITERIO_DE_BUSQUEDA_NO_EXISTE, "La categoría", tituloCategoria));
+        }
+        return dtos;
     }
 
 
     @Override
     public Set<ProductoDTO> consultarPorCiudad(String nombreCiudad) throws ResourceNotFoundException {
-        for (Producto p: productoRepository.findAll()) {
-            if( nombreCiudad.equalsIgnoreCase(p.getCiudad().getNombre())) {
-                Set<Producto> entidades = productoRepository.buscarProductosPorCiudad(nombreCiudad);
-                Set<ProductoDTO> dtos = new HashSet<>();
-                for (Producto entidad : entidades) {
-                    dtos.add(mapper.convertValue(entidad, ProductoDTO.class));
-                }
-                return dtos;
-            }
+        Set<Producto> entidades = productoRepository.buscarProductosPorCiudad(nombreCiudad);
+        Set<ProductoDTO> dtos = new HashSet<>();
+        for (Producto entidad : entidades) {
+            dtos.add(mapper.convertValue(entidad, ProductoDTO.class));
         }
-        throw new ResourceNotFoundException(String.format(Mensajes.ERROR_CRITERIO_DE_BUSQUEDA_NO_EXISTE, "La ciudad", nombreCiudad));
+        if (dtos.size() == 0) {
+            throw new ResourceNotFoundException(String.format(Mensajes.ERROR_CRITERIO_DE_BUSQUEDA_NO_EXISTE, "La ciudad", nombreCiudad));
+        }
+        return dtos;
     }
 
     private void validarCamposRequeridosCreacion(ProductoDTO productoDTO) throws BadRequestException {
@@ -166,52 +153,39 @@ public class ProductoService implements IProductoService {
             throw new ResourceNotFoundException(String.format(Mensajes.ERROR_NO_EXISTE, "El 'producto'", id));
     }
 
-    private boolean entidadesSonPersistibles(ProductoDTO productoDTO) {
-        boolean productoPersistible = productoDTO.getId() == null;
-        boolean ciudadPersistible = productoDTO.getCiudad().getId() == null;
-        boolean categoriaPersistible = productoDTO.getCategoria().getId() == null;
-        boolean imagenesPersistibles = true;
-        boolean caracteristicasPersistibles = true;
-        for (ImagenDTO img : productoDTO.getImagenes()) {
-            if (img.getId() == null) {
-                imagenesPersistibles = false;
-                break;
-            }
-        }
-        for (CaracteristicaDTO caracteristica : productoDTO.getCaracteristicas()) {
-            if (caracteristica.getId() == null) {
-                caracteristicasPersistibles = false;
-                break;
-            }
-        }
-        return productoPersistible && ciudadPersistible && categoriaPersistible && imagenesPersistibles && caracteristicasPersistibles;
+    private ProductoDTO setearEntidadesDeLaBaseDeDatos(Producto producto) throws BadRequestException, ResourceNotFoundException {
+        ProductoDTO productoDTO = new ProductoDTO();
+        productoDTO.setId(producto.getId());
+        productoDTO.setNombre(producto.getNombre());
+        productoDTO.setDescripcion(producto.getDescripcion());
+        productoDTO.setCategoria(categoriaService.buscarPorId(producto.getCategoria().getId()));
+        productoDTO.setCiudad(ciudadService.buscarPorId(producto.getCiudad().getId()));
+        productoDTO.setImagenes(obtenerImagenesRelacionadas(producto));
+        productoDTO.setCaracteristicas(obtenerCaracteristicasRelacionadas(producto));
+        return productoDTO;
     }
 
-    private Producto agregarEntidadesRelacionadas(ProductoDTO productoDTO) throws BadRequestException, ResourceNotFoundException {
-        if (productoDTO.getCiudad().getId() != null) {
-            CiudadDTO ciudadEnBD = ciudadService.buscarPorId(productoDTO.getCiudad().getId());
-            productoDTO.setCiudad(ciudadEnBD);
-        }
-        if (productoDTO.getCategoria().getId() != null) {
-            CategoriaDTO categoriaEnBD = categoriaService.buscarPorId(productoDTO.getCategoria().getId());
-            productoDTO.setCategoria(categoriaEnBD);
-        }
-        Set<ImagenDTO> imagenesEnBD = new HashSet<>();
-        Set<CaracteristicaDTO> caracteristicasEnBD = new HashSet<>();
-        for (ImagenDTO img : productoDTO.getImagenes()) {
-            if (img.getId() != null) {
-                ImagenDTO imgEnBD = imagenService.buscarPorId(img.getId());
-                imagenesEnBD.add(imgEnBD);
+    private Set<ImagenDTO> obtenerImagenesRelacionadas(Producto producto) {
+        Set<ImagenDTO> imagenes = new HashSet<>();
+        for (ImagenDTO imagenEnBD : imagenService.consultarTodos()) {
+            for (Imagen imagenEnProducto : producto.getImagenes()) {
+                if (Objects.equals(imagenEnBD.getId(), imagenEnProducto.getId())) {
+                    imagenes.add(imagenEnBD);
+                }
             }
         }
-        for (CaracteristicaDTO caracteristica : productoDTO.getCaracteristicas()) {
-            if (caracteristica.getId() != null) {
-                CaracteristicaDTO caracteristicaEnBD = caracteristicaService.buscarPorId(caracteristica.getId());
-                caracteristicasEnBD.add(caracteristicaEnBD);
+        return imagenes;
+    }
+
+    private Set<CaracteristicaDTO> obtenerCaracteristicasRelacionadas(Producto producto) {
+        Set<CaracteristicaDTO> caracteristicas = new HashSet<>();
+        for (CaracteristicaDTO caracteristicaEnBD : caracteristicaService.consultarTodos()) {
+            for (Caracteristica caracteristicaEnProducto : producto.getCaracteristicas()) {
+                if (Objects.equals(caracteristicaEnBD.getId(), caracteristicaEnProducto.getId())) {
+                    caracteristicas.add(caracteristicaEnBD);
+                }
             }
         }
-        productoDTO.setImagenes(imagenesEnBD);
-        productoDTO.setCaracteristicas(caracteristicasEnBD);
-        return mapper.convertValue(productoDTO, Producto.class);
+        return caracteristicas;
     }
 }

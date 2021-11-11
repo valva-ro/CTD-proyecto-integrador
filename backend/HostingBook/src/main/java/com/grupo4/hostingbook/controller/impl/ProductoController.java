@@ -95,11 +95,10 @@ public class ProductoController implements IProductoController {
             @ApiResponse(code = 200, message = "Success")
     })
     @GetMapping("/categoria")
-    public ResponseEntity<?> obtenerPorCategoria(@RequestParam String title) throws ResourceNotFoundException {
-        Set<ProductoDTO> productos = productoService.consultarPorCategoria(title);
+    public ResponseEntity<?> obtenerPorCategoria(@RequestParam String titulo) throws ResourceNotFoundException {
+        Set<ProductoDTO> productos = productoService.consultarPorCategoria(titulo);
         return ResponseEntity.ok(productos);
     }
-
 
     @Override
     @ApiOperation(value = "Lista todos los productos según la ciudad especificada")
@@ -107,8 +106,8 @@ public class ProductoController implements IProductoController {
             @ApiResponse(code = 200, message = "Success")
     })
     @GetMapping("/ciudad")
-    public ResponseEntity<?> obtenerPorCiudad(@RequestParam String name) throws ResourceNotFoundException {
-        Set<ProductoDTO> productos = productoService.consultarPorCiudad(name);
+    public ResponseEntity<?> obtenerPorCiudad(@RequestParam String nombre) throws ResourceNotFoundException {
+        Set<ProductoDTO> productos = productoService.consultarPorCiudad(nombre);
         return ResponseEntity.ok(productos);
     }
 }
