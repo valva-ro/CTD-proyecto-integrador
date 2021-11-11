@@ -31,7 +31,7 @@ export default function BloqueCategorias({ setCategoriaActual }) {
       <TituloBloque>Buscar por tipo de alojamiento</TituloBloque>
       {!data.isLoaded ? (
         <h2 className={styles.sinResultados}>
-          Hubo un error al cargar los tipos de alojamiento
+          Cargando tipos de alojamientos
         </h2>
       ) : data.items.length === 0 ? (
         <h2 className={styles.sinResultados}>

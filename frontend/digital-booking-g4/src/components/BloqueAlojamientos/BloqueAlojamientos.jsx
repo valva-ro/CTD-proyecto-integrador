@@ -43,9 +43,9 @@ export default function BloqueAlojamientos({ categoriaActual }) {
           ? `${capitalizeFirstLetter(categoriaActual)}`
           : `${capitalizeFirstLetter(categoriaActual)} en ${currentCity}`}
       </TituloBloque>
-      {alojamientosFiltrados.length === 0 ? (
+      {isLoaded && alojamientosFiltrados.length === 0 ? (
         <h2 className={styles.sinResultados}>No se encontraron resultados</h2>
-      ) : (
+      ) : !isLoaded ? <h2 className={styles.sinResultados}>Cargando alojamientos</h2> : (
         <ul
           className={
             alojamientosFiltrados.length < 2
