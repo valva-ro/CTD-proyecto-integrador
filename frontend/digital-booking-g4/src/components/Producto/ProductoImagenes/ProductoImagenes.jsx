@@ -8,8 +8,12 @@ import "./CarouselStyles.css";
 
 export default function ProductoImagenes({ alojamiento }) {
   const [carruselEstaAbierto, setCarruselEstaAbierto] = useState(false);
+  const [redesSocialesEstaAbierto, setRedesSocialesEstaAbierto] =
+    useState(false);
   const cerrarCarousel = () => setCarruselEstaAbierto(false);
+  const cerrarRedesSociales = () => setRedesSocialesEstaAbierto(false);
   const abrirCarousel = () => setCarruselEstaAbierto(true);
+  const abrirRedesSociales = () => setRedesSocialesEstaAbierto(true);
   const { imagenes } = alojamiento;
 
   const obtenerImagenPrincipal = () => {
@@ -29,7 +33,7 @@ export default function ProductoImagenes({ alojamiento }) {
   return (
     <section className={styles.sectionImagenes}>
       <div className={styles.iconos}>
-        <i className="bx bx-share-alt"></i>
+        <i className="bx bx-share-alt" onClick={abrirRedesSociales}></i>
         <i className="bx bx-heart"></i>
       </div>
       <div className={styles.imagenesDesktop}>
@@ -64,11 +68,57 @@ export default function ProductoImagenes({ alojamiento }) {
       </div>
       <div className={styles.contenedorTabletMobile}>
         <div className={styles.iconos}>
-          <i className="bx bx-share-alt"></i>
+          <i className="bx bx-share-alt" onClick={abrirRedesSociales}></i>
           <i className="bx bx-heart"></i>
         </div>
         {CarruselTabletMobile(imagenesOrdenadas())}
       </div>
+      <Modal
+        estaAbierto={redesSocialesEstaAbierto}
+        onCloseRequest={cerrarRedesSociales}
+        colorBtnCerrar="black"
+        colorFondo="#383b5853"
+      >
+        <div className={styles.modalRedesSociales}>
+          <h2 className={styles.textoRedesSociales}>
+            Compartí el alojamiento en tu red social favorita!
+          </h2>
+          <div className={styles.redesSociales}>
+            <a
+              className={styles.linkRedSocial}
+              href="https://www.facebook.com/HostingBook-104939168676273"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <i className="bx bxl-facebook-circle"></i>
+            </a>
+            <a
+              className={styles.linkRedSocial}
+              href="https://www.linkedin.com/in/hostingbook/"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <i className="bx bxl-linkedin"></i>
+            </a>
+            <a
+              className={styles.linkRedSocial}
+              href="https://twitter.com/Hosting_Book"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <i className="bx bxl-twitter"></i>
+            </a>
+            <a
+              className={styles.linkRedSocial}
+              href="https://www.instagram.com/hostingbook/"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <i className="bx bxl-instagram-alt"></i>
+            </a>
+          </div>
+        </div>
+      </Modal>
     </section>
   );
 }
