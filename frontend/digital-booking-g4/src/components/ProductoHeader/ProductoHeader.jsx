@@ -18,7 +18,7 @@ export default function ProductHeader({ alojamiento }) {
           </Link>
         </div>
       </div>
-      <ProductoUbicacion alojamiento={alojamiento}/>
+      <ProductoUbicacion alojamiento={alojamiento} />
     </>
   );
 }

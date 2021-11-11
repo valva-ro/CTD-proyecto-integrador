@@ -17,7 +17,7 @@ export default function Producto() {
   };
   return (
     <>
-      {id >= alojamientos.length+1 ? (
+      {id >= alojamientos.length + 1 ? (
         <h2 className={styles.sinResultados}>
           El alojamiento que estás buscando no existe
         </h2>
@@ -28,7 +28,7 @@ export default function Producto() {
           <ProductoDescripcion alojamiento={obtenerAlojamiento()} />
           <ProductoCaracteristicas alojamiento={obtenerAlojamiento()} />
           <ProductoFechasDisponibles />
-          <ProductoPoliticas alojamiento = {obtenerAlojamiento()} />
+          <ProductoPoliticas alojamiento={obtenerAlojamiento()} />
         </>
       )}
     </>
