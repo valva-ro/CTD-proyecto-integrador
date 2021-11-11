@@ -117,10 +117,14 @@ public class ProductoService implements IProductoService {
                 throw new BadRequestException(String.format(Mensajes.ERROR_CREACION_CAMPO_REQUERIDO, "producto", "nombre"));
             if (productoDTO.getDescripcion() == null || productoDTO.getDescripcion().isEmpty() || productoDTO.getDescripcion().isBlank())
                 throw new BadRequestException(String.format(Mensajes.ERROR_CREACION_CAMPO_REQUERIDO, "producto", "descripción"));
-            if (productoDTO.getCategoria() == null )
+            if (productoDTO.getCategoria() == null || productoDTO.getCategoria().getTitulo().isEmpty() || productoDTO.getCategoria().getTitulo().isBlank())
                 throw new BadRequestException(String.format(Mensajes.ERROR_CREACION_CAMPO_REQUERIDO, "producto", "categoría"));
-            if (productoDTO.getCiudad() == null )
+            if (productoDTO.getCiudad() == null || productoDTO.getCiudad().getNombre().isEmpty() || productoDTO.getCiudad().getNombre().isBlank())
                 throw new BadRequestException(String.format(Mensajes.ERROR_CREACION_CAMPO_REQUERIDO, "producto", "ciudad"));
+            if (productoDTO.getCaracteristicas() == null || productoDTO.getCaracteristicas().size() == 0)
+                throw new BadRequestException(String.format(Mensajes.ERROR_CREACION_CAMPO_REQUERIDO, "producto", "características"));
+            if (productoDTO.getImagenes() == null || productoDTO.getImagenes().size() == 0)
+                throw new BadRequestException(String.format(Mensajes.ERROR_CREACION_CAMPO_REQUERIDO, "producto", "imágenes"));
         }
     }
 
