@@ -31,38 +31,28 @@ class ProductoServiceTests {
     private CaracteristicaService caracteristicaService;
 
     private ProductoDTO productoPorCrear;
-    private ProductoDTO productoCreado;
     private ProductoDTO productoPorActualizar;
-    private ProductoDTO productoActualizado;
 
     @BeforeEach
     public void setUp() throws BadRequestException {
-        CategoriaDTO categoria;
-        CategoriaDTO categoriaCreada;
-        CiudadDTO ciudad;
-        CiudadDTO ciudadCreada;
-        ImagenDTO imagen1 = new ImagenDTO("Habitación doble", "https://via.placeholder.com/300");
-        ImagenDTO imagen2 = new ImagenDTO("Baño", "https://via.placeholder.com/300");
-        CaracteristicaDTO caracteristica1 = new CaracteristicaDTO("WiFi","<i class='bx bx-wifi'></i>");
-        CaracteristicaDTO caracteristica2 = new CaracteristicaDTO("Parking","<i class='bx bxs-car'></i>");
-        Set<ImagenDTO> imagenesCreadas;
-        Set<ImagenDTO> imagenes;
-        Set<CaracteristicaDTO> caracteristicasCreadas;
-        Set<CaracteristicaDTO> caracteristicas;
+        CategoriaDTO categoriaID = new CategoriaDTO(1L);
+        CiudadDTO ciudadID = new CiudadDTO(1L);
+        ImagenDTO imagen1ID = new ImagenDTO(1L);
+        ImagenDTO imagen2ID = new ImagenDTO(2L);
+        CaracteristicaDTO caracteristica1ID = new CaracteristicaDTO(1L);
+        CaracteristicaDTO caracteristica2ID = new CaracteristicaDTO(2L);
+        Set<ImagenDTO> imagenesIDs = Set.of(imagen1ID, imagen2ID);
+        Set<CaracteristicaDTO> caracteristicasIDs = Set.of(caracteristica1ID, caracteristica2ID);
 
-        categoria = new CategoriaDTO("Hotel", "807.105 hoteles", "https://via.placeholder.com/300");
-        categoriaCreada = categoriaService.crear(categoria);
-        ciudad = new CiudadDTO("Manizales", "Colombia");
-        ciudadCreada = ciudadService.crear(ciudad);
-        imagenes = Set.of(imagen1, imagen2);
-        imagenesCreadas = Set.of(imagenService.crear(imagen1), imagenService.crear(imagen2));
-        caracteristicas = Set.of(caracteristica1, caracteristica2);
-        caracteristicasCreadas = Set.of(caracteristicaService.crear(caracteristica1), caracteristicaService.crear(caracteristica2));
+        categoriaService.crear(new CategoriaDTO("Hotel", "807.105 hoteles", "https://via.placeholder.com/300"));
+        ciudadService.crear(new CiudadDTO("Manizales", "Colombia"));
+        imagenService.crear(new ImagenDTO("Habitación doble", "https://via.placeholder.com/300"));
+        imagenService.crear(new ImagenDTO("Baño", "https://via.placeholder.com/300"));
+        caracteristicaService.crear(new CaracteristicaDTO("WiFi","<i class='bx bx-wifi'></i>"));
+        caracteristicaService.crear(new CaracteristicaDTO("Parking","<i class='bx bxs-car'></i>"));
 
-        productoPorCrear = new ProductoDTO("Hotel Melia", "Servicio all inclusive con vista al mar", categoria, ciudad, imagenes, caracteristicas);
-        productoCreado = new ProductoDTO(1L,"Hotel Melia", "Servicio all inclusive con vista al mar", categoriaCreada, ciudadCreada, imagenesCreadas, caracteristicasCreadas);
+        productoPorCrear = new ProductoDTO("Hotel Melia", "Servicio all inclusive con vista al mar", categoriaID, ciudadID, imagenesIDs, caracteristicasIDs);
         productoPorActualizar = new ProductoDTO(1L,"Hotel Grand Meliá", "", null, null, null, null);
-        productoActualizado = new ProductoDTO(1L, "Hotel Grand Meliá", "Servicio all inclusive con vista al mar", categoriaCreada, ciudadCreada, imagenesCreadas, caracteristicasCreadas);
     }
 
     @Test
@@ -71,18 +61,21 @@ class ProductoServiceTests {
     }
 
     @Test
+    @Transactional
     public void test02AgregarProducto() throws BadRequestException, ResourceNotFoundException {
         ProductoDTO p = productoService.crear(productoPorCrear);
         assertNotEquals( null, p);
     }
 
     @Test
+    @Transactional
     public void test03ObtenerTodosLosProductos() throws BadRequestException, ResourceNotFoundException {
         productoService.crear(productoPorCrear);
         assertNotEquals(0, productoService.consultarTodos().size());
     }
 
     @Test
+    @Transactional
     public void test04EliminarProductoPorId() throws BadRequestException, ResourceNotFoundException {
         productoService.crear(productoPorCrear);
         assertNotEquals(0, productoService.consultarTodos().size());
@@ -102,10 +95,10 @@ class ProductoServiceTests {
     }
 
     @Test
+    @Transactional
     public void test07ActualizarProductoExistente() throws BadRequestException, ResourceNotFoundException {
         ProductoDTO dtoCreadoBBDD = productoService.crear(productoPorCrear);
         ProductoDTO dtoActualizado = productoService.actualizar(productoPorActualizar);
-        assertEquals(productoActualizado.getNombre(), dtoActualizado.getNombre());
         assertNotEquals(dtoCreadoBBDD.getNombre(), dtoActualizado.getNombre());
     }
 
@@ -124,7 +117,6 @@ class ProductoServiceTests {
     public void test10BuscarProductoPorIdExistente() throws BadRequestException, ResourceNotFoundException {
         productoService.crear(productoPorCrear);
         ProductoDTO productoEncontrado = productoService.buscarPorId(1L);
-        assertEquals(productoCreado.getId(), productoEncontrado.getId());
         assertNotEquals(null, productoEncontrado);
     }
 
@@ -140,6 +132,7 @@ class ProductoServiceTests {
 
 
     @Test
+    @Transactional
     void test13ConsultarPorCategoriaExistente() throws BadRequestException, ResourceNotFoundException {
         productoService.crear(productoPorCrear);
         Set<ProductoDTO> productoFiltradoPorCategoria = productoService.consultarPorCategoria("Hotel");
@@ -147,12 +140,14 @@ class ProductoServiceTests {
     }
 
     @Test
+    @Transactional
     void test14ConsultarPorCategoriaInexistente() throws BadRequestException, ResourceNotFoundException {
         productoService.crear(productoPorCrear);
         assertThrows(ResourceNotFoundException.class, () -> productoService.consultarPorCategoria("Cabañas"));
     }
 
     @Test
+    @Transactional
     void test15ConsultarPorCiudadExistente() throws BadRequestException, ResourceNotFoundException {
         productoService.crear(productoPorCrear);
         Set<ProductoDTO> productoFiltradoPorCiudad = productoService.consultarPorCiudad("Manizales");
@@ -160,6 +155,7 @@ class ProductoServiceTests {
     }
 
     @Test
+    @Transactional
     void test16ConsultarPorCiudadInexistente() throws BadRequestException, ResourceNotFoundException {
         productoService.crear(productoPorCrear);
         assertThrows(ResourceNotFoundException.class, () -> productoService.consultarPorCiudad("Mendoza"));

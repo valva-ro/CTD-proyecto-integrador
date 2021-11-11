@@ -45,33 +45,27 @@ public class ProductoControllerTests {
     private CaracteristicaService caracteristicaService;
     private ProductoDTO productoPorCrear;
     private ProductoDTO productoPorActualizar;
-    private ProductoDTO productoActualizado;
 
     @BeforeEach
     public void reset() throws BadRequestException {
-        CategoriaDTO categoria;
-        CategoriaDTO categoriaCreada;
-        CiudadDTO ciudad;
-        CiudadDTO ciudadCreada;
-        ImagenDTO imagen1 = new ImagenDTO("Habitación", "https://via.placeholder.com/300");
-        CaracteristicaDTO caracteristica1 = new CaracteristicaDTO("WiFi","bx bx-wifi");
-        Set<ImagenDTO> imagenes;
-        Set<ImagenDTO> imagenesCreadas;
-        Set<CaracteristicaDTO> caracteristicas;
-        Set<CaracteristicaDTO> caracteristicasCreadas;
+        CategoriaDTO categoriaID = new CategoriaDTO(1L);
+        CiudadDTO ciudadID = new CiudadDTO(1L);
+        ImagenDTO imagen1ID = new ImagenDTO(1L);
+        ImagenDTO imagen2ID = new ImagenDTO(2L);
+        CaracteristicaDTO caracteristica1ID = new CaracteristicaDTO(1L);
+        CaracteristicaDTO caracteristica2ID = new CaracteristicaDTO(2L);
+        Set<ImagenDTO> imagenesIDs = Set.of(imagen1ID, imagen2ID);
+        Set<CaracteristicaDTO> caracteristicasIDs = Set.of(caracteristica1ID, caracteristica2ID);
 
-        categoria = new CategoriaDTO("Hotel", "807.105 hoteles", "https://via.placeholder.com/300");
-        categoriaCreada = categoriaService.crear(categoria);
-        ciudad = new CiudadDTO("Manizales", "Colombia");
-        ciudadCreada = ciudadService.crear(ciudad);
-        imagenes = Set.of(imagen1);
-        imagenesCreadas = Set.of(imagenService.crear(imagen1));
-        caracteristicas = Set.of(caracteristica1);
-        caracteristicasCreadas = Set.of(caracteristicaService.crear(caracteristica1));
+        categoriaService.crear(new CategoriaDTO("Hotel", "807.105 hoteles", "https://via.placeholder.com/300"));
+        ciudadService.crear(new CiudadDTO("Manizales", "Colombia"));
+        imagenService.crear(new ImagenDTO("Habitación doble", "https://via.placeholder.com/300"));
+        imagenService.crear(new ImagenDTO("Baño", "https://via.placeholder.com/300"));
+        caracteristicaService.crear(new CaracteristicaDTO("WiFi","<i class='bx bx-wifi'></i>"));
+        caracteristicaService.crear(new CaracteristicaDTO("Parking","<i class='bx bxs-car'></i>"));
 
-        productoPorCrear = new ProductoDTO("Hotel Melia", "Servicio all inclusive con vista al mar", categoria, ciudad, imagenes, caracteristicas);
-        productoPorActualizar = new ProductoDTO(1L,"Hotel Grand Meliá", "", null, null, null, null);
-        productoActualizado = new ProductoDTO(1L, "Hotel Grand Meliá", "Servicio all inclusive con vista al mar", categoriaCreada, ciudadCreada, imagenesCreadas, caracteristicasCreadas);
+        productoPorCrear = new ProductoDTO("Hotel Melia", "Servicio all inclusive con vista al mar", categoriaID, ciudadID, imagenesIDs, caracteristicasIDs);
+        productoPorActualizar = new ProductoDTO(1L,"Hotel Grand Melia", "", null, null, null, null);
     }
 
     @Test
@@ -82,6 +76,7 @@ public class ProductoControllerTests {
     }
 
     @Test
+    @Transactional
     public void test02crearProducto() throws Exception {
         MvcResult response = mockMvc.perform(MockMvcRequestBuilders.post("/productos")
                     .contentType(MediaType.APPLICATION_JSON)
@@ -120,7 +115,7 @@ public class ProductoControllerTests {
                 .andReturn();
 
         ProductoDTO respuesta = JsonMapper.mapJsonToObject(response.getResponse().getContentAsString(), ProductoDTO.class);
-        assertEquals(productoActualizado.getDescripcion(), respuesta.getDescripcion());
+        assertEquals(productoPorActualizar.getNombre(), respuesta.getNombre());
     }
 
     @Test
@@ -180,6 +175,7 @@ public class ProductoControllerTests {
     }
 
     @Test
+    @Transactional
     public void test11eliminarConIdExistente() throws Exception{
         productoController.crear(productoPorCrear);
 
@@ -209,11 +205,12 @@ public class ProductoControllerTests {
     }
 
     @Test
+    @Transactional
     public void test14obtenerProductosPorCategoria() throws Exception {
         productoController.crear(productoPorCrear);
 
         mockMvc.perform(MockMvcRequestBuilders.get("/productos/categoria")
-                .param("title", "Hotel")
+                .param("titulo", "Hotel")
                 .contentType(MediaType.APPLICATION_JSON)
                 .characterEncoding("utf-8"))
                 .andDo(MockMvcResultHandlers.print())
@@ -221,11 +218,12 @@ public class ProductoControllerTests {
     }
 
     @Test
+    @Transactional
     public void test15obtenerProductosPorCategoriaInexistente() throws Exception {
         productoController.crear(productoPorCrear);
 
         mockMvc.perform(MockMvcRequestBuilders.get("/productos/categoria")
-                        .param("title", "Cabaña")
+                        .param("titulo", "Cabaña")
                         .contentType(MediaType.APPLICATION_JSON)
                         .characterEncoding("utf-8"))
                 .andDo(MockMvcResultHandlers.print())
@@ -233,11 +231,12 @@ public class ProductoControllerTests {
     }
 
     @Test
+    @Transactional
     public void test16obtenerProductosPorCiudad() throws Exception {
         productoController.crear(productoPorCrear);
 
         mockMvc.perform(MockMvcRequestBuilders.get("/productos/ciudad")
-                        .param("name", "Manizales")
+                        .param("nombre", "Manizales")
                         .contentType(MediaType.APPLICATION_JSON)
                         .characterEncoding("utf-8"))
                 .andDo(MockMvcResultHandlers.print())
@@ -245,11 +244,12 @@ public class ProductoControllerTests {
     }
 
     @Test
+    @Transactional
     public void test17obtenerProductosPorCiudadInexistente() throws Exception {
         productoController.crear(productoPorCrear);
 
         mockMvc.perform(MockMvcRequestBuilders.get("/productos/ciudad")
-                        .param("name", "Buenos Aires")
+                        .param("nombre", "Buenos Aires")
                         .contentType(MediaType.APPLICATION_JSON)
                         .characterEncoding("utf-8"))
                 .andDo(MockMvcResultHandlers.print())
@@ -262,7 +262,7 @@ public class ProductoControllerTests {
         productoController.crear(productoPorCrear);
 
         MvcResult response = mockMvc.perform(MockMvcRequestBuilders.get("/productos/1")
-                        .param("name", "Buenos Aires")
+                        .param("nombre", "Buenos Aires")
                         .contentType(MediaType.APPLICATION_JSON)
                         .characterEncoding("utf-8"))
                 .andDo(MockMvcResultHandlers.print())
@@ -275,7 +275,7 @@ public class ProductoControllerTests {
     @Test
     public void test19buscarPorIdInexistente() throws Exception {
         mockMvc.perform(MockMvcRequestBuilders.get("/productos/1")
-                        .param("name", "Buenos Aires")
+                        .param("nombre", "Buenos Aires")
                         .contentType(MediaType.APPLICATION_JSON)
                         .characterEncoding("utf-8"))
                 .andDo(MockMvcResultHandlers.print())
@@ -285,30 +285,10 @@ public class ProductoControllerTests {
     @Test
     public void test20buscarPorIdInvalido() throws Exception {
         mockMvc.perform(MockMvcRequestBuilders.get("/productos/-1")
-                        .param("name", "Buenos Aires")
+                        .param("nombre", "Buenos Aires")
                         .contentType(MediaType.APPLICATION_JSON)
                         .characterEncoding("utf-8"))
                 .andDo(MockMvcResultHandlers.print())
                 .andExpect(MockMvcResultMatchers.status().isBadRequest());
-    }
-
-    @Test
-    public void test21crearProductoConEntidadesInexistentesEnBD() throws Exception {
-        CategoriaDTO categoria = new CategoriaDTO("Hotel", "Hotel", "https://via.placeholder.com/300");
-        CiudadDTO ciudad = new CiudadDTO("Ciudad", "Pais");
-        Set<ImagenDTO> imagenes = Set.of(new ImagenDTO("Imagen", "www.imagen.com"));
-        Set<CaracteristicaDTO> caracteristicas = Set.of(new CaracteristicaDTO("Caracteristica", "Icono"));
-        ProductoDTO productoConEntidadesNuevas = new ProductoDTO("Producto nuevo", "Descripción", categoria, ciudad, imagenes, caracteristicas);
-
-        MvcResult response = mockMvc.perform(MockMvcRequestBuilders.post("/productos")
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .characterEncoding("utf-8")
-                        .content(JsonMapper.mapObjectToJson(productoConEntidadesNuevas)))
-                .andDo(MockMvcResultHandlers.print())
-                .andExpect(MockMvcResultMatchers.status().isOk())
-                .andReturn();
-
-        ProductoDTO respuesta = JsonMapper.mapJsonToObject(response.getResponse().getContentAsString(), ProductoDTO.class);
-        assertNotNull(respuesta.getId());
     }
 }
