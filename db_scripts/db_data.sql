@@ -210,9 +210,13 @@ INSERT INTO producto_caracteristica (producto_id, caracteristica_id) VALUES (1,5
 INSERT INTO producto_caracteristica (producto_id, caracteristica_id) VALUES (1,6);
 INSERT INTO producto_caracteristica (producto_id, caracteristica_id) VALUES (1,7);
 INSERT INTO producto_caracteristica (producto_id, caracteristica_id) VALUES (1,8);
-INSERT INTO producto_caracteristica (producto_id, caracteristica_id) VALUES (3,1);
-INSERT INTO producto_caracteristica (producto_id, caracteristica_id) VALUES (3,3);
 INSERT INTO producto_caracteristica (producto_id, caracteristica_id) VALUES (2,1);
+INSERT INTO producto_caracteristica (producto_id, caracteristica_id) VALUES (2,2);
+INSERT INTO producto_caracteristica (producto_id, caracteristica_id) VALUES (2,4);
+INSERT INTO producto_caracteristica (producto_id, caracteristica_id) VALUES (3,1);
+INSERT INTO producto_caracteristica (producto_id, caracteristica_id) VALUES (3,2);
+INSERT INTO producto_caracteristica (producto_id, caracteristica_id) VALUES (3,3);
+INSERT INTO producto_caracteristica (producto_id, caracteristica_id) VALUES (3,4);
 INSERT INTO producto_caracteristica (producto_id, caracteristica_id) VALUES (4,2);
 INSERT INTO producto_caracteristica (producto_id, caracteristica_id) VALUES (4,3);
 COMMIT;
