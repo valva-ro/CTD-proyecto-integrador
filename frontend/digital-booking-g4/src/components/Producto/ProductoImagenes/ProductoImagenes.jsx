@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Carousel } from "react-responsive-carousel";
 import ProductoModalCarousel from "../ProductoModalCarousel/ProductoModalCarousel";
-import FilledButton from "../Buttons/FilledButton";
+import FilledButton from "../../Buttons/FilledButton";
 import styles from "./ProductoImagenes.module.css";
 import "./CarouselStyles.css";
 

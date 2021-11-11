@@ -1,7 +1,7 @@
 import { useRef } from "react";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
-import useOnClickOutside from "../../hooks/useOnClickOutside";
+import useOnClickOutside from "../../../hooks/useOnClickOutside";
 import styles from "./ProductoModalCarousel.module.css";
 
 export default function ProductoModalCarousel({

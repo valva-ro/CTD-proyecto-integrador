@@ -1,4 +1,4 @@
-import Estrellas from "../Estrellas/Estrellas";
+import Estrellas from "../../Estrellas/Estrellas";
 import styles from "./ProductoUbicacion.module.css";
 
 export default function ProductoUbicacion({ alojamiento }) {
