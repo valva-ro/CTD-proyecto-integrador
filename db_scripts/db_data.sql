@@ -239,5 +239,5 @@ INSERT INTO producto_caracteristica (producto_id, caracteristica_id) VALUES (13,
 INSERT INTO producto_caracteristica (producto_id, caracteristica_id) VALUES (13,8);
 INSERT INTO producto_caracteristica (producto_id, caracteristica_id) VALUES (13,4);
 INSERT INTO producto_caracteristica (producto_id, caracteristica_id) VALUES (14,1);
-INSERT INTO producto_caracteristica (producto_id, caracteristica_id) VALUES (14,11);
+INSERT INTO producto_caracteristica (producto_id, caracteristica_id) VALUES (14,10);
 COMMIT;
