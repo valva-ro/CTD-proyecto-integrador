@@ -105,6 +105,48 @@ CREATE TABLE producto_caracteristica (
 		REFERENCES booking.caracteristicas (caracteristica_id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+
+--
+-- Table structure for table `tipo_politica`
+--
+DROP TABLE IF EXISTS tipo_politica;
+CREATE TABLE tipo_politica(
+	tipo_politica_id SMALLINT UNSIGNED NOT NULL AUTO_INCREMENT,
+    nombre VARCHAR(50) NOT NULL,
+    PRIMARY KEY  (tipo_politica_id)    
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Table structure for table `politica`
+--
+DROP TABLE IF EXISTS politica;
+CREATE TABLE politica(
+	politica_id SMALLINT UNSIGNED NOT NULL AUTO_INCREMENT,
+    nombre VARCHAR(50) NOT NULL,
+    fk_tipo_politica SMALLINT UNSIGNED NOT NULL,
+	PRIMARY KEY  (tipo_politica_id), 
+	CONSTRAINT politica_tipo_politica_id_foreign
+		FOREIGN KEY (fk_tipo_politica)
+		REFERENCES booking.tipo_politica (tipo_politica_id)
+)ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Table structure for table `politica_producto`
+--
+CREATE TABLE politica_producto(
+	politica_producto_id INT UNSIGNED NOT NULL AUTO_INCREMENT,
+    politica_id INT UNSIGNED NOT NULL,
+    producto_id INT UNSIGNED NOT NULL,
+	CONSTRAINT politica_producto_producto_id_foreign
+		FOREIGN KEY (producto_id)
+		REFERENCES booking.productos (producto_id),
+	CONSTRAINT politica_producto_politica_id_foreign
+		FOREIGN KEY (politica_id)
+        REFERENCES booking.politica (politica_id)
+	
+)ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
