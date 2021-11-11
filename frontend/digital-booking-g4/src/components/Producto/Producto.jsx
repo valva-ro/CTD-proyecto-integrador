@@ -7,13 +7,14 @@ import ProductoMapa from "../ProductoMapa/ProductoMapa";
 import ProductoCaracteristicas from "../ProductoCaracteristicas/ProductoCaracteristicas";
 import ProductoPoliticas from "../ProductoPoliticas/ProductoPoliticas";
 import ProductoDescripcion from "../ProductoDescripcion/ProductoDescripcion";
+import Loader from "../Loader/Loader";
 import styles from "./Producto.module.css";
 import useFetch from "../../hooks/useFetch";
 import alojamientosJson from "../../resources/alojamientos.json";
 
 export default function Producto() {
   const { id } = useParams();
-  const { isLoaded, items } = useFetch(`productos/${id}`);
+  const { isLoaded, items, error } = useFetch(`productos/${id}`);
   const [producto, setProducto] = useState(null);
 
   useEffect(() => {
@@ -34,6 +35,8 @@ export default function Producto() {
           <ProductoMapa alojamiento={producto} />
           <ProductoPoliticas alojamientos={alojamientosJson}/>
         </>
+      ) : error === null ? (
+        <Loader />
       ) : (
         <h2 className={styles.sinResultados}>
           El alojamiento que estás buscando no existe
