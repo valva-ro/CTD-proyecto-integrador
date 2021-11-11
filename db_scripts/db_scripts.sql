@@ -27,7 +27,7 @@ DROP TABLE IF EXISTS categorias;
 CREATE TABLE categorias (
   categoria_id SMALLINT UNSIGNED NOT NULL AUTO_INCREMENT,
   titulo VARCHAR(50) NOT NULL,
-  descripcion VARCHAR(200) NOT NULL,
+  descripcion VARCHAR(50) NOT NULL,
   URL_imagen TEXT NOT NULL,
   PRIMARY KEY (categoria_id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -75,7 +75,7 @@ DROP TABLE IF EXISTS productos;
 CREATE TABLE productos (
 	producto_id INT UNSIGNED NOT NULL AUTO_INCREMENT,
     nombre VARCHAR(50) NOT NULL,
-    descripcion VARCHAR(50) NOT NULL,
+    descripcion VARCHAR(250) NOT NULL,
     fk_categoria SMALLINT UNSIGNED NOT NULL,
     fk_ciudad INT UNSIGNED NOT NULL,
     PRIMARY KEY  (producto_id),
