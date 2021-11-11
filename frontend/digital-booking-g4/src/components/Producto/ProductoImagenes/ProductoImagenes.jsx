@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
+import { SimpleShareButtons } from "react-simple-share";
 import Modal from "../../Modal/Modal";
 import FilledButton from "../../Buttons/FilledButton";
 import styles from "./ProductoImagenes.module.css";
@@ -29,6 +30,22 @@ export default function ProductoImagenes({ alojamiento }) {
   const imagenesOrdenadas = () => {
     return [obtenerImagenPrincipal(), ...obtenerImagenesSecundarias()];
   };
+
+  const LinksRedesSociales = () => (
+    <SimpleShareButtons
+      whitelist={[
+        "Facebook",
+        "Twitter",
+        "Tumblr",
+        "Reddit",
+        "Pinterest",
+        "LinkedIn",
+        "Google+",
+      ]}
+      size="50px"
+      margin="10px"
+    />
+  );
 
   return (
     <section className={styles.sectionImagenes}>
@@ -83,40 +100,7 @@ export default function ProductoImagenes({ alojamiento }) {
           <h2 className={styles.textoRedesSociales}>
             Compartí el alojamiento en tu red social favorita!
           </h2>
-          <div className={styles.redesSociales}>
-            <a
-              className={styles.linkRedSocial}
-              href="https://www.facebook.com/HostingBook-104939168676273"
-              target="_blank"
-              rel="noreferrer"
-            >
-              <i className="bx bxl-facebook-circle"></i>
-            </a>
-            <a
-              className={styles.linkRedSocial}
-              href="https://www.linkedin.com/in/hostingbook/"
-              target="_blank"
-              rel="noreferrer"
-            >
-              <i className="bx bxl-linkedin"></i>
-            </a>
-            <a
-              className={styles.linkRedSocial}
-              href="https://twitter.com/Hosting_Book"
-              target="_blank"
-              rel="noreferrer"
-            >
-              <i className="bx bxl-twitter"></i>
-            </a>
-            <a
-              className={styles.linkRedSocial}
-              href="https://www.instagram.com/hostingbook/"
-              target="_blank"
-              rel="noreferrer"
-            >
-              <i className="bx bxl-instagram-alt"></i>
-            </a>
-          </div>
+            {LinksRedesSociales()}
         </div>
       </Modal>
     </section>

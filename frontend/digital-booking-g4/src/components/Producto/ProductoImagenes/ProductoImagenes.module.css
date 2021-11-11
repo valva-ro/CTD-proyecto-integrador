@@ -120,29 +120,15 @@
 }
 
 .modalRedesSociales {
-  height: 200px;
   padding: 3rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .textoRedesSociales {
   font-size: 1.5rem;
   margin-bottom: 1rem;
-  color: var(--color-2);
-}
-
-.redesSociales {
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-around;
-}
-
-.linkRedSocial {
-  font-size: 3rem;
-  color: var(--color-principal);
-  transition: all 150ms ease-in-out;
-}
-
-.linkRedSocial:hover {
   color: var(--color-2);
 }
 
