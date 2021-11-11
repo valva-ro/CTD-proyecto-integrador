@@ -25,7 +25,6 @@ export default function ProductoImagenes({ alojamiento }) {
     return [obtenerImagenPrincipal(), ...obtenerImagenesSecundarias()];
   }
 
-  console.log("Alojamiento desde ProductoImagenes: "+JSON.stringify(imagenes));
   return (
     <section className={styles.sectionImagenes}>
       <div className={styles.iconos}>
@@ -86,8 +85,8 @@ const carruselTabletMobile = (imagenes) => (
   >
     {imagenes.map((imagen, i) => {
       return (
-        <div key={`imagen-${i}`}className={styles.imagen}>
-          <img src={imagen.urlImagen} alt={imagen.imagenTitulo} />
+        <div key={`imagen-${i}`} className={styles.imagen}>
+          <img src={imagen.imagenUrl} alt={imagen.imagenTitulo} />
         </div>
       );
     })}

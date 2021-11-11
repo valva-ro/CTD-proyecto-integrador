@@ -28,7 +28,7 @@ export default function ProductoMapa({ alojamiento }) {
   return (
     <section className={styles.containerUbicacion} id="mapa">
       <TituloBloque>¿Dónde vas a estar?</TituloBloque>
-      <hr className={styles.separador} />
+      <hr/>
       <h4 className={styles.textoUbicacion}>{`${ciudad.nombre}, ${ciudad.pais}`}</h4>
       {isLoaded ? (
         <GoogleMap mapContainerStyle={containerStyle} center={center} zoom={15}>

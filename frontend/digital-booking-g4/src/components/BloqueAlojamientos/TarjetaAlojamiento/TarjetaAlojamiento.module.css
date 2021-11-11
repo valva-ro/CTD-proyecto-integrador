@@ -96,18 +96,16 @@
 
 .servicios {
   margin-bottom: 0.75rem;
+  
 }
 
 .servicios i {
   font-size: 1.25rem;
+  margin-left: 12px;
 }
 
 .servicios i:first-child {
-  margin-right: 0.5rem;
-}
-
-.servicios i:nth-child(2) {
-  margin-left: 0.5rem;
+  margin-left: 0;
 }
 
 .ubicacion {

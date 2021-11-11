@@ -1,22 +1,16 @@
 import TituloBloque from "../TituloBloque/TituloBloque";
 import styles from "./ProductoDescripcion.module.css";
-import useScreenWidth from "../../hooks/useScreenWidth";
 
 export default function ProductoDescripcion({ alojamiento }) {
+  const { descripcion, ciudad } = alojamiento;
+
   return (
     <section className={styles.bloqueProductoDescripcion}>
-      <>
-        <TituloBloque> {alojamiento.product.title} </TituloBloque>
-        <div className={styles.bloqueProductoInfo}>
-          {alojamiento.product.info.length > 0 ? (
-            alojamiento.product.info.map((parrafo, i) => {
-              return <p key={i}>{parrafo}</p>;
-            })
-          ) : (
-            <p>No hay informacion del producto</p>
-          )}
-        </div>
-      </>
+      <TituloBloque>{`Alojate en el corazón de ${ciudad.nombre}`}</TituloBloque>
+      <p>{descripcion}{descripcion}</p>
+      <p>{descripcion}</p>
+      <p>{descripcion}{descripcion}</p>
+      <div className={styles.bloqueProductoInfo}></div>
     </section>
   );
 }

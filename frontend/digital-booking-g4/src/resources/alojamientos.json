@@ -484,5 +484,432 @@
                 "alt": "Placeholder 6"
             }
         ]
+    },
+    {
+        "id": 9,
+        "title": "Dpto. en Bogotá",
+        "category": "departamentos",
+        "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae minima illum omnis suscipit vel laborum commodi provident eveniet harum voluptatem quam cumque, nam maiores?",
+        "location": "Bogotá",
+        "points": "8.5",
+        "product":{
+            "title":"Alójate en el norte de Bogotá",
+            "info": [
+                "Esta es la info del producto 8",
+                "Continuo otro párrafo del producto 8",
+                "Párrafo final del producto 8"
+            ]
+        },
+        "policies":{
+            "rules": [
+                "Check-out: 08:00",
+                "No se permiten fiestas",
+                "No fumar"
+            ],
+            "safeAndHealth": [
+                "Se aplican las pautas de distanciamiento social y otras normas relacionadas con el coronavirus",
+                "Detector de humo",
+                "Depósito de seguridad"
+            ],
+            "cancel": [
+                "Agregá las fechas de tu viaje para obtener los detalles de cancelación de esta estadía"
+            ]
+        },
+        "imgs": [
+            {
+                "src": "https://images.unsplash.com/photo-1583377519891-1eea1c2e3947?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8YXBwYXJ0bWVudHxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=60",
+                "alt": "Principal"
+            },
+            {
+                "src": "https://via.placeholder.com/400x200/0000FF/FFFFFF?text=Secundaria%201",
+                "alt": "Placeholder 1"
+            },
+            {
+                "src": "https://via.placeholder.com/400x200/0000FF/FFFFFF?text=Secundaria%202",
+                "alt": "Placeholder 2"
+            },
+            {
+                "src": "https://via.placeholder.com/400x200/0000FF/FFFFFF?text=Secundaria%203",
+                "alt": "Placeholder 3"
+            },
+            {
+                "src": "https://via.placeholder.com/400x200/0000FF/FFFFFF?text=Secundaria%204",
+                "alt": "Placeholder 4"
+            },
+            {
+                "src": "https://via.placeholder.com/400x200/0000FF/FFFFFF?text=Secundaria%205",
+                "alt": "Placeholder 5"
+            },
+            {
+                "src": "https://via.placeholder.com/400x200/0000FF/FFFFFF?text=Secundaria%206",
+                "alt": "Placeholder 6"
+            }
+        ]
+    },
+    {
+        "id": 10,
+        "title": "Dpto. en Bogotá",
+        "category": "departamentos",
+        "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae minima illum omnis suscipit vel laborum commodi provident eveniet harum voluptatem quam cumque, nam maiores?",
+        "location": "Bogotá",
+        "points": "8.5",
+        "product":{
+            "title":"Alójate en el norte de Bogotá",
+            "info": [
+                "Esta es la info del producto 8",
+                "Continuo otro párrafo del producto 8",
+                "Párrafo final del producto 8"
+            ]
+        },
+        "policies":{
+            "rules": [
+                "Check-out: 08:00",
+                "No se permiten fiestas",
+                "No fumar"
+            ],
+            "safeAndHealth": [
+                "Se aplican las pautas de distanciamiento social y otras normas relacionadas con el coronavirus",
+                "Detector de humo",
+                "Depósito de seguridad"
+            ],
+            "cancel": [
+                "Agregá las fechas de tu viaje para obtener los detalles de cancelación de esta estadía"
+            ]
+        },
+        "imgs": [
+            {
+                "src": "https://images.unsplash.com/photo-1583377519891-1eea1c2e3947?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8YXBwYXJ0bWVudHxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=60",
+                "alt": "Principal"
+            },
+            {
+                "src": "https://via.placeholder.com/400x200/0000FF/FFFFFF?text=Secundaria%201",
+                "alt": "Placeholder 1"
+            },
+            {
+                "src": "https://via.placeholder.com/400x200/0000FF/FFFFFF?text=Secundaria%202",
+                "alt": "Placeholder 2"
+            },
+            {
+                "src": "https://via.placeholder.com/400x200/0000FF/FFFFFF?text=Secundaria%203",
+                "alt": "Placeholder 3"
+            },
+            {
+                "src": "https://via.placeholder.com/400x200/0000FF/FFFFFF?text=Secundaria%204",
+                "alt": "Placeholder 4"
+            },
+            {
+                "src": "https://via.placeholder.com/400x200/0000FF/FFFFFF?text=Secundaria%205",
+                "alt": "Placeholder 5"
+            },
+            {
+                "src": "https://via.placeholder.com/400x200/0000FF/FFFFFF?text=Secundaria%206",
+                "alt": "Placeholder 6"
+            }
+        ]
+    },
+    {
+        "id": 11,
+        "title": "Dpto. en Bogotá",
+        "category": "departamentos",
+        "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae minima illum omnis suscipit vel laborum commodi provident eveniet harum voluptatem quam cumque, nam maiores?",
+        "location": "Bogotá",
+        "points": "8.5",
+        "product":{
+            "title":"Alójate en el norte de Bogotá",
+            "info": [
+                "Esta es la info del producto 8",
+                "Continuo otro párrafo del producto 8",
+                "Párrafo final del producto 8"
+            ]
+        },
+        "policies":{
+            "rules": [
+                "Check-out: 08:00",
+                "No se permiten fiestas",
+                "No fumar"
+            ],
+            "safeAndHealth": [
+                "Se aplican las pautas de distanciamiento social y otras normas relacionadas con el coronavirus",
+                "Detector de humo",
+                "Depósito de seguridad"
+            ],
+            "cancel": [
+                "Agregá las fechas de tu viaje para obtener los detalles de cancelación de esta estadía"
+            ]
+        },
+        "imgs": [
+            {
+                "src": "https://images.unsplash.com/photo-1583377519891-1eea1c2e3947?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8YXBwYXJ0bWVudHxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=60",
+                "alt": "Principal"
+            },
+            {
+                "src": "https://via.placeholder.com/400x200/0000FF/FFFFFF?text=Secundaria%201",
+                "alt": "Placeholder 1"
+            },
+            {
+                "src": "https://via.placeholder.com/400x200/0000FF/FFFFFF?text=Secundaria%202",
+                "alt": "Placeholder 2"
+            },
+            {
+                "src": "https://via.placeholder.com/400x200/0000FF/FFFFFF?text=Secundaria%203",
+                "alt": "Placeholder 3"
+            },
+            {
+                "src": "https://via.placeholder.com/400x200/0000FF/FFFFFF?text=Secundaria%204",
+                "alt": "Placeholder 4"
+            },
+            {
+                "src": "https://via.placeholder.com/400x200/0000FF/FFFFFF?text=Secundaria%205",
+                "alt": "Placeholder 5"
+            },
+            {
+                "src": "https://via.placeholder.com/400x200/0000FF/FFFFFF?text=Secundaria%206",
+                "alt": "Placeholder 6"
+            }
+        ]
+    },
+    {
+        "id": 12,
+        "title": "Dpto. en Bogotá",
+        "category": "departamentos",
+        "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae minima illum omnis suscipit vel laborum commodi provident eveniet harum voluptatem quam cumque, nam maiores?",
+        "location": "Bogotá",
+        "points": "8.5",
+        "product":{
+            "title":"Alójate en el norte de Bogotá",
+            "info": [
+                "Esta es la info del producto 8",
+                "Continuo otro párrafo del producto 8",
+                "Párrafo final del producto 8"
+            ]
+        },
+        "policies":{
+            "rules": [
+                "Check-out: 08:00",
+                "No se permiten fiestas",
+                "No fumar"
+            ],
+            "safeAndHealth": [
+                "Se aplican las pautas de distanciamiento social y otras normas relacionadas con el coronavirus",
+                "Detector de humo",
+                "Depósito de seguridad"
+            ],
+            "cancel": [
+                "Agregá las fechas de tu viaje para obtener los detalles de cancelación de esta estadía"
+            ]
+        },
+        "imgs": [
+            {
+                "src": "https://images.unsplash.com/photo-1583377519891-1eea1c2e3947?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8YXBwYXJ0bWVudHxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=60",
+                "alt": "Principal"
+            },
+            {
+                "src": "https://via.placeholder.com/400x200/0000FF/FFFFFF?text=Secundaria%201",
+                "alt": "Placeholder 1"
+            },
+            {
+                "src": "https://via.placeholder.com/400x200/0000FF/FFFFFF?text=Secundaria%202",
+                "alt": "Placeholder 2"
+            },
+            {
+                "src": "https://via.placeholder.com/400x200/0000FF/FFFFFF?text=Secundaria%203",
+                "alt": "Placeholder 3"
+            },
+            {
+                "src": "https://via.placeholder.com/400x200/0000FF/FFFFFF?text=Secundaria%204",
+                "alt": "Placeholder 4"
+            },
+            {
+                "src": "https://via.placeholder.com/400x200/0000FF/FFFFFF?text=Secundaria%205",
+                "alt": "Placeholder 5"
+            },
+            {
+                "src": "https://via.placeholder.com/400x200/0000FF/FFFFFF?text=Secundaria%206",
+                "alt": "Placeholder 6"
+            }
+        ]
+    },
+    {
+        "id": 13,
+        "title": "Dpto. en Bogotá",
+        "category": "departamentos",
+        "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae minima illum omnis suscipit vel laborum commodi provident eveniet harum voluptatem quam cumque, nam maiores?",
+        "location": "Bogotá",
+        "points": "8.5",
+        "product":{
+            "title":"Alójate en el norte de Bogotá",
+            "info": [
+                "Esta es la info del producto 8",
+                "Continuo otro párrafo del producto 8",
+                "Párrafo final del producto 8"
+            ]
+        },
+        "policies":{
+            "rules": [
+                "Check-out: 08:00",
+                "No se permiten fiestas",
+                "No fumar"
+            ],
+            "safeAndHealth": [
+                "Se aplican las pautas de distanciamiento social y otras normas relacionadas con el coronavirus",
+                "Detector de humo",
+                "Depósito de seguridad"
+            ],
+            "cancel": [
+                "Agregá las fechas de tu viaje para obtener los detalles de cancelación de esta estadía"
+            ]
+        },
+        "imgs": [
+            {
+                "src": "https://images.unsplash.com/photo-1583377519891-1eea1c2e3947?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8YXBwYXJ0bWVudHxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=60",
+                "alt": "Principal"
+            },
+            {
+                "src": "https://via.placeholder.com/400x200/0000FF/FFFFFF?text=Secundaria%201",
+                "alt": "Placeholder 1"
+            },
+            {
+                "src": "https://via.placeholder.com/400x200/0000FF/FFFFFF?text=Secundaria%202",
+                "alt": "Placeholder 2"
+            },
+            {
+                "src": "https://via.placeholder.com/400x200/0000FF/FFFFFF?text=Secundaria%203",
+                "alt": "Placeholder 3"
+            },
+            {
+                "src": "https://via.placeholder.com/400x200/0000FF/FFFFFF?text=Secundaria%204",
+                "alt": "Placeholder 4"
+            },
+            {
+                "src": "https://via.placeholder.com/400x200/0000FF/FFFFFF?text=Secundaria%205",
+                "alt": "Placeholder 5"
+            },
+            {
+                "src": "https://via.placeholder.com/400x200/0000FF/FFFFFF?text=Secundaria%206",
+                "alt": "Placeholder 6"
+            }
+        ]
+    },
+    {
+        "id": 14,
+        "title": "Dpto. en Bogotá",
+        "category": "departamentos",
+        "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae minima illum omnis suscipit vel laborum commodi provident eveniet harum voluptatem quam cumque, nam maiores?",
+        "location": "Bogotá",
+        "points": "8.5",
+        "product":{
+            "title":"Alójate en el norte de Bogotá",
+            "info": [
+                "Esta es la info del producto 8",
+                "Continuo otro párrafo del producto 8",
+                "Párrafo final del producto 8"
+            ]
+        },
+        "policies":{
+            "rules": [
+                "Check-out: 08:00",
+                "No se permiten fiestas",
+                "No fumar"
+            ],
+            "safeAndHealth": [
+                "Se aplican las pautas de distanciamiento social y otras normas relacionadas con el coronavirus",
+                "Detector de humo",
+                "Depósito de seguridad"
+            ],
+            "cancel": [
+                "Agregá las fechas de tu viaje para obtener los detalles de cancelación de esta estadía"
+            ]
+        },
+        "imgs": [
+            {
+                "src": "https://images.unsplash.com/photo-1583377519891-1eea1c2e3947?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8YXBwYXJ0bWVudHxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=60",
+                "alt": "Principal"
+            },
+            {
+                "src": "https://via.placeholder.com/400x200/0000FF/FFFFFF?text=Secundaria%201",
+                "alt": "Placeholder 1"
+            },
+            {
+                "src": "https://via.placeholder.com/400x200/0000FF/FFFFFF?text=Secundaria%202",
+                "alt": "Placeholder 2"
+            },
+            {
+                "src": "https://via.placeholder.com/400x200/0000FF/FFFFFF?text=Secundaria%203",
+                "alt": "Placeholder 3"
+            },
+            {
+                "src": "https://via.placeholder.com/400x200/0000FF/FFFFFF?text=Secundaria%204",
+                "alt": "Placeholder 4"
+            },
+            {
+                "src": "https://via.placeholder.com/400x200/0000FF/FFFFFF?text=Secundaria%205",
+                "alt": "Placeholder 5"
+            },
+            {
+                "src": "https://via.placeholder.com/400x200/0000FF/FFFFFF?text=Secundaria%206",
+                "alt": "Placeholder 6"
+            }
+        ]
+    },
+    {
+        "id": 15,
+        "title": "Dpto. en Bogotá",
+        "category": "departamentos",
+        "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae minima illum omnis suscipit vel laborum commodi provident eveniet harum voluptatem quam cumque, nam maiores?",
+        "location": "Bogotá",
+        "points": "8.5",
+        "product":{
+            "title":"Alójate en el norte de Bogotá",
+            "info": [
+                "Esta es la info del producto 8",
+                "Continuo otro párrafo del producto 8",
+                "Párrafo final del producto 8"
+            ]
+        },
+        "policies":{
+            "rules": [
+                "Check-out: 08:00",
+                "No se permiten fiestas",
+                "No fumar"
+            ],
+            "safeAndHealth": [
+                "Se aplican las pautas de distanciamiento social y otras normas relacionadas con el coronavirus",
+                "Detector de humo",
+                "Depósito de seguridad"
+            ],
+            "cancel": [
+                "Agregá las fechas de tu viaje para obtener los detalles de cancelación de esta estadía"
+            ]
+        },
+        "imgs": [
+            {
+                "src": "https://images.unsplash.com/photo-1583377519891-1eea1c2e3947?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8YXBwYXJ0bWVudHxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=60",
+                "alt": "Principal"
+            },
+            {
+                "src": "https://via.placeholder.com/400x200/0000FF/FFFFFF?text=Secundaria%201",
+                "alt": "Placeholder 1"
+            },
+            {
+                "src": "https://via.placeholder.com/400x200/0000FF/FFFFFF?text=Secundaria%202",
+                "alt": "Placeholder 2"
+            },
+            {
+                "src": "https://via.placeholder.com/400x200/0000FF/FFFFFF?text=Secundaria%203",
+                "alt": "Placeholder 3"
+            },
+            {
+                "src": "https://via.placeholder.com/400x200/0000FF/FFFFFF?text=Secundaria%204",
+                "alt": "Placeholder 4"
+            },
+            {
+                "src": "https://via.placeholder.com/400x200/0000FF/FFFFFF?text=Secundaria%205",
+                "alt": "Placeholder 5"
+            },
+            {
+                "src": "https://via.placeholder.com/400x200/0000FF/FFFFFF?text=Secundaria%206",
+                "alt": "Placeholder 6"
+            }
+        ]
     }
 ]

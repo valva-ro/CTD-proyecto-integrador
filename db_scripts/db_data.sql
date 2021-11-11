@@ -187,15 +187,29 @@ COMMIT;
 --
 SET AUTOCOMMIT=0;
 INSERT INTO caracteristicas (nombre, icono) VALUES ("Wifi","fas fa-wifi");
-INSERT INTO caracteristicas (nombre, icono) VALUES ("Parqueadero","bx bxs-car");
 INSERT INTO caracteristicas (nombre, icono) VALUES ("Piscina","fas fa-swimmer");
+INSERT INTO caracteristicas (nombre, icono) VALUES ("Estacionamiento gratuito","fas fa-car");
+INSERT INTO caracteristicas (nombre, icono) VALUES ("Aire acondicionado","fas fa-snowflake");
+INSERT INTO caracteristicas (nombre, icono) VALUES ("No fumador","fas fa-smoking-ban");
+INSERT INTO caracteristicas (nombre, icono) VALUES ("Televisor","fas fa-tv");
+INSERT INTO caracteristicas (nombre, icono) VALUES ("Apto para mascotas","fas fa-paw");
+INSERT INTO caracteristicas (nombre, icono) VALUES ("Barra libre","fas fa-cocktail");
+INSERT INTO caracteristicas (nombre, icono) VALUES ("Tarjeta de crédito","fas fa-credit-card");
+INSERT INTO caracteristicas (nombre, icono) VALUES ("Check-in","fas fa-clock");
 COMMIT;
 
 --
 -- Dumping data for table `producto_caracteristica`
 --
 SET AUTOCOMMIT=0;
+INSERT INTO producto_caracteristica (producto_id, caracteristica_id) VALUES (1,1);
 INSERT INTO producto_caracteristica (producto_id, caracteristica_id) VALUES (1,2);
+INSERT INTO producto_caracteristica (producto_id, caracteristica_id) VALUES (1,3);
+INSERT INTO producto_caracteristica (producto_id, caracteristica_id) VALUES (1,4);
+INSERT INTO producto_caracteristica (producto_id, caracteristica_id) VALUES (1,5);
+INSERT INTO producto_caracteristica (producto_id, caracteristica_id) VALUES (1,6);
+INSERT INTO producto_caracteristica (producto_id, caracteristica_id) VALUES (1,7);
+INSERT INTO producto_caracteristica (producto_id, caracteristica_id) VALUES (1,8);
 INSERT INTO producto_caracteristica (producto_id, caracteristica_id) VALUES (3,1);
 INSERT INTO producto_caracteristica (producto_id, caracteristica_id) VALUES (3,3);
 INSERT INTO producto_caracteristica (producto_id, caracteristica_id) VALUES (2,1);
