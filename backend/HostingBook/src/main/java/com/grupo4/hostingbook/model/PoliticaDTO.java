@@ -1,6 +1,5 @@
 package com.grupo4.hostingbook.model;
 
-import com.grupo4.hostingbook.persistence.entites.Producto;
 import com.grupo4.hostingbook.persistence.entites.TipoPolitica;
 
 import java.util.Objects;
@@ -11,7 +10,7 @@ public class PoliticaDTO {
     private Long id;
     private String nombre;
     private TipoPolitica tipoPolitica;
-    private Set<Producto> productos;
+    private Set<ProductoDTO> productos;
 
     public PoliticaDTO() {
     }
@@ -31,7 +30,7 @@ public class PoliticaDTO {
         this.tipoPolitica = tipoPolitica;
     }
 
-    public PoliticaDTO(Long id, String nombre, TipoPolitica tipoPolitica, Set<Producto> productos) {
+    public PoliticaDTO(Long id, String nombre, TipoPolitica tipoPolitica, Set<ProductoDTO> productos) {
         this.id = id;
         this.nombre = nombre;
         this.tipoPolitica = tipoPolitica;
@@ -62,11 +61,11 @@ public class PoliticaDTO {
         this.tipoPolitica = tipoPolitica;
     }
 
-    public Set<Producto> getProductos() {
+    public Set<ProductoDTO> getProductos() {
         return productos;
     }
 
-    public void setProductos(Set<Producto> productos) {
+    public void setProductos(Set<ProductoDTO> productos) {
         this.productos = productos;
     }
 

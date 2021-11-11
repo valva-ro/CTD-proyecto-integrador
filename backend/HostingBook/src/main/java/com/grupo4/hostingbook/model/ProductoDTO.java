@@ -1,7 +1,5 @@
 package com.grupo4.hostingbook.model;
 
-import com.grupo4.hostingbook.persistence.entites.Politica;
-
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Objects;
@@ -14,7 +12,7 @@ public class ProductoDTO implements Serializable {
     private String descripcion;
     private CategoriaDTO categoria;
     private CiudadDTO ciudad;
-    private Set<Politica> politicas = new HashSet<>();
+    private Set<PoliticaDTO> politicas;
     private Set<ImagenDTO> imagenes;
     private Set<CaracteristicaDTO> caracteristicas;
 
@@ -106,9 +104,9 @@ public class ProductoDTO implements Serializable {
         this.caracteristicas = caracteristicas;
     }
 
-    public Set<Politica> getPoliticas() {return politicas;}
+    public Set<PoliticaDTO> getPoliticas() {return politicas;}
 
-    public void setPoliticas(Set<Politica> politicas) {this.politicas = politicas;}
+    public void setPoliticas(Set<PoliticaDTO> politicas) {this.politicas = politicas;}
 
     @Override
     public boolean equals(Object o) {
