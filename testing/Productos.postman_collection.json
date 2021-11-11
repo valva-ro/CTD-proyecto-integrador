@@ -1,0 +1,977 @@
+{
+	"info": {
+		"_postman_id": "21ac4fee-8759-41c4-b817-47110b19bf2d",
+		"name": "Productos",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Crear",
+			"item": [
+				{
+					"name": "Producto con todos los datos válidos",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"nombre\": \"PRODUCTO NUEVO\",\r\n  \"descripcion\": \"PRODUCTO NUEVO\",\r\n  \"caracteristicas\": [\r\n    {\r\n      \"id\": 1\r\n    }\r\n  ],\r\n  \"categoria\": {\r\n    \"id\": 1\r\n  },\r\n  \"ciudad\": {\r\n    \"id\": 1\r\n  },\r\n  \"imagenes\": [\r\n    {\r\n      \"id\": 1\r\n    },\r\n    {\r\n      \"id\": 2\r\n    }\r\n  ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/productos/",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"productos",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Error producto con nombre vacío",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Mensaje de error creación\", function () {\r",
+									"    pm.response.to.have.body(\"Ha ocurrido un error en la creación de 'producto', 'nombre' no puede estar vacío\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"nombre\": \"\",\r\n  \"descripcion\": \"Este producto es de prueba, un hotel cualquiera en cualquier lugar\",\r\n  \"caracteristicas\": [\r\n      {\"id\":1}\r\n    ],\r\n  \"categoria\": {\r\n      \"id\": 1\r\n    },\r\n  \"ciudad\": {\r\n      \"id\":3\r\n    },\r\n  \"imagenes\": [\r\n      {\"id\": 1},\r\n      {\"id\": 3}\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/productos/",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"productos",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Error producto con nombre lleno de espacios",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Mensaje de error creación\", function () {\r",
+									"    pm.response.to.have.body(\"Ha ocurrido un error en la creación de 'producto', 'nombre' no puede estar vacío\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"nombre\": \"           \",\r\n  \"descripcion\": \"Este producto es de prueba, un hotel cualquiera en cualquier lugar\",\r\n  \"caracteristicas\": [\r\n      {\"id\":1}\r\n    ],\r\n  \"categoria\": {\r\n      \"id\": 1\r\n    },\r\n  \"ciudad\": {\r\n      \"id\":3\r\n    },\r\n  \"imagenes\": [\r\n      {\"id\": 1},\r\n      {\"id\": 3}\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/productos/",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"productos",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Error producto con nombre null",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Mensaje de error creación\", function () {\r",
+									"    pm.response.to.have.body(\"Ha ocurrido un error en la creación de 'producto', 'nombre' no puede estar vacío\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"descripcion\": \"Este producto es de prueba, un hotel cualquiera en cualquier lugar\",\r\n  \"caracteristicas\": [\r\n      {\"id\":1}\r\n    ],\r\n  \"categoria\": {\r\n      \"id\": 1\r\n    },\r\n  \"ciudad\": {\r\n      \"id\":3\r\n    },\r\n  \"imagenes\": [\r\n      {\"id\": 1},\r\n      {\"id\": 3}\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/productos/",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"productos",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Error producto con descripción vacía",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Mensaje de error creación\", function () {\r",
+									"    pm.response.to.have.body(\"Ha ocurrido un error en la creación de 'producto', 'descripción' no puede estar vacío\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"nombre\": \"Hotel Juanito\",\r\n  \"descripcion\": \"\",\r\n  \"caracteristicas\": [\r\n      {\"id\":1}\r\n    ],\r\n  \"categoria\": {\r\n      \"id\": 1\r\n    },\r\n  \"ciudad\": {\r\n      \"id\":3\r\n    },\r\n  \"imagenes\": [\r\n      {\"id\": 1},\r\n      {\"id\": 3}\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/productos/",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"productos",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Error producto con descripción llena de espacios",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Mensaje de error creación\", function () {\r",
+									"    pm.response.to.have.body(\"Ha ocurrido un error en la creación de 'producto', 'descripción' no puede estar vacío\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"nombre\": \"Hotel Juanito\",\r\n  \"descripcion\": \"                   \",\r\n  \"caracteristicas\": [\r\n      {\"id\":1}\r\n    ],\r\n  \"categoria\": {\r\n      \"id\": 1\r\n    },\r\n  \"ciudad\": {\r\n      \"id\":3\r\n    },\r\n  \"imagenes\": [\r\n      {\"id\": 1},\r\n      {\"id\": 3}\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/productos/",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"productos",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Error producto con descripción null",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Mensaje de error creación\", function () {\r",
+									"    pm.response.to.have.body(\"Ha ocurrido un error en la creación de 'producto', 'descripción' no puede estar vacío\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"nombre\": \"Hotel Juanito\",\r\n  \"caracteristicas\": [\r\n      {\"id\":1}\r\n    ],\r\n  \"categoria\": {\r\n      \"id\": 1\r\n    },\r\n  \"ciudad\": {\r\n      \"id\":3\r\n    },\r\n  \"imagenes\": [\r\n      {\"id\": 1},\r\n      {\"id\": 3}\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/productos/",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"productos",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Error producto con características vacías",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Mensaje de error creación\", function () {\r",
+									"    pm.response.to.have.body(\"Ha ocurrido un error en la creación de 'producto', 'características' no puede estar vacío\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"nombre\": \"Hotel Juanito\",\r\n  \"descripcion\": \"Este producto es de prueba, un hotel cualquiera en cualquier lugar\",\r\n  \"caracteristicas\": [],\r\n  \"categoria\": {\r\n      \"id\": 1\r\n    },\r\n  \"ciudad\": {\r\n      \"id\":3\r\n    },\r\n  \"imagenes\": [\r\n      {\"id\": 1},\r\n      {\"id\": 3}\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/productos/",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"productos",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Error producto con características null",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Mensaje de error creación\", function () {\r",
+									"    pm.response.to.have.body(\"Ha ocurrido un error en la creación de 'producto', 'características' no puede estar vacío\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"nombre\": \"Hotel Juanito\",\r\n  \"descripcion\": \"Este producto es de prueba, un hotel cualquiera en cualquier lugar\",\r\n  \"categoria\": {\r\n      \"id\": 1\r\n    },\r\n  \"ciudad\": {\r\n      \"id\":3\r\n    },\r\n  \"imagenes\": [\r\n      {\"id\": 1},\r\n      {\"id\": 3}\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/productos/",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"productos",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Error producto con categoría vacía",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Mensaje de error creación\", function () {\r",
+									"    pm.response.to.have.body(\"Ha ocurrido un error en la creación de 'producto', 'categoría' no puede estar vacío\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"nombre\": \"Hotel Juanito\",\r\n  \"descripcion\": \"Este producto es de prueba, un hotel cualquiera en cualquier lugar\",\r\n  \"caracteristicas\": [\r\n      {\"id\":1}\r\n    ],\r\n  \"categoria\": {},\r\n  \"ciudad\": {\r\n      \"id\":3\r\n    },\r\n  \"imagenes\": [\r\n      {\"id\": 1},\r\n      {\"id\": 3}\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/productos/",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"productos",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Erro producto con categoría null",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Mensaje de error creación\", function () {\r",
+									"    pm.response.to.have.body(\"Ha ocurrido un error en la creación de 'producto', 'categoría' no puede estar vacío\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"nombre\": \"Hotel Juanito\",\r\n  \"descripcion\": \"Este producto es de prueba, un hotel cualquiera en cualquier lugar\",\r\n  \"caracteristicas\": [\r\n      {\"id\":1}\r\n    ],\r\n  \"ciudad\": {\r\n      \"id\":3\r\n    },\r\n  \"imagenes\": [\r\n      {\"id\": 1},\r\n      {\"id\": 3}\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/productos/",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"productos",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Error producto con ciudad vacía",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Mensaje de error creación\", function () {\r",
+									"    pm.response.to.have.body(\"Ha ocurrido un error en la creación de 'producto', 'ciudad' no puede estar vacío\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"nombre\": \"Hotel Juanito\",\r\n  \"descripcion\": \"Este producto es de prueba, un hotel cualquiera en cualquier lugar\",\r\n  \"caracteristicas\": [\r\n      {\"id\":1}\r\n    ],\r\n  \"categoria\": {\r\n      \"id\": 1\r\n    },\r\n  \"ciudad\": {},\r\n  \"imagenes\": [\r\n      {\"id\": 1},\r\n      {\"id\": 3}\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/productos/",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"productos",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Error producto con ciudad null",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Mensaje de error creación\", function () {\r",
+									"    pm.response.to.have.body(\"Ha ocurrido un error en la creación de 'producto', 'ciudad' no puede estar vacío\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"nombre\": \"Hotel Juanito\",\r\n  \"descripcion\": \"Este producto es de prueba, un hotel cualquiera en cualquier lugar\",\r\n  \"caracteristicas\": [\r\n      {\"id\":1}\r\n    ],\r\n  \"categoria\": {\r\n      \"id\": 1\r\n    },\r\n  \"imagenes\": [\r\n      {\"id\": 1},\r\n      {\"id\": 3}\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/productos/",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"productos",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Error producto con imágenes vacías",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Mensaje de error creación\", function () {\r",
+									"    pm.response.to.have.body(\"Ha ocurrido un error en la creación de 'producto', 'imágenes' no puede estar vacío\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"nombre\": \"Hotel Juanito\",\r\n  \"descripcion\": \"Este producto es de prueba, un hotel cualquiera en cualquier lugar\",\r\n  \"caracteristicas\": [\r\n      {\"id\":1}\r\n    ],\r\n  \"categoria\": {\r\n      \"id\": 1\r\n    },\r\n  \"ciudad\": {\r\n      \"id\":3\r\n    },\r\n  \"imagenes\": []\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/productos/",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"productos",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Error producto con imágenes null",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Mensaje de error creación\", function () {\r",
+									"    pm.response.to.have.body(\"Ha ocurrido un error en la creación de 'producto', 'imágenes' no puede estar vacío\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"nombre\": \"Hotel Juanito\",\r\n  \"descripcion\": \"Este producto es de prueba, un hotel cualquiera en cualquier lugar\",\r\n  \"caracteristicas\": [\r\n      {\"id\":1}\r\n    ],\r\n  \"categoria\": {\r\n      \"id\": 1\r\n    },\r\n  \"ciudad\": {\r\n      \"id\":3\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/productos/",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"productos",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Obtener",
+			"item": [
+				{
+					"name": "Todos los productos",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Hay al menos un dato en la BD\", function () {\r",
+									"    const jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.length).not.to.eql(0);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/productos",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"productos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener producto por ID existente",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/productos/1",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"productos",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Error obtener producto con ID inexistente",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {\r",
+									"    pm.response.to.have.status(404);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Mensaje de error creación\", function () {\r",
+									"    pm.response.to.have.body(\"El 'producto' con id 995 no está registrado en la base de datos.\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/productos/995",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"productos",
+								"995"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Error obtener producto con ID fuera de rango",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Mensaje de error creación\", function () {\r",
+									"    pm.response.to.have.body(\"El id no puede ser menor a 1\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/productos/-5",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"productos",
+								"-5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener productos por categoría existente",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Hay al menos un dato en la BD\", function () {\r",
+									"    const jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.length).not.to.eql(0);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/productos/categoria?titulo=otel",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"productos",
+								"categoria"
+							],
+							"query": [
+								{
+									"key": "titulo",
+									"value": "otel"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Error obtener producto por categoría inexistente",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {\r",
+									"    pm.response.to.have.status(404);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body is correct\", function () {\r",
+									"    pm.response.to.have.body(\"La categoría denominada 'Pepito' no está registrada en la base de datos.\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/productos/categoria?titulo=Pepito",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"productos",
+								"categoria"
+							],
+							"query": [
+								{
+									"key": "titulo",
+									"value": "Pepito"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener producto por ciudad existente",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Hay al menos un dato en la BD\", function () {\r",
+									"    const jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.length).not.to.eql(0);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/productos/ciudad?nombre=Salta",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"productos",
+								"ciudad"
+							],
+							"query": [
+								{
+									"key": "nombre",
+									"value": "Salta"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Error obtener producto por ciudad inexistente",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {\r",
+									"    pm.response.to.have.status(404);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body is correct\", function () {\r",
+									"    pm.response.to.have.body(\"La ciudad denominada 'Pepito' no está registrada en la base de datos.\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/productos/ciudad?nombre=Pepito",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"productos",
+								"ciudad"
+							],
+							"query": [
+								{
+									"key": "nombre",
+									"value": "Pepito"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

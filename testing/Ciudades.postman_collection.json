@@ -1,0 +1,489 @@
+{
+	"info": {
+		"_postman_id": "101af81f-dd42-4663-9a11-cd7b6f8e7d49",
+		"name": "Ciudades",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Crear",
+			"item": [
+				{
+					"name": "Ciudad con todos los datos válidos",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \"nombre\":\"Coronel Moldes\",\r\n   \"pais\":\"Argentina\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/ciudades/",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"ciudades",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Error ciudad con nombre vacío",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Mensaje de error creación\", function () {\r",
+									"    pm.response.to.have.body(\"Ha ocurrido un error en la creación de 'ciudad', 'nombre' no puede estar vacío\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \"nombre\":\"\",\r\n   \"pais\":\"Argentina\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/ciudades/",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"ciudades",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Error ciudad con nombre lleno de espacios",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Mensaje de error creación\", function () {\r",
+									"    pm.response.to.have.body(\"Ha ocurrido un error en la creación de 'ciudad', 'nombre' no puede estar vacío\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \"nombre\":\"                \",\r\n   \"pais\":\"Argentina\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/ciudades/",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"ciudades",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Error ciudad con nombre null",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Mensaje de error creación\", function () {\r",
+									"    pm.response.to.have.body(\"Ha ocurrido un error en la creación de 'ciudad', 'nombre' no puede estar vacío\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \"pais\":\"Argentina\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/ciudades/",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"ciudades",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Error ciudad con país vacío",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Mensaje de error creación\", function () {\r",
+									"    pm.response.to.have.body(\"Ha ocurrido un error en la creación de 'ciudad', 'pais' no puede estar vacío\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \"nombre\":\"Coronel Moldes\",\r\n   \"pais\":\"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/ciudades/",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"ciudades",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Error ciudad con país lleno de espacios",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Mensaje de error creación\", function () {\r",
+									"    pm.response.to.have.body(\"Ha ocurrido un error en la creación de 'ciudad', 'pais' no puede estar vacío\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \"nombre\":\"Coronel Moldes\",\r\n   \"pais\":\"            \"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/ciudades/",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"ciudades",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Error ciudad con país null",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Mensaje de error creación\", function () {\r",
+									"    pm.response.to.have.body(\"Ha ocurrido un error en la creación de 'ciudad', 'pais' no puede estar vacío\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \"nombre\": \"Coronel Moldes\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/ciudades/",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"ciudades",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Obtener",
+			"item": [
+				{
+					"name": "Todas las ciudades",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Hay al menos un dato en la BD\", function () {\r",
+									"    const jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.length).not.to.eql(0);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/ciudades",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"ciudades"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener ciudad por ID no está implementado",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 501\", function () {\r",
+									"    pm.response.to.have.status(501);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Mensaje de error creación\", function () {\r",
+									"    pm.response.to.have.body(\"Esta funcionalidad no ha sido implementada.\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/ciudades/1",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"ciudades",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Modificar/Actualizar",
+			"item": [
+				{
+					"name": "Actualizar ciudad no está implementado",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 501\", function () {\r",
+									"    pm.response.to.have.status(501);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Mensaje de error creación\", function () {\r",
+									"    pm.response.to.have.body(\"Esta funcionalidad no ha sido implementada.\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \"id\": 1,\r\n   \"nombre\":\"Coronel Moldes\",\r\n   \"pais\":\"Argentina\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/ciudades/",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"ciudades",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Eliminar",
+			"item": [
+				{
+					"name": "Eliminar ciudad no está implementado",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 501\", function () {\r",
+									"    pm.response.to.have.status(501);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Mensaje de error creación\", function () {\r",
+									"    pm.response.to.have.body(\"Esta funcionalidad no ha sido implementada.\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/ciudades/1",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"ciudades",
+								"1"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
