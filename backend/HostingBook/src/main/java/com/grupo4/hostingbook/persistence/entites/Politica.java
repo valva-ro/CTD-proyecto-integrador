@@ -13,7 +13,7 @@ public class Politica {
     private Long id;
     private String nombre;
 
-    @OneToMany(cascade = CascadeType.MERGE)
+    @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "fk_tipo_politica")
     private TipoPolitica tipoPolitica;
 

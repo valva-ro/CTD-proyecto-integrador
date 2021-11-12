@@ -15,7 +15,7 @@ public class TipoPolitica {
     private Long id;
     private String nombre;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "tipo_politica", fetch = FetchType.EAGER)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "tipoPolitica", fetch = FetchType.EAGER)
     private Set<Politica> politicas = new HashSet<>();
 
     public Long getId() {
