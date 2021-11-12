@@ -5,11 +5,10 @@ import FilledButton from "../Buttons/FilledButton";
 import styles from "./ProductoImagenes.module.css";
 import "./CarouselStyles.css";
 
-export default function ProductoImagenes({ alojamiento }) {
+export default function ProductoImagenes({ alojamiento: { imagenes } }) {
   const [carruselEstaAbierto, setCarruselEstaAbierto] = useState(false);
   const cerrarCarousel = () => setCarruselEstaAbierto(false);
   const abrirCarousel = () => setCarruselEstaAbierto(true);
-  const { imagenes } = alojamiento;
 
   const obtenerImagenPrincipal = () => {
     return imagenes.find(imagen => {
@@ -39,13 +38,13 @@ export default function ProductoImagenes({ alojamiento }) {
           }}
         ></div>
         <div className={styles.imagenesSecundarias}>
-          {obtenerImagenesSecundarias().slice(0, 4).map((imagen, i) => (
+          {obtenerImagenesSecundarias().slice(0, 4).map( imagen => (
             <div
               className={styles.imagenSecundaria}
               style={{
                 backgroundImage: `url(${imagen.imagenUrl})`,
               }}
-              key={i}
+              key={imagen.id}
             ></div>
           ))}
         </div>
@@ -83,9 +82,9 @@ const carruselTabletMobile = (imagenes) => (
     swipeable={true}
     transitionTime={750}
   >
-    {imagenes.map((imagen, i) => {
+    {imagenes.map( imagen => {
       return (
-        <div key={`imagen-${i}`} className={styles.imagen}>
+        <div key={`imagen-${imagen.id}`} className={styles.imagen}>
           <img src={imagen.imagenUrl} alt={imagen.imagenTitulo} />
         </div>
       );

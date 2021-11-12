@@ -53,8 +53,8 @@ export default function BloqueAlojamientos({ categoriaActual }) {
               : styles.alojamientos
           }
         >
-          {alojamientosFiltrados.map((alojamiento, i) => (
-            <li key={i} className={styles.alojamiento}>
+          {alojamientosFiltrados.map((alojamiento) => (
+            <li key={alojamiento.id} className={styles.alojamiento}>
               <TarjetaAlojamiento alojamiento={alojamiento} />
             </li>
           ))}
