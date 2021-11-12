@@ -27,19 +27,20 @@ COMMIT;
 --
 -- Dumping data for table `ciudades`
 --
-INSERT INTO ciudades (nombre, pais) VALUES ('Capital Federal','Argentina');
-INSERT INTO ciudades (nombre, pais) VALUES ('La Plata','Argentina');
-INSERT INTO ciudades (nombre, pais) VALUES ('Córdoba','Argentina');
-INSERT INTO ciudades (nombre, pais) VALUES ('Salta','Argentina');
-INSERT INTO ciudades (nombre, pais) VALUES ('Mendoza','Argentina');
-INSERT INTO ciudades (nombre, pais) VALUES ('Mar del Plata','Argentina');
-INSERT INTO ciudades (nombre, pais) VALUES ('Rosario','Argentina');
-INSERT INTO ciudades (nombre, pais) VALUES ('Bogotá','Colombia');
-INSERT INTO ciudades (nombre, pais) VALUES ('Medellín','Colombia');
-INSERT INTO ciudades (nombre, pais) VALUES ('Cali','Colombia');
-INSERT INTO ciudades (nombre, pais) VALUES ('Cartagena','Colombia');
-INSERT INTO ciudades (nombre, pais) VALUES ('Barranquilla','Colombia');
-INSERT INTO ciudades (nombre, pais) VALUES ('San Carlos de Bariloche','Argentina');
+SET AUTOCOMMIT=0;
+INSERT INTO ciudades (nombre, pais, latitud, longitud) VALUES ('Capital Federal','Argentina',-34.6083, -58.3712);
+INSERT INTO ciudades (nombre, pais, latitud, longitud) VALUES ('La Plata','Argentina',-34.9214,-57.9544);
+INSERT INTO ciudades (nombre, pais, latitud, longitud) VALUES ('Córdoba','Argentina',-31.417,-64.183);
+INSERT INTO ciudades (nombre, pais, latitud, longitud) VALUES ('Salta','Argentina',-24.7859,-65.4116);
+INSERT INTO ciudades (nombre, pais, latitud, longitud) VALUES ('Mendoza','Argentina',-32.8903,-68.8472);
+INSERT INTO ciudades (nombre, pais, latitud, longitud) VALUES ('Mar del Plata','Argentina',-38.0033,-57.5528);
+INSERT INTO ciudades (nombre, pais, latitud, longitud) VALUES ('Rosario','Argentina',-32.9468,-60.6393);
+INSERT INTO ciudades (nombre, pais, latitud, longitud) VALUES ('Bogotá','Colombia',4.6097,-74.0817);
+INSERT INTO ciudades (nombre, pais, latitud, longitud) VALUES ('Medellín','Colombia',6.217,-75.567);
+INSERT INTO ciudades (nombre, pais, latitud, longitud) VALUES ('Cali','Colombia',3.4372,-76.5225);
+INSERT INTO ciudades (nombre, pais, latitud, longitud) VALUES ('Cartagena','Colombia',10.3997,-75.5144);
+INSERT INTO ciudades (nombre, pais, latitud, longitud) VALUES ('Barranquilla','Colombia',10.9685,-74.7813);
+INSERT INTO ciudades (nombre, pais, latitud, longitud) VALUES ('San Carlos de Bariloche','Argentina',-41.1455,-71.3082);
 COMMIT;
 
 --

@@ -40,6 +40,8 @@ CREATE TABLE ciudades (
   ciudad_id INT UNSIGNED NOT NULL AUTO_INCREMENT,
   nombre VARCHAR(50) NOT NULL,
   pais VARCHAR(50) NOT NULL,
+  latitud DOUBLE(7,4) NOT NULL,
+  longitud DOUBLE(7,4) NOT NULL,
   PRIMARY KEY (ciudad_id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
