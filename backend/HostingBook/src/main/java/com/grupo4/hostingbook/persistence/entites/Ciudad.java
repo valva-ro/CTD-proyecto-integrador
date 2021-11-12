@@ -15,6 +15,8 @@ public class Ciudad {
     private Long id;
     private String nombre;
     private String pais;
+    private double latitud;
+    private double longitud;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "ciudad", fetch = FetchType.EAGER)
     private Set<Producto> productos = new HashSet<>();
@@ -43,17 +45,25 @@ public class Ciudad {
         this.pais = pais;
     }
 
+    public double getLatitud() {return latitud;}
+
+    public void setLatitud(double latitud) {this.latitud = latitud;}
+
+    public double getLongitud() {return longitud;}
+
+    public void setLongitud(double longitud) {this.longitud = longitud;}
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Ciudad)) return false;
         Ciudad ciudad = (Ciudad) o;
-        return Objects.equals(id, ciudad.id) && Objects.equals(nombre, ciudad.nombre) && Objects.equals(pais, ciudad.pais);
+        return Objects.equals(id, ciudad.id) && Objects.equals(nombre, ciudad.nombre) && Objects.equals(pais, ciudad.pais) && Objects.equals(latitud, ciudad.latitud) && Objects.equals(longitud, ciudad.longitud);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, nombre, pais);
+        return Objects.hash(id, nombre, pais, latitud, longitud);
     }
 
 }
