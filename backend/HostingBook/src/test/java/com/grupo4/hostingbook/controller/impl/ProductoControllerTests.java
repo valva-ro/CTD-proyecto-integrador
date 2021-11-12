@@ -58,7 +58,7 @@ public class ProductoControllerTests {
         Set<CaracteristicaDTO> caracteristicasIDs = Set.of(caracteristica1ID, caracteristica2ID);
 
         categoriaService.crear(new CategoriaDTO("Hotel", "807.105 hoteles", "https://via.placeholder.com/300"));
-        ciudadService.crear(new CiudadDTO("Manizales", "Colombia"));
+        ciudadService.crear(new CiudadDTO("Manizales", "Colombia",5.067, -75.517));
         imagenService.crear(new ImagenDTO("Habitación doble", "https://via.placeholder.com/300"));
         imagenService.crear(new ImagenDTO("Baño", "https://via.placeholder.com/300"));
         caracteristicaService.crear(new CaracteristicaDTO("WiFi","<i class='bx bx-wifi'></i>"));
