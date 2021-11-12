@@ -1,3 +1,9 @@
+import React, {
+  useState,
+  useEffect,
+  useRef,
+  useContext,
+} from "react";
 import TituloBloque from "../TituloBloque/TituloBloque";
 import DatePicker, {
   CalendarContainer,
@@ -12,6 +18,8 @@ import useScreenWidth from "../../hooks/useScreenWidth";
 registerLocale("es", es);
 
 export default function ProductoFechasDisponibles() {
+  const [dateRange, setDateRange] = useState([null, null]);
+  const [startDate, endDate] = dateRange;
   const excludeDates = [
     //año, mes, dia --> el mes está corrido. ej: 11 = diciembre / 12 = enero
     new Date(2021, 2, 12),
@@ -52,6 +60,7 @@ export default function ProductoFechasDisponibles() {
     );
   };
 
+
   return (
     <section className={styles.bloqueFechasDisponiblesContainer}>
       <TituloBloque>Fechas disponibles</TituloBloque>
@@ -64,6 +73,12 @@ export default function ProductoFechasDisponibles() {
           formatWeekDay={(nameOfDay) => nameOfDay.substr(0, 1)}
           excludeDates={excludeDates}
           minDate={new Date()}
+          onChange={(update) => {
+            setDateRange(update);
+          }}
+          selectsRange={true}
+          startDate={startDate}
+          endDate={endDate}
         />
         <div className={styles.agregarReservas}>
           <p>Agregá tus fechas de viaje para obtener precios exactos</p>
