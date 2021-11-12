@@ -10,6 +10,7 @@ export default function BloqueAlojamientos({ categoriaActual }) {
   const [alojamientos, setAlojamientos] = useState([]);
   const { isLoaded, items } = useFetch("productos");
 
+  
   useEffect(() => {
     if (isLoaded) {
       setAlojamientos(items);
@@ -45,7 +46,17 @@ export default function BloqueAlojamientos({ categoriaActual }) {
       </TituloBloque>
       {isLoaded && alojamientosFiltrados.length === 0 ? (
         <h2 className={styles.sinResultados}>No se encontraron resultados</h2>
-      ) : !isLoaded ? <h2 className={styles.sinResultados}>Cargando alojamientos</h2> : (
+      ) : !isLoaded ? 
+        <ul
+          className={styles.alojamientos}
+        > 
+          {Array.apply(0, Array(8)).map((x) => (
+            <li className={styles.alojamiento}>
+              <TarjetaAlojamiento alojamiento/>
+            </li>
+          ))}
+        </ul>
+        : (
         <ul
           className={
             alojamientosFiltrados.length < 2
