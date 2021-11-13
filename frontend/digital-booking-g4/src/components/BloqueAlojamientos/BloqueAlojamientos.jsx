@@ -10,29 +10,30 @@ export default function BloqueAlojamientos({ categoriaActual }) {
   const [alojamientos, setAlojamientos] = useState([]);
   const { isLoaded, items } = useFetch("productos");
 
-  
   useEffect(() => {
     if (isLoaded) {
       setAlojamientos(items);
     }
   }, [isLoaded, items]);
 
-
   const alojamientosFiltrados = alojamientos.filter((alojamiento) => {
     let pasaElFiltro = true;
     if (categoriaActual !== "" && currentCity !== "") {
       pasaElFiltro =
-        categoriaActual.toLowerCase() === alojamiento.categoria.titulo.toLowerCase() &&
+        categoriaActual.toLowerCase() ===
+          alojamiento.categoria.titulo.toLowerCase() &&
         currentCity.toLowerCase() === alojamiento.ciudad.nombre.toLowerCase();
     } else if (currentCity !== "") {
-      pasaElFiltro = currentCity.toLowerCase() === alojamiento.ciudad.nombre.toLowerCase();
+      pasaElFiltro =
+        currentCity.toLowerCase() === alojamiento.ciudad.nombre.toLowerCase();
     } else if (categoriaActual !== "") {
       pasaElFiltro =
-        categoriaActual.toLowerCase() === alojamiento.categoria.titulo.toLowerCase();
+        categoriaActual.toLowerCase() ===
+        alojamiento.categoria.titulo.toLowerCase();
     }
     return pasaElFiltro;
   });
-  
+
   return (
     <section className={styles.recomendaciones}>
       <TituloBloque>
@@ -46,17 +47,15 @@ export default function BloqueAlojamientos({ categoriaActual }) {
       </TituloBloque>
       {isLoaded && alojamientosFiltrados.length === 0 ? (
         <h2 className={styles.sinResultados}>No se encontraron resultados</h2>
-      ) : !isLoaded ? 
-        <ul
-          className={styles.alojamientos}
-        > 
+      ) : !isLoaded ? (
+        <ul className={styles.alojamientos}>
           {Array.apply(0, Array(8)).map((x) => (
             <li className={styles.alojamiento}>
-              <TarjetaAlojamiento alojamiento/>
+              <TarjetaAlojamiento alojamiento isLoaded={isLoaded} />
             </li>
           ))}
         </ul>
-        : (
+      ) : (
         <ul
           className={
             alojamientosFiltrados.length < 2
@@ -66,7 +65,10 @@ export default function BloqueAlojamientos({ categoriaActual }) {
         >
           {alojamientosFiltrados.map((alojamiento, i) => (
             <li key={i} className={styles.alojamiento}>
-              <TarjetaAlojamiento alojamiento={alojamiento} />
+              <TarjetaAlojamiento
+                alojamiento={alojamiento}
+                isLoaded={isLoaded}
+              />
             </li>
           ))}
         </ul>
