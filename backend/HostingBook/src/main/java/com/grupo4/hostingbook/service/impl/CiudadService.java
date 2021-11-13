@@ -86,6 +86,10 @@ public class CiudadService implements CRUDService<CiudadDTO> {
                 throw new BadRequestException(String.format(Mensajes.ERROR_CREACION_CAMPO_REQUERIDO, "ciudad", "nombre"));
             if (ciudadDTO.getPais() == null ||ciudadDTO.getPais().isEmpty() || ciudadDTO.getPais().isBlank())
                 throw new BadRequestException(String.format(Mensajes.ERROR_CREACION_CAMPO_REQUERIDO, "ciudad", "pais"));
+            if (ciudadDTO.getLatitud()== null)
+                throw new BadRequestException(String.format(Mensajes.ERROR_CREACION_CAMPO_REQUERIDO, "ciudad", "latitud"));
+            if (ciudadDTO.getLongitud() == null)
+                throw new BadRequestException(String.format(Mensajes.ERROR_CREACION_CAMPO_REQUERIDO, "ciudad", "longitud"));
         }
     }
 
@@ -105,6 +109,10 @@ public class CiudadService implements CRUDService<CiudadDTO> {
             entidad.setNombre(ciudadDTO.getNombre());
         if (ciudadDTO.getPais() != null && !ciudadDTO.getPais().isEmpty() && !ciudadDTO.getPais().isBlank())
             entidad.setPais(ciudadDTO.getPais());
+        if (ciudadDTO.getLatitud() != null)
+            entidad.setLatitud(ciudadDTO.getLatitud());
+        if (ciudadDTO.getLongitud() != null)
+            entidad.setLongitud(ciudadDTO.getLongitud());
         Ciudad entidadActualizada = ciudadRepository.save(entidad);
         return mapper.convertValue(entidadActualizada, CiudadDTO.class);
     }
