@@ -1,30 +1,38 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import FilledButton from "../../Buttons/FilledButton";
 import Estrellas from "../../Estrellas/Estrellas";
 import styles from "./TarjetaAlojamiento.module.css";
+import loggedContext from "../../../contexts/loggedContext";
 
-export default function TarjetaAlojamiento({ alojamiento: { id, 
-  nombre, 
-  descripcion,  
-  categoria, 
-  ciudad, 
-  imagenes,
-caracteristicas } }) {
-
+export default function TarjetaAlojamiento({
+  alojamiento: {
+    id,
+    nombre,
+    descripcion,
+    categoria,
+    ciudad,
+    imagenes,
+    caracteristicas,
+  },
+}) {
+  const { isLogged } = useContext(loggedContext);
+  const [isFavorito, setIsFavorito] = useState(false);
   const [esVerMas, setEsVerMas] = useState(true);
   const toggleVerMas = () => setEsVerMas(!esVerMas);
 
   const buscarImagenPrincipal = () => {
-    let imagen = imagenes.find(imagen => {
+    let imagen = imagenes.find((imagen) => {
       return imagen.imagenTitulo === "Principal";
-    })
+    });
     if (imagen == null) {
       imagen = imagenes[0];
     }
     return imagen;
-  }
+  };
 
+  const handleFav = () => setIsFavorito(!isFavorito);
+  
   return (
     <div className={styles.tarjetaAlojamiento}>
       <div
@@ -33,7 +41,19 @@ caracteristicas } }) {
           backgroundImage: `url(${buscarImagenPrincipal().imagenUrl})`,
         }}
       >
-        <i className={`fas fa-heart ${styles.corazon}`}></i>
+        {isLogged ? (
+          isFavorito ? (
+            <i
+              onClick={() => handleFav()}
+              className={`fas fa-heart ${styles.corazon}`}
+            ></i>
+          ) : (
+            <i
+              onClick={() => handleFav()}
+              className={`far fa-heart ${styles.corazon}`}
+            ></i>
+          )
+        ) : null}
       </div>
 
       <div className={styles.descripcionAlojamiento}>
@@ -59,11 +79,12 @@ caracteristicas } }) {
             </p>
           </div>
           <div className={styles.servicios}>
-            {
-              caracteristicas.map((caracteristica) => 
-                <i key={`caracteristica-${caracteristica.id}`} className={`${caracteristica.icono}`}></i>
-              )
-            }
+            {caracteristicas.map((caracteristica) => (
+              <i
+                key={`caracteristica-${caracteristica.id}`}
+                className={`${caracteristica.icono}`}
+              ></i>
+            ))}
           </div>
         </div>
         <p>
