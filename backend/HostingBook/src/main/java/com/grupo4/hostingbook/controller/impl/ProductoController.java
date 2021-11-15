@@ -121,7 +121,7 @@ public class ProductoController implements IProductoController {
             @ApiResponse(code = 404, message = "Not found"),
             @ApiResponse(code = 400, message = "Bad Request")
     })
-    @PutMapping("/{idProducto}/favorito/usuario/{idUsuario}")
+    @PutMapping("/{idProducto}/usuarios/{idUsuario}")
     public ResponseEntity<?> agregarAFavoritos(@PathVariable Long idProducto, @PathVariable Long idUsuario) throws NotImplementedException, BadRequestException, ResourceNotFoundException {
         return ResponseEntity.ok(productoService.agregarAFavoritos(idProducto, idUsuario));
     }
