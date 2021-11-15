@@ -5,7 +5,7 @@ import com.grupo4.hostingbook.exceptions.BadRequestException;
 import com.grupo4.hostingbook.exceptions.Mensajes;
 import com.grupo4.hostingbook.exceptions.NotImplementedException;
 import com.grupo4.hostingbook.exceptions.ResourceNotFoundException;
-import com.grupo4.hostingbook.model.CategoriaDTO;
+import com.grupo4.hostingbook.model.PuntuacionDTO;
 import com.grupo4.hostingbook.service.CRUDService;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
@@ -18,71 +18,71 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/categorias")
+@RequestMapping("/puntuaciones")
 @CrossOrigin(origins = "*", methods = { RequestMethod.GET, RequestMethod.POST })
-public class CategoriaController implements CRUDController<CategoriaDTO> {
+public class PuntuacionController implements CRUDController<PuntuacionDTO> {
 
-    @Qualifier("CategoriaService")
-    private final CRUDService<CategoriaDTO> categoriaService;
+    @Qualifier("PuntuacionService")
+    private final CRUDService<PuntuacionDTO> puntuacionService;
 
     @Autowired
-    public CategoriaController(CRUDService<CategoriaDTO> categoriaService) {
-        this.categoriaService = categoriaService;
+    public PuntuacionController(CRUDService<PuntuacionDTO> puntuacionService) {
+        this.puntuacionService = puntuacionService;
     }
 
     @Override
-    @ApiOperation(value = "Lista todas las categorias")
+    @ApiOperation(value = "Lista todas las puntuacions")
     @ApiResponses(value = { @ApiResponse(code = 200, message = "Success") })
     @GetMapping
-    public ResponseEntity<List<CategoriaDTO>> obtenerTodos() {
-        List<CategoriaDTO> categorias = categoriaService.consultarTodos();
-        return ResponseEntity.ok(categorias);
+    public ResponseEntity<List<PuntuacionDTO>> obtenerTodos() {
+        List<PuntuacionDTO> puntuaciones = puntuacionService.consultarTodos();
+        return ResponseEntity.ok(puntuaciones);
     }
 
     @Override
-    @ApiOperation(value = "Crea una nueva categoria")
+    @ApiOperation(value = "Crea una nueva puntuacion")
     @ApiResponses(value = { @ApiResponse(code = 200, message = "Success"),
                             @ApiResponse(code = 400, message = "Bad Request") })
     @PostMapping
-    public ResponseEntity<CategoriaDTO> crear(@RequestBody CategoriaDTO categoria) throws BadRequestException, ResourceNotFoundException {
-        CategoriaDTO categoriaNueva = categoriaService.crear(categoria);
-        return ResponseEntity.ok(categoriaNueva);
+    public ResponseEntity<PuntuacionDTO> crear(@RequestBody PuntuacionDTO puntuacion) throws BadRequestException, ResourceNotFoundException {
+        PuntuacionDTO puntuacionNueva = puntuacionService.crear(puntuacion);
+        return ResponseEntity.ok(puntuacionNueva);
     }
 
     @Override
-    @ApiOperation(value = "Busca una categoria por ID")
+    @ApiOperation(value = "Busca una puntuación por ID")
     @ApiResponses(value = { @ApiResponse(code = 200, message = "Success"),
                             @ApiResponse(code = 404, message = "Not found"), 
                             @ApiResponse(code = 400, message = "Bad Request") })
     @GetMapping("/{id}")
-    public ResponseEntity<CategoriaDTO> buscarPorId(@PathVariable Long id)
+    public ResponseEntity<PuntuacionDTO> buscarPorId(@PathVariable Long id)
             throws BadRequestException, ResourceNotFoundException {
-        CategoriaDTO categoria = categoriaService.buscarPorId(id);
-        return ResponseEntity.ok(categoria);
+        PuntuacionDTO puntuacion = puntuacionService.buscarPorId(id);
+        return ResponseEntity.ok(puntuacion);
     }
 
     @Override
-    @ApiOperation(value = "Actualiza una categoría")
+    @ApiOperation(value = "Actualiza una puntuación")
     @ApiResponses(value = { @ApiResponse(code = 200, message = "Success"),
                             @ApiResponse(code = 404, message = "Not found"), 
                             @ApiResponse(code = 400, message = "Bad Request") })
     @PutMapping
-    public ResponseEntity<CategoriaDTO> actualizar(@RequestBody CategoriaDTO categoria)
+    public ResponseEntity<PuntuacionDTO> actualizar(@RequestBody PuntuacionDTO puntuacion)
             throws BadRequestException, ResourceNotFoundException, NotImplementedException {
-        CategoriaDTO categoriaActualizada = categoriaService.actualizar(categoria);
-        return ResponseEntity.ok(categoriaActualizada);
+        PuntuacionDTO puntuacionActualizada = puntuacionService.actualizar(puntuacion);
+        return ResponseEntity.ok(puntuacionActualizada);
     }
 
     @Override
-    @ApiOperation(value = "Elimina una categoría")
+    @ApiOperation(value = "Elimina una puntuación")
     @ApiResponses(value = { @ApiResponse(code = 200, message = "Success"),
                             @ApiResponse(code = 404, message = "Not found"), 
                             @ApiResponse(code = 400, message = "Bad Request") })
     @DeleteMapping("/{id}")
     public ResponseEntity<String> eliminar(@PathVariable Long id)
             throws BadRequestException, ResourceNotFoundException {
-        categoriaService.eliminar(id);
-        return ResponseEntity.ok(String.format(Mensajes.ELIMINADO_CON_EXITO, "Categoria", id));
+        puntuacionService.eliminar(id);
+        return ResponseEntity.ok(String.format(Mensajes.ELIMINADO_CON_EXITO, "Puntuacion", id));
     }
 
 }

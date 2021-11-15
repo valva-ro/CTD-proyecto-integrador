@@ -1,5 +1,5 @@
 import { GoogleMap, useJsApiLoader, Marker } from "@react-google-maps/api";
-import TituloBloque from "../TituloBloque/TituloBloque";
+import TituloBloque from "../../TituloBloque/TituloBloque";
 import styles from "./ProductoMapa.module.css";
 
 const containerStyle = {
