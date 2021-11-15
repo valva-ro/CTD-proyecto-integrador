@@ -1,6 +1,7 @@
 package com.grupo4.hostingbook.service.impl;
 
 import com.grupo4.hostingbook.exceptions.BadRequestException;
+import com.grupo4.hostingbook.exceptions.NotImplementedException;
 import com.grupo4.hostingbook.exceptions.ResourceNotFoundException;
 import com.grupo4.hostingbook.model.CiudadDTO;
 import com.grupo4.hostingbook.service.CRUDService;
@@ -61,7 +62,7 @@ public class CiudadServiceTests {
     }
 
     @Test
-    public void test07ActualizarCiudadExistente() throws BadRequestException, ResourceNotFoundException {
+    public void test07ActualizarCiudadExistente() throws BadRequestException, ResourceNotFoundException, NotImplementedException {
         ciudadService.crear(ciudadPorCrear);
         CiudadDTO dtoActualizado = ciudadService.actualizar(ciudadPorActualizar);
         assertEquals(ciudadActualizada, dtoActualizado);

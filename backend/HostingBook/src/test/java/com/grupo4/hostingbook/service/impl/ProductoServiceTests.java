@@ -1,6 +1,7 @@
 package com.grupo4.hostingbook.service.impl;
 
 import com.grupo4.hostingbook.exceptions.BadRequestException;
+import com.grupo4.hostingbook.exceptions.NotImplementedException;
 import com.grupo4.hostingbook.exceptions.ResourceNotFoundException;
 import com.grupo4.hostingbook.model.*;
 import com.grupo4.hostingbook.service.IProductoService;
@@ -96,7 +97,7 @@ class ProductoServiceTests {
 
     @Test
     @Transactional
-    public void test07ActualizarProductoExistente() throws BadRequestException, ResourceNotFoundException {
+    public void test07ActualizarProductoExistente() throws BadRequestException, ResourceNotFoundException, NotImplementedException {
         ProductoDTO dtoCreadoBBDD = productoService.crear(productoPorCrear);
         ProductoDTO dtoActualizado = productoService.actualizar(productoPorActualizar);
         assertNotEquals(dtoCreadoBBDD.getNombre(), dtoActualizado.getNombre());
