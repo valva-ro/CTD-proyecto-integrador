@@ -12,8 +12,9 @@ public class ProductoDTO implements Serializable {
     private String descripcion;
     private CategoriaDTO categoria;
     private CiudadDTO ciudad;
-    private Set<ImagenDTO> imagenes;
-    private Set<CaracteristicaDTO> caracteristicas;
+    private Set<ImagenDTO> imagenes = new HashSet<>();
+    private Set<CaracteristicaDTO> caracteristicas = new HashSet<>();
+    private Set<PuntuacionDTO> puntuaciones = new HashSet<>();
 
     public ProductoDTO(){}
 
@@ -101,6 +102,14 @@ public class ProductoDTO implements Serializable {
 
     public void setCaracteristicas(Set<CaracteristicaDTO> caracteristicas) {
         this.caracteristicas = caracteristicas;
+    }
+
+    public Set<PuntuacionDTO> getPuntuaciones() {
+        return puntuaciones;
+    }
+
+    public void setPuntuaciones(Set<PuntuacionDTO> puntuaciones) {
+        this.puntuaciones = puntuaciones;
     }
 
     @Override

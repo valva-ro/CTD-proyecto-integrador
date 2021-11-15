@@ -3,15 +3,15 @@ package com.grupo4.hostingbook.service.impl;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.grupo4.hostingbook.exceptions.BadRequestException;
 import com.grupo4.hostingbook.exceptions.Mensajes;
+import com.grupo4.hostingbook.exceptions.NotImplementedException;
 import com.grupo4.hostingbook.exceptions.ResourceNotFoundException;
-import com.grupo4.hostingbook.model.CaracteristicaDTO;
-import com.grupo4.hostingbook.model.ImagenDTO;
-import com.grupo4.hostingbook.model.ProductoDTO;
+import com.grupo4.hostingbook.model.*;
 import com.grupo4.hostingbook.persistence.entites.*;
 import com.grupo4.hostingbook.persistence.repository.IProductoRepository;
 import com.grupo4.hostingbook.service.IProductoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.*;
 
@@ -24,15 +24,19 @@ public class ProductoService implements IProductoService {
     private final CiudadService ciudadService;
     private final ImagenService imagenService;
     private final CaracteristicaService caracteristicaService;
+    private final PuntuacionService puntuacionService;
+    private final UsuarioService usuarioService;
 
     @Autowired
-    public ProductoService(IProductoRepository productoRepository, ObjectMapper mapper, CategoriaService categoriaService, CiudadService ciudadService, ImagenService imagenService, CaracteristicaService caracteristicaService) {
+    public ProductoService(IProductoRepository productoRepository, ObjectMapper mapper, CategoriaService categoriaService, CiudadService ciudadService, ImagenService imagenService, CaracteristicaService caracteristicaService, PuntuacionService puntuacionService, UsuarioService usuarioService) {
         this.productoRepository = productoRepository;
         this.mapper = mapper;
         this.categoriaService = categoriaService;
         this.ciudadService = ciudadService;
         this.imagenService = imagenService;
         this.caracteristicaService = caracteristicaService;
+        this.puntuacionService = puntuacionService;
+        this.usuarioService = usuarioService;
     }
 
     @Override
@@ -109,6 +113,17 @@ public class ProductoService implements IProductoService {
         return dtos;
     }
 
+    @Override
+    public UsuarioDTO agregarAFavoritos(Long idProducto, Long idUsuario) throws ResourceNotFoundException, BadRequestException {
+        ProductoDTO producto = buscarPorId(idProducto);
+        UsuarioDTO usuario = usuarioService.buscarPorId(idUsuario);
+        Set<ProductoDTO> productosFavoritos = usuario.getProductosFavoritos();
+        productosFavoritos.add(producto);
+        usuario.setProductosFavoritos(productosFavoritos);
+        usuarioService.actualizar(usuario);
+        return usuario;
+    }
+
     private void validarCamposRequeridosCreacion(ProductoDTO productoDTO) throws BadRequestException {
         if (productoDTO == null) {
             throw new BadRequestException(String.format(Mensajes.ERROR_DTO_NO_EXISTE, "Producto"));
@@ -167,7 +182,8 @@ public class ProductoService implements IProductoService {
         productoDTO.setCategoria(categoriaService.buscarPorId(producto.getCategoria().getId()));
         productoDTO.setCiudad(ciudadService.buscarPorId(producto.getCiudad().getId()));
         productoDTO.setImagenes(obtenerImagenesRelacionadas(producto));
-        productoDTO.setCaracteristicas(obtenerCaracteristicasRelacionadas(producto));
+        productoDTO.setCaracteristicas(caracteristicaService.consultarPorProductoID(producto.getId()));
+        productoDTO.setPuntuaciones(puntuacionService.consultarPorProductoID(producto.getId()));
         return productoDTO;
     }
 
@@ -181,17 +197,5 @@ public class ProductoService implements IProductoService {
             }
         }
         return imagenes;
-    }
-
-    private Set<CaracteristicaDTO> obtenerCaracteristicasRelacionadas(Producto producto) {
-        Set<CaracteristicaDTO> caracteristicas = new HashSet<>();
-        for (CaracteristicaDTO caracteristicaEnBD : caracteristicaService.consultarTodos()) {
-            for (Caracteristica caracteristicaEnProducto : producto.getCaracteristicas()) {
-                if (Objects.equals(caracteristicaEnBD.getId(), caracteristicaEnProducto.getId())) {
-                    caracteristicas.add(caracteristicaEnBD);
-                }
-            }
-        }
-        return caracteristicas;
     }
 }
