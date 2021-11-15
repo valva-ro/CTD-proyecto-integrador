@@ -33,6 +33,7 @@ public class UsuarioService implements CRUDService<UsuarioDTO> {
         Usuario entidadUsuario = mapper.convertValue(usuarioDTO, Usuario.class);
         if (entidadUsuario.getProductosFavoritos() == null)
             entidadUsuario.setProductosFavoritos(new HashSet<>());
+        entidadUsuario.setCuentaValidada(false);
         Usuario guardada = usuarioRepository.save(entidadUsuario);
         return mapper.convertValue(guardada, UsuarioDTO.class);
     }

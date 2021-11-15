@@ -1,7 +1,6 @@
 package com.grupo4.hostingbook.persistence.entites;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
 import java.util.HashSet;
@@ -20,6 +19,8 @@ public class Usuario {
     private String apellido;
     private String mail;
     private String contrasenia;
+    @Column(name="cuenta_validada")
+    private Boolean cuentaValidada;
 
     @OneToMany(mappedBy = "puntuacion")
     @JsonIgnore
@@ -118,16 +119,32 @@ public class Usuario {
         this.productosFavoritos = productosFavoritos;
     }
 
+    public Boolean getCuentaValidada() {
+        return cuentaValidada;
+    }
+
+    public void setCuentaValidada(Boolean cuentaValidada) {
+        this.cuentaValidada = cuentaValidada;
+    }
+
+    public Set<Puntuacion> getPuntuaciones() {
+        return puntuaciones;
+    }
+
+    public void setPuntuaciones(Set<Puntuacion> puntuaciones) {
+        this.puntuaciones = puntuaciones;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Usuario)) return false;
-        Usuario that = (Usuario) o;
-        return Objects.equals(id, that.id) && Objects.equals(nombre, that.nombre) && Objects.equals(apellido, that.apellido) && Objects.equals(mail, that.mail) && Objects.equals(contrasenia, that.contrasenia) && Objects.equals(productosFavoritos, that.productosFavoritos);
+        Usuario usuario = (Usuario) o;
+        return Objects.equals(id, usuario.id) && Objects.equals(nombre, usuario.nombre) && Objects.equals(apellido, usuario.apellido) && Objects.equals(mail, usuario.mail) && Objects.equals(contrasenia, usuario.contrasenia) && Objects.equals(cuentaValidada, usuario.cuentaValidada) && Objects.equals(puntuaciones, usuario.puntuaciones) && Objects.equals(productosFavoritos, usuario.productosFavoritos);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, nombre, apellido, mail, contrasenia, productosFavoritos);
+        return Objects.hash(id, nombre, apellido, mail, contrasenia, cuentaValidada, puntuaciones, productosFavoritos);
     }
 }

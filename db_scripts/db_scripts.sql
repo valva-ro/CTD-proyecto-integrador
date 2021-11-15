@@ -115,6 +115,7 @@ CREATE TABLE IF NOT EXISTS usuarios (
   apellido VARCHAR(50) NOT NULL,
   mail VARCHAR(100) NOT NULL,
   contrasenia VARCHAR(100) NOT NULL,
+  cuenta_validada BOOLEAN NOT NULL,
   PRIMARY KEY  (usuario_id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 

@@ -13,7 +13,6 @@
 -- THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 USE booking;
-select * from productos;
 --
 -- Dumping data for table `categorias`
 --
@@ -246,9 +245,9 @@ COMMIT;
 -- Dumping data for table `usuarios`
 --
 SET AUTOCOMMIT=0;
-INSERT INTO usuarios (nombre, apellido, mail, contrasenia) VALUES ("Pepe", "Pepardo", "pepe@gmail.com", "pepe1234");
-INSERT INTO usuarios (nombre, apellido, mail, contrasenia) VALUES ("José", "Gómez", "jose@gmail.com", "jose1234");
-INSERT INTO usuarios (nombre, apellido, mail, contrasenia) VALUES ("Josefina", "Gómez", "josefina@gmail.com", "josefina1234");
+INSERT INTO usuarios (nombre, apellido, mail, contrasenia, cuenta_validada) VALUES ("Pepe", "Pepardo", "pepe@gmail.com", "pepe1234", FALSE);
+INSERT INTO usuarios (nombre, apellido, mail, contrasenia, cuenta_validada) VALUES ("José", "Gómez", "jose@gmail.com", "jose1234", FALSE);
+INSERT INTO usuarios (nombre, apellido, mail, contrasenia, cuenta_validada) VALUES ("Josefina", "Gómez", "josefina@gmail.com", "josefina1234", FALSE);
 COMMIT;
 
 --

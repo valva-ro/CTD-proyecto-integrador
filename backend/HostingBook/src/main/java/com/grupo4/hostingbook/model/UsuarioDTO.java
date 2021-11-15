@@ -11,6 +11,7 @@ public class UsuarioDTO {
     private String apellido;
     private String mail;
     private String contrasenia;
+    private Boolean cuentaValidada;
     private Set<PuntuacionDTO> puntuaciones = new HashSet<>();
     private Set<ProductoDTO> productosFavoritos = new HashSet<>();
 
@@ -91,6 +92,14 @@ public class UsuarioDTO {
         return productosFavoritos;
     }
 
+    public Boolean getCuentaValidada() {
+        return cuentaValidada;
+    }
+
+    public void setCuentaValidada(Boolean cuentaValidada) {
+        this.cuentaValidada = cuentaValidada;
+    }
+
     public void setProductosFavoritos(Set<ProductoDTO> productosFavoritos) {
         this.productosFavoritos = productosFavoritos;
     }
@@ -100,11 +109,11 @@ public class UsuarioDTO {
         if (this == o) return true;
         if (!(o instanceof UsuarioDTO)) return false;
         UsuarioDTO that = (UsuarioDTO) o;
-        return Objects.equals(id, that.id) && Objects.equals(nombre, that.nombre) && Objects.equals(apellido, that.apellido) && Objects.equals(mail, that.mail) && Objects.equals(contrasenia, that.contrasenia) && Objects.equals(productosFavoritos, that.productosFavoritos);
+        return Objects.equals(id, that.id) && Objects.equals(nombre, that.nombre) && Objects.equals(apellido, that.apellido) && Objects.equals(mail, that.mail) && Objects.equals(contrasenia, that.contrasenia) && Objects.equals(cuentaValidada, that.cuentaValidada) && Objects.equals(puntuaciones, that.puntuaciones) && Objects.equals(productosFavoritos, that.productosFavoritos);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, nombre, apellido, mail, contrasenia, productosFavoritos);
+        return Objects.hash(id, nombre, apellido, mail, contrasenia, cuentaValidada, puntuaciones, productosFavoritos);
     }
 }
