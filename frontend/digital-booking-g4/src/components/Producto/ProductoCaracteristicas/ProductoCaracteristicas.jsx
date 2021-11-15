@@ -1,4 +1,4 @@
-import TituloBloque from "../TituloBloque/TituloBloque";
+import TituloBloque from "../../TituloBloque/TituloBloque";
 import styles from "./ProductoCaracteristicas.module.css";
 
 export default function ProductoCaracteristicas({ alojamiento: { caracteristicas } }) {
