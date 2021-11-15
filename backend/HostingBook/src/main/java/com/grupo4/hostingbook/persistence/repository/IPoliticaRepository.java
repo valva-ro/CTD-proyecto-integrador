@@ -6,4 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface IPoliticaRepository extends JpaRepository<Politica,Long> {
+
 }
