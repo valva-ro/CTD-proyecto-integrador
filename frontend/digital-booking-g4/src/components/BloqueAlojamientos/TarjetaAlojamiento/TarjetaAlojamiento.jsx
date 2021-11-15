@@ -3,20 +3,18 @@ import { Link } from "react-router-dom";
 import FilledButton from "../../Buttons/FilledButton";
 import Estrellas from "../../Estrellas/Estrellas";
 import styles from "./TarjetaAlojamiento.module.css";
-import useFetch from "../../../hooks/useFetch";
 
 export default function TarjetaAlojamiento({ alojamiento }) {
-  const { id, 
-          nombre, 
-          descripcion,  
-          categoria, 
-          ciudad, 
-          imagenes,
-        caracteristicas } = alojamiento;
+  const { id,
+    nombre,
+    descripcion,
+    categoria,
+    ciudad,
+    imagenes,
+    caracteristicas } = alojamiento;
 
   const [esVerMas, setEsVerMas] = useState(true);
   const toggleVerMas = () => setEsVerMas(!esVerMas);
-  const { isLoaded } = useFetch("productos");
 
   const buscarImagenPrincipal = () => {
     let imagen = imagenes.find(imagen => {
@@ -29,93 +27,65 @@ export default function TarjetaAlojamiento({ alojamiento }) {
   }
 
   return (
-    isLoaded ? 
-    (
-      <div className={styles.tarjetaAlojamiento}>
-        <div
-          className={styles.imagenAlojamiento}
-          style={{
-            backgroundImage: `url(${buscarImagenPrincipal().imagenUrl})`,
-          }}
-        >
-          <i className={`fas fa-heart ${styles.corazon}`}></i>
-        </div>
+    <div className={styles.tarjetaAlojamiento}>
+      <div
+        className={styles.imagenAlojamiento}
+        style={{
+          backgroundImage: `url(${buscarImagenPrincipal().imagenUrl})`,
+        }}
+      >
+        <i className={`fas fa-heart ${styles.corazon}`}></i>
+      </div>
 
-        <div className={styles.descripcionAlojamiento}>
-          <div className={styles.informacionPrincipal}>
-            <div className={styles.nombreAlojamiento}>
-              <div className={styles.tipoYCalificacion}>
-                <h4>{categoria.titulo}</h4>
-                <Estrellas puntaje={8} />
-              </div>
-              <h2>{nombre}</h2>
+      <div className={styles.descripcionAlojamiento}>
+        <div className={styles.informacionPrincipal}>
+          <div className={styles.nombreAlojamiento}>
+            <div className={styles.tipoYCalificacion}>
+              <h4>{categoria.titulo}</h4>
+              <Estrellas puntaje={8} />
             </div>
-            <div className={styles.puntajeAlojamiento}>
-              <div className={styles.puntajeNumerico}>{8}</div>
-              <div className={styles.detalle}>Muy bueno</div>
-            </div>
+            <h2>{nombre}</h2>
           </div>
-          <div className={styles.informacionDetalle}>
-            <div className={styles.ubicacion}>
-              <i className="fas fa-map-marker-alt"></i>
-              <p>
-                {ciudad.nombre}
-                <Link to={`product/${id}#mapa`}>Mostrar en el mapa</Link>
-              </p>
-            </div>
-            <div className={styles.servicios}>
-              {
-                caracteristicas.map((caracteristica, i) => 
-                  <i key={`caracteristica-${i}`} className={`${caracteristica.icono}`}></i>
-                )
-              }
-            </div>
+          <div className={styles.puntajeAlojamiento}>
+            <div className={styles.puntajeNumerico}>{8}</div>
+            <div className={styles.detalle}>Muy bueno</div>
           </div>
-          <p>
-            {descripcion.length <= 85 ? (
-              descripcion
-            ) : (
-              <>
-                {esVerMas && descripcion.length > 85
-                  ? descripcion.slice(0, 85)
-                  : descripcion}
-                ...
-                <span onClick={toggleVerMas} className={styles.verMas}>
-                  {esVerMas ? " leer más" : " leer menos"}
-                </span>
-              </>
-            )}
-          </p>
-          <Link to={`product/${id}`}>
-            <FilledButton styles={styles.btnVerMas}>Ver más</FilledButton>
-          </Link>
         </div>
-      </div>
-    ) :
-    (
-      <div className={styles.tarjetaAlojamiento}>
-        <div className={`${styles.imagenAlojamiento} ${styles.skeleton}`}></div>
-        <div className={styles.descripcionAlojamiento}>
-          <div className={styles.informacionPrincipal}>
-            <div className={styles.nombreAlojamiento}>
-              <div className={styles.tipoYCalificacion}>
-                <h4 className={`${styles.infoLoader} ${styles.skeleton}`}></h4>
-                <h4 className={`${styles.infoLoader} ${styles.skeleton}`}></h4>
-              </div>
-              <h2 className={`${styles.infoLoader} ${styles.skeleton}`}></h2>
-            </div>
-            <div className={styles.puntajeAlojamiento}>
-              <div className={`${styles.puntajeNumerico} ${styles.infoLoader} ${styles.skeleton}`}></div>
-              <div className={`${styles.detalle} ${styles.infoLoader} ${styles.skeleton}`}></div>
-            </div>
+        <div className={styles.informacionDetalle}>
+          <div className={styles.ubicacion}>
+            <i className="fas fa-map-marker-alt"></i>
+            <p>
+              {ciudad.nombre}
+              <Link to={`product/${id}#mapa`}>Mostrar en el mapa</Link>
+            </p>
           </div>
-          <p className={`${styles.textLoader} ${styles.skeleton}`}></p>
-          <p className={`${styles.textLoader} ${styles.skeleton}`}></p>
-          <p className={`${styles.textLoader} ${styles.skeleton}`}></p>
-          <p className={`${styles.inputLoader} ${styles.skeleton}`}></p>
-          
+          <div className={styles.servicios}>
+            {
+              caracteristicas.map((caracteristica, i) =>
+                <i key={`caracteristica-${i}`} className={`${caracteristica.icono}`}></i>
+              )
+            }
+          </div>
         </div>
+        <p>
+          {descripcion.length <= 85 ? (
+            descripcion
+          ) : (
+            <>
+              {esVerMas && descripcion.length > 85
+                ? descripcion.slice(0, 85)
+                : descripcion}
+              ...
+              <span onClick={toggleVerMas} className={styles.verMas}>
+                {esVerMas ? " leer más" : " leer menos"}
+              </span>
+            </>
+          )}
+        </p>
+        <Link to={`product/${id}`}>
+          <FilledButton styles={styles.btnVerMas}>Ver más</FilledButton>
+        </Link>
       </div>
-    )
+    </div>
   );
 }

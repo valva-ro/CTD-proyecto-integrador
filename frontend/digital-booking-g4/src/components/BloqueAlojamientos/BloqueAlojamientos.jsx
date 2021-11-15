@@ -4,6 +4,7 @@ import TituloBloque from "../TituloBloque/TituloBloque.jsx";
 import currentCityContext from "../../contexts/currentCityContext";
 import styles from "./BloqueAlojamientos.module.css";
 import useFetch from "../../hooks/useFetch";
+import SkeletonTarjetaAlojamiento from "./TarjetaAlojamiento/SkeletonTarjetaAlojamiento";
 
 export default function BloqueAlojamientos({ categoriaActual }) {
   const { currentCity } = useContext(currentCityContext);
@@ -50,9 +51,9 @@ export default function BloqueAlojamientos({ categoriaActual }) {
         <ul
           className={styles.alojamientos}
         > 
-          {Array.apply(0, Array(8)).map((x) => (
-            <li className={styles.alojamiento}>
-              <TarjetaAlojamiento alojamiento/>
+          {Array.apply(0, Array(8)).map((x, i) => (
+            <li key={`skeletonAlojamiento-${i}`} className={styles.alojamiento}>
+              <SkeletonTarjetaAlojamiento/>
             </li>
           ))}
         </ul>
