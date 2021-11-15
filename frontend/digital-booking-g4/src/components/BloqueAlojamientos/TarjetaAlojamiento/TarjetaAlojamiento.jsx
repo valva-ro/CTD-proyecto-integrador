@@ -17,14 +17,14 @@ export default function TarjetaAlojamiento({ alojamiento }) {
   const toggleVerMas = () => setEsVerMas(!esVerMas);
 
   const buscarImagenPrincipal = () => {
-    let imagen = imagenes.find(imagen => {
+    let imagen = imagenes.find((imagen) => {
       return imagen.imagenTitulo === "Principal";
-    })
+    });
     if (imagen == null) {
       imagen = imagenes[0];
     }
     return imagen;
-  }
+  };
 
   return (
     <div className={styles.tarjetaAlojamiento}>
