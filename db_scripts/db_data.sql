@@ -241,3 +241,33 @@ INSERT INTO producto_caracteristica (producto_id, caracteristica_id) VALUES (13,
 INSERT INTO producto_caracteristica (producto_id, caracteristica_id) VALUES (14,1);
 INSERT INTO producto_caracteristica (producto_id, caracteristica_id) VALUES (14,10);
 COMMIT;
+
+--
+-- Dumping data for table `usuarios`
+--
+SET AUTOCOMMIT=0;
+INSERT INTO usuarios (nombre, apellido, mail, contrasenia) VALUES ("Pepe", "Pepardo", "pepe@gmail.com", "pepe1234");
+INSERT INTO usuarios (nombre, apellido, mail, contrasenia) VALUES ("José", "Gómez", "jose@gmail.com", "jose1234");
+INSERT INTO usuarios (nombre, apellido, mail, contrasenia) VALUES ("Josefina", "Gómez", "josefina@gmail.com", "josefina1234");
+COMMIT;
+
+--
+-- Dumping data for table `usuario_producto`
+--
+SET AUTOCOMMIT=0;
+-- Usuario 1
+INSERT INTO usuario_producto (usuario_id, producto_id) VALUES (1, 1);
+INSERT INTO usuario_producto (usuario_id, producto_id) VALUES (1, 2);
+INSERT INTO usuario_producto (usuario_id, producto_id) VALUES (1, 4);
+INSERT INTO usuario_producto (usuario_id, producto_id) VALUES (1, 5);
+-- Usuario 2
+INSERT INTO usuario_producto (usuario_id, producto_id) VALUES (2, 3);
+INSERT INTO usuario_producto (usuario_id, producto_id) VALUES (2, 5);
+INSERT INTO usuario_producto (usuario_id, producto_id) VALUES (2, 6);
+INSERT INTO usuario_producto (usuario_id, producto_id) VALUES (2, 4);
+-- Usuario 3
+INSERT INTO usuario_producto (usuario_id, producto_id) VALUES (3, 1);
+INSERT INTO usuario_producto (usuario_id, producto_id) VALUES (3, 3);
+INSERT INTO usuario_producto (usuario_id, producto_id) VALUES (3, 5);
+INSERT INTO usuario_producto (usuario_id, producto_id) VALUES (3, 6);
+COMMIT;
