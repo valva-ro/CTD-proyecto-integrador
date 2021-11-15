@@ -35,8 +35,8 @@ public class PuntuacionController implements CRUDController<PuntuacionDTO> {
     @ApiResponses(value = { @ApiResponse(code = 200, message = "Success") })
     @GetMapping
     public ResponseEntity<List<PuntuacionDTO>> obtenerTodos() {
-        List<PuntuacionDTO> puntuacions = puntuacionService.consultarTodos();
-        return ResponseEntity.ok(puntuacions);
+        List<PuntuacionDTO> puntuaciones = puntuacionService.consultarTodos();
+        return ResponseEntity.ok(puntuaciones);
     }
 
     @Override

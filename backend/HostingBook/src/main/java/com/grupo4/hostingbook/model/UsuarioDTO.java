@@ -1,10 +1,11 @@
 package com.grupo4.hostingbook.model;
 
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
-public class UsuarioDTO {
+public class UsuarioDTO implements Serializable {
 
     private Long id;
     private String nombre;

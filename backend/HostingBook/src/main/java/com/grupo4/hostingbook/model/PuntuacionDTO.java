@@ -1,8 +1,9 @@
 package com.grupo4.hostingbook.model;
 
+import java.io.Serializable;
 import java.util.Objects;
 
-public class PuntuacionDTO {
+public class PuntuacionDTO implements Serializable {
 
     private Long id;
     private Integer puntuacion;
