@@ -65,7 +65,7 @@ public class PoliticaService implements IPoliticaService {
             Politica entidad = c.get();
             politicaActualizada = actualizar(politicaDTO, entidad);
         } else {
-            throw new ResourceNotFoundException(String.format(Mensajes.ERROR_NO_EXISTE, "La 'politica'", politicaDTO.getId()));
+            throw new ResourceNotFoundException(String.format(Mensajes.ERROR_NO_EXISTE, "La 'política'", politicaDTO.getId()));
         }
         return politicaActualizada;
     }
@@ -101,18 +101,18 @@ public class PoliticaService implements IPoliticaService {
     }
     private void validarCamposRequeridosCreacion(PoliticaDTO politicaDTO) throws BadRequestException {
         if (politicaDTO == null) {
-            throw new BadRequestException(String.format(Mensajes.ERROR_DTO_NO_EXISTE, "Politica"));
+            throw new BadRequestException(String.format(Mensajes.ERROR_DTO_NO_EXISTE, "política"));
         } else {
             if (politicaDTO.getTipoPolitica() == null )
-                throw new BadRequestException(String.format(Mensajes.ERROR_CREACION_CAMPO_REQUERIDO, "politica", "tipo política"));
+                throw new BadRequestException(String.format(Mensajes.ERROR_CREACION_CAMPO_REQUERIDO, "política", "tipo política"));
             if (politicaDTO.getNombre() == null || politicaDTO.getNombre().isEmpty() || politicaDTO.getNombre().isBlank())
-                throw new BadRequestException(String.format(Mensajes.ERROR_CREACION_CAMPO_REQUERIDO, "politica", "nombre"));
+                throw new BadRequestException(String.format(Mensajes.ERROR_CREACION_CAMPO_REQUERIDO, "política", "nombre"));
 
         }
     }
     private void validarCamposRequeridosCreacionTipoPolitica(TipoPoliticaDTO tipoPoliticaDTO) throws BadRequestException {
         if (tipoPoliticaDTO == null) {
-            throw new BadRequestException(String.format(Mensajes.ERROR_DTO_NO_EXISTE, "Tipo Politica"));
+            throw new BadRequestException(String.format(Mensajes.ERROR_DTO_NO_EXISTE, "Tipo política"));
         } else {
             if (tipoPoliticaDTO.getNombre() == null || tipoPoliticaDTO.getNombre().isEmpty() || tipoPoliticaDTO.getNombre().isBlank())
                 throw new BadRequestException(String.format(Mensajes.ERROR_CREACION_CAMPO_REQUERIDO, "tipo política", "nombre"));
@@ -126,7 +126,7 @@ public class PoliticaService implements IPoliticaService {
     }
     private void validarCamposRequeridosActualizacion(PoliticaDTO politicaDTO) throws BadRequestException {
         if (politicaDTO == null) {
-            throw new BadRequestException(String.format(Mensajes.ERROR_DTO_NO_EXISTE, "Politica"));
+            throw new BadRequestException(String.format(Mensajes.ERROR_DTO_NO_EXISTE, "política"));
         } else {
             if (politicaDTO.getId() == null)
                 throw new BadRequestException(Mensajes.ERROR_ID_ES_NULL);
@@ -145,7 +145,7 @@ public class PoliticaService implements IPoliticaService {
         if (tipopoliticaId < 1)
             throw new BadRequestException(Mensajes.ERROR_ID_FUERA_DE_RANGO);
         if (!politicaRepository.existsById(tipopoliticaId))
-            throw new ResourceNotFoundException(String.format(Mensajes.ERROR_NO_EXISTE, "El 'Tipo de poltica'", tipopoliticaId));
+            throw new ResourceNotFoundException(String.format(Mensajes.ERROR_NO_EXISTE, "El 'tipo de política'", tipopoliticaId));
     }
     }
 
