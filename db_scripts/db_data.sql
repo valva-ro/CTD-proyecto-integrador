@@ -11,11 +11,7 @@
 --  * Neither the name of Oracle nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
 
 -- THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-
-<<<<<<< HEAD
-=======
 USE booking;
->>>>>>> 33ebb16ecc24ab52d045978b3fa71829cc8171f8
 --
 -- Dumping data for table `categorias`
 --
@@ -257,6 +253,9 @@ INSERT INTO producto_caracteristica (producto_id, caracteristica_id) VALUES (14,
 INSERT INTO producto_caracteristica (producto_id, caracteristica_id) VALUES (14,10);
 COMMIT;
 
+--
+-- Dumping data for table `tipo_politica`
+--
 SET AUTOCOMMIT=0;
 INSERT INTO tipo_politica (nombre) VALUES ("Normas de la casa");
 INSERT INTO tipo_politica (nombre) VALUES ("Salud y seguridad");
@@ -291,6 +290,7 @@ COMMIT;
 -- Dumping data for table `politica_producto` 
 --
 SET AUTOCOMMIT=0;
+-- Producto 1
 INSERT INTO politica_producto (politica_id,producto_id) VALUES (1,1);
 INSERT INTO politica_producto (politica_id,producto_id) VALUES (3,1);
 INSERT INTO politica_producto (politica_id,producto_id) VALUES (5,1);
@@ -301,6 +301,7 @@ INSERT INTO politica_producto (politica_id,producto_id) VALUES (11,1);
 
 INSERT INTO politica_producto (politica_id,producto_id) VALUES (13,1);
 
+-- Producto 2
 INSERT INTO politica_producto (politica_id,producto_id) VALUES (2,2);
 INSERT INTO politica_producto (politica_id,producto_id) VALUES (4,2);
 INSERT INTO politica_producto (politica_id,producto_id) VALUES (6,2);
@@ -311,8 +312,7 @@ INSERT INTO politica_producto (politica_id,producto_id) VALUES (12,2);
 
 INSERT INTO politica_producto (politica_id,producto_id) VALUES (14,2);
 
-
-
+-- Producto 3
 INSERT INTO politica_producto (politica_id,producto_id) VALUES (1,3);
 INSERT INTO politica_producto (politica_id,producto_id) VALUES (3,3);
 INSERT INTO politica_producto (politica_id,producto_id) VALUES (5,3);
@@ -323,7 +323,7 @@ INSERT INTO politica_producto (politica_id,producto_id) VALUES (11,3);
 
 INSERT INTO politica_producto (politica_id,producto_id) VALUES (15,3);
 
-
+-- Producto 4
 INSERT INTO politica_producto (politica_id,producto_id) VALUES (2,4);
 INSERT INTO politica_producto (politica_id,producto_id) VALUES (4,4);
 INSERT INTO politica_producto (politica_id,producto_id) VALUES (6,4);
@@ -334,7 +334,7 @@ INSERT INTO politica_producto (politica_id,producto_id) VALUES (12,4);
 
 INSERT INTO politica_producto (politica_id,producto_id) VALUES (13,4);
 
-
+-- Producto 5
 INSERT INTO politica_producto (politica_id,producto_id) VALUES (1,5);
 INSERT INTO politica_producto (politica_id,producto_id) VALUES (3,5);
 INSERT INTO politica_producto (politica_id,producto_id) VALUES (5,5);
@@ -345,7 +345,7 @@ INSERT INTO politica_producto (politica_id,producto_id) VALUES (11,5);
 
 INSERT INTO politica_producto (politica_id,producto_id) VALUES (14,5);
 
-
+-- Producto 6
 INSERT INTO politica_producto (politica_id,producto_id) VALUES (2,6);
 INSERT INTO politica_producto (politica_id,producto_id) VALUES (4,6);
 INSERT INTO politica_producto (politica_id,producto_id) VALUES (6,6);
@@ -356,7 +356,7 @@ INSERT INTO politica_producto (politica_id,producto_id) VALUES (12,6);
 
 INSERT INTO politica_producto (politica_id,producto_id) VALUES (15,6);
 
-
+-- Producto 7
 INSERT INTO politica_producto (politica_id,producto_id) VALUES (1,7);
 INSERT INTO politica_producto (politica_id,producto_id) VALUES (3,7);
 INSERT INTO politica_producto (politica_id,producto_id) VALUES (5,7);
@@ -367,7 +367,7 @@ INSERT INTO politica_producto (politica_id,producto_id) VALUES (11,7);
 
 INSERT INTO politica_producto (politica_id,producto_id) VALUES (13,7);
 
-
+-- Producto 8
 INSERT INTO politica_producto (politica_id,producto_id) VALUES (2,8);
 INSERT INTO politica_producto (politica_id,producto_id) VALUES (4,8);
 INSERT INTO politica_producto (politica_id,producto_id) VALUES (6,8);
@@ -378,7 +378,7 @@ INSERT INTO politica_producto (politica_id,producto_id) VALUES (12,8);
 
 INSERT INTO politica_producto (politica_id,producto_id) VALUES (14,8);
 
-
+-- Producto 9
 INSERT INTO politica_producto (politica_id,producto_id) VALUES (1,9);
 INSERT INTO politica_producto (politica_id,producto_id) VALUES (3,9);
 INSERT INTO politica_producto (politica_id,producto_id) VALUES (5,9);
@@ -389,7 +389,7 @@ INSERT INTO politica_producto (politica_id,producto_id) VALUES (11,9);
 
 INSERT INTO politica_producto (politica_id,producto_id) VALUES (15,9);
 
-
+-- Producto 10
 INSERT INTO politica_producto (politica_id,producto_id) VALUES (2,10);
 INSERT INTO politica_producto (politica_id,producto_id) VALUES (4,10);
 INSERT INTO politica_producto (politica_id,producto_id) VALUES (6,10);
@@ -400,7 +400,7 @@ INSERT INTO politica_producto (politica_id,producto_id) VALUES (12,10);
 
 INSERT INTO politica_producto (politica_id,producto_id) VALUES (13,10);
 
-
+-- Producto 11
 INSERT INTO politica_producto (politica_id,producto_id) VALUES (1,11);
 INSERT INTO politica_producto (politica_id,producto_id) VALUES (3,11);
 INSERT INTO politica_producto (politica_id,producto_id) VALUES (5,11);
@@ -411,7 +411,7 @@ INSERT INTO politica_producto (politica_id,producto_id) VALUES (11,11);
 
 INSERT INTO politica_producto (politica_id,producto_id) VALUES (14,11);
 
-
+-- Producto 12
 INSERT INTO politica_producto (politica_id,producto_id) VALUES (2,12);
 INSERT INTO politica_producto (politica_id,producto_id) VALUES (4,12);
 INSERT INTO politica_producto (politica_id,producto_id) VALUES (6,12);
@@ -422,7 +422,7 @@ INSERT INTO politica_producto (politica_id,producto_id) VALUES (12,12);
 
 INSERT INTO politica_producto (politica_id,producto_id) VALUES (15,12);
 
-
+-- Producto 13
 INSERT INTO politica_producto (politica_id,producto_id) VALUES (1,13);
 INSERT INTO politica_producto (politica_id,producto_id) VALUES (3,13);
 INSERT INTO politica_producto (politica_id,producto_id) VALUES (5,13);
@@ -433,7 +433,7 @@ INSERT INTO politica_producto (politica_id,producto_id) VALUES (11,13);
 
 INSERT INTO politica_producto (politica_id,producto_id) VALUES (13,13);
 
-
+-- Producto 14
 INSERT INTO politica_producto (politica_id,producto_id) VALUES (2,14);
 INSERT INTO politica_producto (politica_id,producto_id) VALUES (4,14);
 INSERT INTO politica_producto (politica_id,producto_id) VALUES (6,14);
@@ -443,7 +443,6 @@ INSERT INTO politica_producto (politica_id,producto_id) VALUES (10,14);
 INSERT INTO politica_producto (politica_id,producto_id) VALUES (12,14);
 
 INSERT INTO politica_producto (politica_id,producto_id) VALUES (14,14);
-
 
 
 --
@@ -499,6 +498,14 @@ INSERT INTO puntuaciones (puntuacion, fk_producto, fk_usuario) VALUES (5, 9, 3);
 INSERT INTO puntuaciones (puntuacion, fk_producto, fk_usuario) VALUES (4, 10, 1);
 INSERT INTO puntuaciones (puntuacion, fk_producto, fk_usuario) VALUES (4, 10, 2);
 INSERT INTO puntuaciones (puntuacion, fk_producto, fk_usuario) VALUES (3, 10, 3);
+-- Producto 11
+INSERT INTO puntuaciones (puntuacion, fk_producto, fk_usuario) VALUES (3, 11, 1);
+INSERT INTO puntuaciones (puntuacion, fk_producto, fk_usuario) VALUES (4, 11, 2);
+INSERT INTO puntuaciones (puntuacion, fk_producto, fk_usuario) VALUES (3, 11, 3);
+-- Producto 12
+INSERT INTO puntuaciones (puntuacion, fk_producto, fk_usuario) VALUES (2, 12, 1);
+INSERT INTO puntuaciones (puntuacion, fk_producto, fk_usuario) VALUES (5, 12, 2);
+INSERT INTO puntuaciones (puntuacion, fk_producto, fk_usuario) VALUES (3, 12, 3);
 COMMIT;
 
 --
