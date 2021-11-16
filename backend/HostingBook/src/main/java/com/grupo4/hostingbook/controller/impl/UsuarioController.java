@@ -31,7 +31,7 @@ public class UsuarioController implements CRUDController<UsuarioDTO> {
     }
 
     @Override
-    @ApiOperation(value = "Lista todas las usuarios")
+    @ApiOperation(value = "Lista todos los usuarios")
     @ApiResponses(value = { @ApiResponse(code = 200, message = "Success") })
     @GetMapping
     public ResponseEntity<List<UsuarioDTO>> obtenerTodos() {
@@ -40,7 +40,7 @@ public class UsuarioController implements CRUDController<UsuarioDTO> {
     }
 
     @Override
-    @ApiOperation(value = "Crea un nueva usuario")
+    @ApiOperation(value = "Crea un nuevo usuario")
     @ApiResponses(value = { @ApiResponse(code = 200, message = "Success"),
                             @ApiResponse(code = 400, message = "Bad Request") })
     @PostMapping
@@ -62,7 +62,7 @@ public class UsuarioController implements CRUDController<UsuarioDTO> {
     }
 
     @Override
-    @ApiOperation(value = "Actualiza un puntuación")
+    @ApiOperation(value = "Actualiza una puntuación")
     @ApiResponses(value = { @ApiResponse(code = 200, message = "Success"),
                             @ApiResponse(code = 404, message = "Not found"), 
                             @ApiResponse(code = 400, message = "Bad Request") })
@@ -74,7 +74,7 @@ public class UsuarioController implements CRUDController<UsuarioDTO> {
     }
 
     @Override
-    @ApiOperation(value = "Elimina un puntuación")
+    @ApiOperation(value = "Elimina una puntuación")
     @ApiResponses(value = { @ApiResponse(code = 200, message = "Success"),
                             @ApiResponse(code = 404, message = "Not found"), 
                             @ApiResponse(code = 400, message = "Bad Request") })

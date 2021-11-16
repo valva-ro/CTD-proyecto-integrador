@@ -17,4 +17,6 @@ public interface IProductoService extends CRUDService<ProductoDTO> {
      Set<ProductoDTO> consultarPorCiudad(String nombreCiudad) throws ResourceNotFoundException;
 
      UsuarioDTO agregarAFavoritos(Long idProducto, Long idUsuario) throws ResourceNotFoundException, BadRequestException, NotImplementedException;
+
+     UsuarioDTO quitarDeFavoritos(Long idProducto, Long idUsuario) throws ResourceNotFoundException, BadRequestException, NotImplementedException;
 }

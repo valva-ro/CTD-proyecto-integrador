@@ -66,7 +66,7 @@ public class UsuarioService implements CRUDService<UsuarioDTO> {
             Usuario entidad = u.get();
             usuarioActualizado = actualizar(usuarioDTO, entidad);
         } else {
-            throw new ResourceNotFoundException(String.format(Mensajes.ERROR_NO_EXISTE, "El usuario 'usuario'", usuarioDTO.getId()));
+            throw new ResourceNotFoundException(String.format(Mensajes.ERROR_NO_EXISTE, "El usuario", usuarioDTO.getId()));
         }
         return usuarioActualizado;
     }

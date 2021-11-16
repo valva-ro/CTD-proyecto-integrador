@@ -31,7 +31,32 @@ export default function TarjetaAlojamiento({
     return imagen;
   };
 
-  const handleFav = () => setIsFavorito(!isFavorito);
+  async function fetchFav(accion) {
+    try {
+      console.log("Fetching...");
+      console.log("id: "+id);
+      //se harcodea el usuario pq todavia no estoy logueado con un usuario de la BDD
+      let response = await fetch(`http://localhost:8080/${id}/${accion}/usuarios/1`, {
+        method: "PUT"
+      });
+      let datos = await response.json();
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
+  const handleFav = () => {
+    if (!isFavorito) {
+      setIsFavorito(!isFavorito);
+      fetchFav("agregar");
+      console.log("Faveo");
+    } else {
+      setIsFavorito(!isFavorito);
+      fetchFav("eliminar");
+      console.log("Desfaveo");
+    }
+    return null;
+  }
   
   return (
     <div className={styles.tarjetaAlojamiento}>

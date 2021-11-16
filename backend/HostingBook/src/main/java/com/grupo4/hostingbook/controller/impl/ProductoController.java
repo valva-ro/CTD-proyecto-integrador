@@ -115,14 +115,27 @@ public class ProductoController implements IProductoController {
     }
 
     @Override
-    @ApiOperation(value = "Agrega a un usuario un producto favorito")
+    @CrossOrigin
+    @ApiOperation(value = "Agrega de un usuario un producto favorito")
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "Success"),
             @ApiResponse(code = 404, message = "Not found"),
             @ApiResponse(code = 400, message = "Bad Request")
     })
-    @PutMapping("/{idProducto}/usuarios/{idUsuario}")
+    @PutMapping("/{idProducto}/agregar/usuarios/{idUsuario}")
     public ResponseEntity<?> agregarAFavoritos(@PathVariable Long idProducto, @PathVariable Long idUsuario) throws NotImplementedException, BadRequestException, ResourceNotFoundException {
         return ResponseEntity.ok(productoService.agregarAFavoritos(idProducto, idUsuario));
+    }
+
+    @Override
+    @ApiOperation(value = "Elimina de un usuario un producto favorito")
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Success"),
+            @ApiResponse(code = 404, message = "Not found"),
+            @ApiResponse(code = 400, message = "Bad Request")
+    })
+    @PutMapping("/{idProducto}/eliminar/usuarios/{idUsuario}")
+    public ResponseEntity<?> quitarDeFavoritos(@PathVariable Long idProducto, @PathVariable Long idUsuario) throws NotImplementedException, BadRequestException, ResourceNotFoundException {
+        return ResponseEntity.ok(productoService.quitarDeFavoritos(idProducto, idUsuario));
     }
 }

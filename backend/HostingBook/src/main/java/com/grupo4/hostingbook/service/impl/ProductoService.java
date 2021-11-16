@@ -124,6 +124,17 @@ public class ProductoService implements IProductoService {
         return usuario;
     }
 
+    @Override
+    public UsuarioDTO quitarDeFavoritos(Long idProducto, Long idUsuario) throws ResourceNotFoundException, BadRequestException {
+        ProductoDTO producto = buscarPorId(idProducto);
+        UsuarioDTO usuario = usuarioService.buscarPorId(idUsuario);
+        Set<ProductoDTO> productosFavoritos = usuario.getProductosFavoritos();
+        productosFavoritos.remove(producto);
+        usuario.setProductosFavoritos(productosFavoritos);
+        usuarioService.actualizar(usuario);
+        return usuario;
+    }
+
     private void validarCamposRequeridosCreacion(ProductoDTO productoDTO) throws BadRequestException {
         if (productoDTO == null) {
             throw new BadRequestException(String.format(Mensajes.ERROR_DTO_NO_EXISTE, "Producto"));
