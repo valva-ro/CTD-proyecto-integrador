@@ -10,7 +10,7 @@ import CityInput from "./CityInput/CityInput";
 import es from "date-fns/locale/es";
 import "react-datepicker/dist/react-datepicker.css";
 import styles from "./Searcher.module.css";
-import currentCityContext from "../../contexts/currentCityContext";
+import currentCityContext from "../../contexts/currentFilterContext";
 import useScreenWidth from "../../hooks/useScreenWidth";
 
 registerLocale("es", es);

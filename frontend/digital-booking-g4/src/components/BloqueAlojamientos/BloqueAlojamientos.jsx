@@ -1,14 +1,17 @@
 import React, { useContext, useState, useEffect } from "react";
+import FilledButton from "../Buttons/FilledButton";
 import TarjetaAlojamiento from "./TarjetaAlojamiento/TarjetaAlojamiento";
 import TituloBloque from "../TituloBloque/TituloBloque.jsx";
-import currentCityContext from "../../contexts/currentCityContext";
+import currentFilterContext from "../../contexts/currentFilterContext";
 import styles from "./BloqueAlojamientos.module.css";
 import useFetch from "../../hooks/useFetch";
 
-export default function BloqueAlojamientos({ categoriaActual }) {
-  const { currentCity } = useContext(currentCityContext);
+export default function BloqueAlojamientos() {
+  const { currentCity,setCurrentCity, currentCategory, setCurrentCategory } = useContext(currentFilterContext);
   const [alojamientos, setAlojamientos] = useState([]);
   const { isLoaded, items } = useFetch("productos");
+  const [isFilter, setIsFilter] = useState(false);
+  const toggleFiltrado = () => setIsFilter(!isFilter);
 
   useEffect(() => {
     if (isLoaded) {
@@ -16,36 +19,51 @@ export default function BloqueAlojamientos({ categoriaActual }) {
     }
   }, [isLoaded, items]);
 
-
   const alojamientosFiltrados = alojamientos.filter((alojamiento) => {
     let pasaElFiltro = true;
-    if (categoriaActual !== "" && currentCity !== "") {
+    if (currentCategory !== "" && currentCity !== "" && !isFilter) {
       pasaElFiltro =
-        categoriaActual.toLowerCase() === alojamiento.categoria.titulo.toLowerCase() &&
+        currentCategory.toLowerCase() === alojamiento.categoria.titulo.toLowerCase() &&
         currentCity.toLowerCase() === alojamiento.ciudad.nombre.toLowerCase();
-    } else if (currentCity !== "") {
+    } else if (currentCity !== "" && !isFilter) {
       pasaElFiltro = currentCity.toLowerCase() === alojamiento.ciudad.nombre.toLowerCase();
-    } else if (categoriaActual !== "") {
+    } else if (currentCategory !== "" && !isFilter) {
       pasaElFiltro =
-        categoriaActual.toLowerCase() === alojamiento.categoria.titulo.toLowerCase();
+        currentCategory.toLowerCase() === alojamiento.categoria.titulo.toLowerCase();
     }
     return pasaElFiltro;
   });
+
   
+  useEffect(() => {
+    setCurrentCategory("");
+    setIsFilter(false);
+  }, [setCurrentCategory, isFilter]);
+
+
+/*  if (isFilter){
+    //setCurrentCity("");
+    setCurrentCategory("");
+    setIsFilter(false);
+  }*/
+
   return (
     <section className={styles.recomendaciones}>
-      <TituloBloque>
-        {categoriaActual === ""
-          ? currentCity === ""
-            ? "Recomendaciones"
-            : `Recomendaciones en ${currentCity}`
-          : currentCity === ""
-          ? `${capitalizeFirstLetter(categoriaActual)}`
-          : `${capitalizeFirstLetter(categoriaActual)} en ${currentCity}`}
-      </TituloBloque>
+      <div className={styles.encabezadoFiltros}>
+        <TituloBloque>
+          {currentCategory === ""
+            ? currentCity === ""
+              ? "Recomendaciones"
+              : `Recomendaciones en ${currentCity}`
+            : currentCity === ""
+              ? `${capitalizeFirstLetter(currentCategory)}`
+              : `${capitalizeFirstLetter(currentCategory)} en ${currentCity}`}
+        </TituloBloque>
+        <FilledButton onClick={toggleFiltrado}>Deshacer filtros</FilledButton>
+      </div>
       {isLoaded && alojamientosFiltrados.length === 0 ? (
         <h2 className={styles.sinResultados}>No se encontraron resultados</h2>
-      ) : !isLoaded ? <h2 className={styles.sinResultados}>Cargando alojamientos</h2> : (
+      ) : !isLoaded ? <h2 className={styles.sinResultados}>Cargando alojamientos</h2> :(
         <ul
           className={
             alojamientosFiltrados.length < 2
@@ -59,7 +77,7 @@ export default function BloqueAlojamientos({ categoriaActual }) {
             </li>
           ))}
         </ul>
-      )}
+        )}
     </section>
   );
 }

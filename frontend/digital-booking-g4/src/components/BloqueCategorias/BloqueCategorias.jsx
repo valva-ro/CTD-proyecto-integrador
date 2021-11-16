@@ -1,10 +1,12 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import TituloBloque from "../TituloBloque/TituloBloque.jsx";
 import TarjetaCategoria from "./TarjetaCategoria/TarjetaCategoria.jsx";
+import currentFilterContext from "../../contexts/currentFilterContext";
 import useFetch from "../../hooks/useFetch.js";
 import styles from "./BloqueCategorias.module.css";
 
-export default function BloqueCategorias({ setCategoriaActual }) {
+export default function BloqueCategorias() {
+  const {currentCategory, setCurrentCategory } = useContext(currentFilterContext);
   const [tarjetaActiva, setTarjetaActiva] = useState(null);
   const [categorias, setCategorias] = useState([]);
   const data = useFetch("categorias");
@@ -15,17 +17,23 @@ export default function BloqueCategorias({ setCategoriaActual }) {
     }
   }, [data.isLoaded, data.items]);
 
+  
   const toggleSelect = (indiceTarjeta, tituloCategoria) => {
+    if (currentCategory==""){
+      setCurrentCategory("");
+      setTarjetaActiva(null);
+    }
     if (indiceTarjeta === tarjetaActiva) {
-      setCategoriaActual("");
+      setCurrentCategory("");
       setTarjetaActiva(null);
     }
     else  {
       setTarjetaActiva(indiceTarjeta);
-      setCategoriaActual(tituloCategoria);  
+      setCurrentCategory(tituloCategoria);  
     }
   }
 
+  
   return (
     <section className={styles.bloqueCategorias}>
       <TituloBloque>Buscar por tipo de alojamiento</TituloBloque>
