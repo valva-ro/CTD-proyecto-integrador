@@ -152,6 +152,16 @@ CREATE TABLE politica_producto(
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
+-- Table structure for table `roles`
+--
+DROP TABLE IF EXISTS  roles;
+CREATE TABLE IF NOT EXISTS roles (
+	rol_id INT UNSIGNED NOT NULL AUTO_INCREMENT,
+    rol_nombre VARCHAR(50) NOT NULL,
+    PRIMARY KEY  (rol_id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
 -- Table structure for table `usuario`
 --
 DROP TABLE IF EXISTS usuarios;
@@ -162,7 +172,11 @@ CREATE TABLE IF NOT EXISTS usuarios (
   mail VARCHAR(100) NOT NULL,
   contrasenia VARCHAR(100) NOT NULL,
   cuenta_validada BOOLEAN NOT NULL,
-  PRIMARY KEY  (usuario_id)
+  fk_rol INT UNSIGNED NOT NULL,
+  PRIMARY KEY  (usuario_id),
+  CONSTRAINT roles
+	FOREIGN KEY (fk_rol)
+	REFERENCES booking.roles (rol_id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -199,6 +213,8 @@ CREATE TABLE IF NOT EXISTS puntuaciones (
 		FOREIGN KEY (fk_usuario)
 		REFERENCES booking.usuarios (usuario_id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
