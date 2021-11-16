@@ -177,8 +177,6 @@ INSERT INTO imagenes (imagen_titulo, imagen_URL, fk_producto) VALUES ("Pileta","
 INSERT INTO imagenes (imagen_titulo, imagen_URL, fk_producto) VALUES ("Habitación","https://proyectointegradorimagenes2.s3.us-east-2.amazonaws.com/Imagenes/Habitacion1.jpg",14);
 INSERT INTO imagenes (imagen_titulo, imagen_URL, fk_producto) VALUES ("Habitación","https://proyectointegradorimagenes2.s3.us-east-2.amazonaws.com/Imagenes/Habitacion1.jpg",14);
 INSERT INTO imagenes (imagen_titulo, imagen_URL, fk_producto) VALUES ("Principal","https://proyectointegradorimagenes2.s3.us-east-2.amazonaws.com/Alojamientos/Producto14.jpg",14);
-
-
 COMMIT;
 
 --
@@ -201,6 +199,7 @@ COMMIT;
 -- Dumping data for table `producto_caracteristica`
 --
 SET AUTOCOMMIT=0;
+-- Producto 1
 INSERT INTO producto_caracteristica (producto_id, caracteristica_id) VALUES (1,1);
 INSERT INTO producto_caracteristica (producto_id, caracteristica_id) VALUES (1,2);
 INSERT INTO producto_caracteristica (producto_id, caracteristica_id) VALUES (1,3);
@@ -209,34 +208,47 @@ INSERT INTO producto_caracteristica (producto_id, caracteristica_id) VALUES (1,5
 INSERT INTO producto_caracteristica (producto_id, caracteristica_id) VALUES (1,6);
 INSERT INTO producto_caracteristica (producto_id, caracteristica_id) VALUES (1,7);
 INSERT INTO producto_caracteristica (producto_id, caracteristica_id) VALUES (1,8);
+-- Producto 2
 INSERT INTO producto_caracteristica (producto_id, caracteristica_id) VALUES (2,1);
 INSERT INTO producto_caracteristica (producto_id, caracteristica_id) VALUES (2,2);
 INSERT INTO producto_caracteristica (producto_id, caracteristica_id) VALUES (2,4);
+-- Producto 3
 INSERT INTO producto_caracteristica (producto_id, caracteristica_id) VALUES (3,1);
 INSERT INTO producto_caracteristica (producto_id, caracteristica_id) VALUES (3,2);
 INSERT INTO producto_caracteristica (producto_id, caracteristica_id) VALUES (3,3);
 INSERT INTO producto_caracteristica (producto_id, caracteristica_id) VALUES (3,4);
+-- Producto 4
 INSERT INTO producto_caracteristica (producto_id, caracteristica_id) VALUES (4,2);
 INSERT INTO producto_caracteristica (producto_id, caracteristica_id) VALUES (4,3);
+-- Producto 5
 INSERT INTO producto_caracteristica (producto_id, caracteristica_id) VALUES (5,1);
 INSERT INTO producto_caracteristica (producto_id, caracteristica_id) VALUES (5,3);
+-- Producto 6
 INSERT INTO producto_caracteristica (producto_id, caracteristica_id) VALUES (6,2);
 INSERT INTO producto_caracteristica (producto_id, caracteristica_id) VALUES (6,4);
+-- Producto 7
 INSERT INTO producto_caracteristica (producto_id, caracteristica_id) VALUES (7,5);
 INSERT INTO producto_caracteristica (producto_id, caracteristica_id) VALUES (7,6);
+-- Producto 8
 INSERT INTO producto_caracteristica (producto_id, caracteristica_id) VALUES (8,7);
 INSERT INTO producto_caracteristica (producto_id, caracteristica_id) VALUES (8,8);
+-- Producto 9
 INSERT INTO producto_caracteristica (producto_id, caracteristica_id) VALUES (9,3);
 INSERT INTO producto_caracteristica (producto_id, caracteristica_id) VALUES (9,10);
+-- Producto 10
 INSERT INTO producto_caracteristica (producto_id, caracteristica_id) VALUES (10,9);
 INSERT INTO producto_caracteristica (producto_id, caracteristica_id) VALUES (10,10);
+-- Producto 11
 INSERT INTO producto_caracteristica (producto_id, caracteristica_id) VALUES (11,1);
 INSERT INTO producto_caracteristica (producto_id, caracteristica_id) VALUES (11,3);
+-- Producto 12
 INSERT INTO producto_caracteristica (producto_id, caracteristica_id) VALUES (12,1);
 INSERT INTO producto_caracteristica (producto_id, caracteristica_id) VALUES (12,6);
+-- Producto 13
 INSERT INTO producto_caracteristica (producto_id, caracteristica_id) VALUES (13,3);
 INSERT INTO producto_caracteristica (producto_id, caracteristica_id) VALUES (13,8);
 INSERT INTO producto_caracteristica (producto_id, caracteristica_id) VALUES (13,4);
+-- Producto 14
 INSERT INTO producto_caracteristica (producto_id, caracteristica_id) VALUES (14,1);
 INSERT INTO producto_caracteristica (producto_id, caracteristica_id) VALUES (14,10);
 COMMIT;
@@ -248,6 +260,52 @@ SET AUTOCOMMIT=0;
 INSERT INTO usuarios (nombre, apellido, mail, contrasenia, cuenta_validada) VALUES ("Pepe", "Pepardo", "pepe@gmail.com", "pepe1234", FALSE);
 INSERT INTO usuarios (nombre, apellido, mail, contrasenia, cuenta_validada) VALUES ("José", "Gómez", "jose@gmail.com", "jose1234", FALSE);
 INSERT INTO usuarios (nombre, apellido, mail, contrasenia, cuenta_validada) VALUES ("Josefina", "Gómez", "josefina@gmail.com", "josefina1234", FALSE);
+COMMIT;
+
+--
+-- Dumping data for table `puntuaciones`
+--
+SET AUTOCOMMIT=0;
+-- Producto 1
+INSERT INTO puntuaciones (puntuacion, fk_producto, fk_usuario) VALUES (2, 1, 1);
+INSERT INTO puntuaciones (puntuacion, fk_producto, fk_usuario) VALUES (4, 1, 2);
+INSERT INTO puntuaciones (puntuacion, fk_producto, fk_usuario) VALUES (3, 1, 3);
+-- Producto 2
+INSERT INTO puntuaciones (puntuacion, fk_producto, fk_usuario) VALUES (4, 2, 1);
+INSERT INTO puntuaciones (puntuacion, fk_producto, fk_usuario) VALUES (5, 2, 2);
+INSERT INTO puntuaciones (puntuacion, fk_producto, fk_usuario) VALUES (4, 2, 3);
+-- Producto 3
+INSERT INTO puntuaciones (puntuacion, fk_producto, fk_usuario) VALUES (3, 3, 1);
+INSERT INTO puntuaciones (puntuacion, fk_producto, fk_usuario) VALUES (4, 3, 2);
+INSERT INTO puntuaciones (puntuacion, fk_producto, fk_usuario) VALUES (2, 3, 3);
+-- Producto 4
+INSERT INTO puntuaciones (puntuacion, fk_producto, fk_usuario) VALUES (5, 4, 1);
+INSERT INTO puntuaciones (puntuacion, fk_producto, fk_usuario) VALUES (5, 4, 2);
+INSERT INTO puntuaciones (puntuacion, fk_producto, fk_usuario) VALUES (4, 4, 3);
+-- Producto 5
+INSERT INTO puntuaciones (puntuacion, fk_producto, fk_usuario) VALUES (5, 5, 1);
+INSERT INTO puntuaciones (puntuacion, fk_producto, fk_usuario) VALUES (3, 5, 2);
+INSERT INTO puntuaciones (puntuacion, fk_producto, fk_usuario) VALUES (4, 5, 3);
+-- Producto 6
+INSERT INTO puntuaciones (puntuacion, fk_producto, fk_usuario) VALUES (3, 6, 1);
+INSERT INTO puntuaciones (puntuacion, fk_producto, fk_usuario) VALUES (4, 6, 2);
+INSERT INTO puntuaciones (puntuacion, fk_producto, fk_usuario) VALUES (4, 6, 3);
+-- Producto 7
+INSERT INTO puntuaciones (puntuacion, fk_producto, fk_usuario) VALUES (3, 7, 1);
+INSERT INTO puntuaciones (puntuacion, fk_producto, fk_usuario) VALUES (4, 7, 2);
+INSERT INTO puntuaciones (puntuacion, fk_producto, fk_usuario) VALUES (4, 7, 3);
+-- Producto 8
+INSERT INTO puntuaciones (puntuacion, fk_producto, fk_usuario) VALUES (5, 8, 1);
+INSERT INTO puntuaciones (puntuacion, fk_producto, fk_usuario) VALUES (4, 8, 2);
+INSERT INTO puntuaciones (puntuacion, fk_producto, fk_usuario) VALUES (5, 8, 3);
+-- Producto 9
+INSERT INTO puntuaciones (puntuacion, fk_producto, fk_usuario) VALUES (4, 9, 1);
+INSERT INTO puntuaciones (puntuacion, fk_producto, fk_usuario) VALUES (4, 9, 2);
+INSERT INTO puntuaciones (puntuacion, fk_producto, fk_usuario) VALUES (5, 9, 3);
+-- Producto 10
+INSERT INTO puntuaciones (puntuacion, fk_producto, fk_usuario) VALUES (4, 10, 1);
+INSERT INTO puntuaciones (puntuacion, fk_producto, fk_usuario) VALUES (4, 10, 2);
+INSERT INTO puntuaciones (puntuacion, fk_producto, fk_usuario) VALUES (3, 10, 3);
 COMMIT;
 
 --
