@@ -1,14 +1,14 @@
 import { useState } from "react";
-import TituloBloque from "../../TituloBloque/TituloBloque";
+import TituloBloque from "../../../TituloBloque/TituloBloque";
 import DatePicker, {
   CalendarContainer,
   registerLocale,
 } from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import styles from "./ProductoFechasDisponibles.module.css";
-import FilledButton from "../../Buttons/FilledButton";
+import FilledButton from "../../../Buttons/FilledButton";
 import es from "date-fns/locale/es";
-import useScreenWidth from "../../../hooks/useScreenWidth";
+import useScreenWidth from "../../../../hooks/useScreenWidth";
 
 registerLocale("es", es);
 
@@ -54,7 +54,6 @@ export default function ProductoFechasDisponibles() {
       </CalendarContainer>
     );
   };
-
 
   return (
     <section className={styles.bloqueFechasDisponiblesContainer}>

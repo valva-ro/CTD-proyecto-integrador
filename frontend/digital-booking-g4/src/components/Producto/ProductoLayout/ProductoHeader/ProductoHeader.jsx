@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import ProductoUbicacion from "../ProductoUbicacion/ProductoUbicacion";
+
 import styles from "./ProductoHeader.module.css";
 
 export default function ProductHeader({ alojamiento }) {
@@ -18,7 +18,6 @@ export default function ProductHeader({ alojamiento }) {
           </Link>
         </div>
       </div>
-      <ProductoUbicacion alojamiento={alojamiento}/> 
     </>
   );
 }

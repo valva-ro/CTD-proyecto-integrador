@@ -1,7 +1,7 @@
 import { useRef } from "react";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
-import useOnClickOutside from "../../../hooks/useOnClickOutside";
+import useOnClickOutside from "../../../../hooks/useOnClickOutside";
 import styles from "./ProductoModalCarousel.module.css";
 
 export default function ProductoModalCarousel({
@@ -9,7 +9,6 @@ export default function ProductoModalCarousel({
   onCloseRequest,
   imagenes,
 }) {
-  
   const modalRef = useRef(null);
   useOnClickOutside(modalRef, onCloseRequest);
 
@@ -38,7 +37,7 @@ export default function ProductoModalCarousel({
             hasNext && NextArrow(onClickHandler, label)
           }
         >
-          {imagenes.map(imagen => {
+          {imagenes.map((imagen) => {
             return (
               <div className={styles.imagen} key={imagen.id}>
                 <img src={imagen.imagenUrl} alt={imagen.imagenTitulo} />
