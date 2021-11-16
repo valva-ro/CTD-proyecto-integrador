@@ -12,6 +12,10 @@
 
 -- THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
+<<<<<<< HEAD
+=======
+USE booking;
+>>>>>>> 33ebb16ecc24ab52d045978b3fa71829cc8171f8
 --
 -- Dumping data for table `categorias`
 --
@@ -429,4 +433,32 @@ INSERT INTO politica_producto (politica_id,producto_id) VALUES (14,14);
 
 
 
+--
+-- Dumping data for table `usuarios`
+--
+SET AUTOCOMMIT=0;
+INSERT INTO usuarios (nombre, apellido, mail, contrasenia, cuenta_validada) VALUES ("Pepe", "Pepardo", "pepe@gmail.com", "pepe1234", FALSE);
+INSERT INTO usuarios (nombre, apellido, mail, contrasenia, cuenta_validada) VALUES ("José", "Gómez", "jose@gmail.com", "jose1234", FALSE);
+INSERT INTO usuarios (nombre, apellido, mail, contrasenia, cuenta_validada) VALUES ("Josefina", "Gómez", "josefina@gmail.com", "josefina1234", FALSE);
+COMMIT;
+
+--
+-- Dumping data for table `usuario_producto`
+--
+SET AUTOCOMMIT=0;
+-- Usuario 1
+INSERT INTO usuario_producto (usuario_id, producto_id) VALUES (1, 1);
+INSERT INTO usuario_producto (usuario_id, producto_id) VALUES (1, 2);
+INSERT INTO usuario_producto (usuario_id, producto_id) VALUES (1, 4);
+INSERT INTO usuario_producto (usuario_id, producto_id) VALUES (1, 5);
+-- Usuario 2
+INSERT INTO usuario_producto (usuario_id, producto_id) VALUES (2, 3);
+INSERT INTO usuario_producto (usuario_id, producto_id) VALUES (2, 5);
+INSERT INTO usuario_producto (usuario_id, producto_id) VALUES (2, 6);
+INSERT INTO usuario_producto (usuario_id, producto_id) VALUES (2, 4);
+-- Usuario 3
+INSERT INTO usuario_producto (usuario_id, producto_id) VALUES (3, 1);
+INSERT INTO usuario_producto (usuario_id, producto_id) VALUES (3, 3);
+INSERT INTO usuario_producto (usuario_id, producto_id) VALUES (3, 5);
+INSERT INTO usuario_producto (usuario_id, producto_id) VALUES (3, 6);
 COMMIT;

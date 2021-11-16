@@ -4,14 +4,13 @@ import FilledButton from "../../Buttons/FilledButton";
 import Estrellas from "../../Estrellas/Estrellas";
 import styles from "./TarjetaAlojamiento.module.css";
 
-export default function TarjetaAlojamiento({ alojamiento }) {
-  const { id, 
-          nombre, 
-          descripcion,  
-          categoria, 
-          ciudad, 
-          imagenes,
-        caracteristicas } = alojamiento;
+export default function TarjetaAlojamiento({ alojamiento: { id, 
+  nombre, 
+  descripcion,  
+  categoria, 
+  ciudad, 
+  imagenes,
+caracteristicas } }) {
 
   const [esVerMas, setEsVerMas] = useState(true);
   const toggleVerMas = () => setEsVerMas(!esVerMas);
@@ -61,8 +60,8 @@ export default function TarjetaAlojamiento({ alojamiento }) {
           </div>
           <div className={styles.servicios}>
             {
-              caracteristicas.map((caracteristica, i) => 
-                <i key={`caracteristica-${i}`} className={`${caracteristica.icono}`}></i>
+              caracteristicas.map((caracteristica) => 
+                <i key={`caracteristica-${caracteristica.id}`} className={`${caracteristica.icono}`}></i>
               )
             }
           </div>

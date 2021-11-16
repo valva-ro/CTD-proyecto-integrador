@@ -1,5 +1,8 @@
 package com.grupo4.hostingbook.persistence.entites;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Objects;
@@ -27,11 +30,17 @@ public class Producto {
     @JoinColumn(name = "fk_producto")
     private Set<Imagen> imagenes = new HashSet<>();
 
-    @ManyToMany (
-            cascade = {
-                CascadeType.MERGE
-            }
-    )
+    @OneToMany(mappedBy = "puntuacion")
+    @JsonIgnore
+    private Set<Puntuacion> puntuaciones = new HashSet<>();
+
+    @ManyToMany(cascade = {
+            CascadeType.PERSIST,
+            CascadeType.DETACH,
+            CascadeType.REFRESH,
+            CascadeType.REMOVE
+    })
+    @JsonIgnore
     @JoinTable(
             name = "politica_producto",
             joinColumns = @JoinColumn(name = "producto_id"),
@@ -50,6 +59,9 @@ public class Producto {
             inverseJoinColumns = @JoinColumn(name = "caracteristica_id")
     )
     private Set<Caracteristica> caracteristicas = new HashSet<>();
+
+    @ManyToMany (cascade = CascadeType.MERGE, mappedBy = "productosFavoritos")
+    private Set<Usuario> usuarios = new HashSet<>();
 
     public Producto() {}
 
@@ -129,6 +141,14 @@ public class Producto {
 
     public void setCaracteristicas(Set<Caracteristica> caracteristicas) {
         this.caracteristicas = caracteristicas;
+    }
+
+    public Set<Puntuacion> getPuntuaciones() {
+        return puntuaciones;
+    }
+
+    public void setPuntuaciones(Set<Puntuacion> puntuaciones) {
+        this.puntuaciones = puntuaciones;
     }
 
     @Override

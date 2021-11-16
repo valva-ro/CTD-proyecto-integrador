@@ -41,7 +41,7 @@ export default function BloqueCategorias({ setCategoriaActual }) {
         <div className={styles.listadoTarjetas}>
           {categorias.map((dato, i) => (
             <TarjetaCategoria
-              key={`categoria-${i}`}
+              key={`categoria-${dato + i}`}
               indice={i}
               indiceTarjetaActiva={tarjetaActiva}
               fotoPortada={dato.urlImagen}

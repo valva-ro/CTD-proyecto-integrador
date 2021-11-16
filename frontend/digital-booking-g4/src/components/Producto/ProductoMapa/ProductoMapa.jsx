@@ -1,5 +1,5 @@
 import { GoogleMap, useJsApiLoader, Marker } from "@react-google-maps/api";
-import TituloBloque from "../TituloBloque/TituloBloque";
+import TituloBloque from "../../TituloBloque/TituloBloque";
 import styles from "./ProductoMapa.module.css";
 
 const containerStyle = {
@@ -17,9 +17,8 @@ const center = {
   lng: -64.5958,
 };
 
-export default function ProductoMapa({ alojamiento }) {
+export default function ProductoMapa({ alojamiento: { ciudad } }) {
   // TODO: este location hay que cambiarlo y usar el atributo de la API
-  const { ciudad } = alojamiento;
   const { isLoaded } = useJsApiLoader({
     id: "google-map-script",
     googleMapsApiKey: "AIzaSyA2h8uPorI_NWnVFI5NfeI45GfjpJ4EIxE",
