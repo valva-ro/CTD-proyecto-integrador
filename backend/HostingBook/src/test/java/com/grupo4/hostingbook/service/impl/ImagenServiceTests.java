@@ -1,6 +1,7 @@
 package com.grupo4.hostingbook.service.impl;
 
 import com.grupo4.hostingbook.exceptions.BadRequestException;
+import com.grupo4.hostingbook.exceptions.NotImplementedException;
 import com.grupo4.hostingbook.exceptions.ResourceNotFoundException;
 import com.grupo4.hostingbook.model.ImagenDTO;
 import com.grupo4.hostingbook.service.CRUDService;
@@ -61,7 +62,7 @@ public class ImagenServiceTests {
     }
 
     @Test
-    public void test07ActualizarImagenExistente() throws BadRequestException, ResourceNotFoundException {
+    public void test07ActualizarImagenExistente() throws BadRequestException, ResourceNotFoundException, NotImplementedException {
         imagenService.crear(imagenPorCrear);
         ImagenDTO dtoActualizado = imagenService.actualizar(imagenPorActualizar);
         assertEquals(imagenActualizada, dtoActualizado);

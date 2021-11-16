@@ -1,4 +1,4 @@
-import TituloBloque from "../TituloBloque/TituloBloque";
+import TituloBloque from "../../TituloBloque/TituloBloque";
 import styles from "./ProductoPoliticas.module.css";
 import { useParams } from "react-router-dom";
 
@@ -17,9 +17,9 @@ export default function ProductoPoliticas({ alojamientos }) {
             <h4 className={styles.subtituloSecciones}>Normas de la casa</h4>
             <div className={styles.secciones}>
               {alojamiento.policies.rules.length > 0 ? (
-                alojamiento.policies.rules.map((parrafo, i) => {
-                  return <p key={i}>{parrafo}</p>;
-                })
+                alojamiento.policies.rules.map((parrafo, i) => (
+                  <p key={i}>{parrafo}</p>
+                ))
               ) : (
                 <p>No hay reglas establecidas para este producto</p>
               )}

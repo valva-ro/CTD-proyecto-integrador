@@ -1,5 +1,8 @@
 package com.grupo4.hostingbook.persistence.entites;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Objects;
@@ -27,9 +30,27 @@ public class Producto {
     @JoinColumn(name = "fk_producto")
     private Set<Imagen> imagenes = new HashSet<>();
 
+    @OneToMany(mappedBy = "puntuacion")
+    @JsonIgnore
+    private Set<Puntuacion> puntuaciones = new HashSet<>();
+
+    @ManyToMany(cascade = {
+            CascadeType.PERSIST,
+            CascadeType.DETACH,
+            CascadeType.REFRESH,
+            CascadeType.REMOVE
+    })
+    @JsonIgnore
+    @JoinTable(
+            name = "politica_producto",
+            joinColumns = @JoinColumn(name = "producto_id"),
+            inverseJoinColumns = @JoinColumn(name = "politica_id")
+    )
+    private Set<Politica> politicas = new HashSet<>();
+
     @ManyToMany (
             cascade = {
-                CascadeType.MERGE
+                    CascadeType.MERGE
             }
     )
     @JoinTable(
@@ -39,11 +60,22 @@ public class Producto {
     )
     private Set<Caracteristica> caracteristicas = new HashSet<>();
 
+    @ManyToMany (cascade = CascadeType.MERGE, mappedBy = "productosFavoritos")
+    private Set<Usuario> usuarios = new HashSet<>();
+
     public Producto() {}
 
     public Producto(String nombre, String descripcion) {
         this.nombre = nombre;
         this.descripcion = descripcion;
+    }
+
+    public Set<Politica> getPoliticas() {
+        return politicas;
+    }
+
+    public void setPoliticas(Set<Politica> politicas) {
+        this.politicas = politicas;
     }
 
     public Producto(String nombre, String descripcion, Categoria categoria, Ciudad ciudad, Set<Imagen> imagenes, Set<Caracteristica> caracteristicas) {
@@ -109,6 +141,14 @@ public class Producto {
 
     public void setCaracteristicas(Set<Caracteristica> caracteristicas) {
         this.caracteristicas = caracteristicas;
+    }
+
+    public Set<Puntuacion> getPuntuaciones() {
+        return puntuaciones;
+    }
+
+    public void setPuntuaciones(Set<Puntuacion> puntuaciones) {
+        this.puntuaciones = puntuaciones;
     }
 
     @Override

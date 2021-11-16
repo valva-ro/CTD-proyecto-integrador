@@ -1,8 +1,7 @@
-import TituloBloque from "../TituloBloque/TituloBloque";
+import TituloBloque from "../../TituloBloque/TituloBloque";
 import styles from "./ProductoCaracteristicas.module.css";
 
-export default function ProductoCaracteristicas({ alojamiento }) {
-  const { caracteristicas } = alojamiento;
+export default function ProductoCaracteristicas({ alojamiento: { caracteristicas } }) {
 
   return (
     <section className={styles.ProductoCaracteristicas}>
@@ -13,7 +12,7 @@ export default function ProductoCaracteristicas({ alojamiento }) {
           caracteristicas.map((caracteristica, i) => {
             return (
               <div
-                key={`caracteristica-${i}`}
+                key={`caracteristica-${caracteristica.id}`}
                 className={styles.caracteristicaItem}
               >
                 <div>
@@ -25,7 +24,7 @@ export default function ProductoCaracteristicas({ alojamiento }) {
           })
         ) : (
           <h2 className={styles.sinResultados}>
-            Este alojamiento no presenta ninguna característica. 
+            Este alojamiento no tiene características. 
           </h2>
         )}
       </div>

@@ -1,6 +1,7 @@
 package com.grupo4.hostingbook.service.impl;
 
 import com.grupo4.hostingbook.exceptions.BadRequestException;
+import com.grupo4.hostingbook.exceptions.NotImplementedException;
 import com.grupo4.hostingbook.exceptions.ResourceNotFoundException;
 import com.grupo4.hostingbook.model.CategoriaDTO;
 import com.grupo4.hostingbook.service.CRUDService;
@@ -61,7 +62,7 @@ public class CategoriaServiceTests {
     }
 
     @Test
-    public void test07ActualizarCategoriaExistente() throws BadRequestException, ResourceNotFoundException {
+    public void test07ActualizarCategoriaExistente() throws BadRequestException, ResourceNotFoundException, NotImplementedException {
         categoriaService.crear(categoriaPorCrear);
         CategoriaDTO dtoActualizado = categoriaService.actualizar(categoriaPorActualizar);
         assertEquals(categoriaActualizada, dtoActualizado);
