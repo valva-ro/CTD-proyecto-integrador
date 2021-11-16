@@ -4,5 +4,5 @@ export default function obtenerClasificacion(puntaje) {
     else if (puntaje === 3) return "Bueno";
     else if (puntaje === 4) return "Muy bueno";
     else if (puntaje === 5) return "Excelente";
-    else return "Sin clasificación";
+    else return "Sin calificaciones";
 }
