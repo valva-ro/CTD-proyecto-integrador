@@ -66,6 +66,35 @@
   opacity: 0.6;
 }
 
+/*_________Skeleton_______________*/
+
+@keyframes loadingAnimation {
+  0% {
+    background-color: var(--color-4);
+  }
+  50% {
+    background-color: rgb(182, 177, 177);
+  }
+  100% {
+    background-color: var(--color-4);
+  }
+}
+
+.skeleton {
+  width: 100%;
+  animation: loadingAnimation 5s infinite;
+}
+
+.disabled{
+  pointer-events:none;
+}
+
+.textLoader {
+  width: 30%;
+  height: 1.2rem;
+  margin: 0.3rem;
+}
+
 /*****************Responsive*****************/
 /*______Tablet______*/
 @media screen and (max-width: 1045px) {
@@ -91,7 +120,7 @@
   .tarjeta,
   .tarjetaSeleccionada {
     height: 38vh;
-    width: 90vw;
+    width: 100%;
   }
   .contenidoTarjeta {
     top: 81%;
