@@ -48,6 +48,40 @@ public class ProductoDTO implements Serializable {
         this.caracteristicas = caracteristicas;
     }
 
+    public ProductoDTO(Long id,
+                       String nombre,
+                       String descripcion,
+                       CategoriaDTO categoria,
+                       CiudadDTO ciudad,
+                       Set<PoliticaDTO> politicas,
+                       Set<ImagenDTO> imagenes,
+                       Set<CaracteristicaDTO> caracteristicas) {
+        this.id = id;
+        this.nombre = nombre;
+        this.descripcion = descripcion;
+        this.categoria = categoria;
+        this.ciudad = ciudad;
+        this.politicas = politicas;
+        this.imagenes = imagenes;
+        this.caracteristicas = caracteristicas;
+    }
+
+    public ProductoDTO(String nombre,
+                       String descripcion,
+                       CategoriaDTO categoria,
+                       CiudadDTO ciudad,
+                       Set<PoliticaDTO> politicas,
+                       Set<ImagenDTO> imagenes,
+                       Set<CaracteristicaDTO> caracteristicas) {
+        this.nombre = nombre;
+        this.descripcion = descripcion;
+        this.categoria = categoria;
+        this.ciudad = ciudad;
+        this.politicas = politicas;
+        this.imagenes = imagenes;
+        this.caracteristicas = caracteristicas;
+    }
+
     public Long getId() {
         return id;
     }
@@ -134,7 +168,11 @@ public class ProductoDTO implements Serializable {
             c.toString();
             caracteristicasToString.add(c);
         }
-
+        Set<PoliticaDTO> politicasToString= new HashSet<>();
+        for (PoliticaDTO p: politicas) {
+            p.toString();
+            politicasToString.add(p);
+        }
         return "ProductoDTO{" +
                 "id=" + id +
                 ", nombre='" + nombre + '\'' +
@@ -143,6 +181,7 @@ public class ProductoDTO implements Serializable {
                 ", ciudad=" + ciudad.toString() +
                 ", imagenes=" + imagenesToString +
                 ", caracteristicas=" + caracteristicasToString +
+                ", caracteristicas="+ politicasToString+
                 '}';
     }
 }

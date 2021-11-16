@@ -2,7 +2,6 @@ package com.grupo4.hostingbook.persistence.entites;
 
 import javax.persistence.*;
 import java.util.Objects;
-import java.util.Set;
 
 @Entity
 @Table(name = "politicas")
@@ -17,8 +16,6 @@ public class Politica {
     @JoinColumn(name = "fk_tipo_politica")
     private TipoPolitica tipoPolitica;
 
-    @ManyToMany(mappedBy = "politicas")
-    private Set<Producto> productos;
 
     public Long getId() {
         return id;
@@ -44,24 +41,17 @@ public class Politica {
         this.tipoPolitica = tipoPolitica;
     }
 
-    public Set<Producto> getProductos() {
-        return productos;
-    }
-
-    public void setProductos(Set<Producto> productos) {
-        this.productos = productos;
-    }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Politica)) return false;
         Politica politica = (Politica) o;
-        return getId().equals(politica.getId()) && getNombre().equals(politica.getNombre()) && getTipoPolitica().equals(politica.getTipoPolitica()) && getProductos().equals(politica.getProductos());
+        return getId().equals(politica.getId()) && getNombre().equals(politica.getNombre()) && getTipoPolitica().equals(politica.getTipoPolitica()) ;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId(), getNombre(), getTipoPolitica(), getProductos());
+        return Objects.hash(getId(), getNombre(), getTipoPolitica());
     }
 }

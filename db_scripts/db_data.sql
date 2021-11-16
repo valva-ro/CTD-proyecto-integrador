@@ -428,13 +428,5 @@ INSERT INTO politica_producto (politica_id,producto_id) VALUES (12,14);
 INSERT INTO politica_producto (politica_id,producto_id) VALUES (14,14);
 
 
-INSERT INTO politica_producto (politica_id,producto_id) VALUES (1,15);
-INSERT INTO politica_producto (politica_id,producto_id) VALUES (3,15);
-INSERT INTO politica_producto (politica_id,producto_id) VALUES (5,15);
 
-INSERT INTO politica_producto (politica_id,producto_id) VALUES (7,15);
-INSERT INTO politica_producto (politica_id,producto_id) VALUES (9,15);
-INSERT INTO politica_producto (politica_id,producto_id) VALUES (11,15);
-
-INSERT INTO politica_producto (politica_id,producto_id) VALUES (15,15);
 COMMIT;

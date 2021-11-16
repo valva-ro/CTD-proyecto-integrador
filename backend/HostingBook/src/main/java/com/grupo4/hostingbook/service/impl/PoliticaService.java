@@ -5,10 +5,8 @@ import com.grupo4.hostingbook.exceptions.BadRequestException;
 import com.grupo4.hostingbook.exceptions.Mensajes;
 import com.grupo4.hostingbook.exceptions.ResourceNotFoundException;
 import com.grupo4.hostingbook.model.PoliticaDTO;
-import com.grupo4.hostingbook.model.ProductoDTO;
 import com.grupo4.hostingbook.model.TipoPoliticaDTO;
 import com.grupo4.hostingbook.persistence.entites.Politica;
-import com.grupo4.hostingbook.persistence.entites.Producto;
 import com.grupo4.hostingbook.persistence.entites.TipoPolitica;
 import com.grupo4.hostingbook.persistence.repository.IPoliticaRepository;
 import com.grupo4.hostingbook.persistence.repository.ITipoPoliticaRepository;
@@ -82,32 +80,18 @@ public class PoliticaService implements IPoliticaService {
     @Override
     public Set<PoliticaDTO> buscarPorTipoPolitica(Long tipopoliticaId) throws BadRequestException, ResourceNotFoundException {
         validartipoPoliticaId(tipopoliticaId);
-        Set<PoliticaDTO> politicasEncontradas= new HashSet<>();
-        List<Politica>  politicas= politicaRepository.findAll();
-        for (Politica politica: politicas) {
-            if (politica.getTipoPolitica().getId()==tipopoliticaId){
-                politicasEncontradas.add(mapper.convertValue(politica,PoliticaDTO.class));
-            }
-
-        }
-        return politicasEncontradas;
-    }
-
-    @Override
-    public Set<PoliticaDTO> buscarPorProducto(ProductoDTO productoDTO) {
-
         Set<PoliticaDTO> politicasEncontradas = new HashSet<>();
-        List<Politica> politicas= politicaRepository.findAll();
-        for (Politica politica: politicas) {
-            if (politica.getProductos().contains(mapper.convertValue(productoDTO, Producto.class))){
-                politicasEncontradas.add(mapper.convertValue( politica, PoliticaDTO.class));
+        List<Politica> politicas = politicaRepository.findAll();
+        for (Politica politica : politicas) {
+            if (politica.getTipoPolitica().getId() == tipopoliticaId) {
+                politicasEncontradas.add(mapper.convertValue(politica, PoliticaDTO.class));
             }
 
         }
-
-
         return politicasEncontradas;
     }
+
+
 
     @Override
     public TipoPoliticaDTO crearTipoPolitica(TipoPoliticaDTO tipoPoliticaDTO) throws BadRequestException {
@@ -154,13 +138,7 @@ public class PoliticaService implements IPoliticaService {
     private PoliticaDTO actualizar(PoliticaDTO politicaDTO, Politica entidad) {
         if (politicaDTO.getNombre() != null && !politicaDTO.getNombre().isEmpty() && !politicaDTO.getNombre().isBlank())
             entidad.setNombre(politicaDTO.getNombre());
-        if (politicaDTO.getProductos() != null && !(politicaDTO.getProductos().size() >0) )
-            for (ProductoDTO productoDto : politicaDTO.getProductos()) {
-                 Producto productoAniadir= mapper.convertValue(productoDto, Producto.class);
-                 entidad.getProductos().add(productoAniadir);
-
-            }
-        Politica entidadActualizada = politicaRepository.save(entidad);
+                Politica entidadActualizada = politicaRepository.save(entidad);
         return mapper.convertValue(entidadActualizada, PoliticaDTO.class);
     }
 

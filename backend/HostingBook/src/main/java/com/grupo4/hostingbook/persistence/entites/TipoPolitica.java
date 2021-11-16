@@ -1,9 +1,7 @@
 package com.grupo4.hostingbook.persistence.entites;
 
 import javax.persistence.*;
-import java.util.HashSet;
 import java.util.Objects;
-import java.util.Set;
 
 @Entity
 @Table(name = "tipo_politica")
@@ -15,8 +13,6 @@ public class TipoPolitica {
     private Long id;
     private String nombre;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "tipoPolitica", fetch = FetchType.EAGER)
-    private Set<Politica> politicas = new HashSet<>();
 
     public Long getId() {
         return id;
@@ -34,25 +30,18 @@ public class TipoPolitica {
         this.nombre = nombre;
     }
 
-    public Set<Politica> getPoliticas() {
-        return politicas;
-    }
-
-    public void setPoliticas(Set<Politica> politicas) {
-        this.politicas = politicas;
-    }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof TipoPolitica)) return false;
         TipoPolitica that = (TipoPolitica) o;
-        return getId().equals(that.getId()) && getNombre().equals(that.getNombre()) && getPoliticas().equals(that.getPoliticas());
+        return getId().equals(that.getId()) && getNombre().equals(that.getNombre()) ;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId(), getNombre(), getPoliticas());
+        return Objects.hash(getId(), getNombre());
     }
 }
 

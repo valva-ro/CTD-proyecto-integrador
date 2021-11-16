@@ -24,15 +24,17 @@ public class ProductoService implements IProductoService {
     private final CiudadService ciudadService;
     private final ImagenService imagenService;
     private final CaracteristicaService caracteristicaService;
+    private final PoliticaService politicaService;
 
     @Autowired
-    public ProductoService(IProductoRepository productoRepository, ObjectMapper mapper, CategoriaService categoriaService, CiudadService ciudadService, ImagenService imagenService, CaracteristicaService caracteristicaService) {
+    public ProductoService(IProductoRepository productoRepository, ObjectMapper mapper, CategoriaService categoriaService, CiudadService ciudadService, ImagenService imagenService, CaracteristicaService caracteristicaService, PoliticaService politicaService) {
         this.productoRepository = productoRepository;
         this.mapper = mapper;
         this.categoriaService = categoriaService;
         this.ciudadService = ciudadService;
         this.imagenService = imagenService;
         this.caracteristicaService = caracteristicaService;
+        this.politicaService=politicaService;
     }
 
     @Override
