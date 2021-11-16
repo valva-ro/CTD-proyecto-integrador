@@ -53,15 +53,34 @@ public class ProductoService implements IProductoService {
             throw new ResourceNotFoundException(
                     String.format(Mensajes.ERROR_NO_EXISTE, "El 'producto'", id));
         }
-        return mapper.convertValue(productoRepository.findById(id).get(), ProductoDTO.class);
+        Producto entidad = productoRepository.findById(id).get();
+        List<PuntuacionDTO> puntuacionesDTO = puntuacionService.consultarTodos();
+        ProductoDTO dto = mapper.convertValue(entidad, ProductoDTO.class);
+        for (PuntuacionDTO puntuacion : puntuacionesDTO) {
+            if (puntuacion.getProducto().getId().equals(entidad.getId())) {
+                puntuacion.setProducto(new ProductoDTO(puntuacion.getProducto().getId()));
+                puntuacion.setUsuario(new UsuarioDTO(puntuacion.getUsuario().getId()));
+                dto.agregarPuntuacion(puntuacion);
+            }
+        }
+        return dto;
     }
 
     @Override
     public List<ProductoDTO> consultarTodos() {
         List<Producto> entidades = productoRepository.findAll();
         List<ProductoDTO> dtos = new ArrayList<>();
+        List<PuntuacionDTO> puntuacionesDTO = puntuacionService.consultarTodos();
         for (Producto entidad : entidades) {
-            dtos.add(mapper.convertValue(entidad, ProductoDTO.class));
+            ProductoDTO dto = mapper.convertValue(entidad, ProductoDTO.class);
+            for (PuntuacionDTO puntuacion : puntuacionesDTO) {
+                if (puntuacion.getProducto().getId().equals(entidad.getId())) {
+                    puntuacion.setProducto(new ProductoDTO(puntuacion.getProducto().getId()));
+                    puntuacion.setUsuario(new UsuarioDTO(puntuacion.getUsuario().getId()));
+                    dto.agregarPuntuacion(puntuacion);
+                }
+            }
+            dtos.add(dto);
         }
         return dtos;
     }

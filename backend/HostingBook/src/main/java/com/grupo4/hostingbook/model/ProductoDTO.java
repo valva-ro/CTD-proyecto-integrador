@@ -18,6 +18,10 @@ public class ProductoDTO implements Serializable {
 
     public ProductoDTO(){}
 
+    public ProductoDTO(Long id) {
+        this.id = id;
+    }
+
     public ProductoDTO(String nombre,
                        String descripcion,
                        CategoriaDTO categoria,
@@ -110,6 +114,10 @@ public class ProductoDTO implements Serializable {
 
     public void setPuntuaciones(Set<PuntuacionDTO> puntuaciones) {
         this.puntuaciones = puntuaciones;
+    }
+
+    public void agregarPuntuacion(PuntuacionDTO puntuacionDTO) {
+        this.puntuaciones.add(puntuacionDTO);
     }
 
     @Override
