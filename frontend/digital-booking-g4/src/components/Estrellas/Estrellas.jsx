@@ -10,11 +10,10 @@ export default function Estrellas({ puntaje }) {
 }
 
 function obtenerEstrellas(puntaje) {
-  const puntajeRedondeado = Math.ceil(puntaje);
   let estrellas = [];
 
   for (let i = 1; i <= 5; i++) {
-    if (i <= Math.floor(puntajeRedondeado / 2))
+    if (i <= Math.floor(puntaje))
       estrellas.push(
         <i
           key={`estrellas-${i}`}

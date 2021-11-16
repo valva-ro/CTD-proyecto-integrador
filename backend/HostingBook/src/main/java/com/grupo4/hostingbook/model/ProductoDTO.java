@@ -13,8 +13,6 @@ public class ProductoDTO implements Serializable {
     private CategoriaDTO categoria;
     private CiudadDTO ciudad;
     private Set<PoliticaDTO> politicas;
-    private Set<ImagenDTO> imagenes;
-    private Set<CaracteristicaDTO> caracteristicas;
     private Set<ImagenDTO> imagenes = new HashSet<>();
     private Set<CaracteristicaDTO> caracteristicas = new HashSet<>();
     private Set<PuntuacionDTO> puntuaciones = new HashSet<>();
@@ -22,19 +20,16 @@ public class ProductoDTO implements Serializable {
     public ProductoDTO() {
     }
 
-    public ProductoDTO(String nombre, String descripcion, CategoriaDTO categoria, CiudadDTO ciudad,
-            Set<ImagenDTO> imagenes, Set<CaracteristicaDTO> caracteristicas) {
-        this.nombre = nombre;
-        this.descripcion = descripcion;
-        this.categoria = categoria;
-        this.ciudad = ciudad;
-        this.imagenes = imagenes;
-        this.caracteristicas = caracteristicas;
+    public ProductoDTO(Long id) {
+        this.id = id;
     }
 
-    public ProductoDTO(Long id, String nombre, String descripcion, CategoriaDTO categoria, CiudadDTO ciudad,
-            Set<ImagenDTO> imagenes, Set<CaracteristicaDTO> caracteristicas) {
-        this.id = id;
+    public ProductoDTO(String nombre,
+                       String descripcion,
+                       CategoriaDTO categoria,
+                       CiudadDTO ciudad,
+                       Set<ImagenDTO> imagenes,
+                       Set<CaracteristicaDTO> caracteristicas) {
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.categoria = categoria;
@@ -136,6 +131,10 @@ public class ProductoDTO implements Serializable {
 
     public void setPuntuaciones(Set<PuntuacionDTO> puntuaciones) {
         this.puntuaciones = puntuaciones;
+    }
+
+    public void agregarPuntuacion(PuntuacionDTO puntuacionDTO) {
+        this.puntuaciones.add(puntuacionDTO);
     }
 
     @Override

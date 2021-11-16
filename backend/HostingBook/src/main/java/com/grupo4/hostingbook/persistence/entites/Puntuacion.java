@@ -1,5 +1,7 @@
 package com.grupo4.hostingbook.persistence.entites;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.Objects;
 

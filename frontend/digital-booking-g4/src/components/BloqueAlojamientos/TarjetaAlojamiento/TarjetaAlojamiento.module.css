@@ -46,25 +46,21 @@
 
 .informacionPrincipal {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-between;
+  gap: 20px;
 }
 
 .tipoYCalificacion {
   display: flex;
   align-items: center;
-  font-size: 0.9rem;
 }
 
 .tipoYCalificacion h4 {
   text-transform: uppercase;
   opacity: 50%;
   margin-right: 8px;
-}
-
-.estrellas {
-  color: var(--color-principal);
-  margin: 0 0.25rem;
+  font-size: 14px;
 }
 
 .puntajeAlojamiento {
@@ -81,7 +77,11 @@
   text-align: center;
   font-weight: bold;
   padding: 4%;
-  width: 42%;
+  width: 32px;
+}
+
+.detalle {
+  font-size: 16px;
 }
 
 .informacionDetalle a {
@@ -96,7 +96,6 @@
 
 .servicios {
   margin-bottom: 0.75rem;
-  
 }
 
 .servicios i {
@@ -143,6 +142,14 @@
   padding: 10px 0;
 }
 
+@media screen and (max-width: 768px) {
+  .tipoYCalificacion {
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 6px;
+  }
+}
+
 @media (max-width: 480px) {
   .tarjetaAlojamiento {
     flex-direction: column;
@@ -157,5 +164,8 @@
   .descripcionAlojamiento {
     width: 100%;
     padding: 4%;
+  }
+  .tipoYCalificacion {
+    flex-direction: row;
   }
 }

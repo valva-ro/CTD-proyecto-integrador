@@ -1,30 +1,35 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import FilledButton from "../../Buttons/FilledButton";
 import Estrellas from "../../Estrellas/Estrellas";
 import styles from "./TarjetaAlojamiento.module.css";
+import obtenerClasificacion from "../../../utils/obtenerClasificacion"
+import calcularPromedioPuntuacion from "../../../utils/calcularPromedioPuntuacion";
 
-export default function TarjetaAlojamiento({ alojamiento: { id, 
-  nombre, 
-  descripcion,  
-  categoria, 
-  ciudad, 
-  imagenes,
-caracteristicas } }) {
-
+export default function TarjetaAlojamiento({
+  alojamiento: {
+    id,
+    nombre,
+    descripcion,
+    categoria,
+    ciudad,
+    imagenes,
+    caracteristicas,
+    puntuaciones
+  },
+}) {
   const [esVerMas, setEsVerMas] = useState(true);
+  const puntaje = calcularPromedioPuntuacion(puntuaciones);
   const toggleVerMas = () => setEsVerMas(!esVerMas);
-
   const buscarImagenPrincipal = () => {
-    let imagen = imagenes.find(imagen => {
+    let imagen = imagenes.find((imagen) => {
       return imagen.imagenTitulo === "Principal";
-    })
+    });
     if (imagen == null) {
       imagen = imagenes[0];
     }
     return imagen;
-  }
-
+  };
   return (
     <div className={styles.tarjetaAlojamiento}>
       <div
@@ -41,13 +46,19 @@ caracteristicas } }) {
           <div className={styles.nombreAlojamiento}>
             <div className={styles.tipoYCalificacion}>
               <h4>{categoria.titulo}</h4>
-              <Estrellas puntaje={8} />
+              <Estrellas puntaje={puntaje} />
             </div>
             <h2>{nombre}</h2>
           </div>
           <div className={styles.puntajeAlojamiento}>
-            <div className={styles.puntajeNumerico}>{8}</div>
-            <div className={styles.detalle}>Muy bueno</div>
+            {isNaN(puntaje) ? (
+              ""
+            ) : (
+              <div className={styles.puntajeNumerico}>{puntaje * 2}</div>
+            )}
+            <div className={styles.detalle}>
+              {obtenerClasificacion(puntaje)}
+            </div>
           </div>
         </div>
         <div className={styles.informacionDetalle}>
@@ -59,11 +70,12 @@ caracteristicas } }) {
             </p>
           </div>
           <div className={styles.servicios}>
-            {
-              caracteristicas.map((caracteristica) => 
-                <i key={`caracteristica-${caracteristica.id}`} className={`${caracteristica.icono}`}></i>
-              )
-            }
+            {caracteristicas.map((caracteristica) => (
+              <i
+                key={`caracteristica-${caracteristica.id}`}
+                className={`${caracteristica.icono}`}
+              ></i>
+            ))}
           </div>
         </div>
         <p>
