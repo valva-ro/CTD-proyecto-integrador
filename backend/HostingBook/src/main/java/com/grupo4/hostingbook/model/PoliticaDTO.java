@@ -1,7 +1,5 @@
 package com.grupo4.hostingbook.model;
 
-import com.grupo4.hostingbook.persistence.entites.TipoPolitica;
-
 import java.io.Serializable;
 import java.util.Objects;
 
@@ -9,7 +7,7 @@ public class PoliticaDTO implements Serializable {
 
     private Long id;
     private String nombre;
-    private TipoPolitica tipoPolitica;
+    private TipoPoliticaDTO tipoPolitica;
 
     public PoliticaDTO() {
     }
@@ -18,17 +16,21 @@ public class PoliticaDTO implements Serializable {
         this.id = id;
     }
 
-    public PoliticaDTO(String nombre, TipoPolitica tipoPolitica) {
+    public PoliticaDTO(String nombre, TipoPoliticaDTO tipoPolitica) {
         this.nombre = nombre;
         this.tipoPolitica = tipoPolitica;
     }
 
-    public PoliticaDTO(Long id, String nombre, TipoPolitica tipoPolitica) {
+    public PoliticaDTO(Long id, String nombre, TipoPoliticaDTO tipoPolitica) {
         this.id = id;
         this.nombre = nombre;
         this.tipoPolitica = tipoPolitica;
     }
 
+    public PoliticaDTO(Long id, String nombre) {
+        this.id = id;
+        this.nombre = nombre;
+    }
 
 
     public Long getId() {
@@ -47,11 +49,11 @@ public class PoliticaDTO implements Serializable {
         this.nombre = nombre;
     }
 
-    public TipoPolitica getTipoPolitica() {
+    public TipoPoliticaDTO getTipoPolitica() {
         return tipoPolitica;
     }
 
-    public void setTipoPolitica(TipoPolitica tipoPolitica) {
+    public void setTipoPolitica(TipoPoliticaDTO tipoPolitica) {
         this.tipoPolitica = tipoPolitica;
     }
 
