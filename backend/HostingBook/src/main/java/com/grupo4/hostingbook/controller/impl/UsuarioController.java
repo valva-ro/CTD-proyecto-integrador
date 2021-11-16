@@ -12,6 +12,7 @@ import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -46,7 +47,7 @@ public class UsuarioController implements CRUDController<UsuarioDTO> {
     @PostMapping
     public ResponseEntity<UsuarioDTO> crear(@RequestBody UsuarioDTO usuario) throws BadRequestException, ResourceNotFoundException {
         UsuarioDTO usuarioNueva = usuarioService.crear(usuario);
-        return ResponseEntity.ok(usuarioNueva);
+        return ResponseEntity.status(HttpStatus.CREATED).body(usuarioNueva);
     }
 
     @Override

@@ -11,6 +11,7 @@ import com.grupo4.hostingbook.persistence.entites.Usuario;
 import com.grupo4.hostingbook.persistence.repository.IUsuarioRepository;
 import com.grupo4.hostingbook.service.CRUDService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
@@ -34,6 +35,9 @@ public class UsuarioService implements CRUDService<UsuarioDTO> {
         if (entidadUsuario.getProductosFavoritos() == null)
             entidadUsuario.setProductosFavoritos(new HashSet<>());
         entidadUsuario.setCuentaValidada(false);
+        BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
+        String hashedPassword = bCryptPasswordEncoder.encode(entidadUsuario.getContrasenia());
+        entidadUsuario.setContrasenia(hashedPassword);
         Usuario guardada = usuarioRepository.save(entidadUsuario);
         return mapper.convertValue(guardada, UsuarioDTO.class);
     }
