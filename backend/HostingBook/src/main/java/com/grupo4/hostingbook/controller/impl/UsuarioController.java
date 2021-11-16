@@ -19,7 +19,6 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/usuarios")
-@CrossOrigin(origins = "*", methods = { RequestMethod.GET, RequestMethod.POST })
 public class UsuarioController implements CRUDController<UsuarioDTO> {
 
     @Qualifier("UsuarioService")

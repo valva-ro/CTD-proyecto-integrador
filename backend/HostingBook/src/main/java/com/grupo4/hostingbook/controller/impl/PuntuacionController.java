@@ -19,7 +19,6 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/puntuaciones")
-@CrossOrigin(origins = "*", methods = { RequestMethod.GET, RequestMethod.POST })
 public class PuntuacionController implements CRUDController<PuntuacionDTO> {
 
     @Qualifier("PuntuacionService")
