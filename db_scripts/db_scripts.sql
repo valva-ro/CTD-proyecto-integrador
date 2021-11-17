@@ -157,8 +157,8 @@ CREATE TABLE politica_producto(
 DROP TABLE IF EXISTS  roles;
 CREATE TABLE IF NOT EXISTS roles (
 	rol_id INT UNSIGNED NOT NULL AUTO_INCREMENT,
-    rol_nombre VARCHAR(50) NOT NULL,
-    PRIMARY KEY  (rol_id)
+  rol_nombre VARCHAR(50) NOT NULL,
+  PRIMARY KEY  (rol_id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -174,7 +174,7 @@ CREATE TABLE IF NOT EXISTS usuarios (
   cuenta_validada BOOLEAN NOT NULL,
   fk_rol INT UNSIGNED NOT NULL,
   PRIMARY KEY  (usuario_id),
-  CONSTRAINT roles
+  CONSTRAINT usuario_rol_id_foreign
 	FOREIGN KEY (fk_rol)
 	REFERENCES booking.roles (rol_id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
