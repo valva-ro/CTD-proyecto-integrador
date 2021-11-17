@@ -4,26 +4,29 @@ import FilledButton from "../../Buttons/FilledButton";
 import Estrellas from "../../Estrellas/Estrellas";
 import styles from "./TarjetaAlojamiento.module.css";
 
-export default function TarjetaAlojamiento({ alojamiento: { id, 
-  nombre, 
-  descripcion,  
-  categoria, 
-  ciudad, 
-  imagenes,
-caracteristicas } }) {
-
+export default function TarjetaAlojamiento({
+  alojamiento: {
+    id,
+    nombre,
+    descripcion,
+    categoria,
+    ciudad,
+    imagenes,
+    caracteristicas,
+  },
+}) {
   const [esVerMas, setEsVerMas] = useState(true);
   const toggleVerMas = () => setEsVerMas(!esVerMas);
 
   const buscarImagenPrincipal = () => {
-    let imagen = imagenes.find(imagen => {
+    let imagen = imagenes.find((imagen) => {
       return imagen.imagenTitulo === "Principal";
-    })
+    });
     if (imagen == null) {
       imagen = imagenes[0];
     }
     return imagen;
-  }
+  };
 
   return (
     <div className={styles.tarjetaAlojamiento}>
@@ -59,11 +62,12 @@ caracteristicas } }) {
             </p>
           </div>
           <div className={styles.servicios}>
-            {
-              caracteristicas.map((caracteristica) => 
-                <i key={`caracteristica-${caracteristica.id}`} className={`${caracteristica.icono}`}></i>
-              )
-            }
+            {caracteristicas.map((caracteristica) => (
+              <i
+                key={`caracteristica-${caracteristica.id}`}
+                className={`${caracteristica.icono}`}
+              ></i>
+            ))}
           </div>
         </div>
         <p>
@@ -81,7 +85,7 @@ caracteristicas } }) {
             </>
           )}
         </p>
-        <Link to={`product/${id}`}>
+        <Link to={`product/${id}/features`}>
           <FilledButton styles={styles.btnVerMas}>Ver más</FilledButton>
         </Link>
       </div>
