@@ -3,15 +3,19 @@ package com.grupo4.hostingbook.service.impl;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.grupo4.hostingbook.exceptions.BadRequestException;
 import com.grupo4.hostingbook.exceptions.Mensajes;
-import com.grupo4.hostingbook.exceptions.NotImplementedException;
 import com.grupo4.hostingbook.exceptions.ResourceNotFoundException;
-import com.grupo4.hostingbook.model.*;
-import com.grupo4.hostingbook.persistence.entites.*;
+import com.grupo4.hostingbook.model.ImagenDTO;
+import com.grupo4.hostingbook.model.ProductoDTO;
+import com.grupo4.hostingbook.model.PuntuacionDTO;
+import com.grupo4.hostingbook.model.UsuarioDTO;
+import com.grupo4.hostingbook.persistence.entites.Categoria;
+import com.grupo4.hostingbook.persistence.entites.Ciudad;
+import com.grupo4.hostingbook.persistence.entites.Imagen;
+import com.grupo4.hostingbook.persistence.entites.Producto;
 import com.grupo4.hostingbook.persistence.repository.IProductoRepository;
 import com.grupo4.hostingbook.service.IProductoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.*;
 
@@ -25,10 +29,6 @@ public class ProductoService implements IProductoService {
     private final ImagenService imagenService;
     private final CaracteristicaService caracteristicaService;
     private final PoliticaService politicaService;
-
-    @Autowired
-    public ProductoService(IProductoRepository productoRepository, ObjectMapper mapper, CategoriaService categoriaService, CiudadService ciudadService, ImagenService imagenService, CaracteristicaService caracteristicaService, PoliticaService politicaService) {
-
     private final PuntuacionService puntuacionService;
     private final UsuarioService usuarioService;
 
@@ -36,7 +36,7 @@ public class ProductoService implements IProductoService {
     public ProductoService(IProductoRepository productoRepository, ObjectMapper mapper,
             CategoriaService categoriaService, CiudadService ciudadService, ImagenService imagenService,
             CaracteristicaService caracteristicaService, PuntuacionService puntuacionService,
-            UsuarioService usuarioService) {
+            UsuarioService usuarioService, PoliticaService politicaService) {
         this.productoRepository = productoRepository;
         this.mapper = mapper;
         this.categoriaService = categoriaService;
