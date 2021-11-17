@@ -3,6 +3,7 @@ import Home from "./components/Home/Home";
 import Login from "./components/Forms/Login";
 import Register from "./components/Forms/Register";
 import Producto from "./components/Producto/Producto.jsx";
+import Favoritos from "./components/Favoritos/Favoritos";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import loggedContext from "./contexts/loggedContext";
 import { useState } from "react";
@@ -22,6 +23,7 @@ function App() {
               <Route path="/login" component={Login} />
               <Route path="/register" component={Register} />
               <Route path="/product/:id" component={Producto} />
+              <Route path="/favoritos" component={Favoritos} />
             </Switch>
           </Layout>
         </BrowserRouter>

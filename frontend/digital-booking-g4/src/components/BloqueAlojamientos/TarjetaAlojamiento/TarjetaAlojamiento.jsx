@@ -36,7 +36,7 @@ export default function TarjetaAlojamiento({
       console.log("Fetching...");
       console.log("id: "+id);
       //se harcodea el usuario pq todavia no estoy logueado con un usuario de la BDD
-      let response = await fetch(`http://localhost:8080/${id}/${accion}/usuarios/1`, {
+      let response = await fetch(`http://localhost:8080/productos/${id}/${accion}/usuarios/4`, {
         method: "PUT"
       });
       let datos = await response.json();
