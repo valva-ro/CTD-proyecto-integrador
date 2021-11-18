@@ -27,7 +27,7 @@ public class ProductoService implements IProductoService {
     private final PoliticaService politicaService;
 
     @Autowired
-    public ProductoService(IProductoRepository productoRepository, ObjectMapper mapper, CategoriaService categoriaService, CiudadService ciudadService, ImagenService imagenService, CaracteristicaService caracteristicaService, PoliticaService politicaService) {
+
 
     private final PuntuacionService puntuacionService;
     private final UsuarioService usuarioService;
@@ -35,8 +35,8 @@ public class ProductoService implements IProductoService {
     @Autowired
     public ProductoService(IProductoRepository productoRepository, ObjectMapper mapper,
             CategoriaService categoriaService, CiudadService ciudadService, ImagenService imagenService,
-            CaracteristicaService caracteristicaService, PuntuacionService puntuacionService,
-            UsuarioService usuarioService) {
+            CaracteristicaService caracteristicaService, PoliticaService politicaService,
+            PuntuacionService puntuacionService, UsuarioService usuarioService) {
         this.productoRepository = productoRepository;
         this.mapper = mapper;
         this.categoriaService = categoriaService;
@@ -136,6 +136,20 @@ public class ProductoService implements IProductoService {
             dtos.add(mapper.convertValue(entidad, ProductoDTO.class));
         }
         if (dtos.size() == 0) {
+            throw new ResourceNotFoundException(
+                    String.format(Mensajes.ERROR_CRITERIO_DE_BUSQUEDA_NO_EXISTE, "La ciudad", nombreCiudad));
+        }
+        return dtos;
+    }
+
+    @Override
+    public Set<ProductoDTO> consultarPorCiudadYFechas(String nombreCiudad, Date fechaIngreso, Date fechaEgreso) throws ResourceNotFoundException {
+        Set<Producto> entidades = productoRepository.buscarProductosPorCiudadYFechas(nombreCiudad,fechaIngreso,fechaEgreso);
+        Set<ProductoDTO> dtos = new HashSet<>();
+        for (Producto entidad : entidades) {
+            dtos.add(mapper.convertValue(entidad, ProductoDTO.class));
+        }
+        if (dtos.size() == 0) { //no hay coincidencias de productos por ciudad y fechas
             throw new ResourceNotFoundException(
                     String.format(Mensajes.ERROR_CRITERIO_DE_BUSQUEDA_NO_EXISTE, "La ciudad", nombreCiudad));
         }

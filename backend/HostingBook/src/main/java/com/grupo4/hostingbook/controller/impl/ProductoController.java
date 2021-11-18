@@ -15,6 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Set;
 
@@ -113,6 +114,20 @@ public class ProductoController implements IProductoController {
         Set<ProductoDTO> productos = productoService.consultarPorCiudad(nombre);
         return ResponseEntity.ok(productos);
     }
+
+
+    @Override
+    @ApiOperation(value = "Lista todos los productos según la ciudad y las fechas especificadas")
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Success")
+    })
+    @GetMapping("/ciudad-fecha")
+    public ResponseEntity<?> obtenerPorCiudadYFechas(@RequestParam String nombre,@RequestParam Date fechaIngreso, @RequestParam Date fechaEgreso ) throws ResourceNotFoundException {
+        Set<ProductoDTO> productos = productoService.consultarPorCiudadYFechas(nombre,fechaIngreso,fechaEgreso);
+        return ResponseEntity.ok(productos);
+    }
+
+
 
     @Override
     @ApiOperation(value = "Agrega a un usuario un producto favorito")
