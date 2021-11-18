@@ -449,9 +449,9 @@ INSERT INTO politica_producto (politica_id,producto_id) VALUES (14,14);
 -- Dumping data for table `usuarios`
 --
 SET AUTOCOMMIT=0;
-INSERT INTO usuarios (nombre, apellido, mail, contrasenia, cuenta_validada) VALUES ("Pepe", "Pepardo", "pepe@gmail.com", "pepe1234", FALSE);
-INSERT INTO usuarios (nombre, apellido, mail, contrasenia, cuenta_validada) VALUES ("José", "Gómez", "jose@gmail.com", "jose1234", FALSE);
-INSERT INTO usuarios (nombre, apellido, mail, contrasenia, cuenta_validada) VALUES ("Josefina", "Gómez", "josefina@gmail.com", "josefina1234", FALSE);
+INSERT INTO usuarios (nombre, apellido, mail, contrasenia, cuenta_validada) VALUES ("Pepe", "Pepardo", "pepe@gmail.com", "$2a$10$N1Rq2A5AeHP9Yo1a8r.EQ.MGsLiuhe1LoJAJOiECRHh9JY1JZex0m", FALSE);
+INSERT INTO usuarios (nombre, apellido, mail, contrasenia, cuenta_validada) VALUES ("José", "Gómez", "jose@gmail.com", "$2a$10$YdHAebbJ/QGg8INS94LSCOZn3gLrDPPxy3rPl3Zb0dekSsyHuy4mm", FALSE);
+INSERT INTO usuarios (nombre, apellido, mail, contrasenia, cuenta_validada) VALUES ("Josefina", "Gómez", "josefina@gmail.com", "$2a$10$1IOFiaYPVBs8.losZS81t.pteZfXrRFLV3O3O0PNvE7gtHF986RoW", FALSE);
 COMMIT;
 
 --

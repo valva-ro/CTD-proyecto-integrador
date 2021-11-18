@@ -1,41 +1,44 @@
 import { useState, useContext } from "react";
-import FilledButton from "../Buttons/FilledButton";
-import styles from "./Form.module.css";
 import { useHistory, Link } from "react-router-dom";
-import loggedContext from "../../contexts/loggedContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faExclamationTriangle } from "@fortawesome/free-solid-svg-icons";
+import FilledButton from "../Buttons/FilledButton";
 import InputComponent from "./formComponents/Input";
-
-const usuarioHarcodeado = {
-  email: "brodriguez@gmail.com",
-  password: "12341234",
-};
+import loggedContext from "../../contexts/loggedContext";
+import styles from "./Form.module.css";
+import post from "../../utils/post";
+import get from "../../utils/get";
 
 export default function Login() {
   const [email, setEmail] = useState({ campo: "", valido: null });
   const [password, setPassword] = useState({ campo: "", valido: null });
   const [isError, setIsError] = useState(false);
   const history = useHistory();
-  const { setIsLogged } = useContext(loggedContext);
+  const { setIsLogged, setUserInformation } = useContext(loggedContext);
 
   function handleSubmit(e) {
     e.preventDefault();
+    iniciarSesion();
   }
 
-  function validarCampos() {
-    if (
-      password.campo === usuarioHarcodeado.password &&
-      email.campo === usuarioHarcodeado.email
-    ) {
-      setIsLogged(true);
-      history.push("/");
-    } else {
-      setIsError(true);
-    }
+  function iniciarSesion() {
+    post("login", {
+      mail: email.campo,
+      contrasenia: password.campo,
+    })
+      .then((data) => {
+        setIsLogged(true);
+        guardarDatos(data);
+      })
+      .then(() => history.push("/"))
+      .catch((error) => setIsError(true));
   }
 
-  console.log(usuarioHarcodeado);
+  function guardarDatos(data) {
+    localStorage.setItem("jwt", JSON.stringify(data.jwt));
+    localStorage.setItem("email", JSON.stringify(email.campo));
+    setUserInformation({ nombre: data.nombre, apellido: data.apellido });
+  }
 
   return (
     <>
@@ -72,7 +75,7 @@ export default function Login() {
                 </p>
               </div>
             ) : null}
-            <FilledButton onClick={() => validarCampos()} testId="loginBtn">
+            <FilledButton onClick={handleSubmit} testId="loginBtn">
               Iniciar sesión
             </FilledButton>
             <p>

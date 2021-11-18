@@ -9,7 +9,7 @@ export default function DropDownMenu({
 }) {
   const [ulClassname, setUlclassName] = useState(null);
 
-  function filt(locations) {
+  function filtrar(locations) {
     const filtrated = locations.filter(
       (location) =>
         validate(location.pais) ||
@@ -30,23 +30,21 @@ export default function DropDownMenu({
 
   function validate(frase) {
     const inputNoEstaVacio = input.target.value !== "";
-    const tieneSubstringDelInput = normalizarFrase(frase).includes(
-      input.target.value
-        .toLowerCase()
-        .normalize("NFD")
-        .replace(/[\u0300-\u036f]/g, "")
-    );
+    const fraseNormalizada = normalizarFrase(frase);
+    const inputNormalizado = normalizarFrase(input.target.value);
+    const tieneSubstringDelInput = fraseNormalizada.includes(inputNormalizado);
     return inputNoEstaVacio && tieneSubstringDelInput;
   }
+
   useEffect(() => {
-    filt(locations).isFiltrated
+    filtrar(locations).isFiltrated
       ? setUlclassName(styles.cities)
       : setUlclassName(null);
-  }, [input.target.value.split("").length]);
+  }, [input.target.value, locations]);
 
   return (
     <ul className={ulClassname}>
-      {filt(locations).filtrated.map((city, index) => {
+      {filtrar(locations).filtrated.map((city, index) => {
         return (
           <li key={index} onClick={() => setInput(input, city)}>
             <i className="fas fa-map-marker-alt"></i>
@@ -62,7 +60,7 @@ export default function DropDownMenu({
 }
 
 function normalizarFrase(frase) {
-   return frase 
+  return frase
     .toLowerCase()
     .normalize("NFD")
     .replace(/[\u0300-\u036f]/g, "");
