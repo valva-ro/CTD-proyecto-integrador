@@ -4,6 +4,5 @@ export default async function post(path = "", body = {}) {
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(body),
   };
-  let response = await fetch(`http://localhost:8080/${path}`, settings);
-  return response.json();
+  return await fetch(`http://localhost:8080/${path}`, settings);
 }

@@ -26,6 +26,11 @@ export default function Login() {
       mail: email.campo,
       contrasenia: password.campo,
     })
+      .then((response) => {
+        const msjError = `Error status ${response.status}: ${response.text}`;
+        if (response.status !== 200) throw msjError;
+        return response.json();
+      })
       .then((data) => {
         setIsLogged(true);
         guardarDatos(data);
@@ -70,8 +75,8 @@ export default function Login() {
               <div className={styles.credencialesContainer}>
                 <FontAwesomeIcon icon={faExclamationTriangle} />
                 <p className={styles.credencialesInvalidas}>
-                  Por favor, vuelva a intentarlo. Sus credenciales son
-                  inválidas.
+                  Lamentablemente no ha podido iniciar sesión. Por favor intente
+                  más tarde.
                 </p>
               </div>
             ) : null}
