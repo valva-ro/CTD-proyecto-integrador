@@ -31,7 +31,7 @@ export default function TarjetaAlojamiento({
     return imagen;
   };
   return (
-    <div className={styles.tarjetaAlojamiento}>
+    <div className={styles.tarjetaAlojamiento} data-aos='fade-right'>
       <div
         className={styles.imagenAlojamiento}
         style={{
