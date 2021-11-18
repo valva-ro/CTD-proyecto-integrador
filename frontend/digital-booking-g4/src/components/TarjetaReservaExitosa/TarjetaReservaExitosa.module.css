@@ -28,12 +28,17 @@
   gap: 10px;
 }
 
-.title {
+.mainSuccess p{
+  color: var(--color-2);
+  font-size: 1.3rem;
+  font-weight: 700;
+}
+
+.title, .icono {
   color: var(--color-principal);
 }
 
 .icono {
-  color: var(--color-principal);
   font-size: 4.625rem;
 }
 
