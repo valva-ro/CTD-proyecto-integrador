@@ -53,7 +53,7 @@ class ProductoServiceTests {
         caracteristicaService.crear(new CaracteristicaDTO("Parking","<i class='bx bxs-car'></i>"));
 
         productoPorCrear = new ProductoDTO("Hotel Melia", "Servicio all inclusive con vista al mar", categoriaID, ciudadID, imagenesIDs, caracteristicasIDs);
-        productoPorActualizar = new ProductoDTO(1L,"Hotel Grand Meliá", "", null, null, null, null);
+        productoPorActualizar = new ProductoDTO(1L,"Hotel Grand Meliá", "", null,null, null, null, null);
     }
 
     @Test

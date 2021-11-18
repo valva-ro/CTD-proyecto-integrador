@@ -3,6 +3,7 @@ import TituloBloque from "../TituloBloque/TituloBloque.jsx";
 import TarjetaCategoria from "./TarjetaCategoria/TarjetaCategoria.jsx";
 import useFetch from "../../hooks/useFetch.js";
 import styles from "./BloqueCategorias.module.css";
+import SkeletonTajetaCategoria from "./TarjetaCategoria/SkeletonTarjetaCategoria.jsx";
 
 export default function BloqueCategorias({ setCategoriaActual }) {
   const [tarjetaActiva, setTarjetaActiva] = useState(null);
@@ -30,9 +31,11 @@ export default function BloqueCategorias({ setCategoriaActual }) {
     <section className={styles.bloqueCategorias}>
       <TituloBloque>Buscar por tipo de alojamiento</TituloBloque>
       {!data.isLoaded ? (
-        <h2 className={styles.sinResultados}>
-          Cargando tipos de alojamientos
-        </h2>
+        <div className={styles.listadoTarjetas}>
+          {Array.apply(0, Array(4)).map((x, i) => (
+            <SkeletonTajetaCategoria key={`skeletonCategoria-${i}`}/>
+          ))}
+        </div>
       ) : data.items.length === 0 ? (
         <h2 className={styles.sinResultados}>
           Ups, no encontramos ningún tipo de alojamiento

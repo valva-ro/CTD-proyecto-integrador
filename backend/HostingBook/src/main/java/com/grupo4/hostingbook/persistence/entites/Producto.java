@@ -67,14 +67,6 @@ public class Producto {
         this.descripcion = descripcion;
     }
 
-    public Set<Politica> getPoliticas() {
-        return politicas;
-    }
-
-    public void setPoliticas(Set<Politica> politicas) {
-        this.politicas = politicas;
-    }
-
     public Producto(String nombre, String descripcion, Categoria categoria, Ciudad ciudad, Set<Imagen> imagenes, Set<Caracteristica> caracteristicas) {
         this.nombre = nombre;
         this.descripcion = descripcion;
@@ -146,6 +138,13 @@ public class Producto {
 
     public void setPuntuaciones(List<Puntuacion> puntuaciones) {
         this.puntuaciones = puntuaciones;
+    }
+    public Set<Politica> getPoliticas() {
+        return politicas;
+    }
+
+    public void setPoliticas(Set<Politica> politicas) {
+        this.politicas = politicas;
     }
 
     @Override
