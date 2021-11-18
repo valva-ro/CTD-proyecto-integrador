@@ -4,8 +4,14 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.grupo4.hostingbook.exceptions.BadRequestException;
 import com.grupo4.hostingbook.exceptions.Mensajes;
 import com.grupo4.hostingbook.exceptions.ResourceNotFoundException;
-import com.grupo4.hostingbook.model.*;
-import com.grupo4.hostingbook.persistence.entites.*;
+import com.grupo4.hostingbook.model.ImagenDTO;
+import com.grupo4.hostingbook.model.ProductoDTO;
+import com.grupo4.hostingbook.model.PuntuacionDTO;
+import com.grupo4.hostingbook.model.UsuarioDTO;
+import com.grupo4.hostingbook.persistence.entites.Categoria;
+import com.grupo4.hostingbook.persistence.entites.Ciudad;
+import com.grupo4.hostingbook.persistence.entites.Imagen;
+import com.grupo4.hostingbook.persistence.entites.Producto;
 import com.grupo4.hostingbook.persistence.repository.IProductoRepository;
 import com.grupo4.hostingbook.service.IProductoService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,9 +34,9 @@ public class ProductoService implements IProductoService {
 
     @Autowired
     public ProductoService(IProductoRepository productoRepository, ObjectMapper mapper,
-                           CategoriaService categoriaService, CiudadService ciudadService, ImagenService imagenService,
-                           CaracteristicaService caracteristicaService, PuntuacionService puntuacionService,
-                           UsuarioService usuarioService, PoliticaService politicaService) {
+            CategoriaService categoriaService, CiudadService ciudadService, ImagenService imagenService,
+            CaracteristicaService caracteristicaService, PuntuacionService puntuacionService,
+            UsuarioService usuarioService, PoliticaService politicaService) {
         this.productoRepository = productoRepository;
         this.mapper = mapper;
         this.categoriaService = categoriaService;
@@ -56,32 +62,15 @@ public class ProductoService implements IProductoService {
                 throw new ResourceNotFoundException(String.format(Mensajes.ERROR_NO_EXISTE, "El 'producto'", id));
             }
             Producto entidad = productoRepository.findById(id).get();
-            List<PuntuacionDTO> puntuacionesDTO = puntuacionService.consultarTodos();
-            ProductoDTO dto = mapper.convertValue(entidad, ProductoDTO.class);
-            for (PuntuacionDTO puntuacion : puntuacionesDTO) {
-                if (puntuacion.getProducto().getId().equals(entidad.getId())) {
-                    puntuacion.setProducto(new ProductoDTO(puntuacion.getProducto().getId()));
-                    puntuacion.setUsuario(new UsuarioDTO(puntuacion.getUsuario().getId()));
-                    dto.agregarPuntuacion(puntuacion);
-                }
-            }
-            return dto;
+            return setearPuntuaciones(entidad);
         }
 
         @Override
         public List<ProductoDTO> consultarTodos () {
             List<Producto> entidades = productoRepository.findAll();
             List<ProductoDTO> dtos = new ArrayList<>();
-            List<PuntuacionDTO> puntuacionesDTO = puntuacionService.consultarTodos();
             for (Producto entidad : entidades) {
-                ProductoDTO dto = mapper.convertValue(entidad, ProductoDTO.class);
-                for (PuntuacionDTO puntuacion : puntuacionesDTO) {
-                    if (puntuacion.getProducto().getId().equals(entidad.getId())) {
-                        puntuacion.setProducto(new ProductoDTO(puntuacion.getProducto().getId()));
-                        puntuacion.setUsuario(new UsuarioDTO(puntuacion.getUsuario().getId()));
-                        dto.agregarPuntuacion(puntuacion);
-                    }
-                }
+                ProductoDTO dto = setearPuntuaciones(entidad);
                 dtos.add(dto);
             }
             return dtos;
@@ -219,6 +208,19 @@ public class ProductoService implements IProductoService {
             productoDTO.setCaracteristicas(caracteristicaService.consultarPorProductoID(producto.getId()));
             productoDTO.setPuntuaciones(puntuacionService.consultarPorProductoID(producto.getId()));
             return productoDTO;
+        }
+
+        private ProductoDTO setearPuntuaciones(Producto entidad) {
+            List<PuntuacionDTO> puntuacionesDTO = puntuacionService.consultarTodos();
+            ProductoDTO dto = mapper.convertValue(entidad, ProductoDTO.class);
+            for (PuntuacionDTO puntuacion : puntuacionesDTO) {
+                if (puntuacion.getProducto().getId().equals(entidad.getId())) {
+                    puntuacion.setProducto(new ProductoDTO(puntuacion.getProducto().getId()));
+                    puntuacion.setUsuario(new UsuarioDTO(puntuacion.getUsuario().getId()));
+                    dto.agregarPuntuacion(puntuacion);
+                }
+            }
+            return dto;
         }
 
         private Set<ImagenDTO> obtenerImagenesRelacionadas (Producto producto){

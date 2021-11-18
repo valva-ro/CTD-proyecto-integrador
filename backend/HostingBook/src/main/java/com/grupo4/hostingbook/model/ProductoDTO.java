@@ -38,6 +38,22 @@ public class ProductoDTO implements Serializable {
         this.caracteristicas = caracteristicas;
     }
 
+    public ProductoDTO(Long id,
+                       String nombre,
+                       String descripcion,
+                       CategoriaDTO categoria,
+                       CiudadDTO ciudad,
+                       Set<ImagenDTO> imagenes,
+                       Set<CaracteristicaDTO> caracteristicas) {
+        this.id = id;
+        this.nombre = nombre;
+        this.descripcion = descripcion;
+        this.categoria = categoria;
+        this.ciudad = ciudad;
+        this.imagenes = imagenes;
+        this.caracteristicas = caracteristicas;
+    }
+
     public ProductoDTO(Long id, String nombre, String descripcion, CategoriaDTO categoria, CiudadDTO ciudad,
             Set<PoliticaDTO> politicas, Set<ImagenDTO> imagenes, Set<CaracteristicaDTO> caracteristicas) {
         this.id = id;
