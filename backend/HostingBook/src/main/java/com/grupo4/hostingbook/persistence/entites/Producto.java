@@ -9,6 +9,7 @@ import java.util.*;
 @Entity
 @Table(name = "productos")
 public class Producto {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="producto_id")
@@ -27,6 +28,10 @@ public class Producto {
     @OneToMany(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
     @JoinColumn(name = "fk_producto")
     private Set<Imagen> imagenes = new HashSet<>();
+
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name = "fk_producto")
+    private Set<Reserva> reservas = new HashSet<>();
 
     @OneToMany(mappedBy = "puntuacion")
     @JsonIgnore
