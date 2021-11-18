@@ -11,9 +11,6 @@ import com.grupo4.hostingbook.persistence.entites.Usuario;
 import com.grupo4.hostingbook.persistence.repository.IUsuarioRepository;
 import com.grupo4.hostingbook.service.IUsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -91,11 +88,7 @@ public class UsuarioService implements IUsuarioService {
         return mapper.convertValue(entidad, UsuarioDTO.class);
     }
 
-    @Override
-    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-        UsuarioDTO usuario = obtenerPorEmail(email);
-        return new User(usuario.getMail(), usuario.getApellido(), new ArrayList<>());
-    }
+
 
     private void validarCamposRequeridosCreacion(UsuarioDTO usuarioDTO) throws BadRequestException {
         if (usuarioDTO == null) {
