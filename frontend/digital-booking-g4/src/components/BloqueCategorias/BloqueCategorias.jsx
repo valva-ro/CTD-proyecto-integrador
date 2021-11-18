@@ -6,8 +6,9 @@ import useFetch from "../../hooks/useFetch.js";
 import styles from "./BloqueCategorias.module.css";
 
 export default function BloqueCategorias() {
-  const {currentCategory, setCurrentCategory } = useContext(currentFilterContext);
-  const [tarjetaActiva, setTarjetaActiva] = useState(null);
+  const { currentCategory, setCurrentCategory } =
+    useContext(currentFilterContext);
+  const [indiceTarjetaActiva, setIndiceTarjetaActiva] = useState(null);
   const [categorias, setCategorias] = useState([]);
   const data = useFetch("categorias");
 
@@ -17,30 +18,27 @@ export default function BloqueCategorias() {
     }
   }, [data.isLoaded, data.items]);
 
-  
-  const toggleSelect = (indiceTarjeta, tituloCategoria) => {
-    if (currentCategory==""){
-      setCurrentCategory("");
-      setTarjetaActiva(null);
+  useEffect(() => {
+    if (currentCategory === "") {
+      setIndiceTarjetaActiva(null);
     }
-    if (indiceTarjeta === tarjetaActiva) {
-      setCurrentCategory("");
-      setTarjetaActiva(null);
-    }
-    else  {
-      setTarjetaActiva(indiceTarjeta);
-      setCurrentCategory(tituloCategoria);  
-    }
-  }
+  }, [currentCategory, indiceTarjetaActiva]);
 
-  
+  const toggleSelect = (indiceTarjeta, tituloCategoria) => {
+    if (indiceTarjeta === indiceTarjetaActiva) {
+      setCurrentCategory("");
+      setIndiceTarjetaActiva(null);
+    } else {
+      setIndiceTarjetaActiva(indiceTarjeta);
+      setCurrentCategory(tituloCategoria);
+    }
+  };
+
   return (
     <section className={styles.bloqueCategorias}>
       <TituloBloque>Buscar por tipo de alojamiento</TituloBloque>
       {!data.isLoaded ? (
-        <h2 className={styles.sinResultados}>
-          Cargando tipos de alojamientos
-        </h2>
+        <h2 className={styles.sinResultados}>Cargando tipos de alojamientos</h2>
       ) : data.items.length === 0 ? (
         <h2 className={styles.sinResultados}>
           Ups, no encontramos ningún tipo de alojamiento
@@ -51,7 +49,7 @@ export default function BloqueCategorias() {
             <TarjetaCategoria
               key={`categoria-${dato + i}`}
               indice={i}
-              indiceTarjetaActiva={tarjetaActiva}
+              estaActiva={i === indiceTarjetaActiva}
               fotoPortada={dato.urlImagen}
               nombre={dato.titulo}
               descripcion={dato.descripcion}

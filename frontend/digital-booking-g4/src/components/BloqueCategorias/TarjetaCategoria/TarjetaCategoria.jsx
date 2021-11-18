@@ -3,15 +3,14 @@ import styles from "./TarjetaCategoria.module.css";
 export default function TarjetaCategoria({
   fotoPortada,
   indice,
-  indiceTarjetaActiva,
+  estaActiva,
   nombre,
   descripcion,
   onToggleSelect,
 }) {
-  const estaSeleccionada = indiceTarjetaActiva === indice;
   return (
     <div
-      className={estaSeleccionada ? styles.tarjetaSeleccionada : styles.tarjeta}
+      className={estaActiva ? styles.tarjetaSeleccionada : styles.tarjeta}
       onClick={() => onToggleSelect(indice, nombre)}
     >
       <div
