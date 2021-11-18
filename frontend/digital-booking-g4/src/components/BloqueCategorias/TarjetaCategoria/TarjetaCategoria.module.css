@@ -45,7 +45,7 @@
   top: 79%;
 }
 /*______Nombre categoria______*/
-.contenidoTarjeta h2 {
+.nombreCategoria {
   /*.Hotel, .Hostel, .Departamento, .BedAndBreakfast */
   font-size: 1.25rem;
   font-style: normal;
@@ -56,8 +56,7 @@
   margin-bottom: 0.25rem;
 }
 /*______Descripcion categoria______*/
-.contenidoTarjeta p {
-  /*.descripcion*/
+.descripcion {
   font-size: 0.875rem;
   font-style: normal;
   font-weight: 700;
@@ -91,8 +90,9 @@
 
 .textLoader {
   width: 30%;
-  height: 1.2rem;
+  height: .75rem;
   margin: 0.3rem;
+  border-radius: 8px;
 }
 
 /*****************Responsive*****************/

@@ -21,7 +21,7 @@ export default function TarjetaCategoria({
         }}
       ></div>
       <div className={styles.contenidoTarjeta}>
-        <h2 className={styles.hotel}>{nombre}</h2>
+        <h2 className={styles.nombreCategoria}>{nombre}</h2>
         <p className={styles.descripcion}>{descripcion}</p>
       </div>
     </div>
