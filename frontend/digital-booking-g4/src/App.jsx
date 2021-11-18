@@ -7,6 +7,7 @@ import { BrowserRouter, Switch, Route } from "react-router-dom";
 import loggedContext from "./contexts/loggedContext";
 import { useState } from "react";
 import ScrollToTop from "./components/ScrollToTop";
+import TarjetaReservaExitosa from "./components/TarjetaReservaExitosa/TarjetaReservaExitosa";
 
 function App() {
   const [isLogged, setIsLogged] = useState(false);
@@ -22,6 +23,7 @@ function App() {
               <Route path="/login" component={Login} />
               <Route path="/register" component={Register} />
               <Route path="/product/:id" component={Producto} />
+              <Route path="/success" component={TarjetaReservaExitosa} />
             </Switch>
           </Layout>
         </BrowserRouter>
