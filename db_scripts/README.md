@@ -9,7 +9,6 @@
     5. Características (necesita Productos)
     6. Imagenes (necesita Productos)
     7. Politicas (necesita Productos)
-    8. Roles
     8. Usuarios (necesita Productos y Roles)
     9. Puntuaciones (necesita Productos y Usuarios)
 
