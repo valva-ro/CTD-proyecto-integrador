@@ -10,6 +10,12 @@ export default function SideNav() {
   const location = useLocation();
   const [isOpened, setIsOpened] = useState(false);
 
+  function cerrarSesion() {
+    setIsLogged(false);
+    localStorage.setItem("jwt", "");
+    localStorage.setItem("email", "");
+  }
+
   const RenderComponent = () => {
     switch (location.pathname) {
       default:
@@ -81,7 +87,7 @@ export default function SideNav() {
             ) : (
               <p className={styles.cerrarSesion}>
                 ¿Deseas
-                <span onClick={() => setIsLogged(false)}> cerrar sesión</span>?
+                <span onClick={cerrarSesion}> cerrar sesión</span>?
               </p>
             )}
           </div>

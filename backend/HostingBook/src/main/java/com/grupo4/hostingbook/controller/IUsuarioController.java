@@ -10,5 +10,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import java.util.Set;
 
 public interface IUsuarioController extends CRUDController<UsuarioDTO> {
-    ResponseEntity<Set<ProductoDTO>> buscarFavoritosPorId(@PathVariable Long id) throws BadRequestException, ResourceNotFoundException;
+    ResponseEntity<Set<ProductoDTO>> buscarFavoritosPorId(@PathVariable Long id)
+            throws BadRequestException, ResourceNotFoundException;
 }
