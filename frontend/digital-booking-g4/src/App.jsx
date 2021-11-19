@@ -2,6 +2,7 @@ import Layout from "./components/Layout/Layout";
 import Home from "./components/Home/Home";
 import Login from "./components/Forms/Login";
 import Register from "./components/Forms/Register";
+import TarjetaReservaExitosa from "./components/TarjetaReservaExitosa/TarjetaReservaExitosa.jsx";
 import Producto from "./components/Producto/Producto.jsx";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import loggedContext from "./contexts/loggedContext";
