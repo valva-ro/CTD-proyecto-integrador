@@ -4,7 +4,7 @@ import FilledButton from "../../Buttons/FilledButton";
 import Estrellas from "../../Estrellas/Estrellas";
 import styles from "./TarjetaAlojamiento.module.css";
 import loggedContext from "../../../contexts/loggedContext";
-import obtenerClasificacion from "../../../utils/obtenerClasificacion"
+import obtenerClasificacion from "../../../utils/obtenerClasificacion";
 import calcularPromedioPuntuacion from "../../../utils/calcularPromedioPuntuacion";
 
 export default function TarjetaAlojamiento({
@@ -15,7 +15,8 @@ export default function TarjetaAlojamiento({
     categoria,
     ciudad,
     imagenes,
-    caracteristicas,puntuaciones
+    caracteristicas,
+    puntuaciones,
   },
 }) {
   const { isLogged } = useContext(loggedContext);
@@ -34,34 +35,28 @@ export default function TarjetaAlojamiento({
   };
 
   async function fetchFav(accion) {
-    try {
-      console.log("Fetching...");
-      console.log("id: "+id);
-      //se harcodea el usuario pq todavia no estoy logueado con un usuario de la BDD
-      let response = await fetch(`http://localhost:8080/productos/${id}/${accion}/usuarios/4`, {
-        method: "PUT"
-      });
-      let datos = await response.json();
-    } catch (err) {
-      console.log(err);
-    }
+    // TODO: obtener de la sesión actual
+    const idUsuario = 1;
+    await fetch(
+      `http://localhost:8080/productos/${id}/${accion}/usuarios/${idUsuario}`,
+      {
+        method: "PUT",
+      }
+    );
   }
 
   const handleFav = () => {
     if (!isFavorito) {
-      setIsFavorito(!isFavorito);
       fetchFav("agregar");
-      console.log("Faveo");
     } else {
-      setIsFavorito(!isFavorito);
       fetchFav("eliminar");
-      console.log("Desfaveo");
     }
+    setIsFavorito(!isFavorito);
     return null;
-  }
-  
+  };
+
   return (
-    <div className={styles.tarjetaAlojamiento} data-aos='fade-right'>
+    <div className={styles.tarjetaAlojamiento} data-aos="fade-right">
       <div
         className={styles.imagenAlojamiento}
         style={{

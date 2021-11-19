@@ -1,10 +1,28 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useState, useEffect, useContext } from "react";
+import { Link, Redirect } from "react-router-dom";
 import TituloBloque from "../TituloBloque/TituloBloque";
+import TarjetaAlojamiento from "../BloqueAlojamientos/TarjetaAlojamiento/TarjetaAlojamiento";
+import useFetch from "../../hooks/useFetch";
+import loggedContext from "../../contexts/loggedContext";
 import styles from "./Favoritos.module.css";
 
 export default function Favoritos() {
-  const [hayFavoritos, setHayFavoritos] = useState(false);
+  // TODO: obtener ID dinámicamente
+  const idUsuario = 1;
+  const [favoritos, setFavoritos] = useState([]);
+  const { isLoaded, items } = useFetch(`usuarios/${idUsuario}`);
+  const { isLogged } = useContext(loggedContext);
+
+  useEffect(() => {
+    if (isLogged && isLoaded) {
+      setFavoritos(items.productosFavoritos);
+    }
+  }, [isLoaded, isLogged, items]);
+
+
+  if (!isLogged) {
+    return <Redirect to="/" />;
+  }
 
   return (
     <>
@@ -15,12 +33,21 @@ export default function Favoritos() {
         </Link>
       </div>
       <section className={styles.favoritosContainer}>
-        {!hayFavoritos ? (
+        {favoritos.length === 0 ? (
           <div className={styles.avisoNoFavs}>
             <i class="far fa-frown"></i>
             <p>No tienes productos en favoritos</p>
           </div>
-        ) : null}
+        ) : (
+          favoritos.map((alojamiento, i) => (
+            <li key={i} className={styles.alojamiento}>
+              <TarjetaAlojamiento
+                alojamiento={alojamiento}
+                isLoaded={true}
+              />
+            </li>
+          ))
+        )}
       </section>
     </>
   );

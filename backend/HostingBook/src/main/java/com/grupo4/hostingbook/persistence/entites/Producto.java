@@ -57,7 +57,7 @@ public class Producto {
     )
     private Set<Caracteristica> caracteristicas = new HashSet<>();
 
-    @ManyToMany (cascade = CascadeType.MERGE, mappedBy = "productosFavoritos")
+    @ManyToMany (mappedBy = "productosFavoritos")
     private Set<Usuario> usuarios = new HashSet<>();
 
     public Producto() {}

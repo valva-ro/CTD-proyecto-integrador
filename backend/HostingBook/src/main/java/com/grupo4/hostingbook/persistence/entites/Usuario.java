@@ -27,11 +27,10 @@ public class Usuario {
     private Set<Puntuacion> puntuaciones = new HashSet<>();
 
     @ManyToMany(cascade = {
-            CascadeType.PERSIST,
             CascadeType.DETACH,
             CascadeType.REFRESH,
             CascadeType.REMOVE
-    })
+    }, fetch = FetchType.EAGER)
     @JoinTable(
             name = "usuario_producto",
             joinColumns = @JoinColumn(name = "usuario_id"),

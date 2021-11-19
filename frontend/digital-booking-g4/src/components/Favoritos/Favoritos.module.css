@@ -1,5 +1,9 @@
 .favoritosContainer {
-    height: calc(100vh - 223.98px) ;
+    height: 100%;
+    margin-bottom: 64px;
+    display: flex;
+    flex-direction: column;
+    gap: 36px;
 }
 .avisoNoFavs {
     width: 100%;
@@ -45,15 +49,9 @@
     .titleFavContainer i {
         font-size: 2.25rem;
     }
-    .favoritosContainer {
-        height: calc(100vh - 240.66px);
-    }
 }
 
 @media (max-width: 480px) {
-    .favoritosContainer {
-        height: calc(100vh - 199.66px);
-    }
     .titleFavContainer {
         margin-top: 82px;
     }
