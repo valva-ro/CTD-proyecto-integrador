@@ -25,6 +25,7 @@ function App() {
               <Route path="/login" component={Login} />
               <Route path="/register" component={Register} />
               <Route path="/product/:id" component={Producto} />
+              <Route path="/success" component={TarjetaReservaExitosa} />
             </Switch>
           </Layout>
         </BrowserRouter>
