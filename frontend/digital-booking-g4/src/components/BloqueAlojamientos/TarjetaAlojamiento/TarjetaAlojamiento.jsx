@@ -81,7 +81,7 @@ caracteristicas } }) {
             </>
           )}
         </p>
-        <Link to={`product/${id}`}>
+        <Link to={`product/${id}/features`}>
           <FilledButton styles={styles.btnVerMas}>Ver más</FilledButton>
         </Link>
       </div>

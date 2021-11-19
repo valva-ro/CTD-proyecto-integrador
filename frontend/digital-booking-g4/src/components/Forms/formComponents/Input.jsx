@@ -19,6 +19,7 @@ export default function InputComponent({
   leyendaError,
   funcion,
   tieneIcono,
+  specificStyle
 }) {
   const [isVisible, setIsVisible] = useState(false);
 
@@ -57,6 +58,7 @@ export default function InputComponent({
             onKeyUp={validacion}
             onBlur={validacion}
             valido={estado.valido}
+            className={specificStyle}
           />
           {!tieneIcono ? null : isVisible ? (
             <IconoOjoClave icon={faEye} onClick={toggleVisibility} />

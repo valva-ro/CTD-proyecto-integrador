@@ -1,0 +1,17 @@
+.containerPrincipal{
+    background-color: var(--color-inputs-form-datos);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.containerSecundario{
+    width: 100%;
+}
+
+@media (max-width: 780px) {
+    .containerPrincipal{
+        display: flex;
+        flex-direction: column;
+    }
+}

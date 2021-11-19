@@ -1,0 +1,39 @@
+.ocultar {
+    display: none;
+}
+
+.inputFormDatos::placeholder{
+    color: transparent;
+}
+ 
+.inputFormDatos{
+    background-color: var(--color-inputs-form-datos);
+    border: 3px solid var(--color-inputs-form-datos);
+    box-shadow: 0px 1px 5px rgb(0 0 0 / 15%);
+    color: var(--color-2);
+    font-size: 1rem;
+    padding: 1vh 40px 1vh 15px;
+    width: 100%;
+    margin-top: 5px;
+}
+
+.divDrawer{
+    display: block;
+    gap: 0;
+}
+
+.inputOtherForms{
+    background-color: var(--color-inputs-form-datos) !important;
+    border: 3px solid var(--color-inputs-form-datos);
+}
+
+.inputOtherForms:-webkit-autofill {
+    box-shadow:0 0 0 50px var(--color-inputs-form-datos) inset; 
+    -webkit-box-shadow:0 0 0 50px var(--color-inputs-form-datos) inset;  
+} 
+
+@media (max-width: 480px) {
+    .inputFormDatos{
+        padding: .8vh 40px .8vh 15px;
+    }
+}

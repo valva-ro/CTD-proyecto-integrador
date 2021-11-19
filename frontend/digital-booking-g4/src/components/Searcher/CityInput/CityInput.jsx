@@ -4,7 +4,7 @@ import useClickOutside from "../../../hooks/useOnClickOutside";
 import useFetch from "../../../hooks/useFetch.js";
 import styles from "./CityInput.module.css";
 
-export default function CityInput({ setOnChangeCity }) {
+export default function CityInput({ setOnChangeCity, specificStyle1, specificStyle2, specificStyle3}) {
   const [iconGps, setIconGps] = useState(styles.gpsEmpty);
   const [cityList, setCityList] = useState(null);
   const [inputContent, setInputContent] = useState("");
@@ -44,15 +44,15 @@ export default function CityInput({ setOnChangeCity }) {
 
   return (
     <>
-      <div className={styles.cityContainer} ref={wrapperRef}>
-        {inputContent !== "" ? <div>{cityList}</div> : ""}
-        <span className={iconGps}>
+      <div className={`${styles.cityContainer} ${specificStyle3}`} ref={wrapperRef}>
+        {inputContent !== "" ? <div className={`${specificStyle3}`}>{cityList}</div> : ""}
+        <span className={`${iconGps} ${specificStyle1}`}>
           <i className="fas fa-map-marker-alt"></i>
         </span>
         <input
           placeholder="¿A dónde vamos?"
           type="text"
-          className={styles.input}
+          className={`${styles.input} ${specificStyle2}`}
           onKeyUp={(e) => {
             lister(e);
             changeIconStyle(e.target.value);
