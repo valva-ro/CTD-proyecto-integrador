@@ -22,6 +22,11 @@
   padding-bottom: 60px;
 }
 
+.encabezadoFiltros{
+  display: flex;
+  justify-content: space-between;
+}
+
 .alojamiento {
   margin-bottom: 2.5vh;
 }

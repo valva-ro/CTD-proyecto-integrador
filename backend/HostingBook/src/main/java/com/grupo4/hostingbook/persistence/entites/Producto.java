@@ -1,12 +1,9 @@
 package com.grupo4.hostingbook.persistence.entites;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
-import java.util.HashSet;
-import java.util.Objects;
-import java.util.Set;
+import java.util.*;
 
 @Entity
 @Table(name = "productos")
@@ -32,7 +29,7 @@ public class Producto {
 
     @OneToMany(mappedBy = "puntuacion")
     @JsonIgnore
-    private Set<Puntuacion> puntuaciones = new HashSet<>();
+    private List<Puntuacion> puntuaciones = new ArrayList<>();
 
     @ManyToMany(cascade = {
             CascadeType.PERSIST,
@@ -41,6 +38,18 @@ public class Producto {
             CascadeType.REMOVE
     })
     @JsonIgnore
+    @JoinTable(
+            name = "politica_producto",
+            joinColumns = @JoinColumn(name = "producto_id"),
+            inverseJoinColumns = @JoinColumn(name = "politica_id")
+    )
+    private Set<Politica> politicas = new HashSet<>();
+
+    @ManyToMany (
+            cascade = {
+                    CascadeType.MERGE
+            }
+    )
     @JoinTable(
             name = "producto_caracteristica",
             joinColumns = @JoinColumn(name = "producto_id"),
@@ -123,12 +132,19 @@ public class Producto {
         this.caracteristicas = caracteristicas;
     }
 
-    public Set<Puntuacion> getPuntuaciones() {
+    public List<Puntuacion> getPuntuaciones() {
         return puntuaciones;
     }
 
-    public void setPuntuaciones(Set<Puntuacion> puntuaciones) {
+    public void setPuntuaciones(List<Puntuacion> puntuaciones) {
         this.puntuaciones = puntuaciones;
+    }
+    public Set<Politica> getPoliticas() {
+        return politicas;
+    }
+
+    public void setPoliticas(Set<Politica> politicas) {
+        this.politicas = politicas;
     }
 
     @Override

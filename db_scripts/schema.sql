@@ -17,7 +17,7 @@ SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL';
 
 DROP SCHEMA IF EXISTS booking;
-CREATE SCHEMA booking;
+CREATE SCHEMA IF NOT EXISTS booking;
 USE booking;
 
 --
@@ -40,6 +40,8 @@ CREATE TABLE IF NOT EXISTS ciudades (
   ciudad_id INT UNSIGNED NOT NULL AUTO_INCREMENT,
   nombre VARCHAR(50) NOT NULL,
   pais VARCHAR(50) NOT NULL,
+  latitud DOUBLE(7,4) NOT NULL,
+  longitud DOUBLE(7,4) NOT NULL,
   PRIMARY KEY (ciudad_id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -76,7 +78,7 @@ DROP TABLE IF EXISTS productos;
 CREATE TABLE IF NOT EXISTS productos (
 	producto_id INT UNSIGNED NOT NULL AUTO_INCREMENT,
     nombre VARCHAR(50) NOT NULL,
-    descripcion VARCHAR(500) NOT NULL,
+    descripcion TEXT NOT NULL,
     fk_categoria SMALLINT UNSIGNED NOT NULL,
     fk_ciudad INT UNSIGNED NOT NULL,
     PRIMARY KEY  (producto_id),
@@ -104,6 +106,50 @@ CREATE TABLE IF NOT EXISTS producto_caracteristica (
 		FOREIGN KEY (caracteristica_id)
 		REFERENCES booking.caracteristicas (caracteristica_id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+--
+-- Table structure for table `tipo_politica`
+--
+DROP TABLE IF EXISTS tipo_politica;
+CREATE TABLE tipo_politica(
+	tipo_politica_id SMALLINT UNSIGNED NOT NULL AUTO_INCREMENT,
+    nombre VARCHAR(50) NOT NULL,
+    PRIMARY KEY  (tipo_politica_id)    
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Table structure for table `politica`
+--
+DROP TABLE IF EXISTS politicas;
+CREATE TABLE politicas(
+	  politica_id INT UNSIGNED NOT NULL AUTO_INCREMENT,
+    nombre VARCHAR(200) NOT NULL,
+    fk_tipo_politica SMALLINT UNSIGNED NOT NULL,
+	PRIMARY KEY  (politica_id), 
+	CONSTRAINT politica_tipo_politica_id_foreign
+		FOREIGN KEY (fk_tipo_politica)
+		REFERENCES booking.tipo_politica (tipo_politica_id)
+)ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Table structure for table `politica_producto`
+--
+DROP TABLE IF EXISTS  politica_producto;
+CREATE TABLE politica_producto(
+	politica_producto_id INT UNSIGNED NOT NULL AUTO_INCREMENT,
+    politica_id INT UNSIGNED NOT NULL,
+    producto_id INT UNSIGNED NOT NULL,
+    PRIMARY KEY  (politica_producto_id), 
+	CONSTRAINT politica_producto_politica_id_foreign
+		FOREIGN KEY (politica_id)
+        REFERENCES booking.politicas (politica_id),
+	CONSTRAINT politica_producto_producto_id_foreign
+		FOREIGN KEY (producto_id)
+		REFERENCES booking.productos (producto_id)
+
+	
+)ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Table structure for table `usuario`

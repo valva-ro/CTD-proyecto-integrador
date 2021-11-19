@@ -12,18 +12,6 @@ const usuarioHarcodeado = {
   password: "12341234",
 };
 
-// Lo comento porque como ya están las validaciones en el register no tendría sentido volver a validar, lo que si tiene sentido validar es contra la base de datos harcodeada para comprobar autenticidad
-// function validarContrasenia(contrasenia) {
-//   const longitudCorrecta = contrasenia.length > 6;
-//   return longitudCorrecta;
-// }
-
-// function validarEmail(email) {
-//   const expresion = /[A-z]+@[A-z]+.[A-z]{3}/;
-//   const test = expresion.test(email);
-//   return test;
-//}
-
 export default function Login() {
   const [email, setEmail] = useState({ campo: "", valido: null });
   const [password, setPassword] = useState({ campo: "", valido: null });
@@ -36,7 +24,6 @@ export default function Login() {
   }
 
   function validarCampos() {
-    // if (validarContrasenia(password) && validarEmail(email)) {
     if (
       password.campo === usuarioHarcodeado.password &&
       email.campo === usuarioHarcodeado.email
@@ -46,9 +33,6 @@ export default function Login() {
     } else {
       setIsError(true);
     }
-    // } else {
-    //   setIsError(true);
-    // }
   }
 
   console.log(usuarioHarcodeado);

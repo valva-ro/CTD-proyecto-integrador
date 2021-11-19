@@ -7,10 +7,12 @@ import { BrowserRouter, Switch, Route } from "react-router-dom";
 import loggedContext from "./contexts/loggedContext";
 import { useState } from "react";
 import ScrollToTop from "./components/ScrollToTop";
-import TarjetaReservaExitosa from "./components/TarjetaReservaExitosa/TarjetaReservaExitosa";
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 function App() {
   const [isLogged, setIsLogged] = useState(false);
+  AOS.init();
 
   return (
     <loggedContext.Provider value={{ isLogged, setIsLogged }}>

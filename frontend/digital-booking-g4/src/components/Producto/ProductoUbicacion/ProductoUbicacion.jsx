@@ -1,24 +1,33 @@
 import Estrellas from "../../Estrellas/Estrellas";
 import styles from "./ProductoUbicacion.module.css";
+import calcularPromedioPuntuacion from "../../../utils/calcularPromedioPuntuacion";
+import obtenerClasificacion from "../../../utils/obtenerClasificacion";
 
-export default function ProductoUbicacion({ alojamiento }) {
+export default function ProductoUbicacion({
+  alojamiento: { ciudad, puntuaciones },
+}) {
+  const puntaje = calcularPromedioPuntuacion(puntuaciones);
   return (
     <section className={styles.ubicacionContainer}>
       <div className={styles.direccionContainer}>
         <div className={styles.ubicacion}>
           <i className="fas fa-map-marker-alt"></i>
-          <p>{`${alojamiento.ciudad.nombre}, ${alojamiento.ciudad.pais}`}</p>
+          <p>{`${ciudad.nombre}, ${ciudad.pais}`}</p>
         </div>
-        <p className={styles.distancia}>
-          {distanciaCentro(alojamiento.ciudad.nombre)}
-        </p>
+        <p className={styles.distancia}>{distanciaCentro(ciudad.nombre)}</p>
       </div>
       <div className={styles.detalle}>
         <div className={styles.detalleYEstrellas}>
-          <div className={styles.detalleCalificacion}>Muy bueno</div>
-          <Estrellas puntaje={8} />
+          <div className={styles.detalleCalificacion}>
+            {obtenerClasificacion(puntaje)}
+          </div>
+          <Estrellas puntaje={puntaje} />
         </div>
-        <div className={styles.puntajeNumerico}>{8}</div>
+        {isNaN(puntaje) ? (
+          ""
+        ) : (
+          <div className={styles.puntajeNumerico}>{puntaje * 2}</div>
+        )}
       </div>
     </section>
   );

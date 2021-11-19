@@ -28,7 +28,7 @@ public class CiudadControllerTests {
 
     @BeforeEach
     public void reset(){
-        ciudad = new CiudadDTO( "Capital Federal", "Argentina");
+        ciudad = new CiudadDTO( "Capital Federal", "Argentina",-34.6131,-58.3772);
     }
 
     @Test

@@ -12,11 +12,17 @@ public class ProductoDTO implements Serializable {
     private String descripcion;
     private CategoriaDTO categoria;
     private CiudadDTO ciudad;
+    private Set<PoliticaDTO> politicas;
     private Set<ImagenDTO> imagenes = new HashSet<>();
     private Set<CaracteristicaDTO> caracteristicas = new HashSet<>();
     private Set<PuntuacionDTO> puntuaciones = new HashSet<>();
 
-    public ProductoDTO(){}
+    public ProductoDTO() {
+    }
+
+    public ProductoDTO(Long id) {
+        this.id = id;
+    }
 
     public ProductoDTO(String nombre,
                        String descripcion,
@@ -44,6 +50,29 @@ public class ProductoDTO implements Serializable {
         this.descripcion = descripcion;
         this.categoria = categoria;
         this.ciudad = ciudad;
+        this.imagenes = imagenes;
+        this.caracteristicas = caracteristicas;
+    }
+
+    public ProductoDTO(Long id, String nombre, String descripcion, CategoriaDTO categoria, CiudadDTO ciudad,
+            Set<PoliticaDTO> politicas, Set<ImagenDTO> imagenes, Set<CaracteristicaDTO> caracteristicas) {
+        this.id = id;
+        this.nombre = nombre;
+        this.descripcion = descripcion;
+        this.categoria = categoria;
+        this.ciudad = ciudad;
+        this.politicas = politicas;
+        this.imagenes = imagenes;
+        this.caracteristicas = caracteristicas;
+    }
+
+    public ProductoDTO(String nombre, String descripcion, CategoriaDTO categoria, CiudadDTO ciudad,
+            Set<PoliticaDTO> politicas, Set<ImagenDTO> imagenes, Set<CaracteristicaDTO> caracteristicas) {
+        this.nombre = nombre;
+        this.descripcion = descripcion;
+        this.categoria = categoria;
+        this.ciudad = ciudad;
+        this.politicas = politicas;
         this.imagenes = imagenes;
         this.caracteristicas = caracteristicas;
     }
@@ -104,6 +133,14 @@ public class ProductoDTO implements Serializable {
         this.caracteristicas = caracteristicas;
     }
 
+    public Set<PoliticaDTO> getPoliticas() {
+        return politicas;
+    }
+
+    public void setPoliticas(Set<PoliticaDTO> politicas) {
+        this.politicas = politicas;
+    }
+
     public Set<PuntuacionDTO> getPuntuaciones() {
         return puntuaciones;
     }
@@ -112,12 +149,23 @@ public class ProductoDTO implements Serializable {
         this.puntuaciones = puntuaciones;
     }
 
+    public void agregarPuntuacion(PuntuacionDTO puntuacionDTO) {
+        this.puntuaciones.add(puntuacionDTO);
+    }
+
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o)
+            return true;
+        if (o == null || getClass() != o.getClass())
+            return false;
         ProductoDTO that = (ProductoDTO) o;
-        return Objects.equals(id, that.id) && Objects.equals(nombre, that.nombre) && Objects.equals(descripcion, that.descripcion) && Objects.equals(categoria, that.categoria) && Objects.equals(ciudad, that.ciudad) && (imagenes.containsAll(that.imagenes) && that.imagenes.containsAll(imagenes)) && (caracteristicas.containsAll(that.caracteristicas) && that.caracteristicas.containsAll(caracteristicas));
+        return Objects.equals(id, that.id) && Objects.equals(nombre, that.nombre)
+                && Objects.equals(descripcion, that.descripcion) && Objects.equals(categoria, that.categoria)
+                && Objects.equals(ciudad, that.ciudad)
+                && (imagenes.containsAll(that.imagenes) && that.imagenes.containsAll(imagenes))
+                && (caracteristicas.containsAll(that.caracteristicas)
+                        && that.caracteristicas.containsAll(caracteristicas));
     }
 
     @Override
@@ -128,25 +176,24 @@ public class ProductoDTO implements Serializable {
     @Override
     public String toString() {
         Set<ImagenDTO> imagenesToString = new HashSet<>();
-        for (ImagenDTO i: imagenes) {
+        for (ImagenDTO i : imagenes) {
             i.toString();
             imagenesToString.add(i);
         }
 
         Set<CaracteristicaDTO> caracteristicasToString = new HashSet<>();
-        for (CaracteristicaDTO c: caracteristicas) {
+        for (CaracteristicaDTO c : caracteristicas) {
             c.toString();
             caracteristicasToString.add(c);
         }
-
-        return "ProductoDTO{" +
-                "id=" + id +
-                ", nombre='" + nombre + '\'' +
-                ", descripcion='" + descripcion + '\'' +
-                ", categoria=" + categoria.toString() +
-                ", ciudad=" + ciudad.toString() +
-                ", imagenes=" + imagenesToString +
-                ", caracteristicas=" + caracteristicasToString +
-                '}';
+        Set<PoliticaDTO> politicasToString = new HashSet<>();
+        for (PoliticaDTO p : politicas) {
+            p.toString();
+            politicasToString.add(p);
+        }
+        return "ProductoDTO{" + "id=" + id + ", nombre='" + nombre + '\'' + ", descripcion='" + descripcion + '\''
+                + ", categoria=" + categoria.toString() + ", ciudad=" + ciudad.toString() + ", imagenes="
+                + imagenesToString + ", caracteristicas=" + caracteristicasToString + ", caracteristicas="
+                + politicasToString + '}';
     }
 }
