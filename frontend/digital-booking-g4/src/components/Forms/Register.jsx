@@ -45,22 +45,33 @@ export default function Register() {
   }
 
   function enviarDatosBDD() {
-    post("usuarios/signup", {
-      nombre: name.campo,
-      apellido: surname.campo,
-      mail: email.campo,
-      contrasenia: password.campo,
-    })
-      .then((response) => {
-        console.log(response.status);
-        if (response.status !== 201) {
-          setIsError(true);
-        } else {
-          history.push("/login");
-        }
-        return response.json();
+    if (
+      name.valido === "true" &&
+      surname.valido === "true" &&
+      email.valido === "true" &&
+      password.valido === "true" &&
+      repeatPassword.valido === "true"
+    ) {
+      post("usuarios/signup", {
+        nombre: name.campo,
+        apellido: surname.campo,
+        mail: email.campo,
+        contrasenia: password.campo,
       })
-      .catch((error) => console.log(error));
+        .then((response) => {
+          console.log(response.status);
+          if (response.status !== 201) {
+            setIsError(true);
+          } else {
+            history.push("/login");
+          }
+          return response.json();
+        })
+        .catch((error) => console.log(error));
+    } else {
+      setIsError(true);
+    }
+    
   }
 
   return (
@@ -124,8 +135,8 @@ export default function Register() {
             <div className={styles.credencialesContainer}>
               <FontAwesomeIcon icon={faExclamationTriangle} />
               <p className={styles.credencialesInvalidas}>
-                Lamentablemente no ha podido registrarse. Por favor intente más
-                tarde.
+                Lamentablemente no ha podido registrarse. Por favor, vuelva a
+                intentarlo.
               </p>
             </div>
           ) : null}
