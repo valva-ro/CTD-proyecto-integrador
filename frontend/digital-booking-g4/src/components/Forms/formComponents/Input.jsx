@@ -8,6 +8,7 @@ import {
   IconoOjoClave,
 } from "../formElements";
 import { faEyeSlash, faEye } from "@fortawesome/free-solid-svg-icons";
+import styles from "./input.module.css"
 
 export default function InputComponent({
   estado,
@@ -19,7 +20,6 @@ export default function InputComponent({
   leyendaError,
   funcion,
   tieneIcono,
-  specificStyle
 }) {
   const [isVisible, setIsVisible] = useState(false);
 
@@ -50,6 +50,7 @@ export default function InputComponent({
       <Label valido={estado.valido}>
         {label}
         <GrupoInput>
+          <div className={styles.sombraConAutocompletado}>
           <Input
             type={tipo !== "password" ? tipo : !isVisible ? "password" : "text"}
             name={name}
@@ -58,8 +59,8 @@ export default function InputComponent({
             onKeyUp={validacion}
             onBlur={validacion}
             valido={estado.valido}
-            className={specificStyle}
           />
+          </div>
           {!tieneIcono ? null : isVisible ? (
             <IconoOjoClave icon={faEye} onClick={toggleVisibility} />
           ) : (

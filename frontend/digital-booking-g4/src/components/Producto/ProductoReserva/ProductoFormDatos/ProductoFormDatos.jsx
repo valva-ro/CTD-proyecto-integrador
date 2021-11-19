@@ -35,7 +35,6 @@ export default function ProductoFormDatos(){
                         name="nombre"
                         expresionRegular={expresiones.nombre}
                         leyendaError="El nombre sólo debe contener letras. Entre 2 y 25 caracteres."
-                        specificStyle={stylesInputsFromOtherside.inputOtherForms}
 
                     />
                     <InputComponent
@@ -46,7 +45,6 @@ export default function ProductoFormDatos(){
                         name="apellido"
                         expresionRegular={expresiones.apellido}
                         leyendaError="El apellido sólo debe contener letras. Entre 2 y 25 caracteres."
-                        specificStyle={stylesInputsFromOtherside.inputOtherForms}
                     />
                 </div>
                 <div className={styles.lineContainer}>
@@ -58,7 +56,6 @@ export default function ProductoFormDatos(){
                         name="correo"
                         expresionRegular={expresiones.correo}
                         leyendaError="Formato de correo inválido."
-                        specificStyle={stylesInputsFromOtherside.inputOtherForms}
                     />
                     <div className={styles.containerInput}>
                         <label>Ciudad</label>

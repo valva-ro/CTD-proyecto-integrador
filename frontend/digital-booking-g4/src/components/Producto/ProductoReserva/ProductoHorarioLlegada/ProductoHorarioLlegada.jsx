@@ -3,7 +3,7 @@ import styles from "./ProductoHorarioLlegada.module.css";
 
 export default function ProductoHorarioLlegada(){
     /*TO DO: consumir horas de la base de datos*/
-    const hora = 10;
+    const hora = 14;
 
     const horaFormat = (hora) => {
         if(hora > 12) {
@@ -16,12 +16,9 @@ export default function ProductoHorarioLlegada(){
 
     let horasDisponibles = [];
 
-    for (let i=hora; i <= 24; i++){
+    for (let i=hora; i <= 23; i++){
         horasDisponibles.push(i);
     }
-
-    console.log(horaFormat(hora));
-    console.log(horasDisponibles)
 
     return(
         <>
@@ -29,11 +26,11 @@ export default function ProductoHorarioLlegada(){
             <div className={styles.container}>
                 <div className={styles.containerTexto}>
                     <span><i class="far fa-check-circle"></i></span>
-                    <p>Tu habitación va a estar lista para el check-in entre las 10:00 AM y las 11:00 PM</p>
+                    <p>Tu habitación va a estar lista para el check-in entre las {horaFormat(hora)} y las 11:00 PM</p>
                 </div>
                 <div className={styles.containerSelect}>
                     <label>Indicá tu horario estimado de llegada </label>
-                    <select name="horarioLlegada" className={styles.minimal}>
+                    <select name="horarioLlegada" className={styles.minimal} required>
                         <option value="Seleccionar hora de llegada" hidden>Seleccionar hora de llegada</option>
                         {horasDisponibles.map((h, i) => (
                             <option value={h}>{horaFormat(h)}</option>

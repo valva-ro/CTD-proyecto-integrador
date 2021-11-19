@@ -36,8 +36,8 @@ label{
 }
 
 textarea{
-    background-color: var(--color-inputs-form-datos);
-    border: 3px solid var(--color-inputs-form-datos);
+    background-color: var(--color-5);
+    border: 3px solid var(--color-5);
     border-radius: 5px;
     outline: none;
     box-shadow: 0px 1px 5px rgb(0 0 0 / 15%);
