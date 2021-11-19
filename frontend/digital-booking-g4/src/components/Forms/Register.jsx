@@ -1,8 +1,11 @@
 import FilledButton from "../Buttons/FilledButton";
 import styles from "./Form.module.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faExclamationTriangle } from "@fortawesome/free-solid-svg-icons";
 import { Link, useHistory } from "react-router-dom";
 import { useState } from "react";
 import InputComponent from "./formComponents/Input";
+import post from "../../utils/post";
 
 export default function Register() {
   const [name, setName] = useState({ campo: "", valido: null });
@@ -14,6 +17,7 @@ export default function Register() {
     valido: null,
   });
   const history = useHistory();
+  const [isError, setIsError] = useState(false);
 
   const expresiones = {
     nombre: /^[a-zA-ZÀ-ÿ\s]{2,25}$/,
@@ -38,16 +42,25 @@ export default function Register() {
 
   function handleSubmit(e) {
     e.preventDefault();
+  }
 
-    if (
-      name.valido === "true" &&
-      surname.valido === "true" &&
-      email.valido === "true" &&
-      password.valido === "true" &&
-      repeatPassword.valido === "true"
-    ) {
-      history.push("/login");
-    }
+  function enviarDatosBDD() {
+    post("usuarios/signup", {
+      nombre: name.campo,
+      apellido: surname.campo,
+      mail: email.campo,
+      contrasenia: password.campo,
+    })
+      .then((response) => {
+        console.log(response.status);
+        if (response.status !== 201) {
+          setIsError(true);
+        } else {
+          history.push("/login");
+        }
+        return response.json();
+      })
+      .catch((error) => console.log(error));
   }
 
   return (
@@ -107,7 +120,18 @@ export default function Register() {
             leyendaError="La contraseñas no coinciden."
             funcion={validarRepeatPassword}
           />
-          <FilledButton>Crear cuenta</FilledButton>
+          {isError ? (
+            <div className={styles.credencialesContainer}>
+              <FontAwesomeIcon icon={faExclamationTriangle} />
+              <p className={styles.credencialesInvalidas}>
+                Lamentablemente no ha podido registrarse. Por favor intente más
+                tarde.
+              </p>
+            </div>
+          ) : null}
+          <FilledButton onClick={() => enviarDatosBDD()}>
+            Crear cuenta
+          </FilledButton>
           <p>
             ¿Ya tienes cuenta? <Link to="/login">Iniciar sesión</Link>
           </p>
