@@ -73,7 +73,7 @@ public class ReservaService implements CRUDService<ReservaDTO> {
         if (reservaDTO == null) {
             throw new BadRequestException(String.format(Mensajes.ERROR_DTO_NO_EXISTE, "reserva"));
         } else {
-            if (reservaDTO.getUsuario() == null )
+            if (reservaDTO.getCliente() == null )
                 throw new BadRequestException(String.format(Mensajes.ERROR_CREACION_CAMPO_REQUERIDO, "reserva", "usuario"));
             if (reservaDTO.getProducto() == null )
                 throw new BadRequestException(String.format(Mensajes.ERROR_CREACION_CAMPO_REQUERIDO, "reserva", "producto"));
@@ -114,7 +114,7 @@ public class ReservaService implements CRUDService<ReservaDTO> {
         if (reservaDTO.getFechaIngreso()!= null && reservaDTO.getFechaEgreso()!= null
             && reservaDTO.getHoraEntrada()!= null && reservaDTO.getHoraSalida()!= null
             && reservaDTO.getDatos()!= null && reservaDTO.getProducto()!= null
-            && reservaDTO.getUsuario()!= null && reservaDTO.getVacunaCovid()!= null)
+            && reservaDTO.getCliente()!= null && reservaDTO.getVacunaCovid()!= null)
 
             entidad.setHoraEntrada(reservaDTO.getHoraEntrada());
             entidad.setHoraSalida(reservaDTO.getHoraSalida());
