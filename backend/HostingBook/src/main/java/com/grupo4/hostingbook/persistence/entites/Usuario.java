@@ -26,6 +26,10 @@ public class Usuario {
     @JsonIgnore
     private Set<Puntuacion> puntuaciones = new HashSet<>();
 
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name = "fk_usuario")
+    private Set<Reserva> reservas = new HashSet<>();
+
     @ManyToMany(cascade = {
             CascadeType.PERSIST,
             CascadeType.DETACH,
