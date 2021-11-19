@@ -75,8 +75,7 @@ export default function Login() {
               <div className={styles.credencialesContainer}>
                 <FontAwesomeIcon icon={faExclamationTriangle} />
                 <p className={styles.credencialesInvalidas}>
-                  Lamentablemente no ha podido iniciar sesión. Por favor intente
-                  más tarde.
+                  Sus credenciales son inválidas. Por favor, vuelva a intentarlo.
                 </p>
               </div>
             ) : null}
