@@ -8,8 +8,10 @@
     4. Características (necesita Productos)
     5. Imagenes (necesita Productos)
     6. Politicas (necesita Productos)
-    7. Usuarios (necesita Productos)
-    8. Puntuaciones (necesita Productos y Usuarios)
+    7. Roles
+    8. Usuarios (necesita Productos y Roles)
+    9. Puntuaciones (necesita Productos y Usuarios)
+    10. Reservas (necesita Usuarios y Productos)
 
 # Aclaraciones
 - Cada vez que se ejecuta el `schema.sql` se hace un `DROP` y se recrea todo
