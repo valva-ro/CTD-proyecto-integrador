@@ -12,7 +12,8 @@
     box-shadow: 0px 1px 5px rgb(0 0 0 / 15%);
     color: var(--color-2);
     font-size: 1rem;
-    padding: 1vh 40px 1vh 15px;
+    padding: 1vh 40px 1vh 15px;/* 
+    min-width: none !important;  */
     width: 100%;
     margin-top: 5px;
 }
@@ -31,6 +32,7 @@
     box-shadow:0 0 0 50px var(--color-inputs-form-datos) inset; 
     -webkit-box-shadow:0 0 0 50px var(--color-inputs-form-datos) inset;  
 } 
+
 
 @media (max-width: 480px) {
     .inputFormDatos{

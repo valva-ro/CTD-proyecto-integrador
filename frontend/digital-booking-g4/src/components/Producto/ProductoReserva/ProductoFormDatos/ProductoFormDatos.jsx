@@ -68,7 +68,7 @@ export default function ProductoFormDatos(){
                 </div>
                 <div className={`${styles.containerInput} ${styles.lineContainer}`}>
                     <label>Mensaje para el dueño</label>
-                    <textarea name="comentario" id="comentario" cols="30" rows="10"></textarea>
+                    <textarea name="comentario" id="comentario" cols="30" rows="6"></textarea>
                 </div>
                 <div className={styles.lineContainer}>
                     <label className={styles.myCheckbox}>

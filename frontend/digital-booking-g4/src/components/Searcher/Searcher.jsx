@@ -60,7 +60,7 @@ export default function Searcher() {
           Busca ofertas en hoteles, casas y mucho más
         </h2>
         <div className={styles.inputs}>
-          <CityInput setOnChangeCity={setOnChangeCity} />
+          <div className={styles.anchoFijo}><CityInput setOnChangeCity={setOnChangeCity} /></div>
           <div className={styles.dateContainer}>
             <span className={iconDate}>
               <i className="far fa-calendar-alt"></i>

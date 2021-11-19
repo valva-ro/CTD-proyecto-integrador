@@ -3,15 +3,32 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    align-items: flex-start;
+    gap: 30px;
 }
 
 .containerSecundario{
-    width: 100%;
+    width: 65%;
+    min-height: 100%;
 }
 
-@media (max-width: 780px) {
+.containerTercero{
+    width: 32%;
+    height: 100%;
+}
+
+@media (max-width: 1010px) {
     .containerPrincipal{
         display: flex;
         flex-direction: column;
+        gap: 0;
+    }
+
+    .containerSecundario{
+        width: 100%;
+    }
+    
+    .containerTercero{
+        width: 100%;
     }
 }

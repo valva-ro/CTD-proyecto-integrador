@@ -1,8 +1,21 @@
 .container{
-    width:  29.94143484626647vw;
-    border: 1.6vh  0.7320644216691069vw;
-    box-shadow: 1px 4px 4px rgb(0 0 0 / 25%);
+    background-color: var(--color-5);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border: 1px solid #dfe4ea;
+    color: var(--color-2);
+    margin-top: calc(28px + 2vh);
+    margin-bottom: 5vh;
+    min-height: 100%;
 
+}
+
+.infContainer{
+    width: 100%;
 }
 
 .img{
@@ -14,21 +27,19 @@
     height: 48vh;
 
 }
-h2{
-    font-size: 
-    1.5rem;
-    padding-left: 1.313rem;
+.tituloTarjeta{
+    font-size: 1.5rem;
+    padding-left: 1.25rem;
     padding-top: 1.5rem;
     padding-bottom: 1rem;
     color: var(--color-2);
-    font-weight: bold;
+    font-weight: 700;
 
 }
 
 
 .letterContainer{
-    padding:  3.36vh  1.5373352855051245vw;
-    margin-top: 3.52vh;
+    padding:  3.36vh  1.25rem;
 }
 .categoria{
     font-size:  0.875rem;
@@ -71,13 +82,13 @@ h2{
     text-align: center;
 }
 .buttonContainer input{
-width: 100%;
-text-align: center;
-padding:1.92vh 0;
-margin-top: 5.6vh;
+    width: 100%;
+    text-align: center;
+    padding:1.92vh 0;
+    margin-top: 5.6vh;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1010px) {
     .infContainer{
         display: flex;
         gap: 20px;
@@ -86,19 +97,20 @@ margin-top: 5.6vh;
         padding: 15px 0;
     }
     .img{
-        Width :19.875rem;
-        Height :19.5rem
+        width :100%;
+        height :19.5rem;
+        border-radius: 10px;
     }
     .container{
         padding: 30px;
-        width:  90vw;
+        width:  100%;
         height:  100%;
-        
-    
+        margin-top:0;    
     }
     .letterContainer{
         margin-top: 0px;
         padding: 0;
+        width: 100%;
     }
     .fecha{
         margin:15px 0 ;
@@ -108,15 +120,16 @@ margin-top: 5.6vh;
         text-align: center;
         padding: 8px;
         margin-top:15px
-        }
-        h2{
-            padding-top: 0;
-            padding-left: 0;
-        }
+    }
+    .tituloTarjeta{
+        padding-top: 0;
+        padding-left: 0;
+    }
   }
   @media (max-width: 480px) {
     .infContainer{
         flex-direction: column;
+        width: 100%;
     }
     .container{
         padding: 0;    
@@ -124,13 +137,12 @@ margin-top: 5.6vh;
     .img{
         width: 100%;
     }
-    h2{
-
-        padding-left: 1.313rem;
-        padding-top: 1.5rem;  
+    .tituloTarjeta{
+        padding:1.5rem 1.25rem;  
     }
     .letterContainer{
         margin-top: 0px;
-        padding:  3.36vh  2.5373352855051245vw
+        padding:  1.5rem 1.25rem;  
+        width: 100%;
     }
   }

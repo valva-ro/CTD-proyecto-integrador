@@ -25,7 +25,7 @@ export default function ProductoReserva({ alojamiento, checkin, checkout }) {
   }); */
   return (
     <div className={styles.container}>
-      <h2>Detalles de la reserva</h2>
+      <h2 className={styles.tituloTarjeta}>Detalle de la reserva</h2>
       <div className={styles.infContainer}>
         <div
           className={styles.img}

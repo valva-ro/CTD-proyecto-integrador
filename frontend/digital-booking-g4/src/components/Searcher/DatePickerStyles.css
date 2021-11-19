@@ -306,7 +306,7 @@ div.react-datepicker-wrapper {
   margin: 2vh 0 5vh 0;
 }
 .calendarContainerReservas div.react-datepicker__month-container {
-  padding: 0 4vw;
+  padding: 0 2vw;
   margin: 2vh 0;
   background-color: var(--color-5);
 }
@@ -381,6 +381,12 @@ div.react-datepicker-wrapper {
     background-color: transparent;
   }
 }
+@media (max-width: 1135px) {
+  .calendarContainerReservas div.react-datepicker__month-container {
+    padding: 0 1vw;
+  }
+}
+
 @media (max-width: 740px) {
   .calendarContainerReservas {
     height: 310px;

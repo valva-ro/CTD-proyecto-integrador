@@ -17,7 +17,7 @@ export default function ProductoReserva(producto) {
         <ProductoFechaReserva/>
         <ProductoHorarioLlegada/>
       </div>
-      <div>
+      <div className={styles.containerTercero}>
         <DetallesReserva
         alojamiento={producto}
         checkin={checkin}
