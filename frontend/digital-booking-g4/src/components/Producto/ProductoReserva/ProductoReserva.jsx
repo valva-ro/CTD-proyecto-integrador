@@ -1,9 +1,15 @@
+import { useState } from "react";
 import ProductoFormDatos from "./ProductoFormDatos/ProductoFormDatos"
 import ProductoFechaReserva from "./ProductoFechaReserva/ProductoFechaReserva";
 import ProductoHorarioLlegada from "./ProductoHorarioLlegada/ProductoHorarioLlegada";
+import DetallesReserva from "./DetallesReserva/DetallesReserva";
 import styles from "./ProductoReserva.module.css"
 
-export default function ProductoReserva() {
+export default function ProductoReserva(producto) {
+
+  const [checkin, setCheckin] = useState("__/ __/ __");
+  const [checkout, setCheckout] = useState("__/ __/ __");
+
   return (
     <section className={styles.containerPrincipal}>
       <div className={styles.containerSecundario}>
@@ -11,7 +17,13 @@ export default function ProductoReserva() {
         <ProductoFechaReserva/>
         <ProductoHorarioLlegada/>
       </div>
-      <div>Tarjeta: Detalle de la Reserva</div>
+      <div>
+        <DetallesReserva
+        alojamiento={producto}
+        checkin={checkin}
+        checkout={checkout}
+        />
+      </div>
     </section>
-  );
+  )
 }
