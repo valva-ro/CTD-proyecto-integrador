@@ -1,6 +1,7 @@
 package com.grupo4.hostingbook.persistence.entites;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.grupo4.hostingbook.model.UsuarioDTO;
 
 import javax.persistence.*;
 import java.util.HashSet;
@@ -22,6 +23,7 @@ public class Usuario {
     @Column(name="cuenta_validada")
     private Boolean cuentaValidada;
 
+
     @OneToMany(mappedBy = "puntuacion")
     @JsonIgnore
     private Set<Puntuacion> puntuaciones = new HashSet<>();
@@ -42,6 +44,10 @@ public class Usuario {
             inverseJoinColumns = @JoinColumn(name = "producto_id")
     )
     private Set<Producto> productosFavoritos = new HashSet<>();
+
+    @ManyToOne(cascade = CascadeType.MERGE)
+    @JoinColumn(name = "fk_rol")
+    private Rol rol;
 
     public Usuario() {}
 
@@ -69,18 +75,34 @@ public class Usuario {
         this.productosFavoritos = productosFavoritos;
     }
 
+    public Usuario(String nombre,
+                   String apellido,
+                   String mail,
+                   String contrasenia,
+                   Set<Producto> productosFavoritos,
+                   Rol rol) {
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.mail = mail;
+        this.contrasenia = contrasenia;
+        this.productosFavoritos = productosFavoritos;
+        this.rol = rol;
+    }
+
     public Usuario(Long id,
                    String nombre,
                    String apellido,
                    String mail,
                    String contrasenia,
-                   Set<Producto> productosFavoritos) {
+                   Set<Producto> productosFavoritos,
+                   Rol rol) {
         this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;
         this.mail = mail;
         this.contrasenia = contrasenia;
         this.productosFavoritos = productosFavoritos;
+        this.rol = rol;
     }
 
     public Long getId() {
@@ -147,16 +169,20 @@ public class Usuario {
         this.puntuaciones = puntuaciones;
     }
 
+    public Rol getRol() { return rol; }
+
+    public void setRol(Rol rol) { this.rol = rol; }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Usuario)) return false;
+        if (o == null || getClass() != o.getClass()) return false;
         Usuario usuario = (Usuario) o;
-        return Objects.equals(id, usuario.id) && Objects.equals(nombre, usuario.nombre) && Objects.equals(apellido, usuario.apellido) && Objects.equals(mail, usuario.mail) && Objects.equals(contrasenia, usuario.contrasenia) && Objects.equals(cuentaValidada, usuario.cuentaValidada) && Objects.equals(puntuaciones, usuario.puntuaciones) && Objects.equals(productosFavoritos, usuario.productosFavoritos);
+        return id.equals(usuario.id) && nombre.equals(usuario.nombre) && apellido.equals(usuario.apellido) && mail.equals(usuario.mail) && contrasenia.equals(usuario.contrasenia) && cuentaValidada.equals(usuario.cuentaValidada) && puntuaciones.equals(usuario.puntuaciones) && productosFavoritos.equals(usuario.productosFavoritos) && rol.equals(usuario.rol);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, nombre, apellido, mail, contrasenia, cuentaValidada, puntuaciones, productosFavoritos);
+        return Objects.hash(id, nombre, apellido, mail, contrasenia, cuentaValidada, puntuaciones, productosFavoritos, rol);
     }
 }

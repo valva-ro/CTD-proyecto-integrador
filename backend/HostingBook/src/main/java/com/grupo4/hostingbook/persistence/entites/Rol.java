@@ -1,25 +1,37 @@
 package com.grupo4.hostingbook.persistence.entites;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
 @Entity
-@Table(name = "tipo_politica")
-public class TipoPolitica {
-
+@Table(name = "roles")
+public class Rol {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="tipo_politica_id")
+    @Column(name = "rol_id")
     private Long id;
     private String nombre;
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "rol", fetch = FetchType.EAGER)
     @JsonIgnore
-    private Set<Politica> politicas = new HashSet<>();
+    private Set<Usuario> usuarios = new HashSet<>();
+
+    public Rol() {
+    }
+
+    public Rol(Long id) {
+        this.id = id;
+    }
+
+    public Rol(String nombre) { this.nombre = nombre; }
+
+    public Rol(Long id,String nombre) {
+        this.id = id;
+        this.nombre = nombre;
+    }
 
     public Long getId() {
         return id;
@@ -37,18 +49,16 @@ public class TipoPolitica {
         this.nombre = nombre;
     }
 
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof TipoPolitica)) return false;
-        TipoPolitica that = (TipoPolitica) o;
-        return getId().equals(that.getId()) && getNombre().equals(that.getNombre()) ;
+        if (o == null || getClass() != o.getClass()) return false;
+        Rol rol = (Rol) o;
+        return id.equals(rol.id) && nombre.equals(rol.nombre);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId(), getNombre());
+        return Objects.hash(id, nombre);
     }
 }
-
