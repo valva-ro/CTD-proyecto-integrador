@@ -1,4 +1,7 @@
-import { useState, useEffect } from "react";
+import {
+  useState,
+  useEffect
+} from "react";
 
 export default function useFetch(path, settings = {}) {
   let [items, setItems] = useState(null);

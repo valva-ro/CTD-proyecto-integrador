@@ -45,6 +45,14 @@ public class Usuario {
         this.id = id;
     }
 
+    public Usuario(Long id, String nombre, String apellido, String mail, String contrasenia) {
+        this.id = id;
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.mail = mail;
+        this.contrasenia = contrasenia;
+    }
+
     public Usuario(String nombre,
                    String apellido,
                    String mail,

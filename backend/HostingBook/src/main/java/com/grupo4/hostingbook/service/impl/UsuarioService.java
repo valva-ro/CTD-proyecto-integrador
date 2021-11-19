@@ -9,22 +9,25 @@ import com.grupo4.hostingbook.model.UsuarioDTO;
 import com.grupo4.hostingbook.persistence.entites.Producto;
 import com.grupo4.hostingbook.persistence.entites.Usuario;
 import com.grupo4.hostingbook.persistence.repository.IUsuarioRepository;
-import com.grupo4.hostingbook.service.CRUDService;
+import com.grupo4.hostingbook.service.IUsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
 
 @Service("UsuarioService")
-public class UsuarioService implements CRUDService<UsuarioDTO> {
+public class UsuarioService implements IUsuarioService {
 
     private final IUsuarioRepository usuarioRepository;
     private final ObjectMapper mapper;
+    private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @Autowired
-    public UsuarioService(IUsuarioRepository usuarioRepository, ObjectMapper mapper) {
+    public UsuarioService(IUsuarioRepository usuarioRepository, ObjectMapper mapper, BCryptPasswordEncoder bCryptPasswordEncoder) {
         this.usuarioRepository = usuarioRepository;
         this.mapper = mapper;
+        this.bCryptPasswordEncoder = bCryptPasswordEncoder;
     }
 
     @Override
@@ -34,15 +37,17 @@ public class UsuarioService implements CRUDService<UsuarioDTO> {
         if (entidadUsuario.getProductosFavoritos() == null)
             entidadUsuario.setProductosFavoritos(new HashSet<>());
         entidadUsuario.setCuentaValidada(false);
-        Usuario guardada = usuarioRepository.save(entidadUsuario);
-        return mapper.convertValue(guardada, UsuarioDTO.class);
+        String hashedPassword = bCryptPasswordEncoder.encode(entidadUsuario.getContrasenia());
+        entidadUsuario.setContrasenia(hashedPassword);
+        Usuario guardado = usuarioRepository.save(entidadUsuario);
+        return mapper.convertValue(guardado, UsuarioDTO.class);
     }
 
     @Override
     public UsuarioDTO buscarPorId(Long id) throws BadRequestException, ResourceNotFoundException {
         validarId(id);
         if (!usuarioRepository.existsById(id)) {
-            throw new ResourceNotFoundException(String.format(Mensajes.ERROR_NO_EXISTE, "La 'usuario'", id));
+            throw new ResourceNotFoundException(String.format(Mensajes.ERROR_NO_EXISTE, "El 'usuario'", id));
         }
         return mapper.convertValue(usuarioRepository.findById(id).get(), UsuarioDTO.class);
     }
@@ -77,6 +82,14 @@ public class UsuarioService implements CRUDService<UsuarioDTO> {
         usuarioRepository.deleteById(id);
     }
 
+    @Override
+    public UsuarioDTO obtenerPorEmail(String email) {
+        Usuario entidad = usuarioRepository.obtenerPorEmail(email);
+        return mapper.convertValue(entidad, UsuarioDTO.class);
+    }
+
+
+
     private void validarCamposRequeridosCreacion(UsuarioDTO usuarioDTO) throws BadRequestException {
         if (usuarioDTO == null) {
             throw new BadRequestException(String.format(Mensajes.ERROR_DTO_NO_EXISTE, "Usuario"));
@@ -89,9 +102,10 @@ public class UsuarioService implements CRUDService<UsuarioDTO> {
                 throw new BadRequestException(String.format(Mensajes.ERROR_CREACION_CAMPO_REQUERIDO, "usuario", "mail"));
             if (usuarioDTO.getContrasenia() == null || usuarioDTO.getContrasenia().isEmpty() || usuarioDTO.getContrasenia().isBlank())
                 throw new BadRequestException(String.format(Mensajes.ERROR_CREACION_CAMPO_REQUERIDO, "usuario", "contraseña"));
+            if (obtenerPorEmail(usuarioDTO.getMail()) != null)
+                throw new BadRequestException(String.format(Mensajes.ERROR_MAIL_EXISTENTE, usuarioDTO.getMail()));
         }
     }
-
 
     private void validarCamposRequeridosActualizacion(UsuarioDTO usuarioDTO) throws BadRequestException, ResourceNotFoundException {
         if (usuarioDTO == null) {

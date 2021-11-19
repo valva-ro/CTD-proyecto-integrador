@@ -3,19 +3,23 @@ package com.grupo4.hostingbook.service.impl;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.grupo4.hostingbook.exceptions.BadRequestException;
 import com.grupo4.hostingbook.exceptions.Mensajes;
-import com.grupo4.hostingbook.exceptions.NotImplementedException;
 import com.grupo4.hostingbook.exceptions.ResourceNotFoundException;
-import com.grupo4.hostingbook.model.*;
-import com.grupo4.hostingbook.persistence.entites.*;
+import com.grupo4.hostingbook.model.ImagenDTO;
+import com.grupo4.hostingbook.model.ProductoDTO;
+import com.grupo4.hostingbook.model.PuntuacionDTO;
+import com.grupo4.hostingbook.model.UsuarioDTO;
+import com.grupo4.hostingbook.persistence.entites.Categoria;
+import com.grupo4.hostingbook.persistence.entites.Ciudad;
+import com.grupo4.hostingbook.persistence.entites.Imagen;
+import com.grupo4.hostingbook.persistence.entites.Producto;
 import com.grupo4.hostingbook.persistence.repository.IProductoRepository;
 import com.grupo4.hostingbook.service.IProductoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.*;
 
-@Service
+@Service("ProductoService")
 public class ProductoService implements IProductoService {
 
     private final IProductoRepository productoRepository;
@@ -24,17 +28,22 @@ public class ProductoService implements IProductoService {
     private final CiudadService ciudadService;
     private final ImagenService imagenService;
     private final CaracteristicaService caracteristicaService;
+    private final PoliticaService politicaService;
     private final PuntuacionService puntuacionService;
     private final UsuarioService usuarioService;
 
     @Autowired
-    public ProductoService(IProductoRepository productoRepository, ObjectMapper mapper, CategoriaService categoriaService, CiudadService ciudadService, ImagenService imagenService, CaracteristicaService caracteristicaService, PuntuacionService puntuacionService, UsuarioService usuarioService) {
+    public ProductoService(IProductoRepository productoRepository, ObjectMapper mapper,
+            CategoriaService categoriaService, CiudadService ciudadService, ImagenService imagenService,
+            CaracteristicaService caracteristicaService, PuntuacionService puntuacionService,
+            UsuarioService usuarioService, PoliticaService politicaService) {
         this.productoRepository = productoRepository;
         this.mapper = mapper;
         this.categoriaService = categoriaService;
         this.ciudadService = ciudadService;
         this.imagenService = imagenService;
         this.caracteristicaService = caracteristicaService;
+        this.politicaService = politicaService;
         this.puntuacionService = puntuacionService;
         this.usuarioService = usuarioService;
     }
@@ -50,10 +59,10 @@ public class ProductoService implements IProductoService {
     public ProductoDTO buscarPorId(Long id) throws BadRequestException, ResourceNotFoundException {
         validarId(id);
         if (!productoRepository.existsById(id)) {
-            throw new ResourceNotFoundException(
-                    String.format(Mensajes.ERROR_NO_EXISTE, "El 'producto'", id));
+            throw new ResourceNotFoundException(String.format(Mensajes.ERROR_NO_EXISTE, "El 'producto'", id));
         }
-        return mapper.convertValue(productoRepository.findById(id).get(), ProductoDTO.class);
+        Producto entidad = productoRepository.findById(id).get();
+        return setearPuntuaciones(entidad);
     }
 
     @Override
@@ -61,7 +70,8 @@ public class ProductoService implements IProductoService {
         List<Producto> entidades = productoRepository.findAll();
         List<ProductoDTO> dtos = new ArrayList<>();
         for (Producto entidad : entidades) {
-            dtos.add(mapper.convertValue(entidad, ProductoDTO.class));
+            ProductoDTO dto = setearPuntuaciones(entidad);
+            dtos.add(dto);
         }
         return dtos;
     }
@@ -75,7 +85,8 @@ public class ProductoService implements IProductoService {
             Producto entidad = c.get();
             productoActualizada = actualizar(productoDTO, entidad);
         } else {
-            throw new ResourceNotFoundException(String.format(Mensajes.ERROR_NO_EXISTE, "El 'producto'", productoDTO.getId()));
+            throw new ResourceNotFoundException(
+                    String.format(Mensajes.ERROR_NO_EXISTE, "El 'producto'", productoDTO.getId()));
         }
         return productoActualizada;
     }
@@ -94,11 +105,11 @@ public class ProductoService implements IProductoService {
             dtos.add(mapper.convertValue(entidad, ProductoDTO.class));
         }
         if (dtos.size() == 0) {
-            throw new ResourceNotFoundException(String.format(Mensajes.ERROR_CRITERIO_DE_BUSQUEDA_NO_EXISTE, "La categoría", tituloCategoria));
+            throw new ResourceNotFoundException(
+                    String.format(Mensajes.ERROR_CRITERIO_DE_BUSQUEDA_NO_EXISTE, "La categoría", tituloCategoria));
         }
         return dtos;
     }
-
 
     @Override
     public Set<ProductoDTO> consultarPorCiudad(String nombreCiudad) throws ResourceNotFoundException {
@@ -108,13 +119,15 @@ public class ProductoService implements IProductoService {
             dtos.add(mapper.convertValue(entidad, ProductoDTO.class));
         }
         if (dtos.size() == 0) {
-            throw new ResourceNotFoundException(String.format(Mensajes.ERROR_CRITERIO_DE_BUSQUEDA_NO_EXISTE, "La ciudad", nombreCiudad));
+            throw new ResourceNotFoundException(
+                    String.format(Mensajes.ERROR_CRITERIO_DE_BUSQUEDA_NO_EXISTE, "La ciudad", nombreCiudad));
         }
         return dtos;
     }
 
     @Override
-    public UsuarioDTO agregarAFavoritos(Long idProducto, Long idUsuario) throws ResourceNotFoundException, BadRequestException {
+    public UsuarioDTO agregarAFavoritos(Long idProducto, Long idUsuario)
+            throws ResourceNotFoundException, BadRequestException {
         ProductoDTO producto = buscarPorId(idProducto);
         UsuarioDTO usuario = usuarioService.buscarPorId(idUsuario);
         Set<ProductoDTO> productosFavoritos = usuario.getProductosFavoritos();
@@ -125,7 +138,8 @@ public class ProductoService implements IProductoService {
     }
 
     @Override
-    public UsuarioDTO quitarDeFavoritos(Long idProducto, Long idUsuario) throws ResourceNotFoundException, BadRequestException {
+    public UsuarioDTO quitarDeFavoritos(Long idProducto, Long idUsuario)
+            throws ResourceNotFoundException, BadRequestException {
         ProductoDTO producto = buscarPorId(idProducto);
         UsuarioDTO usuario = usuarioService.buscarPorId(idUsuario);
         Set<ProductoDTO> productosFavoritos = usuario.getProductosFavoritos();
@@ -139,18 +153,26 @@ public class ProductoService implements IProductoService {
         if (productoDTO == null) {
             throw new BadRequestException(String.format(Mensajes.ERROR_DTO_NO_EXISTE, "Producto"));
         } else {
-            if (productoDTO.getNombre() == null || productoDTO.getNombre().isEmpty() || productoDTO.getNombre().isBlank())
-                throw new BadRequestException(String.format(Mensajes.ERROR_CREACION_CAMPO_REQUERIDO, "producto", "nombre"));
-            if (productoDTO.getDescripcion() == null || productoDTO.getDescripcion().isEmpty() || productoDTO.getDescripcion().isBlank())
-                throw new BadRequestException(String.format(Mensajes.ERROR_CREACION_CAMPO_REQUERIDO, "producto", "descripción"));
+            if (productoDTO.getNombre() == null || productoDTO.getNombre().isEmpty()
+                    || productoDTO.getNombre().isBlank())
+                throw new BadRequestException(
+                        String.format(Mensajes.ERROR_CREACION_CAMPO_REQUERIDO, "producto", "nombre"));
+            if (productoDTO.getDescripcion() == null || productoDTO.getDescripcion().isEmpty()
+                    || productoDTO.getDescripcion().isBlank())
+                throw new BadRequestException(
+                        String.format(Mensajes.ERROR_CREACION_CAMPO_REQUERIDO, "producto", "descripción"));
             if (productoDTO.getCategoria() == null || productoDTO.getCategoria().getId() == null)
-                throw new BadRequestException(String.format(Mensajes.ERROR_CREACION_CAMPO_REQUERIDO, "producto", "categoría"));
+                throw new BadRequestException(
+                        String.format(Mensajes.ERROR_CREACION_CAMPO_REQUERIDO, "producto", "categoría"));
             if (productoDTO.getCiudad() == null || productoDTO.getCiudad().getId() == null)
-                throw new BadRequestException(String.format(Mensajes.ERROR_CREACION_CAMPO_REQUERIDO, "producto", "ciudad"));
+                throw new BadRequestException(
+                        String.format(Mensajes.ERROR_CREACION_CAMPO_REQUERIDO, "producto", "ciudad"));
             if (productoDTO.getCaracteristicas() == null || productoDTO.getCaracteristicas().size() == 0)
-                throw new BadRequestException(String.format(Mensajes.ERROR_CREACION_CAMPO_REQUERIDO, "producto", "características"));
+                throw new BadRequestException(
+                        String.format(Mensajes.ERROR_CREACION_CAMPO_REQUERIDO, "producto", "características"));
             if (productoDTO.getImagenes() == null || productoDTO.getImagenes().size() == 0)
-                throw new BadRequestException(String.format(Mensajes.ERROR_CREACION_CAMPO_REQUERIDO, "producto", "imágenes"));
+                throw new BadRequestException(
+                        String.format(Mensajes.ERROR_CREACION_CAMPO_REQUERIDO, "producto", "imágenes"));
         }
     }
 
@@ -168,7 +190,8 @@ public class ProductoService implements IProductoService {
     private ProductoDTO actualizar(ProductoDTO productoDTO, Producto entidad) {
         if (productoDTO.getNombre() != null && !productoDTO.getNombre().isEmpty() && !productoDTO.getNombre().isBlank())
             entidad.setNombre(productoDTO.getNombre());
-        if (productoDTO.getDescripcion() != null && !productoDTO.getDescripcion().isEmpty() && !productoDTO.getDescripcion().isBlank())
+        if (productoDTO.getDescripcion() != null && !productoDTO.getDescripcion().isEmpty()
+                && !productoDTO.getDescripcion().isBlank())
             entidad.setDescripcion(productoDTO.getDescripcion());
         if (productoDTO.getCategoria() != null)
             entidad.setCategoria(mapper.convertValue(productoDTO.getCategoria(), Categoria.class));
@@ -185,7 +208,8 @@ public class ProductoService implements IProductoService {
             throw new ResourceNotFoundException(String.format(Mensajes.ERROR_NO_EXISTE, "El 'producto'", id));
     }
 
-    private ProductoDTO setearEntidadesDeLaBaseDeDatos(Producto producto) throws BadRequestException, ResourceNotFoundException {
+    private ProductoDTO setearEntidadesDeLaBaseDeDatos(Producto producto)
+            throws BadRequestException, ResourceNotFoundException {
         ProductoDTO productoDTO = new ProductoDTO();
         productoDTO.setId(producto.getId());
         productoDTO.setNombre(producto.getNombre());
@@ -196,6 +220,19 @@ public class ProductoService implements IProductoService {
         productoDTO.setCaracteristicas(caracteristicaService.consultarPorProductoID(producto.getId()));
         productoDTO.setPuntuaciones(puntuacionService.consultarPorProductoID(producto.getId()));
         return productoDTO;
+    }
+
+    private ProductoDTO setearPuntuaciones(Producto entidad) {
+        List<PuntuacionDTO> puntuacionesDTO = puntuacionService.consultarTodos();
+        ProductoDTO dto = mapper.convertValue(entidad, ProductoDTO.class);
+        for (PuntuacionDTO puntuacion : puntuacionesDTO) {
+            if (puntuacion.getProducto().getId().equals(entidad.getId())) {
+                puntuacion.setProducto(new ProductoDTO(puntuacion.getProducto().getId()));
+                puntuacion.setUsuario(new UsuarioDTO(puntuacion.getUsuario().getId()));
+                dto.agregarPuntuacion(puntuacion);
+            }
+        }
+        return dto;
     }
 
     private Set<ImagenDTO> obtenerImagenesRelacionadas(Producto producto) {

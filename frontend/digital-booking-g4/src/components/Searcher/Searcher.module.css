@@ -97,6 +97,7 @@
 
   .boxing {
     top: 82px;
+    position: absolute;
   }
 
   .dateContainer {
