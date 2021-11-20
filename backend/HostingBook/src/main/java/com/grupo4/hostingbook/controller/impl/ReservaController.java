@@ -95,7 +95,7 @@ public class ReservaController implements IReservaController {
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "Success")
     })
-    @GetMapping("/{idProducto}")
+    @GetMapping("/producto/{idProducto}")
     public ResponseEntity<?> obtenerPorIdProducto(@RequestParam Long id) throws ResourceNotFoundException {
         Set<ReservaDTO> reservas = reservaService.consultarPorIdProducto(id);
         return ResponseEntity.ok(reservas);
