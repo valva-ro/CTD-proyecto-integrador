@@ -7,14 +7,14 @@ import com.grupo4.hostingbook.exceptions.ResourceNotFoundException;
 import com.grupo4.hostingbook.model.*;
 import com.grupo4.hostingbook.persistence.entites.*;
 import com.grupo4.hostingbook.persistence.repository.*;
-import com.grupo4.hostingbook.service.CRUDService;
+import com.grupo4.hostingbook.service.IReservaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
 
 @Service("ReservaService")
-public class ReservaService implements CRUDService<ReservaDTO> {
+public class ReservaService implements IReservaService {
 
     private final IReservaRepository reservaRepository;
     private final ObjectMapper mapper;
@@ -67,6 +67,20 @@ public class ReservaService implements CRUDService<ReservaDTO> {
     public void eliminar(Long id) throws ResourceNotFoundException, BadRequestException {
         validarId(id);
         reservaRepository.deleteById(id);
+    }
+
+    @Override
+    public Set<ReservaDTO> consultarPorIdProducto (Long idProducto) throws ResourceNotFoundException {
+        Set<Reserva> entidades = reservaRepository.buscarReservasPorIdProducto(idProducto);
+        Set<ReservaDTO> dtos = new HashSet<>();
+        for (Reserva entidad : entidades) {
+            dtos.add(mapper.convertValue(entidad, ReservaDTO.class));
+        }
+        if (dtos.size() == 0) {
+            throw new ResourceNotFoundException(
+                    String.format(Mensajes.ERROR_CRITERIO_DE_BUSQUEDA_NO_EXISTE, "El id", idProducto));
+        }
+        return dtos;
     }
 
     private void validarCamposRequeridosCreacion(ReservaDTO reservaDTO) throws BadRequestException {

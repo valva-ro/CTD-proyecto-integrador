@@ -6,6 +6,7 @@ import com.grupo4.hostingbook.exceptions.ResourceNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Set;
 
 @Service
 public interface CRUDService<T> {
@@ -14,4 +15,5 @@ public interface CRUDService<T> {
      List<T> consultarTodos();
      T actualizar(T t) throws BadRequestException, ResourceNotFoundException, NotImplementedException;
      void eliminar(Long id) throws ResourceNotFoundException, BadRequestException;
+
 }
