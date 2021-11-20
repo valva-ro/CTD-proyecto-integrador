@@ -9,8 +9,7 @@
     border: 1px solid #dfe4ea;
     color: var(--color-2);
     margin-top: calc(28px + 2vh);
-    margin-bottom: 5vh;
-    min-height: 100%;
+    height: calc(100% - 7vh - 28px);
 
 }
 
