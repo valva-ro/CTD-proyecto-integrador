@@ -7,6 +7,7 @@ import com.grupo4.hostingbook.exceptions.ResourceNotFoundException;
 import com.grupo4.hostingbook.model.*;
 import com.grupo4.hostingbook.persistence.entites.*;
 import com.grupo4.hostingbook.persistence.repository.*;
+import com.grupo4.hostingbook.service.CRUDService;
 import com.grupo4.hostingbook.service.IReservaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

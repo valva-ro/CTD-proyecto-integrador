@@ -20,11 +20,11 @@ public class Reserva {
     private String datos;
     private Boolean vacunaCovid;
 
-    @ManyToOne(cascade = CascadeType.MERGE)
+    @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
     @JoinColumn(name = "fk_producto")
     private Producto producto;
 
-    @ManyToOne(cascade = CascadeType.MERGE)
+    @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
     @JoinColumn(name = "fk_usuario")
     private Usuario usuario;
 

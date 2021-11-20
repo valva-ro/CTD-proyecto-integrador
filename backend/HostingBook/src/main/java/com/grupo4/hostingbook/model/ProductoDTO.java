@@ -16,6 +16,7 @@ public class ProductoDTO implements Serializable {
     private Set<ImagenDTO> imagenes = new HashSet<>();
     private Set<CaracteristicaDTO> caracteristicas = new HashSet<>();
     private Set<PuntuacionDTO> puntuaciones = new HashSet<>();
+    private Set<ReservaDTO> reservas = new HashSet<>();
 
     public ProductoDTO() {
     }
@@ -75,6 +76,18 @@ public class ProductoDTO implements Serializable {
         this.politicas = politicas;
         this.imagenes = imagenes;
         this.caracteristicas = caracteristicas;
+    }
+
+    public ProductoDTO(String nombre, String descripcion, CategoriaDTO categoria, CiudadDTO ciudad,
+                       Set<PoliticaDTO> politicas, Set<ImagenDTO> imagenes, Set<CaracteristicaDTO> caracteristicas, Set<ReservaDTO> reservas) {
+        this.nombre = nombre;
+        this.descripcion = descripcion;
+        this.categoria = categoria;
+        this.ciudad = ciudad;
+        this.politicas = politicas;
+        this.imagenes = imagenes;
+        this.caracteristicas = caracteristicas;
+        this.reservas = reservas;
     }
 
     public Long getId() {
@@ -153,24 +166,21 @@ public class ProductoDTO implements Serializable {
         this.puntuaciones.add(puntuacionDTO);
     }
 
+    public Set<ReservaDTO> getReservas() { return reservas; }
+
+    public void setReservas(Set<ReservaDTO> reservas) { this.reservas = reservas; }
+
     @Override
     public boolean equals(Object o) {
-        if (this == o)
-            return true;
-        if (o == null || getClass() != o.getClass())
-            return false;
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
         ProductoDTO that = (ProductoDTO) o;
-        return Objects.equals(id, that.id) && Objects.equals(nombre, that.nombre)
-                && Objects.equals(descripcion, that.descripcion) && Objects.equals(categoria, that.categoria)
-                && Objects.equals(ciudad, that.ciudad)
-                && (imagenes.containsAll(that.imagenes) && that.imagenes.containsAll(imagenes))
-                && (caracteristicas.containsAll(that.caracteristicas)
-                        && that.caracteristicas.containsAll(caracteristicas));
+        return id.equals(that.id) && nombre.equals(that.nombre) && descripcion.equals(that.descripcion) && categoria.equals(that.categoria) && ciudad.equals(that.ciudad) && politicas.equals(that.politicas) && imagenes.equals(that.imagenes) && caracteristicas.equals(that.caracteristicas) && puntuaciones.equals(that.puntuaciones) && reservas.equals(that.reservas);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, nombre, descripcion, categoria, ciudad, imagenes, caracteristicas);
+        return Objects.hash(id, nombre, descripcion, categoria, ciudad, politicas, imagenes, caracteristicas, puntuaciones, reservas);
     }
 
     @Override
@@ -191,6 +201,12 @@ public class ProductoDTO implements Serializable {
             p.toString();
             politicasToString.add(p);
         }
+        Set<ReservaDTO> reservasToString = new HashSet<>();
+        for (ReservaDTO r : reservas) {
+            r.toString();
+            reservasToString.add(r);
+        }
+
         return "ProductoDTO{" + "id=" + id + ", nombre='" + nombre + '\'' + ", descripcion='" + descripcion + '\''
                 + ", categoria=" + categoria.toString() + ", ciudad=" + ciudad.toString() + ", imagenes="
                 + imagenesToString + ", caracteristicas=" + caracteristicasToString + ", caracteristicas="
