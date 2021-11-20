@@ -11,6 +11,6 @@ import java.util.Set;
 @Repository
 public interface IReservaRepository extends JpaRepository<Reserva,Long> {
 
-    @Query("FROM Reserva r WHERE r.producto.id == :id")
+    @Query("FROM Reserva r WHERE r.producto.id = id")
     Set<Reserva> buscarReservasPorIdProducto(@Param("id") Long id);
 }
