@@ -1,4 +1,7 @@
-import { useState, useEffect } from "react";
+import {
+  useState,
+  useEffect
+} from "react";
 
 export default function useFetch(path) {
   let [items, setItems] = useState(null);
@@ -8,7 +11,7 @@ export default function useFetch(path) {
   useEffect(() => {
     async function fetchData() {
       try {
-        let response = await fetch(`http://localhost:8080/${path}`);
+        let response = await fetch(`http://18.191.187.108:8080/${path}`);
         let datos = await response.json();
         setItems(datos);
         setIsLoaded(true);
