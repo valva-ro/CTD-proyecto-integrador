@@ -7,14 +7,14 @@ import styles from "./ProductoReserva.module.css"
 
 export default function ProductoReserva(producto) {
 
-  const [checkin, setCheckin] = useState("__/ __/ __");
-  const [checkout, setCheckout] = useState("__/ __/ __");
+  const [checkin, setCheckin] = useState(null);
+  const [checkout, setCheckout] = useState(null);
 
   return (
     <section className={styles.containerPrincipal}>
       <div className={styles.containerSecundario}>
         <ProductoFormDatos/> 
-        <ProductoFechaReserva/>
+        <ProductoFechaReserva setCheckin={setCheckin} setCheckout={setCheckout}/>
         <ProductoHorarioLlegada/>
       </div>
       <div className={styles.containerTercero}>

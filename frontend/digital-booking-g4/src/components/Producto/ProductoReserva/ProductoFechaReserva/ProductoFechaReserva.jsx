@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import TituloBloque from "../../../TituloBloque/TituloBloque"
 import DatePicker, {
     CalendarContainer,
@@ -10,7 +10,7 @@ import useScreenWidth from "../../../../hooks/useScreenWidth"
 
 registerLocale("es", es);
 
-export default function ProductoFechaReserva(){
+export default function ProductoFechaReserva( {setCheckin, setCheckout}){
 
     const [dateRange, setDateRange] = useState([null, null]);
     const [startDate, endDate] = dateRange;
@@ -54,6 +54,11 @@ export default function ProductoFechaReserva(){
       );
     };
 
+    useEffect (() => {
+        setCheckin(startDate);
+        setCheckout(endDate);
+    }, [startDate, endDate]);
+
     return(
         <>
             <TituloBloque>Seleccioná tu fecha de reserva</TituloBloque>
@@ -65,6 +70,7 @@ export default function ProductoFechaReserva(){
                 formatWeekDay={(nameOfDay) => nameOfDay.substr(0, 1)}
                 excludeDates={excludeDates}
                 minDate={new Date()}
+                dateFormat="dd/mm/yyyy"
                 onChange={(update) => {
                     setDateRange(update);
                 }}

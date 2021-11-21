@@ -141,20 +141,3 @@ textarea{
         margin-top: 7px;
     }
 }
-
-/*.myCheckebox {
-    font-size: 0.75rem;
-    margin-left: 20px;
-}
-
-input[type="checkbox"]{
-    color: var(--color-principal);
-    background-color: var(--color-principal);
-    border: 3px solid var(--color-inputs-form-datos);
-    font-size: 0.75rem;
-}
-
- .covid{
-    display: flex;
-    flex-direction: row;
-} */

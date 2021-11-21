@@ -4,8 +4,6 @@ import { useEffect, useState } from "react";
 import styles from "./Detalles.module.css";
 
 export default function ProductoReserva({ alojamiento, checkin, checkout }) {
-  const [checkins, setCheckin] = useState(checkin);
-  const [checkouts, setCheckout] = useState(checkout);
   const imagenes = alojamiento.imagenes;
   const buscarImagenPrincipal = () => {
     let imagen = imagenes.find((imagen) => {
@@ -16,13 +14,7 @@ export default function ProductoReserva({ alojamiento, checkin, checkout }) {
     }
     return imagen;
   };
-  /* 
-  useEffect(() => {
-    setCheckin(checkin);
-  });
-  useEffect(() => {
-    setCheckout(checkout);
-  }); */
+
   return (
     <div className={styles.container}>
       <h2 className={styles.tituloTarjeta}>Detalle de la reserva</h2>
@@ -50,12 +42,12 @@ export default function ProductoReserva({ alojamiento, checkin, checkout }) {
           <hr />
           <div className={styles.fecha}>
             <p>Check in</p>
-            <p>{checkins}</p>
+            <p>{checkin == null ? "__/ __/ __" : new Date(checkin).toLocaleDateString()}</p>
           </div>
           <hr />
           <div className={styles.fecha}>
             <p>Check out</p>
-            <p>{checkouts}</p>
+            <p>{checkout == null ? "__/ __/ __": new Date(checkout).toLocaleDateString()}</p>
           </div>
           <hr />
           <div className={styles.buttonContainer}>
