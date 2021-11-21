@@ -19,14 +19,15 @@ input[type="password"] {
   font-family: Verdana, sans-serif;
   letter-spacing: 0.4vw;
 }
-form div {
+.generalForms div {
   display: flex;
   gap: 1.5vw;
   justify-content: space-between;
 }
-form div label {
+.generalForms div label {
   min-width: 48%;
 }
+
 form input[type="submit"] {
   display: block;
   margin: 40px auto 15px;

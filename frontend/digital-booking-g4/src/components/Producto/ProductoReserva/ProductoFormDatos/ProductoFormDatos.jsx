@@ -67,12 +67,14 @@ export default function ProductoFormDatos(){
                     <label>Mensaje para el dueño</label>
                     <textarea name="comentario" id="comentario" cols="30" rows="6"></textarea>
                 </div>
-                <div className={styles.lineContainer}>
-                    <label className={styles.myCheckbox}>
-                        <input type="checkbox" name="covid" value="true"/>
-                        <span className={styles.myCheckbox}>  ¿Estás vacunado contra el COVID-19?</span> 
-                    </label> 
-                       
+                <div className={styles.radioButtons}>
+                    <h4>¿Estás vacunado contra el COVID-19?</h4>
+                    <div>
+                        <input type="radio" name="covid" id="true" required />
+                        <label for="true" >SI</label>
+                        <input type="radio" name="covid" id="false" required />
+                        <label for="false" >NO</label>
+                    </div> 
                 </div>
             </form>
 
