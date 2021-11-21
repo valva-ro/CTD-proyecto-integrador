@@ -7,18 +7,6 @@ CREATE SCHEMA IF NOT EXISTS booking;
 USE booking;
 
 --
--- Table structure for table `categorias`
---
-DROP TABLE IF EXISTS categorias;
-CREATE TABLE IF NOT EXISTS categorias (
-  categoria_id SMALLINT UNSIGNED NOT NULL AUTO_INCREMENT,
-  titulo VARCHAR(50) NOT NULL,
-  descripcion VARCHAR(50) NOT NULL,
-  URL_imagen TEXT NOT NULL,
-  PRIMARY KEY (categoria_id)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
 -- Table structure for table `ciudades`
 --
 DROP TABLE IF EXISTS ciudades;
@@ -32,29 +20,15 @@ CREATE TABLE IF NOT EXISTS ciudades (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Table structure for table `imagenes`
+-- Table structure for table `categorias`
 --
-DROP TABLE IF EXISTS imagenes;
-CREATE TABLE IF NOT EXISTS imagenes (
-  imagen_id INT UNSIGNED NOT NULL AUTO_INCREMENT COMMENT "id de la tabla imagenes", 
-  imagen_titulo VARCHAR(50) NOT NULL  COMMENT "titulo de la imagen",
-  imagen_URL TEXT NOT NULL COMMENT "url de la imagen",
-  fk_producto INT UNSIGNED NOT NULL,
-  PRIMARY KEY (imagen_id),
-  CONSTRAINT productos
-		FOREIGN KEY (fk_producto)
-		REFERENCES booking.productos (producto_id)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Table structure for table `caracteristicas`
---
-DROP TABLE IF EXISTS caracteristicas;
-CREATE TABLE IF NOT EXISTS caracteristicas (
-  caracteristica_id INT UNSIGNED NOT NULL AUTO_INCREMENT,
-  nombre VARCHAR(50) NOT NULL,
-  icono TEXT NOT NULL,
-  PRIMARY KEY (caracteristica_id)
+DROP TABLE IF EXISTS categorias;
+CREATE TABLE IF NOT EXISTS categorias (
+  categoria_id SMALLINT UNSIGNED NOT NULL AUTO_INCREMENT,
+  titulo VARCHAR(50) NOT NULL,
+  descripcion VARCHAR(50) NOT NULL,
+  URL_imagen TEXT NOT NULL,
+  PRIMARY KEY (categoria_id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -77,6 +51,17 @@ CREATE TABLE IF NOT EXISTS productos (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
+-- Table structure for table `caracteristicas`
+--
+DROP TABLE IF EXISTS caracteristicas;
+CREATE TABLE IF NOT EXISTS caracteristicas (
+  caracteristica_id INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  nombre VARCHAR(50) NOT NULL,
+  icono TEXT NOT NULL,
+  PRIMARY KEY (caracteristica_id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
 -- Table structure for table `producto_caracteristica`
 --
 DROP TABLE IF EXISTS producto_caracteristica;
@@ -93,6 +78,20 @@ CREATE TABLE IF NOT EXISTS producto_caracteristica (
 		REFERENCES booking.caracteristicas (caracteristica_id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Table structure for table `imagenes`
+--
+DROP TABLE IF EXISTS imagenes;
+CREATE TABLE IF NOT EXISTS imagenes (
+  imagen_id INT UNSIGNED NOT NULL AUTO_INCREMENT COMMENT "id de la tabla imagenes", 
+  imagen_titulo VARCHAR(50) NOT NULL  COMMENT "titulo de la imagen",
+  imagen_URL TEXT NOT NULL COMMENT "url de la imagen",
+  fk_producto INT UNSIGNED NOT NULL,
+  PRIMARY KEY (imagen_id),
+  CONSTRAINT productos
+		FOREIGN KEY (fk_producto)
+		REFERENCES booking.productos (producto_id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Table structure for table `tipo_politica`
@@ -166,7 +165,7 @@ CREATE TABLE IF NOT EXISTS usuarios (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Table structure for table `usuario_alojamiento`
+-- Table structure for table `producto`
 --
 DROP TABLE IF EXISTS usuario_producto;
 CREATE TABLE IF NOT EXISTS usuario_producto (
@@ -668,6 +667,14 @@ INSERT INTO politica_producto (politica_id, producto_id) VALUES (10,14);
 INSERT INTO politica_producto (politica_id, producto_id) VALUES (12,14);
 
 INSERT INTO politica_producto (politica_id, producto_id) VALUES (14,14);
+
+--
+-- Dumping data for table `roles`
+--
+SET AUTOCOMMIT=0;
+INSERT INTO roles (rol_nombre) VALUES ("ADMIN");
+INSERT INTO roles (rol_nombre) VALUES ("USER");
+COMMIT;
 
 --
 -- Dumping data for table `usuarios`
