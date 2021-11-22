@@ -109,17 +109,6 @@ export default function ProductoFechaReserva( {setCheckin, setCheckout}){
 
     }, [startDate, endDate]); 
 
-    console.log(isNaN(maxDate));
-    console.log(beforeExcludeDates);
-    console.log(excludeDateOrdenado);
-
-    console.log("PROXIMO "+nextExcludeDate);
-    console.log(new Date(endExcludeDate).toLocaleDateString());
-    console.log (startDate)
-    console.log (endDate)
-    console.log (auxExcludeDatesDinamico)
-    
-
     const anchoPantalla = useScreenWidth();
 
     const MyContainer = ({ className, children }) => {

@@ -23,8 +23,6 @@ export default function ProductoFormDatos(){
             <TituloBloque>Completá tus datos</TituloBloque>
             <form
                 className={styles.formDatos}
-                /*onSubmit={handleSubmit}
-                noValidate="novalidate" */
             >
                 <div className={styles.lineContainer}>
                     <InputComponent
@@ -71,9 +69,9 @@ export default function ProductoFormDatos(){
                     <h4>¿Estás vacunado contra el COVID-19?</h4>
                     <div>
                         <input type="radio" name="covid" id="true" required />
-                        <label for="true" >SI</label>
+                        <label htmlFor="true" >SI</label>
                         <input type="radio" name="covid" id="false" required />
-                        <label for="false" >NO</label>
+                        <label htmlFor="false" >NO</label>
                     </div> 
                 </div>
             </form>

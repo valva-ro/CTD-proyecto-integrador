@@ -25,7 +25,7 @@ export default function ProductoHorarioLlegada(){
             <TituloBloque>Tu horario de llegada</TituloBloque>
             <div className={styles.container}>
                 <div className={styles.containerTexto}>
-                    <span><i class="far fa-check-circle"></i></span>
+                    <span><i className="far fa-check-circle"></i></span>
                     <p>Tu habitación va a estar lista para el check-in entre las {horaFormat(hora)} y las 11:00 PM</p>
                 </div>
                 <div className={styles.containerSelect}>
@@ -33,7 +33,7 @@ export default function ProductoHorarioLlegada(){
                     <select name="horarioLlegada" className={styles.minimal} required>
                         <option value="Seleccionar hora de llegada" hidden>Seleccionar hora de llegada</option>
                         {horasDisponibles.map((h, i) => (
-                            <option value={h}>{horaFormat(h)}</option>
+                            <option value={h} key={`horaDisponible-${i}`}>{horaFormat(h)}</option>
                         ))}
                     </select>
                 </div>

@@ -1,6 +1,5 @@
 import Estrellas from "../../../Estrellas/Estrellas";
 import FilledButton from "../../../Buttons/FilledButton";
-import { useEffect, useState } from "react";
 import styles from "./Detalles.module.css";
 
 export default function ProductoReserva({ alojamiento, checkin, checkout }) {
