@@ -12,7 +12,6 @@ import "react-datepicker/dist/react-datepicker.css";
 import styles from "./Searcher.module.css";
 import currentCityContext from "../../contexts/currentFilterContext";
 import useScreenWidth from "../../hooks/useScreenWidth";
-import excludedDates from "../../utils/excludedDates";
 
 registerLocale("es", es);
 
@@ -73,7 +72,6 @@ export default function Searcher() {
             onSelect={(e) => styleChangeClick(e)}
             onChangeRaw={(e) => styleChange(e)}
             dateFormat="dd 'de' MMM."
-            excludeDates={excludedDates()}
             placeholderText="Check in  -  Check out"
             locale={es}
             selectsRange={true}
