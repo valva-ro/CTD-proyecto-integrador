@@ -34,7 +34,8 @@ public class ReservaController implements IReservaController {
     @Override
     @ApiOperation(value = "Lista todas las reservas")
     @ApiResponses(value = {
-            @ApiResponse(code = 200, message = "Success")
+            @ApiResponse(code = 200, message = "Success"),
+            @ApiResponse(code = 400, message = "Bad Request")
     })
     @GetMapping
     public ResponseEntity<List<ReservaDTO>> obtenerTodos() {
@@ -84,12 +85,13 @@ public class ReservaController implements IReservaController {
     public ResponseEntity<String> eliminar(@PathVariable Long id) throws NotImplementedException {
         throw new NotImplementedException(Mensajes.ERROR_FUNCIONALIDAD_SIN_DESARROLLAR);
     }
-
+    /*hasta acá*/
 
     @Override
     @ApiOperation(value = "Lista todas las reservas según id de producto especificado")
     @ApiResponses(value = {
-            @ApiResponse(code = 200, message = "Success")
+            @ApiResponse(code = 200, message = "Success"),
+            @ApiResponse(code = 400, message = "Bad Request")
     })
     @GetMapping("/producto/{idProducto}")
     public ResponseEntity<?> obtenerPorIdProducto(@RequestParam Long id) throws ResourceNotFoundException {
