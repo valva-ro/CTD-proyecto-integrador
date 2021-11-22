@@ -16,6 +16,7 @@ public class ProductoDTO implements Serializable {
     private Set<ImagenDTO> imagenes = new HashSet<>();
     private Set<CaracteristicaDTO> caracteristicas = new HashSet<>();
     private Set<PuntuacionDTO> puntuaciones = new HashSet<>();
+    private Set<UsuarioDTO> usuarios = new HashSet<>();
 
     public ProductoDTO() {
     }
@@ -75,6 +76,19 @@ public class ProductoDTO implements Serializable {
         this.politicas = politicas;
         this.imagenes = imagenes;
         this.caracteristicas = caracteristicas;
+    }
+
+    public ProductoDTO(Long id, String nombre, String descripcion, CategoriaDTO categoria, CiudadDTO ciudad, Set<PoliticaDTO> politicas, Set<ImagenDTO> imagenes, Set<CaracteristicaDTO> caracteristicas, Set<PuntuacionDTO> puntuaciones, Set<UsuarioDTO> usuarios) {
+        this.id = id;
+        this.nombre = nombre;
+        this.descripcion = descripcion;
+        this.categoria = categoria;
+        this.ciudad = ciudad;
+        this.politicas = politicas;
+        this.imagenes = imagenes;
+        this.caracteristicas = caracteristicas;
+        this.puntuaciones = puntuaciones;
+        this.usuarios = usuarios;
     }
 
     public Long getId() {
@@ -149,8 +163,24 @@ public class ProductoDTO implements Serializable {
         this.puntuaciones = puntuaciones;
     }
 
+    public Set<UsuarioDTO> getUsuarios() {
+        return usuarios;
+    }
+
+    public void setUsuarios(Set<UsuarioDTO> usuarios) {
+        this.usuarios = usuarios;
+    }
+
     public void agregarPuntuacion(PuntuacionDTO puntuacionDTO) {
         this.puntuaciones.add(puntuacionDTO);
+    }
+
+    public void agregarUsuario(UsuarioDTO usuarioDTO) {
+        this.usuarios.add(usuarioDTO);
+    }
+
+    public void eliminarUsuario(UsuarioDTO usuarioDTO) {
+        this.usuarios.remove(usuarioDTO);
     }
 
     @Override
@@ -164,13 +194,14 @@ public class ProductoDTO implements Serializable {
                 && Objects.equals(descripcion, that.descripcion) && Objects.equals(categoria, that.categoria)
                 && Objects.equals(ciudad, that.ciudad)
                 && (imagenes.containsAll(that.imagenes) && that.imagenes.containsAll(imagenes))
-                && (caracteristicas.containsAll(that.caracteristicas)
-                        && that.caracteristicas.containsAll(caracteristicas));
+                && (caracteristicas.containsAll(that.caracteristicas) && that.caracteristicas.containsAll(caracteristicas)
+                && (politicas.containsAll(that.politicas) && that.politicas.containsAll(politicas))
+                && (usuarios.containsAll(that.usuarios) && that.usuarios.containsAll(usuarios)));
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, nombre, descripcion, categoria, ciudad, imagenes, caracteristicas);
+        return Objects.hash(id, nombre, descripcion, categoria, ciudad, politicas, imagenes, caracteristicas, puntuaciones, usuarios);
     }
 
     @Override

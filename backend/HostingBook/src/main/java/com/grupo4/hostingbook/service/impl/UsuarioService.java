@@ -97,6 +97,11 @@ public class UsuarioService implements IUsuarioService {
         return mapper.convertValue(entidad, UsuarioDTO.class);
     }
 
+    public UsuarioDTO save(UsuarioDTO usuarioDTO) {
+        Usuario entidad = usuarioRepository.save(mapper.convertValue(usuarioDTO, Usuario.class));
+        return mapper.convertValue(entidad, UsuarioDTO.class);
+    }
+
     private void validarCamposRequeridosCreacion(UsuarioDTO usuarioDTO) throws BadRequestException {
         if (usuarioDTO == null) {
             throw new BadRequestException(String.format(Mensajes.ERROR_DTO_NO_EXISTE, "Usuario"));
