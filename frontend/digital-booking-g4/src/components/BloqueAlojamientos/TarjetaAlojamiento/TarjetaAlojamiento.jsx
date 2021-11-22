@@ -31,7 +31,7 @@ export default function TarjetaAlojamiento({
     return imagen;
   };
   return (
-    <div className={styles.tarjetaAlojamiento} data-aos='fade-right'>
+    <div className={styles.tarjetaAlojamiento} data-aos="fade-right">
       <div
         className={styles.imagenAlojamiento}
         style={{
@@ -84,11 +84,10 @@ export default function TarjetaAlojamiento({
           ) : (
             <>
               {esVerMas && descripcion.length > 85
-                ? descripcion.slice(0, 85)
-                : descripcion}
-              ...
+                ? `${descripcion.slice(0, 85)}...`
+                : `${descripcion.slice(0, 170)}...`}
               <span onClick={toggleVerMas} className={styles.verMas}>
-                {esVerMas ? " leer más" : " leer menos"}
+                {esVerMas ? " Leer más" : " Leer menos"}
               </span>
             </>
           )}
