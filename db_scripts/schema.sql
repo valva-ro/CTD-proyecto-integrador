@@ -152,6 +152,16 @@ CREATE TABLE politica_producto(
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
+-- Table structure for table `roles`
+--
+DROP TABLE IF EXISTS  roles;
+CREATE TABLE IF NOT EXISTS roles (
+	rol_id INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  rol_nombre VARCHAR(50) NOT NULL,
+  PRIMARY KEY  (rol_id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
 -- Table structure for table `usuario`
 --
 DROP TABLE IF EXISTS usuarios;
@@ -162,7 +172,11 @@ CREATE TABLE IF NOT EXISTS usuarios (
   mail VARCHAR(100) NOT NULL,
   contrasenia VARCHAR(100) NOT NULL,
   cuenta_validada BOOLEAN NOT NULL,
-  PRIMARY KEY  (usuario_id)
+  fk_rol INT UNSIGNED NOT NULL,
+  PRIMARY KEY  (usuario_id),
+  CONSTRAINT usuario_rol_id_foreign
+	FOREIGN KEY (fk_rol)
+	REFERENCES booking.roles (rol_id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -196,6 +210,29 @@ CREATE TABLE IF NOT EXISTS puntuaciones (
 		FOREIGN KEY (fk_producto)
 		REFERENCES booking.productos (producto_id),
   CONSTRAINT usuario_puntuacion
+		FOREIGN KEY (fk_usuario)
+		REFERENCES booking.usuarios (usuario_id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Table structure for table `reservas`
+--
+DROP TABLE IF EXISTS reservas;
+CREATE TABLE IF NOT EXISTS reservas (
+  reserva_id INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  hora_entrada TIME NOT NULL,
+  hora_salida TIME NOT NULL,
+  fecha_ingreso DATE NOT NULL,
+  fecha_egreso DATE NOT NULL,
+  datos TEXT NOT NULL COMMENT "datos para el vendedor",
+  vacuna_covid BOOLEAN NOT NULL,
+  fk_producto INT UNSIGNED NOT NULL,
+  fk_usuario INT UNSIGNED NOT NULL,
+  PRIMARY KEY  (reserva_id),
+  CONSTRAINT reserva_producto_id_foreign
+		FOREIGN KEY (fk_producto)
+		REFERENCES booking.productos (producto_id),
+  CONSTRAINT reserva_usuario_id_foreign
 		FOREIGN KEY (fk_usuario)
 		REFERENCES booking.usuarios (usuario_id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;

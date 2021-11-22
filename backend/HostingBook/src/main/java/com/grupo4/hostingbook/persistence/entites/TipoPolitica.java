@@ -1,7 +1,11 @@
 package com.grupo4.hostingbook.persistence.entites;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 @Entity
 @Table(name = "tipo_politica")
@@ -13,6 +17,9 @@ public class TipoPolitica {
     private Long id;
     private String nombre;
 
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JsonIgnore
+    private Set<Politica> politicas = new HashSet<>();
 
     public Long getId() {
         return id;
