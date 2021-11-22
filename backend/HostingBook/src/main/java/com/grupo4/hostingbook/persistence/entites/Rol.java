@@ -1,6 +1,7 @@
 package com.grupo4.hostingbook.persistence.entites;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Objects;
@@ -9,13 +10,15 @@ import java.util.Set;
 @Entity
 @Table(name = "roles")
 public class Rol {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "rol_id")
     private Long id;
+    @Column(name = "rol_nombre")
     private String nombre;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "rol", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "rol")
     @JsonIgnore
     private Set<Usuario> usuarios = new HashSet<>();
 
@@ -60,5 +63,14 @@ public class Rol {
     @Override
     public int hashCode() {
         return Objects.hash(id, nombre);
+    }
+
+    @Override
+    public String toString() {
+        return "Rol{" +
+                "id=" + id +
+                ", nombre='" + nombre + '\'' +
+                ", usuarios=" + usuarios +
+                '}';
     }
 }

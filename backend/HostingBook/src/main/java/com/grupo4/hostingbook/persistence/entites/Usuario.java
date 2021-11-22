@@ -1,7 +1,6 @@
 package com.grupo4.hostingbook.persistence.entites;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.grupo4.hostingbook.model.UsuarioDTO;
 
 import javax.persistence.*;
 import java.util.HashSet;
@@ -23,13 +22,12 @@ public class Usuario {
     @Column(name="cuenta_validada")
     private Boolean cuentaValidada;
 
+    @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
+    @JoinColumn(name = "fk_rol")
+    private Rol rol;
 
-    @OneToMany(mappedBy = "puntuacion")
+    @OneToMany(mappedBy = "usuario")
     @JsonIgnore
-    private Set<Puntuacion> puntuaciones = new HashSet<>();
-
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinColumn(name = "fk_usuario")
     private Set<Reserva> reservas = new HashSet<>();
 
     @ManyToMany(cascade = {
@@ -45,64 +43,40 @@ public class Usuario {
     )
     private Set<Producto> productosFavoritos = new HashSet<>();
 
-    @ManyToOne(cascade = CascadeType.MERGE)
-    @JoinColumn(name = "fk_rol")
-    private Rol rol;
+    @OneToMany(mappedBy = "puntuacion")
+    @JsonIgnore
+    private Set<Puntuacion> puntuaciones = new HashSet<>();
 
-    public Usuario() {}
+    public Usuario() {
+    }
 
     public Usuario(Long id) {
         this.id = id;
     }
 
-    public Usuario(Long id, String nombre, String apellido, String mail, String contrasenia) {
+    public Usuario(String nombre, String apellido, String mail, String contrasenia, Boolean cuentaValidada, Rol rol, Set<Reserva> reservas, Set<Producto> productosFavoritos, Set<Puntuacion> puntuaciones) {
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.mail = mail;
+        this.contrasenia = contrasenia;
+        this.cuentaValidada = cuentaValidada;
+        this.rol = rol;
+        this.reservas = reservas;
+        this.productosFavoritos = productosFavoritos;
+        this.puntuaciones = puntuaciones;
+    }
+
+    public Usuario(Long id, String nombre, String apellido, String mail, String contrasenia, Boolean cuentaValidada, Rol rol, Set<Reserva> reservas, Set<Producto> productosFavoritos, Set<Puntuacion> puntuaciones) {
         this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;
         this.mail = mail;
         this.contrasenia = contrasenia;
-    }
-
-    public Usuario(String nombre,
-                   String apellido,
-                   String mail,
-                   String contrasenia,
-                   Set<Producto> productosFavoritos) {
-        this.nombre = nombre;
-        this.apellido = apellido;
-        this.mail = mail;
-        this.contrasenia = contrasenia;
-        this.productosFavoritos = productosFavoritos;
-    }
-
-    public Usuario(String nombre,
-                   String apellido,
-                   String mail,
-                   String contrasenia,
-                   Set<Producto> productosFavoritos,
-                   Rol rol) {
-        this.nombre = nombre;
-        this.apellido = apellido;
-        this.mail = mail;
-        this.contrasenia = contrasenia;
-        this.productosFavoritos = productosFavoritos;
+        this.cuentaValidada = cuentaValidada;
         this.rol = rol;
-    }
-
-    public Usuario(Long id,
-                   String nombre,
-                   String apellido,
-                   String mail,
-                   String contrasenia,
-                   Set<Producto> productosFavoritos,
-                   Rol rol) {
-        this.id = id;
-        this.nombre = nombre;
-        this.apellido = apellido;
-        this.mail = mail;
-        this.contrasenia = contrasenia;
+        this.reservas = reservas;
         this.productosFavoritos = productosFavoritos;
-        this.rol = rol;
+        this.puntuaciones = puntuaciones;
     }
 
     public Long getId() {
@@ -145,20 +119,36 @@ public class Usuario {
         this.contrasenia = contrasenia;
     }
 
-    public Set<Producto> getProductosFavoritos() {
-        return productosFavoritos;
-    }
-
-    public void setProductosFavoritos(Set<Producto> productosFavoritos) {
-        this.productosFavoritos = productosFavoritos;
-    }
-
     public Boolean getCuentaValidada() {
         return cuentaValidada;
     }
 
     public void setCuentaValidada(Boolean cuentaValidada) {
         this.cuentaValidada = cuentaValidada;
+    }
+
+    public Rol getRol() {
+        return rol;
+    }
+
+    public void setRol(Rol rol) {
+        this.rol = rol;
+    }
+
+    public Set<Reserva> getReservas() {
+        return reservas;
+    }
+
+    public void setReservas(Set<Reserva> reservas) {
+        this.reservas = reservas;
+    }
+
+    public Set<Producto> getProductosFavoritos() {
+        return productosFavoritos;
+    }
+
+    public void setProductosFavoritos(Set<Producto> productosFavoritos) {
+        this.productosFavoritos = productosFavoritos;
     }
 
     public Set<Puntuacion> getPuntuaciones() {
@@ -169,20 +159,16 @@ public class Usuario {
         this.puntuaciones = puntuaciones;
     }
 
-    public Rol getRol() { return rol; }
-
-    public void setRol(Rol rol) { this.rol = rol; }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (!(o instanceof Usuario)) return false;
         Usuario usuario = (Usuario) o;
-        return id.equals(usuario.id) && nombre.equals(usuario.nombre) && apellido.equals(usuario.apellido) && mail.equals(usuario.mail) && contrasenia.equals(usuario.contrasenia) && cuentaValidada.equals(usuario.cuentaValidada) && puntuaciones.equals(usuario.puntuaciones) && productosFavoritos.equals(usuario.productosFavoritos) && rol.equals(usuario.rol);
+        return Objects.equals(id, usuario.id) && Objects.equals(nombre, usuario.nombre) && Objects.equals(apellido, usuario.apellido) && Objects.equals(mail, usuario.mail) && Objects.equals(contrasenia, usuario.contrasenia) && Objects.equals(cuentaValidada, usuario.cuentaValidada) && Objects.equals(rol, usuario.rol) && Objects.equals(reservas, usuario.reservas) && Objects.equals(productosFavoritos, usuario.productosFavoritos) && Objects.equals(puntuaciones, usuario.puntuaciones);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, nombre, apellido, mail, contrasenia, cuentaValidada, puntuaciones, productosFavoritos, rol);
+        return Objects.hash(id, nombre, apellido, mail, contrasenia, cuentaValidada, rol, reservas, productosFavoritos, puntuaciones);
     }
 }

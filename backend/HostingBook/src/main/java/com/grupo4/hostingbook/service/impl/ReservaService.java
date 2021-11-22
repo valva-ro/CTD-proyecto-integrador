@@ -4,15 +4,17 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.grupo4.hostingbook.exceptions.BadRequestException;
 import com.grupo4.hostingbook.exceptions.Mensajes;
 import com.grupo4.hostingbook.exceptions.ResourceNotFoundException;
-import com.grupo4.hostingbook.model.*;
-import com.grupo4.hostingbook.persistence.entites.*;
-import com.grupo4.hostingbook.persistence.repository.*;
+import com.grupo4.hostingbook.model.ReservaDTO;
+import com.grupo4.hostingbook.persistence.entites.Reserva;
+import com.grupo4.hostingbook.persistence.repository.IReservaRepository;
 import com.grupo4.hostingbook.service.CRUDService;
 import com.grupo4.hostingbook.service.IReservaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
 
 @Service("ReservaService")
 public class ReservaService implements IReservaService {
@@ -126,17 +128,17 @@ public class ReservaService implements IReservaService {
     }
 
     private ReservaDTO actualizar(ReservaDTO reservaDTO, Reserva entidad) {
-        if (reservaDTO.getFechaIngreso()!= null && reservaDTO.getFechaEgreso()!= null
-            && reservaDTO.getHoraEntrada()!= null && reservaDTO.getHoraSalida()!= null
-            && reservaDTO.getDatos()!= null && reservaDTO.getProducto()!= null
-            && reservaDTO.getUsuario()!= null && reservaDTO.getVacunaCovid()!= null)
-
+        if (reservaDTO.getFechaIngreso() != null && reservaDTO.getFechaEgreso() != null
+            && reservaDTO.getHoraEntrada() != null && reservaDTO.getHoraSalida() != null
+            && reservaDTO.getDatos() != null && reservaDTO.getProducto() != null
+            && reservaDTO.getUsuario() != null && reservaDTO.getVacunaCovid() != null) {
             entidad.setHoraEntrada(reservaDTO.getHoraEntrada());
             entidad.setHoraSalida(reservaDTO.getHoraSalida());
             entidad.setFechaIngreso(reservaDTO.getFechaIngreso());
             entidad.setFechaEgreso(reservaDTO.getFechaEgreso());
             entidad.setVacunaCovid (reservaDTO.getVacunaCovid());
             entidad.setDatos(reservaDTO.getDatos());
+        }
 
         Reserva entidadActualizada = reservaRepository.save(entidad);
         return mapper.convertValue(entidadActualizada, ReservaDTO.class);

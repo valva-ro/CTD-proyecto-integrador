@@ -93,7 +93,7 @@
 			<artifactId>jaxb-api</artifactId>
 			<version>${javax-xml-bind-version}</version>
 		</dependency>
-	</dependencies>
+ </dependencies>
 
 	<build>
 		<resources>

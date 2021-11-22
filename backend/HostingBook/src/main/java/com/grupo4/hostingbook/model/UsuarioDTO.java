@@ -13,39 +13,40 @@ public class UsuarioDTO implements Serializable {
     private String mail;
     private String contrasenia;
     private Boolean cuentaValidada;
-    private Set<PuntuacionDTO> puntuaciones = new HashSet<>();
+    private RolDTO rol;
+    private Set<ReservaDTO> reservas = new HashSet<>();
     private Set<ProductoDTO> productosFavoritos = new HashSet<>();
+    private Set<PuntuacionDTO> puntuaciones = new HashSet<>();
 
-    public UsuarioDTO() {}
+    public UsuarioDTO() {
+    }
 
     public UsuarioDTO(Long id) {
         this.id = id;
     }
 
-    public UsuarioDTO(String nombre, String apellido, String mail, String contrasenia, Set<PuntuacionDTO> puntuaciones, Set<ProductoDTO> productosFavoritos) {
+    public UsuarioDTO(String nombre, String apellido, String mail, String contrasenia, Boolean cuentaValidada, RolDTO rol, Set<ReservaDTO> reservas, Set<ProductoDTO> productos, Set<PuntuacionDTO> puntuaciones) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.mail = mail;
         this.contrasenia = contrasenia;
+        this.cuentaValidada = cuentaValidada;
+        this.rol = rol;
+        this.reservas = reservas;
+        this.productosFavoritos = productos;
         this.puntuaciones = puntuaciones;
-        this.productosFavoritos = productosFavoritos;
     }
 
-    public UsuarioDTO(Long id, String nombre, String apellido, String mail, String contrasenia, Set<PuntuacionDTO> puntuaciones, Set<ProductoDTO> productosFavoritos) {
+    public UsuarioDTO(Long id, String nombre, String apellido, String mail, String contrasenia, Boolean cuentaValidada, RolDTO rol, Set<ReservaDTO> reservas, Set<ProductoDTO> productos, Set<PuntuacionDTO> puntuaciones) {
         this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;
         this.mail = mail;
         this.contrasenia = contrasenia;
-        this.puntuaciones = puntuaciones;
-        this.productosFavoritos = productosFavoritos;
-    }
-
-    public Set<PuntuacionDTO> getPuntuaciones() {
-        return puntuaciones;
-    }
-
-    public void setPuntuaciones(Set<PuntuacionDTO> puntuaciones) {
+        this.cuentaValidada = cuentaValidada;
+        this.rol = rol;
+        this.reservas = reservas;
+        this.productosFavoritos = productos;
         this.puntuaciones = puntuaciones;
     }
 
@@ -89,10 +90,6 @@ public class UsuarioDTO implements Serializable {
         this.contrasenia = contrasenia;
     }
 
-    public Set<ProductoDTO> getProductosFavoritos() {
-        return productosFavoritos;
-    }
-
     public Boolean getCuentaValidada() {
         return cuentaValidada;
     }
@@ -101,8 +98,36 @@ public class UsuarioDTO implements Serializable {
         this.cuentaValidada = cuentaValidada;
     }
 
+    public RolDTO getRol() {
+        return rol;
+    }
+
+    public void setRol(RolDTO rol) {
+        this.rol = rol;
+    }
+
+    public Set<ReservaDTO> getReservas() {
+        return reservas;
+    }
+
+    public void setReservas(Set<ReservaDTO> reservas) {
+        this.reservas = reservas;
+    }
+
+    public Set<ProductoDTO> getProductosFavoritos() {
+        return productosFavoritos;
+    }
+
     public void setProductosFavoritos(Set<ProductoDTO> productosFavoritos) {
         this.productosFavoritos = productosFavoritos;
+    }
+
+    public Set<PuntuacionDTO> getPuntuaciones() {
+        return puntuaciones;
+    }
+
+    public void setPuntuaciones(Set<PuntuacionDTO> puntuaciones) {
+        this.puntuaciones = puntuaciones;
     }
 
     @Override
@@ -110,11 +135,11 @@ public class UsuarioDTO implements Serializable {
         if (this == o) return true;
         if (!(o instanceof UsuarioDTO)) return false;
         UsuarioDTO that = (UsuarioDTO) o;
-        return Objects.equals(id, that.id) && Objects.equals(nombre, that.nombre) && Objects.equals(apellido, that.apellido) && Objects.equals(mail, that.mail) && Objects.equals(contrasenia, that.contrasenia) && Objects.equals(cuentaValidada, that.cuentaValidada) && Objects.equals(puntuaciones, that.puntuaciones) && Objects.equals(productosFavoritos, that.productosFavoritos);
+        return Objects.equals(id, that.id) && Objects.equals(nombre, that.nombre) && Objects.equals(apellido, that.apellido) && Objects.equals(mail, that.mail) && Objects.equals(contrasenia, that.contrasenia) && Objects.equals(cuentaValidada, that.cuentaValidada) && Objects.equals(rol, that.rol) && Objects.equals(reservas, that.reservas) && Objects.equals(productosFavoritos, that.productosFavoritos) && Objects.equals(puntuaciones, that.puntuaciones);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, nombre, apellido, mail, contrasenia, cuentaValidada, puntuaciones, productosFavoritos);
+        return Objects.hash(id, nombre, apellido, mail, contrasenia, cuentaValidada, rol, reservas, productosFavoritos, puntuaciones);
     }
 }

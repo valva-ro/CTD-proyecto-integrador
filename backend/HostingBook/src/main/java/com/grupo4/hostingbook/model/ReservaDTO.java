@@ -1,22 +1,21 @@
 package com.grupo4.hostingbook.model;
 
 import java.io.Serializable;
-import java.sql.Time;
-import java.util.Date;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.Objects;
 
 public class ReservaDTO implements Serializable {
 
     private Long id;
-    private Time horaEntrada;
-    private Time horaSalida;
-    private Date fechaIngreso;
-    private Date fechaEgreso;
+    private LocalTime horaEntrada;
+    private LocalTime horaSalida;
+    private LocalDate fechaIngreso;
+    private LocalDate fechaEgreso;
     private String datos;
     private Boolean vacunaCovid;
-
-    private UsuarioDTO usuario;
     private ProductoDTO producto;
+    private UsuarioDTO usuario;
 
     public ReservaDTO() {
     }
@@ -25,7 +24,7 @@ public class ReservaDTO implements Serializable {
         this.id = id;
     }
 
-    public ReservaDTO(Time horaEntrada, Time horaSalida, Date fechaIngreso, Date fechaEgreso, String datos, Boolean vacunaCovid, UsuarioDTO usuario, ProductoDTO producto) {
+    public ReservaDTO(LocalTime horaEntrada, LocalTime horaSalida, LocalDate fechaIngreso, LocalDate fechaEgreso, String datos, Boolean vacunaCovid, UsuarioDTO usuario, ProductoDTO producto) {
         this.horaEntrada = horaEntrada;
         this.horaSalida = horaSalida;
         this.fechaIngreso = fechaIngreso;
@@ -36,7 +35,7 @@ public class ReservaDTO implements Serializable {
         this.producto = producto;
     }
 
-    public ReservaDTO(Long id, Time horaEntrada, Time horaSalida, Date fechaIngreso, Date fechaEgreso, String datos, Boolean vacunaCovid, UsuarioDTO usuario, ProductoDTO producto) {
+    public ReservaDTO(Long id, LocalTime horaEntrada, LocalTime horaSalida, LocalDate fechaIngreso, LocalDate fechaEgreso, String datos, Boolean vacunaCovid, UsuarioDTO usuario, ProductoDTO producto) {
         this.id = id;
         this.horaEntrada = horaEntrada;
         this.horaSalida = horaSalida;
@@ -52,21 +51,21 @@ public class ReservaDTO implements Serializable {
 
     public void setId(Long id) {this.id = id;}
 
-    public Time getHoraEntrada() {return horaEntrada;}
+    public LocalTime getHoraEntrada() {return horaEntrada;}
 
-    public void setHoraEntrada(Time horaEntrada) {this.horaEntrada = horaEntrada;}
+    public void setHoraEntrada(LocalTime horaEntrada) {this.horaEntrada = horaEntrada;}
 
-    public Time getHoraSalida() {return horaSalida;}
+    public LocalTime getHoraSalida() {return horaSalida;}
 
-    public void setHoraSalida(Time horaSalida) {this.horaSalida = horaSalida;}
+    public void setHoraSalida(LocalTime horaSalida) {this.horaSalida = horaSalida;}
 
-    public Date getFechaIngreso() {return fechaIngreso;}
+    public LocalDate getFechaIngreso() {return fechaIngreso;}
 
-    public void setFechaIngreso(Date fechaIngreso) {this.fechaIngreso = fechaIngreso;}
+    public void setFechaIngreso(LocalDate fechaIngreso) {this.fechaIngreso = fechaIngreso;}
 
-    public Date getFechaEgreso() {return fechaEgreso;}
+    public LocalDate getFechaEgreso() {return fechaEgreso;}
 
-    public void setFechaEgreso(Date fechaEgreso) {this.fechaEgreso = fechaEgreso;}
+    public void setFechaEgreso(LocalDate fechaEgreso) {this.fechaEgreso = fechaEgreso;}
 
     public String getDatos() {return datos;}
 
