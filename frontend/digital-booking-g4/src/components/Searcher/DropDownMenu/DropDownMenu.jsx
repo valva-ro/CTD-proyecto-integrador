@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import styles from "./DropDownMenu.module.css";
 
 export default function DropDownMenu({
@@ -8,6 +8,11 @@ export default function DropDownMenu({
   setOnChangeCity,
 }) {
   const [ulClassname, setUlclassName] = useState(null);
+
+  useEffect(() => {
+    const estilo = filtrar(locations).isFiltrated ? styles.cities : "";
+    setUlclassName(estilo);
+  }, [locations]);
 
   function filtrar(locations) {
     const filtrated = locations.filter(
@@ -35,12 +40,6 @@ export default function DropDownMenu({
     const tieneSubstringDelInput = fraseNormalizada.includes(inputNormalizado);
     return inputNoEstaVacio && tieneSubstringDelInput;
   }
-
-  useEffect(() => {
-    filtrar(locations).isFiltrated
-      ? setUlclassName(styles.cities)
-      : setUlclassName(null);
-  }, [input.target.value, locations]);
 
   return (
     <ul className={ulClassname}>

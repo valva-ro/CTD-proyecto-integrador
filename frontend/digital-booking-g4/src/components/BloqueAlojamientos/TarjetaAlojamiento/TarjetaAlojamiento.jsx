@@ -20,7 +20,6 @@ export default function TarjetaAlojamiento({
 }) {
   const [esVerMas, setEsVerMas] = useState(true);
   const puntaje = calcularPromedioPuntuacion(puntuaciones);
-  const toggleVerMas = () => setEsVerMas(!esVerMas);
   const buscarImagenPrincipal = () => {
     let imagen = imagenes.find((imagen) => {
       return imagen.imagenTitulo === "Principal";
@@ -86,7 +85,10 @@ export default function TarjetaAlojamiento({
               {esVerMas && descripcion.length > 85
                 ? `${descripcion.slice(0, 85)}...`
                 : `${descripcion.slice(0, 170)}...`}
-              <span onClick={toggleVerMas} className={styles.verMas}>
+              <span
+                onClick={() => setEsVerMas(!esVerMas)}
+                className={styles.verMas}
+              >
                 {esVerMas ? " Leer más" : " Leer menos"}
               </span>
             </>

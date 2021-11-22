@@ -7,7 +7,6 @@ import InputComponent from "./formComponents/Input";
 import loggedContext from "../../contexts/loggedContext";
 import styles from "./Form.module.css";
 import post from "../../utils/post";
-import get from "../../utils/get";
 
 export default function Login() {
   const [email, setEmail] = useState({ campo: "", valido: null });
