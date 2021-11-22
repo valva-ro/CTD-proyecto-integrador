@@ -9,40 +9,15 @@ import styles from "./ProductoFechasDisponibles.module.css";
 import FilledButton from "../../Buttons/FilledButton";
 import es from "date-fns/locale/es";
 import useScreenWidth from "../../../hooks/useScreenWidth";
+import excludedDates from "../../../utils/excludedDates";
 
 registerLocale("es", es);
 
 export default function ProductoFechasDisponibles() {
   const [dateRange, setDateRange] = useState([null, null]);
-  const [startDate, endDate] = dateRange;
-  const excludeDates = [
-    //año, mes, dia --> el mes está corrido. ej: 11 = diciembre / 12 = enero
-    new Date(2021, 2, 12),
-    new Date(2021, 10, 5),
-    new Date(2021, 10, 4),
-    new Date(2021, 10, 9),
-    new Date(2021, 10, 12),
-    new Date(2021, 10, 17),
-    new Date(2021, 10, 18),
-    new Date(2021, 10, 19),
-    new Date(2021, 10, 20),
-    new Date(2021, 10, 21),
-    new Date(2021, 10, 28),
-    new Date(2021, 10, 29),
-    new Date(2021, 10, 5),
-    new Date(2021, 10, 4),
-    new Date(2021, 10, 9),
-    new Date(2021, 11, 2),
-    new Date(2021, 11, 3),
-    new Date(2021, 11, 4),
-    new Date(2021, 11, 5),
-    new Date(2021, 11, 17),
-    new Date(2021, 11, 18),
-    new Date(2021, 11, 19),
-    new Date(2021, 11, 20),
-    new Date(2021, 11, 21),
-    new Date(2021, 11, 28),
-    new Date(2021, 11, 29),
+  const [startDate, endDate] = [
+    new Date(JSON.parse(localStorage.getItem("startDate"))),
+    new Date(JSON.parse(localStorage.getItem("endDate"))),
   ];
 
   const anchoPantalla = useScreenWidth();
@@ -55,7 +30,6 @@ export default function ProductoFechasDisponibles() {
     );
   };
 
-
   return (
     <section className={styles.bloqueFechasDisponiblesContainer}>
       <TituloBloque>Fechas disponibles</TituloBloque>
@@ -66,7 +40,7 @@ export default function ProductoFechasDisponibles() {
           calendarContainer={MyContainer}
           locale={es}
           formatWeekDay={(nameOfDay) => nameOfDay.substr(0, 1)}
-          excludeDates={excludeDates}
+          excludeDates={excludedDates()}
           minDate={new Date()}
           onChange={(update) => {
             setDateRange(update);

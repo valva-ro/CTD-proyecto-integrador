@@ -12,6 +12,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import styles from "./Searcher.module.css";
 import currentCityContext from "../../contexts/currentFilterContext";
 import useScreenWidth from "../../hooks/useScreenWidth";
+import excludedDates from "../../utils/excludedDates";
 
 registerLocale("es", es);
 
@@ -29,8 +30,10 @@ export default function Searcher() {
     setCurrentCity(selectedCity);
   }, [setCurrentCity, selectedCity]);
 
-  const closeCalendar = () => {
+  const handleCloseCalendar = () => {
     datePickerRef.setOpen(false);
+    localStorage.setItem("startDate", JSON.stringify(startDate));
+    localStorage.setItem("endDate", JSON.stringify(endDate));
   };
 
   const styleChange = (input) => {
@@ -70,6 +73,7 @@ export default function Searcher() {
             onSelect={(e) => styleChangeClick(e)}
             onChangeRaw={(e) => styleChange(e)}
             dateFormat="dd 'de' MMM."
+            excludeDates={excludedDates()}
             placeholderText="Check in  -  Check out"
             locale={es}
             selectsRange={true}
@@ -84,9 +88,7 @@ export default function Searcher() {
             ref={(r) => (datePickerRef = r)}
           >
             <div className={styles.applyContainer}>
-              <FilledButton onClick={() => closeCalendar()}>
-                Aplicar
-              </FilledButton>
+              <FilledButton onClick={handleCloseCalendar}>Aplicar</FilledButton>
             </div>
           </DatePicker>
           <FilledButton onClick={handleSubmit}>Buscar</FilledButton>
