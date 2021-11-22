@@ -2,8 +2,18 @@ import Estrellas from "../../../Estrellas/Estrellas";
 import FilledButton from "../../../Buttons/FilledButton";
 import styles from "./Detalles.module.css";
 
-export default function ProductoReserva({ alojamiento, checkin, checkout }) {
-  const imagenes = alojamiento.imagenes;
+export default function ProductoReserva({ 
+  alojamiento:{
+    nombre,
+    categoria,
+    ciudad,
+    imagenes,
+    puntuaciones
+  }, 
+  checkin, 
+  checkout 
+}) {
+  
   const buscarImagenPrincipal = () => {
     let imagen = imagenes.find((imagen) => {
       return imagen.imagenTitulo === "Principal";
@@ -27,15 +37,15 @@ export default function ProductoReserva({ alojamiento, checkin, checkout }) {
 
         <div className={styles.letterContainer}>
           <p className={styles.categoria}>
-            {alojamiento.categoria.titulo.toUpperCase()}
+            {categoria.titulo.toUpperCase()}
           </p>
-          <p className={styles.titulo}>{alojamiento.nombre}</p>
-          <Estrellas puntaje={alojamiento.puntuaciones.length} />
+          <p className={styles.titulo}>{nombre}</p>
+          <Estrellas puntaje={puntuaciones} />
           <div className={styles.direccion}>
             <i className="fas fa-map-marker-alt"></i>
             <p>
-              Aquí iría la dirección principal, {alojamiento.ciudad.nombre},{" "}
-              {alojamiento.ciudad.pais}
+              Aquí iría la dirección principal, {ciudad.nombre},{" "}
+              {ciudad.pais}
             </p>
           </div>
           <hr />

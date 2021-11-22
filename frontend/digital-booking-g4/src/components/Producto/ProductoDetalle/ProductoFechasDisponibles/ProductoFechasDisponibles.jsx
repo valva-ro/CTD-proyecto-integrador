@@ -9,13 +9,21 @@ import styles from "./ProductoFechasDisponibles.module.css";
 import FilledButton from "../../../Buttons/FilledButton";
 import es from "date-fns/locale/es";
 import useScreenWidth from "../../../../hooks/useScreenWidth";
+import obtenerFechasReservadas from "../../../../utils/obtenerFechasReservadas.js"
+import obtenerFechasNoSeleccionables from "../../../../utils/obtenerFechasNoSeleccionables.js"
+import useDisabledDate from "../../../../hooks/useDisabledDates"
+
 
 registerLocale("es", es);
 
 export default function ProductoFechasDisponibles() {
   const [dateRange, setDateRange] = useState([null, null]);
   const [startDate, endDate] = dateRange;
-  const excludeDates = [
+  const fechasReservadas = obtenerFechasReservadas();
+  const fechasNoSeleccionables = obtenerFechasNoSeleccionables(startDate);
+  const excludeDatesDinamico = useDisabledDate(fechasReservadas, fechasNoSeleccionables, startDate, endDate);
+    
+  /* const excludeDates = [
     //año, mes, dia --> el mes está corrido. ej: 11 = diciembre / 12 = enero
     new Date(2021, 2, 12),
     new Date(2021, 10, 5),
@@ -43,7 +51,7 @@ export default function ProductoFechasDisponibles() {
     new Date(2021, 11, 21),
     new Date(2021, 11, 28),
     new Date(2021, 11, 29),
-  ];
+  ]; */
 
   const anchoPantalla = useScreenWidth();
 
@@ -65,7 +73,7 @@ export default function ProductoFechasDisponibles() {
           calendarContainer={MyContainer}
           locale={es}
           formatWeekDay={(nameOfDay) => nameOfDay.substr(0, 1)}
-          excludeDates={excludeDates}
+          excludeDates={excludeDatesDinamico}
           minDate={new Date()}
           onChange={(update) => {
             setDateRange(update);
