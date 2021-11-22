@@ -70,15 +70,15 @@ public class ReservaService implements IReservaService {
     }
 
     @Override
-    public Set<ReservaDTO> consultarPorIdProducto (Long idProducto) throws ResourceNotFoundException {
-        Set<Reserva> entidades = reservaRepository.buscarReservasPorIdProducto(idProducto);
+    public Set<ReservaDTO> consultarPorIdProducto (Long id) throws ResourceNotFoundException {
+        Set<Reserva> entidades = reservaRepository.buscarReservasPorIdProducto(id);
         Set<ReservaDTO> dtos = new HashSet<>();
         for (Reserva entidad : entidades) {
             dtos.add(mapper.convertValue(entidad, ReservaDTO.class));
         }
         if (dtos.size() == 0) {
             throw new ResourceNotFoundException(
-                    String.format(Mensajes.ERROR_CRITERIO_DE_BUSQUEDA_NO_EXISTE, "El id", idProducto));
+                    String.format(Mensajes.ERROR_CRITERIO_DE_BUSQUEDA_NO_EXISTE, "El id", id));
         }
         return dtos;
     }

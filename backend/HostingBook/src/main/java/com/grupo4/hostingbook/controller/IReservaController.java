@@ -6,12 +6,11 @@ import com.grupo4.hostingbook.exceptions.ResourceNotFoundException;
 import com.grupo4.hostingbook.model.ReservaDTO;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.PathVariable;
 
 @Controller
 public interface IReservaController extends CRUDController<ReservaDTO> {
 
-    ResponseEntity<?> obtenerPorIdProducto(@RequestParam Long idProducto) throws BadRequestException, ResourceNotFoundException;
+    ResponseEntity<?> obtenerPorIdProducto(@PathVariable Long id) throws BadRequestException, ResourceNotFoundException;
 
 }

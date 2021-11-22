@@ -93,8 +93,8 @@ public class ReservaController implements IReservaController {
             @ApiResponse(code = 200, message = "Success"),
             @ApiResponse(code = 400, message = "Bad Request")
     })
-    @GetMapping("/producto/{idProducto}")
-    public ResponseEntity<?> obtenerPorIdProducto(@RequestParam Long id) throws ResourceNotFoundException {
+    @GetMapping("/producto/{id}")
+    public ResponseEntity<?> obtenerPorIdProducto(@PathVariable Long id) throws BadRequestException, ResourceNotFoundException {
         Set<ReservaDTO> reservas = reservaService.consultarPorIdProducto(id);
         return ResponseEntity.ok(reservas);
     }
