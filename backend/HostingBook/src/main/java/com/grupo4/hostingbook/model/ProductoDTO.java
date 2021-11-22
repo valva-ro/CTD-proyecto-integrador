@@ -17,6 +17,7 @@ public class ProductoDTO implements Serializable {
     private Set<CaracteristicaDTO> caracteristicas = new HashSet<>();
     private Set<PuntuacionDTO> puntuaciones = new HashSet<>();
     private Set<ReservaDTO> reservas = new HashSet<>();
+    private Set<UsuarioDTO> usuarios = new HashSet<>();
 
     public ProductoDTO() {
     }
@@ -169,6 +170,14 @@ public class ProductoDTO implements Serializable {
     public Set<ReservaDTO> getReservas() { return reservas; }
 
     public void setReservas(Set<ReservaDTO> reservas) { this.reservas = reservas; }
+
+    public Set<UsuarioDTO> getUsuarios() {
+        return usuarios;
+    }
+
+    public void setUsuarios(Set<UsuarioDTO> usuarios) {
+        this.usuarios = usuarios;
+    }
 
     @Override
     public boolean equals(Object o) {

@@ -30,6 +30,7 @@ public class Producto {
 
     @OneToMany(mappedBy = "producto")
     @JsonIgnore
+    @Transient
     private Set<Reserva> reservas = new HashSet<>();
 
     @OneToMany(mappedBy = "puntuacion")
