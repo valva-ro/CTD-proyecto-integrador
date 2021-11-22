@@ -163,11 +163,29 @@ public class Usuario {
         if (this == o) return true;
         if (!(o instanceof Usuario)) return false;
         Usuario usuario = (Usuario) o;
-        return Objects.equals(id, usuario.id) && Objects.equals(nombre, usuario.nombre) && Objects.equals(apellido, usuario.apellido) && Objects.equals(mail, usuario.mail) && Objects.equals(contrasenia, usuario.contrasenia) && Objects.equals(cuentaValidada, usuario.cuentaValidada) && Objects.equals(rol, usuario.rol) && Objects.equals(reservas, usuario.reservas) && Objects.equals(productosFavoritos, usuario.productosFavoritos) && Objects.equals(puntuaciones, usuario.puntuaciones);
+        return Objects.equals(id, usuario.id) &&
+                Objects.equals(nombre, usuario.nombre) &&
+                Objects.equals(apellido, usuario.apellido) &&
+                Objects.equals(mail, usuario.mail) &&
+                Objects.equals(contrasenia, usuario.contrasenia) &&
+                Objects.equals(cuentaValidada, usuario.cuentaValidada) &&
+                Objects.equals(rol, usuario.rol) &&
+                Objects.equals(reservas, usuario.reservas) &&
+                Objects.equals(productosFavoritos, usuario.productosFavoritos) &&
+                Objects.equals(puntuaciones, usuario.puntuaciones);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, nombre, apellido, mail, contrasenia, cuentaValidada, rol, reservas, productosFavoritos, puntuaciones);
+        return Objects.hash(id,
+                nombre,
+                apellido,
+                mail,
+                contrasenia,
+                cuentaValidada,
+                rol,
+                reservas,
+                productosFavoritos,
+                puntuaciones);
     }
 }

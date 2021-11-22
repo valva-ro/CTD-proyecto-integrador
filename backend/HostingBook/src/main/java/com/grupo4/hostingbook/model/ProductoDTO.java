@@ -12,7 +12,7 @@ public class ProductoDTO implements Serializable {
     private String descripcion;
     private CategoriaDTO categoria;
     private CiudadDTO ciudad;
-    private Set<PoliticaDTO> politicas;
+    private Set<PoliticaDTO> politicas = new HashSet<>();
     private Set<ImagenDTO> imagenes = new HashSet<>();
     private Set<CaracteristicaDTO> caracteristicas = new HashSet<>();
     private Set<PuntuacionDTO> puntuaciones = new HashSet<>();
@@ -185,18 +185,10 @@ public class ProductoDTO implements Serializable {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o)
-            return true;
-        if (o == null || getClass() != o.getClass())
-            return false;
+        if (this == o) return true;
+        if (!(o instanceof ProductoDTO)) return false;
         ProductoDTO that = (ProductoDTO) o;
-        return Objects.equals(id, that.id) && Objects.equals(nombre, that.nombre)
-                && Objects.equals(descripcion, that.descripcion) && Objects.equals(categoria, that.categoria)
-                && Objects.equals(ciudad, that.ciudad)
-                && (imagenes.containsAll(that.imagenes) && that.imagenes.containsAll(imagenes))
-                && (caracteristicas.containsAll(that.caracteristicas) && that.caracteristicas.containsAll(caracteristicas)
-                && (politicas.containsAll(that.politicas) && that.politicas.containsAll(politicas))
-                && (usuarios.containsAll(that.usuarios) && that.usuarios.containsAll(usuarios)));
+        return Objects.equals(id, that.id) && Objects.equals(nombre, that.nombre) && Objects.equals(descripcion, that.descripcion) && Objects.equals(categoria, that.categoria) && Objects.equals(ciudad, that.ciudad) && Objects.equals(politicas, that.politicas) && Objects.equals(imagenes, that.imagenes) && Objects.equals(caracteristicas, that.caracteristicas) && Objects.equals(puntuaciones, that.puntuaciones) && Objects.equals(usuarios, that.usuarios);
     }
 
     @Override

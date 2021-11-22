@@ -153,11 +153,23 @@ public class Producto {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Producto producto = (Producto) o;
-        return Objects.equals(id, producto.id) && Objects.equals(nombre, producto.nombre) && Objects.equals(descripcion, producto.descripcion) && Objects.equals(categoria, producto.categoria) && Objects.equals(ciudad, producto.ciudad) && Objects.equals(imagenes, producto.imagenes) && Objects.equals(caracteristicas, producto.caracteristicas);
+        return Objects.equals(id, producto.id) &&
+                Objects.equals(nombre, producto.nombre) &&
+                Objects.equals(descripcion, producto.descripcion) &&
+                Objects.equals(categoria, producto.categoria) &&
+                Objects.equals(ciudad, producto.ciudad) &&
+                Objects.equals(imagenes, producto.imagenes) &&
+                Objects.equals(caracteristicas, producto.caracteristicas);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, nombre, descripcion, categoria, ciudad, imagenes, caracteristicas);
+        return Objects.hash(id,
+                nombre,
+                descripcion,
+                categoria,
+                ciudad,
+                imagenes,
+                caracteristicas);
     }
 }

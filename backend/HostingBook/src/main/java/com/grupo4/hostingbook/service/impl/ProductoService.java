@@ -13,7 +13,6 @@ import com.grupo4.hostingbook.persistence.entites.Ciudad;
 import com.grupo4.hostingbook.persistence.entites.Imagen;
 import com.grupo4.hostingbook.persistence.entites.Producto;
 import com.grupo4.hostingbook.persistence.repository.IProductoRepository;
-import com.grupo4.hostingbook.persistence.repository.IUsuarioXProductoRepository;
 import com.grupo4.hostingbook.service.IProductoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -25,7 +24,6 @@ import java.util.*;
 public class ProductoService implements IProductoService {
 
     private final IProductoRepository productoRepository;
-    private final IUsuarioXProductoRepository usuarioXProductoRepository;
     private final ObjectMapper mapper;
     private final CategoriaService categoriaService;
     private final CiudadService ciudadService;
@@ -36,13 +34,11 @@ public class ProductoService implements IProductoService {
     private final UsuarioService usuarioService;
 
     @Autowired
-    public ProductoService(IProductoRepository productoRepository,
-            IUsuarioXProductoRepository usuarioXProductoRepository, ObjectMapper mapper,
+    public ProductoService(IProductoRepository productoRepository, ObjectMapper mapper,
             CategoriaService categoriaService, CiudadService ciudadService, ImagenService imagenService,
             CaracteristicaService caracteristicaService, PuntuacionService puntuacionService,
             UsuarioService usuarioService, PoliticaService politicaService) {
         this.productoRepository = productoRepository;
-        this.usuarioXProductoRepository = usuarioXProductoRepository;
         this.mapper = mapper;
         this.categoriaService = categoriaService;
         this.ciudadService = ciudadService;
@@ -146,14 +142,16 @@ public class ProductoService implements IProductoService {
     @Transactional
     public UsuarioDTO quitarDeFavoritos(Long idProducto, Long idUsuario)
             throws ResourceNotFoundException, BadRequestException {
-        System.out.println("------------------------ DELETE ------------------------");
-        usuarioXProductoRepository.delete(idProducto, idUsuario);
-        System.out.println("--------------------------------------------------------");
         ProductoDTO producto = buscarPorId(idProducto);
         UsuarioDTO usuario = usuarioService.buscarPorId(idUsuario);
-        usuario.getProductosFavoritos().remove(producto);
-        producto.getUsuarios().remove(usuario);
-        productoRepository.save(mapper.convertValue(producto, Producto.class));
+        Set<ProductoDTO> productosFavoritos = usuario.getProductosFavoritos();
+        Set<ProductoDTO> productosActualizados = new HashSet<>();
+        for (ProductoDTO p : productosFavoritos) {
+            if (!p.getId().equals(idProducto)) {
+                productosActualizados.add(p);
+            }
+        }
+        usuario.setProductosFavoritos(productosActualizados);
         UsuarioDTO actualizado = mapper.convertValue(usuarioService.save(usuario), UsuarioDTO.class);
         return actualizado;
     }
