@@ -1,5 +1,4 @@
 import React, { useContext, useState, useEffect } from "react";
-import FilledButton from "../Buttons/FilledButton";
 import TarjetaAlojamiento from "./TarjetaAlojamiento/TarjetaAlojamiento";
 import TituloBloque from "../TituloBloque/TituloBloque.jsx";
 import currentFilterContext from "../../contexts/currentFilterContext";
