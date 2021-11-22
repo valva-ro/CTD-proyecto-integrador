@@ -54,7 +54,10 @@ export default function BloqueAlojamientos() {
             ? `${capitalizeFirstLetter(currentCategory)}`
             : `${capitalizeFirstLetter(currentCategory)} en ${currentCity}`}
         </TituloBloque>
-        <FilledButton onClick={toggleFiltrado}>Deshacer filtros</FilledButton>
+        <div className={styles.containerFiltrosButton} onClick={toggleFiltrado}>
+          <span className={styles.filtrosButton}>Deshacer Filtros</span>
+          <i class="fas fa-backspace"></i>
+        </div>
       </div>
       {isLoaded && alojamientosFiltrados.length === 0 ? (
         <h2 className={styles.sinResultados}>No se encontraron resultados</h2>
