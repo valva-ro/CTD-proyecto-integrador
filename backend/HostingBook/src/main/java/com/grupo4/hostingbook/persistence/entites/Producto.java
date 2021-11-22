@@ -28,8 +28,8 @@ public class Producto {
     @JoinColumn(name = "fk_producto")
     private Set<Imagen> imagenes = new HashSet<>();
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinColumn(name = "fk_producto")
+    @OneToMany(mappedBy = "producto")
+    @JsonIgnore
     private Set<Reserva> reservas = new HashSet<>();
 
     @OneToMany(mappedBy = "puntuacion")
@@ -50,11 +50,7 @@ public class Producto {
     )
     private Set<Politica> politicas = new HashSet<>();
 
-    @ManyToMany (
-            cascade = {
-                    CascadeType.MERGE
-            }
-    )
+    @ManyToMany (cascade = CascadeType.MERGE)
     @JoinTable(
             name = "producto_caracteristica",
             joinColumns = @JoinColumn(name = "producto_id"),

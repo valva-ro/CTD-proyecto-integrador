@@ -2,8 +2,6 @@ package com.grupo4.hostingbook.auth;
 
 import com.grupo4.hostingbook.model.UsuarioDTO;
 
-import org.springframework.security.core.userdetails.UserDetails;
-
 public class AuthenticationResponse {
 
     private final String jwt;

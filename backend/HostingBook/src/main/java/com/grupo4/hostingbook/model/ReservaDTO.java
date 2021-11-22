@@ -1,7 +1,8 @@
 package com.grupo4.hostingbook.model;
 
 import java.io.Serializable;
-import java.time.*;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.Objects;
 
 public class ReservaDTO implements Serializable {
@@ -13,9 +14,8 @@ public class ReservaDTO implements Serializable {
     private LocalDate fechaEgreso;
     private String datos;
     private Boolean vacunaCovid;
-
-    private ClienteDTO cliente;
     private ProductoDTO producto;
+    private UsuarioDTO usuario;
 
     public ReservaDTO() {
     }
@@ -24,18 +24,18 @@ public class ReservaDTO implements Serializable {
         this.id = id;
     }
 
-    public ReservaDTO(LocalTime horaEntrada, LocalTime horaSalida, LocalDate fechaIngreso, LocalDate fechaEgreso, String datos, Boolean vacunaCovid, ClienteDTO cliente, ProductoDTO producto) {
+    public ReservaDTO(LocalTime horaEntrada, LocalTime horaSalida, LocalDate fechaIngreso, LocalDate fechaEgreso, String datos, Boolean vacunaCovid, UsuarioDTO usuario, ProductoDTO producto) {
         this.horaEntrada = horaEntrada;
         this.horaSalida = horaSalida;
         this.fechaIngreso = fechaIngreso;
         this.fechaEgreso = fechaEgreso;
         this.datos = datos;
         this.vacunaCovid = vacunaCovid;
-        this.cliente = cliente;
+        this.usuario = usuario;
         this.producto = producto;
     }
 
-    public ReservaDTO(Long id, LocalTime horaEntrada, LocalTime horaSalida, LocalDate fechaIngreso, LocalDate fechaEgreso, String datos, Boolean vacunaCovid, ClienteDTO cliente, ProductoDTO producto) {
+    public ReservaDTO(Long id, LocalTime horaEntrada, LocalTime horaSalida, LocalDate fechaIngreso, LocalDate fechaEgreso, String datos, Boolean vacunaCovid, UsuarioDTO usuario, ProductoDTO producto) {
         this.id = id;
         this.horaEntrada = horaEntrada;
         this.horaSalida = horaSalida;
@@ -43,7 +43,7 @@ public class ReservaDTO implements Serializable {
         this.fechaEgreso = fechaEgreso;
         this.datos = datos;
         this.vacunaCovid = vacunaCovid;
-        this.cliente = cliente;
+        this.usuario = usuario;
         this.producto = producto;
     }
 
@@ -75,9 +75,9 @@ public class ReservaDTO implements Serializable {
 
     public void setVacunaCovid(Boolean vacunaCovid) {this.vacunaCovid = vacunaCovid;}
 
-    public ClienteDTO getCliente() {return cliente;}
+    public UsuarioDTO getUsuario() {return usuario;}
 
-    public void setCliente(ClienteDTO cliente) {this.cliente = cliente;}
+    public void setUsuario(UsuarioDTO usuario) {this.usuario = usuario;}
 
     public ProductoDTO getProducto() {return producto;}
 
@@ -88,12 +88,12 @@ public class ReservaDTO implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         ReservaDTO that = (ReservaDTO) o;
-        return id.equals(that.id) && horaEntrada.equals(that.horaEntrada) && horaSalida.equals(that.horaSalida) && fechaIngreso.equals(that.fechaIngreso) && fechaEgreso.equals(that.fechaEgreso) && datos.equals(that.datos) && vacunaCovid.equals(that.vacunaCovid) && cliente.equals(that.cliente) && producto.equals(that.producto);
+        return id.equals(that.id) && horaEntrada.equals(that.horaEntrada) && horaSalida.equals(that.horaSalida) && fechaIngreso.equals(that.fechaIngreso) && fechaEgreso.equals(that.fechaEgreso) && datos.equals(that.datos) && vacunaCovid.equals(that.vacunaCovid) && usuario.equals(that.usuario) && producto.equals(that.producto);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, horaEntrada, horaSalida, fechaIngreso, fechaEgreso, datos, vacunaCovid, cliente, producto);
+        return Objects.hash(id, horaEntrada, horaSalida, fechaIngreso, fechaEgreso, datos, vacunaCovid, usuario, producto);
     }
 
     @Override
@@ -106,7 +106,7 @@ public class ReservaDTO implements Serializable {
                 ", fechaEgreso=" + fechaEgreso +
                 ", datos='" + datos + '\'' +
                 ", vacunaCovid=" + vacunaCovid +
-                ", cliente=" + cliente +
+                ", usuario=" + usuario +
                 ", producto=" + producto +
                 '}';
     }

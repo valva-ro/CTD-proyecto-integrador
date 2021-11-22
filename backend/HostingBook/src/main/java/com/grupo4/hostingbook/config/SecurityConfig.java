@@ -46,8 +46,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                             "/categorias**",
                             "/ciudades**",
                             "/productos**",
-                            "/usuarios/login",
-                            "/usuarios/signup"
+                            "/login",
+                            "/usuarios/signup",
+                            "/usuarios"
                     ).permitAll()
                     .antMatchers(
                             "/usuarios**",
