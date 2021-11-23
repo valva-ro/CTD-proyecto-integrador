@@ -31,7 +31,7 @@ public class JWTRequestFilter extends OncePerRequestFilter {
 
     @Override
     protected boolean shouldNotFilter(HttpServletRequest request) {
-        return new AntPathMatcher().match("/usuarios/login", request.getRequestURI());
+        return new AntPathMatcher().match("/login", request.getRequestURI());
     }
 
     @Override
@@ -39,16 +39,14 @@ public class JWTRequestFilter extends OncePerRequestFilter {
 
         final String authorizationHeader = httpServletRequest.getHeader("Authorization");
         String username= null;
-        String jwt = null;
 
-        if (authorizationHeader != null && authorizationHeader.startsWith("Bearer ")) {
-            jwt = authorizationHeader.substring(7);
-            username = jwtUtil.extractUserName(jwt);
+        if (authorizationHeader != null) {
+            username = jwtUtil.extractUserName(authorizationHeader);
         }
 
         if (username != null && SecurityContextHolder.getContext().getAuthentication() == null) {
             UserDetails userDetails  = this.usuarioService.loadUserByUsername(username);
-            if (jwtUtil.validateToken(jwt, userDetails)) {
+            if (jwtUtil.validateToken(authorizationHeader, userDetails)) {
                 UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken =
                         new UsernamePasswordAuthenticationToken(
                             userDetails,
