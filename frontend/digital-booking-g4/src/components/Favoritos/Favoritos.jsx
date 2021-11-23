@@ -7,8 +7,7 @@ import loggedContext from "../../contexts/loggedContext";
 import styles from "./Favoritos.module.css";
 
 export default function Favoritos() {
-  // TODO: obtener ID dinámicamente
-  const idUsuario = 1;
+  const idUsuario = parseInt(localStorage.getItem("id"));
   const [favoritos, setFavoritos] = useState([]);
   const { isLoaded, items } = useFetch(`usuarios/${idUsuario}`);
   const { isLogged } = useContext(loggedContext);
@@ -35,7 +34,7 @@ export default function Favoritos() {
       <section className={styles.favoritosContainer}>
         {favoritos.length === 0 ? (
           <div className={styles.avisoNoFavs}>
-            <i class="far fa-frown"></i>
+            <i className="far fa-frown"></i>
             <p>No tienes productos en favoritos</p>
           </div>
         ) : (
@@ -43,7 +42,7 @@ export default function Favoritos() {
             <li key={i} className={styles.alojamiento}>
               <TarjetaAlojamiento
                 alojamiento={alojamiento}
-                isLoaded={true}
+                isLoaded={isLoaded}
               />
             </li>
           ))

@@ -57,7 +57,7 @@ public class ProductoDTO implements Serializable {
     }
 
     public ProductoDTO(Long id, String nombre, String descripcion, CategoriaDTO categoria, CiudadDTO ciudad,
-            Set<PoliticaDTO> politicas, Set<ImagenDTO> imagenes, Set<CaracteristicaDTO> caracteristicas) {
+                       Set<PoliticaDTO> politicas, Set<ImagenDTO> imagenes, Set<CaracteristicaDTO> caracteristicas) {
         this.id = id;
         this.nombre = nombre;
         this.descripcion = descripcion;
@@ -69,7 +69,7 @@ public class ProductoDTO implements Serializable {
     }
 
     public ProductoDTO(String nombre, String descripcion, CategoriaDTO categoria, CiudadDTO ciudad,
-            Set<PoliticaDTO> politicas, Set<ImagenDTO> imagenes, Set<CaracteristicaDTO> caracteristicas) {
+                       Set<PoliticaDTO> politicas, Set<ImagenDTO> imagenes, Set<CaracteristicaDTO> caracteristicas) {
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.categoria = categoria;
@@ -79,13 +79,8 @@ public class ProductoDTO implements Serializable {
         this.caracteristicas = caracteristicas;
     }
 
-<<<<<<< HEAD
-    public ProductoDTO(Long id, String nombre, String descripcion, CategoriaDTO categoria, CiudadDTO ciudad, Set<PoliticaDTO> politicas, Set<ImagenDTO> imagenes, Set<CaracteristicaDTO> caracteristicas, Set<PuntuacionDTO> puntuaciones, Set<UsuarioDTO> usuarios) {
-        this.id = id;
-=======
     public ProductoDTO(String nombre, String descripcion, CategoriaDTO categoria, CiudadDTO ciudad,
                        Set<PoliticaDTO> politicas, Set<ImagenDTO> imagenes, Set<CaracteristicaDTO> caracteristicas, Set<ReservaDTO> reservas) {
->>>>>>> develop
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.categoria = categoria;
@@ -93,12 +88,7 @@ public class ProductoDTO implements Serializable {
         this.politicas = politicas;
         this.imagenes = imagenes;
         this.caracteristicas = caracteristicas;
-<<<<<<< HEAD
-        this.puntuaciones = puntuaciones;
-        this.usuarios = usuarios;
-=======
         this.reservas = reservas;
->>>>>>> develop
     }
 
     public Long getId() {
@@ -173,26 +163,10 @@ public class ProductoDTO implements Serializable {
         this.puntuaciones = puntuaciones;
     }
 
-    public Set<UsuarioDTO> getUsuarios() {
-        return usuarios;
-    }
-
-    public void setUsuarios(Set<UsuarioDTO> usuarios) {
-        this.usuarios = usuarios;
-    }
-
     public void agregarPuntuacion(PuntuacionDTO puntuacionDTO) {
         this.puntuaciones.add(puntuacionDTO);
     }
 
-<<<<<<< HEAD
-    public void agregarUsuario(UsuarioDTO usuarioDTO) {
-        this.usuarios.add(usuarioDTO);
-    }
-
-    public void eliminarUsuario(UsuarioDTO usuarioDTO) {
-        this.usuarios.remove(usuarioDTO);
-=======
     public Set<ReservaDTO> getReservas() { return reservas; }
 
     public void setReservas(Set<ReservaDTO> reservas) { this.reservas = reservas; }
@@ -203,30 +177,19 @@ public class ProductoDTO implements Serializable {
 
     public void setUsuarios(Set<UsuarioDTO> usuarios) {
         this.usuarios = usuarios;
->>>>>>> develop
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-<<<<<<< HEAD
-        if (!(o instanceof ProductoDTO)) return false;
-        ProductoDTO that = (ProductoDTO) o;
-        return Objects.equals(id, that.id) && Objects.equals(nombre, that.nombre) && Objects.equals(descripcion, that.descripcion) && Objects.equals(categoria, that.categoria) && Objects.equals(ciudad, that.ciudad) && Objects.equals(politicas, that.politicas) && Objects.equals(imagenes, that.imagenes) && Objects.equals(caracteristicas, that.caracteristicas) && Objects.equals(puntuaciones, that.puntuaciones) && Objects.equals(usuarios, that.usuarios);
-=======
         if (o == null || getClass() != o.getClass()) return false;
         ProductoDTO that = (ProductoDTO) o;
         return id.equals(that.id) && nombre.equals(that.nombre) && descripcion.equals(that.descripcion) && categoria.equals(that.categoria) && ciudad.equals(that.ciudad) && politicas.equals(that.politicas) && imagenes.equals(that.imagenes) && caracteristicas.equals(that.caracteristicas) && puntuaciones.equals(that.puntuaciones) && reservas.equals(that.reservas);
->>>>>>> develop
     }
 
     @Override
     public int hashCode() {
-<<<<<<< HEAD
-        return Objects.hash(id, nombre, descripcion, categoria, ciudad, politicas, imagenes, caracteristicas, puntuaciones, usuarios);
-=======
         return Objects.hash(id, nombre, descripcion, categoria, ciudad, politicas, imagenes, caracteristicas, puntuaciones, reservas);
->>>>>>> develop
     }
 
     @Override
