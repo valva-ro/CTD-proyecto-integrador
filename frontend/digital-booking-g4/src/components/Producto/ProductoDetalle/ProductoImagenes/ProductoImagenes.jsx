@@ -2,8 +2,8 @@ import { useState } from "react";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { SimpleShareButtons } from "react-simple-share";
-import Modal from "../../Modal/Modal";
-import FilledButton from "../../Buttons/FilledButton";
+import Modal from "../../../Modal/Modal";
+import FilledButton from "../../../Buttons/FilledButton";
 import styles from "./ProductoImagenes.module.css";
 import "./CarouselStyles.css";
 
@@ -100,7 +100,7 @@ export default function ProductoImagenes({ alojamiento }) {
           <h2 className={styles.textoRedesSociales}>
             Compartí el alojamiento en tu red social favorita!
           </h2>
-            {LinksRedesSociales()}
+          {LinksRedesSociales()}
         </div>
       </Modal>
     </section>

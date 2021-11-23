@@ -82,7 +82,7 @@ export default function Register() {
       <div className={styles.contenedorForm}>
         <h2>Crear cuenta</h2>
         <form
-          className={styles.formRegister}
+          className={`${styles.formRegister} ${styles.generalForms}`}
           onSubmit={handleSubmit}
           noValidate="novalidate"
         >

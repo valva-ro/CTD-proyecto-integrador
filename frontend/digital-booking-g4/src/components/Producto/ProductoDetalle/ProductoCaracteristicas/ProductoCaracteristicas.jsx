@@ -1,8 +1,9 @@
-import TituloBloque from "../../TituloBloque/TituloBloque";
+import TituloBloque from "../../../TituloBloque/TituloBloque";
 import styles from "./ProductoCaracteristicas.module.css";
 
-export default function ProductoCaracteristicas({ alojamiento: { caracteristicas } }) {
-
+export default function ProductoCaracteristicas({
+  alojamiento: { caracteristicas },
+}) {
   return (
     <section className={styles.ProductoCaracteristicas}>
       <TituloBloque>¿Qué ofrece este lugar? </TituloBloque>
@@ -24,7 +25,7 @@ export default function ProductoCaracteristicas({ alojamiento: { caracteristicas
           })
         ) : (
           <h2 className={styles.sinResultados}>
-            Este alojamiento no tiene características. 
+            Este alojamiento no tiene características.
           </h2>
         )}
       </div>

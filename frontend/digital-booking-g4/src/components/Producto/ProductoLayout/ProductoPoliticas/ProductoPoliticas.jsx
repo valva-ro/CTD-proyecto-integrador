@@ -1,4 +1,4 @@
-import TituloBloque from "../../TituloBloque/TituloBloque";
+import TituloBloque from "../../../TituloBloque/TituloBloque";
 import styles from "./ProductoPoliticas.module.css";
 import { useParams } from "react-router-dom";
 

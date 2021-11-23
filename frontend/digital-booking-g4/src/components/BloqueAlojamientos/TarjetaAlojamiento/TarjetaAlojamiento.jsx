@@ -34,10 +34,7 @@ export default function TarjetaAlojamiento({
       setIsFavorito(favoritos.find((fav) => fav.id == id) !== undefined)
     }
   }, [isLoaded, isLogged, items, favoritos]);
-  
-  console.log("favoritos");
-  console.log(favoritos);
-  
+    
   const buscarImagenPrincipal = () => {
     let imagen = imagenes.find((imagen) => {
       return imagen.imagenTitulo === "Principal";
@@ -146,7 +143,7 @@ export default function TarjetaAlojamiento({
             </>
           )}
         </p>
-        <Link to={`product/${id}`}>
+        <Link to={`product/${id}/features`}>
           <FilledButton styles={styles.btnVerMas}>Ver más</FilledButton>
         </Link>
       </div>
