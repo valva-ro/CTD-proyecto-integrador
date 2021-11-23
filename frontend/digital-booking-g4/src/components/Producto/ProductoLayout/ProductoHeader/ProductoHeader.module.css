@@ -29,12 +29,13 @@
     font-size: 1.5rem;
 }
 
-.headerIzquierda a {
+.headerIzquierda .a  {
     color: var(--color-5);
     transition: all ease-in-out 250ms;
+    
 }
 
-.headerIzquierda a:hover {
+.headerIzquierda .a:hover  {
     color: var(--color-principal);
 }
 
@@ -47,19 +48,21 @@
 .headerIzquierda{
     display: flex;
     justify-content: center;
+    cursor:pointer;
 }
-.headerIzquierda a span:first-child {
+.headerIzquierda  .a span:first-child {
     display: inline-block;
     padding: 5px 52px 5px 0;
+    cursor:pointer;
 }
 
-.headerIzquierda a{
+.headerIzquierda  .a {
     display: block;
     position: relative;
     overflow: hidden;
 }
 
-.headerIzquierda a span:last-child {
+.headerIzquierda .a  span:last-child {
     font-size: 1rem;
     font-weight: 700;
     position: absolute;
@@ -71,17 +74,18 @@
     align-items: center;
     justify-content: flex-start;
     transform: translateY(-100%);
+    cursor:pointer;
 }
 
-.headerIzquierda a span {
+.headerIzquierda  .a  span {
     transition: transform 0.2s ease-out;
 }
    
-.headerIzquierda a:hover span:first-child {
+.headerIzquierda .a:hover span:first-child {
     transform: translateY(100%);
 }
    
-.headerIzquierda a:hover span:last-child {
+.headerIzquierda .a:hover span:last-child {
     transform: none;
 }
 
@@ -96,15 +100,15 @@
         font-size: 2.25rem;
     }
 
-    .headerIzquierda a span:first-child {
+    .headerIzquierda .a span:first-child {
         padding: 5px 15px 5px 0;
     }
 
-    .headerIzquierda a span:last-child{
+    .headerIzquierda .a span:last-child{
         display:none
     }
 
-    .headerIzquierda a:hover span:first-child {
+    .headerIzquierda .a:hover span:first-child {
         transform: none;
     }
 
