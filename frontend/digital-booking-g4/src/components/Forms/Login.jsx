@@ -51,7 +51,7 @@ export default function Login() {
         <div className={styles.contenedorForm}>
           <h2>Iniciar sesión</h2>
           <form
-            className={styles.formLogin}
+            className={`${styles.formLogin} ${styles.generalForms}`}
             onSubmit={handleSubmit}
             noValidate="novalidate"
           >

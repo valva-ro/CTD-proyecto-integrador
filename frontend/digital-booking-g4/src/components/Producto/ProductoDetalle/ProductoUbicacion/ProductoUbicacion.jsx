@@ -1,7 +1,7 @@
-import Estrellas from "../../Estrellas/Estrellas";
+import Estrellas from "../../../Estrellas/Estrellas";
 import styles from "./ProductoUbicacion.module.css";
-import calcularPromedioPuntuacion from "../../../utils/calcularPromedioPuntuacion";
-import obtenerClasificacion from "../../../utils/obtenerClasificacion";
+import calcularPromedioPuntuacion from "../../../../utils/calcularPromedioPuntuacion";
+import obtenerClasificacion from "../../../../utils/obtenerClasificacion";
 
 export default function ProductoUbicacion({
   alojamiento: { ciudad, puntuaciones },

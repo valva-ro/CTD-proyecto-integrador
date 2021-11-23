@@ -6,6 +6,7 @@
         "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae minima illum omnis suscipit vel laborum commodi provident eveniet harum voluptatem quam cumque, nam maiores?",
         "location": "Buenos Aires",
         "points": "9",
+        "checkInTime": 10,
         "product":{
             "title":"Alójate en el corazón de Buenos Aires",
             "info": [
@@ -67,6 +68,7 @@
         "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae minima illum omnis suscipit vel laborum commodi provident eveniet harum voluptatem quam cumque, nam maiores?",
         "location": "Buenos Aires",
         "points": "7.5",
+        "checkInTime": 9,
         "product":{
             "title":"Alójate en el centro histórico de Buenos Aires",
             "info": [
@@ -128,6 +130,7 @@
         "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae minima illum omnis suscipit vel laborum commodi provident eveniet harum voluptatem quam cumque, nam maiores?",
         "location": "Mendoza",
         "points": "6",
+        "checkInTime": 13,
         "product":{
             "title":"Alójate en el centro de Mendoza",
             "info": [
@@ -189,6 +192,7 @@
         "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae minima illum omnis suscipit vel laborum commodi provident eveniet harum voluptatem quam cumque, nam maiores?",
         "location": "San Carlos de Bariloche",
         "points": "7",
+        "checkInTime": "11",
         "product":{
             "title":"Alójate en el mejor sector de San Carlos de Bariloche",
             "info": [
@@ -250,6 +254,7 @@
         "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae minima illum omnis suscipit vel laborum commodi provident eveniet harum voluptatem quam cumque, nam maiores?",
         "location": "San Carlos de Bariloche",
         "points": "9",
+        "checkInTime": "14",
         "product":{
             "title":"Alójate a las afueras de San Carlos de Bariloche",
             "info": [
@@ -310,6 +315,7 @@
         "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae minima illum omnis suscipit vel laborum commodi provident eveniet harum voluptatem quam cumque, nam maiores?",
         "location": "Córdoba",
         "points": "6.5",
+        "checkInTime": "10",
         "product":{
             "title":"Alójate en uno de los sectores más exclusivos de Córdoba",
             "info": [
@@ -370,6 +376,7 @@
         "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae minima illum omnis suscipit vel laborum commodi provident eveniet harum voluptatem quam cumque, nam maiores?",
         "location": "Córdoba",
         "points": "8",
+        "checkInTime": "9",
         "product":{
             "title":"Alójate en el centro de Córdoba",
             "info": [
@@ -431,6 +438,7 @@
         "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae minima illum omnis suscipit vel laborum commodi provident eveniet harum voluptatem quam cumque, nam maiores?",
         "location": "Bogotá",
         "points": "8.5",
+        "checkInTime": "12",
         "product":{
             "title":"Alójate en el norte de Bogotá",
             "info": [
@@ -492,6 +500,7 @@
         "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae minima illum omnis suscipit vel laborum commodi provident eveniet harum voluptatem quam cumque, nam maiores?",
         "location": "Bogotá",
         "points": "8.5",
+        "checkInTime": "12",
         "product":{
             "title":"Alójate en el norte de Bogotá",
             "info": [
@@ -553,6 +562,7 @@
         "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae minima illum omnis suscipit vel laborum commodi provident eveniet harum voluptatem quam cumque, nam maiores?",
         "location": "Bogotá",
         "points": "8.5",
+        "checkInTime": "11",
         "product":{
             "title":"Alójate en el norte de Bogotá",
             "info": [
@@ -614,6 +624,7 @@
         "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae minima illum omnis suscipit vel laborum commodi provident eveniet harum voluptatem quam cumque, nam maiores?",
         "location": "Bogotá",
         "points": "8.5",
+        "checkInTime": "13",
         "product":{
             "title":"Alójate en el norte de Bogotá",
             "info": [
@@ -675,6 +686,7 @@
         "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae minima illum omnis suscipit vel laborum commodi provident eveniet harum voluptatem quam cumque, nam maiores?",
         "location": "Bogotá",
         "points": "8.5",
+        "checkInTime": "15",
         "product":{
             "title":"Alójate en el norte de Bogotá",
             "info": [
@@ -736,6 +748,7 @@
         "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae minima illum omnis suscipit vel laborum commodi provident eveniet harum voluptatem quam cumque, nam maiores?",
         "location": "Bogotá",
         "points": "8.5",
+        "checkInTime": "14",
         "product":{
             "title":"Alójate en el norte de Bogotá",
             "info": [
@@ -797,6 +810,7 @@
         "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae minima illum omnis suscipit vel laborum commodi provident eveniet harum voluptatem quam cumque, nam maiores?",
         "location": "Bogotá",
         "points": "8.5",
+        "checkInTime": "12",
         "product":{
             "title":"Alójate en el norte de Bogotá",
             "info": [
@@ -858,6 +872,7 @@
         "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae minima illum omnis suscipit vel laborum commodi provident eveniet harum voluptatem quam cumque, nam maiores?",
         "location": "Bogotá",
         "points": "8.5",
+        "checkInTime": "10",
         "product":{
             "title":"Alójate en el norte de Bogotá",
             "info": [

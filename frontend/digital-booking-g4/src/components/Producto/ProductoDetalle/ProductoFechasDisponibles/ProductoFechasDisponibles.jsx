@@ -1,27 +1,33 @@
 import { useState } from "react";
-import TituloBloque from "../../TituloBloque/TituloBloque";
+import TituloBloque from "../../../TituloBloque/TituloBloque";
 import DatePicker, {
   CalendarContainer,
   registerLocale,
 } from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import styles from "./ProductoFechasDisponibles.module.css";
-import FilledButton from "../../Buttons/FilledButton";
+import FilledButton from "../../../Buttons/FilledButton";
 import es from "date-fns/locale/es";
-import useScreenWidth from "../../../hooks/useScreenWidth";
-import excludedDates from "../../../utils/excludedDates";
+import useScreenWidth from "../../../../hooks/useScreenWidth";
+import obtenerFechasReservadas from "../../../../utils/obtenerFechasReservadas.js"
+import obtenerFechasNoSeleccionables from "../../../../utils/obtenerFechasNoSeleccionables.js"
+import useDisabledDate from "../../../../hooks/useDisabledDates"
+
 
 registerLocale("es", es);
 
 export default function ProductoFechasDisponibles() {
-  const [dateRange, setDateRange] = useState([null, null]);
   const startDateStorage = localStorage.hasOwnProperty("startDate")
     ? new Date(JSON.parse(localStorage.getItem("startDate")))
     : null;
   const endDateStorage = localStorage.hasOwnProperty("endDate")
     ? new Date(JSON.parse(localStorage.getItem("endDate")))
     : null;
-  const [startDate, endDate] = [startDateStorage, endDateStorage];
+  const [dateRange, setDateRange] = useState([startDateStorage, endDateStorage]);
+  const [startDate, endDate] = dateRange;
+  const fechasReservadas = obtenerFechasReservadas();
+  const fechasNoSeleccionables = obtenerFechasNoSeleccionables(startDate);
+  const excludeDatesDinamico = useDisabledDate(fechasReservadas, fechasNoSeleccionables, startDate, endDate);
 
   const anchoPantalla = useScreenWidth();
 
@@ -43,7 +49,7 @@ export default function ProductoFechasDisponibles() {
           calendarContainer={MyContainer}
           locale={es}
           formatWeekDay={(nameOfDay) => nameOfDay.substr(0, 1)}
-          excludeDates={excludedDates()}
+          excludeDates={excludeDatesDinamico}
           minDate={new Date()}
           onChange={(update) => {
             setDateRange(update);

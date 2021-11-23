@@ -15,6 +15,8 @@ public class Producto {
     private Long id;
     private String nombre;
     private String descripcion;
+    @Column(name="horario_check_in")
+    private Integer horarioCheckIn;
 
     @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "fk_categoria")
@@ -78,6 +80,35 @@ public class Producto {
         this.caracteristicas = caracteristicas;
     }
 
+    public Producto(String nombre, String descripcion, Integer horarioCheckIn, Categoria categoria, Ciudad ciudad, Set<Imagen> imagenes, Set<Reserva> reservas, List<Puntuacion> puntuaciones, Set<Politica> politicas, Set<Caracteristica> caracteristicas, Set<Usuario> usuarios) {
+        this.nombre = nombre;
+        this.descripcion = descripcion;
+        this.horarioCheckIn = horarioCheckIn;
+        this.categoria = categoria;
+        this.ciudad = ciudad;
+        this.imagenes = imagenes;
+        this.reservas = reservas;
+        this.puntuaciones = puntuaciones;
+        this.politicas = politicas;
+        this.caracteristicas = caracteristicas;
+        this.usuarios = usuarios;
+    }
+
+    public Producto(Long id, String nombre, String descripcion, Integer horarioCheckIn, Categoria categoria, Ciudad ciudad, Set<Imagen> imagenes, Set<Reserva> reservas, List<Puntuacion> puntuaciones, Set<Politica> politicas, Set<Caracteristica> caracteristicas, Set<Usuario> usuarios) {
+        this.id = id;
+        this.nombre = nombre;
+        this.descripcion = descripcion;
+        this.horarioCheckIn = horarioCheckIn;
+        this.categoria = categoria;
+        this.ciudad = ciudad;
+        this.imagenes = imagenes;
+        this.reservas = reservas;
+        this.puntuaciones = puntuaciones;
+        this.politicas = politicas;
+        this.caracteristicas = caracteristicas;
+        this.usuarios = usuarios;
+    }
+
     public Long getId() {
         return id;
     }
@@ -100,6 +131,14 @@ public class Producto {
 
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
+    }
+
+    public Integer getHorarioCheckIn() {
+        return horarioCheckIn;
+    }
+
+    public void setHorarioCheckIn(Integer horarioCheckIn) {
+        this.horarioCheckIn = horarioCheckIn;
     }
 
     public Categoria getCategoria() {

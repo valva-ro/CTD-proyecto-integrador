@@ -79,6 +79,7 @@ CREATE TABLE IF NOT EXISTS productos (
 	producto_id INT UNSIGNED NOT NULL AUTO_INCREMENT,
     nombre VARCHAR(50) NOT NULL,
     descripcion TEXT NOT NULL,
+	horario_check_in INT UNSIGNED NOT NULL,
     fk_categoria SMALLINT UNSIGNED NOT NULL,
     fk_ciudad INT UNSIGNED NOT NULL,
     PRIMARY KEY  (producto_id),
