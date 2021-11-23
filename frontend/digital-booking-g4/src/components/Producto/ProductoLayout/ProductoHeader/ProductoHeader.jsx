@@ -7,16 +7,16 @@ export default function ProductHeader({ alojamiento }) {
     <>
       <div className={styles.contenedorHeader}>
         <div className={styles.headerIzquierda}>
-          <p>{alojamiento.categoria.titulo}</p>
-          <p>{alojamiento.nombre}</p>
-        </div>
-        <div className={styles.headerDerecha}>
           <Link to="/">
             <span>
-              <i className='bx bx-library' aria-hidden="true"></i>
+              <i className="fas fa-chevron-left" aria-hidden="true"></i> 
             </span>
-            <span>HOME</span>
+            <span>ATRÁS</span>
           </Link>
+        </div>
+        <div className={styles.headerDerecha}>
+          <p>{alojamiento.categoria.titulo}</p>
+          <p>{alojamiento.nombre}</p>
         </div>
       </div>
     </>
