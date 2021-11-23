@@ -39,6 +39,7 @@ CREATE TABLE IF NOT EXISTS productos (
 	producto_id INT UNSIGNED NOT NULL AUTO_INCREMENT,
     nombre VARCHAR(50) NOT NULL,
     descripcion TEXT NOT NULL,
+	horario_check_in INT UNSIGNED NOT NULL,
     fk_categoria SMALLINT UNSIGNED NOT NULL,
     fk_ciudad INT UNSIGNED NOT NULL,
     PRIMARY KEY  (producto_id),
@@ -232,7 +233,6 @@ USE booking;
 -- Dumping data for table `ciudades`
 --
 SET AUTOCOMMIT=0;
-DELETE from ciudades;
 INSERT INTO ciudades (nombre, pais, latitud, longitud) VALUES ('Capital Federal','Argentina',-34.6083, -58.3712);
 INSERT INTO ciudades (nombre, pais, latitud, longitud) VALUES ('La Plata','Argentina',-34.9214,-57.9544);
 INSERT INTO ciudades (nombre, pais, latitud, longitud) VALUES ('Córdoba','Argentina',-31.417,-64.183);
@@ -252,7 +252,6 @@ COMMIT;
 -- Dumping data for table `categorias`
 --
 SET AUTOCOMMIT=0;
-DELETE from categorias;
 INSERT INTO categorias (titulo, descripcion, URL_imagen) VALUES ("Hoteles","807.105 hoteles","https://proyectointegradorimagenes2.s3.us-east-2.amazonaws.com/Categorias/Hoteles.jfif");
 INSERT INTO categorias (titulo, descripcion, URL_imagen) VALUES ("Hostels","807.105 hostels","https://proyectointegradorimagenes2.s3.us-east-2.amazonaws.com/Categorias/Hostels.jfif");
 INSERT INTO categorias (titulo, descripcion, URL_imagen) VALUES ("Bed & Breakfasts","807.105 B&B's","https://proyectointegradorimagenes2.s3.us-east-2.amazonaws.com/Categorias/Bed+%26+Breakfasts.jfif");
@@ -263,28 +262,26 @@ COMMIT;
 -- Dumping data for table `productos`
 --
 SET AUTOCOMMIT=0;
-DELETE from productos;
-INSERT INTO productos (nombre, descripcion, fk_categoria, fk_ciudad) VALUES ("Meliá","Complejos turísticos con servicio “todo incluido” para disfrutar de unas vacaciones de lujo, diseñados para mezclarse con su entorno natural en lugares muy exóticos donde disfrutar de una experiencia verdaderamente única.", 1, 2);
-INSERT INTO productos (nombre, descripcion, fk_categoria, fk_ciudad) VALUES ("Palladium","La cadena hotelera Palladium Hotel Group nace a finales de los años 60 en Ibiza de la mano del empresario Abel Matutes Juan, con el sueño de acercar el paraíso a los viajeros y ofrecerles experiencias increíbles. Se propone diseñar los alojamientos más exclusivos donde el lujo, la calidad y el mejor servicio son los pilares principales. Sus primeros pasos fueron en las Islas Baleares y las Islas Canarias, a principios de los 90 continuó su aventura con la apertura de varios resorts en el Caribe. ", 1, 8);
-INSERT INTO productos (nombre, descripcion, fk_categoria, fk_ciudad) VALUES ("La Casa del Sol","Ubicado en las cercanías de la estación de metro Las Aguas, el apartamento Casa Del Sol Hostal ofrece un depósito de equipaje y un mostrador de información turística. El apartamento consta de una cocina compartida, un balcón y un baño privado. National University of Colombia está a una distancia de 5 km, mientras que Cascada La Chorrera está a 4.3 km. Se ubica en Bogotá, a 1 km del centro de la ciudad.", 3, 4);
-INSERT INTO productos (nombre, descripcion, fk_categoria, fk_ciudad) VALUES ("Easy Start","Descubre por qué tantos viajeros ven Central Green Hotel como el hotel ideal cuando visitan Budapest. Además de aportar la combinación ideal de calidad, comodidad y ubicación, ofrece un ambiente económico con una amplia variedad de servicios diseñados para viajeros como tú.", 4, 4);
-INSERT INTO productos (nombre, descripcion, fk_categoria, fk_ciudad) VALUES ("Hotel España","El Hotel España 4* está situado en la Calle Sant Pau, en pleno centro histórico de Barcelona, al lado de Las Ramblas, el Gran Teatre del Liceu, el mercado de La Boquería… y un sinfín de lugares de interés que hacen de Barcelona una de las ciudades más cosmopolitas de Europa.", 1, 1);
-INSERT INTO productos (nombre, descripcion, fk_categoria, fk_ciudad) VALUES ("La Surfería","LA SURFERÍA se encuentra a pie de la playa de La Concha en Suances Cantabria. ¿Imaginas despertar en un lugar en el que nada mas abrir los ojos tengas la sensación de poder tocar el mar? La Surfería te brinda la oportunidad de disfrutar de la sensación de poder rozar con los dedos de los pies la fina arena de las playas del Cantábrico desde el confort de sus habitaciones totalmente reformadas en el 2019. Nace de años de playa y olas, de festivales de músicas del mundo, de viajes surferos y comidas exóticas. Aunamos experiencia en hotelería, hostelería, tiendas de surf y escuelas de surf.", 2, 6);
-INSERT INTO productos (nombre, descripcion, fk_categoria, fk_ciudad) VALUES ("Vivac Hostel","Hostel VIVAC se encuentra en el centro geográfico de la ciudad de Buenos Aires. Te garantizamos el menor costo de transporte a cualquier punto de ciudad y el menor tiempo promedio de traslados. Se trata de la zona más poblada y segura de la ciudad, con amplia disponibilidad de comercios, servicios y entretenimiento.", 2, 5);
-INSERT INTO productos (nombre, descripcion, fk_categoria, fk_ciudad) VALUES ("Los Angelitos","Ubicado a 1 del centro de Federación, Apart Hotel Los Angelitos ofrece WiFi en las habitaciones. El albergue está a solo 250 metros de los Termas de Federación. El hotel ofrece 15 cuartos equipados con TV con múltiples canales, una cocina pequeña y un balcón. Los huéspedes disfrutarán de toallas de baño, toallas y un secador de pelo proporcionados en los baños. Con una variedad grande de platos, Ki Karu y el Puerto Sanchez están a 175 metros de la propiedad. El hotel está a 52 minutos en coche del Aeropuerto Concordia, que está situado a 60 km.", 3, 9);
-INSERT INTO productos (nombre, descripcion, fk_categoria, fk_ciudad) VALUES ("Doña María","Ubicado en el centro de la ciudad de Ocaña, en medio de la zonas turísticas y de comercio, en una pintoresca casa se encuentra el contemporáneo Hotel Boutique Doña María con habitaciones que cuidan cada detalle para brindar calidez y tranquilidad.", 4, 11);
-INSERT INTO productos (nombre, descripcion, fk_categoria, fk_ciudad) VALUES ("Dpto. en Bariloche","HABILITADO POR TURISMO. DAT DT 132/2018 Hermoso departamento con ubicación privilegiada, en un barrio tranquilo, con vista panorámica a Los Andes y al Lago Nahuel Huapi. A solo 5 minutos del centro de la ciudad y 20 minutos de las pistas de ski C.Catedral. Mi alojamiento es bueno para parejas aventureros, viajeros de negocios, familias con hijos y grupos grandes ya que con La Casa Andes View Temporario podemos alojar hasta 18 personas. Excelente calidad de construcción con madera local y diseño moderno.", 4, 13);
-INSERT INTO productos (nombre, descripcion, fk_categoria, fk_ciudad) VALUES ("El Enemigo","El mayor enemigo que tenemos las personas somos nosotros mismos. Esta es la esencia de Casa El Enemigo en Mendoza, Argentina. En su logotipo muestra la lucha de un hombre y un dragón como esencia de lo que hacemos todos cada día: luchar con nosotros mismos, con nuestros miedos y frustraciones, para tratar de alcanzar nuestros objetivos. Esta fue la idea con la que el enólogo Alejandro Vigil creó esta marca, y con la que se etiqueta uno de los mejores vinos de Argentina.", 3, 10);
-INSERT INTO productos (nombre, descripcion, fk_categoria, fk_ciudad) VALUES ("Las Perdices","Complejo informal de cabañas con decoración cálida en las montañas con piscina al aire libre de temporada.", 2, 9);
-INSERT INTO productos (nombre, descripcion, fk_categoria, fk_ciudad) VALUES ("Casa Petrini","Casa Petrini, es un proyecto enoturístico que integra Bodega, Alojamiento, Restaurant y Spa. Ubicado en el Valle de Uco, Tupungato, a tan solo 90 minutos de la ciudad de Mendoza, Argentina.", 2, 1);
-INSERT INTO productos (nombre, descripcion, fk_categoria, fk_ciudad) VALUES ("Ana Bistró","Anna Bistro es un paraíso en la ciudad, un lugar que recuerda al propio hogar. Desestructurado y relajado, al encontrarse en medio de un gran jardín logra que los espacios interiores y exteriores interactúen constantemente. Este lugar no posee la formalidad de un clásico restaurante ya que dentro de un mismo lugar es posible encontrar una opción para el desayuno y cafetería abastecida con excelente pastelería propia, petites dejeuners y american breakfast cuyas cartas se complementan con coisantes, facturas, tostados, jugos, huevos, yogur con ensalada de frutas, frutas secas y miel que complementan la propuesta matutina.", 3, 8);
+INSERT INTO productos (nombre, descripcion, horario_check_in, fk_categoria, fk_ciudad) VALUES ("Meliá","Complejos turísticos con servicio “todo incluido” para disfrutar de unas vacaciones de lujo, diseñados para mezclarse con su entorno natural en lugares muy exóticos donde disfrutar de una experiencia verdaderamente única.", 12, 1, 2);
+INSERT INTO productos (nombre, descripcion, horario_check_in, fk_categoria, fk_ciudad) VALUES ("Palladium","La cadena hotelera Palladium Hotel Group nace a finales de los años 60 en Ibiza de la mano del empresario Abel Matutes Juan, con el sueño de acercar el paraíso a los viajeros y ofrecerles experiencias increíbles. Se propone diseñar los alojamientos más exclusivos donde el lujo, la calidad y el mejor servicio son los pilares principales. Sus primeros pasos fueron en las Islas Baleares y las Islas Canarias, a principios de los 90 continuó su aventura con la apertura de varios resorts en el Caribe. ", 14, 1, 8);
+INSERT INTO productos (nombre, descripcion, horario_check_in, fk_categoria, fk_ciudad) VALUES ("La Casa del Sol","Ubicado en las cercanías de la estación de metro Las Aguas, el apartamento Casa Del Sol Hostal ofrece un depósito de equipaje y un mostrador de información turística. El apartamento consta de una cocina compartida, un balcón y un baño privado. National University of Colombia está a una distancia de 5 km, mientras que Cascada La Chorrera está a 4.3 km. Se ubica en Bogotá, a 1 km del centro de la ciudad.", 16, 3, 4);
+INSERT INTO productos (nombre, descripcion, horario_check_in, fk_categoria, fk_ciudad) VALUES ("Easy Start","Descubre por qué tantos viajeros ven Central Green Hotel como el hotel ideal cuando visitan Budapest. Además de aportar la combinación ideal de calidad, comodidad y ubicación, ofrece un ambiente económico con una amplia variedad de servicios diseñados para viajeros como tú.", 13, 4, 4);
+INSERT INTO productos (nombre, descripcion, horario_check_in, fk_categoria, fk_ciudad) VALUES ("Hotel España","El Hotel España 4* está situado en la Calle Sant Pau, en pleno centro histórico de Barcelona, al lado de Las Ramblas, el Gran Teatre del Liceu, el mercado de La Boquería… y un sinfín de lugares de interés que hacen de Barcelona una de las ciudades más cosmopolitas de Europa.", 13, 1, 1);
+INSERT INTO productos (nombre, descripcion, horario_check_in, fk_categoria, fk_ciudad) VALUES ("La Surfería","LA SURFERÍA se encuentra a pie de la playa de La Concha en Suances Cantabria. ¿Imaginas despertar en un lugar en el que nada mas abrir los ojos tengas la sensación de poder tocar el mar? La Surfería te brinda la oportunidad de disfrutar de la sensación de poder rozar con los dedos de los pies la fina arena de las playas del Cantábrico desde el confort de sus habitaciones totalmente reformadas en el 2019. Nace de años de playa y olas, de festivales de músicas del mundo, de viajes surferos y comidas exóticas. Aunamos experiencia en hotelería, hostelería, tiendas de surf y escuelas de surf.", 12, 2, 6);
+INSERT INTO productos (nombre, descripcion, horario_check_in, fk_categoria, fk_ciudad) VALUES ("Vivac Hostel","Hostel VIVAC se encuentra en el centro geográfico de la ciudad de Buenos Aires. Te garantizamos el menor costo de transporte a cualquier punto de ciudad y el menor tiempo promedio de traslados. Se trata de la zona más poblada y segura de la ciudad, con amplia disponibilidad de comercios, servicios y entretenimiento.", 12, 2, 5);
+INSERT INTO productos (nombre, descripcion, horario_check_in, fk_categoria, fk_ciudad) VALUES ("Los Angelitos","Ubicado a 1 del centro de Federación, Apart Hotel Los Angelitos ofrece WiFi en las habitaciones. El albergue está a solo 250 metros de los Termas de Federación. El hotel ofrece 15 cuartos equipados con TV con múltiples canales, una cocina pequeña y un balcón. Los huéspedes disfrutarán de toallas de baño, toallas y un secador de pelo proporcionados en los baños. Con una variedad grande de platos, Ki Karu y el Puerto Sanchez están a 175 metros de la propiedad. El hotel está a 52 minutos en coche del Aeropuerto Concordia, que está situado a 60 km.", 11, 3, 9);
+INSERT INTO productos (nombre, descripcion, horario_check_in, fk_categoria, fk_ciudad) VALUES ("Doña María","Ubicado en el centro de la ciudad de Ocaña, en medio de la zonas turísticas y de comercio, en una pintoresca casa se encuentra el contemporáneo Hotel Boutique Doña María con habitaciones que cuidan cada detalle para brindar calidez y tranquilidad.", 14, 4, 11);
+INSERT INTO productos (nombre, descripcion, horario_check_in, fk_categoria, fk_ciudad) VALUES ("Dpto. en Bariloche","HABILITADO POR TURISMO. DAT DT 132/2018 Hermoso departamento con ubicación privilegiada, en un barrio tranquilo, con vista panorámica a Los Andes y al Lago Nahuel Huapi. A solo 5 minutos del centro de la ciudad y 20 minutos de las pistas de ski C.Catedral. Mi alojamiento es bueno para parejas aventureros, viajeros de negocios, familias con hijos y grupos grandes ya que con La Casa Andes View Temporario podemos alojar hasta 18 personas. Excelente calidad de construcción con madera local y diseño moderno.", 16, 4, 13);
+INSERT INTO productos (nombre, descripcion, horario_check_in, fk_categoria, fk_ciudad) VALUES ("El Enemigo","El mayor enemigo que tenemos las personas somos nosotros mismos. Esta es la esencia de Casa El Enemigo en Mendoza, Argentina. En su logotipo muestra la lucha de un hombre y un dragón como esencia de lo que hacemos todos cada día: luchar con nosotros mismos, con nuestros miedos y frustraciones, para tratar de alcanzar nuestros objetivos. Esta fue la idea con la que el enólogo Alejandro Vigil creó esta marca, y con la que se etiqueta uno de los mejores vinos de Argentina.", 12, 3, 10);
+INSERT INTO productos (nombre, descripcion, horario_check_in, fk_categoria, fk_ciudad) VALUES ("Las Perdices","Complejo informal de cabañas con decoración cálida en las montañas con piscina al aire libre de temporada.", 15, 2, 9);
+INSERT INTO productos (nombre, descripcion, horario_check_in, fk_categoria, fk_ciudad) VALUES ("Casa Petrini","Casa Petrini, es un proyecto enoturístico que integra Bodega, Alojamiento, Restaurant y Spa. Ubicado en el Valle de Uco, Tupungato, a tan solo 90 minutos de la ciudad de Mendoza, Argentina.", 13, 2, 1);
+INSERT INTO productos (nombre, descripcion, horario_check_in, fk_categoria, fk_ciudad) VALUES ("Ana Bistró","Anna Bistro es un paraíso en la ciudad, un lugar que recuerda al propio hogar. Desestructurado y relajado, al encontrarse en medio de un gran jardín logra que los espacios interiores y exteriores interactúen constantemente. Este lugar no posee la formalidad de un clásico restaurante ya que dentro de un mismo lugar es posible encontrar una opción para el desayuno y cafetería abastecida con excelente pastelería propia, petites dejeuners y american breakfast cuyas cartas se complementan con coisantes, facturas, tostados, jugos, huevos, yogur con ensalada de frutas, frutas secas y miel que complementan la propuesta matutina.", 16, 3, 8);
 COMMIT;
 
 --
 -- Dumping data for table `caracteristicas`
 --
 SET AUTOCOMMIT=0;
-DELETE from caracteristicas;
 INSERT INTO caracteristicas (nombre, icono) VALUES ("Wifi","fas fa-wifi");
 INSERT INTO caracteristicas (nombre, icono) VALUES ("Piscina","fas fa-swimmer");
 INSERT INTO caracteristicas (nombre, icono) VALUES ("Estacionamiento gratuito","fas fa-car");
@@ -359,7 +356,6 @@ COMMIT;
 -- Dumping data for table `imagenes`
 --
 SET AUTOCOMMIT=0;
-DELETE from imagenes;
 -- Producto 1
 INSERT INTO imagenes (imagen_titulo, imagen_URL, fk_producto) VALUES ("Habitación","https://proyectointegradorimagenes2.s3.us-east-2.amazonaws.com/Imagenes/Habitacion.jpg",1);
 INSERT INTO imagenes (imagen_titulo, imagen_URL, fk_producto) VALUES ("Baño","https://proyectointegradorimagenes2.s3.us-east-2.amazonaws.com/Imagenes/banio.jpg",1);
@@ -478,7 +474,6 @@ COMMIT;
 -- Dumping data for table `tipo_politica`
 --
 SET AUTOCOMMIT=0;
-DELETE from tipo_politica;
 INSERT INTO tipo_politica (nombre) VALUES ("Normas de la casa");
 INSERT INTO tipo_politica (nombre) VALUES ("Salud y seguridad");
 INSERT INTO tipo_politica (nombre) VALUES ("Política de cancelación");
@@ -489,7 +484,6 @@ COMMIT;
 -- Dumping data for table `politica`
 --
 SET AUTOCOMMIT=0;
-DELETE from politicas;
 INSERT INTO politicas (nombre,fk_tipo_politica) VALUES ("Check-in: 10:00",1);
 INSERT INTO politicas (nombre,fk_tipo_politica) VALUES ("Check-out: 20:00",1);
 INSERT INTO politicas (nombre,fk_tipo_politica) VALUES ("Dejar organizado antes de salir",1);
@@ -513,7 +507,6 @@ COMMIT;
 -- Dumping data for table `politica_producto` 
 --
 SET AUTOCOMMIT=0;
-DELETE from politica_producto;
 -- Producto 1
 INSERT INTO politica_producto (politica_id, producto_id) VALUES (1,1);
 INSERT INTO politica_producto (politica_id, producto_id) VALUES (3,1);
@@ -689,7 +682,6 @@ COMMIT;
 -- Dumping data for table `usuario_producto`
 --
 SET AUTOCOMMIT=0;
-DELETE FROM usuario_producto;
 -- Usuario 1
 INSERT INTO usuario_producto (usuario_id, producto_id) VALUES (1, 1);
 INSERT INTO usuario_producto (usuario_id, producto_id) VALUES (1, 2);
@@ -711,7 +703,6 @@ COMMIT;
 -- Dumping data for table `puntuaciones`
 --
 SET AUTOCOMMIT=0;
-DELETE FROM puntuaciones;
 -- Producto 1
 INSERT INTO puntuaciones (puntuacion, fk_producto, fk_usuario) VALUES (2, 1, 1);
 INSERT INTO puntuaciones (puntuacion, fk_producto, fk_usuario) VALUES (4, 1, 2);
