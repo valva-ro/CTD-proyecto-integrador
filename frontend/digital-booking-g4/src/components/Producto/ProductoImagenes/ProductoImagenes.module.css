@@ -30,6 +30,11 @@
 
 .iconos i:hover {
   color: var(--color-principal);
+  cursor: pointer;
+}
+
+.corazon {
+  transition: all ease 350ms;
 }
 
 .imagenPrincipal,

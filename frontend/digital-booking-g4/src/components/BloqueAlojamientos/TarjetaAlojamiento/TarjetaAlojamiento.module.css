@@ -41,7 +41,6 @@
 
 .corazon:hover {
   cursor: pointer;
-  /* transform: scale(1.2);  */
   color: var(--color-principal);
 }
 

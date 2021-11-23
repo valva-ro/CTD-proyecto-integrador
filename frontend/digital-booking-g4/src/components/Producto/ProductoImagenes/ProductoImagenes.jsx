@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect, useContext } from "react";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { SimpleShareButtons } from "react-simple-share";
@@ -6,6 +6,8 @@ import Modal from "../../Modal/Modal";
 import FilledButton from "../../Buttons/FilledButton";
 import styles from "./ProductoImagenes.module.css";
 import "./CarouselStyles.css";
+import loggedContext from "../../../contexts/loggedContext";
+import useFetch from "../../../hooks/useFetch";
 
 export default function ProductoImagenes({ alojamiento }) {
   const [carruselEstaAbierto, setCarruselEstaAbierto] = useState(false);
@@ -16,6 +18,36 @@ export default function ProductoImagenes({ alojamiento }) {
   const abrirCarousel = () => setCarruselEstaAbierto(true);
   const abrirRedesSociales = () => setRedesSocialesEstaAbierto(true);
   const { imagenes } = alojamiento;
+  const idUsuario = parseInt(localStorage.getItem("id"));
+  const [isFavorito, setIsFavorito] = useState();
+  const { isLogged } = useContext(loggedContext);
+  const [favoritos, setFavoritos] = useState([]);
+  const { isLoaded, items } = useFetch(`usuarios/${idUsuario}`);
+
+  useEffect(() => {
+    if (isLogged && isLoaded) {
+      setFavoritos(items.productosFavoritos);
+      setIsFavorito(favoritos.find((fav) => fav.id == alojamiento.id) !== undefined);
+    }
+  }, [isLoaded, isLogged, items, favoritos]);
+
+  async function fetchFav(accion) {
+    await fetch(
+      `http://localhost:8080/productos/${alojamiento.id}/${accion}/usuarios/${idUsuario}`,
+      {
+        method: "PUT",
+      }
+    );
+  }
+
+  const handleFav = () => {
+    if (!isFavorito) {
+      fetchFav("agregar");
+    } else {
+      fetchFav("eliminar");
+    }
+    setIsFavorito(!isFavorito);
+  };
 
   const obtenerImagenPrincipal = () => {
     return imagenes.find((imagen) => {
@@ -51,7 +83,21 @@ export default function ProductoImagenes({ alojamiento }) {
     <section className={styles.sectionImagenes}>
       <div className={styles.iconos}>
         <i className="bx bx-share-alt" onClick={abrirRedesSociales}></i>
-        <i className="bx bx-heart"></i>
+        {isLogged ? (
+          isLoaded ? (
+            isFavorito ? (
+              <i
+                onClick={() => handleFav()}
+                className={`fas fa-heart ${styles.corazon}`}
+              ></i>
+            ) : (
+              <i
+                onClick={() => handleFav()}
+                className={`far fa-heart ${styles.corazon}`}
+              ></i>
+            )
+          ) : null
+        ) : null}
       </div>
       <div className={styles.imagenesDesktop}>
         <div
@@ -100,7 +146,7 @@ export default function ProductoImagenes({ alojamiento }) {
           <h2 className={styles.textoRedesSociales}>
             Compartí el alojamiento en tu red social favorita!
           </h2>
-            {LinksRedesSociales()}
+          {LinksRedesSociales()}
         </div>
       </Modal>
     </section>
