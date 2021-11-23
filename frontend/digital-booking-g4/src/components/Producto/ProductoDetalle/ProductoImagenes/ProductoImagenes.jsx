@@ -6,8 +6,8 @@ import Modal from "../../../Modal/Modal";
 import FilledButton from "../../../Buttons/FilledButton";
 import styles from "./ProductoImagenes.module.css";
 import "./CarouselStyles.css";
-import loggedContext from "../../../contexts/loggedContext";
-import useFetch from "../../../hooks/useFetch";
+import loggedContext from "../../../../contexts/loggedContext";
+import useFetch from "../../../../hooks/useFetch";
 
 export default function ProductoImagenes({ alojamiento }) {
   const [carruselEstaAbierto, setCarruselEstaAbierto] = useState(false);
