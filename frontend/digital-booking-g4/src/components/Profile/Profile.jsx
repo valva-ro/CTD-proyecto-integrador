@@ -18,6 +18,7 @@ export default function Profile() {
     setIsLogged(false);
     localStorage.setItem("jwt", "");
     localStorage.setItem("email", "");
+    localStorage.setItem("id", "");
   }
 
   return (

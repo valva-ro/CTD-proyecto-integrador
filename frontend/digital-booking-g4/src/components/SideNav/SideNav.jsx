@@ -14,6 +14,7 @@ export default function SideNav() {
     setIsLogged(false);
     localStorage.setItem("jwt", "");
     localStorage.setItem("email", "");
+    localStorage.setItem("id", "");
   }
 
   const RenderComponent = () => {

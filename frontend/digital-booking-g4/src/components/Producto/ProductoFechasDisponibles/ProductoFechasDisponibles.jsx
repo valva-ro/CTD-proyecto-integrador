@@ -15,10 +15,13 @@ registerLocale("es", es);
 
 export default function ProductoFechasDisponibles() {
   const [dateRange, setDateRange] = useState([null, null]);
-  const [startDate, endDate] = [
-    new Date(JSON.parse(localStorage.getItem("startDate"))),
-    new Date(JSON.parse(localStorage.getItem("endDate"))),
-  ];
+  const startDateStorage = localStorage.hasOwnProperty("startDate")
+    ? new Date(JSON.parse(localStorage.getItem("startDate")))
+    : null;
+  const endDateStorage = localStorage.hasOwnProperty("endDate")
+    ? new Date(JSON.parse(localStorage.getItem("endDate")))
+    : null;
+  const [startDate, endDate] = [startDateStorage, endDateStorage];
 
   const anchoPantalla = useScreenWidth();
 
