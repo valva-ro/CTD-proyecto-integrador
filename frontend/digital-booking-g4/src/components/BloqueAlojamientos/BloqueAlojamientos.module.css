@@ -8,6 +8,35 @@
     break-inside: avoid-column;
 }
 
+.containerFiltrosButton {
+  padding: 4px 1vw;
+  background-color: var(--color-3);
+  border: 3px solid var(--color-3);
+  display: flex;
+  align-items: center;
+  border-radius: 5px;
+  gap: 10px;
+  cursor: pointer;
+  transition: all ease 250ms;
+}
+
+.containerFiltrosButton:hover {
+  background-color: var(--color-2);
+  border: 3px solid var(--color-2);
+}
+
+.filtrosButton {
+  color: white;
+  background-color: transparent;
+  border: 3px solid transparent;
+  padding: 0;
+}
+
+.containerFiltrosButton i {
+  font-size: 1.2rem;
+  color: white;
+}
+
 .alojamientosUnaColumna {
   margin-top: 1rem;
   columns: 1;
@@ -20,6 +49,11 @@
   flex-direction: column;
   justify-content: center;
   padding-bottom: 60px;
+}
+
+.encabezadoFiltros{
+  display: flex;
+  justify-content: space-between;
 }
 
 .alojamiento {
@@ -48,5 +82,8 @@
 @media (max-width: 480px) {
   .facet_sidebar {
     display: none;
+  }
+  .containerFiltrosButton {
+    width: 115px;
   }
 }

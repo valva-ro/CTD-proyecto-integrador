@@ -1,7 +1,6 @@
 package com.grupo4.hostingbook.persistence.entites;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
 import java.util.*;
@@ -9,6 +8,7 @@ import java.util.*;
 @Entity
 @Table(name = "productos")
 public class Producto {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="producto_id")
@@ -28,6 +28,11 @@ public class Producto {
     @JoinColumn(name = "fk_producto")
     private Set<Imagen> imagenes = new HashSet<>();
 
+    @OneToMany(mappedBy = "producto")
+    @JsonIgnore
+    @Transient
+    private Set<Reserva> reservas = new HashSet<>();
+
     @OneToMany(mappedBy = "puntuacion")
     @JsonIgnore
     private List<Puntuacion> puntuaciones = new ArrayList<>();
@@ -46,11 +51,7 @@ public class Producto {
     )
     private Set<Politica> politicas = new HashSet<>();
 
-    @ManyToMany (
-            cascade = {
-                    CascadeType.MERGE
-            }
-    )
+    @ManyToMany (cascade = CascadeType.MERGE)
     @JoinTable(
             name = "producto_caracteristica",
             joinColumns = @JoinColumn(name = "producto_id"),
@@ -66,14 +67,6 @@ public class Producto {
     public Producto(String nombre, String descripcion) {
         this.nombre = nombre;
         this.descripcion = descripcion;
-    }
-
-    public Set<Politica> getPoliticas() {
-        return politicas;
-    }
-
-    public void setPoliticas(Set<Politica> politicas) {
-        this.politicas = politicas;
     }
 
     public Producto(String nombre, String descripcion, Categoria categoria, Ciudad ciudad, Set<Imagen> imagenes, Set<Caracteristica> caracteristicas) {
@@ -147,6 +140,13 @@ public class Producto {
 
     public void setPuntuaciones(List<Puntuacion> puntuaciones) {
         this.puntuaciones = puntuaciones;
+    }
+    public Set<Politica> getPoliticas() {
+        return politicas;
+    }
+
+    public void setPoliticas(Set<Politica> politicas) {
+        this.politicas = politicas;
     }
 
     @Override

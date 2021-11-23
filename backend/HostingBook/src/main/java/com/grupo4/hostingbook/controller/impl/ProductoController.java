@@ -6,7 +6,6 @@ import com.grupo4.hostingbook.exceptions.Mensajes;
 import com.grupo4.hostingbook.exceptions.NotImplementedException;
 import com.grupo4.hostingbook.exceptions.ResourceNotFoundException;
 import com.grupo4.hostingbook.model.ProductoDTO;
-import com.grupo4.hostingbook.model.UsuarioDTO;
 import com.grupo4.hostingbook.service.IProductoService;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;

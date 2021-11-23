@@ -5,7 +5,6 @@ import com.grupo4.hostingbook.exceptions.BadRequestException;
 import com.grupo4.hostingbook.exceptions.Mensajes;
 import com.grupo4.hostingbook.exceptions.ResourceNotFoundException;
 import com.grupo4.hostingbook.model.CaracteristicaDTO;
-import com.grupo4.hostingbook.model.ProductoDTO;
 import com.grupo4.hostingbook.persistence.entites.Caracteristica;
 import com.grupo4.hostingbook.persistence.repository.ICaracteristicaRepository;
 import com.grupo4.hostingbook.service.CRUDService;
