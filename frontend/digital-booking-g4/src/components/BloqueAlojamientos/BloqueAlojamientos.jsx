@@ -55,7 +55,7 @@ export default function BloqueAlojamientos() {
         </TituloBloque>
         <div className={styles.containerFiltrosButton} onClick={toggleFiltrado}>
           <span className={styles.filtrosButton}>Deshacer Filtros</span>
-          <i class="fas fa-backspace"></i>
+          <i className="fas fa-backspace"></i>
         </div>
       </div>
       {isLoaded && alojamientosFiltrados.length === 0 ? (

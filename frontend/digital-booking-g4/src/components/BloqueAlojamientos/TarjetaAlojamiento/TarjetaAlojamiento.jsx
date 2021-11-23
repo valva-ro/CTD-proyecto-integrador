@@ -1,10 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
 import FilledButton from "../../Buttons/FilledButton";
 import Estrellas from "../../Estrellas/Estrellas";
 import styles from "./TarjetaAlojamiento.module.css";
-import obtenerClasificacion from "../../../utils/obtenerClasificacion"
+import loggedContext from "../../../contexts/loggedContext";
+import obtenerClasificacion from "../../../utils/obtenerClasificacion";
 import calcularPromedioPuntuacion from "../../../utils/calcularPromedioPuntuacion";
+import useFetch from "../../../hooks/useFetch";
 
 export default function TarjetaAlojamiento({
   alojamiento: {
@@ -15,11 +17,27 @@ export default function TarjetaAlojamiento({
     ciudad,
     imagenes,
     caracteristicas,
-    puntuaciones
+    puntuaciones,
   },
 }) {
+  const [isFavorito, setIsFavorito] = useState();
+  const { isLogged } = useContext(loggedContext);
   const [esVerMas, setEsVerMas] = useState(true);
   const puntaje = calcularPromedioPuntuacion(puntuaciones);
+  const [favoritos, setFavoritos] = useState([]);
+  const idUsuario = parseInt(localStorage.getItem("id"));
+  const { isLoaded, items } = useFetch(`usuarios/${idUsuario}`);
+  
+  useEffect(() => {
+    if (isLogged && isLoaded) {
+      setFavoritos(items.productosFavoritos);
+      setIsFavorito(favoritos.find((fav) => fav.id == id) !== undefined)
+    }
+  }, [isLoaded, isLogged, items, favoritos]);
+  
+  console.log("favoritos");
+  console.log(favoritos);
+  
   const buscarImagenPrincipal = () => {
     let imagen = imagenes.find((imagen) => {
       return imagen.imagenTitulo === "Principal";
@@ -29,7 +47,27 @@ export default function TarjetaAlojamiento({
     }
     return imagen;
   };
-  return (
+  
+  async function fetchFav(accion) {
+    await fetch(
+      `http://localhost:8080/productos/${id}/${accion}/usuarios/${idUsuario}`,
+      {
+        method: "PUT",
+      }
+      );
+    }
+    
+    const handleFav = () => {
+      if (!isFavorito) {
+        fetchFav("agregar");
+      } else {
+        fetchFav("eliminar");
+      }
+     setIsFavorito(!isFavorito);
+    };
+    
+    
+    return (
     <div className={styles.tarjetaAlojamiento} data-aos="flip-up">
       <div
         className={styles.imagenAlojamiento}
@@ -37,7 +75,21 @@ export default function TarjetaAlojamiento({
           backgroundImage: `url(${buscarImagenPrincipal().imagenUrl})`,
         }}
       >
-        <i className={`fas fa-heart ${styles.corazon}`}></i>
+        {isLogged ? (
+          isLoaded ? (
+            isFavorito ? (
+              <i
+                onClick={() => handleFav()}
+                className={`fas fa-heart ${styles.corazon}`}
+              ></i>
+            ) : (
+              <i
+                onClick={() => handleFav()}
+                className={`far fa-heart ${styles.corazon}`}
+              ></i>
+            )
+          ) : null
+        ) : null}
       </div>
 
       <div className={styles.descripcionAlojamiento}>

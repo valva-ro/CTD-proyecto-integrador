@@ -34,7 +34,7 @@ public class UsuarioController implements IUsuarioController {
     }
 
     @Override
-    @ApiOperation(value = "Lista todas las usuarios")
+    @ApiOperation(value = "Lista todos los usuarios")
     @ApiResponses(value = { @ApiResponse(code = 200, message = "Success") })
     @GetMapping
     public ResponseEntity<List<UsuarioDTO>> obtenerTodos() {
@@ -43,7 +43,7 @@ public class UsuarioController implements IUsuarioController {
     }
 
     @Override
-    @ApiOperation(value = "Crea un nueva usuario")
+    @ApiOperation(value = "Crea un nuevo usuario")
     @ApiResponses(value = { @ApiResponse(code = 201, message = "Created"),
                             @ApiResponse(code = 400, message = "Bad Request") })
     @PostMapping("/signup")

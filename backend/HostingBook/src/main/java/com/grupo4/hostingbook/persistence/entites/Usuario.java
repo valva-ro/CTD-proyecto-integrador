@@ -31,7 +31,6 @@ public class Usuario {
     private Set<Reserva> reservas = new HashSet<>();
 
     @ManyToMany(cascade = {
-            CascadeType.PERSIST,
             CascadeType.DETACH,
             CascadeType.REFRESH,
             CascadeType.REMOVE

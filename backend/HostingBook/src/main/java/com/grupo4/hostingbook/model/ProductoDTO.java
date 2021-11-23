@@ -12,7 +12,7 @@ public class ProductoDTO implements Serializable {
     private String descripcion;
     private CategoriaDTO categoria;
     private CiudadDTO ciudad;
-    private Set<PoliticaDTO> politicas;
+    private Set<PoliticaDTO> politicas = new HashSet<>();
     private Set<ImagenDTO> imagenes = new HashSet<>();
     private Set<CaracteristicaDTO> caracteristicas = new HashSet<>();
     private Set<PuntuacionDTO> puntuaciones = new HashSet<>();
@@ -57,7 +57,7 @@ public class ProductoDTO implements Serializable {
     }
 
     public ProductoDTO(Long id, String nombre, String descripcion, CategoriaDTO categoria, CiudadDTO ciudad,
-            Set<PoliticaDTO> politicas, Set<ImagenDTO> imagenes, Set<CaracteristicaDTO> caracteristicas) {
+                       Set<PoliticaDTO> politicas, Set<ImagenDTO> imagenes, Set<CaracteristicaDTO> caracteristicas) {
         this.id = id;
         this.nombre = nombre;
         this.descripcion = descripcion;
@@ -69,7 +69,7 @@ public class ProductoDTO implements Serializable {
     }
 
     public ProductoDTO(String nombre, String descripcion, CategoriaDTO categoria, CiudadDTO ciudad,
-            Set<PoliticaDTO> politicas, Set<ImagenDTO> imagenes, Set<CaracteristicaDTO> caracteristicas) {
+                       Set<PoliticaDTO> politicas, Set<ImagenDTO> imagenes, Set<CaracteristicaDTO> caracteristicas) {
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.categoria = categoria;

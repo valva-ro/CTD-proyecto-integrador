@@ -80,7 +80,7 @@ public class UsuarioService implements IUsuarioService {
             Usuario entidad = u.get();
             usuarioActualizado = actualizar(usuarioDTO, entidad);
         } else {
-            throw new ResourceNotFoundException(String.format(Mensajes.ERROR_NO_EXISTE, "El usuario 'usuario'", usuarioDTO.getId()));
+            throw new ResourceNotFoundException(String.format(Mensajes.ERROR_NO_EXISTE, "El usuario", usuarioDTO.getId()));
         }
         return usuarioActualizado;
     }
@@ -94,6 +94,11 @@ public class UsuarioService implements IUsuarioService {
     @Override
     public UsuarioDTO obtenerPorEmail(String email) {
         Usuario entidad = usuarioRepository.obtenerPorEmail(email);
+        return mapper.convertValue(entidad, UsuarioDTO.class);
+    }
+
+    public UsuarioDTO save(UsuarioDTO usuarioDTO) {
+        Usuario entidad = usuarioRepository.save(mapper.convertValue(usuarioDTO, Usuario.class));
         return mapper.convertValue(entidad, UsuarioDTO.class);
     }
 

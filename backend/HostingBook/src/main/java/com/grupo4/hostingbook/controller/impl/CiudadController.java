@@ -19,7 +19,6 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/ciudades")
-@CrossOrigin(origins = "*", methods = { RequestMethod.GET, RequestMethod.POST })
 public class CiudadController implements CRUDController<CiudadDTO> {
 
     @Qualifier("CiudadService")

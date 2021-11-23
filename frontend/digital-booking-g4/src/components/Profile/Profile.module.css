@@ -35,7 +35,23 @@
     padding: 5px;
     position: absolute;
     right: 0;
-    top:-20px;
+    top:-12px;
+}
+
+.contenedorNombre a{
+    display: block;
+    text-align: center;
+    transition: all ease-in-out 250ms;
+    background-color: transparent;
+    border: 1px solid var(--color-2);
+    color: var(--color-2);
+    border-radius: 5px;
+}
+
+.contenedorNombre a:hover{
+    background-color: var(--color-principal);
+    border: 1px solid var(--color-principal);
+    color: var(--color-5);
 }
 
 @media screen and (max-width:480px) {
@@ -51,6 +67,10 @@
         flex-direction: column;
         justify-content: flex-end;
         align-items: flex-end;
+    }
+
+    .contenedorNombre a{
+        display: none;
     }
 
     .avatar{
