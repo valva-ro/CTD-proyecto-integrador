@@ -3,19 +3,23 @@ package com.grupo4.hostingbook.service.impl;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.grupo4.hostingbook.exceptions.BadRequestException;
 import com.grupo4.hostingbook.exceptions.Mensajes;
-import com.grupo4.hostingbook.exceptions.NotImplementedException;
 import com.grupo4.hostingbook.exceptions.ResourceNotFoundException;
-import com.grupo4.hostingbook.model.*;
-import com.grupo4.hostingbook.persistence.entites.*;
+import com.grupo4.hostingbook.model.ImagenDTO;
+import com.grupo4.hostingbook.model.ProductoDTO;
+import com.grupo4.hostingbook.model.PuntuacionDTO;
+import com.grupo4.hostingbook.model.UsuarioDTO;
+import com.grupo4.hostingbook.persistence.entites.Categoria;
+import com.grupo4.hostingbook.persistence.entites.Ciudad;
+import com.grupo4.hostingbook.persistence.entites.Imagen;
+import com.grupo4.hostingbook.persistence.entites.Producto;
 import com.grupo4.hostingbook.persistence.repository.IProductoRepository;
 import com.grupo4.hostingbook.service.IProductoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.*;
 
-@Service
+@Service("ProductoService")
 public class ProductoService implements IProductoService {
 
     private final IProductoRepository productoRepository;
@@ -25,18 +29,14 @@ public class ProductoService implements IProductoService {
     private final ImagenService imagenService;
     private final CaracteristicaService caracteristicaService;
     private final PoliticaService politicaService;
-
-    @Autowired
-
-
     private final PuntuacionService puntuacionService;
     private final UsuarioService usuarioService;
 
     @Autowired
     public ProductoService(IProductoRepository productoRepository, ObjectMapper mapper,
             CategoriaService categoriaService, CiudadService ciudadService, ImagenService imagenService,
-            CaracteristicaService caracteristicaService, PoliticaService politicaService,
-            PuntuacionService puntuacionService, UsuarioService usuarioService) {
+            CaracteristicaService caracteristicaService, PuntuacionService puntuacionService,
+            UsuarioService usuarioService, PoliticaService politicaService) {
         this.productoRepository = productoRepository;
         this.mapper = mapper;
         this.categoriaService = categoriaService;
@@ -62,32 +62,15 @@ public class ProductoService implements IProductoService {
             throw new ResourceNotFoundException(String.format(Mensajes.ERROR_NO_EXISTE, "El 'producto'", id));
         }
         Producto entidad = productoRepository.findById(id).get();
-        List<PuntuacionDTO> puntuacionesDTO = puntuacionService.consultarTodos();
-        ProductoDTO dto = mapper.convertValue(entidad, ProductoDTO.class);
-        for (PuntuacionDTO puntuacion : puntuacionesDTO) {
-            if (puntuacion.getProducto().getId().equals(entidad.getId())) {
-                puntuacion.setProducto(new ProductoDTO(puntuacion.getProducto().getId()));
-                puntuacion.setUsuario(new UsuarioDTO(puntuacion.getUsuario().getId()));
-                dto.agregarPuntuacion(puntuacion);
-            }
-        }
-        return dto;
+        return setearPuntuaciones(entidad);
     }
 
     @Override
     public List<ProductoDTO> consultarTodos() {
         List<Producto> entidades = productoRepository.findAll();
         List<ProductoDTO> dtos = new ArrayList<>();
-        List<PuntuacionDTO> puntuacionesDTO = puntuacionService.consultarTodos();
         for (Producto entidad : entidades) {
-            ProductoDTO dto = mapper.convertValue(entidad, ProductoDTO.class);
-            for (PuntuacionDTO puntuacion : puntuacionesDTO) {
-                if (puntuacion.getProducto().getId().equals(entidad.getId())) {
-                    puntuacion.setProducto(new ProductoDTO(puntuacion.getProducto().getId()));
-                    puntuacion.setUsuario(new UsuarioDTO(puntuacion.getUsuario().getId()));
-                    dto.agregarPuntuacion(puntuacion);
-                }
-            }
+            ProductoDTO dto = setearPuntuaciones(entidad);
             dtos.add(dto);
         }
         return dtos;
@@ -143,13 +126,15 @@ public class ProductoService implements IProductoService {
     }
 
     @Override
-    public Set<ProductoDTO> consultarPorCiudadYFechas(String nombreCiudad, Date fechaIngreso, Date fechaEgreso) throws ResourceNotFoundException {
-        Set<Producto> entidades = productoRepository.buscarProductosPorCiudadYFechas(nombreCiudad,fechaIngreso,fechaEgreso);
+    public Set<ProductoDTO> consultarPorCiudadYFechas(String nombreCiudad, Date fechaIngreso, Date fechaEgreso)
+            throws ResourceNotFoundException {
+        Set<Producto> entidades = productoRepository.buscarProductosPorCiudadYFechas(nombreCiudad, fechaIngreso,
+                fechaEgreso);
         Set<ProductoDTO> dtos = new HashSet<>();
         for (Producto entidad : entidades) {
             dtos.add(mapper.convertValue(entidad, ProductoDTO.class));
         }
-        if (dtos.size() == 0) { //no hay coincidencias de productos por ciudad y fechas
+        if (dtos.size() == 0) { // no hay coincidencias de productos por ciudad y fechas
             throw new ResourceNotFoundException(
                     String.format(Mensajes.ERROR_CRITERIO_DE_BUSQUEDA_NO_EXISTE, "La ciudad", nombreCiudad));
         }
@@ -239,6 +224,19 @@ public class ProductoService implements IProductoService {
         productoDTO.setCaracteristicas(caracteristicaService.consultarPorProductoID(producto.getId()));
         productoDTO.setPuntuaciones(puntuacionService.consultarPorProductoID(producto.getId()));
         return productoDTO;
+    }
+
+    private ProductoDTO setearPuntuaciones(Producto entidad) {
+        List<PuntuacionDTO> puntuacionesDTO = puntuacionService.consultarTodos();
+        ProductoDTO dto = mapper.convertValue(entidad, ProductoDTO.class);
+        for (PuntuacionDTO puntuacion : puntuacionesDTO) {
+            if (puntuacion.getProducto().getId().equals(entidad.getId())) {
+                puntuacion.setProducto(new ProductoDTO(puntuacion.getProducto().getId()));
+                puntuacion.setUsuario(new UsuarioDTO(puntuacion.getUsuario().getId()));
+                dto.agregarPuntuacion(puntuacion);
+            }
+        }
+        return dto;
     }
 
     private Set<ImagenDTO> obtenerImagenesRelacionadas(Producto producto) {

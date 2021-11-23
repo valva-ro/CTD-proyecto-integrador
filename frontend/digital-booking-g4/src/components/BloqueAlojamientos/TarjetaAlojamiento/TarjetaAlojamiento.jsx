@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import FilledButton from "../../Buttons/FilledButton";
 import Estrellas from "../../Estrellas/Estrellas";
@@ -20,7 +20,6 @@ export default function TarjetaAlojamiento({
 }) {
   const [esVerMas, setEsVerMas] = useState(true);
   const puntaje = calcularPromedioPuntuacion(puntuaciones);
-  const toggleVerMas = () => setEsVerMas(!esVerMas);
   const buscarImagenPrincipal = () => {
     let imagen = imagenes.find((imagen) => {
       return imagen.imagenTitulo === "Principal";
@@ -31,7 +30,7 @@ export default function TarjetaAlojamiento({
     return imagen;
   };
   return (
-    <div className={styles.tarjetaAlojamiento}>
+    <div className={styles.tarjetaAlojamiento} data-aos="flip-up">
       <div
         className={styles.imagenAlojamiento}
         style={{
@@ -84,11 +83,13 @@ export default function TarjetaAlojamiento({
           ) : (
             <>
               {esVerMas && descripcion.length > 85
-                ? descripcion.slice(0, 85)
-                : descripcion}
-              ...
-              <span onClick={toggleVerMas} className={styles.verMas}>
-                {esVerMas ? " leer más" : " leer menos"}
+                ? `${descripcion.slice(0, 85)}...`
+                : `${descripcion.slice(0, 170)}...`}
+              <span
+                onClick={() => setEsVerMas(!esVerMas)}
+                className={styles.verMas}
+              >
+                {esVerMas ? " Leer más" : " Leer menos"}
               </span>
             </>
           )}

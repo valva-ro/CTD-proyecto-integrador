@@ -972,6 +972,71 @@
 					"response": []
 				}
 			]
+		},
+		{
+			"name": "Modificar | Actualizar",
+			"item": [
+				{
+					"name": "Agregar favorito",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/productos/agregar/10/usuarios/1",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"productos",
+								"agregar",
+								"10",
+								"usuarios",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar favorito",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/productos/elminar/10/usuarios/1",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"productos",
+								"elminar",
+								"10",
+								"usuarios",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
 		}
 	]
 }

@@ -147,7 +147,7 @@ public class PoliticaService implements IPoliticaService {
         if (!politicaRepository.existsById(tipopoliticaId))
             throw new ResourceNotFoundException(String.format(Mensajes.ERROR_NO_EXISTE, "El 'tipo de política'", tipopoliticaId));
     }
-    }
+}
 
 
 
