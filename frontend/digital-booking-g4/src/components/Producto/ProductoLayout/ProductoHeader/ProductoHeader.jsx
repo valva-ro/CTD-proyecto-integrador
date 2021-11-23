@@ -13,8 +13,9 @@ export default function ProductHeader({ alojamiento }) {
         <div className={styles.headerDerecha}>
           <Link to="/">
             <span>
-              <i className="fas fa-chevron-left"></i>
+              <i className='bx bx-library' aria-hidden="true"></i>
             </span>
+            <span>HOME</span>
           </Link>
         </div>
       </div>
