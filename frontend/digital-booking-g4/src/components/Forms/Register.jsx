@@ -7,6 +7,8 @@ import { useState } from "react";
 import InputComponent from "./formComponents/Input";
 import post from "../../utils/post";
 
+const ID_ROL_USUARIO = 2;
+
 export default function Register() {
   const [name, setName] = useState({ campo: "", valido: null });
   const [surname, setSurname] = useState({ campo: "", valido: null });
@@ -57,6 +59,7 @@ export default function Register() {
         apellido: surname.campo,
         mail: email.campo,
         contrasenia: password.campo,
+        rol: { id: ID_ROL_USUARIO },
       })
         .then((response) => {
           console.log(response.status);
