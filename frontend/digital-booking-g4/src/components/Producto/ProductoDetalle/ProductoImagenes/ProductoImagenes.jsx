@@ -27,7 +27,7 @@ export default function ProductoImagenes({ alojamiento }) {
   useEffect(() => {
     if (isLogged && isLoaded) {
       setFavoritos(items.productosFavoritos);
-      setIsFavorito(favoritos.find((fav) => fav.id == alojamiento.id) !== undefined);
+      setIsFavorito(favoritos.find((fav) => fav.id === alojamiento.id) !== undefined);
     }
   }, [isLoaded, isLogged, items, favoritos]);
 

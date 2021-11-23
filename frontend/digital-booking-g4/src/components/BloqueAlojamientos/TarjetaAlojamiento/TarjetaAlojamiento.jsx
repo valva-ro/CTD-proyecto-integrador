@@ -31,7 +31,7 @@ export default function TarjetaAlojamiento({
   useEffect(() => {
     if (isLogged && isLoaded) {
       setFavoritos(items.productosFavoritos);
-      setIsFavorito(favoritos.find((fav) => fav.id == id) !== undefined)
+      setIsFavorito(favoritos.find((fav) => fav.id === id) !== undefined)
     }
   }, [isLoaded, isLogged, items, favoritos]);
   
