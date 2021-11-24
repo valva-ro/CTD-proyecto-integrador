@@ -141,34 +141,19 @@ public class ProductoService implements IProductoService {
     @Override
     public Set<ProductoDTO> consultarPorCiudadYFechas(String nombreCiudad, LocalDate fechaIngreso, LocalDate fechaEgreso)
             throws ResourceNotFoundException {
-        Set<Long> ids = consultarProductosReservadosEntreFechas(fechaIngreso, fechaEgreso);
-        Set<ProductoDTO> dtos = consultarPorCiudad(nombreCiudad);
-        Set<ProductoDTO> dtosFiltrados = new HashSet<>();
-        for (Long id : ids) {
-            try{
-                System.out.println(buscarPorId(id));
-                Boolean condicion = !dtos.contains(buscarPorId(id));
-                System.out.println(condicion);
-                if(condicion){
-                    System.out.println("Entra al if");
-                    dtosFiltrados.add(mapper.convertValue(buscarPorId(id), ProductoDTO.class));
+        Set<Long> ids = consultarProductosReservadosEntreFechas(fechaIngreso, fechaEgreso); //productos ocupados en las fechas ingresadas
+        Set<ProductoDTO> dtos = consultarPorCiudad(nombreCiudad);   //productos que se encuentran en la ciudad ingresada
+        Set<ProductoDTO> auxiliar = dtos;
+        for (Long id:ids){
+            for (ProductoDTO aux:auxiliar){
+                if (aux.getId().equals(id)){
+                    dtos.remove(aux);
                 }
-            }catch (ResourceNotFoundException rnf){
-                System.out.println(rnf);
-            }catch (BadRequestException bre){
-                System.out.println(bre);
+                        //BUSCAR ERROR, es porque no puedo eliminar elementos del mismo iterador, peeeeero, si uso un auxiliar tampoco se puede
             }
         }
-        return dtosFiltrados;
-        /*Set<Producto> entidades = productoRepository.buscarProductosPorCiudadYFechas(nombreCiudad, fechaIngreso,
-                fechaEgreso);
-        for (Producto entidad : entidades) {
-            dtos.add(mapper.convertValue(entidad, ProductoDTO.class));
-        }
-        if (dtos.size() == 0) {
-            throw new ResourceNotFoundException(
-                    String.format(Mensajes.ERROR_CRITERIO_DE_BUSQUEDA_NO_EXISTE, "La ciudad", nombreCiudad));
-        }*/
+
+        return dtos; //productos libres en la ciudad y fechas elegidas
     }
 
     public UsuarioDTO agregarAFavoritos(Long idProducto, Long idUsuario)
