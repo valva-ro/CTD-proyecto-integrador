@@ -10,6 +10,7 @@ public class ProductoDTO implements Serializable {
     private Long id;
     private String nombre;
     private String descripcion;
+    private String direccion;
     private Integer horarioCheckIn;
     private CategoriaDTO categoria;
     private CiudadDTO ciudad;
@@ -146,6 +147,14 @@ public class ProductoDTO implements Serializable {
         this.ciudad = ciudad;
     }
 
+    public String getDireccion() {
+        return direccion;
+    }
+
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
+    }
+
     public Set<ImagenDTO> getImagenes() {
         return imagenes;
     }
@@ -199,12 +208,12 @@ public class ProductoDTO implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         ProductoDTO that = (ProductoDTO) o;
-        return id.equals(that.id) && nombre.equals(that.nombre) && descripcion.equals(that.descripcion) && categoria.equals(that.categoria) && ciudad.equals(that.ciudad) && politicas.equals(that.politicas) && imagenes.equals(that.imagenes) && caracteristicas.equals(that.caracteristicas) && puntuaciones.equals(that.puntuaciones) && reservas.equals(that.reservas);
+        return id.equals(that.id) && nombre.equals(that.nombre) && descripcion.equals(that.descripcion) && direccion.equals(that.direccion) && categoria.equals(that.categoria) && ciudad.equals(that.ciudad) && politicas.equals(that.politicas) && imagenes.equals(that.imagenes) && caracteristicas.equals(that.caracteristicas) && puntuaciones.equals(that.puntuaciones) && reservas.equals(that.reservas);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, nombre, descripcion, categoria, ciudad, politicas, imagenes, caracteristicas, puntuaciones, reservas);
+        return Objects.hash(id, nombre, descripcion, direccion, categoria, ciudad, politicas, imagenes, caracteristicas, puntuaciones, reservas);
     }
 
     @Override
@@ -232,6 +241,7 @@ public class ProductoDTO implements Serializable {
         }
 
         return "ProductoDTO{" + "id=" + id + ", nombre='" + nombre + '\'' + ", descripcion='" + descripcion + '\''
+                + ", direccion='" + direccion + '\''
                 + ", categoria=" + categoria.toString() + ", ciudad=" + ciudad.toString() + ", imagenes="
                 + imagenesToString + ", caracteristicas=" + caracteristicasToString + ", caracteristicas="
                 + politicasToString + '}';

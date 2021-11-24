@@ -9,20 +9,17 @@ const containerStyle = {
   borderRadius: "8px",
 };
 
-// TODO: por ahora esto está hardcodeado, pero eventualmente al recibir la
-//       dirección de la API podemos consultar con la API de google maps
-//       la latitud y longitud que correspondan
-const center = {
-  lat: -33.6231,
-  lng: -64.5958,
-};
-
-export default function ProductoMapa({ alojamiento: { ciudad } }) {
-  // TODO: este location hay que cambiarlo y usar el atributo de la API
+export default function ProductoMapa({ alojamiento: { direccion, ciudad } }) {
+  
   const { isLoaded } = useJsApiLoader({
     id: "google-map-script",
     googleMapsApiKey: "AIzaSyA2h8uPorI_NWnVFI5NfeI45GfjpJ4EIxE",
   });
+
+  const ubicacion = {
+    lat: ciudad.latitud,
+    lng: ciudad.longitud,
+  };
 
   return (
     <section className={styles.containerUbicacion} id="mapa">
@@ -30,10 +27,14 @@ export default function ProductoMapa({ alojamiento: { ciudad } }) {
       <hr />
       <h4
         className={styles.textoUbicacion}
-      >{`${ciudad.nombre}, ${ciudad.pais}`}</h4>
+      >{`${direccion}, ${ciudad.nombre}, ${ciudad.pais}`}</h4>
       {isLoaded ? (
-        <GoogleMap mapContainerStyle={containerStyle} center={center} zoom={15}>
-          <Marker position={center} />
+        <GoogleMap
+          mapContainerStyle={containerStyle}
+          center={ubicacion}
+          zoom={15}
+        >
+          <Marker position={ubicacion} />
         </GoogleMap>
       ) : (
         <></>

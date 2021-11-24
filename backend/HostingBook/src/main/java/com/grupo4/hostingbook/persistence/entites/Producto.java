@@ -15,6 +15,7 @@ public class Producto {
     private Long id;
     private String nombre;
     private String descripcion;
+    private String direccion;
     @Column(name="horario_check_in")
     private Integer horarioCheckIn;
 
@@ -153,6 +154,14 @@ public class Producto {
         return ciudad;
     }
 
+    public String getDireccion() {
+        return direccion;
+    }
+
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
+    }
+
     public void setCiudad(Ciudad ciudad) {
         this.ciudad = ciudad;
     }
@@ -196,6 +205,7 @@ public class Producto {
         return Objects.equals(id, producto.id) &&
                 Objects.equals(nombre, producto.nombre) &&
                 Objects.equals(descripcion, producto.descripcion) &&
+                Objects.equals(direccion, producto.direccion) &&
                 Objects.equals(categoria, producto.categoria) &&
                 Objects.equals(ciudad, producto.ciudad) &&
                 Objects.equals(imagenes, producto.imagenes) &&
@@ -207,6 +217,7 @@ public class Producto {
         return Objects.hash(id,
                 nombre,
                 descripcion,
+                direccion,
                 categoria,
                 ciudad,
                 imagenes,

@@ -14,7 +14,6 @@ export default function ProductoUbicacion({
           <i className="fas fa-map-marker-alt"></i>
           <p>{`${ciudad.nombre}, ${ciudad.pais}`}</p>
         </div>
-        <p className={styles.distancia}>{distanciaCentro(ciudad.nombre)}</p>
       </div>
       <div className={styles.detalle}>
         <div className={styles.detalleYEstrellas}>
@@ -31,9 +30,4 @@ export default function ProductoUbicacion({
       </div>
     </section>
   );
-}
-
-function distanciaCentro(ubicacion) {
-  // TODO: calcular la distancia
-  return "A 940m del centro";
 }
