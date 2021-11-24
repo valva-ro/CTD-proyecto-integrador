@@ -1,8 +1,10 @@
 .favoritosContainer {
   margin-bottom: 82px;
+}
+.alojamientosContainer {
   display: flex;
   flex-direction: column;
-  gap: 36px;
+  gap: 1rem;
 }
 .avisoNoFavs {
   width: 100%;

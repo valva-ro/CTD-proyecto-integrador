@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import DatePicker, {
   CalendarContainer,
   registerLocale,
@@ -12,6 +12,7 @@ import useScreenWidth from "../../../../hooks/useScreenWidth";
 import obtenerFechasReservadas from "../../../../utils/obtenerFechasReservadas.js";
 import obtenerFechasNoSeleccionables from "../../../../utils/obtenerFechasNoSeleccionables.js";
 import useDisabledDate from "../../../../hooks/useDisabledDates";
+import loggedContext from "../../../../contexts/loggedContext";
 import styles from "./ProductoFechasDisponibles.module.css";
 
 registerLocale("es", es);
@@ -39,6 +40,8 @@ export default function ProductoFechasDisponibles() {
   const { id } = useParams();
 
   const anchoPantalla = useScreenWidth();
+  
+  const { isLogged } = useContext(loggedContext);
 
   const MyContainer = ({ className, children }) => {
     return (
@@ -69,8 +72,8 @@ export default function ProductoFechasDisponibles() {
         />
         <div className={styles.agregarReservas}>
           <p>Agregá tus fechas de viaje para obtener precios exactos</p>
-          <Link to={`/product/${id}/booking`}>
-            <FilledButton styles={styles.reservaButton}>
+          <Link to={isLogged ? `/product/${id}/booking` : `/login`}>
+            <FilledButton styles={styles.reservaButton} onClick={!isLogged ? localStorage.setItem("previousAction", "Iniciar reserva") : null}>
               Iniciar reserva
             </FilledButton>
           </Link>

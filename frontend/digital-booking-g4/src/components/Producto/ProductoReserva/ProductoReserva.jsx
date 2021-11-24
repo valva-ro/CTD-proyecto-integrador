@@ -3,10 +3,10 @@ import ProductoFormDatos from "./ProductoFormDatos/ProductoFormDatos"
 import ProductoFechaReserva from "./ProductoFechaReserva/ProductoFechaReserva";
 import ProductoHorarioLlegada from "./ProductoHorarioLlegada/ProductoHorarioLlegada";
 import DetallesReserva from "./DetallesReserva/DetallesReserva";
-import styles from "./ProductoReserva.module.css"
+import styles from "./ProductoReserva.module.css";
 
 export default function ProductoReserva(producto) {
-
+  
   const [checkin, setCheckin] = useState(null);
   const [checkout, setCheckout] = useState(null);
 
@@ -15,7 +15,7 @@ export default function ProductoReserva(producto) {
       <div className={styles.containerSecundario}>
         <ProductoFormDatos/> 
         <ProductoFechaReserva setCheckin={setCheckin} setCheckout={setCheckout}/>
-        <ProductoHorarioLlegada/>
+        <ProductoHorarioLlegada alojamiento={producto}/>
       </div>
       <div className={styles.containerTercero}>
         <DetallesReserva
