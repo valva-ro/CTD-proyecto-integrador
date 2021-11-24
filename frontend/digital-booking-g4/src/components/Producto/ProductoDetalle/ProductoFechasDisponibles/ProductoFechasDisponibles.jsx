@@ -73,7 +73,7 @@ export default function ProductoFechasDisponibles() {
         <div className={styles.agregarReservas}>
           <p>Agregá tus fechas de viaje para obtener precios exactos</p>
           <Link to={isLogged ? `/product/${id}/booking` : `/login`}>
-            <FilledButton styles={styles.reservaButton}>
+            <FilledButton styles={styles.reservaButton} onClick={!isLogged ? localStorage.setItem("previousAction", "Iniciar reserva") : null}>
               Iniciar reserva
             </FilledButton>
           </Link>
