@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 import Layout from "./components/Layout/Layout";
 import Home from "./components/Home/Home";
 import Login from "./components/Forms/Login";
@@ -15,11 +15,8 @@ import ProductoDetalle from "./components/Producto/ProductoDetalle/ProductoDetal
 import ProductoReserva from "./components/Producto/ProductoReserva/ProductoReserva";
 
 function App() {
-  const [isLogged, setIsLogged] = useState(false);
-  const [userInformation, setUserInformation] = useState({
-    nombre: "",
-    apellido: "",
-  });
+  const [isLogged, setIsLogged] = useState(estaLogueado());
+  const [userInformation, setUserInformation] = useState(obtenerInformacionUsuario());
   AOS.init();
 
   return (
@@ -42,9 +39,13 @@ function App() {
                 </ProductoLayout>
               </Route>
               <Route path="/product/:id/booking">
-                <ProductoLayout>
-                  <ProductoReserva />
-                </ProductoLayout>
+                {!isLogged
+                  ? <Redirect to="/" />
+                  :
+                  <ProductoLayout>
+                    <ProductoReserva />
+                  </ProductoLayout>
+                }
               </Route>
             </Switch>
           </Layout>
@@ -53,5 +54,22 @@ function App() {
     </loggedContext.Provider>
   );
 }
+
+
+function estaLogueado() {
+  return localStorage.getItem("jwt") != null;
+}
+
+function obtenerInformacionUsuario() {
+  return {
+    nombre: localStorage.hasOwnProperty("nombre")
+      ? JSON.parse(localStorage.getItem("nombre"))
+      : "",
+    apellido: localStorage.hasOwnProperty("apellido")
+      ? JSON.parse(localStorage.getItem("apellido"))
+      : "",
+  };
+}
+
 
 export default App;
