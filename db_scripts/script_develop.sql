@@ -206,11 +206,14 @@ CREATE TABLE IF NOT EXISTS puntuaciones (
 DROP TABLE IF EXISTS reservas;
 CREATE TABLE IF NOT EXISTS reservas (
   reserva_id INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  nombre VARCHAR(50) NOT NULL,
+  apellido VARCHAR(50) NOT NULL,
+  mail VARCHAR(100) NOT NULL,
+  ciudad VARCHAR(100) NOT NULL,
   hora_entrada TIME NOT NULL,
-  hora_salida TIME NOT NULL,
   fecha_ingreso DATE NOT NULL,
   fecha_egreso DATE NOT NULL,
-  datos TEXT NOT NULL COMMENT "datos para el vendedor",
+  datos TEXT COMMENT "datos para el vendedor",
   vacuna_covid BOOLEAN NOT NULL,
   fk_producto INT UNSIGNED NOT NULL,
   fk_usuario INT UNSIGNED NOT NULL,
@@ -757,34 +760,16 @@ COMMIT;
 -- Dumping data for table `reservas`
 --
 SET AUTOCOMMIT=0;
-INSERT INTO reservas (hora_entrada, hora_salida, fecha_ingreso, fecha_egreso, datos, vacuna_covid, fk_producto, fk_usuario) 
-VALUES ("10:00:00", "20:00:00", "2021-11-18", "2021-11-23", "Esto es una prueba para ver si los datos de reserva funcionan correctamente, el vendedor es un genio!!!", true, 1, 1);
-INSERT INTO reservas (hora_entrada, hora_salida, fecha_ingreso, fecha_egreso, datos, vacuna_covid, fk_producto, fk_usuario) 
-VALUES ("08:00:00", "18:00:00", "2021-10-18", "2021-10-23", "Esto es una prueba 2 para ver si los datos de reserva funcionan correctamente, el vendedor es un genio!!!", true, 2, 1);
-INSERT INTO reservas (hora_entrada, hora_salida, fecha_ingreso, fecha_egreso, datos, vacuna_covid, fk_producto, fk_usuario) 
-VALUES ("12:00:00", "22:00:00", "2021-09-18", "2021-09-23", "Esto es una prueba 3 para ver si los datos de reserva funcionan correctamente, el vendedor es un genio!!!", true, 3, 1);
-INSERT INTO reservas (hora_entrada, hora_salida, fecha_ingreso, fecha_egreso, datos, vacuna_covid, fk_producto, fk_usuario) 
-VALUES ("09:00:00", "19:00:00", "2021-08-18", "2021-08-23", "Esto es una prueba 4 para ver si los datos de reserva funcionan correctamente, el vendedor es un genio!!!", false, 4, 1);
-INSERT INTO reservas (hora_entrada, hora_salida, fecha_ingreso, fecha_egreso, datos, vacuna_covid, fk_producto, fk_usuario) 
-VALUES ("07:30:00", "17:30:00", "2021-07-18", "2021-07-23", "Esto es una prueba 5 para ver si los datos de reserva funcionan correctamente, el vendedor es un genio!!!", false, 5, 1);
-INSERT INTO reservas (hora_entrada, hora_salida, fecha_ingreso, fecha_egreso, datos, vacuna_covid, fk_producto, fk_usuario) 
-VALUES ("11:25:00", "21:25:00", "2021-06-18", "2021-06-23", "Esto es una prueba 6 para ver si los datos de reserva funcionan correctamente, el vendedor es un genio!!!", false, 6, 1);
-COMMIT;
-
---
--- Dumping data for table `reservas`
---
-SET AUTOCOMMIT=0;
-INSERT INTO reservas (hora_entrada, hora_salida, fecha_ingreso, fecha_egreso, datos, vacuna_covid, fk_producto, fk_usuario) 
-VALUES ("10:00:00", "20:00:00", "2021-11-18", "2021-11-23", "Esto es una prueba para ver si los datos de reserva funcionan correctamente, el vendedor es un genio!!!", true, 1, 1);
-INSERT INTO reservas (hora_entrada, hora_salida, fecha_ingreso, fecha_egreso, datos, vacuna_covid, fk_producto, fk_usuario) 
-VALUES ("08:00:00", "18:00:00", "2021-10-18", "2021-10-23", "Esto es una prueba 2 para ver si los datos de reserva funcionan correctamente, el vendedor es un genio!!!", true, 2, 1);
-INSERT INTO reservas (hora_entrada, hora_salida, fecha_ingreso, fecha_egreso, datos, vacuna_covid, fk_producto, fk_usuario) 
-VALUES ("12:00:00", "22:00:00", "2021-09-18", "2021-09-23", "Esto es una prueba 3 para ver si los datos de reserva funcionan correctamente, el vendedor es un genio!!!", true, 3, 1);
-INSERT INTO reservas (hora_entrada, hora_salida, fecha_ingreso, fecha_egreso, datos, vacuna_covid, fk_producto, fk_usuario) 
-VALUES ("09:00:00", "19:00:00", "2021-08-18", "2021-08-23", "Esto es una prueba 4 para ver si los datos de reserva funcionan correctamente, el vendedor es un genio!!!", false, 4, 1);
-INSERT INTO reservas (hora_entrada, hora_salida, fecha_ingreso, fecha_egreso, datos, vacuna_covid, fk_producto, fk_usuario) 
-VALUES ("07:30:00", "17:30:00", "2021-07-18", "2021-07-23", "Esto es una prueba 5 para ver si los datos de reserva funcionan correctamente, el vendedor es un genio!!!", false, 5, 1);
-INSERT INTO reservas (hora_entrada, hora_salida, fecha_ingreso, fecha_egreso, datos, vacuna_covid, fk_producto, fk_usuario) 
-VALUES ("11:25:00", "21:25:00", "2021-06-18", "2021-06-23", "Esto es una prueba 6 para ver si los datos de reserva funcionan correctamente, el vendedor es un genio!!!", false, 6, 1);
+INSERT INTO reservas (nombre, apellido, mail, ciudad, hora_entrada, fecha_ingreso, fecha_egreso, datos, vacuna_covid, fk_producto, fk_usuario) 
+VALUES ("Jorgito", "Ramirez", "jorgito@hb.com", "Caballito", "10:00:00", "2021-11-18", "2021-11-23", "Esto es una prueba para ver si los datos de reserva funcionan correctamente, el vendedor es un genio!!!", true, 1, 1);
+INSERT INTO reservas (nombre, apellido, mail, ciudad, hora_entrada, fecha_ingreso, fecha_egreso, datos, vacuna_covid, fk_producto, fk_usuario) 
+VALUES ("Jorgelina", "Gutierrez", "jorgelina@hb.com", "Caballito", "08:00:00", "2021-10-18", "2021-10-23", "", true, 2, 1);
+INSERT INTO reservas (nombre, apellido, mail, ciudad, hora_entrada, fecha_ingreso, fecha_egreso, datos, vacuna_covid, fk_producto, fk_usuario) 
+VALUES ("Gustavo", "Fernandez", "gusti@hb.com", "Caballito", "12:00:00", "2021-09-18", "2021-09-23", null, true, 3, 1);
+INSERT INTO reservas (nombre, apellido, mail, ciudad, hora_entrada, fecha_ingreso, fecha_egreso, datos, vacuna_covid, fk_producto, fk_usuario) 
+VALUES ("Manuela", "Manolita", "mmanolita@hb.com", "Caballito", "09:00:00", "2021-08-18", "2021-08-23", "Esto es una prueba 4 para ver si los datos de reserva funcionan correctamente, el vendedor es un genio!!!", false, 4, 1);
+INSERT INTO reservas (nombre, apellido, mail, ciudad, hora_entrada, fecha_ingreso, fecha_egreso, datos, vacuna_covid, fk_producto, fk_usuario) 
+VALUES ("Florencia", "Fazz", "ffazz@hb.com", "Caballito", "07:30:00", "2021-07-18", "2021-07-23", "Esto es una prueba 5 para ver si los datos de reserva funcionan correctamente, el vendedor es un genio!!!", false, 5, 1);
+INSERT INTO reservas (nombre, apellido, mail, ciudad, hora_entrada, fecha_ingreso, fecha_egreso, datos, vacuna_covid, fk_producto, fk_usuario) 
+VALUES ("Lucia", "Ramirez", "lucy@hb.com", "Caballito", "11:25:00", "2021-06-18", "2021-06-23", "Esto es una prueba 6 para ver si los datos de reserva funcionan correctamente, el vendedor es un genio!!!", false, 6, 1);
 COMMIT;

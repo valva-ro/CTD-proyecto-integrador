@@ -9,7 +9,10 @@ public class ReservaDTO implements Serializable {
 
     private Long id;
     private LocalTime horaEntrada;
-    private LocalTime horaSalida;
+    private String nombre;
+    private String apellido;
+    private String mail;
+    private String ciudad;
     private LocalDate fechaIngreso;
     private LocalDate fechaEgreso;
     private String datos;
@@ -24,9 +27,12 @@ public class ReservaDTO implements Serializable {
         this.id = id;
     }
 
-    public ReservaDTO(LocalTime horaEntrada, LocalTime horaSalida, LocalDate fechaIngreso, LocalDate fechaEgreso, String datos, Boolean vacunaCovid, UsuarioDTO usuario, ProductoDTO producto) {
+    public ReservaDTO(LocalTime horaEntrada, String nombre, String apellido, String mail, String ciudad, LocalDate fechaIngreso, LocalDate fechaEgreso, String datos, Boolean vacunaCovid, UsuarioDTO usuario, ProductoDTO producto) {
         this.horaEntrada = horaEntrada;
-        this.horaSalida = horaSalida;
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.mail = mail;
+        this.ciudad = ciudad;
         this.fechaIngreso = fechaIngreso;
         this.fechaEgreso = fechaEgreso;
         this.datos = datos;
@@ -35,10 +41,13 @@ public class ReservaDTO implements Serializable {
         this.producto = producto;
     }
 
-    public ReservaDTO(Long id, LocalTime horaEntrada, LocalTime horaSalida, LocalDate fechaIngreso, LocalDate fechaEgreso, String datos, Boolean vacunaCovid, UsuarioDTO usuario, ProductoDTO producto) {
+    public ReservaDTO(Long id, LocalTime horaEntrada, String nombre, String apellido, String mail, String ciudad, LocalDate fechaIngreso, LocalDate fechaEgreso, String datos, Boolean vacunaCovid, UsuarioDTO usuario, ProductoDTO producto) {
         this.id = id;
         this.horaEntrada = horaEntrada;
-        this.horaSalida = horaSalida;
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.mail = mail;
+        this.ciudad = ciudad;
         this.fechaIngreso = fechaIngreso;
         this.fechaEgreso = fechaEgreso;
         this.datos = datos;
@@ -55,9 +64,37 @@ public class ReservaDTO implements Serializable {
 
     public void setHoraEntrada(LocalTime horaEntrada) {this.horaEntrada = horaEntrada;}
 
-    public LocalTime getHoraSalida() {return horaSalida;}
+    public String getNombre() {
+        return nombre;
+    }
 
-    public void setHoraSalida(LocalTime horaSalida) {this.horaSalida = horaSalida;}
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getApellido() {
+        return apellido;
+    }
+
+    public void setApellido(String apellido) {
+        this.apellido = apellido;
+    }
+
+    public String getMail() {
+        return mail;
+    }
+
+    public void setMail(String mail) {
+        this.mail = mail;
+    }
+
+    public String getCiudad() {
+        return ciudad;
+    }
+
+    public void setCiudad(String ciudad) {
+        this.ciudad = ciudad;
+    }
 
     public LocalDate getFechaIngreso() {return fechaIngreso;}
 
@@ -88,12 +125,12 @@ public class ReservaDTO implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         ReservaDTO that = (ReservaDTO) o;
-        return id.equals(that.id) && horaEntrada.equals(that.horaEntrada) && horaSalida.equals(that.horaSalida) && fechaIngreso.equals(that.fechaIngreso) && fechaEgreso.equals(that.fechaEgreso) && datos.equals(that.datos) && vacunaCovid.equals(that.vacunaCovid) && usuario.equals(that.usuario) && producto.equals(that.producto);
+        return id.equals(that.id) && horaEntrada.equals(that.horaEntrada) && nombre.equals(that.nombre) && apellido.equals(that.apellido) && mail.equals(that.mail) && ciudad.equals(that.ciudad) && fechaIngreso.equals(that.fechaIngreso) && fechaEgreso.equals(that.fechaEgreso) && datos.equals(that.datos) && vacunaCovid.equals(that.vacunaCovid) && usuario.equals(that.usuario) && producto.equals(that.producto);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, horaEntrada, horaSalida, fechaIngreso, fechaEgreso, datos, vacunaCovid, usuario, producto);
+        return Objects.hash(id, horaEntrada, nombre, apellido, mail, ciudad, fechaIngreso, fechaEgreso, datos, vacunaCovid, usuario, producto);
     }
 
     @Override
@@ -101,13 +138,16 @@ public class ReservaDTO implements Serializable {
         return "ReservaDTO{" +
                 "id=" + id +
                 ", horaEntrada=" + horaEntrada +
-                ", horaSalida=" + horaSalida +
+                ", nombre='" + nombre + '\'' +
+                ", apellido='" + apellido + '\'' +
+                ", mail='" + mail + '\'' +
+                ", ciudad='" + ciudad + '\'' +
                 ", fechaIngreso=" + fechaIngreso +
                 ", fechaEgreso=" + fechaEgreso +
                 ", datos='" + datos + '\'' +
                 ", vacunaCovid=" + vacunaCovid +
-                ", usuario=" + usuario +
                 ", producto=" + producto +
+                ", usuario=" + usuario +
                 '}';
     }
 }
