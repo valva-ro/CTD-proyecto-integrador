@@ -1,5 +1,6 @@
 import Estrellas from "../../../Estrellas/Estrellas";
 import FilledButton from "../../../Buttons/FilledButton";
+import calcularPromedioPuntuacion from "../../../../utils/calcularPromedioPuntuacion";
 import styles from "./Detalles.module.css";
 
 export default function ProductoReserva({ 
@@ -14,6 +15,7 @@ export default function ProductoReserva({
   checkout 
 }) {
   
+  const puntaje = calcularPromedioPuntuacion(puntuaciones);
   const buscarImagenPrincipal = () => {
     let imagen = imagenes.find((imagen) => {
       return imagen.imagenTitulo === "Principal";
@@ -36,11 +38,9 @@ export default function ProductoReserva({
         ></div>
 
         <div className={styles.letterContainer}>
-          <p className={styles.categoria}>
-            {categoria.titulo.toUpperCase()}
-          </p>
+          <p className={styles.categoria}>{categoria.titulo.toUpperCase()}</p>
           <p className={styles.titulo}>{nombre}</p>
-          <Estrellas puntaje={puntuaciones} />
+          <Estrellas puntaje={puntaje} />
           <div className={styles.direccion}>
             <i className="fas fa-map-marker-alt"></i>
             <p>
@@ -50,12 +50,20 @@ export default function ProductoReserva({
           <hr />
           <div className={styles.fecha}>
             <p>Check in</p>
-            <p>{checkin == null ? "__/ __/ __" : new Date(checkin).toLocaleDateString()}</p>
+            <p>
+              {checkin == null
+                ? "__/ __/ __"
+                : new Date(checkin).toLocaleDateString()}
+            </p>
           </div>
           <hr />
           <div className={styles.fecha}>
             <p>Check out</p>
-            <p>{checkout == null ? "__/ __/ __": new Date(checkout).toLocaleDateString()}</p>
+            <p>
+              {checkout == null
+                ? "__/ __/ __"
+                : new Date(checkout).toLocaleDateString()}
+            </p>
           </div>
           <hr />
           <div className={styles.buttonContainer}>
