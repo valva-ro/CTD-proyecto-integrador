@@ -11,18 +11,20 @@ import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Date;
+import java.time.*;
 import java.util.List;
 import java.util.Set;
 
 @RestController
 @RequestMapping("/productos")
-@CrossOrigin(origins = "*", methods = { RequestMethod.GET, RequestMethod.POST })
 public class ProductoController implements IProductoController {
 
+    @Qualifier("ProductoService")
     private final IProductoService productoService;
 
     @Autowired
@@ -114,14 +116,15 @@ public class ProductoController implements IProductoController {
         return ResponseEntity.ok(productos);
     }
 
-
     @Override
     @ApiOperation(value = "Lista todos los productos según la ciudad y las fechas especificadas")
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "Success")
     })
     @GetMapping("/ciudad-fecha")
-    public ResponseEntity<?> obtenerPorCiudadYFechas(@RequestParam String nombre,@RequestParam Date fechaIngreso, @RequestParam Date fechaEgreso ) throws ResourceNotFoundException {
+    public ResponseEntity<?> obtenerPorCiudadYFechas(@RequestParam("nombre") String nombre,
+                                                     @RequestParam("fechaIngreso") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate fechaIngreso,
+                                                     @RequestParam("fechaEgreso") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate fechaEgreso ) throws ResourceNotFoundException {
         Set<ProductoDTO> productos = productoService.consultarPorCiudadYFechas(nombre,fechaIngreso,fechaEgreso);
         return ResponseEntity.ok(productos);
     }
@@ -129,14 +132,27 @@ public class ProductoController implements IProductoController {
 
 
     @Override
-    @ApiOperation(value = "Agrega a un usuario un producto favorito")
+    @CrossOrigin
+    @ApiOperation(value = "Agrega de un usuario un producto favorito")
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "Success"),
             @ApiResponse(code = 404, message = "Not found"),
             @ApiResponse(code = 400, message = "Bad Request")
     })
-    @PutMapping("/{idProducto}/usuarios/{idUsuario}")
+    @PutMapping("/{idProducto}/agregar/usuarios/{idUsuario}")
     public ResponseEntity<?> agregarAFavoritos(@PathVariable Long idProducto, @PathVariable Long idUsuario) throws NotImplementedException, BadRequestException, ResourceNotFoundException {
         return ResponseEntity.ok(productoService.agregarAFavoritos(idProducto, idUsuario));
+    }
+
+    @Override
+    @ApiOperation(value = "Elimina de un usuario un producto favorito")
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Success"),
+            @ApiResponse(code = 404, message = "Not found"),
+            @ApiResponse(code = 400, message = "Bad Request")
+    })
+    @PutMapping("/{idProducto}/eliminar/usuarios/{idUsuario}")
+    public ResponseEntity<?> quitarDeFavoritos(@PathVariable Long idProducto, @PathVariable Long idUsuario) throws NotImplementedException, BadRequestException, ResourceNotFoundException {
+        return ResponseEntity.ok(productoService.quitarDeFavoritos(idProducto, idUsuario));
     }
 }

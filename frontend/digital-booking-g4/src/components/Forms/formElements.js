@@ -38,12 +38,10 @@ const Label = styled.label`
 
 const Input = styled.input`
   background-color: var(--color-5);
-  box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.15);
   color: var(--color-2);
   font-size: 1rem;
   padding: 1vh 40px 1vh 15px;
   width: 100%;
-  margin-top: 5px;
   transition: 0.3s ease all;
 
   @media (max-width: 480px) {
