@@ -779,12 +779,14 @@ INSERT INTO reservas (hora_entrada, hora_salida, fecha_ingreso, fecha_egreso, da
 VALUES ("10:00:00", "20:00:00", "2021-11-18", "2021-11-23", "Esto es una prueba para ver si los datos de reserva funcionan correctamente, el vendedor es un genio!!!", true, 1, 1);
 INSERT INTO reservas (hora_entrada, hora_salida, fecha_ingreso, fecha_egreso, datos, vacuna_covid, fk_producto, fk_usuario) 
 VALUES ("08:00:00", "18:00:00", "2021-10-18", "2021-10-23", "Esto es una prueba 2 para ver si los datos de reserva funcionan correctamente, el vendedor es un genio!!!", true, 2, 1);
+INSERT INTO reservas (hora_entrada, hora_salida, fecha_ingreso, fecha_egreso, datos, vacuna_covid, fk_producto, fk_usuario)
+VALUES ("08:00:00", "18:00:00", "2021-01-18", "2021-01-23", "Esto es una prueba 3 para ver si los datos de reserva funcionan correctamente, el vendedor es un genio!!!", true, 14, 1);
+INSERT INTO reservas (hora_entrada, hora_salida, fecha_ingreso, fecha_egreso, datos, vacuna_covid, fk_producto, fk_usuario)
+VALUES ("12:00:00", "22:00:00", "2021-09-18", "2021-09-23", "Esto es una prueba 4 para ver si los datos de reserva funcionan correctamente, el vendedor es un genio!!!", true, 3, 1);
 INSERT INTO reservas (hora_entrada, hora_salida, fecha_ingreso, fecha_egreso, datos, vacuna_covid, fk_producto, fk_usuario) 
-VALUES ("12:00:00", "22:00:00", "2021-09-18", "2021-09-23", "Esto es una prueba 3 para ver si los datos de reserva funcionan correctamente, el vendedor es un genio!!!", true, 3, 1);
+VALUES ("09:00:00", "19:00:00", "2021-08-18", "2021-08-23", "Esto es una prueba 5 para ver si los datos de reserva funcionan correctamente, el vendedor es un genio!!!", false, 4, 1);
 INSERT INTO reservas (hora_entrada, hora_salida, fecha_ingreso, fecha_egreso, datos, vacuna_covid, fk_producto, fk_usuario) 
-VALUES ("09:00:00", "19:00:00", "2021-08-18", "2021-08-23", "Esto es una prueba 4 para ver si los datos de reserva funcionan correctamente, el vendedor es un genio!!!", false, 4, 1);
+VALUES ("07:30:00", "17:30:00", "2021-07-18", "2021-07-23", "Esto es una prueba 6 para ver si los datos de reserva funcionan correctamente, el vendedor es un genio!!!", false, 5, 1);
 INSERT INTO reservas (hora_entrada, hora_salida, fecha_ingreso, fecha_egreso, datos, vacuna_covid, fk_producto, fk_usuario) 
-VALUES ("07:30:00", "17:30:00", "2021-07-18", "2021-07-23", "Esto es una prueba 5 para ver si los datos de reserva funcionan correctamente, el vendedor es un genio!!!", false, 5, 1);
-INSERT INTO reservas (hora_entrada, hora_salida, fecha_ingreso, fecha_egreso, datos, vacuna_covid, fk_producto, fk_usuario) 
-VALUES ("11:25:00", "21:25:00", "2021-06-18", "2021-06-23", "Esto es una prueba 6 para ver si los datos de reserva funcionan correctamente, el vendedor es un genio!!!", false, 6, 1);
+VALUES ("11:25:00", "21:25:00", "2021-06-18", "2021-06-23", "Esto es una prueba 7 para ver si los datos de reserva funcionan correctamente, el vendedor es un genio!!!", false, 6, 1);
 COMMIT;

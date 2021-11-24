@@ -2,8 +2,10 @@ import React, { useState, useEffect, useContext } from "react";
 import { Link, Redirect, useHistory } from "react-router-dom";
 import TituloBloque from "../TituloBloque/TituloBloque";
 import TarjetaAlojamiento from "../BloqueAlojamientos/TarjetaAlojamiento/TarjetaAlojamiento";
+import SkeletonTarjetaAlojamiento from "../BloqueAlojamientos/TarjetaAlojamiento/SkeletonTarjetaAlojamiento";
 import useFetch from "../../hooks/useFetch";
 import loggedContext from "../../contexts/loggedContext";
+import get from "../../utils/get";
 import styles from "./Favoritos.module.css";
 
 export default function Favoritos() {
@@ -15,9 +17,16 @@ export default function Favoritos() {
 
   useEffect(() => {
     if (isLogged && isLoaded) {
-      setFavoritos(items.productosFavoritos);
+      for (let i = 0; i < items.productosFavoritos.length; i++) {
+        const alojamiento = items.productosFavoritos[i];
+        get(`puntuaciones/producto/${alojamiento.id}`)
+          .then((data) => {
+            items.productosFavoritos[i].puntuaciones = data;
+          })
+          .then(setFavoritos(items.productosFavoritos));
+      }
     }
-  }, [isLoaded, isLogged, items]);
+  }, [isLoaded, isLogged, items, favoritos]);
 
   if (!isLogged) {
     return <Redirect to="/" />;
@@ -39,20 +48,33 @@ export default function Favoritos() {
         </div>
       </div>
       <section className={styles.favoritosContainer}>
-        {favoritos.length === 0 ? (
+        {isLoaded && favoritos.length === 0 ? (
           <div className={styles.avisoNoFavs}>
             <i className="far fa-frown"></i>
             <p>No tienes productos en favoritos</p>
           </div>
+        ) : !isLoaded ? (
+          <ul className={styles.alojamientosContainer}>
+            {Array.apply(0, Array(3)).map((x, i) => (
+              <li
+                key={`skeletonAlojamiento-${i}`}
+                className={styles.alojamiento}
+              >
+                <SkeletonTarjetaAlojamiento />
+              </li>
+            ))}
+          </ul>
         ) : (
-          favoritos.map((alojamiento, i) => (
-            <li key={i} className={styles.alojamiento}>
-              <TarjetaAlojamiento
-                alojamiento={alojamiento}
-                isLoaded={isLoaded}
-              />
-            </li>
-          ))
+          <ul className={styles.alojamientosContainer}>
+            {favoritos.map((alojamiento) => (
+              <li key={alojamiento.id} className={styles.alojamiento}>
+                <TarjetaAlojamiento
+                  alojamiento={alojamiento}
+                  isLoaded={isLoaded}
+                />
+              </li>
+            ))}
+          </ul>
         )}
       </section>
     </>

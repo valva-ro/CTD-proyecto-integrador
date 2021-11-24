@@ -18,6 +18,7 @@ export default function Login() {
   function handleSubmit(e) {
     e.preventDefault();
     iniciarSesion();
+    localStorage.removeItem("previousAction");
   }
 
   function iniciarSesion() {
@@ -42,6 +43,8 @@ export default function Login() {
     localStorage.setItem("jwt", JSON.stringify(data.jwt));
     localStorage.setItem("id", JSON.stringify(data.id));
     localStorage.setItem("email", JSON.stringify(email.campo));
+    localStorage.setItem("nombre", JSON.stringify(data.nombre));
+    localStorage.setItem("apellido", JSON.stringify(data.apellido));
     setUserInformation({ nombre: data.nombre, apellido: data.apellido });
   }
 
@@ -49,6 +52,12 @@ export default function Login() {
     <>
       <div className={styles.mainForm}>
         <div className={styles.contenedorForm}>
+          {localStorage.getItem("previousAction") == "Iniciar reserva" 
+          ? <div className={styles.iniciarReservaSinLoguearse}>
+              <span><i class="fas fa-exclamation-circle"></i></span>  
+              <span>Para realizar una reserva necesitas estar logueado</span> 
+            </div> 
+          : null}
           <h2>Iniciar sesión</h2>
           <form
             className={`${styles.formLogin} ${styles.generalForms}`}

@@ -1,11 +1,7 @@
 .alojamientos {
   margin-top: 1rem;
   columns: 2;
-  padding-bottom: 12px;
-}
-
-.alojamientos li {
-    break-inside: avoid-column;
+  padding-bottom: 4px;
 }
 
 .containerFiltrosButton {
@@ -51,14 +47,15 @@
   padding-bottom: 60px;
 }
 
-.encabezadoFiltros{
+.encabezadoFiltros {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
 .alojamiento {
-  margin-bottom: 2.5vh;
+  padding-bottom: 1rem;
+  break-inside: avoid-column;
 }
 
 .sinResultados {
@@ -66,6 +63,28 @@
   padding: 12vh 0;
   width: 100%;
   color: var(--color-3);
+}
+
+.paginacion {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+}
+
+.paginacion button {
+  padding: 4px 8px;
+  color: var(--color-2);
+  border: none;
+  outline: none;
+  border-radius: 50%;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.paginacion button.activePage {
+  background-color: #1dbeb37c;
 }
 
 @media (max-width: 1300px) {

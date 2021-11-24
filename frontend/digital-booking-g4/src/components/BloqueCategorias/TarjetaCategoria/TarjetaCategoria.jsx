@@ -1,3 +1,4 @@
+import useFetch from "../../../hooks/useFetch";
 import styles from "./TarjetaCategoria.module.css";
 
 export default function TarjetaCategoria({
@@ -8,6 +9,7 @@ export default function TarjetaCategoria({
   descripcion,
   onToggleSelect,
 }) {
+  const { isLoaded, items } = useFetch(`productos/categoria?titulo=${nombre}`);
   return (
     <div
       className={estaActiva ? styles.tarjetaSeleccionada : styles.tarjeta}
@@ -21,7 +23,9 @@ export default function TarjetaCategoria({
       ></div>
       <div className={styles.contenidoTarjeta}>
         <h2 className={styles.nombreCategoria}>{nombre}</h2>
-        <p className={styles.descripcion}>{descripcion}</p>
+        <p className={styles.descripcion}>
+          {isLoaded ? `${items.length} ${nombre}` : ""}
+        </p>
       </div>
     </div>
   );

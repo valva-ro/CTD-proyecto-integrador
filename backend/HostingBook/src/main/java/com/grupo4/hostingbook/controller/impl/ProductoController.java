@@ -12,9 +12,11 @@ import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Set;
 
@@ -111,6 +113,31 @@ public class ProductoController implements IProductoController {
     @GetMapping("/ciudad")
     public ResponseEntity<?> obtenerPorCiudad(@RequestParam String nombre) throws ResourceNotFoundException {
         Set<ProductoDTO> productos = productoService.consultarPorCiudad(nombre);
+        return ResponseEntity.ok(productos);
+    }
+
+    @Override
+    @ApiOperation(value = "Lista todos los productos según la ciudad y las fechas especificadas")
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Success")
+    })
+    @GetMapping(params = {"ciudad", "fechaIngreso", "fechaEgreso"})
+    public ResponseEntity<?> obtenerPorCiudadYFechas(@RequestParam("ciudad") String ciudad,
+                                                     @RequestParam("fechaIngreso") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate fechaIngreso,
+                                                     @RequestParam("fechaEgreso") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate fechaEgreso ) throws ResourceNotFoundException {
+        Set<ProductoDTO> productos = productoService.consultarPorCiudadYFechas(ciudad,fechaIngreso,fechaEgreso);
+        return ResponseEntity.ok(productos);
+    }
+
+    @Override
+    @ApiOperation(value = "Lista todos los productos según las fechas especificadas")
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Success")
+    })
+    @GetMapping(params = {"fechaIngreso", "fechaEgreso"})
+    public ResponseEntity<?> obtenerPorFechas(@RequestParam("fechaIngreso") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate fechaIngreso,
+                                              @RequestParam("fechaEgreso") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate fechaEgreso ) throws ResourceNotFoundException {
+        Set<ProductoDTO> productos = productoService.consultarPorFechas(fechaIngreso,fechaEgreso);
         return ResponseEntity.ok(productos);
     }
 
