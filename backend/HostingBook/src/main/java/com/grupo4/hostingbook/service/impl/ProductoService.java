@@ -18,7 +18,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.time.*;
+import java.time.LocalDate;
 import java.util.*;
 
 @Service("ProductoService")
@@ -132,10 +132,35 @@ public class ProductoService implements IProductoService {
 
     @Override
     public Set<Long> consultarProductosReservadosEntreFechas(LocalDate fechaIngreso, LocalDate fechaEgreso) {
-        Set <Long> idProductos = new HashSet<>();
-        idProductos = productoRepository.buscarProductosReservadosEntreFechas(fechaIngreso, fechaEgreso);
+        Set <Long> idProductos = productoRepository.buscarProductosReservadosEntreFechas(fechaIngreso, fechaEgreso);
         System.out.println(idProductos);
         return idProductos;
+    }
+
+    @Override
+    public Set<ProductoDTO> consultarPorFechas(LocalDate fechaIngreso, LocalDate fechaEgreso)
+            throws ResourceNotFoundException {
+        Set<Long> ids = consultarProductosReservadosEntreFechas(fechaIngreso, fechaEgreso);
+        List<ProductoDTO> dtos = consultarTodos();
+        Iterator<ProductoDTO> itr = dtos.iterator();
+        Set<ProductoDTO> aux = new HashSet<>(); ;
+        for (Long id:ids){
+            for (ProductoDTO dto:dtos){
+                if (dto.getId().equals(id) && itr.hasNext()){
+                    aux.add(dto);
+                }
+            }
+        }
+        for (ProductoDTO a:aux){
+            if (dtos.contains(a)){
+                dtos.remove(a);
+            }
+        }
+        Set<ProductoDTO> dtosParseados = new HashSet<>();
+        for(ProductoDTO dto:dtos) {
+            dtosParseados.add(dto);
+        }
+        return dtosParseados;
     }
 
     @Override
@@ -143,16 +168,20 @@ public class ProductoService implements IProductoService {
             throws ResourceNotFoundException {
         Set<Long> ids = consultarProductosReservadosEntreFechas(fechaIngreso, fechaEgreso); //productos ocupados en las fechas ingresadas
         Set<ProductoDTO> dtos = consultarPorCiudad(nombreCiudad);   //productos que se encuentran en la ciudad ingresada
-        Set<ProductoDTO> auxiliar = dtos;
+        Iterator<ProductoDTO> itr = dtos.iterator();
+        Set<ProductoDTO> aux = new HashSet<>(); ;
         for (Long id:ids){
-            for (ProductoDTO aux:auxiliar){
-                if (aux.getId().equals(id)){
-                    dtos.remove(aux);
+            for (ProductoDTO dto:dtos){
+                if (dto.getId().equals(id) && itr.hasNext()){
+                    aux.add(dto);
                 }
-                        //BUSCAR ERROR, es porque no puedo eliminar elementos del mismo iterador, peeeeero, si uso un auxiliar tampoco se puede
             }
         }
-
+        for (ProductoDTO a:aux){
+            if (dtos.contains(a)){
+                dtos.remove(a);
+            }
+        }
         return dtos; //productos libres en la ciudad y fechas elegidas
     }
 

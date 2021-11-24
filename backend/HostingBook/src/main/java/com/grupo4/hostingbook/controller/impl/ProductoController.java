@@ -16,7 +16,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.time.*;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Set;
 
@@ -121,15 +121,25 @@ public class ProductoController implements IProductoController {
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "Success")
     })
-    @GetMapping("/ciudad-fecha")
-    public ResponseEntity<?> obtenerPorCiudadYFechas(@RequestParam("nombre") String nombre,
+    @GetMapping(params = {"ciudad", "fechaIngreso", "fechaEgreso"})
+    public ResponseEntity<?> obtenerPorCiudadYFechas(@RequestParam("ciudad") String ciudad,
                                                      @RequestParam("fechaIngreso") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate fechaIngreso,
                                                      @RequestParam("fechaEgreso") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate fechaEgreso ) throws ResourceNotFoundException {
-        Set<ProductoDTO> productos = productoService.consultarPorCiudadYFechas(nombre,fechaIngreso,fechaEgreso);
+        Set<ProductoDTO> productos = productoService.consultarPorCiudadYFechas(ciudad,fechaIngreso,fechaEgreso);
         return ResponseEntity.ok(productos);
     }
 
-
+    @Override
+    @ApiOperation(value = "Lista todos los productos según las fechas especificadas")
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Success")
+    })
+    @GetMapping(params = {"fechaIngreso", "fechaEgreso"})
+    public ResponseEntity<?> obtenerPorFechas(@RequestParam("fechaIngreso") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate fechaIngreso,
+                                              @RequestParam("fechaEgreso") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate fechaEgreso ) throws ResourceNotFoundException {
+        Set<ProductoDTO> productos = productoService.consultarPorFechas(fechaIngreso,fechaEgreso);
+        return ResponseEntity.ok(productos);
+    }
 
     @Override
     @CrossOrigin
