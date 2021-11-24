@@ -20,6 +20,8 @@ export default function Profile() {
     localStorage.setItem("jwt", "");
     localStorage.setItem("email", "");
     localStorage.setItem("id", "");
+    localStorage.setItem("nombre", "");
+    localStorage.setItem("apellido", "");
   }
 
   return (

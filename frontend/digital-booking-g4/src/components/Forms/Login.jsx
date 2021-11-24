@@ -42,6 +42,8 @@ export default function Login() {
     localStorage.setItem("jwt", JSON.stringify(data.jwt));
     localStorage.setItem("id", JSON.stringify(data.id));
     localStorage.setItem("email", JSON.stringify(email.campo));
+    localStorage.setItem("nombre", JSON.stringify(data.nombre));
+    localStorage.setItem("apellido", JSON.stringify(data.apellido));
     setUserInformation({ nombre: data.nombre, apellido: data.apellido });
   }
 
