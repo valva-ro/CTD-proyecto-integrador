@@ -17,9 +17,6 @@ export default function ProductoReserva({
   
   const puntaje = calcularPromedioPuntuacion(puntuaciones);
   const buscarImagenPrincipal = () => {
-    let imagen = imagenes.find((imagen) => {
-      return imagen.imagenTitulo === "Principal";
-    });
     if (imagen == null) {
       imagen = imagenes[0];
     }

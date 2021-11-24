@@ -12,9 +12,7 @@ export default function SideNav() {
 
   function cerrarSesion() {
     setIsLogged(false);
-    localStorage.setItem("jwt", "");
-    localStorage.setItem("email", "");
-    localStorage.setItem("id", "");
+    localStorage.clear();
   }
 
   const RenderComponent = () => {
