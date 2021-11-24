@@ -27,14 +27,14 @@ export default function TarjetaAlojamiento({
   const [favoritos, setFavoritos] = useState([]);
   const idUsuario = parseInt(localStorage.getItem("id"));
   const { isLoaded, items } = useFetch(`usuarios/${idUsuario}`);
-  
+
   useEffect(() => {
     if (isLogged && isLoaded) {
       setFavoritos(items.productosFavoritos);
-      setIsFavorito(favoritos.find((fav) => fav.id === id) !== undefined)
+      setIsFavorito(favoritos.find((fav) => fav.id === id) !== undefined);
     }
   }, [isLoaded, isLogged, items, favoritos]);
-  
+
   const buscarImagenPrincipal = () => {
     let imagen = imagenes.find((imagen) => {
       return imagen.imagenTitulo === "Principal";
@@ -44,27 +44,26 @@ export default function TarjetaAlojamiento({
     }
     return imagen;
   };
-  
+
   async function fetchFav(accion) {
     await fetch(
       `http://localhost:8080/productos/${id}/${accion}/usuarios/${idUsuario}`,
       {
         method: "PUT",
       }
-      );
+    );
+  }
+
+  const handleFav = () => {
+    if (!isFavorito) {
+      fetchFav("agregar");
+    } else {
+      fetchFav("eliminar");
     }
-    
-    const handleFav = () => {
-      if (!isFavorito) {
-        fetchFav("agregar");
-      } else {
-        fetchFav("eliminar");
-      }
-     setIsFavorito(!isFavorito);
-    };
-    
-    
-    return (
+    setIsFavorito(!isFavorito);
+  };
+
+  return (
     <div className={styles.tarjetaAlojamiento} data-aos="fade-up">
       <div
         className={styles.imagenAlojamiento}
@@ -133,7 +132,7 @@ export default function TarjetaAlojamiento({
             <>
               {esVerMas && descripcion.length > 85
                 ? `${descripcion.slice(0, 85)}...`
-                : `${descripcion.slice(0, 170)}...`}
+                : descripcion}
               <span
                 onClick={() => setEsVerMas(!esVerMas)}
                 className={styles.verMas}

@@ -23,6 +23,7 @@
   background-size: cover;
   width: 45%;
   min-height: 300px;
+  align-self: stretch;
   border-radius: 10px;
 }
 
