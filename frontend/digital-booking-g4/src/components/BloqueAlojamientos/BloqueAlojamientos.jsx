@@ -35,6 +35,7 @@ export default function BloqueAlojamientos() {
 
   const handlePageChange = (page, e) => {
     setCurrentPage(page);
+    handleScrollPosition();
   };
 
   const alojamientosFiltrados = alojamientos.filter((alojamiento) => {
@@ -61,10 +62,6 @@ export default function BloqueAlojamientos() {
     }
   }, [isLoaded, items]);
 
-  useEffect(() => {
-    handleScrollPosition();
-  }, [currentPage]);
-
   return (
     <section className={styles.recomendaciones}>
       <div className={styles.encabezadoFiltros}>
@@ -86,7 +83,7 @@ export default function BloqueAlojamientos() {
         <h2 className={styles.sinResultados}>No se encontraron resultados</h2>
       ) : !isLoaded ? (
         <ul className={styles.alojamientos}>
-          {Array.apply(0, Array(8)).map((x, i) => (
+          {Array.apply(0, Array(6)).map((x, i) => (
             <li key={`skeletonAlojamiento-${i}`} className={styles.alojamiento}>
               <SkeletonTarjetaAlojamiento />
             </li>
@@ -94,13 +91,7 @@ export default function BloqueAlojamientos() {
         </ul>
       ) : (
         <>
-          <ul
-            className={
-              alojamientosFiltrados.length < 2
-                ? styles.alojamientosUnaColumna
-                : styles.alojamientos
-            }
-          >
+          <ul className={styles.alojamientos}>
             {alojamientosFiltrados
               .slice(currentPage - 1, currentPage + 5)
               .map((alojamiento, i) => (

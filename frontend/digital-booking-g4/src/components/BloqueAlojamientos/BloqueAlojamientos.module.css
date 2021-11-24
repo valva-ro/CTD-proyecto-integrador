@@ -4,10 +4,6 @@
   padding-bottom: 4px;
 }
 
-.alojamientos li {
-    break-inside: avoid-column;
-}
-
 .containerFiltrosButton {
   padding: 4px 1vw;
   background-color: var(--color-3);
@@ -51,14 +47,15 @@
   padding-bottom: 60px;
 }
 
-.encabezadoFiltros{
+.encabezadoFiltros {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
 .alojamiento {
-  margin-bottom: 2.5vh;
+  padding-bottom: 1rem;
+  break-inside: avoid-column;
 }
 
 .sinResultados {
