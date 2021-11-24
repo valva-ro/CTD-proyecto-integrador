@@ -12,11 +12,21 @@ export default function ProductoReserva({
     puntuaciones
   }, 
   checkin, 
-  checkout 
+  checkout,
+  nombreUsuario,
+  apellido,
+  mail,
+  ciudadUsuario,
+  textArea,
+  isVacunadx,
+  horarioLlegada
 }) {
   
   const puntaje = calcularPromedioPuntuacion(puntuaciones);
   const buscarImagenPrincipal = () => {
+    let imagen = imagenes.find((imagen) => {
+      return imagen.imagenTitulo === "Principal";
+    });
     if (imagen == null) {
       imagen = imagenes[0];
     }
@@ -24,7 +34,7 @@ export default function ProductoReserva({
   };
 
   return (
-    <div className={styles.container}>
+    <div className={styles.detallesContainer}>
       <h2 className={styles.tituloTarjeta}>Detalle de la reserva</h2>
       <div className={styles.infContainer}>
         <div
@@ -64,7 +74,7 @@ export default function ProductoReserva({
           </div>
           <hr />
           <div className={styles.buttonContainer}>
-            <FilledButton>Confirmar reserva</FilledButton>
+            <FilledButton styles={styles.buttonSubmit}>Confirmar reserva</FilledButton>
           </div>
         </div>
       </div>
