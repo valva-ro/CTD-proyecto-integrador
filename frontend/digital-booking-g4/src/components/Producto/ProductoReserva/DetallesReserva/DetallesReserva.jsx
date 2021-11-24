@@ -1,5 +1,6 @@
 import Estrellas from "../../../Estrellas/Estrellas";
 import FilledButton from "../../../Buttons/FilledButton";
+import calcularPromedioPuntuacion from "../../../../utils/calcularPromedioPuntuacion"
 import styles from "./Detalles.module.css";
 
 export default function ProductoReserva({ 
@@ -13,7 +14,7 @@ export default function ProductoReserva({
   checkin, 
   checkout 
 }) {
-  
+  const puntaje = calcularPromedioPuntuacion(puntuaciones);  
   const buscarImagenPrincipal = () => {
     let imagen = imagenes.find((imagen) => {
       return imagen.imagenTitulo === "Principal";
@@ -40,7 +41,7 @@ export default function ProductoReserva({
             {categoria.titulo.toUpperCase()}
           </p>
           <p className={styles.titulo}>{nombre}</p>
-          <Estrellas puntaje={puntuaciones} />
+          <Estrellas puntaje={puntaje} />
           <div className={styles.direccion}>
             <i className="fas fa-map-marker-alt"></i>
             <p>
