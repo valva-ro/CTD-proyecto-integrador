@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import styles from "./Profile.module.css";
 import loggedContext from "../../contexts/loggedContext";
 
@@ -13,6 +13,7 @@ export default function Profile() {
     .toUpperCase()}`;
   const nombreCapitalized = capitalizeString(nombre);
   const apellidoCapitalized = capitalizeString(apellido);
+  const location = useLocation();
 
   function cerrarSesion() {
     setIsLogged(false);
@@ -29,7 +30,11 @@ export default function Profile() {
         <p
           className={styles.nombre}
         >{`${nombreCapitalized} ${apellidoCapitalized}`}</p>
-        <Link to="/favorites">Favoritos</Link>
+        {location.pathname !== "/favorites" ? (
+          <Link to="/favorites">Favoritos</Link>
+        ) : (
+          ""
+        )}
       </div>
       <span
         className={styles.cerrar}
