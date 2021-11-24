@@ -54,7 +54,8 @@ form a:hover {
   display: flex;
   border-radius: 5px;
   flex-direction: row;
-  justify-content: flex-start;
+  justify-content: flex-start !important;
+  align-items: center !important;
 }
 .credencialesInvalidas {
   text-align: start;

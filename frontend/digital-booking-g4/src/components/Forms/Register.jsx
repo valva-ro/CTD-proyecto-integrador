@@ -47,6 +47,7 @@ export default function Register() {
 
   function handleSubmit(e) {
     e.preventDefault();
+    enviarDatosBDD();
   }
 
   function validarCampos() {
@@ -58,11 +59,9 @@ export default function Register() {
       password.valido === "true" &&
       repeatPassword.valido === "true"
     ) {
-      console.log("validan");
       setIsError(false);
       rta = true;
     } else {
-      console.log("No validan");
       setIsError(true);
       setMsjError(
         "Lamentablemente no ha podido registrarse. Por favor, vuelva a intentarlo."
@@ -82,7 +81,6 @@ export default function Register() {
         rol: { id: ID_ROL_USUARIO },
       })
         .then((response) => {
-          console.log("1:" + response.status);
           if (response.status === 409) {
             setIsError(true);
             response.text().then(function (text) {
@@ -108,7 +106,7 @@ export default function Register() {
           onSubmit={handleSubmit}
           noValidate="novalidate"
         >
-          <div>
+          <div className={styles.inputsContainer}>
             <InputComponent
               estado={name}
               cambiarEstado={setName}
@@ -162,9 +160,7 @@ export default function Register() {
               <p className={styles.credencialesInvalidas}>{msjError}</p>
             </div>
           ) : null}
-          <FilledButton onClick={() => enviarDatosBDD()}>
-            Crear cuenta
-          </FilledButton>
+          <FilledButton onClick={handleSubmit}>Crear cuenta</FilledButton>
           <p>
             ¿Ya tienes cuenta? <Link to="/login">Iniciar sesión</Link>
           </p>
