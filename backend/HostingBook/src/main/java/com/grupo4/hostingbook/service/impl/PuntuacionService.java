@@ -9,17 +9,18 @@ import com.grupo4.hostingbook.model.ProductoDTO;
 import com.grupo4.hostingbook.model.PuntuacionDTO;
 import com.grupo4.hostingbook.persistence.entites.Puntuacion;
 import com.grupo4.hostingbook.persistence.repository.IPuntuacionRepository;
-import com.grupo4.hostingbook.service.CRUDService;
+import com.grupo4.hostingbook.service.IPuntuacionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
 @Service("PuntuacionService")
-public class PuntuacionService implements CRUDService<PuntuacionDTO> {
+public class PuntuacionService implements IPuntuacionService {
 
     private final IPuntuacionRepository puntuacionRepository;
     private final UsuarioService usuarioService;
@@ -72,6 +73,15 @@ public class PuntuacionService implements CRUDService<PuntuacionDTO> {
         puntuacionRepository.deleteById(id);
     }
 
+    @Override
+    public Set<PuntuacionDTO> consultarPorProductoID(Long id) {
+        Set<PuntuacionDTO> dtos = new HashSet<>();
+        for (Puntuacion p : puntuacionRepository.consultarPorProductoID(id)) {
+            dtos.add(mapper.convertValue(p, PuntuacionDTO.class));
+        }
+        return dtos;
+    }
+
     private void validarCamposRequeridosCreacion(PuntuacionDTO puntuacionDTO) throws BadRequestException {
         if (puntuacionDTO == null) {
             throw new BadRequestException(String.format(Mensajes.ERROR_DTO_NO_EXISTE, "Puntuación"));
@@ -112,9 +122,5 @@ public class PuntuacionService implements CRUDService<PuntuacionDTO> {
         Set<PuntuacionDTO> puntuaciones = productoPorActualizar.getPuntuaciones();
         puntuaciones.add(new PuntuacionDTO(puntuacionDTO.getId()));
         productoService.actualizar(productoPorActualizar);
-    }
-
-    public Set<PuntuacionDTO> consultarPorProductoID(Long id) throws ResourceNotFoundException {
-        return puntuacionRepository.consultarPorProductoID(id);
     }
 }

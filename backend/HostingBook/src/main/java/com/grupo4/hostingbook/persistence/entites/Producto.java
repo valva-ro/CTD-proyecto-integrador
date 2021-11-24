@@ -15,6 +15,8 @@ public class Producto {
     private Long id;
     private String nombre;
     private String descripcion;
+    @Column(name="horario_check_in")
+    private Integer horarioCheckIn;
 
     @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "fk_categoria")
@@ -59,7 +61,7 @@ public class Producto {
     )
     private Set<Caracteristica> caracteristicas = new HashSet<>();
 
-    @ManyToMany (cascade = CascadeType.MERGE, mappedBy = "productosFavoritos")
+    @ManyToMany (mappedBy = "productosFavoritos")
     private Set<Usuario> usuarios = new HashSet<>();
 
     public Producto() {}
@@ -76,6 +78,35 @@ public class Producto {
         this.ciudad = ciudad;
         this.imagenes = imagenes;
         this.caracteristicas = caracteristicas;
+    }
+
+    public Producto(String nombre, String descripcion, Integer horarioCheckIn, Categoria categoria, Ciudad ciudad, Set<Imagen> imagenes, Set<Reserva> reservas, List<Puntuacion> puntuaciones, Set<Politica> politicas, Set<Caracteristica> caracteristicas, Set<Usuario> usuarios) {
+        this.nombre = nombre;
+        this.descripcion = descripcion;
+        this.horarioCheckIn = horarioCheckIn;
+        this.categoria = categoria;
+        this.ciudad = ciudad;
+        this.imagenes = imagenes;
+        this.reservas = reservas;
+        this.puntuaciones = puntuaciones;
+        this.politicas = politicas;
+        this.caracteristicas = caracteristicas;
+        this.usuarios = usuarios;
+    }
+
+    public Producto(Long id, String nombre, String descripcion, Integer horarioCheckIn, Categoria categoria, Ciudad ciudad, Set<Imagen> imagenes, Set<Reserva> reservas, List<Puntuacion> puntuaciones, Set<Politica> politicas, Set<Caracteristica> caracteristicas, Set<Usuario> usuarios) {
+        this.id = id;
+        this.nombre = nombre;
+        this.descripcion = descripcion;
+        this.horarioCheckIn = horarioCheckIn;
+        this.categoria = categoria;
+        this.ciudad = ciudad;
+        this.imagenes = imagenes;
+        this.reservas = reservas;
+        this.puntuaciones = puntuaciones;
+        this.politicas = politicas;
+        this.caracteristicas = caracteristicas;
+        this.usuarios = usuarios;
     }
 
     public Long getId() {
@@ -100,6 +131,14 @@ public class Producto {
 
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
+    }
+
+    public Integer getHorarioCheckIn() {
+        return horarioCheckIn;
+    }
+
+    public void setHorarioCheckIn(Integer horarioCheckIn) {
+        this.horarioCheckIn = horarioCheckIn;
     }
 
     public Categoria getCategoria() {
@@ -154,11 +193,23 @@ public class Producto {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Producto producto = (Producto) o;
-        return Objects.equals(id, producto.id) && Objects.equals(nombre, producto.nombre) && Objects.equals(descripcion, producto.descripcion) && Objects.equals(categoria, producto.categoria) && Objects.equals(ciudad, producto.ciudad) && Objects.equals(imagenes, producto.imagenes) && Objects.equals(caracteristicas, producto.caracteristicas);
+        return Objects.equals(id, producto.id) &&
+                Objects.equals(nombre, producto.nombre) &&
+                Objects.equals(descripcion, producto.descripcion) &&
+                Objects.equals(categoria, producto.categoria) &&
+                Objects.equals(ciudad, producto.ciudad) &&
+                Objects.equals(imagenes, producto.imagenes) &&
+                Objects.equals(caracteristicas, producto.caracteristicas);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, nombre, descripcion, categoria, ciudad, imagenes, caracteristicas);
+        return Objects.hash(id,
+                nombre,
+                descripcion,
+                categoria,
+                ciudad,
+                imagenes,
+                caracteristicas);
     }
 }

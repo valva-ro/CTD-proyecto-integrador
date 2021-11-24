@@ -54,6 +54,7 @@
 .encabezadoFiltros{
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 
 .alojamiento {
@@ -85,5 +86,8 @@
   }
   .containerFiltrosButton {
     width: 115px;
+  }
+  .containerFiltrosButton i {
+    display: none;
   }
 }

@@ -10,9 +10,10 @@ public class ProductoDTO implements Serializable {
     private Long id;
     private String nombre;
     private String descripcion;
+    private Integer horarioCheckIn;
     private CategoriaDTO categoria;
     private CiudadDTO ciudad;
-    private Set<PoliticaDTO> politicas;
+    private Set<PoliticaDTO> politicas = new HashSet<>();
     private Set<ImagenDTO> imagenes = new HashSet<>();
     private Set<CaracteristicaDTO> caracteristicas = new HashSet<>();
     private Set<PuntuacionDTO> puntuaciones = new HashSet<>();
@@ -40,6 +41,18 @@ public class ProductoDTO implements Serializable {
         this.caracteristicas = caracteristicas;
     }
 
+    public ProductoDTO(Long id, String nombre, String descripcion, CategoriaDTO categoria, CiudadDTO ciudad,
+                       Set<PoliticaDTO> politicas, Set<ImagenDTO> imagenes, Set<CaracteristicaDTO> caracteristicas) {
+        this.id = id;
+        this.nombre = nombre;
+        this.descripcion = descripcion;
+        this.categoria = categoria;
+        this.ciudad = ciudad;
+        this.politicas = politicas;
+        this.imagenes = imagenes;
+        this.caracteristicas = caracteristicas;
+    }
+
     public ProductoDTO(Long id,
                        String nombre,
                        String descripcion,
@@ -56,39 +69,33 @@ public class ProductoDTO implements Serializable {
         this.caracteristicas = caracteristicas;
     }
 
-    public ProductoDTO(Long id, String nombre, String descripcion, CategoriaDTO categoria, CiudadDTO ciudad,
-            Set<PoliticaDTO> politicas, Set<ImagenDTO> imagenes, Set<CaracteristicaDTO> caracteristicas) {
+    public ProductoDTO(String nombre, String descripcion, Integer horarioCheckIn, CategoriaDTO categoria, CiudadDTO ciudad, Set<PoliticaDTO> politicas, Set<ImagenDTO> imagenes, Set<CaracteristicaDTO> caracteristicas, Set<PuntuacionDTO> puntuaciones, Set<ReservaDTO> reservas, Set<UsuarioDTO> usuarios) {
+        this.nombre = nombre;
+        this.descripcion = descripcion;
+        this.horarioCheckIn = horarioCheckIn;
+        this.categoria = categoria;
+        this.ciudad = ciudad;
+        this.politicas = politicas;
+        this.imagenes = imagenes;
+        this.caracteristicas = caracteristicas;
+        this.puntuaciones = puntuaciones;
+        this.reservas = reservas;
+        this.usuarios = usuarios;
+    }
+
+    public ProductoDTO(Long id, String nombre, String descripcion, Integer horarioCheckIn, CategoriaDTO categoria, CiudadDTO ciudad, Set<PoliticaDTO> politicas, Set<ImagenDTO> imagenes, Set<CaracteristicaDTO> caracteristicas, Set<PuntuacionDTO> puntuaciones, Set<ReservaDTO> reservas, Set<UsuarioDTO> usuarios) {
         this.id = id;
         this.nombre = nombre;
         this.descripcion = descripcion;
+        this.horarioCheckIn = horarioCheckIn;
         this.categoria = categoria;
         this.ciudad = ciudad;
         this.politicas = politicas;
         this.imagenes = imagenes;
         this.caracteristicas = caracteristicas;
-    }
-
-    public ProductoDTO(String nombre, String descripcion, CategoriaDTO categoria, CiudadDTO ciudad,
-            Set<PoliticaDTO> politicas, Set<ImagenDTO> imagenes, Set<CaracteristicaDTO> caracteristicas) {
-        this.nombre = nombre;
-        this.descripcion = descripcion;
-        this.categoria = categoria;
-        this.ciudad = ciudad;
-        this.politicas = politicas;
-        this.imagenes = imagenes;
-        this.caracteristicas = caracteristicas;
-    }
-
-    public ProductoDTO(String nombre, String descripcion, CategoriaDTO categoria, CiudadDTO ciudad,
-                       Set<PoliticaDTO> politicas, Set<ImagenDTO> imagenes, Set<CaracteristicaDTO> caracteristicas, Set<ReservaDTO> reservas) {
-        this.nombre = nombre;
-        this.descripcion = descripcion;
-        this.categoria = categoria;
-        this.ciudad = ciudad;
-        this.politicas = politicas;
-        this.imagenes = imagenes;
-        this.caracteristicas = caracteristicas;
+        this.puntuaciones = puntuaciones;
         this.reservas = reservas;
+        this.usuarios = usuarios;
     }
 
     public Long getId() {
@@ -113,6 +120,14 @@ public class ProductoDTO implements Serializable {
 
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
+    }
+
+    public Integer getHorarioCheckIn() {
+        return horarioCheckIn;
+    }
+
+    public void setHorarioCheckIn(Integer horarioCheckIn) {
+        this.horarioCheckIn = horarioCheckIn;
     }
 
     public CategoriaDTO getCategoria() {

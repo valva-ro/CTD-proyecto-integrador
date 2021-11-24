@@ -2,7 +2,7 @@ import styles from "./TarjetaAlojamiento.module.css";
 
 export default function SkeletonTarjetaAlojamiento(){
     return (
-      <div className={styles.tarjetaAlojamiento} data-aos="flip-up">
+      <div className={styles.tarjetaAlojamiento} data-aos="fade-up">
         <div className={`${styles.imagenAlojamiento} ${styles.skeleton}`}></div>
         <div className={styles.descripcionAlojamiento}>
           <div className={styles.informacionPrincipal}>

@@ -54,8 +54,8 @@ export default function BloqueAlojamientos() {
             : `${capitalizeFirstLetter(currentCategory)} en ${currentCity}`}
         </TituloBloque>
         <div className={styles.containerFiltrosButton} onClick={toggleFiltrado}>
-          <span className={styles.filtrosButton}>Deshacer Filtros</span>
-          <i class="fas fa-backspace"></i>
+          <span className={styles.filtrosButton}>Quitar Filtros</span>
+          <i className="fas fa-backspace"></i>
         </div>
       </div>
       {isLoaded && alojamientosFiltrados.length === 0 ? (

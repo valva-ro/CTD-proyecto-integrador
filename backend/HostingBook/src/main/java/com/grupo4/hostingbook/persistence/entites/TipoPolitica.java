@@ -17,7 +17,7 @@ public class TipoPolitica {
     private Long id;
     private String nombre;
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "tipoPolitica")
     @JsonIgnore
     private Set<Politica> politicas = new HashSet<>();
 

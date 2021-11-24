@@ -22,4 +22,6 @@ public interface IProductoController extends CRUDController<ProductoDTO> {
     ResponseEntity<?> obtenerPorCiudadYFechas(@RequestParam String nombre, @RequestParam Date fechaIngreso, @RequestParam Date fechaEgreso) throws ResourceNotFoundException;
 
     ResponseEntity<?> agregarAFavoritos(@PathVariable Long idProducto, @PathVariable Long idUsuario) throws NotImplementedException, BadRequestException, ResourceNotFoundException;
+
+    ResponseEntity<?> quitarDeFavoritos(Long idProducto, Long idUsuario) throws ResourceNotFoundException, BadRequestException, NotImplementedException;
 }

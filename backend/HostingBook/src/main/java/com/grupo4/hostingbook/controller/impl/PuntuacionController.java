@@ -1,12 +1,12 @@
 package com.grupo4.hostingbook.controller.impl;
 
-import com.grupo4.hostingbook.controller.CRUDController;
+import com.grupo4.hostingbook.controller.IPuntuacionController;
 import com.grupo4.hostingbook.exceptions.BadRequestException;
 import com.grupo4.hostingbook.exceptions.Mensajes;
 import com.grupo4.hostingbook.exceptions.NotImplementedException;
 import com.grupo4.hostingbook.exceptions.ResourceNotFoundException;
 import com.grupo4.hostingbook.model.PuntuacionDTO;
-import com.grupo4.hostingbook.service.CRUDService;
+import com.grupo4.hostingbook.service.IPuntuacionService;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
@@ -16,17 +16,17 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Set;
 
 @RestController
 @RequestMapping("/puntuaciones")
-@CrossOrigin(origins = "*", methods = { RequestMethod.GET, RequestMethod.POST })
-public class PuntuacionController implements CRUDController<PuntuacionDTO> {
+public class PuntuacionController implements IPuntuacionController {
 
     @Qualifier("PuntuacionService")
-    private final CRUDService<PuntuacionDTO> puntuacionService;
+    private final IPuntuacionService puntuacionService;
 
     @Autowired
-    public PuntuacionController(CRUDService<PuntuacionDTO> puntuacionService) {
+    public PuntuacionController(IPuntuacionService puntuacionService) {
         this.puntuacionService = puntuacionService;
     }
 
@@ -85,4 +85,9 @@ public class PuntuacionController implements CRUDController<PuntuacionDTO> {
         return ResponseEntity.ok(String.format(Mensajes.ELIMINADO_CON_EXITO, "Puntuacion", id));
     }
 
+    @Override
+    @GetMapping("/producto/{id}")
+    public ResponseEntity<Set<PuntuacionDTO>> consultarPorProductoID(@PathVariable Long id) {
+        return ResponseEntity.ok(puntuacionService.consultarPorProductoID(id));
+    }
 }

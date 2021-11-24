@@ -46,15 +46,16 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                             "/categorias**",
                             "/ciudades**",
                             "/productos**",
-                            "/login",
+                            "/usuarios/login",
                             "/usuarios/signup",
-                            "/usuarios"
+                            "/usuarios",
+                            "/usuarios/{^[\\d]$}"
                     ).permitAll()
                     .antMatchers(
-                            "/usuarios**",
                             "/reservas**",
-                            "/productos/agregar/**/usuarios/**",
-                            "/productos/eliminar/**/usuarios/**"
+                            "/usuarios/{\\d+}/favoritos",
+                            "/productos/agregar/{^[\\d]$}/usuarios/{^[\\d]$}",
+                            "/productos/eliminar/{^[\\d]$}/usuarios/{^[\\d]$}"
                     ).authenticated()
                 .and()
                     .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);

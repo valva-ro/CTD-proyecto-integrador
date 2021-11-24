@@ -16,6 +16,7 @@ import com.grupo4.hostingbook.persistence.repository.IProductoRepository;
 import com.grupo4.hostingbook.service.IProductoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.*;
 
@@ -51,6 +52,9 @@ public class ProductoService implements IProductoService {
     @Override
     public ProductoDTO crear(ProductoDTO productoDTO) throws BadRequestException, ResourceNotFoundException {
         validarCamposRequeridosCreacion(productoDTO);
+        if (productoDTO.getHorarioCheckIn() == null) {
+            productoDTO.setHorarioCheckIn(14);
+        }
         Producto guardado = productoRepository.save(mapper.convertValue(productoDTO, Producto.class));
         return setearEntidadesDeLaBaseDeDatos(guardado);
     }
@@ -142,7 +146,6 @@ public class ProductoService implements IProductoService {
         }*/
     }
 
-    @Override
     public UsuarioDTO agregarAFavoritos(Long idProducto, Long idUsuario)
             throws ResourceNotFoundException, BadRequestException {
         ProductoDTO producto = buscarPorId(idProducto);
@@ -150,8 +153,26 @@ public class ProductoService implements IProductoService {
         Set<ProductoDTO> productosFavoritos = usuario.getProductosFavoritos();
         productosFavoritos.add(producto);
         usuario.setProductosFavoritos(productosFavoritos);
-        usuarioService.actualizar(usuario);
-        return usuario;
+        UsuarioDTO actualizado = mapper.convertValue(usuarioService.save(usuario), UsuarioDTO.class);
+        return actualizado;
+    }
+
+    @Override
+    @Transactional
+    public UsuarioDTO quitarDeFavoritos(Long idProducto, Long idUsuario)
+            throws ResourceNotFoundException, BadRequestException {
+        ProductoDTO producto = buscarPorId(idProducto);
+        UsuarioDTO usuario = usuarioService.buscarPorId(idUsuario);
+        Set<ProductoDTO> productosFavoritos = usuario.getProductosFavoritos();
+        Set<ProductoDTO> productosActualizados = new HashSet<>();
+        for (ProductoDTO p : productosFavoritos) {
+            if (!p.getId().equals(idProducto)) {
+                productosActualizados.add(p);
+            }
+        }
+        usuario.setProductosFavoritos(productosActualizados);
+        UsuarioDTO actualizado = mapper.convertValue(usuarioService.save(usuario), UsuarioDTO.class);
+        return actualizado;
     }
 
     private void validarCamposRequeridosCreacion(ProductoDTO productoDTO) throws BadRequestException {
@@ -178,6 +199,9 @@ public class ProductoService implements IProductoService {
             if (productoDTO.getImagenes() == null || productoDTO.getImagenes().size() == 0)
                 throw new BadRequestException(
                         String.format(Mensajes.ERROR_CREACION_CAMPO_REQUERIDO, "producto", "imágenes"));
+            if (productoDTO.getHorarioCheckIn() < 0 || productoDTO.getHorarioCheckIn() > 23)
+                throw new BadRequestException(
+                        String.format(Mensajes.ERROR_CAMPO_FUERA_DE_RANGO, "horario de check-in", "0", "23"));
         }
     }
 
