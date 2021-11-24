@@ -15,17 +15,23 @@ export default function BloqueAlojamientos() {
   const { isLoaded, items } = useFetch("productos");
   const [currentPage, setCurrentPage] = useState(1);
   const anchoPantalla = useScreenWidth();
-
+  
   const toggleFiltrado = () => {
     setCurrentCategory("");
     setCurrentCity("");
   };
-  
-  useEffect(() => {
-    if (isLoaded) {
-      setAlojamientos(items);
+
+  const handleScrollPosition = () => {
+    if (anchoPantalla >= 860) {
+      window.scrollTo(0, 337);
     }
-  }, [isLoaded, items]);
+    if (anchoPantalla > 480 && anchoPantalla < 860) {
+      window.scrollTo(0, 364);
+    }
+    if (anchoPantalla <= 480) {
+      window.scrollTo(0, 660);
+    }
+  };
 
   const handlePageChange = (page, e) => {
     setCurrentPage(page);
@@ -50,20 +56,15 @@ export default function BloqueAlojamientos() {
   });
 
   useEffect(() => {
-    if (anchoPantalla >= 860) {
-      console.log("desktop");
-      window.scrollTo(0, 337) 
+    if (isLoaded) {
+      setAlojamientos(items);
     }
-    if (anchoPantalla > 480 && anchoPantalla < 860) {
-      console.log("tablet");
-      window.scrollTo(0, 364) 
-    }
-    if (anchoPantalla <= 480) {
-      console.log("mobile");
-      window.scrollTo(0, 660) 
-    }
-  })
-  
+  }, [isLoaded, items]);
+
+  useEffect(() => {
+    handleScrollPosition();
+  }, [currentPage]);
+
   return (
     <section className={styles.recomendaciones}>
       <div className={styles.encabezadoFiltros}>
@@ -150,7 +151,8 @@ export default function BloqueAlojamientos() {
                 )}
 
                 {pages.map((page) => {
-                  let activePage = currentPage === page ? styles.activePage : null;
+                  let activePage =
+                    currentPage === page ? styles.activePage : null;
                   return (
                     <button
                       className={activePage}
