@@ -1,18 +1,18 @@
 import { useState } from "react";
-import TituloBloque from "../../../TituloBloque/TituloBloque";
 import DatePicker, {
   CalendarContainer,
   registerLocale,
 } from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import styles from "./ProductoFechasDisponibles.module.css";
+import { Link, useParams } from "react-router-dom";
+import TituloBloque from "../../../TituloBloque/TituloBloque";
 import FilledButton from "../../../Buttons/FilledButton";
 import es from "date-fns/locale/es";
 import useScreenWidth from "../../../../hooks/useScreenWidth";
-import obtenerFechasReservadas from "../../../../utils/obtenerFechasReservadas.js"
-import obtenerFechasNoSeleccionables from "../../../../utils/obtenerFechasNoSeleccionables.js"
-import useDisabledDate from "../../../../hooks/useDisabledDates"
-
+import obtenerFechasReservadas from "../../../../utils/obtenerFechasReservadas.js";
+import obtenerFechasNoSeleccionables from "../../../../utils/obtenerFechasNoSeleccionables.js";
+import useDisabledDate from "../../../../hooks/useDisabledDates";
+import styles from "./ProductoFechasDisponibles.module.css";
 
 registerLocale("es", es);
 
@@ -23,11 +23,20 @@ export default function ProductoFechasDisponibles() {
   const endDateStorage = localStorage.hasOwnProperty("endDate")
     ? new Date(JSON.parse(localStorage.getItem("endDate")))
     : null;
-  const [dateRange, setDateRange] = useState([startDateStorage, endDateStorage]);
+  const [dateRange, setDateRange] = useState([
+    startDateStorage,
+    endDateStorage,
+  ]);
   const [startDate, endDate] = dateRange;
   const fechasReservadas = obtenerFechasReservadas();
   const fechasNoSeleccionables = obtenerFechasNoSeleccionables(startDate);
-  const excludeDatesDinamico = useDisabledDate(fechasReservadas, fechasNoSeleccionables, startDate, endDate);
+  const excludeDatesDinamico = useDisabledDate(
+    fechasReservadas,
+    fechasNoSeleccionables,
+    startDate,
+    endDate
+  );
+  const { id } = useParams();
 
   const anchoPantalla = useScreenWidth();
 
@@ -60,9 +69,11 @@ export default function ProductoFechasDisponibles() {
         />
         <div className={styles.agregarReservas}>
           <p>Agregá tus fechas de viaje para obtener precios exactos</p>
-          <FilledButton styles={styles.reservaButton}>
-            Iniciar reserva
-          </FilledButton>
+          <Link to={`/product/${id}/booking`}>
+            <FilledButton styles={styles.reservaButton}>
+              Iniciar reserva
+            </FilledButton>
+          </Link>
         </div>
       </div>
     </section>

@@ -1,130 +1,125 @@
-@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@700&display=swap");
 
 .contenedorHeader {
-    display:flex;
-    justify-content: flex-start;
-    align-items: center;
-    background-color: var(--color-3);
-    margin-top: 92px;
-    padding: 10px 50px;
-    width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  background-color: var(--color-3);
+  margin-top: 92px;
+  padding: 10px 50px;
+  width: 100%;
 }
 
 .headerDerecha {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    gap: 2px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 2px;
 }
 
-.headerDerecha p:nth-of-type(1){
-    color: var(--color-4);
-    font-family: Quicksand;
-    font-size: 0.875rem;
-    text-transform: uppercase;
+.headerDerecha p:nth-of-type(1) {
+  color: var(--color-4);
+  font-family: Quicksand;
+  font-size: 0.875rem;
+  text-transform: uppercase;
 }
 
-.headerDerecha p:nth-of-type(2){
-    color: var(--color-5);
-    font-size: 1.5rem;
+.headerDerecha p:nth-of-type(2) {
+  color: var(--color-5);
+  font-size: 1.5rem;
 }
 
-.headerIzquierda .a  {
-    color: var(--color-5);
-    transition: all ease-in-out 250ms;
-    
+.headerIzquierda .a {
+  color: var(--color-5);
+  transition: all ease-in-out 250ms;
 }
 
-.headerIzquierda .a:hover  {
-    color: var(--color-principal);
+.headerIzquierda .a:hover {
+  color: var(--color-principal);
 }
 
-.headerIzquierda span i{
-    font-size: 2.5rem;
+.headerIzquierda span i {
+  font-size: 2.5rem;
 }
 
 /*Volver al home*/
 
-.headerIzquierda{
-    display: flex;
-    justify-content: center;
-    cursor:pointer;
+.headerIzquierda {
+  display: flex;
+  justify-content: center;
+  cursor: pointer;
 }
-.headerIzquierda  .a span:first-child {
-    display: inline-block;
-    padding: 5px 52px 5px 0;
-    cursor:pointer;
-}
-
-.headerIzquierda  .a {
-    display: block;
-    position: relative;
-    overflow: hidden;
+.headerIzquierda .a span:first-child {
+  display: inline-block;
+  padding: 5px 52px 5px 0;
+  cursor: pointer;
 }
 
-.headerIzquierda .a  span:last-child {
-    font-size: 1rem;
-    font-weight: 700;
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    transform: translateY(-100%);
-    cursor:pointer;
+.headerIzquierda .a {
+  display: block;
+  position: relative;
+  overflow: hidden;
 }
 
-.headerIzquierda  .a  span {
-    transition: transform 0.2s ease-out;
+.headerIzquierda .a span:last-child {
+  font-size: 1rem;
+  font-weight: 700;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  transform: translateY(-100%);
+  cursor: pointer;
 }
-   
+
+.headerIzquierda .a span {
+  transition: transform 0.2s ease-out;
+}
+
 .headerIzquierda .a:hover span:first-child {
-    transform: translateY(100%);
+  transform: translateY(100%);
 }
-   
+
 .headerIzquierda .a:hover span:last-child {
+  transform: none;
+}
+
+@media screen and (max-width: 860px) {
+  .contenedorHeader {
+    padding: 10px 30px;
+    margin-top: 112px;
+  }
+
+  .headerIzquierda span i {
+    font-size: 2.25rem;
+  }
+
+  .headerIzquierda .a span:first-child {
+    padding: 5px 15px 5px 0;
+  }
+
+  .headerIzquierda .a span:last-child {
+    display: none;
+  }
+
+  .headerIzquierda .a:hover span:first-child {
     transform: none;
+  }
 }
 
-@media screen and (max-width:860px) {
+@media screen and (max-width: 480px) {
+  .contenedorHeader {
+    align-items: center;
+    margin-top: 82px;
+    padding: 10px 30px;
+    box-shadow: 2px 2px 6px var(--color-3);
+  }
 
-    .contenedorHeader {
-        padding: 10px 30px;
-        margin-top: 112px;
-    }
-
-    .headerIzquierda span i{
-        font-size: 2.25rem;
-    }
-
-    .headerIzquierda .a span:first-child {
-        padding: 5px 15px 5px 0;
-    }
-
-    .headerIzquierda .a span:last-child{
-        display:none
-    }
-
-    .headerIzquierda .a:hover span:first-child {
-        transform: none;
-    }
-
-}
-
-@media screen and (max-width:480px) {
-
-    .contenedorHeader{
-        align-items: center;
-        margin-top: 82px;
-        padding: 10px 30px;
-        box-shadow: 2px 2px 6px var(--color-3);
-    }
-
-    .headerIzquierda span i{
-        font-size: 2rem;
-    }
-
+  .headerIzquierda span i {
+    font-size: 2rem;
+  }
 }
