@@ -1,10 +1,7 @@
 package com.grupo4.hostingbook.controller.impl;
 
 import com.grupo4.hostingbook.controller.CRUDController;
-import com.grupo4.hostingbook.exceptions.BadRequestException;
-import com.grupo4.hostingbook.exceptions.Mensajes;
-import com.grupo4.hostingbook.exceptions.NotImplementedException;
-import com.grupo4.hostingbook.exceptions.ResourceNotFoundException;
+import com.grupo4.hostingbook.exceptions.*;
 import com.grupo4.hostingbook.model.CategoriaDTO;
 import com.grupo4.hostingbook.service.CRUDService;
 import io.swagger.annotations.ApiOperation;
@@ -43,7 +40,7 @@ public class CategoriaController implements CRUDController<CategoriaDTO> {
     @ApiResponses(value = { @ApiResponse(code = 200, message = "Success"),
                             @ApiResponse(code = 400, message = "Bad Request") })
     @PostMapping
-    public ResponseEntity<CategoriaDTO> crear(@RequestBody CategoriaDTO categoria) throws BadRequestException, ResourceNotFoundException {
+    public ResponseEntity<CategoriaDTO> crear(@RequestBody CategoriaDTO categoria) throws BadRequestException, ResourceNotFoundException, RepeatedMailException {
         CategoriaDTO categoriaNueva = categoriaService.crear(categoria);
         return ResponseEntity.ok(categoriaNueva);
     }

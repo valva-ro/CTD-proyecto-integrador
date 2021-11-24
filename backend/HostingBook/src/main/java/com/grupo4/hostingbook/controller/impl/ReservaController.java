@@ -1,10 +1,7 @@
 package com.grupo4.hostingbook.controller.impl;
 
 import com.grupo4.hostingbook.controller.IReservaController;
-import com.grupo4.hostingbook.exceptions.BadRequestException;
-import com.grupo4.hostingbook.exceptions.Mensajes;
-import com.grupo4.hostingbook.exceptions.NotImplementedException;
-import com.grupo4.hostingbook.exceptions.ResourceNotFoundException;
+import com.grupo4.hostingbook.exceptions.*;
 import com.grupo4.hostingbook.model.ReservaDTO;
 import com.grupo4.hostingbook.service.IReservaService;
 import io.swagger.annotations.ApiOperation;
@@ -50,7 +47,7 @@ public class ReservaController implements IReservaController {
             @ApiResponse(code = 400, message = "Bad Request")
     })
     @PostMapping
-    public ResponseEntity<ReservaDTO> crear(@RequestBody ReservaDTO reserva) throws BadRequestException, ResourceNotFoundException {
+    public ResponseEntity<ReservaDTO> crear(@RequestBody ReservaDTO reserva) throws BadRequestException, ResourceNotFoundException, RepeatedMailException {
         ReservaDTO reservaNueva = reservaService.crear(reserva);
         return ResponseEntity.ok(reservaNueva);
     }

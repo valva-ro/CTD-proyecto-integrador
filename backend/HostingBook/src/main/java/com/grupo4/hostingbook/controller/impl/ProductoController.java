@@ -1,10 +1,7 @@
 package com.grupo4.hostingbook.controller.impl;
 
 import com.grupo4.hostingbook.controller.IProductoController;
-import com.grupo4.hostingbook.exceptions.BadRequestException;
-import com.grupo4.hostingbook.exceptions.Mensajes;
-import com.grupo4.hostingbook.exceptions.NotImplementedException;
-import com.grupo4.hostingbook.exceptions.ResourceNotFoundException;
+import com.grupo4.hostingbook.exceptions.*;
 import com.grupo4.hostingbook.model.ProductoDTO;
 import com.grupo4.hostingbook.service.IProductoService;
 import io.swagger.annotations.ApiOperation;
@@ -48,7 +45,7 @@ public class ProductoController implements IProductoController {
             @ApiResponse(code = 400, message = "Bad Request")
     })
     @PostMapping
-    public ResponseEntity<ProductoDTO> crear(@RequestBody ProductoDTO producto) throws BadRequestException, ResourceNotFoundException {
+    public ResponseEntity<ProductoDTO> crear(@RequestBody ProductoDTO producto) throws BadRequestException, ResourceNotFoundException, RepeatedMailException {
         ProductoDTO productoNuevo = productoService.crear(producto);
         return ResponseEntity.ok(productoNuevo);
     }
