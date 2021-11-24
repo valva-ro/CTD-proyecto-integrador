@@ -19,4 +19,7 @@ describe("DetallesReserva tests", function () {
         render(<DetallesReserva alojamiento={alojamiento} checkin={checkin} checkout={checkout}></DetallesReserva>)
         expect(screen.getByText("Detalle de la reserva")).toBeTruthy()
     })
+    test("Modificación de checkin", () => {
+
+    })
 })

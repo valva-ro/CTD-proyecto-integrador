@@ -30,7 +30,7 @@ describe("Header tests en la home", function () {
       </loggedContext.Provider>,
       { wrapper: MemoryRouter }
     );
-    
+
     expect(screen.queryAllByText(`${perfilEsperado.nombre} ${perfilEsperado.apellido}`)[0]).toBeUndefined();
   });
 
