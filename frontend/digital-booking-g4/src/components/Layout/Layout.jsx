@@ -13,8 +13,7 @@ export default function Layout(props) {
     if(localStorage.getItem("jwt") != null){
       setIsLogged(true);
       setUserInformation({ nombre: JSON.parse(localStorage.getItem("nombre")), apellido: JSON.parse(localStorage.getItem("apellido")) });
-    }
-    if(localStorage.getItem("jwt") == ""){
+    }else{
       setIsLogged(false)
     }
 

@@ -17,11 +17,7 @@ export default function Profile() {
 
   function cerrarSesion() {
     setIsLogged(false);
-    localStorage.setItem("jwt", "");
-    localStorage.setItem("email", "");
-    localStorage.setItem("id", "");
-    localStorage.setItem("nombre", "");
-    localStorage.setItem("apellido", "");
+    localStorage.clear();
   }
 
   return (
