@@ -1,10 +1,8 @@
 import TituloBloque from "../../../TituloBloque/TituloBloque";
 import styles from "./ProductoHorarioLlegada.module.css";
 
-export default function ProductoHorarioLlegada(){
-    /*TO DO: consumir horas de la base de datos*/
-    const hora = 14;
-
+export default function ProductoHorarioLlegada({alojamiento: {horarioCheckIn}}){
+    
     const horaFormat = (hora) => {
         if(hora > 12) {
             const h = hora-12;
@@ -16,7 +14,7 @@ export default function ProductoHorarioLlegada(){
 
     let horasDisponibles = [];
 
-    for (let i=hora; i <= 23; i++){
+    for (let i=horarioCheckIn; i <= 23; i++){
         horasDisponibles.push(i);
     }
 
@@ -26,7 +24,7 @@ export default function ProductoHorarioLlegada(){
             <div className={styles.container}>
                 <div className={styles.containerTexto}>
                     <span><i className="far fa-check-circle"></i></span>
-                    <p>Tu habitación va a estar lista para el check-in entre las {horaFormat(hora)} y las 11:00 PM</p>
+                    <p>Tu habitación va a estar lista para el check-in entre las {horaFormat(horarioCheckIn)} y las 11:00 PM</p>
                 </div>
                 <div className={styles.containerSelect}>
                     <label>Indicá tu horario estimado de llegada </label>
