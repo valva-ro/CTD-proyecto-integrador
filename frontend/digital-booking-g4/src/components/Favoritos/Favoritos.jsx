@@ -54,7 +54,7 @@ export default function Favoritos() {
             <p>No tienes productos en favoritos</p>
           </div>
         ) : !isLoaded ? (
-          <ul className={styles.skeletonContainer}>
+          <ul className={styles.alojamientosContainer}>
             {Array.apply(0, Array(3)).map((x, i) => (
               <li
                 key={`skeletonAlojamiento-${i}`}
@@ -65,7 +65,7 @@ export default function Favoritos() {
             ))}
           </ul>
         ) : (
-          <ul>
+          <ul className={styles.alojamientosContainer}>
             {favoritos.map((alojamiento) => (
               <li key={alojamiento.id} className={styles.alojamiento}>
                 <TarjetaAlojamiento
