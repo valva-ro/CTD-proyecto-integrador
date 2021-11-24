@@ -146,6 +146,11 @@
     font-size: 2rem;
   }
 }
+.skeletonContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
 @media (max-width: 860px) {
   .titleFavContainer {
     margin-top: 112px;
