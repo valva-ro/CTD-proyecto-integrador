@@ -1,7 +1,7 @@
 .alojamientos {
   margin-top: 1rem;
   columns: 2;
-  padding-bottom: 12px;
+  padding-bottom: 4px;
 }
 
 .alojamientos li {
@@ -66,6 +66,27 @@
   padding: 12vh 0;
   width: 100%;
   color: var(--color-3);
+}
+
+.paginacion {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+}
+
+.paginacion button {
+  padding: 4px 8px;
+  color: var(--color-2);
+  border: none;
+  outline: none;
+  border-radius: 50%;
+  background-color: transparent;
+}
+
+.paginacion button.activePage {
+  background-color: #1dbeb37c;
 }
 
 @media (max-width: 1300px) {

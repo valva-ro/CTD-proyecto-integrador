@@ -1,16 +1,18 @@
 import React, { useContext, useState, useEffect } from "react";
+import Pagination from "react-paginating";
 import TarjetaAlojamiento from "./TarjetaAlojamiento/TarjetaAlojamiento";
 import TituloBloque from "../TituloBloque/TituloBloque.jsx";
+import SkeletonTarjetaAlojamiento from "./TarjetaAlojamiento/SkeletonTarjetaAlojamiento";
 import currentFilterContext from "../../contexts/currentFilterContext";
 import styles from "./BloqueAlojamientos.module.css";
 import useFetch from "../../hooks/useFetch";
-import SkeletonTarjetaAlojamiento from "./TarjetaAlojamiento/SkeletonTarjetaAlojamiento";
 
 export default function BloqueAlojamientos() {
   const { currentCity, setCurrentCity, currentCategory, setCurrentCategory } =
     useContext(currentFilterContext);
   const [alojamientos, setAlojamientos] = useState([]);
   const { isLoaded, items } = useFetch("productos");
+  const [currentPage, setCurrentPage] = useState(1);
 
   const toggleFiltrado = () => {
     setCurrentCategory("");
@@ -22,6 +24,10 @@ export default function BloqueAlojamientos() {
       setAlojamientos(items);
     }
   }, [isLoaded, items]);
+
+  const handlePageChange = (page, e) => {
+    setCurrentPage(page);
+  };
 
   const alojamientosFiltrados = alojamientos.filter((alojamiento) => {
     let pasaElFiltro = true;
@@ -60,33 +66,111 @@ export default function BloqueAlojamientos() {
       </div>
       {isLoaded && alojamientosFiltrados.length === 0 ? (
         <h2 className={styles.sinResultados}>No se encontraron resultados</h2>
-      ) : !isLoaded ? 
-      (  <ul
-          className={styles.alojamientos}
-        > 
+      ) : !isLoaded ? (
+        <ul className={styles.alojamientos}>
           {Array.apply(0, Array(8)).map((x, i) => (
             <li key={`skeletonAlojamiento-${i}`} className={styles.alojamiento}>
-              <SkeletonTarjetaAlojamiento/>
+              <SkeletonTarjetaAlojamiento />
             </li>
           ))}
         </ul>
       ) : (
-        <ul
-          className={
-            alojamientosFiltrados.length < 2
-              ? styles.alojamientosUnaColumna
-              : styles.alojamientos
-          }
-        >
-          {alojamientosFiltrados.map((alojamiento, i) => (
-            <li key={i} className={styles.alojamiento}>
-              <TarjetaAlojamiento
-                alojamiento={alojamiento}
-                isLoaded={isLoaded}
-              />
-            </li>
-          ))}
-        </ul>
+        <>
+          <ul
+            className={
+              alojamientosFiltrados.length < 2
+                ? styles.alojamientosUnaColumna
+                : styles.alojamientos
+            }
+          >
+            {alojamientosFiltrados
+              .slice(currentPage - 1, currentPage + 3)
+              .map((alojamiento, i) => (
+                <li key={i} className={styles.alojamiento}>
+                  <TarjetaAlojamiento
+                    alojamiento={alojamiento}
+                    isLoaded={isLoaded}
+                  />
+                </li>
+              ))}
+          </ul>
+          <Pagination
+            total={alojamientosFiltrados.length}
+            limit={4}
+            pageCount={Math.ceil(alojamientosFiltrados.length / 4)}
+            currentPage={currentPage}
+            className={styles.paginacion}
+          >
+            {({
+              pages,
+              currentPage,
+              hasNextPage,
+              hasPreviousPage,
+              previousPage,
+              nextPage,
+              totalPages,
+              getPageItemProps,
+            }) => (
+              <div>
+                <button
+                  {...getPageItemProps({
+                    pageValue: 1,
+                    onPageChange: handlePageChange,
+                  })}
+                >
+                  Inicio
+                </button>
+
+                {hasPreviousPage && (
+                  <button
+                    {...getPageItemProps({
+                      pageValue: previousPage,
+                      onPageChange: handlePageChange,
+                    })}
+                  >
+                    {"<"}
+                  </button>
+                )}
+
+                {pages.map((page) => {
+                  let activePage = currentPage === page ? styles.activePage : null;
+                  return (
+                    <button
+                      className={activePage}
+                      {...getPageItemProps({
+                        pageValue: page,
+                        key: page,
+                        onPageChange: handlePageChange,
+                      })}
+                    >
+                      {page}
+                    </button>
+                  );
+                })}
+
+                {hasNextPage && (
+                  <button
+                    {...getPageItemProps({
+                      pageValue: nextPage,
+                      onPageChange: handlePageChange,
+                    })}
+                  >
+                    {">"}
+                  </button>
+                )}
+
+                <button
+                  {...getPageItemProps({
+                    pageValue: totalPages,
+                    onPageChange: handlePageChange,
+                  })}
+                >
+                  Fin
+                </button>
+              </div>
+            )}
+          </Pagination>
+        </>
       )}
     </section>
   );
