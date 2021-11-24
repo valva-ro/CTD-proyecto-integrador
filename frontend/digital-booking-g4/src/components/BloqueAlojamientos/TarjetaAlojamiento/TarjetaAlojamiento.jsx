@@ -113,7 +113,7 @@ export default function TarjetaAlojamiento({
             <i className="fas fa-map-marker-alt"></i>
             <p>
               {ciudad.nombre}
-              <Link to={`product/${id}#mapa`}>Mostrar en el mapa</Link>
+              <Link to={`product/${id}/features#mapa`}>Mostrar en el mapa</Link>
             </p>
           </div>
           <div className={styles.servicios}>

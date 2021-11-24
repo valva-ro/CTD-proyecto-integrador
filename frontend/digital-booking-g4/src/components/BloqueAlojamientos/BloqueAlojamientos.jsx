@@ -6,6 +6,7 @@ import SkeletonTarjetaAlojamiento from "./TarjetaAlojamiento/SkeletonTarjetaAloj
 import currentFilterContext from "../../contexts/currentFilterContext";
 import styles from "./BloqueAlojamientos.module.css";
 import useFetch from "../../hooks/useFetch";
+import useScreenWidth from "../../hooks/useScreenWidth";
 
 export default function BloqueAlojamientos() {
   const { currentCity, setCurrentCity, currentCategory, setCurrentCategory } =
@@ -13,12 +14,13 @@ export default function BloqueAlojamientos() {
   const [alojamientos, setAlojamientos] = useState([]);
   const { isLoaded, items } = useFetch("productos");
   const [currentPage, setCurrentPage] = useState(1);
+  const anchoPantalla = useScreenWidth();
 
   const toggleFiltrado = () => {
     setCurrentCategory("");
     setCurrentCity("");
   };
-
+  
   useEffect(() => {
     if (isLoaded) {
       setAlojamientos(items);
@@ -47,6 +49,21 @@ export default function BloqueAlojamientos() {
     return pasaElFiltro;
   });
 
+  useEffect(() => {
+    if (anchoPantalla >= 860) {
+      console.log("desktop");
+      window.scrollTo(0, 337) 
+    }
+    if (anchoPantalla > 480 && anchoPantalla < 860) {
+      console.log("tablet");
+      window.scrollTo(0, 364) 
+    }
+    if (anchoPantalla <= 480) {
+      console.log("mobile");
+      window.scrollTo(0, 660) 
+    }
+  })
+  
   return (
     <section className={styles.recomendaciones}>
       <div className={styles.encabezadoFiltros}>
@@ -84,7 +101,7 @@ export default function BloqueAlojamientos() {
             }
           >
             {alojamientosFiltrados
-              .slice(currentPage - 1, currentPage + 3)
+              .slice(currentPage - 1, currentPage + 5)
               .map((alojamiento, i) => (
                 <li key={i} className={styles.alojamiento}>
                   <TarjetaAlojamiento
@@ -96,8 +113,8 @@ export default function BloqueAlojamientos() {
           </ul>
           <Pagination
             total={alojamientosFiltrados.length}
-            limit={4}
-            pageCount={Math.ceil(alojamientosFiltrados.length / 4)}
+            limit={6}
+            pageCount={Math.ceil(alojamientosFiltrados.length / 6)}
             currentPage={currentPage}
             className={styles.paginacion}
           >
