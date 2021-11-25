@@ -139,7 +139,7 @@ export default function ProductoImagenes({ alojamiento }) {
       <Modal
         estaAbierto={redesSocialesEstaAbierto}
         onCloseRequest={cerrarRedesSociales}
-        colorBtnCerrar="black"
+        colorBtnCerrar="#383b58"
         colorFondo="#383b5853"
       >
         <div className={styles.modalRedesSociales}>
