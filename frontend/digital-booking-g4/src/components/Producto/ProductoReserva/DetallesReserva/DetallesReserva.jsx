@@ -7,9 +7,19 @@ import styles from "./Detalles.module.css";
 import post from "../../../../utils/post";
 import { useHistory } from "react-router";
 import { useState } from "react";
+import Modal from "../../../Modal/Modal";
+import TarjetaReservaExitosa from "./TarjetaReservaExitosa/TarjetaReservaExitosa";
 
 export default function ProductoReserva({
-  alojamiento: { id, nombre, categoria, ciudad, imagenes, puntuaciones, direccion },
+  alojamiento: {
+    id,
+    nombre,
+    categoria,
+    ciudad,
+    imagenes,
+    puntuaciones,
+    direccion,
+  },
   checkin,
   checkout,
   nombreUsuario,
@@ -23,6 +33,8 @@ export default function ProductoReserva({
   const puntaje = calcularPromedioPuntuacion(puntuaciones);
   const history = useHistory();
   const [isError, setIsError] = useState(false);
+  const [showModal, setShowModal] = useState(false);
+
   const checkinFormat = new Date(checkin)
     .toLocaleDateString("en-GB", {
       year: "numeric",
@@ -73,7 +85,7 @@ export default function ProductoReserva({
       },
       {
         "Content-Type": "application/json",
-        "Authorization": localStorage.getItem("jwt"),
+        Authorization: localStorage.getItem("jwt"),
       }
     ).then((response) => {
       if (response.status === 201) {
@@ -86,7 +98,23 @@ export default function ProductoReserva({
 
   function handleSubmit(e) {
     e.preventDefault();
-    realizarReserva();
+    //realizarReserva();
+    if (
+      !nombreUsuario ||
+      !apellido ||
+      !mail ||
+      !ciudadUsuario ||
+      !horarioLlegada ||
+      !checkinFormat ||
+      !checkoutFormat ||
+      !textArea
+    ) {
+      setShowModal(false);
+      setIsError(true);
+    } else {
+      setIsError(false);
+      setShowModal(true);
+    }
   }
 
   return (
@@ -99,7 +127,6 @@ export default function ProductoReserva({
             backgroundImage: `url(${buscarImagenPrincipal().imagenUrl})`,
           }}
         ></div>
-
         <div className={styles.letterContainer}>
           <p className={styles.categoria}>{categoria.titulo.toUpperCase()}</p>
           <p className={styles.titulo}>{nombre}</p>
@@ -136,6 +163,9 @@ export default function ProductoReserva({
           </div>
         </div>
       </div>
+      <Modal estaAbierto={showModal} onCloseRequest={() => setShowModal(false)} colorBtnCerrar="#383b58" colorFondo="#383b5853">
+        <TarjetaReservaExitosa />
+      </Modal>
       {!isError ? null : (
         <div className={styles.errorMsjContainer}>
           <FontAwesomeIcon icon={faExclamationTriangle} />

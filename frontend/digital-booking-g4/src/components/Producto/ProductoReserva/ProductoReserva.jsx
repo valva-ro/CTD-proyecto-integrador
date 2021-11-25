@@ -17,47 +17,6 @@ export default function ProductoReserva(producto) {
   const [horarioLlegada, setHorarioLlegada] = useState(null);
   
 
-  console.log("nombre: ");
-  console.log(nombre);
-  console.log("apellido: ");
-  console.log(apellido);
-  console.log("mail: ");
-  console.log(mail);
-  console.log("ciudad: ");
-  console.log(ciudad);
-  console.log("textArea: ");
-  console.log(textArea);
-  console.log("Vacunado? ");
-  console.log(isVacunadx);
-  console.log("HoraLlegada: ");
-  console.log(horarioLlegada);
-  console.log("checkin: ");
-  console.log(
-    new Date(checkin)
-      .toLocaleDateString("en-GB", {
-        year: "numeric",
-        month: "2-digit",
-        day: "2-digit",
-      })
-      .replaceAll("/", "-")
-      .split("-")
-      .reverse()
-      .join("-")
-  );
-  console.log("checkout: ");
-  console.log(
-    new Date(checkout)
-      .toLocaleDateString("en-GB", {
-        year: "numeric",
-        month: "2-digit",
-        day: "2-digit",
-      })
-      .replaceAll("/", "-")
-      .split("-")
-      .reverse()
-      .join("-")
-  );
-
   return (
     <section className={styles.productoReservaContainer}>
       <form className={styles.containerPrincipal}>
