@@ -8,6 +8,8 @@ import styles from "./BloqueAlojamientos.module.css";
 import useFetch from "../../hooks/useFetch";
 import useScreenWidth from "../../hooks/useScreenWidth";
 
+const ALOJAMIENTOS_POR_PAGINA = 6;
+
 export default function BloqueAlojamientos() {
   const { currentCity, setCurrentCity, currentCategory, setCurrentCategory } =
     useContext(currentFilterContext);
@@ -15,7 +17,13 @@ export default function BloqueAlojamientos() {
   const { isLoaded, items } = useFetch("productos");
   const [currentPage, setCurrentPage] = useState(1);
   const anchoPantalla = useScreenWidth();
-  
+
+  useEffect(() => {
+    if (isLoaded) {
+      setAlojamientos(items);
+    }
+  }, [isLoaded, items]);
+
   const toggleFiltrado = () => {
     setCurrentCategory("");
     setCurrentCity("");
@@ -56,11 +64,15 @@ export default function BloqueAlojamientos() {
     return pasaElFiltro;
   });
 
-  useEffect(() => {
-    if (isLoaded) {
-      setAlojamientos(items);
-    }
-  }, [isLoaded, items]);
+  function recortarAlojamientos() {
+    const indiceInicial =
+      currentPage === 1 ? 0 : (currentPage - 1) * ALOJAMIENTOS_POR_PAGINA;
+    const indiceFinal =
+      indiceInicial + ALOJAMIENTOS_POR_PAGINA >= alojamientosFiltrados.length
+        ? alojamientosFiltrados.length
+        : indiceInicial + ALOJAMIENTOS_POR_PAGINA;
+    return alojamientosFiltrados.slice(indiceInicial, indiceFinal);
+  }
 
   return (
     <section className={styles.recomendaciones}>
@@ -92,21 +104,21 @@ export default function BloqueAlojamientos() {
       ) : (
         <>
           <ul className={styles.alojamientos}>
-            {alojamientosFiltrados
-              .slice(currentPage - 1, currentPage + 5)
-              .map((alojamiento, i) => (
-                <li key={i} className={styles.alojamiento}>
-                  <TarjetaAlojamiento
-                    alojamiento={alojamiento}
-                    isLoaded={isLoaded}
-                  />
-                </li>
-              ))}
+            {recortarAlojamientos().map((alojamiento, i) => (
+              <li key={i} className={styles.alojamiento}>
+                <TarjetaAlojamiento
+                  alojamiento={alojamiento}
+                  isLoaded={isLoaded}
+                />
+              </li>
+            ))}
           </ul>
           <Pagination
             total={alojamientosFiltrados.length}
-            limit={6}
-            pageCount={Math.ceil(alojamientosFiltrados.length / 6)}
+            limit={ALOJAMIENTOS_POR_PAGINA}
+            pageCount={Math.ceil(
+              alojamientosFiltrados.length / ALOJAMIENTOS_POR_PAGINA
+            )}
             currentPage={currentPage}
             className={styles.paginacion}
           >

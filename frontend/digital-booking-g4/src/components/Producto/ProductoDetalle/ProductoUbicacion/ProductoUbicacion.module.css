@@ -22,6 +22,11 @@
   gap: 6px;
 }
 
+.ubicacion p,
+.ubicacion i {
+  font-size: 1.1rem;
+}
+
 .distancia {
   padding-left: 18px;
 }

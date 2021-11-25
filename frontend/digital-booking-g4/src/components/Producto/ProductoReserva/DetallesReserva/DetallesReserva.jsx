@@ -7,6 +7,7 @@ export default function ProductoReserva({
   alojamiento:{
     nombre,
     categoria,
+    direccion,
     ciudad,
     imagenes,
     puntuaciones
@@ -44,7 +45,7 @@ export default function ProductoReserva({
           <div className={styles.direccion}>
             <i className="fas fa-map-marker-alt"></i>
             <p>
-              Aquí iría la dirección principal, {ciudad.nombre}, {ciudad.pais}
+              {direccion}, {ciudad.nombre}, {ciudad.pais}
             </p>
           </div>
           <hr />
