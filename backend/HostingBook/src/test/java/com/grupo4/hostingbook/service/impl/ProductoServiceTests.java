@@ -9,6 +9,7 @@ import com.grupo4.hostingbook.service.IProductoService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.transaction.annotation.Transactional;
@@ -22,6 +23,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class ProductoServiceTests {
 
     @Autowired
+    @Qualifier("ProductoService")
     private IProductoService productoService;
     @Autowired
     private CategoriaService categoriaService;
@@ -53,8 +55,8 @@ class ProductoServiceTests {
         caracteristicaService.crear(new CaracteristicaDTO("WiFi","<i class='bx bx-wifi'></i>"));
         caracteristicaService.crear(new CaracteristicaDTO("Parking","<i class='bx bxs-car'></i>"));
 
-        productoPorCrear = new ProductoDTO("Hotel Melia", "Servicio all inclusive con vista al mar", categoriaID, ciudadID, imagenesIDs, caracteristicasIDs);
-        productoPorActualizar = new ProductoDTO(1L,"Hotel Grand Meliá", "", null,null, null, null, null);
+        productoPorCrear = new ProductoDTO("Hotel Melia", "Servicio all inclusive con vista al mar", 12, categoriaID, ciudadID, imagenesIDs, caracteristicasIDs);
+        productoPorActualizar = new ProductoDTO(1L,"Hotel Grand Meliá", "", 10, null,null, null, null, null);
     }
 
     @Test
