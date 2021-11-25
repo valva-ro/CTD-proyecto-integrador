@@ -64,8 +64,8 @@ public class ProductoControllerTests {
         caracteristicaService.crear(new CaracteristicaDTO("WiFi","<i class='bx bx-wifi'></i>"));
         caracteristicaService.crear(new CaracteristicaDTO("Parking","<i class='bx bxs-car'></i>"));
 
-        productoPorCrear = new ProductoDTO("Hotel Melia", "Servicio all inclusive con vista al mar", categoriaID, ciudadID, imagenesIDs, caracteristicasIDs);
-        productoPorActualizar = new ProductoDTO(1L,"Hotel Grand Melia", "", null, null, null, null, null);
+        productoPorCrear = new ProductoDTO("Hotel Melia", "Servicio all inclusive con vista al mar", 12, categoriaID, ciudadID, imagenesIDs, caracteristicasIDs);
+        productoPorActualizar = new ProductoDTO(1L,"Hotel Grand Melia", "", 10, null, null, null, null, null);
     }
 
     @Test

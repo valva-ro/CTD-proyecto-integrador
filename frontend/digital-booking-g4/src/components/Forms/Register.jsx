@@ -3,7 +3,7 @@ import styles from "./Form.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faExclamationTriangle } from "@fortawesome/free-solid-svg-icons";
 import { Link, useHistory } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import InputComponent from "./formComponents/Input";
 import post from "../../utils/post";
 
@@ -20,6 +20,9 @@ export default function Register() {
   });
   const history = useHistory();
   const [isError, setIsError] = useState(false);
+  const [msjError, setMsjError] = useState(
+    "Lamentablemente no ha podido registrarse. Por favor, vuelva a intentarlo."
+  );
 
   const expresiones = {
     nombre: /^[a-zA-ZÀ-ÿ\s]{2,25}$/,
@@ -44,9 +47,11 @@ export default function Register() {
 
   function handleSubmit(e) {
     e.preventDefault();
+    enviarDatosBDD();
   }
 
-  function enviarDatosBDD() {
+  function validarCampos() {
+    let rta;
     if (
       name.valido === "true" &&
       surname.valido === "true" &&
@@ -54,6 +59,20 @@ export default function Register() {
       password.valido === "true" &&
       repeatPassword.valido === "true"
     ) {
+      setIsError(false);
+      rta = true;
+    } else {
+      setIsError(true);
+      setMsjError(
+        "Lamentablemente no ha podido registrarse. Por favor, vuelva a intentarlo."
+      );
+      rta = false;
+    }
+    return rta;
+  }
+
+  function enviarDatosBDD() {
+    if (validarCampos()) {
       post("usuarios/signup", {
         nombre: name.campo,
         apellido: surname.campo,
@@ -62,19 +81,20 @@ export default function Register() {
         rol: { id: ID_ROL_USUARIO },
       })
         .then((response) => {
-          console.log(response.status);
-          if (response.status !== 201) {
+          if (response.status === 409) {
             setIsError(true);
-          } else {
+            response.text().then(function (text) {
+              setMsjError(text);
+            });
+          } else if (response.status === 201) {
+            setIsError(false);
             history.push("/login");
-          }
-          return response.json();
+          } 
         })
         .catch((error) => console.log(error));
     } else {
       setIsError(true);
     }
-    
   }
 
   return (
@@ -86,7 +106,7 @@ export default function Register() {
           onSubmit={handleSubmit}
           noValidate="novalidate"
         >
-          <div>
+          <div className={styles.inputsContainer}>
             <InputComponent
               estado={name}
               cambiarEstado={setName}
@@ -137,15 +157,10 @@ export default function Register() {
           {isError ? (
             <div className={styles.credencialesContainer}>
               <FontAwesomeIcon icon={faExclamationTriangle} />
-              <p className={styles.credencialesInvalidas}>
-                Lamentablemente no ha podido registrarse. Por favor, vuelva a
-                intentarlo.
-              </p>
+              <p className={styles.credencialesInvalidas}>{msjError}</p>
             </div>
           ) : null}
-          <FilledButton onClick={() => enviarDatosBDD()}>
-            Crear cuenta
-          </FilledButton>
+          <FilledButton onClick={handleSubmit}>Crear cuenta</FilledButton>
           <p>
             ¿Ya tienes cuenta? <Link to="/login">Iniciar sesión</Link>
           </p>

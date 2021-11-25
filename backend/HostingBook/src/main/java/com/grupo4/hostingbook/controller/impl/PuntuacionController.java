@@ -1,10 +1,8 @@
 package com.grupo4.hostingbook.controller.impl;
 
+import com.grupo4.hostingbook.controller.CRUDController;
+import com.grupo4.hostingbook.exceptions.*;
 import com.grupo4.hostingbook.controller.IPuntuacionController;
-import com.grupo4.hostingbook.exceptions.BadRequestException;
-import com.grupo4.hostingbook.exceptions.Mensajes;
-import com.grupo4.hostingbook.exceptions.NotImplementedException;
-import com.grupo4.hostingbook.exceptions.ResourceNotFoundException;
 import com.grupo4.hostingbook.model.PuntuacionDTO;
 import com.grupo4.hostingbook.service.IPuntuacionService;
 import io.swagger.annotations.ApiOperation;
@@ -20,6 +18,7 @@ import java.util.Set;
 
 @RestController
 @RequestMapping("/puntuaciones")
+@CrossOrigin(origins = "*", methods = { RequestMethod.GET, RequestMethod.POST }, allowedHeaders = "*")
 public class PuntuacionController implements IPuntuacionController {
 
     @Qualifier("PuntuacionService")
@@ -44,7 +43,7 @@ public class PuntuacionController implements IPuntuacionController {
     @ApiResponses(value = { @ApiResponse(code = 200, message = "Success"),
                             @ApiResponse(code = 400, message = "Bad Request") })
     @PostMapping
-    public ResponseEntity<PuntuacionDTO> crear(@RequestBody PuntuacionDTO puntuacion) throws BadRequestException, ResourceNotFoundException {
+    public ResponseEntity<PuntuacionDTO> crear(@RequestBody PuntuacionDTO puntuacion) throws BadRequestException, ResourceNotFoundException, RepeatedMailException {
         PuntuacionDTO puntuacionNueva = puntuacionService.crear(puntuacion);
         return ResponseEntity.ok(puntuacionNueva);
     }

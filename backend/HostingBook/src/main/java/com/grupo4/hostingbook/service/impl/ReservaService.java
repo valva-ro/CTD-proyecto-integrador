@@ -70,7 +70,7 @@ public class ReservaService implements IReservaService {
     }
 
     @Override
-    public Set<ReservaDTO> consultarPorIdProducto (Long id) throws ResourceNotFoundException {
+    public Set<ReservaDTO> consultarPorIdProducto(Long id) throws ResourceNotFoundException {
         Set<Reserva> entidades = reservaRepository.buscarReservasPorIdProducto(id);
         Set<ReservaDTO> dtos = new HashSet<>();
         for (Reserva entidad : entidades) {
@@ -87,20 +87,24 @@ public class ReservaService implements IReservaService {
         if (reservaDTO == null) {
             throw new BadRequestException(String.format(Mensajes.ERROR_DTO_NO_EXISTE, "reserva"));
         } else {
-            if (reservaDTO.getUsuario() == null )
+            if (reservaDTO.getUsuario() == null)
                 throw new BadRequestException(String.format(Mensajes.ERROR_CREACION_CAMPO_REQUERIDO, "reserva", "usuario"));
-            if (reservaDTO.getProducto() == null )
+            if (reservaDTO.getProducto() == null)
                 throw new BadRequestException(String.format(Mensajes.ERROR_CREACION_CAMPO_REQUERIDO, "reserva", "producto"));
             if (reservaDTO.getHoraEntrada() == null)
                 throw new BadRequestException(String.format(Mensajes.ERROR_CREACION_CAMPO_REQUERIDO, "reserva", "hora de entrada"));
-            if (reservaDTO.getHoraSalida() == null)
-                throw new BadRequestException(String.format(Mensajes.ERROR_CREACION_CAMPO_REQUERIDO, "reserva", "hora de salida"));
+            if (reservaDTO.getNombre() == null)
+                throw new BadRequestException(String.format(Mensajes.ERROR_CREACION_CAMPO_REQUERIDO, "reserva", "nombre"));
+            if (reservaDTO.getApellido() == null)
+                throw new BadRequestException(String.format(Mensajes.ERROR_CREACION_CAMPO_REQUERIDO, "reserva", "apellido"));
+            if (reservaDTO.getMail() == null)
+                throw new BadRequestException(String.format(Mensajes.ERROR_CREACION_CAMPO_REQUERIDO, "reserva", "mail"));
+            if (reservaDTO.getCiudad() == null)
+                throw new BadRequestException(String.format(Mensajes.ERROR_CREACION_CAMPO_REQUERIDO, "reserva", "ciudad"));
             if (reservaDTO.getFechaIngreso() == null)
                 throw new BadRequestException(String.format(Mensajes.ERROR_CREACION_CAMPO_REQUERIDO, "reserva", "fecha de ingreso"));
             if (reservaDTO.getFechaEgreso() == null)
                 throw new BadRequestException(String.format(Mensajes.ERROR_CREACION_CAMPO_REQUERIDO, "reserva", "fecha de egreso"));
-            if (reservaDTO.getDatos() == null)
-                throw new BadRequestException(String.format(Mensajes.ERROR_CREACION_CAMPO_REQUERIDO, "reserva", "datos"));
             if (reservaDTO.getVacunaCovid() == null)
                 throw new BadRequestException(String.format(Mensajes.ERROR_CREACION_CAMPO_REQUERIDO, "reserva", "esta vacunado"));
         }
@@ -126,14 +130,18 @@ public class ReservaService implements IReservaService {
 
     private ReservaDTO actualizar(ReservaDTO reservaDTO, Reserva entidad) {
         if (reservaDTO.getFechaIngreso() != null && reservaDTO.getFechaEgreso() != null
-            && reservaDTO.getHoraEntrada() != null && reservaDTO.getHoraSalida() != null
-            && reservaDTO.getDatos() != null && reservaDTO.getProducto() != null
-            && reservaDTO.getUsuario() != null && reservaDTO.getVacunaCovid() != null) {
+                && reservaDTO.getHoraEntrada() != null && reservaDTO.getNombre() != null
+                && reservaDTO.getApellido() != null && reservaDTO.getMail() != null
+                && reservaDTO.getCiudad() != null && reservaDTO.getProducto() != null
+                && reservaDTO.getUsuario() != null && reservaDTO.getVacunaCovid() != null) {
             entidad.setHoraEntrada(reservaDTO.getHoraEntrada());
-            entidad.setHoraSalida(reservaDTO.getHoraSalida());
+            entidad.setNombre(reservaDTO.getNombre());
+            entidad.setApellido(reservaDTO.getApellido());
+            entidad.setMail(reservaDTO.getMail());
+            entidad.setCiudad(reservaDTO.getCiudad());
             entidad.setFechaIngreso(reservaDTO.getFechaIngreso());
             entidad.setFechaEgreso(reservaDTO.getFechaEgreso());
-            entidad.setVacunaCovid (reservaDTO.getVacunaCovid());
+            entidad.setVacunaCovid(reservaDTO.getVacunaCovid());
             entidad.setDatos(reservaDTO.getDatos());
         }
 
