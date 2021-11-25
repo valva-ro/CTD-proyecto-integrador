@@ -1,6 +1,8 @@
 package com.grupo4.hostingbook.service.impl;
 
 import com.grupo4.hostingbook.exceptions.BadRequestException;
+import com.grupo4.hostingbook.exceptions.NotImplementedException;
+import com.grupo4.hostingbook.exceptions.RepeatedMailException;
 import com.grupo4.hostingbook.exceptions.ResourceNotFoundException;
 import com.grupo4.hostingbook.model.ImagenDTO;
 import com.grupo4.hostingbook.service.CRUDService;
@@ -30,19 +32,19 @@ public class ImagenServiceTests {
     }
 
     @Test
-    public void test02AgregarImagen() throws BadRequestException, ResourceNotFoundException {
+    public void test02AgregarImagen() throws BadRequestException, ResourceNotFoundException, RepeatedMailException {
         ImagenDTO i = imagenService.crear(imagenPorCrear);
         assertEquals(imagenCreada, i);
     }
 
     @Test
-    public void test03ObtenerTodasLasImagenes() throws BadRequestException, ResourceNotFoundException {
+    public void test03ObtenerTodasLasImagenes() throws BadRequestException, ResourceNotFoundException, RepeatedMailException {
         imagenService.crear(imagenPorCrear);
         assertNotEquals(0, imagenService.consultarTodos().size());
     }
 
     @Test
-    public void test04EliminarImagenPorId() throws BadRequestException, ResourceNotFoundException {
+    public void test04EliminarImagenPorId() throws BadRequestException, ResourceNotFoundException, RepeatedMailException {
         imagenService.crear(imagenPorCrear);
         assertNotEquals(0, imagenService.consultarTodos().size());
 
@@ -61,7 +63,7 @@ public class ImagenServiceTests {
     }
 
     @Test
-    public void test07ActualizarImagenExistente() throws BadRequestException, ResourceNotFoundException {
+    public void test07ActualizarImagenExistente() throws BadRequestException, ResourceNotFoundException, NotImplementedException, RepeatedMailException {
         imagenService.crear(imagenPorCrear);
         ImagenDTO dtoActualizado = imagenService.actualizar(imagenPorActualizar);
         assertEquals(imagenActualizada, dtoActualizado);
@@ -79,7 +81,7 @@ public class ImagenServiceTests {
 
     @Test
     @Transactional
-    public void test10BuscarImagenPorIdExistente() throws BadRequestException, ResourceNotFoundException {
+    public void test10BuscarImagenPorIdExistente() throws BadRequestException, ResourceNotFoundException, RepeatedMailException {
         imagenService.crear(imagenPorCrear);
         ImagenDTO imagenEncontrada = imagenService.buscarPorId(1L);
         assertEquals(imagenCreada, imagenEncontrada);

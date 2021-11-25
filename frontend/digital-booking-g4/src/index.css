@@ -11,6 +11,7 @@
   --color-4: #f3f1ed;
   --color-5: #ffffff;
   --color-background-gris: rgb(56, 59, 88, 0.1);
+  --color-inputs-form-datos: #DFE4EA;
 }
 
 * {
@@ -29,13 +30,13 @@ a {
   text-decoration: none;
 }
 
-input {
+input, select {
   border-radius: 5px;
   border: 3px solid white;
   outline: none;
 }
 
-input:focus {
+input:focus, textarea:focus , select:focus{
   border: solid 3px var(--color-principal);
 }
 
@@ -43,7 +44,7 @@ input:focus {
 input:-webkit-autofill {
   box-shadow:0 0 0 50px white inset; 
   -webkit-box-shadow:0 0 0 50px white inset; 
-}
+} 
 
 section {
   padding: 15px 50px;
@@ -73,7 +74,6 @@ section {
 ::-webkit-scrollbar-thumb {
   background: var(--color-3);
   border-radius: 5px;
-  box-shadow: 1px 1px 2px 1px #00000069;
 }
 
 ::-webkit-scrollbar-thumb:hover {

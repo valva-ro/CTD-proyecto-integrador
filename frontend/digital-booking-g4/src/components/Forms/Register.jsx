@@ -1,8 +1,13 @@
 import FilledButton from "../Buttons/FilledButton";
 import styles from "./Form.module.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faExclamationTriangle } from "@fortawesome/free-solid-svg-icons";
 import { Link, useHistory } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import InputComponent from "./formComponents/Input";
+import post from "../../utils/post";
+
+const ID_ROL_USUARIO = 2;
 
 export default function Register() {
   const [name, setName] = useState({ campo: "", valido: null });
@@ -14,6 +19,10 @@ export default function Register() {
     valido: null,
   });
   const history = useHistory();
+  const [isError, setIsError] = useState(false);
+  const [msjError, setMsjError] = useState(
+    "Lamentablemente no ha podido registrarse. Por favor, vuelva a intentarlo."
+  );
 
   const expresiones = {
     nombre: /^[a-zA-ZÀ-ÿ\s]{2,25}$/,
@@ -38,7 +47,11 @@ export default function Register() {
 
   function handleSubmit(e) {
     e.preventDefault();
+    enviarDatosBDD();
+  }
 
+  function validarCampos() {
+    let rta;
     if (
       name.valido === "true" &&
       surname.valido === "true" &&
@@ -46,7 +59,41 @@ export default function Register() {
       password.valido === "true" &&
       repeatPassword.valido === "true"
     ) {
-      history.push("/login");
+      setIsError(false);
+      rta = true;
+    } else {
+      setIsError(true);
+      setMsjError(
+        "Lamentablemente no ha podido registrarse. Por favor, vuelva a intentarlo."
+      );
+      rta = false;
+    }
+    return rta;
+  }
+
+  function enviarDatosBDD() {
+    if (validarCampos()) {
+      post("usuarios/signup", {
+        nombre: name.campo,
+        apellido: surname.campo,
+        mail: email.campo,
+        contrasenia: password.campo,
+        rol: { id: ID_ROL_USUARIO },
+      })
+        .then((response) => {
+          if (response.status === 409) {
+            setIsError(true);
+            response.text().then(function (text) {
+              setMsjError(text);
+            });
+          } else if (response.status === 201) {
+            setIsError(false);
+            history.push("/login");
+          } 
+        })
+        .catch((error) => console.log(error));
+    } else {
+      setIsError(true);
     }
   }
 
@@ -55,11 +102,11 @@ export default function Register() {
       <div className={styles.contenedorForm}>
         <h2>Crear cuenta</h2>
         <form
-          className={styles.formRegister}
+          className={`${styles.formRegister} ${styles.generalForms}`}
           onSubmit={handleSubmit}
           noValidate="novalidate"
         >
-          <div>
+          <div className={styles.inputsContainer}>
             <InputComponent
               estado={name}
               cambiarEstado={setName}
@@ -107,7 +154,13 @@ export default function Register() {
             leyendaError="La contraseñas no coinciden."
             funcion={validarRepeatPassword}
           />
-          <FilledButton>Crear cuenta</FilledButton>
+          {isError ? (
+            <div className={styles.credencialesContainer}>
+              <FontAwesomeIcon icon={faExclamationTriangle} />
+              <p className={styles.credencialesInvalidas}>{msjError}</p>
+            </div>
+          ) : null}
+          <FilledButton onClick={handleSubmit}>Crear cuenta</FilledButton>
           <p>
             ¿Ya tienes cuenta? <Link to="/login">Iniciar sesión</Link>
           </p>

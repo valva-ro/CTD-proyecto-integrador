@@ -1,12 +1,24 @@
 import React, { useContext } from "react";
+import { Link, useLocation } from "react-router-dom";
 import styles from "./Profile.module.css";
 import loggedContext from "../../contexts/loggedContext";
 
-export default function Profile({ nombre = "Bruno", apellido = "Rodriguez" }) {
-  const { setIsLogged } = useContext(loggedContext);
-  const iniciales = `${nombre.charAt(0).toUpperCase()}${apellido.charAt(0).toUpperCase()}`;
+export default function Profile() {
+  const {
+    setIsLogged,
+    userInformation: { nombre, apellido },
+  } = useContext(loggedContext);
+  const iniciales = `${nombre.charAt(0).toUpperCase()}${apellido
+    .charAt(0)
+    .toUpperCase()}`;
   const nombreCapitalized = capitalizeString(nombre);
   const apellidoCapitalized = capitalizeString(apellido);
+  const location = useLocation();
+
+  function cerrarSesion() {
+    setIsLogged(false);
+    localStorage.clear();
+  }
 
   return (
     <div className={styles.contenedorProfile}>
@@ -16,11 +28,16 @@ export default function Profile({ nombre = "Bruno", apellido = "Rodriguez" }) {
         <p
           className={styles.nombre}
         >{`${nombreCapitalized} ${apellidoCapitalized}`}</p>
+        {location.pathname !== "/favorites" ? (
+          <Link to="/favorites">Favoritos</Link>
+        ) : (
+          ""
+        )}
       </div>
       <span
         className={styles.cerrar}
         data-testid="btnCerrarSesion"
-        onClick={() => setIsLogged(false)}
+        onClick={cerrarSesion}
       >
         X
       </span>
@@ -29,5 +46,5 @@ export default function Profile({ nombre = "Bruno", apellido = "Rodriguez" }) {
 }
 
 function capitalizeString(str) {
-    return str.charAt(0).toUpperCase() + str.slice(1);
+  return str.charAt(0).toUpperCase() + str.slice(1);
 }

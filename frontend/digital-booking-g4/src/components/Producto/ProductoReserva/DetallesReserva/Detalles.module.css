@@ -1,0 +1,169 @@
+.detallesContainer {
+  background-color: var(--color-5);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+  border-radius: 10px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border: 1px solid #dfe4ea;
+  color: var(--color-2);
+  margin-top: calc(28px + 2vh);
+  height: calc(100% - 7vh - 28px);
+}
+
+.infContainer {
+  width: 100%;
+}
+
+.img {
+  position: relative;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+  height: 48vh;
+}
+.tituloTarjeta {
+  font-size: 1.5rem;
+  padding-left: 1.25rem;
+  padding-top: 1.5rem;
+  padding-bottom: 1rem;
+  color: var(--color-2);
+  font-weight: 700;
+}
+
+.letterContainer {
+  padding: 3.36vh 1.25rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.categoria {
+  font-size: 0.875rem;
+  color: var(--color-2);
+  opacity: 0.5;
+}
+.titulo {
+  font-size: 1.5rem;
+  color: var(--color-2);
+  font-weight: bold;
+  padding: 4px 0;
+}
+.direccion {
+  display: flex;
+  justify-content: flex-start;
+  padding-top: 3.2vh;
+  padding-bottom: 4.5vh;
+}
+.direccion i {
+  color: var(--color-2);
+}
+.direccion p {
+  color: var(--color-2);
+  padding-left: 0.7320644216691069vw;
+  font-weight: 500;
+  text-align: start;
+}
+.fecha {
+  display: flex;
+  justify-content: space-between;
+  margin: 4vh 0;
+  width: 100%;
+  color: #4f4f50;
+}
+.letterContainer hr {
+  border-bottom: 0px solid;
+  opacity: 0.7;
+}
+.buttonContainer {
+  width: 100%;
+  text-align: center;
+}
+.buttonContainer input {
+  width: 100%;
+  text-align: center;
+  padding: 1.92vh 0;
+  margin-top: 5.6vh;
+}
+.errorMsjContainer {
+  background-color: #da5456;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  color: #000;
+  gap: 10px;
+  margin: 0 20px;
+}
+.errorMsjContainer p {
+  color: #000;
+  text-align: start;
+}
+
+@media (max-width: 1010px) {
+  .infContainer {
+    display: flex;
+    gap: 20px;
+  }
+  .direccion {
+    padding: 15px 0;
+  }
+  .img {
+    width: 100%;
+    height: 19.5rem;
+    border-radius: 10px;
+  }
+  .detallesContainer {
+    padding: 30px;
+    width: 100%;
+    height: 100%;
+    margin-top: 0;
+  }
+  .letterContainer {
+    margin-top: 0px;
+    padding: 0;
+    width: 100%;
+  }
+  .fecha {
+    margin: 15px 0;
+  }
+  .buttonContainer input {
+    width: 100%;
+    text-align: center;
+    padding: 8px;
+    margin-top: 15px;
+  }
+  .tituloTarjeta {
+    padding-top: 0;
+    padding-left: 0;
+  }
+  .errorMsjContainer {
+    width: 100%;
+    margin: 0;
+  }
+}
+@media (max-width: 480px) {
+  .infContainer {
+    flex-direction: column;
+    width: 100%;
+  }
+  .detallesContainer {
+    padding: 0;
+  }
+  .img {
+    width: 100%;
+  }
+  .tituloTarjeta {
+    padding: 1.5rem 1.25rem;
+  }
+  .letterContainer {
+    margin-top: 0px;
+    padding: 1.5rem 1.25rem;
+    width: 100%;
+  }
+  .errorMsjContainer {
+    margin: 0 20px 20px 20px;
+    width: calc(100% - 40px);
+  }
+}

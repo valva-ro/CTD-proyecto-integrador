@@ -3,7 +3,7 @@
 }
 
 .input {
-  min-width: 30.89311859443631vw;
+  width: 100%;
   padding: 0.5rem 2.4rem;
   padding-left: 2rem;
 }
@@ -28,7 +28,6 @@
   }
 
   .input {
-    width: 18.301610541727673vw;
     padding-left: 2.4rem;
   }
 }

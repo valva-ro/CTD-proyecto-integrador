@@ -26,15 +26,15 @@ export default function Header() {
         );
       case "/login":
         return (
-            <Link to="/register">
-              <OutlinedButton>Crear cuenta</OutlinedButton>
-            </Link>
+          <Link to="/register">
+            <OutlinedButton>Crear cuenta</OutlinedButton>
+          </Link>
         );
       case "/register":
         return (
-            <Link to="/login">
-              <OutlinedButton>Iniciar sesión</OutlinedButton>
-            </Link>
+          <Link to="/login">
+            <OutlinedButton>Iniciar sesión</OutlinedButton>
+          </Link>
         );
     }
   };
@@ -47,7 +47,9 @@ export default function Header() {
             <div className={styles.headerIzquierda}>
               <img className={styles.logoImg} src={logo} alt="logo" />
               <div>
-                <h1>Hosting<span>Book</span></h1>
+                <h1>
+                  Hosting<span>Book</span>
+                </h1>
                 <p>Hospedamos tu próximo sueño</p>
               </div>
             </div>

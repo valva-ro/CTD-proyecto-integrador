@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 @ControllerAdvice
 public class GlobalExceptionsHandler {
 
-    //TODO Refactorizar código, si queda tiempo, usando @ResponseStatusException
     private final Logger logger = Logger.getLogger(GlobalExceptionsHandler.class);
 
     @ExceptionHandler({BadRequestException.class})
@@ -28,5 +27,17 @@ public class GlobalExceptionsHandler {
     public ResponseEntity<String> procesarErrorNotImplemented(NotImplementedException e) {
         logger.error(e.getMessage());
         return ResponseEntity.status(HttpStatus.NOT_IMPLEMENTED).body(e.getMessage());
+    }
+
+    @ExceptionHandler({BadCredentialsException.class})
+    public ResponseEntity<String> procesarErrorNotImplemented(BadCredentialsException e) {
+        logger.error(e.getMessage());
+        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(e.getMessage());
+    }
+
+    @ExceptionHandler({RepeatedMailException.class})
+    public ResponseEntity<String> procesarRepeatMail(RepeatedMailException e) {
+        logger.error(e.getMessage());
+        return ResponseEntity.status(HttpStatus.CONFLICT).body(e.getMessage());
     }
 }

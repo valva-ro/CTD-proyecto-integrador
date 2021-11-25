@@ -1,0 +1,38 @@
+.productoReservaContainer {
+  background-color: var(--color-inputs-form-datos);
+}
+
+.containerPrincipal {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: stretch;
+  gap: 30px;
+  height: 100%;
+}
+
+.containerSecundario {
+  width: 65%;
+  min-height: 100%;
+}
+
+.containerTercero {
+  width: 32%;
+  min-height: 100%;
+}
+
+@media (max-width: 1010px) {
+  .containerPrincipal {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .containerSecundario {
+    width: 100%;
+  }
+
+  .containerTercero {
+    width: 100%;
+  }
+}

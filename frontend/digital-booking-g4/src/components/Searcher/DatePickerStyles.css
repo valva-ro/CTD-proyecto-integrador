@@ -1,4 +1,4 @@
-/* Los selectores que son precedidos por: "div.react-datepicker-popper" afectan únicamente al calendar dentro de Searcher y los que son precedidos por: ".calendarContainer" afectan sólo al calendar de fechas disponibles dentro de la pag de detalle de producto  */
+/* Los selectores que son precedidos por: "div.react-datepicker-popper" afectan únicamente al calendar dentro de Searcher, los que son precedidos por: ".calendarContainer" afectan sólo al calendar de fechas disponibles dentro de la pag de detalle de producto y los que son precedidos por: ".calendarContainerReserva" afectan sólo al calendar de fecha de reserva dentro de la pag de reserva de producto  */
 div.react-datepicker-popper div.react-datepicker__month-container {
   padding: 2vh 0;
 }
@@ -81,6 +81,30 @@ div.react-datepicker__year-text--in-range {
   background-color: var(--color-principal);
 }
 
+.react-datepicker__day--disabled.react-datepicker__day--selected,
+.react-datepicker__day--disabled.react-datepicker__day--in-selecting-range,
+.react-datepicker__day--disabled.react-datepicker__day--in-range,
+.react-datepicker__day--disabled.react-datepicker__month-text--selected,
+.react-datepicker__day--disabled.react-datepicker__month-text--in-selecting-range,
+.react-datepicker__day--disabled.react-datepicker__month-text--in-range,
+.react-datepicker__day--disabled.react-datepicker__quarter-text--selected,
+.react-datepicker__day--disabled.react-datepicker__quarter-text--in-selecting-range,
+.react-datepicker__day--disabled.react-datepicker__quarter-text--in-range,
+.react-datepicker__day--disabled.react-datepicker__year-text--selected,
+.react-datepicker__day--disabled.react-datepicker__year-text--in-selecting-range,
+.react-datepicker__day--disabled.react-datepicker__year-text--in-range {
+  background-color: transparent;
+}
+
+.react-datepicker__day--disabled {
+  text-decoration: line-through;
+}
+
+.react-datepicker__day--range-end {
+  color: #fff;
+  background-color: #1d5d90;
+}
+
 div.react-datepicker__day-name,
 div.react-datepicker__day,
 div.react-datepicker__time-name {
@@ -121,7 +145,7 @@ div.react-datepicker__header:not(.react-datepicker__header--has-time-select) {
   div.react-datepicker__input-container input {
     width: 18.301610541727673vw;
   }
-
+  
   div.react-datepicker__day-name,
   div.react-datepicker__day,
   div.react-datepicker__time-name {
@@ -146,18 +170,18 @@ div.react-datepicker-wrapper {
     position: relative;
     width: 100%;
   }
-
+  
   div.react-datepicker__input-container input {
     padding: 0.5rem 2.4rem;
   }
-
+  
   div.react-datepicker__day-name,
   div.react-datepicker__day,
   div.react-datepicker__time-name {
     margin: 0.5vh 2.25vw;
     font-size: 0.9rem;
   }
-
+  
   div.react-datepicker div:nth-of-type(2) .react-datepicker__header,
   div.react-datepicker div:nth-of-type(2) .react-datepicker__month {
     border-right: none;
@@ -167,6 +191,8 @@ div.react-datepicker-wrapper {
 .react-datepicker__day--outside-month {
   visibility: hidden;
 }
+
+
 
 /* Calendario de fechas disponibles */
 .calendarContainer {
@@ -261,6 +287,111 @@ div.react-datepicker-wrapper {
     height: 310px;
   }
   .calendarContainer div.react-datepicker__month-container:first-of-type {
+    border-right: none;
+  }
+}
+
+
+/* Calendario de reservas */
+.calendarContainerReservas {
+  background-color: var(--color-5);
+  min-width: fit-content;
+  width: 100%;
+  height: 340px;
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  position: relative;
+  box-shadow: 0 4px 4px rgb(0 0 0 / 25%);
+  margin: 2vh 0 5vh 0;
+}
+.calendarContainerReservas div.react-datepicker__month-container {
+  padding: 0 2vw;
+  margin: 2vh 0;
+  background-color: var(--color-5);
+}
+.calendarContainerReservas div.react-datepicker__month-container:first-of-type {
+  border-right: 1.8px solid grey;
+}
+.calendarContainerReservas .react-datepicker__navigation {
+  position: absolute;
+  top: 43%;
+  margin: 0 20px;
+  background-color: var(--color-principal);
+  padding: 20px;
+  border-radius: 50px;
+  box-shadow: 0 2px 3px rgb(0 0 0 / 25%);
+  transition: all ease-in-out 50ms;
+}
+.calendarContainerReservas .react-datepicker__navigation:hover {
+  background-color: var(--color-principal-opaco);
+}
+.calendarContainerReservas .react-datepicker__navigation:active {
+  background-color: var(--color-2);
+}
+.calendarContainerReservas .react-datepicker__year-read-view--down-arrow,
+.calendarContainerReservas .react-datepicker__month-read-view--down-arrow,
+.calendarContainerReservas .react-datepicker__month-year-read-view--down-arrow,
+.calendarContainerReservas .react-datepicker__navigation-icon::before {
+  border-color: white;
+}
+.calendarContainerReservas .react-datepicker__day-name {
+  color: var(--color-2);
+}
+
+@media (min-width: 1400px) {
+  .calendarContainerReservas .react-datepicker__navigation {
+    margin: 0 60px;
+  }
+}
+@media (min-width: 1600px) {
+  .calendarContainerReservas .react-datepicker__navigation {
+    margin: 0 80px;
+  }
+}
+@media (max-width: 1200px) {
+  .calendarContainerReservas {
+    width: 100%;
+    border-top-right-radius: 0;
+    border-top-left-radius: 0;
+  }
+  .calendarContainerReservas .react-datepicker__navigation {
+    position: absolute;
+    top: 20px;
+    margin: 0 35px;
+    background-color: transparent;
+    padding: 0;
+    border-radius: 50px;
+    box-shadow: none;
+    transition: all ease-in-out 50ms;
+  }
+  .calendarContainerReservas .react-datepicker__year-read-view--down-arrow,
+  .calendarContainerReservas .react-datepicker__month-read-view--down-arrow,
+  .calendarContainerReservas .react-datepicker__month-year-read-view--down-arrow,
+  .calendarContainerReservas .react-datepicker__navigation-icon::before {
+    border-color: darkgrey;
+  }
+  .calendarContainerReservas .react-datepicker__year-read-view--down-arrow:hover,
+  .calendarContainerReservas .react-datepicker__month-read-view--down-arrow:hover,
+  .calendarContainerReservas .react-datepicker__month-year-read-view--down-arrow:hover,
+  .calendarContainerReservas .react-datepicker__navigation-icon:hover::before {
+    border-color: var(--color-2);
+  }
+  .calendarContainerReservas .react-datepicker__navigation:hover {
+    background-color: transparent;
+  }
+}
+@media (max-width: 1135px) {
+  .calendarContainerReservas div.react-datepicker__month-container {
+    padding: 0 1vw;
+  }
+}
+
+@media (max-width: 740px) {
+  .calendarContainerReservas {
+    height: 310px;
+  }
+  .calendarContainerReservas div.react-datepicker__month-container:first-of-type {
     border-right: none;
   }
 }

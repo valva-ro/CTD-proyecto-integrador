@@ -1,0 +1,15 @@
+.bloqueProductoDescripcion {
+    width: 100%;
+}
+
+.bloqueProductoDescripcion p {
+    width: 100%;
+    margin-top: 20px;
+    font-size: 0,875rem;
+    text-align: justify;
+}
+
+.bloqueProductoInfo {
+    width: 100%;
+    margin-top: 32px;
+}

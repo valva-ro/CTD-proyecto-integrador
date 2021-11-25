@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 @Service
 public class CaracteristicaService implements CRUDService<CaracteristicaDTO> {
@@ -112,4 +113,7 @@ public class CaracteristicaService implements CRUDService<CaracteristicaDTO> {
             throw new ResourceNotFoundException(String.format(Mensajes.ERROR_NO_EXISTE, "La 'característica'", id));
     }
 
+    public Set<CaracteristicaDTO> consultarPorProductoID(Long id) throws ResourceNotFoundException {
+        return caracteristicaRepository.consultarPorProductoID(id);
+    }
 }

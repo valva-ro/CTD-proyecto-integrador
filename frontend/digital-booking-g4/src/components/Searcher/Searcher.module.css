@@ -51,6 +51,10 @@
   height: 38px;
 }
 
+.anchoFijo{
+  min-width: 30.89311859443631vw;
+}
+
 .inputs input:nth-child(4) {
   margin-left: 8px;
   padding: 0 5vw;
@@ -97,6 +101,7 @@
 
   .boxing {
     top: 82px;
+    position: absolute;
   }
 
   .dateContainer {

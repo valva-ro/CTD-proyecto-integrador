@@ -10,23 +10,49 @@ public class ProductoDTO implements Serializable {
     private Long id;
     private String nombre;
     private String descripcion;
+    private String direccion;
+    private Integer horarioCheckIn;
     private CategoriaDTO categoria;
     private CiudadDTO ciudad;
-    private Set<ImagenDTO> imagenes;
-    private Set<CaracteristicaDTO> caracteristicas;
+    private Set<PoliticaDTO> politicas = new HashSet<>();
+    private Set<ImagenDTO> imagenes = new HashSet<>();
+    private Set<CaracteristicaDTO> caracteristicas = new HashSet<>();
+    private Set<PuntuacionDTO> puntuaciones = new HashSet<>();
+    private Set<ReservaDTO> reservas = new HashSet<>();
+    private Set<UsuarioDTO> usuarios = new HashSet<>();
 
-    public ProductoDTO(){}
+    public ProductoDTO() {
+    }
+
+    public ProductoDTO(Long id) {
+        this.id = id;
+    }
 
     public ProductoDTO(String nombre,
                        String descripcion,
+                       Integer horarioCheckIn,
                        CategoriaDTO categoria,
                        CiudadDTO ciudad,
                        Set<ImagenDTO> imagenes,
                        Set<CaracteristicaDTO> caracteristicas) {
         this.nombre = nombre;
         this.descripcion = descripcion;
+        this.horarioCheckIn = horarioCheckIn;
         this.categoria = categoria;
         this.ciudad = ciudad;
+        this.imagenes = imagenes;
+        this.caracteristicas = caracteristicas;
+    }
+
+    public ProductoDTO(Long id, String nombre, String descripcion, Integer horarioCheckIn, CategoriaDTO categoria, CiudadDTO ciudad,
+                       Set<PoliticaDTO> politicas, Set<ImagenDTO> imagenes, Set<CaracteristicaDTO> caracteristicas) {
+        this.id = id;
+        this.nombre = nombre;
+        this.descripcion = descripcion;
+        this.horarioCheckIn = horarioCheckIn;
+        this.categoria = categoria;
+        this.ciudad = ciudad;
+        this.politicas = politicas;
         this.imagenes = imagenes;
         this.caracteristicas = caracteristicas;
     }
@@ -45,6 +71,35 @@ public class ProductoDTO implements Serializable {
         this.ciudad = ciudad;
         this.imagenes = imagenes;
         this.caracteristicas = caracteristicas;
+    }
+
+    public ProductoDTO(String nombre, String descripcion, Integer horarioCheckIn, CategoriaDTO categoria, CiudadDTO ciudad, Set<PoliticaDTO> politicas, Set<ImagenDTO> imagenes, Set<CaracteristicaDTO> caracteristicas, Set<PuntuacionDTO> puntuaciones, Set<ReservaDTO> reservas, Set<UsuarioDTO> usuarios) {
+        this.nombre = nombre;
+        this.descripcion = descripcion;
+        this.horarioCheckIn = horarioCheckIn;
+        this.categoria = categoria;
+        this.ciudad = ciudad;
+        this.politicas = politicas;
+        this.imagenes = imagenes;
+        this.caracteristicas = caracteristicas;
+        this.puntuaciones = puntuaciones;
+        this.reservas = reservas;
+        this.usuarios = usuarios;
+    }
+
+    public ProductoDTO(Long id, String nombre, String descripcion, Integer horarioCheckIn, CategoriaDTO categoria, CiudadDTO ciudad, Set<PoliticaDTO> politicas, Set<ImagenDTO> imagenes, Set<CaracteristicaDTO> caracteristicas, Set<PuntuacionDTO> puntuaciones, Set<ReservaDTO> reservas, Set<UsuarioDTO> usuarios) {
+        this.id = id;
+        this.nombre = nombre;
+        this.descripcion = descripcion;
+        this.horarioCheckIn = horarioCheckIn;
+        this.categoria = categoria;
+        this.ciudad = ciudad;
+        this.politicas = politicas;
+        this.imagenes = imagenes;
+        this.caracteristicas = caracteristicas;
+        this.puntuaciones = puntuaciones;
+        this.reservas = reservas;
+        this.usuarios = usuarios;
     }
 
     public Long getId() {
@@ -71,6 +126,14 @@ public class ProductoDTO implements Serializable {
         this.descripcion = descripcion;
     }
 
+    public Integer getHorarioCheckIn() {
+        return horarioCheckIn;
+    }
+
+    public void setHorarioCheckIn(Integer horarioCheckIn) {
+        this.horarioCheckIn = horarioCheckIn;
+    }
+
     public CategoriaDTO getCategoria() {
         return categoria;
     }
@@ -85,6 +148,14 @@ public class ProductoDTO implements Serializable {
 
     public void setCiudad(CiudadDTO ciudad) {
         this.ciudad = ciudad;
+    }
+
+    public String getDireccion() {
+        return direccion;
+    }
+
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
     }
 
     public Set<ImagenDTO> getImagenes() {
@@ -103,41 +174,79 @@ public class ProductoDTO implements Serializable {
         this.caracteristicas = caracteristicas;
     }
 
+    public Set<PoliticaDTO> getPoliticas() {
+        return politicas;
+    }
+
+    public void setPoliticas(Set<PoliticaDTO> politicas) {
+        this.politicas = politicas;
+    }
+
+    public Set<PuntuacionDTO> getPuntuaciones() {
+        return puntuaciones;
+    }
+
+    public void setPuntuaciones(Set<PuntuacionDTO> puntuaciones) {
+        this.puntuaciones = puntuaciones;
+    }
+
+    public void agregarPuntuacion(PuntuacionDTO puntuacionDTO) {
+        this.puntuaciones.add(puntuacionDTO);
+    }
+
+    public Set<ReservaDTO> getReservas() { return reservas; }
+
+    public void setReservas(Set<ReservaDTO> reservas) { this.reservas = reservas; }
+
+    public Set<UsuarioDTO> getUsuarios() {
+        return usuarios;
+    }
+
+    public void setUsuarios(Set<UsuarioDTO> usuarios) {
+        this.usuarios = usuarios;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         ProductoDTO that = (ProductoDTO) o;
-        return Objects.equals(id, that.id) && Objects.equals(nombre, that.nombre) && Objects.equals(descripcion, that.descripcion) && Objects.equals(categoria, that.categoria) && Objects.equals(ciudad, that.ciudad) && (imagenes.containsAll(that.imagenes) && that.imagenes.containsAll(imagenes)) && (caracteristicas.containsAll(that.caracteristicas) && that.caracteristicas.containsAll(caracteristicas));
+        return id.equals(that.id) && nombre.equals(that.nombre) && descripcion.equals(that.descripcion) && direccion.equals(that.direccion) && categoria.equals(that.categoria) && ciudad.equals(that.ciudad) && politicas.equals(that.politicas) && imagenes.equals(that.imagenes) && caracteristicas.equals(that.caracteristicas) && puntuaciones.equals(that.puntuaciones) && reservas.equals(that.reservas);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, nombre, descripcion, categoria, ciudad, imagenes, caracteristicas);
+        return Objects.hash(id, nombre, descripcion, direccion, categoria, ciudad, politicas, imagenes, caracteristicas, puntuaciones, reservas);
     }
 
     @Override
     public String toString() {
         Set<ImagenDTO> imagenesToString = new HashSet<>();
-        for (ImagenDTO i: imagenes) {
+        for (ImagenDTO i : imagenes) {
             i.toString();
             imagenesToString.add(i);
         }
 
         Set<CaracteristicaDTO> caracteristicasToString = new HashSet<>();
-        for (CaracteristicaDTO c: caracteristicas) {
+        for (CaracteristicaDTO c : caracteristicas) {
             c.toString();
             caracteristicasToString.add(c);
         }
+        Set<PoliticaDTO> politicasToString = new HashSet<>();
+        for (PoliticaDTO p : politicas) {
+            p.toString();
+            politicasToString.add(p);
+        }
+        Set<ReservaDTO> reservasToString = new HashSet<>();
+        for (ReservaDTO r : reservas) {
+            r.toString();
+            reservasToString.add(r);
+        }
 
-        return "ProductoDTO{" +
-                "id=" + id +
-                ", nombre='" + nombre + '\'' +
-                ", descripcion='" + descripcion + '\'' +
-                ", categoria=" + categoria.toString() +
-                ", ciudad=" + ciudad.toString() +
-                ", imagenes=" + imagenesToString +
-                ", caracteristicas=" + caracteristicasToString +
-                '}';
+        return "ProductoDTO{" + "id=" + id + ", nombre='" + nombre + '\'' + ", descripcion='" + descripcion + '\''
+                + ", direccion='" + direccion + '\''
+                + ", categoria=" + categoria.toString() + ", ciudad=" + ciudad.toString() + ", imagenes="
+                + imagenesToString + ", caracteristicas=" + caracteristicasToString + ", caracteristicas="
+                + politicasToString + '}';
     }
 }
