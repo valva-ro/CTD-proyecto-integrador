@@ -1,6 +1,8 @@
 .favoritosContainer {
   margin-bottom: 82px;
-  height: calc(100vh - 244px);
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
 }
 .alojamientosContainer {
   display: flex;
