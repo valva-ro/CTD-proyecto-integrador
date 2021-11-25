@@ -2,7 +2,7 @@ import { useRef } from "react";
 import useOnClickOutside from "../../hooks/useOnClickOutside";
 import styles from "./Modal.module.css";
 
-export default function ProductoModalCarousel({
+export default function Modal({
   estaAbierto,
   onCloseRequest,
   colorBtnCerrar,
