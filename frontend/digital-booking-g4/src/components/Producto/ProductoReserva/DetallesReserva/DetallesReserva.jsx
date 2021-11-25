@@ -106,8 +106,7 @@ export default function ProductoReserva({
       !ciudadUsuario ||
       !horarioLlegada ||
       !checkinFormat ||
-      !checkoutFormat ||
-      !textArea
+      !checkoutFormat
     ) {
       setShowModal(false);
       setIsError(true);
