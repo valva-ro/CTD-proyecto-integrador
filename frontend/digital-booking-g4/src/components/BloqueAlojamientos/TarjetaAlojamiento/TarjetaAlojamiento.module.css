@@ -92,7 +92,7 @@
 
 .tipoYCalificacion h4 {
   text-transform: uppercase;
-  opacity: 50%;
+  color: #383b5888;
   margin-right: 8px;
   font-size: 14px;
 }
