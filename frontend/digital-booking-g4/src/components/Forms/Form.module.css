@@ -95,11 +95,11 @@ form a:hover {
   .contenedorForm {
     width: 50vw;
   }
-  form div {
+  .generalForms div {
     flex-direction: column;
     gap: 0;
   }
-  form input[type="submit"] {
+  .generalForms input[type="submit"] {
     width: 100%;
   }
   .credencialesContainer {
@@ -121,7 +121,7 @@ form a:hover {
   h2 {
     font-size: 1.4rem;
   }
-  form input[type="submit"] {
+  .generalForms input[type="submit"] {
     margin-top: 20px;
   }
 

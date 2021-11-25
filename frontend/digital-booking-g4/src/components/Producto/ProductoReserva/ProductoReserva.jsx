@@ -15,6 +15,7 @@ export default function ProductoReserva(producto) {
   const [textArea, setTextArea] = useState(null);
   const [isVacunadx, setIsVacunadx] = useState(null);
   const [horarioLlegada, setHorarioLlegada] = useState(null);
+  
 
   console.log("nombre: ");
   console.log(nombre);
@@ -31,9 +32,31 @@ export default function ProductoReserva(producto) {
   console.log("HoraLlegada: ");
   console.log(horarioLlegada);
   console.log("checkin: ");
-  console.log(new Date(checkin).toLocaleDateString().replaceAll("/", "-"));
+  console.log(
+    new Date(checkin)
+      .toLocaleDateString("en-GB", {
+        year: "numeric",
+        month: "2-digit",
+        day: "2-digit",
+      })
+      .replaceAll("/", "-")
+      .split("-")
+      .reverse()
+      .join("-")
+  );
   console.log("checkout: ");
-  console.log(new Date(checkout).toLocaleDateString().replaceAll("/", "-"));
+  console.log(
+    new Date(checkout)
+      .toLocaleDateString("en-GB", {
+        year: "numeric",
+        month: "2-digit",
+        day: "2-digit",
+      })
+      .replaceAll("/", "-")
+      .split("-")
+      .reverse()
+      .join("-")
+  );
 
   return (
     <section className={styles.productoReservaContainer}>

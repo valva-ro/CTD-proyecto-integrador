@@ -1,17 +1,16 @@
 import Estrellas from "../../../Estrellas/Estrellas";
 import FilledButton from "../../../Buttons/FilledButton";
 import calcularPromedioPuntuacion from "../../../../utils/calcularPromedioPuntuacion";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faExclamationTriangle } from "@fortawesome/free-solid-svg-icons";
 import styles from "./Detalles.module.css";
+import post from "../../../../utils/post";
+import { useHistory } from "react-router";
+import { useState } from "react";
 
-export default function ProductoReserva({ 
-  alojamiento:{
-    nombre,
-    categoria,
-    ciudad,
-    imagenes,
-    puntuaciones
-  }, 
-  checkin, 
+export default function ProductoReserva({
+  alojamiento: { id, nombre, categoria, ciudad, imagenes, puntuaciones },
+  checkin,
   checkout,
   nombreUsuario,
   apellido,
@@ -19,10 +18,33 @@ export default function ProductoReserva({
   ciudadUsuario,
   textArea,
   isVacunadx,
-  horarioLlegada
+  horarioLlegada,
 }) {
-  
   const puntaje = calcularPromedioPuntuacion(puntuaciones);
+  const history = useHistory();
+  const [isError, setIsError] = useState(false);
+  const checkinFormat = new Date(checkin)
+    .toLocaleDateString("en-GB", {
+      year: "numeric",
+      month: "2-digit",
+      day: "2-digit",
+    })
+    .replaceAll("/", "-")
+    .split("-")
+    .reverse()
+    .join("-");
+
+  const checkoutFormat = new Date(checkout)
+    .toLocaleDateString("en-GB", {
+      year: "numeric",
+      month: "2-digit",
+      day: "2-digit",
+    })
+    .replaceAll("/", "-")
+    .split("-")
+    .reverse()
+    .join("-");
+
   const buscarImagenPrincipal = () => {
     let imagen = imagenes.find((imagen) => {
       return imagen.imagenTitulo === "Principal";
@@ -32,6 +54,40 @@ export default function ProductoReserva({
     }
     return imagen;
   };
+
+  function realizarReserva() {
+    post(
+      "reservas",
+      {
+        nombre: nombreUsuario,
+        apellido,
+        mail,
+        ciudad: ciudadUsuario,
+        horaEntrada: horarioLlegada,
+        fechaIngreso: checkinFormat,
+        fechaEgreso: checkoutFormat,
+        datos: textArea,
+        vacunaCovid: isVacunadx,
+        producto: { id },
+        usuario: { id: localStorage.getItem("id") },
+      },
+      {
+        "Content-Type": "application/json",
+        "Authorization": localStorage.getItem("jwt"),
+      }
+    ).then((response) => {
+      if (response.status === 201) {
+        history.push("/succes");
+      } else {
+        setIsError(true);
+      }
+    });
+  }
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    realizarReserva();
+  }
 
   return (
     <div className={styles.detallesContainer}>
@@ -74,10 +130,21 @@ export default function ProductoReserva({
           </div>
           <hr />
           <div className={styles.buttonContainer}>
-            <FilledButton styles={styles.buttonSubmit}>Confirmar reserva</FilledButton>
+            <FilledButton onClick={handleSubmit} styles={styles.buttonSubmit}>
+              Confirmar reserva
+            </FilledButton>
           </div>
         </div>
       </div>
+      {!isError ? null : (
+        <div className={styles.errorMsjContainer}>
+          <FontAwesomeIcon icon={faExclamationTriangle} />
+          <p>
+            Lamentablemente la reserva no ha podido realizarse. Por favor,
+            vuelva a intentarlo.
+          </p>
+        </div>
+      )}
     </div>
   );
 }

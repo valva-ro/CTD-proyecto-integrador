@@ -86,6 +86,20 @@
   padding: 1.92vh 0;
   margin-top: 5.6vh;
 }
+.errorMsjContainer {
+  background-color: #da5456;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  color: #000;
+  gap: 10px;
+  margin: 0 20px;
+}
+.errorMsjContainer p {
+  color: #000;
+  text-align: start;
+}
 
 @media (max-width: 1010px) {
   .infContainer {
@@ -124,6 +138,10 @@
     padding-top: 0;
     padding-left: 0;
   }
+  .errorMsjContainer {
+    width: 100%;
+    margin: 0;
+  }
 }
 @media (max-width: 480px) {
   .infContainer {
@@ -143,5 +161,9 @@
     margin-top: 0px;
     padding: 1.5rem 1.25rem;
     width: 100%;
+  }
+  .errorMsjContainer {
+    margin: 0 20px 20px 20px;
+    width: calc(100% - 40px);
   }
 }

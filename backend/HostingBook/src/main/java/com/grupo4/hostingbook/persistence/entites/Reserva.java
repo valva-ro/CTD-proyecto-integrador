@@ -2,7 +2,6 @@ package com.grupo4.hostingbook.persistence.entites;
 
 import javax.persistence.*;
 import java.time.LocalDate;
-import java.time.LocalTime;
 import java.util.Objects;
 
 @Entity
@@ -17,7 +16,7 @@ public class Reserva {
     private String apellido;
     private String mail;
     private String ciudad;
-    private LocalTime horaEntrada;
+    private Integer horaEntrada;
     private LocalDate fechaIngreso;
     private LocalDate fechaEgreso;
     private String datos;
@@ -33,7 +32,7 @@ public class Reserva {
 
     public Reserva() {}
 
-    public Reserva(LocalTime horaEntrada, String nombre, String apellido, String mail, String ciudad, LocalDate fechaIngreso, LocalDate fechaEgreso, String datos, Boolean vacunaCovid, Producto producto, Usuario usuario) {
+    public Reserva(Integer horaEntrada, String nombre, String apellido, String mail, String ciudad, LocalDate fechaIngreso, LocalDate fechaEgreso, String datos, Boolean vacunaCovid, Producto producto, Usuario usuario) {
         this.horaEntrada = horaEntrada;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -47,7 +46,7 @@ public class Reserva {
         this.usuario = usuario;
     }
 
-    public Reserva(Long id, LocalTime horaEntrada, String nombre, String apellido, String mail, String ciudad, LocalDate fechaIngreso, LocalDate fechaEgreso, String datos, Boolean vacunaCovid, Producto producto, Usuario usuario) {
+    public Reserva(Long id, Integer horaEntrada, String nombre, String apellido, String mail, String ciudad, LocalDate fechaIngreso, LocalDate fechaEgreso, String datos, Boolean vacunaCovid, Producto producto, Usuario usuario) {
         this.id = id;
         this.horaEntrada = horaEntrada;
         this.nombre = nombre;
@@ -99,9 +98,9 @@ public class Reserva {
     }
 
 
-    public LocalTime getHoraEntrada() { return horaEntrada; }
+    public Integer getHoraEntrada() { return horaEntrada; }
 
-    public void setHoraEntrada(LocalTime horaEntrada) {this.horaEntrada = horaEntrada;}
+    public void setHoraEntrada(Integer horaEntrada) {this.horaEntrada = horaEntrada;}
 
     public LocalDate getFechaIngreso() {return fechaIngreso;}
 

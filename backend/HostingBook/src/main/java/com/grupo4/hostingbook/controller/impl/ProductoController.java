@@ -17,6 +17,7 @@ import java.util.Set;
 
 @RestController
 @RequestMapping("/productos")
+@CrossOrigin(origins = "*", methods = { RequestMethod.GET, RequestMethod.POST }, allowedHeaders = "*")
 public class ProductoController implements IProductoController {
 
     @Qualifier("ProductoService")

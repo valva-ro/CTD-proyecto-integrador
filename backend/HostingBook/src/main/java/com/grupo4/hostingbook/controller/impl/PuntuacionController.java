@@ -18,6 +18,7 @@ import java.util.Set;
 
 @RestController
 @RequestMapping("/puntuaciones")
+@CrossOrigin(origins = "*", methods = { RequestMethod.GET, RequestMethod.POST }, allowedHeaders = "*")
 public class PuntuacionController implements IPuntuacionController {
 
     @Qualifier("PuntuacionService")

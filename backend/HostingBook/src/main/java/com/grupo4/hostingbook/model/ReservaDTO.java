@@ -8,7 +8,7 @@ import java.util.Objects;
 public class ReservaDTO implements Serializable {
 
     private Long id;
-    private LocalTime horaEntrada;
+    private Integer horaEntrada;
     private String nombre;
     private String apellido;
     private String mail;
@@ -27,7 +27,7 @@ public class ReservaDTO implements Serializable {
         this.id = id;
     }
 
-    public ReservaDTO(LocalTime horaEntrada, String nombre, String apellido, String mail, String ciudad, LocalDate fechaIngreso, LocalDate fechaEgreso, String datos, Boolean vacunaCovid, UsuarioDTO usuario, ProductoDTO producto) {
+    public ReservaDTO(Integer horaEntrada, String nombre, String apellido, String mail, String ciudad, LocalDate fechaIngreso, LocalDate fechaEgreso, String datos, Boolean vacunaCovid, UsuarioDTO usuario, ProductoDTO producto) {
         this.horaEntrada = horaEntrada;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -41,7 +41,7 @@ public class ReservaDTO implements Serializable {
         this.producto = producto;
     }
 
-    public ReservaDTO(Long id, LocalTime horaEntrada, String nombre, String apellido, String mail, String ciudad, LocalDate fechaIngreso, LocalDate fechaEgreso, String datos, Boolean vacunaCovid, UsuarioDTO usuario, ProductoDTO producto) {
+    public ReservaDTO(Long id, Integer horaEntrada, String nombre, String apellido, String mail, String ciudad, LocalDate fechaIngreso, LocalDate fechaEgreso, String datos, Boolean vacunaCovid, UsuarioDTO usuario, ProductoDTO producto) {
         this.id = id;
         this.horaEntrada = horaEntrada;
         this.nombre = nombre;
@@ -60,9 +60,9 @@ public class ReservaDTO implements Serializable {
 
     public void setId(Long id) {this.id = id;}
 
-    public LocalTime getHoraEntrada() {return horaEntrada;}
+    public Integer getHoraEntrada() {return horaEntrada;}
 
-    public void setHoraEntrada(LocalTime horaEntrada) {this.horaEntrada = horaEntrada;}
+    public void setHoraEntrada(Integer horaEntrada) {this.horaEntrada = horaEntrada;}
 
     public String getNombre() {
         return nombre;
