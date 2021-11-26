@@ -28,7 +28,635 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"nombre\": \"usuario\",\r\n    \"apellido\": \"nuevo\",\r\n    \"mail\": \"usuario@nuevo.com\",\r\n    \"contrasenia\": \"usuario1234\"\r\n}",
+							"raw": "{\r\n    \"nombre\": \"Nuevo\",\r\n    \"apellido\": \"Nuevo\",\r\n    \"mail\": \"usuario@nuevo.com\",\r\n    \"contrasenia\": \"usuario1234\",\r\n    \"cuentaValidada\":true,\r\n    \"rol\": {\"id\": 2},\r\n    \"reservas\": [],\r\n    \"puntuaciones\": [],\r\n    \"productosFavoritos\": []\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/usuarios/signup",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"usuarios",
+								"signup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Error usuario con nombre vacío",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Mensaje de error creación\", function () {\r",
+									"    pm.response.to.have.body(\"Ha ocurrido un error en la creación de 'usuario', 'nombre' no puede estar vacío\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\": \"\",\r\n    \"apellido\": \"Nuevo\",\r\n    \"mail\": \"usuario@nuevo.com\",\r\n    \"contrasenia\": \"usuario1234\",\r\n    \"cuentaValidada\":true,\r\n    \"rol\": {\"id\": 2},\r\n    \"reservas\": [],\r\n    \"puntuaciones\": [],\r\n    \"productosFavoritos\": []\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/usuarios/signup",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"usuarios",
+								"signup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Error usuario con nombre lleno de espacios",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Mensaje de error creación\", function () {\r",
+									"    pm.response.to.have.body(\"Ha ocurrido un error en la creación de 'usuario', 'nombre' no puede estar vacío\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\": \"          \",\r\n    \"apellido\": \"Nuevo\",\r\n    \"mail\": \"usuario@nuevo.com\",\r\n    \"contrasenia\": \"usuario1234\",\r\n    \"cuentaValidada\":true,\r\n    \"rol\": {\"id\": 2},\r\n    \"reservas\": [],\r\n    \"puntuaciones\": [],\r\n    \"productosFavoritos\": []\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/usuarios/signup",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"usuarios",
+								"signup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Error usuario con nombre null",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Mensaje de error creación\", function () {\r",
+									"    pm.response.to.have.body(\"Ha ocurrido un error en la creación de 'usuario', 'nombre' no puede estar vacío\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"apellido\": \"Nuevo\",\r\n    \"mail\": \"usuario@nuevo.com\",\r\n    \"contrasenia\": \"usuario1234\",\r\n    \"cuentaValidada\":true,\r\n    \"rol\": {\"id\": 2},\r\n    \"reservas\": [],\r\n    \"puntuaciones\": [],\r\n    \"productosFavoritos\": []\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/usuarios/signup",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"usuarios",
+								"signup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Error usuario con apellido vacio",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Mensaje de error creación\", function () {\r",
+									"    pm.response.to.have.body(\"Ha ocurrido un error en la creación de 'usuario', 'apellido' no puede estar vacío\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\": \"Nuevo\",\r\n    \"apellido\": \"\",\r\n    \"mail\": \"usuario@nuevo.com\",\r\n    \"contrasenia\": \"usuario1234\",\r\n    \"cuentaValidada\":true,\r\n    \"rol\": {\"id\": 2},\r\n    \"reservas\": [],\r\n    \"puntuaciones\": [],\r\n    \"productosFavoritos\": []\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/usuarios/signup",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"usuarios",
+								"signup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Error usuario con apellido lleno de espacios",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Mensaje de error creación\", function () {\r",
+									"    pm.response.to.have.body(\"Ha ocurrido un error en la creación de 'usuario', 'apellido' no puede estar vacío\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\": \"Nuevo\",\r\n    \"apellido\": \"        \",\r\n    \"mail\": \"usuario@nuevo.com\",\r\n    \"contrasenia\": \"usuario1234\",\r\n    \"cuentaValidada\":true,\r\n    \"rol\": {\"id\": 2},\r\n    \"reservas\": [],\r\n    \"puntuaciones\": [],\r\n    \"productosFavoritos\": []\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/usuarios/signup",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"usuarios",
+								"signup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Error usuario con apellido null",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Mensaje de error creación\", function () {\r",
+									"    pm.response.to.have.body(\"Ha ocurrido un error en la creación de 'usuario', 'apellido' no puede estar vacío\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\": \"Nuevo\",\r\n    \"mail\": \"usuario@nuevo.com\",\r\n    \"contrasenia\": \"usuario1234\",\r\n    \"cuentaValidada\":true,\r\n    \"rol\": {\"id\": 2},\r\n    \"reservas\": [],\r\n    \"puntuaciones\": [],\r\n    \"productosFavoritos\": []\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/usuarios/signup",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"usuarios",
+								"signup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Error usuario con mail vacio",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Mensaje de error creación\", function () {\r",
+									"    pm.response.to.have.body(\"Ha ocurrido un error en la creación de 'usuario', 'mail' no puede estar vacío\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\": \"Nuevo\",\r\n    \"apellido\": \"Nuevo\",\r\n    \"contrasenia\": \"usuario1234\",\r\n    \"cuentaValidada\":true,\r\n    \"rol\": {\"id\": 2},\r\n    \"reservas\": [],\r\n    \"puntuaciones\": [],\r\n    \"productosFavoritos\": []\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/usuarios/signup",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"usuarios",
+								"signup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Error usuario con mail lleno de espacios",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Mensaje de error creación\", function () {\r",
+									"    pm.response.to.have.body(\"Ha ocurrido un error en la creación de 'usuario', 'mail' no puede estar vacío\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\": \"Nuevo\",\r\n    \"apellido\": \"Nuevo\",\r\n    \"mail\": \"          \",\r\n    \"contrasenia\": \"usuario1234\",\r\n    \"cuentaValidada\":true,\r\n    \"rol\": {\"id\": 2},\r\n    \"reservas\": [],\r\n    \"puntuaciones\": [],\r\n    \"productosFavoritos\": []\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/usuarios/signup",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"usuarios",
+								"signup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Error usuario con mail null",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Mensaje de error creación\", function () {\r",
+									"    pm.response.to.have.body(\"Ha ocurrido un error en la creación de 'usuario', 'mail' no puede estar vacío\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\": \"Nuevo\",\r\n    \"apellido\": \"Nuevo\",\r\n    \"contrasenia\": \"usuario1234\",\r\n    \"cuentaValidada\":true,\r\n    \"rol\": {\"id\": 2},\r\n    \"reservas\": [],\r\n    \"puntuaciones\": [],\r\n    \"productosFavoritos\": []\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/usuarios/signup",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"usuarios",
+								"signup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Error usuario con contraseña vacia",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Mensaje de error creación\", function () {\r",
+									"    pm.response.to.have.body(\"Ha ocurrido un error en la creación de 'usuario', 'contraseña' no puede estar vacío\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\": \"Nuevo\",\r\n    \"apellido\": \"Nuevo\",\r\n    \"mail\": \"usuario@nuevo.com\",\r\n    \"contrasenia\": \"\",\r\n    \"cuentaValidada\":true,\r\n    \"rol\": {\"id\": 2},\r\n    \"reservas\": [],\r\n    \"puntuaciones\": [],\r\n    \"productosFavoritos\": []\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/usuarios/signup",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"usuarios",
+								"signup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Error usuario con contraseña llena de espacios",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Mensaje de error creación\", function () {\r",
+									"    pm.response.to.have.body(\"Ha ocurrido un error en la creación de 'usuario', 'contraseña' no puede estar vacío\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\": \"Nuevo\",\r\n    \"apellido\": \"Nuevo\",\r\n    \"mail\": \"usuario@nuevo.com\",\r\n    \"contrasenia\": \"           \",\r\n    \"cuentaValidada\":true,\r\n    \"rol\": {\"id\": 2},\r\n    \"reservas\": [],\r\n    \"puntuaciones\": [],\r\n    \"productosFavoritos\": []\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/usuarios/signup",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"usuarios",
+								"signup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Error usuario con contraseña null",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Mensaje de error creación\", function () {\r",
+									"    pm.response.to.have.body(\"Ha ocurrido un error en la creación de 'usuario', 'contraseña' no puede estar vacío\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\": \"Nuevo\",\r\n    \"apellido\": \"Nuevo\",\r\n    \"mail\": \"usuario@nuevo.com\",\r\n    \"cuentaValidada\":true,\r\n    \"rol\": {\"id\": 2},\r\n    \"reservas\": [],\r\n    \"puntuaciones\": [],\r\n    \"productosFavoritos\": []\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/usuarios/signup",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"usuarios",
+								"signup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Error usuario con cuentaValidada null",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"/*pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
+									"});*/\r",
+									"\r",
+									"if (pm.test(\"Status code is 409\", function () {\r",
+									"    pm.response.to.have.status(409);\r",
+									"})) {\r",
+									"pm.test(\"Mensaje de error creación\", function () {\r",
+									"    pm.response.to.have.body(\"Ya existe una cuenta con el mail usuario@nuevo.com\");\r",
+									"});\r",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\": \"Nuevo\",\r\n    \"apellido\": \"Nuevo\",\r\n    \"mail\": \"usuario@nuevo.com\",\r\n    \"contrasenia\": \"usuario1234\",\r\n    \"rol\": {\"id\": 2},\r\n    \"reservas\": [],\r\n    \"puntuaciones\": [],\r\n    \"productosFavoritos\": []\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/usuarios/signup",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"usuarios",
+								"signup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Error usuario con rol null",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"/*if (pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"}))\r",
+									"\r",
+									"pm.test(\"Mensaje de error creación\", function () {\r",
+									"    pm.response.to.have.body(\"Ha ocurrido un error en la creación de 'usuario', 'rol' no puede estar vacío\");\r",
+									"});*/\r",
+									"\r",
+									"if (pm.test(\"Status code is 409\", function () {\r",
+									"    pm.response.to.have.status(409);\r",
+									"})){\r",
+									"\r",
+									"pm.test(\"Mensaje de error creación\", function () {\r",
+									"    pm.response.to.have.body(\"Ya existe una cuenta con el mail usuario@nuevo.com\");\r",
+									"});}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\": \"Nuevo\",\r\n    \"apellido\": \"Nuevo\",\r\n    \"mail\": \"usuario@nuevo.com\",\r\n    \"contrasenia\": \"usuario1234\",\r\n    \"cuentaValidada\":true,\r\n    \"reservas\": [],\r\n    \"puntuaciones\": [],\r\n    \"productosFavoritos\": []\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -54,7 +682,34 @@
 			"name": "Obtener",
 			"item": [
 				{
-					"name": "Obtener todos los usuarios",
+					"name": "Todos los usuarios",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Hay al menos un dato en la BD\", function () {\r",
+									"    const jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.length).not.to.eql(0);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -71,7 +726,25 @@
 					"response": []
 				},
 				{
-					"name": "Obtener por ID",
+					"name": "Obtener usuario por ID existente",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Hay al menos un dato en la BD\", function () {\r",
+									"    const jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.length).not.to.eql(0);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -89,25 +762,970 @@
 					"response": []
 				},
 				{
-					"name": "Obtener productos favoritos",
+					"name": "Error obtener usuario con id inexistente",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {\r",
+									"    pm.response.to.have.status(404);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Mensaje de error creación\", function () {\r",
+									"    pm.response.to.have.body(\"El 'usuario' con id 995 no está registrado en la base de datos.\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "GET",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MzcxNzIwNzksImlhdCI6MTYzNzE3MjAxOX0.o_dAZXAQbUwkHOQ4oc7gjA0ZjgfVuuPYHEpAfRUMyQw",
-								"type": "text"
-							}
-						],
+						"header": [],
 						"url": {
-							"raw": "{{URL}}/usuarios/1/favoritos",
+							"raw": "{{URL}}/usuarios/995",
 							"host": [
 								"{{URL}}"
 							],
 							"path": [
 								"usuarios",
-								"1",
+								"995"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Error obtener usuario con id fuera de rango",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Mensaje de error creación\", function () {\r",
+									"    pm.response.to.have.body(\"El id no puede ser menor a 1\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/usuarios/-5",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"usuarios",
+								"-5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener productos favoritos",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Hay al menos un dato en la BD\", function () {\r",
+									"    const jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.length).not.to.eql(0);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{TOKEN}}",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{URL}}/usuarios/4/favoritos",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"usuarios",
+								"4",
 								"favoritos"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Modificar | Actualizar",
+			"item": [
+				{
+					"name": "Actualizar usuario con todos los datos correctos",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{TOKEN}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 4,\r\n    \"nombre\": \"Nuevo\",\r\n    \"apellido\": \"Nuevo\",\r\n    \"mail\": \"usuario@nuevo.com\",\r\n    \"contrasenia\": \"usuario1234\",\r\n    \"cuentaValidada\":true,\r\n    \"rol\": {\"id\": 2},\r\n    \"reservas\": [],\r\n    \"puntuaciones\": [],\r\n    \"productosFavoritos\": []\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/usuarios",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"usuarios"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Actualizar estado de la cuenta",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/usuarios/4/validar",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"usuarios",
+								"4",
+								"validar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Error usuario con nombre vacio",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{TOKEN}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\":4,\r\n    \"nombre\": \"\",\r\n    \"apellido\": \"Nuevo\",\r\n    \"mail\": \"usuario@nuevo.com\",\r\n    \"contrasenia\": \"usuario1234\",\r\n    \"cuentaValidada\": false,\r\n    \"rol\": {\"id\": 2},\r\n    \"reservas\": [],\r\n    \"puntuaciones\": [],\r\n    \"productosFavoritos\": []\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/usuarios",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"usuarios"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Error usuario con nombre lleno de espacios en blanco",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{TOKEN}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\":4,\r\n    \"nombre\": \"         \",\r\n    \"apellido\": \"Nuevo\",\r\n    \"mail\": \"usuario@nuevo.com\",\r\n    \"contrasenia\": \"usuario1234\",\r\n    \"cuentaValidada\": false,\r\n    \"rol\": {\"id\": 2},\r\n    \"reservas\": [],\r\n    \"puntuaciones\": [],\r\n    \"productosFavoritos\": []\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/usuarios",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"usuarios"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Error usuario con nombre null",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{TOKEN}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\":4,\r\n    \"apellido\": \"Nuevo\",\r\n    \"mail\": \"usuario@nuevo.com\",\r\n    \"contrasenia\": \"usuario1234\",\r\n    \"cuentaValidada\": false,\r\n    \"rol\": {\"id\": 2},\r\n    \"reservas\": [],\r\n    \"puntuaciones\": [],\r\n    \"productosFavoritos\": []\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/usuarios",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"usuarios"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Error usuario con apellido vacio",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{TOKEN}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\":4,\r\n    \"nombre\": \"Usuario\",\r\n    \"apellido\": \"\",\r\n    \"mail\": \"usuario@nuevo.com\",\r\n    \"contrasenia\": \"usuario1234\",\r\n    \"cuentaValidada\": false,\r\n    \"rol\": {\"id\": 2},\r\n    \"reservas\": [],\r\n    \"puntuaciones\": [],\r\n    \"productosFavoritos\": []\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/usuarios",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"usuarios"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Error usuario con apellido lleno de espacios en blanco",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{TOKEN}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\":4,\r\n    \"nombre\": \"Usuario\",\r\n    \"apellido\": \"          \",\r\n    \"mail\": \"usuario@nuevo.com\",\r\n    \"contrasenia\": \"usuario1234\",\r\n    \"cuentaValidada\": false,\r\n    \"rol\": {\"id\": 2},\r\n    \"reservas\": [],\r\n    \"puntuaciones\": [],\r\n    \"productosFavoritos\": []\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/usuarios",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"usuarios"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Error usuario con apellido null",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{TOKEN}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\":4,\r\n    \"nombre\": \"Usuario\",\r\n    \"mail\": \"usuario@nuevo.com\",\r\n    \"contrasenia\": \"usuario1234\",\r\n    \"cuentaValidada\": false,\r\n    \"rol\": {\"id\": 2},\r\n    \"reservas\": [],\r\n    \"puntuaciones\": [],\r\n    \"productosFavoritos\": []\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/usuarios",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"usuarios"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Error usuario con mail vacio",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{TOKEN}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\":4,\r\n    \"nombre\": \"Usuario\",\r\n    \"apellido\": \"Nuevo\",\r\n    \"mail\": \"\",\r\n    \"contrasenia\": \"usuario1234\",\r\n    \"cuentaValidada\": false,\r\n    \"rol\": {\"id\": 2},\r\n    \"reservas\": [],\r\n    \"puntuaciones\": [],\r\n    \"productosFavoritos\": []\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/usuarios",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"usuarios"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Error usuario con mail lleno de espacios en blanco",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{TOKEN}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\":4,\r\n    \"nombre\": \"Usuario\",\r\n    \"apellido\": \"Nuevo\",\r\n    \"mail\": \"           \",\r\n    \"contrasenia\": \"usuario1234\",\r\n    \"cuentaValidada\": false,\r\n    \"rol\": {\"id\": 2},\r\n    \"reservas\": [],\r\n    \"puntuaciones\": [],\r\n    \"productosFavoritos\": []\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/usuarios",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"usuarios"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Error usuario con contraseña vacia",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{TOKEN}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\":4,\r\n    \"nombre\": \"Usuario\",\r\n    \"apellido\": \"Nuevo\",\r\n    \"mail\": \"usuario@nuevo.com\",\r\n    \"contrasenia\": \"\",\r\n    \"cuentaValidada\": false,\r\n    \"rol\": {\"id\": 2},\r\n    \"reservas\": [],\r\n    \"puntuaciones\": [],\r\n    \"productosFavoritos\": []\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/usuarios",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"usuarios"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Error usuario con mail null",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{TOKEN}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\":4,\r\n    \"nombre\": \"Usuario\",\r\n    \"apellido\": \"Nuevo\",\r\n    \"contrasenia\": \"usuario1234\",\r\n    \"cuentaValidada\": false,\r\n    \"rol\": {\"id\": 2},\r\n    \"reservas\": [],\r\n    \"puntuaciones\": [],\r\n    \"productosFavoritos\": []\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/usuarios",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"usuarios"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Error usuario con contraseña llena de espacios",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{TOKEN}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\":4,\r\n    \"nombre\": \"Usuario\",\r\n    \"apellido\": \"Nuevo\",\r\n    \"mail\": \"usuario@nuevo.com\",\r\n    \"contrasenia\": \"       \",\r\n    \"cuentaValidada\": false,\r\n    \"rol\": {\"id\": 2},\r\n    \"reservas\": [],\r\n    \"puntuaciones\": [],\r\n    \"productosFavoritos\": []\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/usuarios",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"usuarios"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Error usuario con contraseña null",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{TOKEN}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\":4,\r\n    \"nombre\": \"Usuario\",\r\n    \"apellido\": \"Nuevo\",\r\n    \"mail\": \"usuario@nuevo.com\",\r\n    \"cuentaValidada\": false,\r\n    \"rol\": {\"id\": 2},\r\n    \"reservas\": [],\r\n    \"puntuaciones\": [],\r\n    \"productosFavoritos\": []\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/usuarios",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"usuarios"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Error usuario con cuentaValidada null",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{TOKEN}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\":4,\r\n    \"nombre\": \"Usuario\",\r\n    \"apellido\": \"Nuevo\",\r\n    \"mail\": \"usuario@nuevo.com\",\r\n    \"contrasenia\": \"usuario1234\",\r\n    \"rol\": {\"id\": 2},\r\n    \"reservas\": [],\r\n    \"puntuaciones\": [],\r\n    \"productosFavoritos\": []\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/usuarios",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"usuarios"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Error usuario con roll null",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{TOKEN}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\":4,\r\n    \"nombre\": \"Usuario\",\r\n    \"apellido\": \"Nuevo\",\r\n    \"mail\": \"usuario@nuevo.com\",\r\n    \"contrasenia\": \"usuario1234\",\r\n    \"cuentaValidada\": false,\r\n    \"reservas\": [],\r\n    \"puntuaciones\": [],\r\n    \"productosFavoritos\": []\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/usuarios",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"usuarios"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Error usuario con id inexistente",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{TOKEN}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\":995,\r\n    \"nombre\": \"Usuario\",\r\n    \"apellido\": \"Nuevo\",\r\n    \"mail\": \"usuario@nuevo.com\",\r\n    \"contrasenia\": \"usuario1234\",\r\n    \"cuentaValidada\": false,\r\n    \"rol\": {\"id\": 2},\r\n    \"reservas\": [],\r\n    \"puntuaciones\": [],\r\n    \"productosFavoritos\": []\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/usuarios",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"usuarios"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Error usuario con id negativo",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{TOKEN}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\":-5,\r\n    \"nombre\": \"Usuario\",\r\n    \"apellido\": \"Nuevo\",\r\n    \"mail\": \"usuario@nuevo.com\",\r\n    \"contrasenia\": \"usuario1234\",\r\n    \"cuentaValidada\": false,\r\n    \"rol\": {\"id\": 2},\r\n    \"reservas\": [],\r\n    \"puntuaciones\": [],\r\n    \"productosFavoritos\": []\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/usuarios",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"usuarios"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Error usuario con id null",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{TOKEN}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\": \"Usuario\",\r\n    \"apellido\": \"Nuevo\",\r\n    \"mail\": \"usuario@nuevo.com\",\r\n    \"contrasenia\": \"usuario1234\",\r\n    \"cuentaValidada\": false,\r\n    \"rol\": {\"id\": 2},\r\n    \"reservas\": [],\r\n    \"puntuaciones\": [],\r\n    \"productosFavoritos\": []\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/usuarios",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"usuarios"
 							]
 						}
 					},
@@ -119,7 +1737,20 @@
 			"name": "Autenticar",
 			"item": [
 				{
-					"name": "Login usuario con contraseña encriptada en BD",
+					"name": "Login usuario",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const jsonData = JSON.parse(responseBody);\r",
+									"const token = jsonData.jwt;\r",
+									"pm.environment.set(\"TOKEN\", `${token}`);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "POST",
 						"header": [
@@ -131,7 +1762,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"mail\": \"usuario@nuevo.com\",\r\n    \"contrasenia\": \"usuario1234\"\r\n}",
+							"raw": "{\r\n    \"mail\": \"pepe@gmail.com\",\r\n    \"contrasenia\": \"pepe1234\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -139,12 +1770,11 @@
 							}
 						},
 						"url": {
-							"raw": "{{URL}}/usuarios/login",
+							"raw": "{{URL}}/login",
 							"host": [
 								"{{URL}}"
 							],
 							"path": [
-								"usuarios",
 								"login"
 							]
 						}
@@ -157,18 +1787,90 @@
 			"name": "Eliminar",
 			"item": [
 				{
-					"name": "Eliminar por ID",
+					"name": "Eliminar favorito",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{TOKEN}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/productos/elminar/4/usuarios/4",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"productos",
+								"elminar",
+								"4",
+								"usuarios",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar por ID existente",
 					"request": {
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "{{URL}}/usuarios/5",
+							"raw": "{{URL}}/usuarios/4",
 							"host": [
 								"{{URL}}"
 							],
 							"path": [
 								"usuarios",
-								"5"
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar por ID inexistente",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/usuarios/995",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"usuarios",
+								"995"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar por ID fuera de rango",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/usuarios/-5",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"usuarios",
+								"-5"
 							]
 						}
 					},

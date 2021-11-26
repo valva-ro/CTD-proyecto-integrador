@@ -15,9 +15,10 @@
 							"listen": "test",
 							"script": {
 								"exec": [
-									"pm.test(\"Status code is 200\", function () {\r",
+									"pm.test(\"Creacion exitosa\", function () {\r",
 									"    pm.response.to.have.status(200);\r",
-									"});"
+									"});\r",
+									""
 								],
 								"type": "text/javascript"
 							}
@@ -589,7 +590,7 @@
 			]
 		},
 		{
-			"name": "Modificar/Actualizar",
+			"name": "Modificar | Actualizar",
 			"item": [
 				{
 					"name": "Actualizar categoría existente con todos los datos",
@@ -1128,7 +1129,7 @@
 			"name": "Eliminar",
 			"item": [
 				{
-					"name": "Ciudad existente",
+					"name": "Categoria existente",
 					"event": [
 						{
 							"listen": "test",
@@ -1150,13 +1151,13 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "{{URL}}/categorias/10",
+							"raw": "{{URL}}/categorias/5",
 							"host": [
 								"{{URL}}"
 							],
 							"path": [
 								"categorias",
-								"10"
+								"5"
 							],
 							"query": [
 								{

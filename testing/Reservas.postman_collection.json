@@ -1,0 +1,801 @@
+{
+	"info": {
+		"_postman_id": "aa1033e9-87ae-483b-811f-f0b2efd60f68",
+		"name": "Reservas",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Obtener",
+			"item": [
+				{
+					"name": "Todas las reservas",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Hay al menos un dato en la BD\", function () {\r",
+									"    const jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.length).not.to.eql(0);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{TOKEN}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{URL}}/reservas/",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"reservas",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener por producto",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Hay al menos un dato en la BD\", function () {\r",
+									"    const jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.length).not.to.eql(0);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{TOKEN}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{URL}}/reservas/producto/3",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"reservas",
+								"producto",
+								"3"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Crear",
+			"item": [
+				{
+					"name": "Reserva con todos los datos válidos",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Creacion exitosa\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{TOKEN}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "  {\r\n    \"nombre\": \"Jorgito\",\r\n    \"apellido\": \"Ramirez\",\r\n    \"mail\": \"jorgito@hb.com\",\r\n    \"ciudad\": \"Caballito\",\r\n    \"horaEntrada\": 10,\r\n    \"fechaIngreso\": \"2021-11-18\",\r\n    \"fechaEgreso\": \"2021-11-23\",\r\n    \"datos\": \"Esto es una prueba para ver si los datos de reserva funcionan correctamente, el vendedor es un genio!!!\",\r\n    \"vacunaCovid\": true,\r\n    \"producto\": {\"id\": 1},\r\n    \"usuario\": {\"id\": 1}\r\n  }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/reservas/",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"reservas",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Error reserva con hora de entrada null",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Mensaje de error creación\", function () {\r",
+									"    pm.response.to.have.body(\"Ha ocurrido un error en la creación de 'reserva', 'hora de entrada' no puede estar vacío\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{TOKEN}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "  {\r\n    \"nombre\": \"Jorgito\",\r\n    \"apellido\": \"Ramirez\",\r\n    \"mail\": \"jorgito@hb.com\",\r\n    \"ciudad\": \"Caballito\",\r\n    \"fechaIngreso\": \"2021-11-18\",\r\n    \"fechaEgreso\": \"2021-11-23\",\r\n    \"datos\": \"Esto es una prueba para ver si los datos de reserva funcionan correctamente, el vendedor es un genio!!!\",\r\n    \"vacunaCovid\": true,\r\n    \"producto\": {\"id\": 1},\r\n    \"usuario\": {\"id\": 1}\r\n  }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/reservas/",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"reservas",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Error reserva con fecha de ingreso vacia",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Mensaje de error creación\", function () {\r",
+									"    pm.response.to.have.body(\"Ha ocurrido un error en la creación de 'reserva', 'fecha de ingreso' no puede estar vacío\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{TOKEN}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "  {\r\n    \"nombre\": \"Jorgito\",\r\n    \"apellido\": \"Ramirez\",\r\n    \"mail\": \"jorgito@hb.com\",\r\n    \"ciudad\": \"Caballito\",\r\n    \"horaEntrada\": 10,\r\n    \"fechaIngreso\": \"\",\r\n    \"fechaEgreso\": \"2021-11-23\",\r\n    \"datos\": \"Esto es una prueba para ver si los datos de reserva funcionan correctamente, el vendedor es un genio!!!\",\r\n    \"vacunaCovid\": true,\r\n    \"producto\": {\"id\": 1},\r\n    \"usuario\": {\"id\": 1}\r\n  }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/reservas/",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"reservas",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Error reserva con fecha de ingreso llena de espacios en blanco",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Mensaje de error creación\", function () {\r",
+									"    pm.response.to.have.body(\"Ha ocurrido un error en la creación de 'reserva', 'fecha de ingreso' no puede estar vacío\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{TOKEN}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "  {\r\n    \"nombre\": \"Jorgito\",\r\n    \"apellido\": \"Ramirez\",\r\n    \"mail\": \"jorgito@hb.com\",\r\n    \"ciudad\": \"Caballito\",\r\n    \"horaEntrada\": 10,\r\n    \"fechaIngreso\": \"           \",\r\n    \"fechaEgreso\": \"2021-11-23\",\r\n    \"datos\": \"Esto es una prueba para ver si los datos de reserva funcionan correctamente, el vendedor es un genio!!!\",\r\n    \"vacunaCovid\": true,\r\n    \"producto\": {\"id\": 1},\r\n    \"usuario\": {\"id\": 1}\r\n  }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/reservas/",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"reservas",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Error reserva con fecha de ingreso null",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Mensaje de error creación\", function () {\r",
+									"    pm.response.to.have.body(\"Ha ocurrido un error en la creación de 'reserva', 'fecha de ingreso' no puede estar vacío\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{TOKEN}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "  {\r\n    \"nombre\": \"Jorgito\",\r\n    \"apellido\": \"Ramirez\",\r\n    \"mail\": \"jorgito@hb.com\",\r\n    \"ciudad\": \"Caballito\",\r\n    \"horaEntrada\": 10,\r\n    \"fechaEgreso\": \"2021-11-23\",\r\n    \"datos\": \"Esto es una prueba para ver si los datos de reserva funcionan correctamente, el vendedor es un genio!!!\",\r\n    \"vacunaCovid\": true,\r\n    \"producto\": {\"id\": 1},\r\n    \"usuario\": {\"id\": 1}\r\n  }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/reservas/",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"reservas",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Error reserva con fecha de egreso vacia",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Mensaje de error creación\", function () {\r",
+									"    pm.response.to.have.body(\"Ha ocurrido un error en la creación de 'reserva', 'fecha de egreso' no puede estar vacío\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{TOKEN}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "  {\r\n    \"nombre\": \"Jorgito\",\r\n    \"apellido\": \"Ramirez\",\r\n    \"mail\": \"jorgito@hb.com\",\r\n    \"ciudad\": \"Caballito\",\r\n    \"horaEntrada\": 10,\r\n    \"fechaIngreso\": \"2021-11-18\",\r\n    \"fechaEgreso\": \"\",\r\n    \"datos\": \"Esto es una prueba para ver si los datos de reserva funcionan correctamente, el vendedor es un genio!!!\",\r\n    \"vacunaCovid\": true,\r\n    \"producto\": {\"id\": 1},\r\n    \"usuario\": {\"id\": 1}\r\n  }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/reservas/",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"reservas",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Error reserva con fecha de egreso llena de espacios en blanco",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Mensaje de error creación\", function () {\r",
+									"    pm.response.to.have.body(\"Ha ocurrido un error en la creación de 'reserva', 'fecha de egreso' no puede estar vacío\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{TOKEN}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "  {\r\n    \"nombre\": \"Jorgito\",\r\n    \"apellido\": \"Ramirez\",\r\n    \"mail\": \"jorgito@hb.com\",\r\n    \"ciudad\": \"Caballito\",\r\n    \"horaEntrada\": 10,\r\n    \"fechaIngreso\": \"2021-11-18\",\r\n    \"fechaEgreso\": \"           \",\r\n    \"datos\": \"Esto es una prueba para ver si los datos de reserva funcionan correctamente, el vendedor es un genio!!!\",\r\n    \"vacunaCovid\": true,\r\n    \"producto\": {\"id\": 1},\r\n    \"usuario\": {\"id\": 1}\r\n  }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/reservas/",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"reservas",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Error reserva con fecha de egreso null",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Mensaje de error creación\", function () {\r",
+									"    pm.response.to.have.body(\"Ha ocurrido un error en la creación de 'reserva', 'fecha de egreso' no puede estar vacío\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{TOKEN}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "  {\r\n    \"nombre\": \"Jorgito\",\r\n    \"apellido\": \"Ramirez\",\r\n    \"mail\": \"jorgito@hb.com\",\r\n    \"ciudad\": \"Caballito\",\r\n    \"horaEntrada\": 10,\r\n    \"fechaIngreso\": \"2021-11-18\",\r\n    \"datos\": \"Esto es una prueba para ver si los datos de reserva funcionan correctamente, el vendedor es un genio!!!\",\r\n    \"vacunaCovid\": true,\r\n    \"producto\": {\"id\": 1},\r\n    \"usuario\": {\"id\": 1}\r\n  }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/reservas/",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"reservas",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Error reserva con datos null",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Mensaje de error creación\", function () {\r",
+									"    pm.response.to.have.body(\"Ha ocurrido un error en la creación de 'reserva', 'datos' no puede estar vacío\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{TOKEN}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "  {\r\n    \"nombre\": \"Jorgito\",\r\n    \"apellido\": \"Ramirez\",\r\n    \"mail\": \"jorgito@hb.com\",\r\n    \"ciudad\": \"Caballito\",\r\n    \"horaEntrada\": 10,\r\n    \"fechaIngreso\": \"2021-11-18\",\r\n    \"fechaEgreso\": \"2021-11-23\",\r\n    \"vacunaCovid\": true,\r\n    \"producto\": {\"id\": 1},\r\n    \"usuario\": {\"id\": 1}\r\n  }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/reservas/",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"reservas",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Error reserva con datos vacios",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Mensaje de error creación\", function () {\r",
+									"    pm.response.to.have.body(\"Ha ocurrido un error en la creación de 'reserva', 'datos' no puede estar vacío\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{TOKEN}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "  {\r\n    \"nombre\": \"Jorgito\",\r\n    \"apellido\": \"Ramirez\",\r\n    \"mail\": \"jorgito@hb.com\",\r\n    \"ciudad\": \"Caballito\",\r\n    \"horaEntrada\": 10,\r\n    \"fechaIngreso\": \"2021-11-18\",\r\n    \"fechaEgreso\": \"2021-11-23\",\r\n    \"datos\": \"\",\r\n    \"vacunaCovid\": true,\r\n    \"producto\": {\"id\": 1},\r\n    \"usuario\": {\"id\": 1}\r\n  }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/reservas/",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"reservas",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Error reserva con datos vacios con espacios",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Mensaje de error creación\", function () {\r",
+									"    pm.response.to.have.body(\"Ha ocurrido un error en la creación de 'reserva', 'datos' no puede estar vacío\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{TOKEN}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "  {\r\n    \"nombre\": \"Jorgito\",\r\n    \"apellido\": \"Ramirez\",\r\n    \"mail\": \"jorgito@hb.com\",\r\n    \"ciudad\": \"Caballito\",\r\n    \"horaEntrada\": 10,\r\n    \"fechaIngreso\": \"2021-11-18\",\r\n    \"fechaEgreso\": \"2021-11-23\",\r\n    \"datos\": \"                            \",\r\n    \"vacunaCovid\": true,\r\n    \"producto\": {\"id\": 1},\r\n    \"usuario\": {\"id\": 1}\r\n  }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/reservas/",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"reservas",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Error reserva con vacuna covid null",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Mensaje de error creación\", function () {\r",
+									"    pm.response.to.have.body(\"Ha ocurrido un error en la creación de 'reserva', 'esta vacunado' no puede estar vacío\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{TOKEN}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "  {\r\n    \"nombre\": \"Jorgito\",\r\n    \"apellido\": \"Ramirez\",\r\n    \"mail\": \"jorgito@hb.com\",\r\n    \"ciudad\": \"Caballito\",\r\n    \"horaEntrada\": 10,\r\n    \"fechaIngreso\": \"2021-11-18\",\r\n    \"fechaEgreso\": \"2021-11-23\",\r\n    \"datos\": \"Esto es una prueba para ver si los datos de reserva funcionan correctamente, el vendedor es un genio!!!\",\r\n    \"producto\": {\"id\": 1},\r\n    \"usuario\": {\"id\": 1}\r\n  }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/reservas/",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"reservas",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Error reserva con producto null",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Mensaje de error creación\", function () {\r",
+									"    pm.response.to.have.body(\"Ha ocurrido un error en la creación de 'reserva', 'producto' no puede estar vacío\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{TOKEN}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "  {\r\n    \"nombre\": \"Jorgito\",\r\n    \"apellido\": \"Ramirez\",\r\n    \"mail\": \"jorgito@hb.com\",\r\n    \"ciudad\": \"Caballito\",\r\n    \"horaEntrada\": 10,\r\n    \"fechaIngreso\": \"2021-11-18\",\r\n    \"fechaEgreso\": \"2021-11-23\",\r\n    \"datos\": \"Esto es una prueba para ver si los datos de reserva funcionan correctamente, el vendedor es un genio!!!\",\r\n    \"vacunaCovid\": true,\r\n    \"usuario\": {\"id\": 1}\r\n  }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/reservas/",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"reservas",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Error reserva con usuario null",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Mensaje de error creación\", function () {\r",
+									"    pm.response.to.have.body(\"Ha ocurrido un error en la creación de 'reserva', 'usuario' no puede estar vacío\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{TOKEN}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "  {\r\n    \"nombre\": \"Jorgito\",\r\n    \"apellido\": \"Ramirez\",\r\n    \"mail\": \"jorgito@hb.com\",\r\n    \"ciudad\": \"Caballito\",\r\n    \"horaEntrada\": 10,\r\n    \"fechaIngreso\": \"2021-11-18\",\r\n    \"fechaEgreso\": \"2021-11-23\",\r\n    \"datos\": \"Esto es una prueba para ver si los datos de reserva funcionan correctamente, el vendedor es un genio!!!\",\r\n    \"vacunaCovid\": true,\r\n    \"producto\": {\"id\": 1}\r\n  }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/reservas/",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"reservas",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "101af81f-dd42-4663-9a11-cd7b6f8e7d49",
+		"_postman_id": "733e4892-938a-4280-b0a0-f564bd5c23c9",
 		"name": "Ciudades",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -15,7 +15,7 @@
 							"listen": "test",
 							"script": {
 								"exec": [
-									"pm.test(\"Status code is 200\", function () {\r",
+									"pm.test(\"Creacion exitosa\", function () {\r",
 									"    pm.response.to.have.status(200);\r",
 									"});"
 								],
@@ -28,7 +28,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n   \"nombre\":\"Coronel Moldes\",\r\n   \"pais\":\"Argentina\"\r\n}",
+							"raw": "{\r\n   \"nombre\":\"Coronel Moldes\",\r\n   \"pais\":\"Argentina\",\r\n   \"latitud\": -33.6231,\r\n   \"longitud\": -64.5958\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -72,7 +72,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n   \"nombre\":\"\",\r\n   \"pais\":\"Argentina\"\r\n}",
+							"raw": "{\r\n   \"nombre\":\"\",\r\n   \"pais\":\"Argentina\",\r\n   \"latitud\": -33.6231,\r\n   \"longitud\": -64.5958\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -116,7 +116,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n   \"nombre\":\"                \",\r\n   \"pais\":\"Argentina\"\r\n}",
+							"raw": "{\r\n   \"nombre\":\"                \",\r\n   \"pais\":\"Argentina\",\r\n   \"latitud\": -33.6231,\r\n   \"longitud\": -64.5958\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -160,7 +160,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n   \"pais\":\"Argentina\"\r\n}",
+							"raw": "{\r\n   \"pais\":\"Argentina\",\r\n   \"latitud\": -33.6231,\r\n   \"longitud\": -64.5958\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -204,7 +204,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n   \"nombre\":\"Coronel Moldes\",\r\n   \"pais\":\"\"\r\n}",
+							"raw": "{\r\n   \"nombre\":\"Coronel Moldes\",\r\n   \"pais\":\"\",\r\n   \"latitud\": -33.6231,\r\n   \"longitud\": -64.5958\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -248,7 +248,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n   \"nombre\":\"Coronel Moldes\",\r\n   \"pais\":\"            \"\r\n}",
+							"raw": "{\r\n   \"nombre\":\"Coronel Moldes\",\r\n   \"pais\":\"           \",\r\n   \"latitud\": -33.6231,\r\n   \"longitud\": -64.5958\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -292,7 +292,95 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n   \"nombre\": \"Coronel Moldes\"\r\n}",
+							"raw": "{\r\n   \"nombre\":\"Coronel Moldes\",\r\n   \"latitud\": -33.6231,\r\n   \"longitud\": -64.5958\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/ciudades/",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"ciudades",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Error ciudad con latitud null",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Mensaje de error creación\", function () {\r",
+									"    pm.response.to.have.body(\"Ha ocurrido un error en la creación de 'ciudad', 'latitud' no puede estar vacío\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \"nombre\":\"Coronel Moldes\",\r\n   \"pais\":\"Argentina\",\r\n   \"longitud\": -64.5958\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/ciudades/",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"ciudades",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Error ciudad con longitud null",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Mensaje de error creación\", function () {\r",
+									"    pm.response.to.have.body(\"Ha ocurrido un error en la creación de 'ciudad', 'longitud' no puede estar vacío\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \"nombre\":\"Coronel Moldes\",\r\n   \"pais\":\"Argentina\",\r\n   \"latitud\": -33.6231\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -390,7 +478,7 @@
 			]
 		},
 		{
-			"name": "Modificar/Actualizar",
+			"name": "Modificar | Actualizar",
 			"item": [
 				{
 					"name": "Actualizar ciudad no está implementado",
