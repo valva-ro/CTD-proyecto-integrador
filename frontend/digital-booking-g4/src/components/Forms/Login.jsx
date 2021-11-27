@@ -21,6 +21,12 @@ export default function Login() {
     localStorage.removeItem("previousAction");
   }
 
+  function ocultarCartel() {
+    if(localStorage.hasOwnProperty("previousAction")) {
+      localStorage.removeItem("previousAction")
+    }
+  }
+
   function iniciarSesion() {
     post("login", {
       mail: email.campo,
@@ -91,7 +97,7 @@ export default function Login() {
             <FilledButton onClick={handleSubmit} testId="loginBtn">
               Iniciar sesión
             </FilledButton>
-            <p>
+            <p onClick={ocultarCartel}>
               ¿Aún no tienes cuenta? <Link to="/register">Registrate</Link>
             </p>
           </form>
