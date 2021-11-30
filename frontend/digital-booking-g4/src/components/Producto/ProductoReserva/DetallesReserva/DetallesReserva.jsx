@@ -9,6 +9,7 @@ import { useHistory } from "react-router";
 import { useState } from "react";
 import Modal from "../../../Modal/Modal";
 import TarjetaReservaExitosa from "./TarjetaReservaExitosa/TarjetaReservaExitosa";
+import formatearFecha from "../../../../utils/formatearFecha"
 
 export default function ProductoReserva({
   alojamiento: {
@@ -35,27 +36,8 @@ export default function ProductoReserva({
   const [isError, setIsError] = useState(false);
   const [showModal, setShowModal] = useState(false);
 
-  const checkinFormat = new Date(checkin)
-    .toLocaleDateString("en-GB", {
-      year: "numeric",
-      month: "2-digit",
-      day: "2-digit",
-    })
-    .replaceAll("/", "-")
-    .split("-")
-    .reverse()
-    .join("-");
-
-  const checkoutFormat = new Date(checkout)
-    .toLocaleDateString("en-GB", {
-      year: "numeric",
-      month: "2-digit",
-      day: "2-digit",
-    })
-    .replaceAll("/", "-")
-    .split("-")
-    .reverse()
-    .join("-");
+  const checkinFormat = formatearFecha(checkin);
+  const checkoutFormat = formatearFecha(checkout);
 
   const buscarImagenPrincipal = () => {
     let imagen = imagenes.find((imagen) => {
