@@ -4,7 +4,7 @@ import useClickOutside from "../../../hooks/useOnClickOutside";
 import useFetch from "../../../hooks/useFetch.js";
 import styles from "./CityInput.module.css";
 
-export default function CityInput({ setOnChangeCity, specificStyle1, specificStyle2, specificStyle3}) {
+export default function CityInput({ setOnChangeCity, onChangeCity, specificStyle1, specificStyle2, specificStyle3, setReset, reset, setDateRange}) {
   const [iconGps, setIconGps] = useState(styles.gpsEmpty);
   const [cityList, setCityList] = useState(null);
   const [inputContent, setInputContent] = useState("");
@@ -57,10 +57,15 @@ export default function CityInput({ setOnChangeCity, specificStyle1, specificSty
             lister(e);
             changeIconStyle(e.target.value);
             setInputContent(e.target.value);
+            if(reset){
+              setReset(false);
+              setDateRange([null, null])
+            }
           }}
           onChange={(e) => {
-            setOnChangeCity(e.target.value);
+              setOnChangeCity(e.target.value)
           }}
+          value={reset ? "" : onChangeCity}
         />
       </div>
     </>

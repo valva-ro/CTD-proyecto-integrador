@@ -6,27 +6,72 @@ import SkeletonTarjetaAlojamiento from "./TarjetaAlojamiento/SkeletonTarjetaAloj
 import currentFilterContext from "../../contexts/currentFilterContext";
 import styles from "./BloqueAlojamientos.module.css";
 import useFetch from "../../hooks/useFetch";
+import get from "../../utils/get"
 import useScreenWidth from "../../hooks/useScreenWidth";
+import formatearFecha from "../../utils/formatearFecha";
 
 const ALOJAMIENTOS_POR_PAGINA = 6;
 
-export default function BloqueAlojamientos() {
-  const { currentCity, setCurrentCity, currentCategory, setCurrentCategory } =
+export default function BloqueAlojamientos({setReset}) {
+  const { currentCity, setCurrentCity, currentCategory, setCurrentCategory, currentDateRange, setCurrentDateRange} =
     useContext(currentFilterContext);
   const [alojamientos, setAlojamientos] = useState([]);
   const { isLoaded, items } = useFetch("productos");
   const [currentPage, setCurrentPage] = useState(1);
   const anchoPantalla = useScreenWidth();
+  const [itemsFechas, setItemsFechas] = useState(null)  
+
+  const fechaInicioFormat = () => {
+    let fechaInicial = ""
+    if (currentDateRange.fechaInicio !== null ){
+      fechaInicial = formatearFecha(currentDateRange.fechaInicio);
+    }else{
+      fechaInicial = formatearFecha(new Date());
+    }
+    return fechaInicial;
+  }
+
+  const fechaFinalFormat = () => {
+    let fechaFinal = ""
+    if (currentDateRange.fechaFin !== null ){
+      fechaFinal = formatearFecha(currentDateRange.fechaFin);
+    }else{
+      fechaFinal = formatearFecha(new Date());
+    }
+    return fechaFinal;
+  }
+            
+  const inicio = fechaInicioFormat();
+  const fin = fechaFinalFormat();
+  
+  
+  function obtenerProductosPorFechas () {    
+    get(`productos/?fechaIngreso=${inicio}&fechaEgreso=${fin}`)
+    .then((response) => {
+      setItemsFechas(response);
+      
+    })
+    .catch((error) => console.log(error))
+  }
+
 
   useEffect(() => {
+    obtenerProductosPorFechas()
     if (isLoaded) {
-      setAlojamientos(items);
+      if (inicio !== fin || fin !== formatearFecha(new Date())) {  
+        setAlojamientos(itemsFechas);
+      } else {
+        setAlojamientos(items);
+      }
     }
-  }, [isLoaded, items]);
-
+  }, [isLoaded, items, inicio, fin, itemsFechas ]);
+  
+  
   const toggleFiltrado = () => {
     setCurrentCategory("");
     setCurrentCity("");
+    setCurrentDateRange({fechaInicio: null, fechaFin: null});
+    setReset(true);
   };
 
   const handleScrollPosition = () => {
