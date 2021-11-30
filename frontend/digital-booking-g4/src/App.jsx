@@ -4,7 +4,6 @@ import Layout from "./components/Layout/Layout";
 import Home from "./components/Home/Home";
 import Login from "./components/Forms/Login";
 import Register from "./components/Forms/Register";
-import TarjetaReservaExitosa from "./components/TarjetaReservaExitosa/TarjetaReservaExitosa.jsx";
 import Favoritos from "./components/Favoritos/Favoritos";
 import ScrollToTop from "./components/ScrollToTop";
 import loggedContext from "./contexts/loggedContext";
@@ -32,7 +31,6 @@ function App() {
               <Route path="/login" component={Login} />
               <Route path="/register" component={Register} />
               <Route path="/favorites" component={Favoritos} />
-              <Route path="/success" component={TarjetaReservaExitosa} />
               <Route path="/product/:id/features">
                 <ProductoLayout>
                   <ProductoDetalle />

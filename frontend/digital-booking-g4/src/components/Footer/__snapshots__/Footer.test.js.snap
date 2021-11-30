@@ -11,7 +11,7 @@ exports[`Footer tests Devuelve el footer correctamente 1`] = `
       className="footerIzquierda"
     >
       <p>
-        ©2021 Digital Booking
+        ©2021 Hosting Book
       </p>
     </div>
     <div

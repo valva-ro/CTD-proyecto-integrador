@@ -2,6 +2,7 @@ package com.grupo4.hostingbook.service.impl;
 
 import com.grupo4.hostingbook.exceptions.BadRequestException;
 import com.grupo4.hostingbook.exceptions.NotImplementedException;
+import com.grupo4.hostingbook.exceptions.RepeatedMailException;
 import com.grupo4.hostingbook.exceptions.ResourceNotFoundException;
 import com.grupo4.hostingbook.model.CategoriaDTO;
 import com.grupo4.hostingbook.service.CRUDService;
@@ -31,19 +32,19 @@ public class CategoriaServiceTests {
     }
 
     @Test
-    public void test02AgregarCategoria() throws BadRequestException, ResourceNotFoundException {
+    public void test02AgregarCategoria() throws BadRequestException, ResourceNotFoundException, RepeatedMailException {
         CategoriaDTO c = categoriaService.crear(categoriaPorCrear);
         assertEquals(categoriaCreada, c);
     }
 
     @Test
-    public void test03ObtenerTodasLasCategorias() throws BadRequestException, ResourceNotFoundException {
+    public void test03ObtenerTodasLasCategorias() throws BadRequestException, ResourceNotFoundException, RepeatedMailException {
         categoriaService.crear(categoriaPorCrear);
         assertNotEquals(0, categoriaService.consultarTodos().size());
     }
 
     @Test
-    public void test04EliminarCategoriaPorId() throws BadRequestException, ResourceNotFoundException {
+    public void test04EliminarCategoriaPorId() throws BadRequestException, ResourceNotFoundException, RepeatedMailException {
         categoriaService.crear(categoriaPorCrear);
         assertNotEquals(0, categoriaService.consultarTodos().size());
 
@@ -62,7 +63,7 @@ public class CategoriaServiceTests {
     }
 
     @Test
-    public void test07ActualizarCategoriaExistente() throws BadRequestException, ResourceNotFoundException, NotImplementedException {
+    public void test07ActualizarCategoriaExistente() throws BadRequestException, ResourceNotFoundException, NotImplementedException, RepeatedMailException {
         categoriaService.crear(categoriaPorCrear);
         CategoriaDTO dtoActualizado = categoriaService.actualizar(categoriaPorActualizar);
         assertEquals(categoriaActualizada, dtoActualizado);
@@ -80,7 +81,7 @@ public class CategoriaServiceTests {
 
     @Test
     @Transactional
-    public void test10BuscarCategoriaPorIdExistente() throws BadRequestException, ResourceNotFoundException {
+    public void test10BuscarCategoriaPorIdExistente() throws BadRequestException, ResourceNotFoundException, RepeatedMailException {
         categoriaService.crear(categoriaPorCrear);
         CategoriaDTO categoriaEncontrada = categoriaService.buscarPorId(1L);
         assertEquals(categoriaCreada, categoriaEncontrada);

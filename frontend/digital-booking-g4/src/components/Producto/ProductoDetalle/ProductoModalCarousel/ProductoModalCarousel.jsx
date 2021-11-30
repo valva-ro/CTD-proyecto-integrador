@@ -1,6 +1,7 @@
 import { useRef } from "react";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
+import Modal from "../../../Modal/Modal";
 import useOnClickOutside from "../../../../hooks/useOnClickOutside";
 import styles from "./ProductoModalCarousel.module.css";
 
@@ -16,10 +17,7 @@ export default function ProductoModalCarousel({
 
   return (
     <section className={styles.background}>
-      <div className={styles.modalCarousel} ref={modalRef}>
-        <span className={styles.close} onClick={onCloseRequest}>
-          X
-        </span>
+      <Modal estaAbierto={estaAbierto} onCloseRequest={onCloseRequest}>
         <Carousel
           infiniteLoop={true}
           dynamicHeight={true}
@@ -46,7 +44,7 @@ export default function ProductoModalCarousel({
             );
           })}
         </Carousel>
-      </div>
+      </Modal>
     </section>
   );
 }

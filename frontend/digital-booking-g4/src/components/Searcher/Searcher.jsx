@@ -1,9 +1,4 @@
-import React, {
-  useState,
-  useEffect,
-  useRef,
-  useContext,
-} from "react";
+import React, { useState, useEffect, useRef, useContext } from "react";
 import FilledButton from "../Buttons/FilledButton";
 import DatePicker, { registerLocale } from "react-datepicker";
 import CityInput from "./CityInput/CityInput";

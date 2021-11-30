@@ -34,4 +34,10 @@ public class GlobalExceptionsHandler {
         logger.error(e.getMessage());
         return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(e.getMessage());
     }
+
+    @ExceptionHandler({RepeatedMailException.class})
+    public ResponseEntity<String> procesarRepeatMail(RepeatedMailException e) {
+        logger.error(e.getMessage());
+        return ResponseEntity.status(HttpStatus.CONFLICT).body(e.getMessage());
+    }
 }

@@ -1,8 +1,10 @@
+import { useState, useEffect } from "react";
 import TituloBloque from "../../../TituloBloque/TituloBloque";
 import styles from "./ProductoHorarioLlegada.module.css";
 
-export default function ProductoHorarioLlegada({alojamiento: {horarioCheckIn}}){
-    
+export default function ProductoHorarioLlegada({alojamiento: {horarioCheckIn}, setHorarioLlegada}){
+    const [hora, setHora] = useState(null);
+
     const horaFormat = (hora) => {
         if(hora > 12) {
             const h = hora-12;
@@ -18,6 +20,13 @@ export default function ProductoHorarioLlegada({alojamiento: {horarioCheckIn}}){
         horasDisponibles.push(i);
     }
 
+    useEffect(() => {
+        setHorarioLlegada(hora)
+    }, [hora]);
+
+    const handleChange = e => setHora(e.target.value)
+
+      
     return(
         <>
             <TituloBloque>Tu horario de llegada</TituloBloque>
@@ -28,7 +37,7 @@ export default function ProductoHorarioLlegada({alojamiento: {horarioCheckIn}}){
                 </div>
                 <div className={styles.containerSelect}>
                     <label>Indicá tu horario estimado de llegada </label>
-                    <select name="horarioLlegada" className={styles.minimal} required>
+                    <select name="horarioLlegada" className={styles.minimal} onChange={handleChange} required>
                         <option value="Seleccionar hora de llegada" hidden>Seleccionar hora de llegada</option>
                         {horasDisponibles.map((h, i) => (
                             <option value={h} key={`horaDisponible-${i}`}>{horaFormat(h)}</option>

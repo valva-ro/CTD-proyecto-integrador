@@ -1,10 +1,7 @@
 package com.grupo4.hostingbook.controller.impl;
 
 import com.grupo4.hostingbook.controller.IUsuarioController;
-import com.grupo4.hostingbook.exceptions.BadRequestException;
-import com.grupo4.hostingbook.exceptions.Mensajes;
-import com.grupo4.hostingbook.exceptions.NotImplementedException;
-import com.grupo4.hostingbook.exceptions.ResourceNotFoundException;
+import com.grupo4.hostingbook.exceptions.*;
 import com.grupo4.hostingbook.model.ProductoDTO;
 import com.grupo4.hostingbook.model.UsuarioDTO;
 import com.grupo4.hostingbook.service.IUsuarioService;
@@ -22,7 +19,7 @@ import java.util.Set;
 
 @RestController
 @RequestMapping("/usuarios")
-@CrossOrigin(origins = "*", methods = { RequestMethod.GET, RequestMethod.POST })
+@CrossOrigin(origins = "*", methods = { RequestMethod.GET, RequestMethod.POST }, allowedHeaders = "*")
 public class UsuarioController implements IUsuarioController {
 
     @Qualifier("UsuarioService")
@@ -48,7 +45,7 @@ public class UsuarioController implements IUsuarioController {
                             @ApiResponse(code = 400, message = "Bad Request") })
     @PostMapping("/signup")
     public ResponseEntity<?> crear(@RequestBody UsuarioDTO usuario)
-            throws BadRequestException, ResourceNotFoundException {
+            throws BadRequestException, ResourceNotFoundException, RepeatedMailException {
         UsuarioDTO u = usuarioService.crear(usuario);
         return ResponseEntity.status(HttpStatus.CREATED).body(u);
     }

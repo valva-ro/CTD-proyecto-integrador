@@ -3,6 +3,7 @@ package com.grupo4.hostingbook.service.impl;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.grupo4.hostingbook.exceptions.BadRequestException;
 import com.grupo4.hostingbook.exceptions.Mensajes;
+import com.grupo4.hostingbook.exceptions.RepeatedMailException;
 import com.grupo4.hostingbook.exceptions.ResourceNotFoundException;
 import com.grupo4.hostingbook.model.ProductoDTO;
 import com.grupo4.hostingbook.model.UsuarioDTO;
@@ -34,7 +35,7 @@ public class UsuarioService implements IUsuarioService {
     }
 
     @Override
-    public UsuarioDTO crear(UsuarioDTO usuarioDTO) throws BadRequestException, ResourceNotFoundException {
+    public UsuarioDTO crear(UsuarioDTO usuarioDTO) throws BadRequestException, ResourceNotFoundException, RepeatedMailException {
         validarCamposRequeridosCreacion(usuarioDTO);
         Usuario entidadUsuario = mapper.convertValue(usuarioDTO, Usuario.class);
         Rol entidadRol = mapper.convertValue(rolService.buscarPorId(usuarioDTO.getRol().getId()), Rol.class);
@@ -102,7 +103,7 @@ public class UsuarioService implements IUsuarioService {
         return mapper.convertValue(entidad, UsuarioDTO.class);
     }
 
-    private void validarCamposRequeridosCreacion(UsuarioDTO usuarioDTO) throws BadRequestException {
+    private void validarCamposRequeridosCreacion(UsuarioDTO usuarioDTO) throws BadRequestException, RepeatedMailException {
         if (usuarioDTO == null) {
             throw new BadRequestException(String.format(Mensajes.ERROR_DTO_NO_EXISTE, "Usuario"));
         } else {
@@ -115,7 +116,7 @@ public class UsuarioService implements IUsuarioService {
             if (usuarioDTO.getContrasenia() == null || usuarioDTO.getContrasenia().isEmpty() || usuarioDTO.getContrasenia().isBlank())
                 throw new BadRequestException(String.format(Mensajes.ERROR_CREACION_CAMPO_REQUERIDO, "usuario", "contraseña"));
             if (obtenerPorEmail(usuarioDTO.getMail()) != null)
-                throw new BadRequestException(String.format(Mensajes.ERROR_MAIL_EXISTENTE, usuarioDTO.getMail()));
+                throw new RepeatedMailException(String.format(Mensajes.ERROR_MAIL_EXISTENTE, usuarioDTO.getMail()));
         }
     }
 

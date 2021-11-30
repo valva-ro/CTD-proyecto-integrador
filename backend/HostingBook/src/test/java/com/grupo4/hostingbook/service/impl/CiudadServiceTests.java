@@ -2,6 +2,7 @@ package com.grupo4.hostingbook.service.impl;
 
 import com.grupo4.hostingbook.exceptions.BadRequestException;
 import com.grupo4.hostingbook.exceptions.NotImplementedException;
+import com.grupo4.hostingbook.exceptions.RepeatedMailException;
 import com.grupo4.hostingbook.exceptions.ResourceNotFoundException;
 import com.grupo4.hostingbook.model.CiudadDTO;
 import com.grupo4.hostingbook.service.CRUDService;
@@ -31,19 +32,19 @@ public class CiudadServiceTests {
     }
 
     @Test
-    public void test02AgregarCiudad() throws BadRequestException, ResourceNotFoundException {
+    public void test02AgregarCiudad() throws BadRequestException, ResourceNotFoundException, RepeatedMailException {
         CiudadDTO c = ciudadService.crear(ciudadPorCrear);
         assertEquals(ciudadCreada, c);
     }
 
     @Test
-    public void test03ObtenerTodasLasCiudades() throws BadRequestException, ResourceNotFoundException {
+    public void test03ObtenerTodasLasCiudades() throws BadRequestException, ResourceNotFoundException, RepeatedMailException {
         ciudadService.crear(ciudadPorCrear);
         assertNotEquals(0, ciudadService.consultarTodos().size());
     }
 
     @Test
-    public void test04EliminarCiudadPorId() throws BadRequestException, ResourceNotFoundException {
+    public void test04EliminarCiudadPorId() throws BadRequestException, ResourceNotFoundException, RepeatedMailException {
         ciudadService.crear(ciudadPorCrear);
         assertNotEquals(0, ciudadService.consultarTodos().size());
 
@@ -62,7 +63,7 @@ public class CiudadServiceTests {
     }
 
     @Test
-    public void test07ActualizarCiudadExistente() throws BadRequestException, ResourceNotFoundException, NotImplementedException {
+    public void test07ActualizarCiudadExistente() throws BadRequestException, ResourceNotFoundException, NotImplementedException, RepeatedMailException {
         ciudadService.crear(ciudadPorCrear);
         CiudadDTO dtoActualizado = ciudadService.actualizar(ciudadPorActualizar);
         assertEquals(ciudadActualizada, dtoActualizado);
@@ -80,7 +81,7 @@ public class CiudadServiceTests {
 
     @Test
     @Transactional
-    public void test10BuscarCiudadPorIdExistente() throws BadRequestException, ResourceNotFoundException {
+    public void test10BuscarCiudadPorIdExistente() throws BadRequestException, ResourceNotFoundException, RepeatedMailException {
         ciudadService.crear(ciudadPorCrear);
         CiudadDTO ciudadEncontrada = ciudadService.buscarPorId(1L);
         assertEquals(ciudadCreada, ciudadEncontrada);

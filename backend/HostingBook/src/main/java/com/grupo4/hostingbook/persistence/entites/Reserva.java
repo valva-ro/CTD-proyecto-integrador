@@ -2,7 +2,6 @@ package com.grupo4.hostingbook.persistence.entites;
 
 import javax.persistence.*;
 import java.time.LocalDate;
-import java.time.LocalTime;
 import java.util.Objects;
 
 @Entity
@@ -13,8 +12,11 @@ public class Reserva {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="reserva_id")
     private Long id;
-    private LocalTime horaEntrada;
-    private LocalTime horaSalida;
+    private String nombre;
+    private String apellido;
+    private String mail;
+    private String ciudad;
+    private Integer horaEntrada;
     private LocalDate fechaIngreso;
     private LocalDate fechaEgreso;
     private String datos;
@@ -30,9 +32,12 @@ public class Reserva {
 
     public Reserva() {}
 
-    public Reserva(LocalTime horaEntrada, LocalTime horaSalida, LocalDate fechaIngreso, LocalDate fechaEgreso, String datos, Boolean vacunaCovid, Producto producto, Usuario usuario) {
+    public Reserva(Integer horaEntrada, String nombre, String apellido, String mail, String ciudad, LocalDate fechaIngreso, LocalDate fechaEgreso, String datos, Boolean vacunaCovid, Producto producto, Usuario usuario) {
         this.horaEntrada = horaEntrada;
-        this.horaSalida = horaSalida;
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.mail = mail;
+        this.ciudad = ciudad;
         this.fechaIngreso = fechaIngreso;
         this.fechaEgreso = fechaEgreso;
         this.datos = datos;
@@ -41,10 +46,13 @@ public class Reserva {
         this.usuario = usuario;
     }
 
-    public Reserva(Long id, LocalTime horaEntrada, LocalTime horaSalida, LocalDate fechaIngreso, LocalDate fechaEgreso, String datos, Boolean vacunaCovid, Producto producto, Usuario usuario) {
+    public Reserva(Long id, Integer horaEntrada, String nombre, String apellido, String mail, String ciudad, LocalDate fechaIngreso, LocalDate fechaEgreso, String datos, Boolean vacunaCovid, Producto producto, Usuario usuario) {
         this.id = id;
         this.horaEntrada = horaEntrada;
-        this.horaSalida = horaSalida;
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.mail = mail;
+        this.ciudad = ciudad;
         this.fechaIngreso = fechaIngreso;
         this.fechaEgreso = fechaEgreso;
         this.datos = datos;
@@ -57,13 +65,42 @@ public class Reserva {
 
     public void setId(Long id) { this.id = id; }
 
-    public LocalTime getHoraEntrada() { return horaEntrada; }
+    public String getNombre() {
+        return nombre;
+    }
 
-    public void setHoraEntrada(LocalTime horaEntrada) {this.horaEntrada = horaEntrada;}
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
 
-    public LocalTime getHoraSalida() {return horaSalida;}
+    public String getApellido() {
+        return apellido;
+    }
 
-    public void setHoraSalida(LocalTime horaSalida) {this.horaSalida = horaSalida;}
+    public void setApellido(String apellido) {
+        this.apellido = apellido;
+    }
+
+    public String getMail() {
+        return mail;
+    }
+
+    public void setMail(String mail) {
+        this.mail = mail;
+    }
+
+    public String getCiudad() {
+        return ciudad;
+    }
+
+    public void setCiudad(String ciudad) {
+        this.ciudad = ciudad;
+    }
+
+
+    public Integer getHoraEntrada() { return horaEntrada; }
+
+    public void setHoraEntrada(Integer horaEntrada) {this.horaEntrada = horaEntrada;}
 
     public LocalDate getFechaIngreso() {return fechaIngreso;}
 
@@ -94,11 +131,11 @@ public class Reserva {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Reserva reserva = (Reserva) o;
-        return id.equals(reserva.id) && horaEntrada.equals(reserva.horaEntrada) && horaSalida.equals(reserva.horaSalida) && fechaIngreso.equals(reserva.fechaIngreso) && fechaEgreso.equals(reserva.fechaEgreso) && datos.equals(reserva.datos) && vacunaCovid.equals(reserva.vacunaCovid) && producto.equals(reserva.producto) && usuario.equals(reserva.usuario);
+        return id.equals(reserva.id) && horaEntrada.equals(reserva.horaEntrada) && nombre.equals(reserva.nombre) && apellido.equals(reserva.apellido) && mail.equals(reserva.mail) && ciudad.equals(reserva.ciudad) && fechaIngreso.equals(reserva.fechaIngreso) && fechaEgreso.equals(reserva.fechaEgreso) && datos.equals(reserva.datos) && vacunaCovid.equals(reserva.vacunaCovid) && producto.equals(reserva.producto) && usuario.equals(reserva.usuario);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, horaEntrada, horaSalida, fechaIngreso, fechaEgreso, datos, vacunaCovid, producto, usuario);
+        return Objects.hash(id, nombre, apellido, mail, ciudad, horaEntrada, fechaIngreso, fechaEgreso, datos, vacunaCovid, producto, usuario);
     }
 }
