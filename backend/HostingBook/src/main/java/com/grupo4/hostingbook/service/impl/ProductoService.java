@@ -84,16 +84,18 @@ public class ProductoService implements IProductoService {
     @Override
     public ProductoDTO actualizar(ProductoDTO productoDTO) throws BadRequestException, ResourceNotFoundException {
         validarCamposRequeridosActualizacion(productoDTO);
-        ProductoDTO productoActualizada;
-        Optional<Producto> c = productoRepository.findById(productoDTO.getId());
-        if (c.isPresent()) {
-            Producto entidad = c.get();
-            productoActualizada = actualizar(productoDTO, entidad);
+        ProductoDTO productoActualizado;
+        Optional<Producto> p = productoRepository.findById(productoDTO.getId());
+        if (p.isPresent()) {
+            Producto entidad = p.get();
+            System.out.println("QUINTO ---> "+productoDTO.getId());
+            productoActualizado = actualizar(productoDTO, entidad);
+            System.out.println("SEXTO ---> "+productoDTO.getId());
         } else {
             throw new ResourceNotFoundException(
                     String.format(Mensajes.ERROR_NO_EXISTE, "El 'producto'", productoDTO.getId()));
         }
-        return productoActualizada;
+        return productoActualizado;
     }
 
     @Override
@@ -261,11 +263,22 @@ public class ProductoService implements IProductoService {
         if (productoDTO.getDescripcion() != null && !productoDTO.getDescripcion().isEmpty()
                 && !productoDTO.getDescripcion().isBlank())
             entidad.setDescripcion(productoDTO.getDescripcion());
+        if (productoDTO.getDireccion() != null && !productoDTO.getDireccion().isEmpty()
+                && !productoDTO.getDireccion().isBlank())
+            entidad.setDireccion(productoDTO.getDireccion());
+        if (productoDTO.getHorarioCheckIn() != null)
+            entidad.setHorarioCheckIn(productoDTO.getHorarioCheckIn());
         if (productoDTO.getCategoria() != null)
             entidad.setCategoria(mapper.convertValue(productoDTO.getCategoria(), Categoria.class));
         if (productoDTO.getCiudad() != null)
             entidad.setCiudad(mapper.convertValue(productoDTO.getCiudad(), Ciudad.class));
+
+        System.out.println("DESCrIPCION ----> "+entidad.getDescripcion());
+
         Producto entidadActualizada = productoRepository.save(entidad);
+
+        System.out.println("DESCrIPCION PARA MAPPEAR ----> "+entidadActualizada.getDescripcion());
+
         return mapper.convertValue(entidadActualizada, ProductoDTO.class);
     }
 
