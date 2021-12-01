@@ -81,16 +81,34 @@ export default function ProductoFormDatos({ setNombre, setApellido, setMail, set
             cols="30"
             rows="6"
             value={commentText}
-            onChange={e => setCommentText(e.target.value)}
+            onChange={(e) => setCommentText(e.target.value)}
           ></textarea>
         </div>
         <div className={styles.radioButtons}>
           <h4>¿Estás vacunado contra el COVID-19?</h4>
           <div>
-            <input type="radio" name="covid" id="true" value={true} onClick={() => setCovid(true)} required />
-            <label htmlFor="true">SI</label>
-            <input type="radio" name="covid" id="false" value={false} onClick={() => setCovid(false)} required />
-            <label htmlFor="false">NO</label>
+            <input
+              type="radio"
+              name="covid"
+              id="true"
+              value={true}
+              onClick={() => setCovid(true)}
+              required
+            />
+            <label htmlFor="true">
+              SI
+            </label>
+            <input
+              type="radio"
+              name="covid"
+              id="false"
+              value={false}
+              onClick={() => setCovid(false)}
+              required
+            />
+            <label htmlFor="false">
+              NO
+            </label>
           </div>
         </div>
       </div>

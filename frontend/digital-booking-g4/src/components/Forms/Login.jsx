@@ -21,6 +21,12 @@ export default function Login() {
     localStorage.removeItem("previousAction");
   }
 
+  function ocultarCartel() {
+    if (localStorage.hasOwnProperty("previousAction")) {
+      localStorage.removeItem("previousAction");
+    }
+  }
+
   function iniciarSesion() {
     post("login", {
       mail: email.campo,
@@ -36,7 +42,10 @@ export default function Login() {
         guardarDatos(data);
       })
       .then(() => history.push("/"))
-      .catch((error) => setIsError(true));
+      .catch((error) => {
+        console.log(error);
+        setIsError(true);
+      });
   }
 
   function guardarDatos(data) {
@@ -52,12 +61,14 @@ export default function Login() {
     <>
       <div className={styles.mainForm}>
         <div className={styles.contenedorForm}>
-          {localStorage.getItem("previousAction") == "Iniciar reserva" 
-          ? <div className={styles.iniciarReservaSinLoguearse}>
-              <span><i class="fas fa-exclamation-circle"></i></span>  
-              <span>Para realizar una reserva necesitas estar logueado</span> 
-            </div> 
-          : null}
+          {localStorage.getItem("previousAction") == "Iniciar reserva" ? (
+            <div className={styles.iniciarReservaSinLoguearse}>
+              <span>
+                <i className="fas fa-exclamation-circle"></i>
+              </span>
+              <span>Para realizar una reserva necesitas estar logueado</span>
+            </div>
+          ) : null}
           <h2>Iniciar sesión</h2>
           <form
             className={`${styles.formLogin} ${styles.generalForms}`}
@@ -84,14 +95,16 @@ export default function Login() {
               <div className={styles.credencialesContainer}>
                 <FontAwesomeIcon icon={faExclamationTriangle} />
                 <p className={styles.credencialesInvalidas}>
-                  Sus credenciales son inválidas. Por favor, vuelva a intentarlo.
+                  Sus credenciales son inválidas. Por favor, vuelva a
+                  intentarlo.
                 </p>
               </div>
             ) : null}
+
             <FilledButton onClick={handleSubmit} testId="loginBtn">
               Iniciar sesión
             </FilledButton>
-            <p>
+            <p onClick={ocultarCartel}>
               ¿Aún no tienes cuenta? <Link to="/register">Registrate</Link>
             </p>
           </form>
