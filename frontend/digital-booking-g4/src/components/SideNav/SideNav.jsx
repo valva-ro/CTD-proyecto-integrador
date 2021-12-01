@@ -85,11 +85,24 @@ export default function SideNav() {
               </div>
             ) : (
               <>
-              <Link to="/favorites" className={styles.favoritosSidenav} onClick={() => setIsOpened(false)}>Favoritos</Link>
-              <p className={styles.cerrarSesion}>
-                ¿Deseas
-                <span onClick={cerrarSesion}> cerrar sesión</span>?
-              </p>
+                <Link
+                  to="/favorites"
+                  className={styles.favoritosSidenav}
+                  onClick={() => setIsOpened(false)}
+                >
+                  Favoritos
+                </Link>
+                <Link
+                  to="/reservations"
+                  className={styles.favoritosSidenav}
+                  onClick={() => setIsOpened(false)}
+                >
+                  Reservas
+                </Link>
+                <p className={styles.cerrarSesion}>
+                  ¿Deseas
+                  <span onClick={cerrarSesion}> cerrar sesión</span>?
+                </p>
               </>
             )}
           </div>

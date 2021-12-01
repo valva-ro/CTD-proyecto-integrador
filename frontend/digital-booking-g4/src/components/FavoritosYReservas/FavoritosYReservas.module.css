@@ -3,6 +3,7 @@
   display: flex;
   flex-direction: column;
   gap: 36px;
+  
 }
 .alojamientosContainer {
   display: flex;
@@ -11,19 +12,21 @@
 }
 .avisoNoFavs {
   width: 100%;
-  height: calc(100% - 15px);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   gap: 20px;
   color: var(--color-2);
+  height: calc(100vh - 465.78px);
+  
 }
 .avisoNoFavs i {
   font-size: 10rem;
 }
 .avisoNoFavs p {
   font-size: 1.5rem;
+  text-align: center;
 }
 .favTitle {
   color: white;

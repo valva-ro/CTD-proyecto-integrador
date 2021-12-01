@@ -6,7 +6,7 @@ import SkeletonTarjetaAlojamiento from "../BloqueAlojamientos/TarjetaAlojamiento
 import useFetch from "../../hooks/useFetch";
 import loggedContext from "../../contexts/loggedContext";
 import get from "../../utils/get";
-import styles from "./Favoritos.module.css";
+import styles from "./FavoritosYReservas.module.css";
 
 export default function Favoritos() {
   const history = useHistory();

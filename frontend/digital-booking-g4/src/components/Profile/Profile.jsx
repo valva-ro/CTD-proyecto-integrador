@@ -28,11 +28,6 @@ export default function Profile() {
         <p
           className={styles.nombre}
         >{`${nombreCapitalized} ${apellidoCapitalized}`}</p>
-        {location.pathname !== "/favorites" ? (
-          <Link to="/favorites">Favoritos</Link>
-        ) : (
-          ""
-        )}
       </div>
       <span
         className={styles.cerrar}

@@ -4,7 +4,7 @@ import Layout from "./components/Layout/Layout";
 import Home from "./components/Home/Home";
 import Login from "./components/Forms/Login";
 import Register from "./components/Forms/Register";
-import Favoritos from "./components/Favoritos/Favoritos";
+import Favoritos from "./components/FavoritosYReservas/Favoritos";
 import ScrollToTop from "./components/ScrollToTop";
 import loggedContext from "./contexts/loggedContext";
 import AOS from "aos";
@@ -12,6 +12,7 @@ import "aos/dist/aos.css";
 import ProductoLayout from "./components/Producto/ProductoLayout/ProductoLayout";
 import ProductoDetalle from "./components/Producto/ProductoDetalle/ProductoDetalle";
 import ProductoReserva from "./components/Producto/ProductoReserva/ProductoReserva";
+import Reservas from "./components/FavoritosYReservas/Reservas";
 
 function App() {
   const [isLogged, setIsLogged] = useState(estaLogueado());
@@ -31,6 +32,7 @@ function App() {
               <Route path="/login" component={Login} />
               <Route path="/register" component={Register} />
               <Route path="/favorites" component={Favoritos} />
+              <Route path="/reservations" component={Reservas} />
               <Route path="/product/:id/features">
                 <ProductoLayout>
                   <ProductoDetalle />
