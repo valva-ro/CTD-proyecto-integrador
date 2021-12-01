@@ -34,6 +34,8 @@ export default function ProductoReserva({
   const history = useHistory();
   const [isError, setIsError] = useState(false);
   const [showModal, setShowModal] = useState(false);
+  const token = localStorage.getItem("jwt").replaceAll("\"", "");
+  const idUsuario = parseInt(localStorage.getItem("id"));
 
   const checkinFormat = new Date(checkin)
     .toLocaleDateString("en-GB", {
@@ -81,39 +83,22 @@ export default function ProductoReserva({
         datos: textArea,
         vacunaCovid: isVacunadx,
         producto: { id },
-        usuario: { id: localStorage.getItem("id") },
+        usuario: { id: idUsuario},
       },
       {
         "Content-Type": "application/json",
-        Authorization: localStorage.getItem("jwt"),
+        Authorization: token,
       }
     ).then((response) => {
       if (response.status === 201) {
-        history.push("/succes");
+        setShowModal(true);
+        setIsError(false);
       } else {
+        setShowModal(false);
         setIsError(true);
       }
-    });
-  }
-
-  function handleSubmit(e) {
-    e.preventDefault();
-    //realizarReserva();
-    if (
-      !nombreUsuario ||
-      !apellido ||
-      !mail ||
-      !ciudadUsuario ||
-      !horarioLlegada ||
-      !checkinFormat ||
-      !checkoutFormat
-    ) {
-      setShowModal(false);
-      setIsError(true);
-    } else {
-      setIsError(false);
-      setShowModal(true);
-    }
+    })
+    .catch((err) => console.log(err));
   }
 
   return (
@@ -156,7 +141,7 @@ export default function ProductoReserva({
           </div>
           <hr />
           <div className={styles.buttonContainer}>
-            <FilledButton onClick={handleSubmit} styles={styles.buttonSubmit}>
+            <FilledButton onClick={realizarReserva} styles={styles.buttonSubmit}>
               Confirmar reserva
             </FilledButton>
           </div>

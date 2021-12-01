@@ -16,10 +16,11 @@ export default function ProductoReserva(producto) {
   const [isVacunadx, setIsVacunadx] = useState(null);
   const [horarioLlegada, setHorarioLlegada] = useState(null);
   
+  const handleSubmit = (e) => e.preventDefault();
 
   return (
     <section className={styles.productoReservaContainer}>
-      <form className={styles.containerPrincipal}>
+      <form className={styles.containerPrincipal} onSubmit={handleSubmit}>
         <div className={styles.containerSecundario}>
           <ProductoFormDatos
             setNombre={setNombre}
