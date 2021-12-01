@@ -96,4 +96,17 @@ public class ReservaController implements IReservaController {
         Set<ReservaDTO> reservas = reservaService.consultarPorIdProducto(id);
         return ResponseEntity.ok(reservas);
     }
+
+    @Override
+    @ApiOperation(value = "Lista todas las reservas según id de usuario especificado")
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Success"),
+            @ApiResponse(code = 400, message = "Bad Request")
+    })
+    @GetMapping("/usuario/{id}")
+    public ResponseEntity<?> obtenerPorIdUsuario(@PathVariable Long id) throws BadRequestException, ResourceNotFoundException {
+        Set<ReservaDTO> reservas = reservaService.consultarPorIdUsuario(id);
+        return ResponseEntity.ok(reservas);
+    }
+
 }
