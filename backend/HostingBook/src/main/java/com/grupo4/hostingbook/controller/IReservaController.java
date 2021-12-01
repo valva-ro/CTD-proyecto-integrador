@@ -12,5 +12,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 public interface IReservaController extends CRUDController<ReservaDTO> {
 
     ResponseEntity<?> obtenerPorIdProducto(@PathVariable Long id) throws BadRequestException, ResourceNotFoundException;
+    ResponseEntity<?> obtenerPorIdUsuario(@PathVariable Long id) throws BadRequestException, ResourceNotFoundException;
 
 }

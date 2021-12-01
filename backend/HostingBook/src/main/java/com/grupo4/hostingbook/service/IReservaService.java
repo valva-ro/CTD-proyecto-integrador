@@ -10,4 +10,6 @@ import java.util.Set;
 public interface IReservaService extends CRUDService<ReservaDTO>{
 
     Set<ReservaDTO> consultarPorIdProducto(Long id) throws ResourceNotFoundException;
+
+    Set<ReservaDTO> consultarPorIdUsuario(Long id) throws ResourceNotFoundException;
 }
