@@ -83,6 +83,22 @@ public class ReservaService implements IReservaService {
         return dtos;
     }
 
+
+    @Override
+    public Set<ReservaDTO> consultarPorIdUsuario(Long id) throws ResourceNotFoundException {
+        Set<Reserva> entidades = reservaRepository.buscarReservasPorIdUsuario(id);
+        Set<ReservaDTO> dtos = new HashSet<>();
+        for (Reserva entidad : entidades) {
+            dtos.add(mapper.convertValue(entidad, ReservaDTO.class));
+        }
+        if (dtos.size() == 0) {
+            throw new ResourceNotFoundException(
+                    String.format(Mensajes.ERROR_CRITERIO_DE_BUSQUEDA_NO_EXISTE, "El id", id));
+        }
+        return dtos;
+    }
+
+
     private void validarCamposRequeridosCreacion(ReservaDTO reservaDTO) throws BadRequestException {
         if (reservaDTO == null) {
             throw new BadRequestException(String.format(Mensajes.ERROR_DTO_NO_EXISTE, "reserva"));
