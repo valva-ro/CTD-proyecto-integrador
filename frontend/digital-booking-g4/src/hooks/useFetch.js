@@ -3,6 +3,8 @@ import {
   useEffect
 } from "react";
 
+import backUrl from "../resources/backUrl"
+
 export default function useFetch(path, settings = {}) {
   let [items, setItems] = useState(null);
   let [isLoaded, setIsLoaded] = useState(false);
@@ -11,7 +13,7 @@ export default function useFetch(path, settings = {}) {
   useEffect(() => {
     async function fetchData() {
       try {
-        let response = await fetch(`http://3.133.206.239:8080/${path}`, settings);
+        let response = await fetch(backUrl() + path, settings);
         let datos = await response.json();
         setItems(datos);
         setIsLoaded(true);

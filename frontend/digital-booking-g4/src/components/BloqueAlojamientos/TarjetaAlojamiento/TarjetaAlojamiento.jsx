@@ -7,6 +7,7 @@ import loggedContext from "../../../contexts/loggedContext";
 import obtenerClasificacion from "../../../utils/obtenerClasificacion";
 import calcularPromedioPuntuacion from "../../../utils/calcularPromedioPuntuacion";
 import useFetch from "../../../hooks/useFetch";
+import backUrl from "../../../resources/backUrl";
 
 export default function TarjetaAlojamiento({
   alojamiento: {
@@ -46,12 +47,9 @@ export default function TarjetaAlojamiento({
   };
 
   async function fetchFav(accion) {
-    await fetch(
-      `http://3.133.206.239:8080/productos/${id}/${accion}/usuarios/${idUsuario}`,
-      {
-        method: "PUT",
-      }
-    );
+    await fetch(`${backUrl()}productos/${id}/${accion}/usuarios/${idUsuario}`, {
+      method: "PUT",
+    });
   }
 
   const handleFav = () => {

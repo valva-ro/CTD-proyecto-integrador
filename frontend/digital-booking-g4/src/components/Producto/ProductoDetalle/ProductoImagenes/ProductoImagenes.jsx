@@ -8,6 +8,7 @@ import styles from "./ProductoImagenes.module.css";
 import "./CarouselStyles.css";
 import loggedContext from "../../../../contexts/loggedContext";
 import useFetch from "../../../../hooks/useFetch";
+import backUrl from "../../../../resources/backUrl";
 
 export default function ProductoImagenes({ alojamiento }) {
   const [carruselEstaAbierto, setCarruselEstaAbierto] = useState(false);
@@ -35,7 +36,7 @@ export default function ProductoImagenes({ alojamiento }) {
 
   async function fetchFav(accion) {
     await fetch(
-      `http://3.133.206.239:8080/productos/${alojamiento.id}/${accion}/usuarios/${idUsuario}`,
+      `${backUrl()}productos/${alojamiento.id}/${accion}/usuarios/${idUsuario}`,
       {
         method: "PUT",
       }
