@@ -4,5 +4,5 @@ export default async function post(path = "", body = {}, headers = { "Content-Ty
     headers,
     body: JSON.stringify(body),
   };
-  return await fetch(`http://localhost:8080/${path}`, settings);
+  return await fetch(`http://3.133.206.239:8080/${path}`, settings);
 }

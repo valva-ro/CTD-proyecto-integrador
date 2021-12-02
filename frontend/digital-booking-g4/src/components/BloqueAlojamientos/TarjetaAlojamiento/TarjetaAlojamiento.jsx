@@ -47,7 +47,7 @@ export default function TarjetaAlojamiento({
 
   async function fetchFav(accion) {
     await fetch(
-      `http://localhost:8080/productos/${id}/${accion}/usuarios/${idUsuario}`,
+      `http://3.133.206.239:8080/productos/${id}/${accion}/usuarios/${idUsuario}`,
       {
         method: "PUT",
       }

@@ -27,13 +27,15 @@ export default function ProductoImagenes({ alojamiento }) {
   useEffect(() => {
     if (isLogged && isLoaded) {
       setFavoritos(items.productosFavoritos);
-      setIsFavorito(favoritos.find((fav) => fav.id === alojamiento.id) !== undefined);
+      setIsFavorito(
+        favoritos.find((fav) => fav.id === alojamiento.id) !== undefined
+      );
     }
   }, [isLoaded, isLogged, items, favoritos]);
 
   async function fetchFav(accion) {
     await fetch(
-      `http://localhost:8080/productos/${alojamiento.id}/${accion}/usuarios/${idUsuario}`,
+      `http://3.133.206.239:8080/productos/${alojamiento.id}/${accion}/usuarios/${idUsuario}`,
       {
         method: "PUT",
       }
