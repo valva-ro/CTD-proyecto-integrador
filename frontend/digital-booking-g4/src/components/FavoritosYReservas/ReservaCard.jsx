@@ -10,14 +10,7 @@ import calcularPromedioPuntuacion from "../../utils/calcularPromedioPuntuacion";
 import get from "../../utils/get";
 
 export default function ReservaCard({
-  alojamiento: {
-    id,
-    nombre,
-    categoria,
-    ciudad,
-    imagenes,
-    caracteristicas,
-  },
+  alojamiento: { id, nombre, categoria, ciudad, imagenes, caracteristicas },
   reserva: {
     id: idReserva,
     horaEntrada,
@@ -25,7 +18,7 @@ export default function ReservaCard({
     apellido,
     mail,
     fechaIngreso,
-    fechaEgreso  
+    fechaEgreso,
   },
 }) {
   const { isLogged } = useContext(loggedContext);
@@ -34,9 +27,11 @@ export default function ReservaCard({
   const [reservas, setReservas] = useState([]);
   const idUsuario = parseInt(localStorage.getItem("id"));
 
-    get(`puntuaciones/producto/${id}`).then(data => {
-        setPuntuaciones(data)
-    })
+  useEffect(() => {
+    get(`puntuaciones/producto/${id}`).then((data) => {
+      setPuntuaciones(data);
+    });
+  }, [puntuaciones]);
 
   const buscarImagenPrincipal = () => {
     let imagen = imagenes.find((imagen) => {

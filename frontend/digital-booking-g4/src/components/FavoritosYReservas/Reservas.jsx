@@ -20,8 +20,6 @@ export default function Reservas() {
     headers: { Authorization: token },
   });
 
-  console.log(itemsReservas);
-
   useEffect(() => {
     if (isLogged && isLoadedReservas) {
      setReservas(itemsReservas);
