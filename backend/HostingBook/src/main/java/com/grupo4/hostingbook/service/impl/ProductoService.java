@@ -250,7 +250,6 @@ public class ProductoService implements IProductoService {
     }
 
     private ProductoDTO actualizar(ProductoDTO productoDTO, Producto entidad) throws BadRequestException, ResourceNotFoundException {
-
         if (productoDTO.getNombre() != null && !productoDTO.getNombre().isEmpty() && !productoDTO.getNombre().isBlank())
             entidad.setNombre(productoDTO.getNombre());
         if (productoDTO.getDescripcion() != null && !productoDTO.getDescripcion().isEmpty() && !productoDTO.getDescripcion().isBlank())
@@ -259,27 +258,11 @@ public class ProductoService implements IProductoService {
             entidad.setDireccion(productoDTO.getDireccion());
         if (productoDTO.getHorarioCheckIn() != null)
             entidad.setHorarioCheckIn(productoDTO.getHorarioCheckIn());
-//        if (productoDTO.getCategoria() != null)
-//            entidad.setCategoria(mapper.convertValue(productoDTO.getCategoria(), Categoria.class));
-//        if (productoDTO.getCiudad() != null)
-//            if (entidad.getCiudad().getId()!=productoDTO.getCiudad().getId()) {
-//                entidad.setCiudad(mapper.convertValue(productoDTO.getCiudad(), Ciudad.class));  //ACA ES EL PROBLEMA!!!! AL MAPPEAR ESTO Y EL DE ARRIBA
-//                entidad.getCiudad().setId(productoDTO.getCiudad().getId());
-//                entidad.getCiudad().setNombre(productoDTO.getCiudad().getNombre());
-//                entidad.getCiudad().setPais(productoDTO.getCiudad().getPais());
-//                entidad.getCiudad().setLatitud(productoDTO.getCiudad().getLatitud());
-//                entidad.getCiudad().setLongitud(productoDTO.getCiudad().getLongitud());
-//            }
-
-
-//       System.out.println("DESCrIPCION ----> "+entidad.getDescripcion());
-
+        if (productoDTO.getCategoria() != null)
+            entidad.setCategoria(mapper.convertValue(categoriaService.buscarPorId(productoDTO.getCategoria().getId()), Categoria.class));
+        if (productoDTO.getCiudad() != null)
+            entidad.setCiudad(mapper.convertValue(ciudadService.buscarPorId(productoDTO.getCiudad().getId()), Ciudad.class));
         Producto entidadActualizada = productoRepository.save(entidad);
-
-        //return setearEntidadesDeLaBaseDeDatos(entidadActualizada);
-
-//        System.out.println("DESCrIPCION PARA MAPPEAR ----> "+entidadActualizada.getDescripcion());
-
         return mapper.convertValue(entidadActualizada, ProductoDTO.class);
     }
 
