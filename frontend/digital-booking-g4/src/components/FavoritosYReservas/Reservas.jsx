@@ -1,32 +1,32 @@
 import React, { useState, useEffect, useContext } from "react";
 import { Redirect, useHistory } from "react-router-dom";
 import TituloBloque from "../TituloBloque/TituloBloque";
-import TarjetaAlojamiento from "../BloqueAlojamientos/TarjetaAlojamiento/TarjetaAlojamiento";
+import ReservaCard from "./ReservaCard";
 import SkeletonTarjetaAlojamiento from "../BloqueAlojamientos/TarjetaAlojamiento/SkeletonTarjetaAlojamiento";
 import useFetch from "../../hooks/useFetch";
 import loggedContext from "../../contexts/loggedContext";
-import get from "../../utils/get";
 import styles from "./FavoritosYReservas.module.css";
 
 export default function Reservas() {
   const history = useHistory();
   const idUsuario = parseInt(localStorage.getItem("id"));
+  const token = localStorage.getItem("jwt").replaceAll('"', "");
   const [reservas, setReservas] = useState([]);
-  const { isLoaded, items } = useFetch(`usuarios/${idUsuario}`);
   const { isLogged } = useContext(loggedContext);
+  const {
+    isLoaded: isLoadedReservas,
+    items: itemsReservas,
+  } = useFetch(`reservas/usuario/${idUsuario}`, {
+    headers: { Authorization: token },
+  });
+
+  console.log(itemsReservas);
 
   useEffect(() => {
-    if (isLogged && isLoaded) {
-      for (let i = 0; i < items.reservas.length; i++) {
-        const alojamiento = items.reservas[i];
-        get(`puntuaciones/producto/${alojamiento.id}`)
-          .then((data) => {
-            items.reservas[i].puntuaciones = data;
-          })
-          .then(setReservas(items.reservas));
-      }
+    if (isLogged && isLoadedReservas) {
+     setReservas(itemsReservas);
     }
-  }, [isLoaded, isLogged, items, reservas]);
+  }, [isLoadedReservas, isLogged, itemsReservas, reservas]);
 
   if (!isLogged) {
     return <Redirect to="/" />;
@@ -48,12 +48,12 @@ export default function Reservas() {
         </div>
       </div>
       <section className={styles.favoritosContainer}>
-        {isLoaded && reservas.length === 0 ? (
+        {isLoadedReservas && reservas.length === 0 ? (
           <div className={styles.avisoNoFavs}>
             <i className="far fa-frown"></i>
             <p>No has realizado reservas todavía</p>
           </div>
-        ) : !isLoaded ? (
+        ) : !isLoadedReservas ? (
           <ul className={styles.alojamientosContainer}>
             {Array.apply(0, Array(3)).map((x, i) => (
               <li
@@ -66,11 +66,11 @@ export default function Reservas() {
           </ul>
         ) : (
           <ul className={styles.alojamientosContainer}>
-            {reservas.map((alojamiento) => (
-              <li key={alojamiento.id} className={styles.alojamiento}>
-                <TarjetaAlojamiento
-                  alojamiento={alojamiento}
-                  isLoaded={isLoaded}
+            {reservas.map((reserva) => (
+              <li key={reserva.id} className={styles.alojamiento}>
+                <ReservaCard
+                  alojamiento={reserva.producto}
+                  reserva={reserva}
                 />
               </li>
             ))}
