@@ -4,14 +4,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.grupo4.hostingbook.exceptions.BadRequestException;
 import com.grupo4.hostingbook.exceptions.Mensajes;
 import com.grupo4.hostingbook.exceptions.ResourceNotFoundException;
-import com.grupo4.hostingbook.model.ImagenDTO;
-import com.grupo4.hostingbook.model.ProductoDTO;
-import com.grupo4.hostingbook.model.PuntuacionDTO;
-import com.grupo4.hostingbook.model.UsuarioDTO;
-import com.grupo4.hostingbook.persistence.entites.Categoria;
-import com.grupo4.hostingbook.persistence.entites.Ciudad;
-import com.grupo4.hostingbook.persistence.entites.Imagen;
-import com.grupo4.hostingbook.persistence.entites.Producto;
+import com.grupo4.hostingbook.model.*;
+import com.grupo4.hostingbook.persistence.entites.*;
 import com.grupo4.hostingbook.persistence.repository.IProductoRepository;
 import com.grupo4.hostingbook.service.IProductoService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -88,9 +82,7 @@ public class ProductoService implements IProductoService {
         Optional<Producto> p = productoRepository.findById(productoDTO.getId());
         if (p.isPresent()) {
             Producto entidad = p.get();
-            System.out.println("QUINTO ---> "+productoDTO.getId());
             productoActualizado = actualizar(productoDTO, entidad);
-            System.out.println("SEXTO ---> "+productoDTO.getId());
         } else {
             throw new ResourceNotFoundException(
                     String.format(Mensajes.ERROR_NO_EXISTE, "El 'producto'", productoDTO.getId()));
@@ -257,30 +249,40 @@ public class ProductoService implements IProductoService {
         }
     }
 
-    private ProductoDTO actualizar(ProductoDTO productoDTO, Producto entidad) {
+    private ProductoDTO actualizar(ProductoDTO productoDTO, Producto entidad) throws BadRequestException, ResourceNotFoundException {
+
         if (productoDTO.getNombre() != null && !productoDTO.getNombre().isEmpty() && !productoDTO.getNombre().isBlank())
             entidad.setNombre(productoDTO.getNombre());
-        if (productoDTO.getDescripcion() != null && !productoDTO.getDescripcion().isEmpty()
-                && !productoDTO.getDescripcion().isBlank())
+        if (productoDTO.getDescripcion() != null && !productoDTO.getDescripcion().isEmpty() && !productoDTO.getDescripcion().isBlank())
             entidad.setDescripcion(productoDTO.getDescripcion());
-        if (productoDTO.getDireccion() != null && !productoDTO.getDireccion().isEmpty()
-                && !productoDTO.getDireccion().isBlank())
+        if (productoDTO.getDireccion() != null && !productoDTO.getDireccion().isEmpty() && !productoDTO.getDireccion().isBlank())
             entidad.setDireccion(productoDTO.getDireccion());
         if (productoDTO.getHorarioCheckIn() != null)
             entidad.setHorarioCheckIn(productoDTO.getHorarioCheckIn());
-        if (productoDTO.getCategoria() != null)
-            entidad.setCategoria(mapper.convertValue(productoDTO.getCategoria(), Categoria.class));
-        if (productoDTO.getCiudad() != null)
-            entidad.setCiudad(mapper.convertValue(productoDTO.getCiudad(), Ciudad.class));
+//        if (productoDTO.getCategoria() != null)
+//            entidad.setCategoria(mapper.convertValue(productoDTO.getCategoria(), Categoria.class));
+//        if (productoDTO.getCiudad() != null)
+//            if (entidad.getCiudad().getId()!=productoDTO.getCiudad().getId()) {
+//                entidad.setCiudad(mapper.convertValue(productoDTO.getCiudad(), Ciudad.class));  //ACA ES EL PROBLEMA!!!! AL MAPPEAR ESTO Y EL DE ARRIBA
+//                entidad.getCiudad().setId(productoDTO.getCiudad().getId());
+//                entidad.getCiudad().setNombre(productoDTO.getCiudad().getNombre());
+//                entidad.getCiudad().setPais(productoDTO.getCiudad().getPais());
+//                entidad.getCiudad().setLatitud(productoDTO.getCiudad().getLatitud());
+//                entidad.getCiudad().setLongitud(productoDTO.getCiudad().getLongitud());
+//            }
 
-        System.out.println("DESCrIPCION ----> "+entidad.getDescripcion());
+
+//       System.out.println("DESCrIPCION ----> "+entidad.getDescripcion());
 
         Producto entidadActualizada = productoRepository.save(entidad);
 
-        System.out.println("DESCrIPCION PARA MAPPEAR ----> "+entidadActualizada.getDescripcion());
+        //return setearEntidadesDeLaBaseDeDatos(entidadActualizada);
+
+//        System.out.println("DESCrIPCION PARA MAPPEAR ----> "+entidadActualizada.getDescripcion());
 
         return mapper.convertValue(entidadActualizada, ProductoDTO.class);
     }
+
 
     private void validarId(Long id) throws BadRequestException, ResourceNotFoundException {
         if (id < 1)
@@ -294,6 +296,8 @@ public class ProductoService implements IProductoService {
         ProductoDTO productoDTO = new ProductoDTO();
         productoDTO.setId(producto.getId());
         productoDTO.setNombre(producto.getNombre());
+        productoDTO.setDireccion(producto.getDireccion());
+        productoDTO.setHorarioCheckIn(producto.getHorarioCheckIn());
         productoDTO.setDescripcion(producto.getDescripcion());
         productoDTO.setCategoria(categoriaService.buscarPorId(producto.getCategoria().getId()));
         productoDTO.setCiudad(ciudadService.buscarPorId(producto.getCiudad().getId()));
