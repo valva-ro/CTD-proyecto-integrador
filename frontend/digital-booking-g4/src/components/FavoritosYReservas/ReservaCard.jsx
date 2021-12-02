@@ -1,6 +1,7 @@
 import React, { useState, useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
 import FilledButton from "../Buttons/FilledButton";
+import OutlinedButton from "../Buttons/OutlinedButton";
 import Estrellas from "../Estrellas/Estrellas";
 // Estilos importados desde la carpeta TarjetaAlojamiento para reutilizar codigo
 import styles from "../../components/BloqueAlojamientos/TarjetaAlojamiento/TarjetaAlojamiento.module.css";
@@ -26,12 +27,22 @@ export default function ReservaCard({
   const puntaje = calcularPromedioPuntuacion(puntuaciones);
   const [reservas, setReservas] = useState([]);
   const idUsuario = parseInt(localStorage.getItem("id"));
+  const [puntuacionDisponible, setPuntuacionDisponible] = useState(false);
+  const fechaActual = new Date();
+  const fechaCheckout = new Date(fechaEgreso);
+  
+  
+
 
   useEffect(() => {
     get(`puntuaciones/producto/${id}`).then((data) => {
       setPuntuaciones(data);
     });
-  }, [puntuaciones]);
+
+    if (fechaActual > fechaCheckout) {
+        setPuntuacionDisponible(true)
+      }
+  }, [puntuaciones, fechaCheckout]);
 
   const buscarImagenPrincipal = () => {
     let imagen = imagenes.find((imagen) => {
@@ -120,9 +131,21 @@ export default function ReservaCard({
           </div>
         </div>
 
-        <Link to={`product/${id}/features`}>
-          <FilledButton styles={styles.btnVerMas}>Ver más</FilledButton>
-        </Link>
+        <div className={styles.reservaButtonsContainer}>
+          <Link to={`product/${id}/features`}>
+            <FilledButton styles={styles.reservaBtnVerMas}>
+              Ver más
+            </FilledButton>
+          </Link>
+          <OutlinedButton
+            styles={styles.reservaBtnVerMas}
+            disabled={puntuacionDisponible}
+            onClick={() => console.log("Nashe")}
+            title="Los alojamientos sólo pueden ser calificados si la fecha actual es posterior al checkout"
+          >
+            Calificar
+          </OutlinedButton>
+        </div>
       </div>
     </div>
   );
