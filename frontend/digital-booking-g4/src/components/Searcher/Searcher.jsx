@@ -14,17 +14,10 @@ export default function Searcher({setReset, reset}) {
   const [iconDate, setIconDate] = useState(styles.dateIcon);
   const [dateRange, setDateRange] = useState([null, null]);
   const [onChangeCity, setOnChangeCity] = useState("");
-  const [selectedCity, setSelectedCity] = useState("");
   const { setCurrentCity, setCurrentDateRange } = useContext(currentCityContext);
   const [startDate, endDate] = dateRange;
   const anchoPantalla = useScreenWidth();
   let datePickerRef = useRef(null);
-
-  useEffect(() => {
-    setCurrentCity(selectedCity);
-    setCurrentDateRange({fechaInicio:startDate , fechaFin:endDate})
-  }, [setCurrentCity, selectedCity, setCurrentDateRange,startDate, endDate]);
-
 
   const handleCloseCalendar = () => {
     datePickerRef.setOpen(false);
@@ -58,7 +51,8 @@ export default function Searcher({setReset, reset}) {
   };
 
   const handleSubmit = () => {
-    setSelectedCity(onChangeCity);
+    setCurrentCity(onChangeCity);
+    setCurrentDateRange({fechaInicio:startDate , fechaFin:endDate});
   };
   
   return (

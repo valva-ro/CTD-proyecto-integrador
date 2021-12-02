@@ -6,72 +6,38 @@ import SkeletonTarjetaAlojamiento from "./TarjetaAlojamiento/SkeletonTarjetaAloj
 import currentFilterContext from "../../contexts/currentFilterContext";
 import styles from "./BloqueAlojamientos.module.css";
 import useFetch from "../../hooks/useFetch";
-import get from "../../utils/get"
+import useFetchFechas from "../../hooks/useFetchFechas";
 import useScreenWidth from "../../hooks/useScreenWidth";
-import formatearFecha from "../../utils/formatearFecha";
+import obtenerFechasParaEndpointBuscarPorFechas from "../../utils/obtenerFechasParaEndpointBuscarPorFechas"
 
 const ALOJAMIENTOS_POR_PAGINA = 6;
 
-export default function BloqueAlojamientos({setReset}) {
-  const { currentCity, setCurrentCity, currentCategory, setCurrentCategory, currentDateRange, setCurrentDateRange} =
+export default function BloqueAlojamientos({ setReset }) {
+  const { currentCity, setCurrentCity, currentCategory, setCurrentCategory, currentDateRange, setCurrentDateRange } =
     useContext(currentFilterContext);
-  const [alojamientos, setAlojamientos] = useState([]);
-  const { isLoaded, items } = useFetch("productos");
+  const { isLoaded } = useFetch("productos"); /*No estoy usando el endpoint en si, pero el isLoadedFechas lo "limpio", entonces nunca deja de mostrar los skeletons*/
   const [currentPage, setCurrentPage] = useState(1);
   const anchoPantalla = useScreenWidth();
-  const [itemsFechas, setItemsFechas] = useState(null)  
-
-  const fechaInicioFormat = () => {
-    let fechaInicial = ""
-    if (currentDateRange.fechaInicio !== null ){
-      fechaInicial = formatearFecha(currentDateRange.fechaInicio);
-    }else{
-      fechaInicial = formatearFecha(new Date());
-    }
-    return fechaInicial;
-  }
-
-  const fechaFinalFormat = () => {
-    let fechaFinal = ""
-    if (currentDateRange.fechaFin !== null ){
-      fechaFinal = formatearFecha(currentDateRange.fechaFin);
-    }else{
-      fechaFinal = formatearFecha(new Date());
-    }
-    return fechaFinal;
-  }
-            
-  const inicio = fechaInicioFormat();
-  const fin = fechaFinalFormat();
-  
-  
-  function obtenerProductosPorFechas () {    
-    get(`productos/?fechaIngreso=${inicio}&fechaEgreso=${fin}`)
-    .then((response) => {
-      setItemsFechas(response);
-      
-    })
-    .catch((error) => console.log(error))
-  }
-
+  const [alojamientosFiltrados, setAlojamientosFiltrados] = useState([]);
+  const inicio = obtenerFechasParaEndpointBuscarPorFechas(currentDateRange.fechaInicio);
+  const fin = obtenerFechasParaEndpointBuscarPorFechas(currentDateRange.fechaFin);
+  const { isLoadedFechas, itemsFechas } = useFetchFechas(inicio, fin, currentCity, currentCategory);
 
   useEffect(() => {
-    obtenerProductosPorFechas()
-    if (isLoaded) {
-      if (inicio !== fin || fin !== formatearFecha(new Date())) {  
-        setAlojamientos(itemsFechas);
-      } else {
-        setAlojamientos(items);
-      }
+    
+    if (isLoadedFechas){
+        const alojamientos = itemsFechas
+        setAlojamientosFiltrados(obtenerAlojamientosFiltrados(alojamientos))
+        
     }
-  }, [isLoaded, items, inicio, fin, itemsFechas ]);
-  
-  
+    
+  }, [isLoadedFechas, inicio, fin, currentCity, currentCategory]);
+
   const toggleFiltrado = () => {
     setCurrentCategory("");
     setCurrentCity("");
-    setCurrentDateRange({fechaInicio: null, fechaFin: null});
-    setReset(true);
+    setCurrentDateRange({ fechaInicio: null, fechaFin: null });
+    setReset(true);  
   };
 
   const handleScrollPosition = () => {
@@ -91,12 +57,14 @@ export default function BloqueAlojamientos({setReset}) {
     handleScrollPosition();
   };
 
-  const alojamientosFiltrados = alojamientos.filter((alojamiento) => {
+
+
+  const obtenerAlojamientosFiltrados = a => a.filter((alojamiento) => {
     let pasaElFiltro = true;
     if (currentCategory !== "" && currentCity !== "") {
       pasaElFiltro =
         currentCategory.toLowerCase() ===
-          alojamiento.categoria.titulo.toLowerCase() &&
+        alojamiento.categoria.titulo.toLowerCase() &&
         currentCity.toLowerCase() === alojamiento.ciudad.nombre.toLowerCase();
     } else if (currentCity !== "") {
       pasaElFiltro =
@@ -128,8 +96,8 @@ export default function BloqueAlojamientos({setReset}) {
               ? "Recomendaciones"
               : `Recomendaciones en ${currentCity}`
             : currentCity === ""
-            ? `${capitalizeFirstLetter(currentCategory)}`
-            : `${capitalizeFirstLetter(currentCategory)} en ${currentCity}`}
+              ? `${capitalizeFirstLetter(currentCategory)}`
+              : `${capitalizeFirstLetter(currentCategory)} en ${currentCity}`}
         </TituloBloque>
         <div className={styles.containerFiltrosButton} onClick={toggleFiltrado}>
           <span className={styles.filtrosButton}>Quitar Filtros</span>
