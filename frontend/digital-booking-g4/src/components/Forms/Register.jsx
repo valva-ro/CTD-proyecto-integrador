@@ -28,7 +28,7 @@ export default function Register() {
     nombre: /^[a-zA-ZÀ-ÿ\s]{2,25}$/,
     apellido: /^[a-zA-ZÀ-ÿ\s]{2,25}$/,
     clave: /^.{7,20}$/,
-    correo: /[A-z]+@[A-z]+.[A-z]{3}/,
+    correo: /[A-z0-9]+@[A-z]+.[A-z]{3}/,
   };
 
   function validarRepeatPassword() {
@@ -88,7 +88,7 @@ export default function Register() {
             });
           } else if (response.status === 201) {
             setIsError(false);
-            history.push("/login");
+            history.push("/");
           } 
         })
         .catch((error) => console.log(error));

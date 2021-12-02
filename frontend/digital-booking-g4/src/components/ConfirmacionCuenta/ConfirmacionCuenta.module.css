@@ -1,0 +1,28 @@
+.container {
+  margin-top: 92px;
+  height: calc(100vh - 92px - 64px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 30px;
+}
+
+.loaderContainer {
+  height: 60%;
+}
+
+@media screen and (max-width: 768px) {
+  .container {
+    margin-top: 112px;
+    height: calc(100vh - 112px - 64px);
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .container {
+    margin-top: 82px;
+    height: calc(100vh - 82px - 64px);
+  }
+}
