@@ -41,7 +41,7 @@ public class CategoriaController implements CRUDController<CategoriaDTO> {
     @ApiResponses(value = { @ApiResponse(code = 200, message = "Success"),
                             @ApiResponse(code = 400, message = "Bad Request") })
     @PostMapping
-    public ResponseEntity<CategoriaDTO> crear(@RequestBody CategoriaDTO categoria) throws BadRequestException, ResourceNotFoundException, RepeatedMailException {
+    public ResponseEntity<CategoriaDTO> crear(@RequestBody CategoriaDTO categoria) throws BadRequestException, ResourceNotFoundException, RepeatedMailException, NotImplementedException {
         CategoriaDTO categoriaNueva = categoriaService.crear(categoria);
         return ResponseEntity.ok(categoriaNueva);
     }

@@ -45,7 +45,7 @@ public class UsuarioController implements IUsuarioController {
                             @ApiResponse(code = 400, message = "Bad Request") })
     @PostMapping("/signup")
     public ResponseEntity<?> crear(@RequestBody UsuarioDTO usuario)
-            throws BadRequestException, ResourceNotFoundException, RepeatedMailException {
+            throws BadRequestException, ResourceNotFoundException, RepeatedMailException, NotImplementedException {
         UsuarioDTO u = usuarioService.crear(usuario);
         return ResponseEntity.status(HttpStatus.CREATED).body(u);
     }

@@ -45,7 +45,7 @@ public class CiudadController implements CRUDController<CiudadDTO> {
             @ApiResponse(code = 400, message = "Bad Request")
     })
     @PostMapping
-    public ResponseEntity<CiudadDTO> crear(@RequestBody CiudadDTO ciudad) throws BadRequestException, ResourceNotFoundException, RepeatedMailException {
+    public ResponseEntity<CiudadDTO> crear(@RequestBody CiudadDTO ciudad) throws BadRequestException, ResourceNotFoundException, RepeatedMailException, NotImplementedException {
         CiudadDTO ciudadNueva = ciudadService.crear(ciudad);
         return ResponseEntity.ok(ciudadNueva);
     }

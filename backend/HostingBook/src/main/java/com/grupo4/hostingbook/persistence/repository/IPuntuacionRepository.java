@@ -11,4 +11,7 @@ import java.util.Set;
 public interface IPuntuacionRepository extends JpaRepository<Puntuacion, Long> {
     @Query("FROM Puntuacion p WHERE p.producto.id =:id")
     Set<Puntuacion> consultarPorProductoID(Long id);
+
+    @Query("FROM Puntuacion p WHERE p.usuario.id =:idUsuario AND p.producto.id =:idProducto")
+    Puntuacion consultarPorUsuarioYProducto(Long idUsuario, Long idProducto);
 }

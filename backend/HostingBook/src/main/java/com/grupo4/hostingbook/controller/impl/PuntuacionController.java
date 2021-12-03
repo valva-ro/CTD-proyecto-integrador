@@ -43,7 +43,7 @@ public class PuntuacionController implements IPuntuacionController {
     @ApiResponses(value = { @ApiResponse(code = 200, message = "Success"),
                             @ApiResponse(code = 400, message = "Bad Request") })
     @PostMapping
-    public ResponseEntity<PuntuacionDTO> crear(@RequestBody PuntuacionDTO puntuacion) throws BadRequestException, ResourceNotFoundException, RepeatedMailException {
+    public ResponseEntity<PuntuacionDTO> crear(@RequestBody PuntuacionDTO puntuacion) throws BadRequestException, ResourceNotFoundException, RepeatedMailException, NotImplementedException {
         PuntuacionDTO puntuacionNueva = puntuacionService.crear(puntuacion);
         return ResponseEntity.ok(puntuacionNueva);
     }

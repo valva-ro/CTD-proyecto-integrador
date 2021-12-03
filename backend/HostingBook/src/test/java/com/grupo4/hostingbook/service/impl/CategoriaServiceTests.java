@@ -32,19 +32,19 @@ public class CategoriaServiceTests {
     }
 
     @Test
-    public void test02AgregarCategoria() throws BadRequestException, ResourceNotFoundException, RepeatedMailException {
+    public void test02AgregarCategoria() throws BadRequestException, ResourceNotFoundException, RepeatedMailException, NotImplementedException {
         CategoriaDTO c = categoriaService.crear(categoriaPorCrear);
         assertEquals(categoriaCreada, c);
     }
 
     @Test
-    public void test03ObtenerTodasLasCategorias() throws BadRequestException, ResourceNotFoundException, RepeatedMailException {
+    public void test03ObtenerTodasLasCategorias() throws BadRequestException, ResourceNotFoundException, RepeatedMailException, NotImplementedException {
         categoriaService.crear(categoriaPorCrear);
         assertNotEquals(0, categoriaService.consultarTodos().size());
     }
 
     @Test
-    public void test04EliminarCategoriaPorId() throws BadRequestException, ResourceNotFoundException, RepeatedMailException {
+    public void test04EliminarCategoriaPorId() throws BadRequestException, ResourceNotFoundException, RepeatedMailException, NotImplementedException {
         categoriaService.crear(categoriaPorCrear);
         assertNotEquals(0, categoriaService.consultarTodos().size());
 
@@ -81,7 +81,7 @@ public class CategoriaServiceTests {
 
     @Test
     @Transactional
-    public void test10BuscarCategoriaPorIdExistente() throws BadRequestException, ResourceNotFoundException, RepeatedMailException {
+    public void test10BuscarCategoriaPorIdExistente() throws BadRequestException, ResourceNotFoundException, RepeatedMailException, NotImplementedException {
         categoriaService.crear(categoriaPorCrear);
         CategoriaDTO categoriaEncontrada = categoriaService.buscarPorId(1L);
         assertEquals(categoriaCreada, categoriaEncontrada);

@@ -14,10 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 @Service("PuntuacionService")
 public class PuntuacionService implements IPuntuacionService {
@@ -36,10 +33,19 @@ public class PuntuacionService implements IPuntuacionService {
     }
 
     @Override
-    public PuntuacionDTO crear(PuntuacionDTO puntuacionDTO) throws BadRequestException, ResourceNotFoundException {
+    public PuntuacionDTO crear(PuntuacionDTO puntuacionDTO) throws BadRequestException, ResourceNotFoundException, NotImplementedException {
         validarCamposRequeridosCreacion(puntuacionDTO);
-        guardarEntidadesAsociadas(puntuacionDTO);
-        Puntuacion guardada = puntuacionRepository.save(mapper.convertValue(puntuacionDTO, Puntuacion.class));
+        Long idUsuario = puntuacionDTO.getUsuario().getId();
+        Long idProducto = puntuacionDTO.getProducto().getId();
+        Puntuacion guardada;
+        Puntuacion puntuacionEnBD = puntuacionRepository.consultarPorUsuarioYProducto(idUsuario, idProducto);
+        if (puntuacionEnBD != null) {
+            puntuacionDTO.setId(puntuacionEnBD.getId());
+            guardada = actualizar(puntuacionDTO, puntuacionEnBD);
+        } else {
+            guardarEntidadesAsociadas(puntuacionDTO);
+            guardada = puntuacionRepository.save(mapper.convertValue(puntuacionDTO, Puntuacion.class));
+        }
         return setearEntidadesDeLaBaseDeDatos(guardada);
     }
 
@@ -63,8 +69,17 @@ public class PuntuacionService implements IPuntuacionService {
     }
 
     @Override
-    public PuntuacionDTO actualizar(PuntuacionDTO puntuacionDTO) throws BadRequestException, ResourceNotFoundException, NotImplementedException {
-        throw new NotImplementedException("Funcionalidad actualizar puntuación no desarrollada");
+    public PuntuacionDTO actualizar(PuntuacionDTO puntuacionDTO) throws BadRequestException, ResourceNotFoundException {
+        PuntuacionDTO puntuacionActualizada;
+        Optional<Puntuacion> p = puntuacionRepository.findById(puntuacionDTO.getId());
+        if (p.isPresent()) {
+            Puntuacion entidad = p.get();
+            puntuacionActualizada = mapper.convertValue(actualizar(puntuacionDTO, entidad), PuntuacionDTO.class);
+        } else {
+            throw new ResourceNotFoundException(
+                    String.format(Mensajes.ERROR_NO_EXISTE, "La 'puntuación'", puntuacionDTO.getId()));
+        }
+        return puntuacionActualizada;
     }
 
     @Override
@@ -111,6 +126,7 @@ public class PuntuacionService implements IPuntuacionService {
     private PuntuacionDTO setearEntidadesDeLaBaseDeDatos(Puntuacion puntuacion) throws BadRequestException, ResourceNotFoundException {
         PuntuacionDTO puntuacionDTO = new PuntuacionDTO();
         puntuacionDTO.setId(puntuacion.getId());
+        puntuacionDTO.setComentario(puntuacion.getComentario());
         puntuacionDTO.setPuntuacion(puntuacion.getPuntuacion());
         puntuacionDTO.setProducto(productoService.buscarPorId(puntuacion.getProducto().getId()));
         puntuacionDTO.setUsuario(usuarioService.buscarPorId(puntuacion.getUsuario().getId()));
@@ -122,5 +138,15 @@ public class PuntuacionService implements IPuntuacionService {
         Set<PuntuacionDTO> puntuaciones = productoPorActualizar.getPuntuaciones();
         puntuaciones.add(new PuntuacionDTO(puntuacionDTO.getId()));
         productoService.actualizar(productoPorActualizar);
+    }
+
+    private Puntuacion actualizar(PuntuacionDTO puntuacionDTO, Puntuacion entidad) {
+        if (puntuacionDTO.getPuntuacion() != null) {
+            entidad.setPuntuacion(puntuacionDTO.getPuntuacion());
+        }
+        if (puntuacionDTO.getComentario() != null && !puntuacionDTO.getComentario().isEmpty() && !puntuacionDTO.getComentario().isBlank()) {
+            entidad.setComentario(puntuacionDTO.getComentario());
+        }
+        return puntuacionRepository.save(entidad);
     }
 }

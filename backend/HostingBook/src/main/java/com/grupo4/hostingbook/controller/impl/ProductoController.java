@@ -48,7 +48,7 @@ public class ProductoController implements IProductoController {
             @ApiResponse(code = 400, message = "Bad Request")
     })
     @PostMapping
-    public ResponseEntity<ProductoDTO> crear(@RequestBody ProductoDTO producto) throws BadRequestException, ResourceNotFoundException, RepeatedMailException {
+    public ResponseEntity<ProductoDTO> crear(@RequestBody ProductoDTO producto) throws BadRequestException, ResourceNotFoundException, RepeatedMailException, NotImplementedException {
         ProductoDTO productoNuevo = productoService.crear(producto);
         return ResponseEntity.ok(productoNuevo);
     }

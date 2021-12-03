@@ -48,7 +48,7 @@ public class ReservaController implements IReservaController {
             @ApiResponse(code = 400, message = "Bad Request")
     })
     @PostMapping
-    public ResponseEntity<ReservaDTO> crear(@RequestBody ReservaDTO reserva) throws BadRequestException, ResourceNotFoundException, RepeatedMailException {
+    public ResponseEntity<ReservaDTO> crear(@RequestBody ReservaDTO reserva) throws BadRequestException, ResourceNotFoundException, RepeatedMailException, NotImplementedException {
         ReservaDTO reservaNueva = reservaService.crear(reserva);
         return ResponseEntity.status(HttpStatus.CREATED).body(reservaNueva);
     }

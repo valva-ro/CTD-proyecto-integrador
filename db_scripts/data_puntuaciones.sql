@@ -18,13 +18,13 @@ USE booking;
 SET AUTOCOMMIT=0;
 DELETE FROM puntuaciones;
 -- Producto 1
-INSERT INTO puntuaciones (puntuacion, fk_producto, fk_usuario) VALUES (2, 1, 1);
-INSERT INTO puntuaciones (puntuacion, fk_producto, fk_usuario) VALUES (4, 1, 2);
+INSERT INTO puntuaciones (puntuacion, comentario, fk_producto, fk_usuario) VALUES (2, "Lindo pero pésima la atención y la limpieza", 1, 1);
+INSERT INTO puntuaciones (puntuacion, comentario, fk_producto, fk_usuario) VALUES (4, "Todo impecable, me encantó!", 1, 2);
 INSERT INTO puntuaciones (puntuacion, fk_producto, fk_usuario) VALUES (3, 1, 3);
 -- Producto 2
-INSERT INTO puntuaciones (puntuacion, fk_producto, fk_usuario) VALUES (4, 2, 1);
-INSERT INTO puntuaciones (puntuacion, fk_producto, fk_usuario) VALUES (5, 2, 2);
-INSERT INTO puntuaciones (puntuacion, fk_producto, fk_usuario) VALUES (4, 2, 3);
+INSERT INTO puntuaciones (puntuacion, comentario, fk_producto, fk_usuario) VALUES (4, "Increíble este lugar, lo súper recomiendo", 2, 1);
+INSERT INTO puntuaciones (puntuacion, comentario, fk_producto, fk_usuario) VALUES (5, "Muy lindo el lugar, la atención, la limpieza. Volvería 100%", 2, 2);
+INSERT INTO puntuaciones (puntuacion, comentario, fk_producto, fk_usuario) VALUES (4, "Súper recomendable", 2, 3);
 -- Producto 3
 INSERT INTO puntuaciones (puntuacion, fk_producto, fk_usuario) VALUES (3, 3, 1);
 INSERT INTO puntuaciones (puntuacion, fk_producto, fk_usuario) VALUES (4, 3, 2);

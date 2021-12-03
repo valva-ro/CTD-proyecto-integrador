@@ -12,6 +12,7 @@ public class Puntuacion {
     @Column(name="puntuacion_id")
     private Long id;
     private Integer puntuacion;
+    private String comentario;
 
     @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
     @JoinColumn(name = "fk_producto")
@@ -28,19 +29,23 @@ public class Puntuacion {
     }
 
     public Puntuacion(Integer puntuacion,
+                      String comentario,
                       Producto producto,
                       Usuario usuario) {
         this.puntuacion = puntuacion;
+        this.comentario = comentario;
         this.producto = producto;
         this.usuario = usuario;
     }
 
     public Puntuacion(Long id,
                       Integer puntuacion,
+                      String comentario,
                       Producto producto,
                       Usuario usuario) {
         this.id = id;
         this.puntuacion = puntuacion;
+        this.comentario = comentario;
         this.producto = producto;
         this.usuario = usuario;
     }
@@ -75,6 +80,14 @@ public class Puntuacion {
 
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
+    }
+
+    public String getComentario() {
+        return comentario;
+    }
+
+    public void setComentario(String comentario) {
+        this.comentario = comentario;
     }
 
     @Override

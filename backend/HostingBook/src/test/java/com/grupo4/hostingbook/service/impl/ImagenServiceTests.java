@@ -32,19 +32,19 @@ public class ImagenServiceTests {
     }
 
     @Test
-    public void test02AgregarImagen() throws BadRequestException, ResourceNotFoundException, RepeatedMailException {
+    public void test02AgregarImagen() throws BadRequestException, ResourceNotFoundException, RepeatedMailException, NotImplementedException {
         ImagenDTO i = imagenService.crear(imagenPorCrear);
         assertEquals(imagenCreada, i);
     }
 
     @Test
-    public void test03ObtenerTodasLasImagenes() throws BadRequestException, ResourceNotFoundException, RepeatedMailException {
+    public void test03ObtenerTodasLasImagenes() throws BadRequestException, ResourceNotFoundException, RepeatedMailException, NotImplementedException {
         imagenService.crear(imagenPorCrear);
         assertNotEquals(0, imagenService.consultarTodos().size());
     }
 
     @Test
-    public void test04EliminarImagenPorId() throws BadRequestException, ResourceNotFoundException, RepeatedMailException {
+    public void test04EliminarImagenPorId() throws BadRequestException, ResourceNotFoundException, RepeatedMailException, NotImplementedException {
         imagenService.crear(imagenPorCrear);
         assertNotEquals(0, imagenService.consultarTodos().size());
 
@@ -81,7 +81,7 @@ public class ImagenServiceTests {
 
     @Test
     @Transactional
-    public void test10BuscarImagenPorIdExistente() throws BadRequestException, ResourceNotFoundException, RepeatedMailException {
+    public void test10BuscarImagenPorIdExistente() throws BadRequestException, ResourceNotFoundException, RepeatedMailException, NotImplementedException {
         imagenService.crear(imagenPorCrear);
         ImagenDTO imagenEncontrada = imagenService.buscarPorId(1L);
         assertEquals(imagenCreada, imagenEncontrada);
