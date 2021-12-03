@@ -246,7 +246,7 @@ public class ProductoDTO implements Serializable {
         return "ProductoDTO{" + "id=" + id + ", nombre='" + nombre + '\'' + ", descripcion='" + descripcion + '\''
                 + ", direccion='" + direccion + '\''
                 + ", categoria=" + categoria.toString() + ", ciudad=" + ciudad.toString() + ", imagenes="
-                + imagenesToString + ", caracteristicas=" + caracteristicasToString + ", caracteristicas="
-                + politicasToString + '}';
+                + imagenesToString + ", caracteristicas=" + caracteristicasToString + ", politicas="
+                + politicasToString + ", reservas=" + reservasToString +'}';
     }
 }
