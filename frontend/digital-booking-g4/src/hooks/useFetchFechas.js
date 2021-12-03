@@ -6,6 +6,7 @@ import {
 export default function useFetchFechas(inicio, fin, currentCity, currentCategory) {
   let [itemsFechas, setItemsFechas] = useState(null);
   let [isLoadedFechas, setIsLoadedFechas] = useState(false);
+  let [isLoaded, setIsLoaded] = useState(false);
   let [errorFechas, setErrorFechas] = useState(null);
 
   useEffect(() => {
@@ -15,6 +16,7 @@ export default function useFetchFechas(inicio, fin, currentCity, currentCategory
         let datos = await response.json();
         setItemsFechas(datos);
         setIsLoadedFechas(true);
+        setIsLoaded(true);
       } catch (err) {
         setErrorFechas(err);
       }
@@ -29,6 +31,7 @@ export default function useFetchFechas(inicio, fin, currentCity, currentCategory
   return {
     itemsFechas,
     isLoadedFechas,
+    isLoaded,
     errorFechas,
   };
 }

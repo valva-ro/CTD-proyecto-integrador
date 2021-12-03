@@ -5,39 +5,49 @@ import TituloBloque from "../TituloBloque/TituloBloque.jsx";
 import SkeletonTarjetaAlojamiento from "./TarjetaAlojamiento/SkeletonTarjetaAlojamiento";
 import currentFilterContext from "../../contexts/currentFilterContext";
 import styles from "./BloqueAlojamientos.module.css";
-import useFetch from "../../hooks/useFetch";
 import useFetchFechas from "../../hooks/useFetchFechas";
 import useScreenWidth from "../../hooks/useScreenWidth";
-import obtenerFechasParaEndpointBuscarPorFechas from "../../utils/obtenerFechasParaEndpointBuscarPorFechas"
+import obtenerFechasParaEndpointBuscarPorFechas from "../../utils/obtenerFechasParaEndpointBuscarPorFechas";
 
 const ALOJAMIENTOS_POR_PAGINA = 6;
 
 export default function BloqueAlojamientos({ setReset }) {
-  const { currentCity, setCurrentCity, currentCategory, setCurrentCategory, currentDateRange, setCurrentDateRange } =
-    useContext(currentFilterContext);
-  const { isLoaded } = useFetch("productos"); /*No estoy usando el endpoint en si, pero el isLoadedFechas lo "limpio", entonces nunca deja de mostrar los skeletons*/
+  const {
+    currentCity,
+    setCurrentCity,
+    currentCategory,
+    setCurrentCategory,
+    currentDateRange,
+    setCurrentDateRange,
+  } = useContext(currentFilterContext);
   const [currentPage, setCurrentPage] = useState(1);
   const anchoPantalla = useScreenWidth();
   const [alojamientosFiltrados, setAlojamientosFiltrados] = useState([]);
-  const inicio = obtenerFechasParaEndpointBuscarPorFechas(currentDateRange.fechaInicio);
-  const fin = obtenerFechasParaEndpointBuscarPorFechas(currentDateRange.fechaFin);
-  const { isLoadedFechas, itemsFechas } = useFetchFechas(inicio, fin, currentCity, currentCategory);
+  const inicio = obtenerFechasParaEndpointBuscarPorFechas(
+    currentDateRange.fechaInicio
+  );
+  const fin = obtenerFechasParaEndpointBuscarPorFechas(
+    currentDateRange.fechaFin
+  );
+  const { isLoadedFechas, isLoaded, itemsFechas } = useFetchFechas(
+    inicio,
+    fin,
+    currentCity,
+    currentCategory
+  );
 
   useEffect(() => {
-    
-    if (isLoadedFechas){
-        const alojamientos = itemsFechas
-        setAlojamientosFiltrados(obtenerAlojamientosFiltrados(alojamientos))
-        
+    if (isLoadedFechas) {
+      const alojamientos = itemsFechas;
+      setAlojamientosFiltrados(obtenerAlojamientosFiltrados(alojamientos));
     }
-    
   }, [isLoadedFechas, inicio, fin, currentCity, currentCategory]);
 
   const toggleFiltrado = () => {
     setCurrentCategory("");
     setCurrentCity("");
     setCurrentDateRange({ fechaInicio: null, fechaFin: null });
-    setReset(true);  
+    setReset(true);
   };
 
   const handleScrollPosition = () => {
@@ -57,25 +67,26 @@ export default function BloqueAlojamientos({ setReset }) {
     handleScrollPosition();
   };
 
-
-
-  const obtenerAlojamientosFiltrados = a => a.filter((alojamiento) => {
-    let pasaElFiltro = true;
-    if (currentCategory !== "" && currentCity !== "") {
-      pasaElFiltro =
-        currentCategory.toLowerCase() ===
-        alojamiento.categoria.titulo.toLowerCase() &&
-        currentCity.toLowerCase() === alojamiento.ciudad.nombre.toLowerCase();
-    } else if (currentCity !== "") {
-      pasaElFiltro =
-        currentCity.toLowerCase() === alojamiento.ciudad.nombre.toLowerCase();
-    } else if (currentCategory !== "") {
-      pasaElFiltro =
-        currentCategory.toLowerCase() ===
-        alojamiento.categoria.titulo.toLowerCase();
-    }
-    return pasaElFiltro;
-  });
+  const obtenerAlojamientosFiltrados = (a) => {
+    setCurrentPage(1);
+    return a.filter((alojamiento) => {
+      let pasaElFiltro = true;
+      if (currentCategory !== "" && currentCity !== "") {
+        pasaElFiltro =
+          currentCategory.toLowerCase() ===
+            alojamiento.categoria.titulo.toLowerCase() &&
+          currentCity.toLowerCase() === alojamiento.ciudad.nombre.toLowerCase();
+      } else if (currentCity !== "") {
+        pasaElFiltro =
+          currentCity.toLowerCase() === alojamiento.ciudad.nombre.toLowerCase();
+      } else if (currentCategory !== "") {
+        pasaElFiltro =
+          currentCategory.toLowerCase() ===
+          alojamiento.categoria.titulo.toLowerCase();
+      }
+      return pasaElFiltro;
+    });
+  };
 
   function recortarAlojamientos() {
     const indiceInicial =
@@ -96,8 +107,8 @@ export default function BloqueAlojamientos({ setReset }) {
               ? "Recomendaciones"
               : `Recomendaciones en ${currentCity}`
             : currentCity === ""
-              ? `${capitalizeFirstLetter(currentCategory)}`
-              : `${capitalizeFirstLetter(currentCategory)} en ${currentCity}`}
+            ? `${capitalizeFirstLetter(currentCategory)}`
+            : `${capitalizeFirstLetter(currentCategory)} en ${currentCity}`}
         </TituloBloque>
         <div className={styles.containerFiltrosButton} onClick={toggleFiltrado}>
           <span className={styles.filtrosButton}>Quitar Filtros</span>
@@ -119,10 +130,7 @@ export default function BloqueAlojamientos({ setReset }) {
           <ul className={styles.alojamientos}>
             {recortarAlojamientos().map((alojamiento, i) => (
               <li key={i} className={styles.alojamiento}>
-                <TarjetaAlojamiento
-                  alojamiento={alojamiento}
-                  isLoaded={isLoaded}
-                />
+                <TarjetaAlojamiento alojamiento={alojamiento} />
               </li>
             ))}
           </ul>
