@@ -50,6 +50,14 @@ section {
   padding: 15px 50px;
 }
 
+hr {
+  position: absolute;
+  left: 0;
+  border-top: 1px solid var(--color-principal);
+  width: calc(100vw - 1rem);
+  margin: 8px 0;
+}
+
 @media screen and (max-width:768px) {
   section {
     padding: 20px 30px;

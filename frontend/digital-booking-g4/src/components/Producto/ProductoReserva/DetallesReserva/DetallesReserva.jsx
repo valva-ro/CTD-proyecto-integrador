@@ -121,7 +121,6 @@ export default function ProductoReserva({
               {direccion}, {ciudad.nombre}, {ciudad.pais}
             </p>
           </div>
-          <hr />
           <div className={styles.fecha}>
             <p>Check in</p>
             <p>
@@ -130,7 +129,6 @@ export default function ProductoReserva({
                 : new Date(checkin).toLocaleDateString()}
             </p>
           </div>
-          <hr />
           <div className={styles.fecha}>
             <p>Check out</p>
             <p>
@@ -139,7 +137,6 @@ export default function ProductoReserva({
                 : new Date(checkout).toLocaleDateString()}
             </p>
           </div>
-          <hr />
           <div className={styles.buttonContainer}>
             <FilledButton onClick={realizarReserva} styles={styles.buttonSubmit}>
               Confirmar reserva
