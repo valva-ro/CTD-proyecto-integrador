@@ -30,8 +30,12 @@ function App() {
             <Switch>
               <Route exact path="/" component={Home} />
               <Route path="/login" component={Login} />
+              <Route path="/login-redirect-booking/:id" component={Login} />
               <Route path="/register" component={Register} />
-              <Route path="/confirmAccount/:token" component={ConfirmacionCuenta} />
+              <Route
+                path="/confirmAccount/:token"
+                component={ConfirmacionCuenta}
+              />
               <Route path="/favorites" component={Favoritos} />
               <Route path="/product/:id/features">
                 <ProductoLayout>
@@ -39,13 +43,13 @@ function App() {
                 </ProductoLayout>
               </Route>
               <Route path="/product/:id/booking">
-                {!isLogged
-                  ? <Redirect to="/" />
-                  :
+                {!isLogged ? (
+                  <Redirect to="/" />
+                ) : (
                   <ProductoLayout>
                     <ProductoReserva />
                   </ProductoLayout>
-                }
+                )}
               </Route>
             </Switch>
           </Layout>

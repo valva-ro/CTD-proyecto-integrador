@@ -1,5 +1,5 @@
 import { useState, useContext, useEffect } from "react";
-import { useHistory, Link } from "react-router-dom";
+import { useHistory, Link, useParams } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faExclamationTriangle } from "@fortawesome/free-solid-svg-icons";
 import FilledButton from "../Buttons/FilledButton";
@@ -12,21 +12,18 @@ export default function Login() {
   const [email, setEmail] = useState({ campo: "", valido: null });
   const [password, setPassword] = useState({ campo: "", valido: null });
   const [error, setError] = useState({ mensaje: "", isError: false });
-  const history = useHistory();
   const { setIsLogged, setUserInformation } = useContext(loggedContext);
+  const { id } = useParams();
+  const history = useHistory();
+  const paginaAnteriorEsReserva = history.location.pathname.match(
+    /\/login-redirect-booking\/(\d+)/
+  );
 
   useEffect(() => {}, [error]);
 
   function handleSubmit(e) {
     e.preventDefault();
     iniciarSesion();
-    localStorage.removeItem("previousAction");
-  }
-
-  function ocultarCartel() {
-    if (localStorage.hasOwnProperty("previousAction")) {
-      localStorage.removeItem("previousAction");
-    }
   }
 
   function iniciarSesion() {
@@ -47,7 +44,11 @@ export default function Login() {
         if (data.cuentaValidada) {
           setIsLogged(true);
           guardarDatos(data);
-          history.push("/");
+          if (id !== undefined && paginaAnteriorEsReserva) {
+            history.push(`/product/${id}/booking`);
+          } else {
+            history.push("/");
+          }
         } else {
           const error = {
             mensaje:
@@ -73,7 +74,7 @@ export default function Login() {
     <>
       <div className={styles.mainForm}>
         <div className={styles.contenedorForm}>
-          {localStorage.getItem("previousAction") == "Iniciar reserva" ? (
+          {paginaAnteriorEsReserva ? (
             <div className={styles.iniciarReservaSinLoguearse}>
               <span>
                 <i className="fas fa-exclamation-circle"></i>
@@ -113,7 +114,7 @@ export default function Login() {
             <FilledButton onClick={handleSubmit} testId="loginBtn">
               Iniciar sesión
             </FilledButton>
-            <p onClick={ocultarCartel}>
+            <p>
               ¿Aún no tienes cuenta? <Link to="/register">Registrate</Link>
             </p>
           </form>

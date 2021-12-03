@@ -11,12 +11,6 @@ export default function Header() {
   const { isLogged } = useContext(loggedContext);
   const location = useLocation();
 
-  function ocultarCartel() {
-    if(localStorage.hasOwnProperty("previousAction")) {
-      localStorage.removeItem("previousAction")
-    }
-  }
-
   const RenderComponent = () => {
     const path = location.pathname;
     switch (path) {
@@ -34,7 +28,7 @@ export default function Header() {
       case "/login":
         return (
           <Link to="/register">
-            <OutlinedButton onClick={ocultarCartel} >Crear cuenta</OutlinedButton>
+            <OutlinedButton>Crear cuenta</OutlinedButton>
           </Link>
         );
       case "/register":
@@ -51,7 +45,7 @@ export default function Header() {
       <header className={styles.headerFijo}>
         <div className={styles.contenedorHeader}>
           <Link to="/">
-            <div className={styles.headerIzquierda} onClick={ocultarCartel}>
+            <div className={styles.headerIzquierda}>
               <img className={styles.logoImg} src={logo} alt="logo" />
               <div>
                 <h1>
