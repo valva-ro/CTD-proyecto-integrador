@@ -106,10 +106,7 @@ export default function BloqueAlojamientos() {
           <ul className={styles.alojamientos}>
             {recortarAlojamientos().map((alojamiento, i) => (
               <li key={i} className={styles.alojamiento}>
-                <TarjetaAlojamiento
-                  alojamiento={alojamiento}
-                  isLoaded={isLoaded}
-                />
+                <TarjetaAlojamiento alojamiento={alojamiento} />
               </li>
             ))}
           </ul>

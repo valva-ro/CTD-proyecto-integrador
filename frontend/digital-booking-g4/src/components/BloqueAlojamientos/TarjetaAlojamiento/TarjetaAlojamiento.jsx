@@ -24,16 +24,16 @@ export default function TarjetaAlojamiento({
   const { isLogged } = useContext(loggedContext);
   const [esVerMas, setEsVerMas] = useState(true);
   const puntaje = calcularPromedioPuntuacion(puntuaciones);
-  const [favoritos, setFavoritos] = useState([]);
   const idUsuario = parseInt(localStorage.getItem("id"));
   const { isLoaded, items } = useFetch(`usuarios/${idUsuario}`);
 
   useEffect(() => {
-    if (isLogged && isLoaded) {
-      setFavoritos(items.productosFavoritos);
-      setIsFavorito(favoritos.find((fav) => fav.id === id) !== undefined);
+    if (isLoaded) {
+      setIsFavorito(
+        items.productosFavoritos.find((fav) => fav.id === id) !== undefined
+      );
     }
-  }, [isLoaded, isLogged, items, favoritos]);
+  }, [isLoaded, items, id]);
 
   const buscarImagenPrincipal = () => {
     let imagen = imagenes.find((imagen) => {
@@ -54,6 +54,8 @@ export default function TarjetaAlojamiento({
     );
   }
 
+  console.log(`Alojamiento ${nombre} es favorito: ${isFavorito}`);
+
   const handleFav = () => {
     if (!isFavorito) {
       fetchFav("agregar");
@@ -71,20 +73,11 @@ export default function TarjetaAlojamiento({
           backgroundImage: `url(${buscarImagenPrincipal().imagenUrl})`,
         }}
       >
-        {isLogged ? (
-          isLoaded ? (
-            isFavorito ? (
-              <i
-                onClick={() => handleFav()}
-                className={`fas fa-heart ${styles.corazon}`}
-              ></i>
-            ) : (
-              <i
-                onClick={() => handleFav()}
-                className={`far fa-heart ${styles.corazon}`}
-              ></i>
-            )
-          ) : null
+        {isLogged && isLoaded ? (
+          <i
+            onClick={() => handleFav()}
+            className={`${isFavorito ? "fas" : "far"} fa-heart ${styles.corazon}`}
+          ></i>
         ) : null}
       </div>
 
