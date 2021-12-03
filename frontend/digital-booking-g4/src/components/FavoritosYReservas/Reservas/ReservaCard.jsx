@@ -10,7 +10,7 @@ import obtenerClasificacion from "../../../utils/obtenerClasificacion";
 import calcularPromedioPuntuacion from "../../../utils/calcularPromedioPuntuacion";
 import get from "../../../utils/get";
 import Modal from "../../Modal/Modal";
-import TarjetaPuntuacionReserva from "./TarjetaPuntuacionReserva";
+import TarjetaPuntuacionReserva from "./TarjetaPuntuacionReserva/TarjetaPuntuacionReserva";
 
 export default function ReservaCard({
   alojamiento: { id, nombre, categoria, ciudad, imagenes, caracteristicas },
@@ -155,7 +155,10 @@ export default function ReservaCard({
             colorBtnCerrar="#383b58"
             colorFondo="#383b5853"
           >
-            <TarjetaPuntuacionReserva nombreAlojamiento={nombre}/>
+            <TarjetaPuntuacionReserva
+              nombreAlojamiento={nombre}
+              idAlojamiento={id}
+            />
           </Modal>
         </div>
       </div>

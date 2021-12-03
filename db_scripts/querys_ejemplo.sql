@@ -29,3 +29,4 @@ select * from usuarios;
 select * from reservas;
 select * from roles;
 select * from usuarios;
+select * from puntuaciones;
