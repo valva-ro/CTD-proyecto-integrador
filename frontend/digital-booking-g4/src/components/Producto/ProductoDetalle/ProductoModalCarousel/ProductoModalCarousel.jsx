@@ -2,7 +2,6 @@ import { useRef } from "react";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import Modal from "../../../Modal/Modal";
-import useOnClickOutside from "../../../../hooks/useOnClickOutside";
 import styles from "./ProductoModalCarousel.module.css";
 
 export default function ProductoModalCarousel({
@@ -11,7 +10,6 @@ export default function ProductoModalCarousel({
   imagenes,
 }) {
   const modalRef = useRef(null);
-  useOnClickOutside(modalRef, onCloseRequest);
 
   if (!estaAbierto) return null;
 

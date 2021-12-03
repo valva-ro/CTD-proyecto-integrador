@@ -1,92 +1,101 @@
-.contenedorProfile{
-    display:flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 12px;
-    position: relative;
+.contenedorProfile {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  position: relative;
 }
 
-.avatar{
-    background-color: var(--color-2);
+.avatar {
+  background-color: var(--color-2);
+  color: var(--color-5);
+  border-radius: 50%;
+  font-size: 1.25rem;
+  font-weight: 700;
+  padding: 7px;
+}
+
+.saludo {
+  color: rgba(0, 0, 0, 0.5);
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.nombre {
+  color: var(--color-principal);
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.containerDropdown {
+  position: relative;
+  display: inline-block;
+  top: 34px;
+  right: 180px;
+}
+
+.dropdown {
+  position: absolute;
+  box-shadow: 4px 6px 8px 4px rgba(0, 0, 0, 0.35);
+}
+
+.itemDropdown {
+  display: block;
+  color: var(--color-2);
+  background-color: var(--color-5);
+  min-width: 200px;
+  border-bottom: 1px solid rgb(204, 204, 204);
+  padding: 12px 16px;
+  z-index: 1;
+  transition: all 200ms ease-in;
+  border-radius: 1px;
+}
+
+.itemDropdown:hover {
+  cursor: pointer;
+  color: var(--color-5);
+  background-color: var(--color-principal);
+}
+
+.desplegarDropdown {
+  position: absolute;
+  bottom: 22px;
+  left: 180px;
+}
+
+.desplegarDropdown:hover {
+  cursor: pointer;
+}
+
+@media screen and (max-width: 480px) {
+  .contenedorProfile {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-end;
+  }
+
+  .contenedorNombre {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-end;
+  }
+
+  .avatar {
+    background-color: var(--color-5);
+    color: var(--color-3);
+  }
+
+  .saludo {
     color: var(--color-5);
-    border-radius: 50%;
-    font-size: 1.25rem;
-    font-weight: 700;
-    padding: 7px;
-}
+  }
 
-.saludo{
-    color: rgba(0, 0, 0, 0.5);
-    font-size: 1rem;
-    font-weight: 700;
-}
-
-.nombre{
-    color: var(--color-principal);
-    font-size: 1rem;
-    font-weight: 700;
-}
-
-.cerrar{
+  .nombre {
     color: var(--color-2);
-    cursor:pointer;
-    font-size: 1.375rem ;
-    font-weight: 700;
-    padding: 5px;
-    position: absolute;
-    right: 0;
-    top:-12px;
-}
+  }
 
-.contenedorNombre a{
-    display: block;
-    text-align: center;
-    transition: all ease-in-out 250ms;
-    background-color: transparent;
-    border: 1px solid var(--color-2);
-    color: var(--color-2);
-    border-radius: 5px;
-}
-
-.contenedorNombre a:hover{
-    background-color: var(--color-principal);
-    border: 1px solid var(--color-principal);
-    color: var(--color-5);
-}
-
-@media screen and (max-width:480px) {
-    .contenedorProfile{
-        display:flex; 
-        flex-direction: column;
-        justify-content: flex-end;
-        align-items: flex-end;
-    }
-
-    .contenedorNombre{
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-end;
-        align-items: flex-end;
-    }
-
-    .contenedorNombre a{
-        display: none;
-    }
-
-    .avatar{
-        background-color: var(--color-5);
-        color: var(--color-3);
-    }
-
-    .saludo{
-        color: var(--color-5);
-    }
-
-    .nombre{
-        color: var(--color-2);
-    }
-
-    .cerrar{
-        z-index: -1; /*no lo uso porque la funcionalidad es cerrar sesión y aquí debe cerrar pantalla*/
-    }
+  .desplegarDropdown {
+    display: none;
+  }
 }

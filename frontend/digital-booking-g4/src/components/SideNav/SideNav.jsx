@@ -85,16 +85,28 @@ export default function SideNav() {
               </div>
             ) : (
               <>
-              <Link to="/favorites" className={styles.favoritosSidenav} onClick={() => setIsOpened(false)}>Favoritos</Link>
-              <p className={styles.cerrarSesion}>
-                ¿Deseas
-                <span onClick={cerrarSesion}> cerrar sesión</span>?
-              </p>
+                <Link
+                  to="/favorites"
+                  className={styles.favoritosSidenav}
+                  onClick={() => setIsOpened(false)}
+                >
+                  Favoritos
+                </Link>
+                <Link
+                  to="/bookings"
+                  className={styles.favoritosSidenav}
+                  onClick={() => setIsOpened(false)}
+                >
+                  Reservas
+                </Link>
+                <p className={styles.cerrarSesion}>
+                  ¿Deseas
+                  <span onClick={cerrarSesion}> cerrar sesión</span>?
+                </p>
               </>
             )}
           </div>
           <div className={styles.footer}>
-            {" "}
             <a
               className={styles.linkRedSocial}
               href="https://www.facebook.com/HostingBook-104939168676273"

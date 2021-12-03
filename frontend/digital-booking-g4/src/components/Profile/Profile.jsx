@@ -1,23 +1,75 @@
-import React, { useContext } from "react";
-import { Link, useLocation } from "react-router-dom";
-import styles from "./Profile.module.css";
+import { useContext, useState, useRef } from "react";
+import { Link } from "react-router-dom";
 import loggedContext from "../../contexts/loggedContext";
+import useOnClickOutside from "../../hooks/useOnClickOutside";
+import styles from "./Profile.module.css";
+
+const ROL_USER = "USER";
+const ROL_ADMIN = "ADMIN";
 
 export default function Profile() {
   const {
     setIsLogged,
     userInformation: { nombre, apellido },
   } = useContext(loggedContext);
+  const [dropdownDesplegado, setDropdownDesplegado] = useState(false);
   const iniciales = `${nombre.charAt(0).toUpperCase()}${apellido
     .charAt(0)
     .toUpperCase()}`;
   const nombreCapitalized = capitalizeString(nombre);
   const apellidoCapitalized = capitalizeString(apellido);
-  const location = useLocation();
+  const dropdownRef = useRef(null);
+  // TODO: obtener de la API
+  const rol = "USER";
+
+  useOnClickOutside(dropdownRef, () => setDropdownDesplegado(false));
 
   function cerrarSesion() {
     setIsLogged(false);
     localStorage.clear();
+  }
+
+  function toggleDropdown() {
+    setDropdownDesplegado(!dropdownDesplegado);
+  }
+
+  function obtenerItems() {
+    let items;
+    if (rol === ROL_USER) {
+      items = (
+        <>
+          <Link to="/favorites" className={styles.itemDropdown}>
+            Favoritos
+          </Link>
+          <Link to="/bookings" className={styles.itemDropdown}>
+            Reservas
+          </Link>
+          <span
+            onClick={cerrarSesion}
+            className={styles.itemDropdown}
+            data-testid="btnCerrarSesion"
+          >
+            Cerrar Sesión
+          </span>
+        </>
+      );
+    } else if (rol === ROL_ADMIN) {
+      items = (
+        <>
+          <Link to="/administration" className={styles.itemDropdown}>
+            Administración
+          </Link>
+          <span
+            onClick={cerrarSesion}
+            className={styles.itemDropdown}
+            data-testid="btnCerrarSesion"
+          >
+            Cerrar Sesión
+          </span>
+        </>
+      );
+    }
+    return items;
   }
 
   return (
@@ -28,19 +80,20 @@ export default function Profile() {
         <p
           className={styles.nombre}
         >{`${nombreCapitalized} ${apellidoCapitalized}`}</p>
-        {location.pathname !== "/favorites" ? (
-          <Link to="/favorites">Favoritos</Link>
+      </div>
+      <div className={styles.containerDropdown} ref={dropdownRef}>
+        <i
+          className={`fas fa-chevron-${dropdownDesplegado ? "up" : "down"} ${
+            styles.desplegarDropdown
+          }`}
+          onClick={toggleDropdown}
+        ></i>
+        {dropdownDesplegado ? (
+          <div className={styles.dropdown}>{obtenerItems()}</div>
         ) : (
           ""
         )}
       </div>
-      <span
-        className={styles.cerrar}
-        data-testid="btnCerrarSesion"
-        onClick={cerrarSesion}
-      >
-        X
-      </span>
     </div>
   );
 }
