@@ -49,7 +49,8 @@ export default function Profile() {
             className={styles.itemDropdown}
             data-testid="btnCerrarSesion"
           >
-            Cerrar Sesión
+            <i className={`fas fa-sign-out-alt ${styles.cerrarSesion}`}></i>
+            Cerrar sesión
           </span>
         </>
       );
