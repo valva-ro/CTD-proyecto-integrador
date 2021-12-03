@@ -16,7 +16,7 @@ export default function ProductoFormDatos({ setNombre, setApellido, setMail, set
   const expresiones = {
     nombre: /^[a-zA-ZÀ-ÿ\s]{2,25}$/,
     apellido: /^[a-zA-ZÀ-ÿ\s]{2,25}$/,
-    correo: /[A-z]+@[A-z]+.[A-z]{3}/,
+    correo: /[A-z0-9]+@[A-z]+.[A-z]{3}/,
   };
 
   useEffect(() => {
