@@ -1,14 +1,16 @@
 import React, { useState, useContext, useEffect } from "react";
-import { Link } from "react-router-dom";
-import FilledButton from "../Buttons/FilledButton";
-import OutlinedButton from "../Buttons/OutlinedButton";
-import Estrellas from "../Estrellas/Estrellas";
+import { Link, Redirect } from "react-router-dom";
+import FilledButton from "../../Buttons/FilledButton";
+import OutlinedButton from "../../Buttons/OutlinedButton";
+import Estrellas from "../../Estrellas/Estrellas";
 // Estilos importados desde la carpeta TarjetaAlojamiento para reutilizar codigo
-import styles from "../../components/BloqueAlojamientos/TarjetaAlojamiento/TarjetaAlojamiento.module.css";
-import loggedContext from "../../contexts/loggedContext";
-import obtenerClasificacion from "../../utils/obtenerClasificacion";
-import calcularPromedioPuntuacion from "../../utils/calcularPromedioPuntuacion";
-import get from "../../utils/get";
+import styles from "../../BloqueAlojamientos/TarjetaAlojamiento/TarjetaAlojamiento.module.css";
+import loggedContext from "../../../contexts/loggedContext";
+import obtenerClasificacion from "../../../utils/obtenerClasificacion";
+import calcularPromedioPuntuacion from "../../../utils/calcularPromedioPuntuacion";
+import get from "../../../utils/get";
+import Modal from "../../Modal/Modal";
+import TarjetaPuntuacionReserva from "./TarjetaPuntuacionReserva";
 
 export default function ReservaCard({
   alojamiento: { id, nombre, categoria, ciudad, imagenes, caracteristicas },
@@ -25,24 +27,20 @@ export default function ReservaCard({
   const { isLogged } = useContext(loggedContext);
   const [puntuaciones, setPuntuaciones] = useState([]);
   const puntaje = calcularPromedioPuntuacion(puntuaciones);
-  const [reservas, setReservas] = useState([]);
-  const idUsuario = parseInt(localStorage.getItem("id"));
   const [puntuacionDisponible, setPuntuacionDisponible] = useState(false);
+  const [showModal, setShowModal] = useState(false);
   const fechaActual = new Date();
   const fechaCheckout = new Date(fechaEgreso);
-  
-  
-
 
   useEffect(() => {
     get(`puntuaciones/producto/${id}`).then((data) => {
       setPuntuaciones(data);
     });
 
-    if (fechaActual > fechaCheckout) {
-        setPuntuacionDisponible(true)
-      }
-  }, [puntuaciones, fechaCheckout]);
+    if (fechaActual < fechaCheckout) {
+      setPuntuacionDisponible(true);
+    }
+  }, []);
 
   const buscarImagenPrincipal = () => {
     let imagen = imagenes.find((imagen) => {
@@ -53,6 +51,12 @@ export default function ReservaCard({
     }
     return imagen;
   };
+
+  const handleQualification = () => setShowModal(true);
+
+  if (!isLogged) {
+    return <Redirect to="/" />;
+  }
 
   return (
     <div className={styles.tarjetaAlojamiento} data-aos="fade-up">
@@ -138,13 +142,21 @@ export default function ReservaCard({
             </FilledButton>
           </Link>
           <OutlinedButton
-            styles={styles.reservaBtnVerMas}
+            styles={styles.reservaBtnCalificar}
             disabled={puntuacionDisponible}
-            onClick={() => console.log("Nashe")}
+            onClick={() => handleQualification()}
             title="Los alojamientos sólo pueden ser calificados si la fecha actual es posterior al checkout"
           >
             Calificar
           </OutlinedButton>
+          <Modal
+            estaAbierto={showModal}
+            onCloseRequest={() => setShowModal(false)}
+            colorBtnCerrar="#383b58"
+            colorFondo="#383b5853"
+          >
+            <TarjetaPuntuacionReserva nombreAlojamiento={nombre}/>
+          </Modal>
         </div>
       </div>
     </div>

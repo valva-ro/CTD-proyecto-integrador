@@ -1,11 +1,11 @@
 import React, { useState, useEffect, useContext } from "react";
 import { Redirect, useHistory } from "react-router-dom";
-import TituloBloque from "../TituloBloque/TituloBloque";
+import TituloBloque from "../../TituloBloque/TituloBloque";
 import ReservaCard from "./ReservaCard";
-import SkeletonTarjetaAlojamiento from "../BloqueAlojamientos/TarjetaAlojamiento/SkeletonTarjetaAlojamiento";
-import useFetch from "../../hooks/useFetch";
-import loggedContext from "../../contexts/loggedContext";
-import styles from "./FavoritosYReservas.module.css";
+import SkeletonTarjetaAlojamiento from "../../BloqueAlojamientos/TarjetaAlojamiento/SkeletonTarjetaAlojamiento";
+import useFetch from "../../../hooks/useFetch";
+import loggedContext from "../../../contexts/loggedContext";
+import styles from "../FavoritosYReservas.module.css";
 
 export default function Reservas() {
   const history = useHistory();

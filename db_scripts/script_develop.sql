@@ -794,4 +794,6 @@ INSERT INTO reservas (nombre, apellido, mail, ciudad, hora_entrada, fecha_ingres
 VALUES ("Florencia", "Fazz", "ffazz@hb.com", "Caballito", 7, "2021-07-18", "2021-07-23", "Esto es una prueba 5 para ver si los datos de reserva funcionan correctamente, el vendedor es un genio!!!", false, 5, 1);
 INSERT INTO reservas (nombre, apellido, mail, ciudad, hora_entrada, fecha_ingreso, fecha_egreso, datos, vacuna_covid, fk_producto, fk_usuario) 
 VALUES ("Lucia", "Ramirez", "lucy@hb.com", "Caballito", 11, "2021-06-18", "2021-06-23", "Esto es una prueba 6 para ver si los datos de reserva funcionan correctamente, el vendedor es un genio!!!", false, 6, 1);
+INSERT INTO reservas (nombre, apellido, mail, ciudad, hora_entrada, fecha_ingreso, fecha_egreso, datos, vacuna_covid, fk_producto, fk_usuario) 
+VALUES ("Juan Carlos", "Megalodon", "juanca@hb.com", "Caballito", 11, "2021-12-01", "2021-12-23", "Esto es una prueba 6 para ver si los datos de reserva funcionan correctamente, el vendedor es un genio!!!", false, 6, 1);
 COMMIT;

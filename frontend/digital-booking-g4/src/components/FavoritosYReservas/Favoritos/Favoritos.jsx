@@ -1,12 +1,12 @@
 import React, { useState, useEffect, useContext } from "react";
 import { Redirect, useHistory } from "react-router-dom";
-import TituloBloque from "../TituloBloque/TituloBloque";
-import TarjetaAlojamiento from "../BloqueAlojamientos/TarjetaAlojamiento/TarjetaAlojamiento";
-import SkeletonTarjetaAlojamiento from "../BloqueAlojamientos/TarjetaAlojamiento/SkeletonTarjetaAlojamiento";
-import useFetch from "../../hooks/useFetch";
-import loggedContext from "../../contexts/loggedContext";
-import get from "../../utils/get";
-import styles from "./FavoritosYReservas.module.css";
+import TituloBloque from "../../TituloBloque/TituloBloque";
+import TarjetaAlojamiento from "../../BloqueAlojamientos/TarjetaAlojamiento/TarjetaAlojamiento";
+import SkeletonTarjetaAlojamiento from "../../BloqueAlojamientos/TarjetaAlojamiento/SkeletonTarjetaAlojamiento";
+import useFetch from "../../../hooks/useFetch";
+import loggedContext from "../../../contexts/loggedContext";
+import get from "../../../utils/get";
+import styles from "../FavoritosYReservas.module.css";
 
 export default function Favoritos() {
   const history = useHistory();
