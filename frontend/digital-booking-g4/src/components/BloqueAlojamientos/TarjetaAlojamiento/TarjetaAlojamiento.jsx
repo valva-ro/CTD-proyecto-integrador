@@ -28,7 +28,7 @@ export default function TarjetaAlojamiento({
   const { isLoaded, items } = useFetch(`usuarios/${idUsuario}`);
 
   useEffect(() => {
-    if (isLoaded) {
+    if (isLogged && isLoaded) {
       setIsFavorito(
         items.productosFavoritos.find((fav) => fav.id === id) !== undefined
       );
