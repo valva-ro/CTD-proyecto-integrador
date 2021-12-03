@@ -13,8 +13,7 @@ describe("TarjetaReservaExitosa tests", function () {
     });
     test("Al hacer click en cerrar nos redirecciona a donde estaba", () => {
         render(<TarjetaReservaExitosa />)
-        const cerrado = screen.queryAllByTestId("FilledButton")[0]
-
-        /* fireEvent.click(cerrado) */
+        const cerrado = screen.getByTestId("btnCerrarSesion")[0]
+        fireEvent.click(cerrado)
     })
 });
