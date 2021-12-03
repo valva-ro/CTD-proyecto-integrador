@@ -44,7 +44,6 @@ export default function Login() {
         return response.json();
       })
       .then((data) => {
-        console.log(data);
         if (data.cuentaValidada) {
           setIsLogged(true);
           guardarDatos(data);

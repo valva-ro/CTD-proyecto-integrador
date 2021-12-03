@@ -54,8 +54,6 @@ export default function TarjetaAlojamiento({
     );
   }
 
-  console.log(`Alojamiento ${nombre} es favorito: ${isFavorito}`);
-
   const handleFav = () => {
     if (!isFavorito) {
       fetchFav("agregar");
