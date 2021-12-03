@@ -10,7 +10,9 @@ import com.grupo4.hostingbook.model.UsuarioDTO;
 import com.grupo4.hostingbook.persistence.entites.Producto;
 import com.grupo4.hostingbook.persistence.entites.Rol;
 import com.grupo4.hostingbook.persistence.entites.Usuario;
+import com.grupo4.hostingbook.persistence.entites.VerificationToken;
 import com.grupo4.hostingbook.persistence.repository.IUsuarioRepository;
+import com.grupo4.hostingbook.persistence.repository.IVerificationTokenRepository;
 import com.grupo4.hostingbook.service.IUsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -22,13 +24,15 @@ import java.util.*;
 public class UsuarioService implements IUsuarioService {
 
     private final IUsuarioRepository usuarioRepository;
+    private final IVerificationTokenRepository verificationTokenRepository;
     private final RolService rolService;
     private final ObjectMapper mapper;
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @Autowired
-    public UsuarioService(IUsuarioRepository usuarioRepository, ObjectMapper mapper, BCryptPasswordEncoder bCryptPasswordEncoder, RolService rolService) {
+    public UsuarioService(IUsuarioRepository usuarioRepository, IVerificationTokenRepository verificationTokenRepository, ObjectMapper mapper, BCryptPasswordEncoder bCryptPasswordEncoder, RolService rolService) {
         this.usuarioRepository = usuarioRepository;
+        this.verificationTokenRepository = verificationTokenRepository;
         this.rolService = rolService;
         this.mapper = mapper;
         this.bCryptPasswordEncoder = bCryptPasswordEncoder;
@@ -39,8 +43,8 @@ public class UsuarioService implements IUsuarioService {
         validarCamposRequeridosCreacion(usuarioDTO);
         Usuario entidadUsuario = mapper.convertValue(usuarioDTO, Usuario.class);
         Rol entidadRol = mapper.convertValue(rolService.buscarPorId(usuarioDTO.getRol().getId()), Rol.class);
-        entidadUsuario.setCuentaValidada(false);
         entidadUsuario.setRol(entidadRol);
+        entidadUsuario.setCuentaValidada(false);
         if (entidadUsuario.getProductosFavoritos() == null)
             entidadUsuario.setProductosFavoritos(new HashSet<>());
         if (entidadUsuario.getPuntuaciones() == null)
@@ -96,6 +100,17 @@ public class UsuarioService implements IUsuarioService {
     public UsuarioDTO obtenerPorEmail(String email) {
         Usuario entidad = usuarioRepository.obtenerPorEmail(email);
         return mapper.convertValue(entidad, UsuarioDTO.class);
+    }
+
+    @Override
+    public void createVerificationToken(UsuarioDTO usuario, String token) {
+        VerificationToken verificationToken = new VerificationToken(token, mapper.convertValue(usuario, Usuario.class));
+        verificationTokenRepository.save(verificationToken);
+    }
+
+    @Override
+    public VerificationToken getVerificationToken(String token) {
+        return verificationTokenRepository.findByToken(token);
     }
 
     public UsuarioDTO save(UsuarioDTO usuarioDTO) {

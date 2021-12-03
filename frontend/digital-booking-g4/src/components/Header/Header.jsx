@@ -18,7 +18,8 @@ export default function Header() {
   }
 
   const RenderComponent = () => {
-    switch (location.pathname) {
+    const path = location.pathname;
+    switch (path) {
       default:
         return (
           <>

@@ -2,8 +2,12 @@ package com.grupo4.hostingbook.controller.impl;
 
 import com.grupo4.hostingbook.controller.IReservaController;
 import com.grupo4.hostingbook.exceptions.*;
+import com.grupo4.hostingbook.model.CaracteristicaDTO;
+import com.grupo4.hostingbook.model.ProductoDTO;
 import com.grupo4.hostingbook.model.ReservaDTO;
+import com.grupo4.hostingbook.service.IProductoService;
 import com.grupo4.hostingbook.service.IReservaService;
+import com.grupo4.hostingbook.service.impl.EmailService;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
@@ -13,6 +17,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Set;
 
@@ -23,10 +29,14 @@ public class ReservaController implements IReservaController {
 
     @Qualifier("ReservaService")
     private final IReservaService reservaService;
+    private final IProductoService productoService;
+    private final EmailService emailService;
 
     @Autowired
-    public ReservaController(IReservaService reservaService) {
+    public ReservaController(IReservaService reservaService, IProductoService productoService, EmailService emailService) {
         this.reservaService = reservaService;
+        this.productoService = productoService;
+        this.emailService = emailService;
     }
 
     @Override
@@ -50,6 +60,15 @@ public class ReservaController implements IReservaController {
     @PostMapping
     public ResponseEntity<ReservaDTO> crear(@RequestBody ReservaDTO reserva) throws BadRequestException, ResourceNotFoundException, RepeatedMailException {
         ReservaDTO reservaNueva = reservaService.crear(reserva);
+        ProductoDTO producto = productoService.buscarPorId(reserva.getProducto().getId());
+        final String email = reserva.getMail();
+        final String subject = "Reserva en " + producto.getNombre();
+        final StringBuilder message = new StringBuilder("¡Hola, " + reserva.getNombre() + "! Ya estás un paso más cerca de tu viaje.\n\nTe vas a hospedar en " + producto.getNombre() + " del " + formatearFecha(reserva.getFechaIngreso()) + " al " + formatearFecha(reserva.getFechaEgreso()) + ".\n\nTe recordamos que los beneficios de este alojamiento son:");
+        for (CaracteristicaDTO c : producto.getCaracteristicas()) {
+            message.append("\n\t- ").append(c.getNombre());
+        }
+        message.append("\n\n¡Te esperamos el ").append(formatearFecha(reserva.getFechaIngreso())).append(" a las ").append(reserva.getHoraEntrada()).append("hs!");
+        emailService.sendSimpleMessage(email, subject, message.toString());
         return ResponseEntity.status(HttpStatus.CREATED).body(reservaNueva);
     }
 
@@ -109,4 +128,8 @@ public class ReservaController implements IReservaController {
         return ResponseEntity.ok(reservas);
     }
 
+    private String formatearFecha(LocalDate fecha) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        return fecha.format(formatter);
+    }
 }

@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import { useHistory, Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faExclamationTriangle } from "@fortawesome/free-solid-svg-icons";
@@ -11,9 +11,11 @@ import post from "../../utils/post";
 export default function Login() {
   const [email, setEmail] = useState({ campo: "", valido: null });
   const [password, setPassword] = useState({ campo: "", valido: null });
-  const [isError, setIsError] = useState(false);
+  const [error, setError] = useState({ mensaje: "", isError: false });
   const history = useHistory();
   const { setIsLogged, setUserInformation } = useContext(loggedContext);
+
+  useEffect(() => {}, [error]);
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -33,19 +35,30 @@ export default function Login() {
       contrasenia: password.campo,
     })
       .then((response) => {
-        const msjError = `Error status ${response.status}: ${response.text}`;
-        if (response.status !== 200) throw msjError;
+        const error = {
+          mensaje:
+            "Sus credenciales son inválidas. Por favor, vuelva a intentarlo.",
+          isError: true,
+        };
+        if (response.status !== 200) throw error;
         return response.json();
       })
       .then((data) => {
-        setIsLogged(true);
-        guardarDatos(data);
+        console.log(data);
+        if (data.cuentaValidada) {
+          setIsLogged(true);
+          guardarDatos(data);
+          history.push("/");
+        } else {
+          const error = {
+            mensaje:
+              "Recordá revisar tu mail y confirmar la cuenta para poder iniciar sesión",
+            isError: true,
+          };
+          throw error;
+        }
       })
-      .then(() => history.push("/"))
-      .catch((error) => {
-        console.log(error);
-        setIsError(true);
-      });
+      .catch((error) => setError(error));
   }
 
   function guardarDatos(data) {
@@ -91,13 +104,10 @@ export default function Login() {
               tieneIcono={true}
             />
 
-            {isError ? (
+            {error.isError ? (
               <div className={styles.credencialesContainer}>
                 <FontAwesomeIcon icon={faExclamationTriangle} />
-                <p className={styles.credencialesInvalidas}>
-                  Sus credenciales son inválidas. Por favor, vuelva a
-                  intentarlo.
-                </p>
+                <p className={styles.credencialesInvalidas}>{error.mensaje}</p>
               </div>
             ) : null}
 

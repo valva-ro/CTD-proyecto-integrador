@@ -12,6 +12,7 @@ import "aos/dist/aos.css";
 import ProductoLayout from "./components/Producto/ProductoLayout/ProductoLayout";
 import ProductoDetalle from "./components/Producto/ProductoDetalle/ProductoDetalle";
 import ProductoReserva from "./components/Producto/ProductoReserva/ProductoReserva";
+import ConfirmacionCuenta from "./components/ConfirmacionCuenta/ConfirmacionCuenta";
 
 function App() {
   const [isLogged, setIsLogged] = useState(estaLogueado());
@@ -30,6 +31,7 @@ function App() {
               <Route exact path="/" component={Home} />
               <Route path="/login" component={Login} />
               <Route path="/register" component={Register} />
+              <Route path="/confirmAccount/:token" component={ConfirmacionCuenta} />
               <Route path="/favorites" component={Favoritos} />
               <Route path="/product/:id/features">
                 <ProductoLayout>

@@ -8,12 +8,14 @@ public class AuthenticationResponse {
     private final Long id;
     private final String nombre;
     private final String apellido;
+    private final Boolean cuentaValidada;
 
     public AuthenticationResponse(String jwt, UsuarioDTO usuarioDTO) {
         this.jwt = jwt;
         this.id = usuarioDTO.getId();
         this.nombre = usuarioDTO.getNombre();
         this.apellido = usuarioDTO.getApellido();
+        this.cuentaValidada = usuarioDTO.getCuentaValidada();
     }
 
     public String getJwt() {
@@ -30,5 +32,9 @@ public class AuthenticationResponse {
 
     public Long getId() {
         return id;
+    }
+
+    public Boolean getCuentaValidada() {
+        return cuentaValidada;
     }
 }

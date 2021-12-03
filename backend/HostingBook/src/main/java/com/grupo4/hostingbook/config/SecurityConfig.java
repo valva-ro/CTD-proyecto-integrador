@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -42,20 +43,20 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .cors().and().csrf().disable()
                 .authorizeRequests()
                     .antMatchers(
+                            "/reservas",
+                            "/usuarios/{\\d+}/favoritos",
+                            "/productos/agregar/{^[\\d]$}/usuarios/{^[\\d]$}",
+                            "/productos/eliminar/{^[\\d]$}/usuarios/{^[\\d]$}"
+                    ).authenticated()
+                    .antMatchers(HttpMethod.POST, "/usuarios").hasRole("ADMIN")
+                    .antMatchers(
                             "/categorias**",
                             "/ciudades**",
                             "/productos**",
                             "/usuarios/login",
                             "/usuarios/signup",
-                            "/usuarios",
                             "/usuarios/{^[\\d]$}"
                     ).permitAll()
-                    .antMatchers(
-                            "/reservas**",
-                            "/usuarios/{\\d+}/favoritos",
-                            "/productos/agregar/{^[\\d]$}/usuarios/{^[\\d]$}",
-                            "/productos/eliminar/{^[\\d]$}/usuarios/{^[\\d]$}"
-                    ).authenticated()
                 .and()
                     .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
         httpSecurity.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);

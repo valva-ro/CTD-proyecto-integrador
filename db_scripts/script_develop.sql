@@ -156,8 +156,24 @@ CREATE TABLE IF NOT EXISTS usuarios (
 	REFERENCES booking.roles (rol_id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+
 --
--- Table structure for table `producto`
+-- Table structure for table `token_usuario`
+--
+CREATE TABLE IF NOT EXISTS token_usuario (
+  token_id INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  token TEXT NOT NULL,
+  expiracion DATE NOT NULL,
+  fk_usuario INT UNSIGNED NOT NULL,
+  PRIMARY KEY (token_id),
+  CONSTRAINT usuario_id_foreign
+	FOREIGN KEY (fk_usuario)
+	REFERENCES booking.usuarios (usuario_id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+--
+-- Table structure for table `ususario_producto`
 --
 CREATE TABLE IF NOT EXISTS usuario_producto (
 	usuario_producto_id INT UNSIGNED NOT NULL AUTO_INCREMENT,
@@ -698,9 +714,9 @@ COMMIT;
 --
 -- Dumping data for table `usuarios`
 --
-INSERT INTO usuarios (nombre, apellido, mail, contrasenia, cuenta_validada, fk_rol) VALUES ("Pepe", "Pepardo", "pepe@gmail.com", "$2a$12$km8QmiuebecWgzJobSXFa.OWee9gCwWXgyPDeEQJg03bt/Ney2T.u", FALSE, 1);
-INSERT INTO usuarios (nombre, apellido, mail, contrasenia, cuenta_validada, fk_rol) VALUES ("José", "Gómez", "jose@gmail.com", "$2a$12$nZP6qmpNe.O83nHMB4Y/BeQjum0CaEpA2wtSLlWzcb6jZZg80buda", FALSE, 2);
-INSERT INTO usuarios (nombre, apellido, mail, contrasenia, cuenta_validada, fk_rol) VALUES ("Josefina", "Gómez", "josefina@gmail.com", "$2a$12$XY8De0gZH4T7PB9ODzWKgedt5VbxihC/hxG5x1OzfX5eIj1bss31m", FALSE, 2);
+INSERT INTO usuarios (nombre, apellido, mail, contrasenia, cuenta_validada, fk_rol) VALUES ("Pepe", "Pepardo", "pepe@gmail.com", "$2a$12$km8QmiuebecWgzJobSXFa.OWee9gCwWXgyPDeEQJg03bt/Ney2T.u", TRUE, 1);
+INSERT INTO usuarios (nombre, apellido, mail, contrasenia, cuenta_validada, fk_rol) VALUES ("José", "Gómez", "jose@gmail.com", "$2a$12$nZP6qmpNe.O83nHMB4Y/BeQjum0CaEpA2wtSLlWzcb6jZZg80buda", TRUE, 2);
+INSERT INTO usuarios (nombre, apellido, mail, contrasenia, cuenta_validada, fk_rol) VALUES ("Josefina", "Gómez", "josefina@gmail.com", "$2a$12$XY8De0gZH4T7PB9ODzWKgedt5VbxihC/hxG5x1OzfX5eIj1bss31m", TRUE, 2);
 COMMIT;
 
 --

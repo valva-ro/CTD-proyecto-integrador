@@ -183,8 +183,23 @@ CREATE TABLE IF NOT EXISTS usuarios (
 	REFERENCES booking.roles (rol_id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+
 --
--- Table structure for table `usuario_alojamiento`
+-- Table structure for table `token_usuario`
+--
+CREATE TABLE IF NOT EXISTS token_usuario (
+  token_id INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  token TEXT NOT NULL,
+  expiracion DATE NOT NULL,
+  fk_usuario INT UNSIGNED NOT NULL,
+  PRIMARY KEY (token_id),
+  CONSTRAINT usuario_id_foreign
+	FOREIGN KEY (fk_usuario)
+	REFERENCES booking.usuarios (usuario_id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Table structure for table `usuario_producto`
 --
 DROP TABLE IF EXISTS usuario_producto;
 CREATE TABLE IF NOT EXISTS usuario_producto (
