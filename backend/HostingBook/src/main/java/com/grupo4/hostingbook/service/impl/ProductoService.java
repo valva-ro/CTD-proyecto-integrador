@@ -258,9 +258,9 @@ public class ProductoService implements IProductoService {
             entidad.setDireccion(productoDTO.getDireccion());
         if (productoDTO.getHorarioCheckIn() != null)
             entidad.setHorarioCheckIn(productoDTO.getHorarioCheckIn());
-        if (productoDTO.getCategoria() != null)
+        if (productoDTO.getCategoria() != null && productoDTO.getCategoria().getId()!=null)
             entidad.setCategoria(mapper.convertValue(categoriaService.buscarPorId(productoDTO.getCategoria().getId()), Categoria.class));
-        if (productoDTO.getCiudad() != null)
+        if (productoDTO.getCiudad() != null && productoDTO.getCiudad().getId()!=null)
             entidad.setCiudad(mapper.convertValue(ciudadService.buscarPorId(productoDTO.getCiudad().getId()), Ciudad.class));
         Producto entidadActualizada = productoRepository.save(entidad);
         return mapper.convertValue(entidadActualizada, ProductoDTO.class);
