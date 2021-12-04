@@ -36,24 +36,32 @@
   font-style: italic;
   font-weight: 400;
 }
-
-.btnCargarMas {
-  position: absolute;
-  left: 45%;
+.cargarComentariosContainer {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
 }
-.btnCargarMas:disabled {
+.btnCargarComentarios {
+  padding: 7px 20px;
+}
+.btnCargarComentarios:disabled {
   color: white;
   background-color: grey;
   border: 3px solid grey;
   opacity: 0.25;
 }
-.btnCargarMas:disabled:hover {
+.btnCargarComentarios:disabled:hover {
   cursor: initial;
 }
-
 .sinResultados {
   text-align: center;
   padding-top: 16px;
   width: 100%;
   color: var(--color-3);
+}
+@media (max-width: 380px) {
+  .cargarComentariosContainer {
+    flex-direction: column;
+  }
 }

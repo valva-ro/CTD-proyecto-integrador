@@ -5,12 +5,7 @@ import Estrellas from "../../../Estrellas/Estrellas";
 import useFetch from "../../../../hooks/useFetch";
 import styles from "./ProductoComentarios.module.css";
 
-// Kev después de que leas este comentario borralo:
-// Puse como límite 3 comentarios, pero en la BD creo que no hay
-// ningún alojamiento que tenga más de 3 comentarios, así que para
-// probarlo podes cambiar el valor de la const de abajo por 1
-// (o si tenés ganas agregá más en los scripts de la BD)
-const CANTIDAD_COMENTARIOS = 1;
+const CANTIDAD_COMENTARIOS = 3;
 
 export default function ProductoComentarios({ alojamiento: { id } }) {
   const { isLoaded, items } = useFetch(`puntuaciones/producto/${id}`);
@@ -20,6 +15,10 @@ export default function ProductoComentarios({ alojamiento: { id } }) {
   const [
     cargarMasComentariosDeshabilitado,
     setCargarMasComentarioDeshabilitado,
+  ] = useState(null);
+  const [
+    cargarMenosComentariosDeshabilitado,
+    setCargarMenosComentarioDeshabilitado,
   ] = useState(null);
 
   useEffect(() => {
@@ -33,6 +32,9 @@ export default function ProductoComentarios({ alojamiento: { id } }) {
       setCargarMasComentarioDeshabilitado(
         puntuaciones.length < cantidadComentariosActual + CANTIDAD_COMENTARIOS
       );
+      setCargarMenosComentarioDeshabilitado(
+        puntuaciones.length > cantidadComentariosActual + CANTIDAD_COMENTARIOS
+      );
     }
   }, [isLoaded, puntuaciones, cantidadComentariosActual]);
 
@@ -40,6 +42,15 @@ export default function ProductoComentarios({ alojamiento: { id } }) {
     setCantidadComentariosActual(
       cantidadComentariosActual + CANTIDAD_COMENTARIOS
     );
+  };
+
+  const mostrarMenosComentarios = () => {
+    if (cantidadComentariosActual >= 6) {
+      setCantidadComentariosActual(
+        cantidadComentariosActual - CANTIDAD_COMENTARIOS
+      ); 
+    } 
+    
   };
 
   return (
@@ -54,7 +65,9 @@ export default function ProductoComentarios({ alojamiento: { id } }) {
             <div className={styles.comentarioContainer}>
               <div className={styles.estrellasContainer}>
                 <Estrellas puntaje={puntuacion.puntuacion} />
-                <p className={styles.fecha}>{formatearFecha(puntuacion.fecha)}</p>
+                <p className={styles.fecha}>
+                  {formatearFecha(puntuacion.fecha)}
+                </p>
               </div>
               <h3 className={styles.nombreComentario}>
                 {`${puntuacion.usuario.nombre} ${puntuacion.usuario.apellido}`}
@@ -67,16 +80,28 @@ export default function ProductoComentarios({ alojamiento: { id } }) {
         ) : null}
       </div>
       {isLoaded && puntuaciones.length > 0 ? (
-        <FilledButton
-          styles={styles.btnCargarMas}
-          onClick={mostrarMasComentarios}
-          disabled={cargarMasComentariosDeshabilitado}
-          title={
-            cargarMasComentariosDeshabilitado ? "No hay más comentarios" : ""
-          }
-        >
-          Cargar más
-        </FilledButton>
+        <div className={styles.cargarComentariosContainer}>
+          <FilledButton
+            styles={styles.btnCargarComentarios}
+            onClick={mostrarMasComentarios}
+            disabled={cargarMasComentariosDeshabilitado}
+            title={
+              cargarMasComentariosDeshabilitado ? "No hay más comentarios" : ""
+            }
+          >
+            Más comentarios
+          </FilledButton>
+          <FilledButton
+            styles={styles.btnCargarComentarios}
+            onClick={mostrarMenosComentarios}
+            disabled={cargarMenosComentariosDeshabilitado}
+            title={
+              cargarMenosComentariosDeshabilitado ? "Este es el mínimo de comentarios posibles" : ""
+            }
+          >
+            Menos comentarios
+          </FilledButton>
+        </div>
       ) : null}
     </section>
   );
