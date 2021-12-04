@@ -208,6 +208,7 @@ CREATE TABLE IF NOT EXISTS puntuaciones (
   puntuacion_id INT UNSIGNED NOT NULL AUTO_INCREMENT,
   puntuacion INT UNSIGNED NOT NULL,
   comentario TEXT,
+  fecha DATE,
   fk_producto INT UNSIGNED NOT NULL,
   fk_usuario INT UNSIGNED NOT NULL,
   PRIMARY KEY  (puntuacion_id),

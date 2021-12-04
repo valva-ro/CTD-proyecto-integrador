@@ -20,6 +20,17 @@
   padding: 6px 0;
 }
 
+.estrellasContainer {
+  display: flex;
+  justify-content: space-between;
+}
+
+.fecha {
+  display: inline-block;
+  color: var(--color-2);
+  font-weight: 400;
+}
+
 .comentario {
   color: black;
   font-style: italic;
@@ -38,4 +49,11 @@
 }
 .btnCargarMas:disabled:hover {
   cursor: initial;
+}
+
+.sinResultados {
+  text-align: center;
+  padding-top: 16px;
+  width: 100%;
+  color: var(--color-3);
 }

@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.*;
 
 @Service("PuntuacionService")
@@ -125,6 +126,7 @@ public class PuntuacionService implements IPuntuacionService {
 
     private PuntuacionDTO setearEntidadesDeLaBaseDeDatos(Puntuacion puntuacion) throws BadRequestException, ResourceNotFoundException {
         PuntuacionDTO puntuacionDTO = new PuntuacionDTO();
+        puntuacion.setFecha(LocalDate.now());
         puntuacionDTO.setId(puntuacion.getId());
         puntuacionDTO.setComentario(puntuacion.getComentario());
         puntuacionDTO.setPuntuacion(puntuacion.getPuntuacion());
@@ -147,6 +149,7 @@ public class PuntuacionService implements IPuntuacionService {
         if (puntuacionDTO.getComentario() != null && !puntuacionDTO.getComentario().isEmpty() && !puntuacionDTO.getComentario().isBlank()) {
             entidad.setComentario(puntuacionDTO.getComentario());
         }
+        entidad.setFecha(LocalDate.now());
         return puntuacionRepository.save(entidad);
     }
 }
