@@ -6,7 +6,7 @@ Object {
   "baseElement": <body>
     <div>
       <h3
-        class="subtituloBloque"
+        class="subtituloBloque undefined"
       >
         Hola Mundo
       </h3>
@@ -14,7 +14,7 @@ Object {
   </body>,
   "container": <div>
     <h3
-      class="subtituloBloque"
+      class="subtituloBloque undefined"
     >
       Hola Mundo
     </h3>

@@ -17,18 +17,46 @@ exports[`Footer tests Devuelve el footer correctamente 1`] = `
     <div
       className="footerDerecha"
     >
-      <i
-        className="bx bxl-facebook-circle"
-      />
-      <i
-        className="bx bxl-linkedin"
-      />
-      <i
-        className="bx bxl-twitter"
-      />
-      <i
-        className="bx bxl-instagram-alt"
-      />
+      <a
+        className="linkRedSocial"
+        href="https://www.facebook.com/HostingBook-104939168676273"
+        rel="noreferrer"
+        target="_blank"
+      >
+        <i
+          className="bx bxl-facebook-circle"
+        />
+      </a>
+      <a
+        className="linkRedSocial"
+        href="https://www.linkedin.com/in/hostingbook/"
+        rel="noreferrer"
+        target="_blank"
+      >
+        <i
+          className="bx bxl-linkedin"
+        />
+      </a>
+      <a
+        className="linkRedSocial"
+        href="https://twitter.com/Hosting_Book"
+        rel="noreferrer"
+        target="_blank"
+      >
+        <i
+          className="bx bxl-twitter"
+        />
+      </a>
+      <a
+        className="linkRedSocial"
+        href="https://www.instagram.com/hostingbook/"
+        rel="noreferrer"
+        target="_blank"
+      >
+        <i
+          className="bx bxl-instagram-alt"
+        />
+      </a>
     </div>
   </div>
 </footer>
