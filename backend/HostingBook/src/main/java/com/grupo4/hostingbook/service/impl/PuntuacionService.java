@@ -98,6 +98,15 @@ public class PuntuacionService implements IPuntuacionService {
         return dtos;
     }
 
+    @Override
+    public Set<PuntuacionDTO> consultarPorUsuarioID(Long id) {
+        Set<PuntuacionDTO> dtos = new HashSet<>();
+        for (Puntuacion p : puntuacionRepository.consultarPorUsuarioID(id)) {
+            dtos.add(mapper.convertValue(p, PuntuacionDTO.class));
+        }
+        return dtos;
+    }
+
     private void validarCamposRequeridosCreacion(PuntuacionDTO puntuacionDTO) throws BadRequestException {
         if (puntuacionDTO == null) {
             throw new BadRequestException(String.format(Mensajes.ERROR_DTO_NO_EXISTE, "Puntuación"));

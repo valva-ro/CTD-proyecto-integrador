@@ -27,20 +27,37 @@ export default function ReservaCard({
   const { isLogged } = useContext(loggedContext);
   const [puntuaciones, setPuntuaciones] = useState([]);
   const puntaje = calcularPromedioPuntuacion(puntuaciones);
-  const [puntuacionDisponible, setPuntuacionDisponible] = useState(false);
+  const [puntuacionDeshabilitada, setpuntuacionDeshabilitada] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const fechaActual = new Date();
   const fechaCheckout = new Date(fechaEgreso);
+  const idUsuario = parseInt(localStorage.getItem("id"));
+  const [calificadoPreviamente, setCalificadoPreviamente] = useState(null);
 
   useEffect(() => {
-    get(`puntuaciones/producto/${id}`).then((data) => {
-      setPuntuaciones(data);
-    });
+    get(`puntuaciones/producto/${id}`)
+      .then((data) => {
+        setPuntuaciones(data);
+      })
+      .catch((err) => console.log(err));
+
+    get(`puntuaciones/usuario/${idUsuario}`)
+      .then((puntuaciones) => {
+        if (
+          puntuaciones.find((puntuacion) => puntuacion.producto.id === id) !==
+          undefined
+        ) {
+          setCalificadoPreviamente(true);
+        } else {
+          setCalificadoPreviamente(false);
+        }
+      })
+      .catch((err) => console.log(err));
 
     if (fechaActual < fechaCheckout) {
-      setPuntuacionDisponible(true);
+      setpuntuacionDeshabilitada(true);
     }
-  }, []);
+  }, [calificadoPreviamente]);
 
   const buscarImagenPrincipal = () => {
     let imagen = imagenes.find((imagen) => {
@@ -143,11 +160,15 @@ export default function ReservaCard({
           </Link>
           <OutlinedButton
             styles={styles.reservaBtnCalificar}
-            disabled={puntuacionDisponible}
+            disabled={puntuacionDeshabilitada}
             onClick={() => handleQualification()}
-            title="Los alojamientos sólo pueden ser calificados si la fecha actual es posterior al checkout"
+            title={
+              !puntuacionDeshabilitada
+                ? null
+                : "Los alojamientos sólo pueden ser calificados si la fecha actual es posterior al checkout"
+            }
           >
-            Calificar
+            {calificadoPreviamente ? "Editar calificación" : "Calificar"}
           </OutlinedButton>
           <Modal
             estaAbierto={showModal}

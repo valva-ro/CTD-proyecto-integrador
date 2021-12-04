@@ -6,4 +6,5 @@ import java.util.Set;
 
 public interface IPuntuacionService extends CRUDService<PuntuacionDTO>{
     Set<PuntuacionDTO> consultarPorProductoID(Long id);
+    Set<PuntuacionDTO> consultarPorUsuarioID(Long id);
 }

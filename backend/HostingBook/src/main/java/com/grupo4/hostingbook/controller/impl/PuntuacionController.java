@@ -30,7 +30,7 @@ public class PuntuacionController implements IPuntuacionController {
     }
 
     @Override
-    @ApiOperation(value = "Lista todas las puntuacions")
+    @ApiOperation(value = "Lista todas las puntuaciones")
     @ApiResponses(value = { @ApiResponse(code = 200, message = "Success") })
     @GetMapping
     public ResponseEntity<List<PuntuacionDTO>> obtenerTodos() {
@@ -85,8 +85,18 @@ public class PuntuacionController implements IPuntuacionController {
     }
 
     @Override
+    @ApiOperation(value = "Lista todas las puntuaciones de un producto")
+    @ApiResponses(value = { @ApiResponse(code = 200, message = "Success") })
     @GetMapping("/producto/{id}")
     public ResponseEntity<Set<PuntuacionDTO>> consultarPorProductoID(@PathVariable Long id) {
         return ResponseEntity.ok(puntuacionService.consultarPorProductoID(id));
+    }
+
+    @Override
+    @ApiOperation(value = "Lista todas las puntuaciones de un usuario")
+    @ApiResponses(value = { @ApiResponse(code = 200, message = "Success") })
+    @GetMapping("/usuario/{id}")
+    public ResponseEntity<Set<PuntuacionDTO>> consultarPorUsuarioID(@PathVariable Long id) {
+        return ResponseEntity.ok(puntuacionService.consultarPorUsuarioID(id));
     }
 }

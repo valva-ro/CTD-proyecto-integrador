@@ -302,6 +302,7 @@
   color: white;
   background-color: var(--color-3);
   border: 3px solid var(--color-3);
+  padding: 1%;
 }
 .reservaBtnCalificar:hover {
   background-color: var(--color-2);
