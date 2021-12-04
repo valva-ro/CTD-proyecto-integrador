@@ -50,7 +50,7 @@ export default function Reservas() {
       </div>
       <section className={styles.favoritosContainer}>
         {isLoadedReservas && reservas.length === 0 ? (
-          <div className={styles.avisoNoFavs}>
+          <div className={styles.avisoNoReservas}>
             <i className="far fa-frown"></i>
             <p>No has realizado reservas todavía</p>
           </div>
