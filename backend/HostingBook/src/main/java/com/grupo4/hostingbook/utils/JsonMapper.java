@@ -15,7 +15,7 @@ public class JsonMapper {
         return getObjectMapper().readValue(json, targetClass);
     }
 
-    private static ObjectMapper getObjectMapper(){
+    private static ObjectMapper getObjectMapper() {
         return new ObjectMapper()
                 .configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false)
                 .registerModule(new JavaTimeModule());

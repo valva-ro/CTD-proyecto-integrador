@@ -58,14 +58,14 @@ public class ProductoControllerTests {
         Set<CaracteristicaDTO> caracteristicasIDs = Set.of(caracteristica1ID, caracteristica2ID);
 
         categoriaService.crear(new CategoriaDTO("Hotel", "807.105 hoteles", "https://via.placeholder.com/300"));
-        ciudadService.crear(new CiudadDTO("Manizales", "Colombia",5.067, -75.517));
+        ciudadService.crear(new CiudadDTO("Manizales", "Colombia", 5.067, -75.517));
         imagenService.crear(new ImagenDTO("Habitación doble", "https://via.placeholder.com/300"));
         imagenService.crear(new ImagenDTO("Baño", "https://via.placeholder.com/300"));
-        caracteristicaService.crear(new CaracteristicaDTO("WiFi","<i class='bx bx-wifi'></i>"));
-        caracteristicaService.crear(new CaracteristicaDTO("Parking","<i class='bx bxs-car'></i>"));
+        caracteristicaService.crear(new CaracteristicaDTO("WiFi", "<i class='bx bx-wifi'></i>"));
+        caracteristicaService.crear(new CaracteristicaDTO("Parking", "<i class='bx bxs-car'></i>"));
 
         productoPorCrear = new ProductoDTO("Hotel Melia", "Servicio all inclusive con vista al mar", 12, categoriaID, ciudadID, imagenesIDs, caracteristicasIDs);
-        productoPorActualizar = new ProductoDTO(1L,"Hotel Grand Melia", "", 10, null, null, null, null, null);
+        productoPorActualizar = new ProductoDTO(1L, "Hotel Grand Melia", "", 10, null, null, null, null, null);
     }
 
     @Test
@@ -79,9 +79,9 @@ public class ProductoControllerTests {
     @Transactional
     public void test02crearProducto() throws Exception {
         MvcResult response = mockMvc.perform(MockMvcRequestBuilders.post("/productos")
-                    .contentType(MediaType.APPLICATION_JSON)
-                    .characterEncoding("utf-8")
-                    .content(JsonMapper.mapObjectToJson(productoPorCrear)))
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .characterEncoding("utf-8")
+                        .content(JsonMapper.mapObjectToJson(productoPorCrear)))
                 .andDo(MockMvcResultHandlers.print())
                 .andExpect(MockMvcResultMatchers.status().isOk()).andReturn();
 
@@ -103,7 +103,7 @@ public class ProductoControllerTests {
 
     @Test
     @Transactional
-    public void test04actualizarProducto() throws Exception{
+    public void test04actualizarProducto() throws Exception {
         productoController.crear(productoPorCrear);
 
         MvcResult response = mockMvc.perform(MockMvcRequestBuilders
@@ -119,7 +119,7 @@ public class ProductoControllerTests {
     }
 
     @Test
-    public void test06actualizarProductoSinId() throws Exception{
+    public void test06actualizarProductoSinId() throws Exception {
         mockMvc.perform(MockMvcRequestBuilders
                         .put("/productos")
                         .contentType(MediaType.APPLICATION_JSON)
@@ -129,7 +129,7 @@ public class ProductoControllerTests {
     }
 
     @Test
-    public void test07actualizarProductoConIdInvalido() throws Exception{
+    public void test07actualizarProductoConIdInvalido() throws Exception {
         ProductoDTO productoActualizado = productoPorCrear;
         productoActualizado.setId(-1L);
 
@@ -142,7 +142,7 @@ public class ProductoControllerTests {
     }
 
     @Test
-    public void test08actualizarProductoConIdInexistente() throws Exception{
+    public void test08actualizarProductoConIdInexistente() throws Exception {
         ProductoDTO productoActualizado = productoPorCrear;
         productoActualizado.setId(1L);
 
@@ -155,7 +155,7 @@ public class ProductoControllerTests {
     }
 
     @Test
-    public void test09actualizarConStringVacio() throws Exception{
+    public void test09actualizarConStringVacio() throws Exception {
         mockMvc.perform(MockMvcRequestBuilders
                         .put("/productos")
                         .contentType(MediaType.APPLICATION_JSON)
@@ -165,7 +165,7 @@ public class ProductoControllerTests {
     }
 
     @Test
-    public void test10actualizarConStringLlenoDeEspacios() throws Exception{
+    public void test10actualizarConStringLlenoDeEspacios() throws Exception {
         mockMvc.perform(MockMvcRequestBuilders
                         .put("/productos")
                         .contentType(MediaType.APPLICATION_JSON)
@@ -176,7 +176,7 @@ public class ProductoControllerTests {
 
     @Test
     @Transactional
-    public void test11eliminarConIdExistente() throws Exception{
+    public void test11eliminarConIdExistente() throws Exception {
         productoController.crear(productoPorCrear);
 
         mockMvc.perform(MockMvcRequestBuilders
@@ -210,9 +210,9 @@ public class ProductoControllerTests {
         productoController.crear(productoPorCrear);
 
         mockMvc.perform(MockMvcRequestBuilders.get("/productos/categoria")
-                .param("titulo", "Hotel")
-                .contentType(MediaType.APPLICATION_JSON)
-                .characterEncoding("utf-8"))
+                        .param("titulo", "Hotel")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .characterEncoding("utf-8"))
                 .andDo(MockMvcResultHandlers.print())
                 .andExpect(MockMvcResultMatchers.status().isOk());
     }

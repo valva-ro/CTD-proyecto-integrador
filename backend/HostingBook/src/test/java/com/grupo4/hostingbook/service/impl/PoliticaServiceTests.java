@@ -18,16 +18,18 @@ import static org.junit.jupiter.api.Assertions.*;
 public class PoliticaServiceTests {
     @Autowired
     private PoliticaService politicaService;
-    TipoPoliticaDTO tipoPoliticaCreada = new TipoPoliticaDTO(1L,"Politica prueba");
-    PoliticaDTO politicaPorCrear= new PoliticaDTO("sasd",tipoPoliticaCreada);
-    PoliticaDTO politicaCreada= new PoliticaDTO(1l,"sasd",tipoPoliticaCreada);
-    PoliticaDTO politicaPorActualizar= new PoliticaDTO(1L,"dsa");
-    PoliticaDTO politicaActualizada= new PoliticaDTO(1L,"dsa",tipoPoliticaCreada);
-    TipoPoliticaDTO tipoPoliticaPorCrear= new TipoPoliticaDTO("Politica prueba");
+    TipoPoliticaDTO tipoPoliticaCreada = new TipoPoliticaDTO(1L, "Politica prueba");
+    PoliticaDTO politicaPorCrear = new PoliticaDTO("sasd", tipoPoliticaCreada);
+    PoliticaDTO politicaCreada = new PoliticaDTO(1l, "sasd", tipoPoliticaCreada);
+    PoliticaDTO politicaPorActualizar = new PoliticaDTO(1L, "dsa");
+    PoliticaDTO politicaActualizada = new PoliticaDTO(1L, "dsa", tipoPoliticaCreada);
+    TipoPoliticaDTO tipoPoliticaPorCrear = new TipoPoliticaDTO("Politica prueba");
+
     @Test
     public void test01ObtenerTodasLasCiudadesEstaVacio() {
         assertEquals(0, politicaService.consultarTodos().size());
     }
+
     @Test
     public void test02AgregarPolitica() throws BadRequestException, ResourceNotFoundException {
         politicaService.crearTipoPolitica(tipoPoliticaCreada);

@@ -145,7 +145,7 @@ public class UsuarioService implements IUsuarioService {
         if (usuarioDTO.getContrasenia() != null && !usuarioDTO.getContrasenia().isEmpty() && !usuarioDTO.getContrasenia().isBlank())
             entidad.setContrasenia(usuarioDTO.getContrasenia());
         if (entidad.getProductosFavoritos() != null) {
-            if (entidad.getProductosFavoritos().size() > 0)  {
+            if (entidad.getProductosFavoritos().size() > 0) {
                 Set<Producto> favoritos = entidad.getProductosFavoritos();
                 for (ProductoDTO p : usuarioDTO.getProductosFavoritos()) {
                     favoritos.add(mapper.convertValue(p, Producto.class));

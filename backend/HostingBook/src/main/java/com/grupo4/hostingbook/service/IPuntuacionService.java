@@ -4,6 +4,6 @@ import com.grupo4.hostingbook.model.PuntuacionDTO;
 
 import java.util.Set;
 
-public interface IPuntuacionService extends CRUDService<PuntuacionDTO>{
+public interface IPuntuacionService extends CRUDService<PuntuacionDTO> {
     Set<PuntuacionDTO> consultarPorProductoID(Long id);
 }

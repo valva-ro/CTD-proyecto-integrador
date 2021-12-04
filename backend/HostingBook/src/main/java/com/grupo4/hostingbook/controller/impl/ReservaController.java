@@ -18,7 +18,7 @@ import java.util.Set;
 
 @RestController
 @RequestMapping("/reservas")
-@CrossOrigin(origins = "*", methods = { RequestMethod.GET, RequestMethod.POST }, allowedHeaders = "*")
+@CrossOrigin(origins = "*", methods = {RequestMethod.GET, RequestMethod.POST}, allowedHeaders = "*")
 public class ReservaController implements IReservaController {
 
     @Qualifier("ReservaService")

@@ -13,7 +13,7 @@ public class TipoPolitica {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="tipo_politica_id")
+    @Column(name = "tipo_politica_id")
     private Long id;
     private String nombre;
 
@@ -43,7 +43,7 @@ public class TipoPolitica {
         if (this == o) return true;
         if (!(o instanceof TipoPolitica)) return false;
         TipoPolitica that = (TipoPolitica) o;
-        return getId().equals(that.getId()) && getNombre().equals(that.getNombre()) ;
+        return getId().equals(that.getId()) && getNombre().equals(that.getNombre());
     }
 
     @Override

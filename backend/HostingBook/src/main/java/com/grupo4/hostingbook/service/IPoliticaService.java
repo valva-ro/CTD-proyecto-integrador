@@ -11,5 +11,5 @@ public interface IPoliticaService extends CRUDService<PoliticaDTO> {
 
     Set<PoliticaDTO> buscarPorTipoPolitica(Long politicaId) throws BadRequestException, ResourceNotFoundException;
 
-        TipoPoliticaDTO crearTipoPolitica(TipoPoliticaDTO tipoPoliticaDTO) throws BadRequestException;
+    TipoPoliticaDTO crearTipoPolitica(TipoPoliticaDTO tipoPoliticaDTO) throws BadRequestException;
 }

@@ -10,7 +10,7 @@ public class Puntuacion {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="puntuacion_id")
+    @Column(name = "puntuacion_id")
     private Long id;
     private Integer puntuacion;
     private String comentario;
@@ -24,7 +24,8 @@ public class Puntuacion {
     @JoinColumn(name = "fk_usuario")
     private Usuario usuario;
 
-    public Puntuacion() {}
+    public Puntuacion() {
+    }
 
     public Puntuacion(Long id) {
         this.id = id;

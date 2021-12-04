@@ -194,9 +194,13 @@ public class ProductoDTO implements Serializable {
         this.puntuaciones.add(puntuacionDTO);
     }
 
-    public Set<ReservaDTO> getReservas() { return reservas; }
+    public Set<ReservaDTO> getReservas() {
+        return reservas;
+    }
 
-    public void setReservas(Set<ReservaDTO> reservas) { this.reservas = reservas; }
+    public void setReservas(Set<ReservaDTO> reservas) {
+        this.reservas = reservas;
+    }
 
     public Set<UsuarioDTO> getUsuarios() {
         return usuarios;

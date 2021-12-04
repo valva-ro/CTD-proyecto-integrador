@@ -23,8 +23,8 @@ public class ImagenServiceTests {
 
     private final ImagenDTO imagenPorCrear = new ImagenDTO("Cocina", "https://via.placeholder.com/300");
     private final ImagenDTO imagenCreada = new ImagenDTO(1L, "Cocina", "https://via.placeholder.com/300");
-    private final ImagenDTO imagenPorActualizar = new ImagenDTO(1L,"", "https://via.placeholder.com/600");
-    private final ImagenDTO imagenActualizada = new ImagenDTO(1L,"Cocina","https://via.placeholder.com/600");
+    private final ImagenDTO imagenPorActualizar = new ImagenDTO(1L, "", "https://via.placeholder.com/600");
+    private final ImagenDTO imagenActualizada = new ImagenDTO(1L, "Cocina", "https://via.placeholder.com/600");
 
     @Test
     public void test01ObtenerTodasLasImagenesEstaVacio() {

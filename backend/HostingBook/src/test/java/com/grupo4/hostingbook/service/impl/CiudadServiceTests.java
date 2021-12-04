@@ -21,10 +21,10 @@ public class CiudadServiceTests {
     @Autowired
     private CRUDService<CiudadDTO> ciudadService;
 
-    private final CiudadDTO ciudadPorCrear = new CiudadDTO("Manizales", "Colombia",5.067, -75.517);
-    private final CiudadDTO ciudadCreada = new CiudadDTO(1L, "Manizales", "Colombia",5.067, -75.517);
-    private final CiudadDTO ciudadPorActualizar = new CiudadDTO(1L,"Pereira", "",4.8132, -75.6946);
-    private final CiudadDTO ciudadActualizada = new CiudadDTO(1L, "Pereira", "Colombia", 4.8132,-75.6946);
+    private final CiudadDTO ciudadPorCrear = new CiudadDTO("Manizales", "Colombia", 5.067, -75.517);
+    private final CiudadDTO ciudadCreada = new CiudadDTO(1L, "Manizales", "Colombia", 5.067, -75.517);
+    private final CiudadDTO ciudadPorActualizar = new CiudadDTO(1L, "Pereira", "", 4.8132, -75.6946);
+    private final CiudadDTO ciudadActualizada = new CiudadDTO(1L, "Pereira", "Colombia", 4.8132, -75.6946);
 
     @Test
     public void test01ObtenerTodasLasCiudadesEstaVacio() {

@@ -16,7 +16,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/categorias")
-@CrossOrigin(origins = "*", methods = { RequestMethod.GET, RequestMethod.POST }, allowedHeaders = "*")
+@CrossOrigin(origins = "*", methods = {RequestMethod.GET, RequestMethod.POST}, allowedHeaders = "*")
 public class CategoriaController implements CRUDController<CategoriaDTO> {
 
     @Qualifier("CategoriaService")
@@ -29,7 +29,7 @@ public class CategoriaController implements CRUDController<CategoriaDTO> {
 
     @Override
     @ApiOperation(value = "Lista todas las categorias")
-    @ApiResponses(value = { @ApiResponse(code = 200, message = "Success") })
+    @ApiResponses(value = {@ApiResponse(code = 200, message = "Success")})
     @GetMapping
     public ResponseEntity<List<CategoriaDTO>> obtenerTodos() {
         List<CategoriaDTO> categorias = categoriaService.consultarTodos();
@@ -38,8 +38,8 @@ public class CategoriaController implements CRUDController<CategoriaDTO> {
 
     @Override
     @ApiOperation(value = "Crea una nueva categoria")
-    @ApiResponses(value = { @ApiResponse(code = 200, message = "Success"),
-                            @ApiResponse(code = 400, message = "Bad Request") })
+    @ApiResponses(value = {@ApiResponse(code = 200, message = "Success"),
+            @ApiResponse(code = 400, message = "Bad Request")})
     @PostMapping
     public ResponseEntity<CategoriaDTO> crear(@RequestBody CategoriaDTO categoria) throws BadRequestException, ResourceNotFoundException, RepeatedMailException, NotImplementedException {
         CategoriaDTO categoriaNueva = categoriaService.crear(categoria);
@@ -48,9 +48,9 @@ public class CategoriaController implements CRUDController<CategoriaDTO> {
 
     @Override
     @ApiOperation(value = "Busca una categoria por ID")
-    @ApiResponses(value = { @ApiResponse(code = 200, message = "Success"),
-                            @ApiResponse(code = 404, message = "Not found"), 
-                            @ApiResponse(code = 400, message = "Bad Request") })
+    @ApiResponses(value = {@ApiResponse(code = 200, message = "Success"),
+            @ApiResponse(code = 404, message = "Not found"),
+            @ApiResponse(code = 400, message = "Bad Request")})
     @GetMapping("/{id}")
     public ResponseEntity<CategoriaDTO> buscarPorId(@PathVariable Long id)
             throws BadRequestException, ResourceNotFoundException {
@@ -60,9 +60,9 @@ public class CategoriaController implements CRUDController<CategoriaDTO> {
 
     @Override
     @ApiOperation(value = "Actualiza una categoría")
-    @ApiResponses(value = { @ApiResponse(code = 200, message = "Success"),
-                            @ApiResponse(code = 404, message = "Not found"), 
-                            @ApiResponse(code = 400, message = "Bad Request") })
+    @ApiResponses(value = {@ApiResponse(code = 200, message = "Success"),
+            @ApiResponse(code = 404, message = "Not found"),
+            @ApiResponse(code = 400, message = "Bad Request")})
     @PutMapping
     public ResponseEntity<CategoriaDTO> actualizar(@RequestBody CategoriaDTO categoria)
             throws BadRequestException, ResourceNotFoundException, NotImplementedException {
@@ -72,9 +72,9 @@ public class CategoriaController implements CRUDController<CategoriaDTO> {
 
     @Override
     @ApiOperation(value = "Elimina una categoría")
-    @ApiResponses(value = { @ApiResponse(code = 200, message = "Success"),
-                            @ApiResponse(code = 404, message = "Not found"), 
-                            @ApiResponse(code = 400, message = "Bad Request") })
+    @ApiResponses(value = {@ApiResponse(code = 200, message = "Success"),
+            @ApiResponse(code = 404, message = "Not found"),
+            @ApiResponse(code = 400, message = "Bad Request")})
     @DeleteMapping("/{id}")
     public ResponseEntity<String> eliminar(@PathVariable Long id)
             throws BadRequestException, ResourceNotFoundException {

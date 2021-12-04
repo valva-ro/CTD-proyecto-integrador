@@ -23,8 +23,8 @@ public class CategoriaServiceTests {
 
     private final CategoriaDTO categoriaPorCrear = new CategoriaDTO("Hotel", "807.105 hoteles", "https://via.placeholder.com/300");
     private final CategoriaDTO categoriaCreada = new CategoriaDTO(1L, "Hotel", "807.105 hoteles", "https://via.placeholder.com/300");
-    private final CategoriaDTO categoriaPorActualizar = new CategoriaDTO(1L,"", "900.000 hoteles", "");
-    private final CategoriaDTO categoriaActualizada = new CategoriaDTO(1L,"Hotel", "900.000 hoteles", "https://via.placeholder.com/300");
+    private final CategoriaDTO categoriaPorActualizar = new CategoriaDTO(1L, "", "900.000 hoteles", "");
+    private final CategoriaDTO categoriaActualizada = new CategoriaDTO(1L, "Hotel", "900.000 hoteles", "https://via.placeholder.com/300");
 
     @Test
     public void test01ObtenerTodasLasCategoriasEstaVacio() {
