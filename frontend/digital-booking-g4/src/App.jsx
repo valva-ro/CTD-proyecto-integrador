@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 import Layout from "./components/Layout/Layout";
 import Home from "./components/Home/Home";
@@ -13,36 +13,39 @@ import ProductoLayout from "./components/Producto/ProductoLayout/ProductoLayout"
 import ProductoDetalle from "./components/Producto/ProductoDetalle/ProductoDetalle";
 import ProductoReserva from "./components/Producto/ProductoReserva/ProductoReserva";
 import Reservas from "./components/FavoritosYReservas/Reservas/Reservas";
-import get from "./utils/get";
+import jwtDecode from "jwt-decode";
 
 function App() {
+  AOS.init();
   const [isLogged, setIsLogged] = useState(estaLogueado());
   const [userInformation, setUserInformation] = useState(
     obtenerInformacionUsuario()
   );
   let token = "";
-
-  AOS.init();
-
   if (localStorage.hasOwnProperty("jwt")) {
     token = localStorage.getItem("jwt").replaceAll('"', "");
   }
 
-  const comprobarToken = () => {
-    get("validateCurrentSession", {
-      "Content-Type": "application/json",
-      Authorization: token,
-    }).then((response) => {
-      if (response.status !== 200) {
-        setIsLogged(false);
-        localStorage.clear();
-      }
-    });
-  };
+  useEffect(() => {
+    setInterval(function () {
+      comprobarToken();
+    }, 1000 * 60 * 10);
+  }, []);
 
-  setInterval(function () {
-    comprobarToken();
-  }, 36000000);
+  useEffect(() => {}, [isLogged]);
+
+  const comprobarToken = () => {
+    if (token === "") {
+      localStorage.clear();
+      setIsLogged(false);
+    } else {
+      const decodedToken = jwtDecode(token);
+      if (decodedToken.exp < Date.now() / 1000) {
+        localStorage.clear();
+        setIsLogged(false);
+      }
+    }
+  };
 
   return (
     <loggedContext.Provider
