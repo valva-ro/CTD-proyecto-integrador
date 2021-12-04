@@ -12,8 +12,6 @@ export default function TarjetaPuntuacionReserva({
   const [commentText, setCommentText] = useState(""); 
   const [puntuadoConExito, setPuntuadoConExito] = useState(null);
 
-  console.log(puntuacion);
-
   const enviarPuntuacion = () => {
     post("puntuaciones", {
       puntuacion: puntuacion,
@@ -22,7 +20,6 @@ export default function TarjetaPuntuacionReserva({
       usuario: { id: idUsuario },
     })
       .then((response) => {
-        console.log(response.status);
         if (response.status !== 200) {
           setPuntuadoConExito(false);
         } else {
