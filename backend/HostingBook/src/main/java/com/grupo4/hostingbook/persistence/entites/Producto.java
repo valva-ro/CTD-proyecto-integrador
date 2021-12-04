@@ -46,7 +46,6 @@ public class Producto {
             CascadeType.REFRESH,
             CascadeType.REMOVE
     })
-    @JsonIgnore
     @JoinTable(
             name = "politica_producto",
             joinColumns = @JoinColumn(name = "producto_id"),

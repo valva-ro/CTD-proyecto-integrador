@@ -1,58 +1,64 @@
 import TituloBloque from "../../../TituloBloque/TituloBloque";
 import styles from "./ProductoPoliticas.module.css";
-import { useParams } from "react-router-dom";
 
-export default function ProductoPoliticas({ alojamientos }) {
-  const { id } = useParams();
-  const alojamiento = alojamientos[id];
+const NORMAS_CASA = "Normas de la casa";
+const SALUD_SEGURIDAD = "Salud y seguridad";
+const CANCELACION = "Política de cancelación";
+
+export default function ProductoPoliticas({ alojamiento }) {
+  console.log(alojamiento);
+
+  const politicasNormasCasa = filtrarPoliticasPorTipo(NORMAS_CASA);
+  const politicasSaludSeguridad = filtrarPoliticasPorTipo(SALUD_SEGURIDAD);
+  const politicasCancelacion = filtrarPoliticasPorTipo(CANCELACION);
+
+  function filtrarPoliticasPorTipo(tipo) {
+    const politicasSinFiltrar = alojamiento.politicas;
+    return politicasSinFiltrar.filter((p) => p.tipoPolitica.nombre === tipo);
+  }
 
   return (
     <section className={styles.bloqueProductoPoliticas}>
-      <>
-        <TituloBloque>Qué tienes que saber</TituloBloque>
-        <hr />
-
-        <div className={styles.contenedorPoliticas}>
-          <div className={styles.politicasTextos}>
-            <h4 className={styles.subtituloSecciones}>Normas de la casa</h4>
-            <div className={styles.secciones}>
-              {alojamiento.policies.rules.length > 0 ? (
-                alojamiento.policies.rules.map((parrafo, i) => (
-                  <p key={i}>{parrafo}</p>
-                ))
-              ) : (
-                <p>No hay reglas establecidas para este producto</p>
-              )}
-            </div>
-          </div>
-          <div className={styles.politicasTextos}>
-            <h4 className={styles.subtituloSecciones}>Salud y seguridad</h4>
-            <div className={styles.secciones}>
-              {alojamiento.policies.safeAndHealth.length > 0 ? (
-                alojamiento.policies.safeAndHealth.map((parrafo, i) => {
-                  return <p key={i}>{parrafo}</p>;
-                })
-              ) : (
-                <p>No hay normas de bioseguridad para este producto</p>
-              )}
-            </div>
-          </div>
-          <div className={styles.politicasTextos}>
-            <h4 className={styles.subtituloSecciones}>
-              Política de cancelación
-            </h4>
-            <div className={styles.secciones}>
-              {alojamiento.policies.cancel.length > 0 ? (
-                alojamiento.policies.cancel.map((parrafo, i) => {
-                  return <p key={i}>{parrafo}</p>;
-                })
-              ) : (
-                <p>No hay reglas de cancelación para este producto</p>
-              )}
-            </div>
+      <TituloBloque>Qué tienes que saber</TituloBloque>
+      <hr />
+      <div className={styles.contenedorPoliticas}>
+        <div className={styles.politicasTextos}>
+          <h4 className={styles.subtituloSecciones}>{NORMAS_CASA}</h4>
+          <div className={styles.secciones}>
+            {politicasNormasCasa.length > 0 ? (
+              politicasNormasCasa.map((politica) => (
+                <p key={politica.id}>{politica.nombre}</p>
+              ))
+            ) : (
+              <p>No hay reglas establecidas para este producto</p>
+            )}
           </div>
         </div>
-      </>
+        <div className={styles.politicasTextos}>
+          <h4 className={styles.subtituloSecciones}>{SALUD_SEGURIDAD}</h4>
+          <div className={styles.secciones}>
+            {politicasSaludSeguridad.length > 0 ? (
+              politicasSaludSeguridad.map((politica) => (
+                <p key={politica.id}>{politica.nombre}</p>
+              ))
+            ) : (
+              <p>No hay normas de bioseguridad para este producto</p>
+            )}
+          </div>
+        </div>
+        <div className={styles.politicasTextos}>
+          <h4 className={styles.subtituloSecciones}>{CANCELACION}</h4>
+          <div className={styles.secciones}>
+            {politicasCancelacion.length > 0 ? (
+              politicasCancelacion.map((politica) => (
+                <p key={politica.id}>{politica.nombre}</p>
+              ))
+            ) : (
+              <p>No hay reglas de cancelación para este producto</p>
+            )}
+          </div>
+        </div>
+      </div>
     </section>
   );
 }

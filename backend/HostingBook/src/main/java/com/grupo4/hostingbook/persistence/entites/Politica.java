@@ -16,7 +16,6 @@ public class Politica {
     @JoinColumn(name = "fk_tipo_politica")
     private TipoPolitica tipoPolitica;
 
-
     public Long getId() {
         return id;
     }
