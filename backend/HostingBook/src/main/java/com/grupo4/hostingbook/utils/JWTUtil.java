@@ -14,6 +14,7 @@ import java.util.Map;
 public class JWTUtil {
 
     private final String SECRET_KEY = "s3cr37ke1";
+    private final Long EXPIRACION_TOKEN = 8640000000L; // 24 horas en milisegundos
 
     public String extractUserName(String token) {
         return extractClaimUsername(token);
@@ -23,12 +24,12 @@ public class JWTUtil {
         return extractClaimDate(token);
     }
 
-    public Date extractClaimDate(String token){
+    public Date extractClaimDate(String token) {
         Claims claims = extractAllClaims(token);
         return claims.getExpiration();
     }
 
-    public String extractClaimUsername(String token){
+    public String extractClaimUsername(String token) {
         Claims claims = extractAllClaims(token);
         return claims.getSubject();
     }
@@ -47,7 +48,7 @@ public class JWTUtil {
                 .setClaims(claims)
                 .setSubject(subject)
                 .setIssuedAt(new Date(System.currentTimeMillis()))
-                .setExpiration(new Date(System.currentTimeMillis() + 9000000))
+                .setExpiration(new Date(System.currentTimeMillis() + EXPIRACION_TOKEN))
                 .signWith(SignatureAlgorithm.HS256, SECRET_KEY)
                 .compact();
     }

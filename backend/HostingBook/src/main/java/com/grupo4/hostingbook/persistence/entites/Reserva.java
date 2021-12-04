@@ -10,7 +10,7 @@ public class Reserva {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="reserva_id")
+    @Column(name = "reserva_id")
     private Long id;
     private String nombre;
     private String apellido;
@@ -30,7 +30,8 @@ public class Reserva {
     @JoinColumn(name = "fk_usuario")
     private Usuario usuario;
 
-    public Reserva() {}
+    public Reserva() {
+    }
 
     public Reserva(Integer horaEntrada, String nombre, String apellido, String mail, String ciudad, LocalDate fechaIngreso, LocalDate fechaEgreso, String datos, Boolean vacunaCovid, Producto producto, Usuario usuario) {
         this.horaEntrada = horaEntrada;
@@ -61,9 +62,13 @@ public class Reserva {
         this.usuario = usuario;
     }
 
-    public Long getId() { return id; }
+    public Long getId() {
+        return id;
+    }
 
-    public void setId(Long id) { this.id = id; }
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getNombre() {
         return nombre;
@@ -98,33 +103,61 @@ public class Reserva {
     }
 
 
-    public Integer getHoraEntrada() { return horaEntrada; }
+    public Integer getHoraEntrada() {
+        return horaEntrada;
+    }
 
-    public void setHoraEntrada(Integer horaEntrada) {this.horaEntrada = horaEntrada;}
+    public void setHoraEntrada(Integer horaEntrada) {
+        this.horaEntrada = horaEntrada;
+    }
 
-    public LocalDate getFechaIngreso() {return fechaIngreso;}
+    public LocalDate getFechaIngreso() {
+        return fechaIngreso;
+    }
 
-    public void setFechaIngreso(LocalDate fechaIngreso) {this.fechaIngreso = fechaIngreso;}
+    public void setFechaIngreso(LocalDate fechaIngreso) {
+        this.fechaIngreso = fechaIngreso;
+    }
 
-    public LocalDate getFechaEgreso() {return fechaEgreso;}
+    public LocalDate getFechaEgreso() {
+        return fechaEgreso;
+    }
 
-    public void setFechaEgreso(LocalDate fechaEgreso) {this.fechaEgreso = fechaEgreso;}
+    public void setFechaEgreso(LocalDate fechaEgreso) {
+        this.fechaEgreso = fechaEgreso;
+    }
 
-    public String getDatos() {return datos;}
+    public String getDatos() {
+        return datos;
+    }
 
-    public void setDatos(String datos) {this.datos = datos;}
+    public void setDatos(String datos) {
+        this.datos = datos;
+    }
 
-    public Boolean getVacunaCovid() {return vacunaCovid;}
+    public Boolean getVacunaCovid() {
+        return vacunaCovid;
+    }
 
-    public void setVacunaCovid(Boolean vacunaCovid) {this.vacunaCovid = vacunaCovid;}
+    public void setVacunaCovid(Boolean vacunaCovid) {
+        this.vacunaCovid = vacunaCovid;
+    }
 
-    public Producto getProducto() {return producto;}
+    public Producto getProducto() {
+        return producto;
+    }
 
-    public void setProducto(Producto producto) {this.producto = producto;}
+    public void setProducto(Producto producto) {
+        this.producto = producto;
+    }
 
-    public Usuario getUsuario() {return usuario;}
+    public Usuario getUsuario() {
+        return usuario;
+    }
 
-    public void setUsuario(Usuario usuario) {this.usuario = usuario;}
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
 
     @Override
     public boolean equals(Object o) {

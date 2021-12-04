@@ -27,8 +27,8 @@ public class CiudadControllerTests {
     private CiudadDTO ciudad;
 
     @BeforeEach
-    public void reset(){
-        ciudad = new CiudadDTO( "Capital Federal", "Argentina",-34.6131,-58.3772);
+    public void reset() {
+        ciudad = new CiudadDTO("Capital Federal", "Argentina", -34.6131, -58.3772);
     }
 
     @Test
@@ -44,9 +44,9 @@ public class CiudadControllerTests {
         ciudadEsperada.setId(1L);
 
         MvcResult response = mockMvc.perform(MockMvcRequestBuilders.post("/ciudades")
-                    .contentType(MediaType.APPLICATION_JSON)
-                    .characterEncoding("utf-8")
-                    .content(JsonMapper.mapObjectToJson(ciudad)))
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .characterEncoding("utf-8")
+                        .content(JsonMapper.mapObjectToJson(ciudad)))
                 .andDo(MockMvcResultHandlers.print())
                 .andExpect(MockMvcResultMatchers.status().isOk()).andReturn();
 
@@ -87,7 +87,7 @@ public class CiudadControllerTests {
     }
 
     @Test
-    public void test06ActualizarCiudadNoEstaImplementado() throws Exception{
+    public void test06ActualizarCiudadNoEstaImplementado() throws Exception {
         mockMvc.perform(MockMvcRequestBuilders
                         .put("/ciudades")
                         .contentType(MediaType.APPLICATION_JSON)
@@ -97,7 +97,7 @@ public class CiudadControllerTests {
     }
 
     @Test
-    public void test07EliminarCiudadNoEstaImplementado() throws Exception{
+    public void test07EliminarCiudadNoEstaImplementado() throws Exception {
         mockMvc.perform(MockMvcRequestBuilders
                         .delete("/ciudades/1")
                         .contentType(MediaType.APPLICATION_JSON)
@@ -106,7 +106,7 @@ public class CiudadControllerTests {
     }
 
     @Test
-    public void test08BuscarCiudadPorIDNoEstaImplementado() throws Exception{
+    public void test08BuscarCiudadPorIDNoEstaImplementado() throws Exception {
         mockMvc.perform(MockMvcRequestBuilders
                         .get("/ciudades/1")
                         .contentType(MediaType.APPLICATION_JSON)

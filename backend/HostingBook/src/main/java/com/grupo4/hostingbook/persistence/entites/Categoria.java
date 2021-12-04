@@ -11,11 +11,11 @@ public class Categoria {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="categoria_id")
+    @Column(name = "categoria_id")
     private Long id;
     private String titulo;
     private String descripcion;
-    @Column(name="url_imagen")
+    @Column(name = "url_imagen")
     private String urlImagen;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "categoria", fetch = FetchType.EAGER)

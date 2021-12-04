@@ -13,7 +13,8 @@ public class CiudadDTO implements Serializable {
     private Double longitud;
     private Set<ProductoDTO> productos;
 
-    public CiudadDTO(){}
+    public CiudadDTO() {
+    }
 
     public CiudadDTO(Long id) {
         this.id = id;
@@ -67,13 +68,21 @@ public class CiudadDTO implements Serializable {
         this.pais = pais;
     }
 
-    public Double getLatitud() {return latitud;}
+    public Double getLatitud() {
+        return latitud;
+    }
 
-    public void setLatitud(Double latitud) {this.latitud = latitud;}
+    public void setLatitud(Double latitud) {
+        this.latitud = latitud;
+    }
 
-    public Double getLongitud() {return longitud;}
+    public Double getLongitud() {
+        return longitud;
+    }
 
-    public void setLongitud(Double longitud) {this.longitud = longitud;}
+    public void setLongitud(Double longitud) {
+        this.longitud = longitud;
+    }
 
     @Override
     public boolean equals(Object o) {

@@ -19,7 +19,7 @@ import java.util.Set;
 
 @RestController
 @RequestMapping("/productos")
-@CrossOrigin(origins = "*", methods = { RequestMethod.GET, RequestMethod.POST }, allowedHeaders = "*")
+@CrossOrigin(origins = "*", methods = {RequestMethod.GET, RequestMethod.POST}, allowedHeaders = "*")
 public class ProductoController implements IProductoController {
 
     @Qualifier("ProductoService")
@@ -89,7 +89,7 @@ public class ProductoController implements IProductoController {
     @DeleteMapping("/{id}")
     public ResponseEntity<String> eliminar(@PathVariable Long id) throws BadRequestException, ResourceNotFoundException {
         productoService.eliminar(id);
-        return ResponseEntity.ok(String.format(Mensajes.ELIMINADO_CON_EXITO,"Producto", id));
+        return ResponseEntity.ok(String.format(Mensajes.ELIMINADO_CON_EXITO, "Producto", id));
     }
 
     @Override
@@ -122,8 +122,8 @@ public class ProductoController implements IProductoController {
     @GetMapping(params = {"ciudad", "fechaIngreso", "fechaEgreso"})
     public ResponseEntity<?> obtenerPorCiudadYFechas(@RequestParam("ciudad") String ciudad,
                                                      @RequestParam("fechaIngreso") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate fechaIngreso,
-                                                     @RequestParam("fechaEgreso") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate fechaEgreso ) throws ResourceNotFoundException {
-        Set<ProductoDTO> productos = productoService.consultarPorCiudadYFechas(ciudad,fechaIngreso,fechaEgreso);
+                                                     @RequestParam("fechaEgreso") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate fechaEgreso) throws ResourceNotFoundException {
+        Set<ProductoDTO> productos = productoService.consultarPorCiudadYFechas(ciudad, fechaIngreso, fechaEgreso);
         return ResponseEntity.ok(productos);
     }
 
@@ -134,8 +134,8 @@ public class ProductoController implements IProductoController {
     })
     @GetMapping(params = {"fechaIngreso", "fechaEgreso"})
     public ResponseEntity<?> obtenerPorFechas(@RequestParam("fechaIngreso") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate fechaIngreso,
-                                              @RequestParam("fechaEgreso") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate fechaEgreso ) throws ResourceNotFoundException {
-        Set<ProductoDTO> productos = productoService.consultarPorFechas(fechaIngreso,fechaEgreso);
+                                              @RequestParam("fechaEgreso") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate fechaEgreso) throws ResourceNotFoundException {
+        Set<ProductoDTO> productos = productoService.consultarPorFechas(fechaIngreso, fechaEgreso);
         return ResponseEntity.ok(productos);
     }
 

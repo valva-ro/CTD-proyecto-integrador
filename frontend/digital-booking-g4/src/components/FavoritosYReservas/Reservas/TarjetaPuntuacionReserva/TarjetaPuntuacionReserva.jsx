@@ -9,7 +9,7 @@ export default function TarjetaPuntuacionReserva({
 }) {
   const [puntuacion, setPuntuacion] = useState(null);
   const idUsuario = parseInt(localStorage.getItem("id"));
-  const [commentText, setCommentText] = useState(""); 
+  const [commentText, setCommentText] = useState("");
   const [puntuadoConExito, setPuntuadoConExito] = useState(null);
 
   const enviarPuntuacion = () => {
@@ -30,7 +30,7 @@ export default function TarjetaPuntuacionReserva({
   };
 
   return (
-    <div className={styles.card}>
+    <form className={styles.card} onSubmit={enviarPuntuacion}>
       {puntuadoConExito === null ? (
         <>
           <h2 className={`${styles.title} ${styles.calificarTitle}`}>
@@ -79,7 +79,8 @@ export default function TarjetaPuntuacionReserva({
             />
             <label htmlFor="rate1" className="fas fa-star"></label>
           </div>
-          <textarea className={styles.puntuacionComentarios}
+          <textarea
+            className={styles.puntuacionComentarios}
             name="comentario"
             id="comentario"
             value={commentText}
@@ -90,23 +91,33 @@ export default function TarjetaPuntuacionReserva({
             Confirmar
           </FilledButton>
         </>
-      ) : puntuadoConExito ? (
-        <>
-          <p className={styles.msjPuntuacionExitosa}>
-            Puntuación realizada con éxito!
-          </p>
-          <i
-            className={`far fa-check-circle ${styles.iconoPuntuacionExitosa}`}
-          ></i>
-        </>
-      ) : (
-        <>
-          <p className={styles.msjPuntuacionFallida}>Puntuación fallida!</p>
-          <i
-            className={`far fa-times-circle ${styles.iconoPuntuacionFallida}`}
-          ></i>
-        </>
-      )}
-    </div>
+      ) : puntuadoConExito ? 
+        mensajePuntuacionExitosa()
+       : 
+        mensajePuntuacionFallida()
+      }
+    </form>
+  );
+}
+
+function mensajePuntuacionExitosa() {
+  return (
+    <>
+      <p className={styles.msjPuntuacionExitosa}>
+        ¡Tu calificación fue realizada con éxito!
+      </p>
+      <i className={`far fa-check-circle ${styles.iconoPuntuacionExitosa}`}></i>
+    </>
+  );
+}
+
+function mensajePuntuacionFallida() {
+  return (
+    <>
+      <p className={styles.msjPuntuacionFallida}>
+        Hubo un problema al enviar tu calificación, intentalo de nuevo más tarde
+      </p>
+      <i className={`far fa-times-circle ${styles.iconoPuntuacionFallida}`}></i>
+    </>
   );
 }

@@ -10,7 +10,8 @@ public class RolDTO implements Serializable {
     private String nombre;
     private Set<UsuarioDTO> usuarios;
 
-    public RolDTO() {}
+    public RolDTO() {
+    }
 
     public RolDTO(Long id) {
         this.id = id;
@@ -25,7 +26,7 @@ public class RolDTO implements Serializable {
         this.nombre = nombre;
     }
 
-    public RolDTO(Long id, String nombre,Set<UsuarioDTO> usuarios) {
+    public RolDTO(Long id, String nombre, Set<UsuarioDTO> usuarios) {
         this.id = id;
         this.nombre = nombre;
         this.usuarios = usuarios;
@@ -39,13 +40,21 @@ public class RolDTO implements Serializable {
         this.id = id;
     }
 
-    public String getNombre() { return nombre; }
+    public String getNombre() {
+        return nombre;
+    }
 
-    public void setNombre(String nombre) { this.nombre = nombre; }
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
 
-    public Set<UsuarioDTO> getUsuarios() { return usuarios; }
+    public Set<UsuarioDTO> getUsuarios() {
+        return usuarios;
+    }
 
-    public void setUsuarios(Set<UsuarioDTO> usuarios) { this.usuarios = usuarios; }
+    public void setUsuarios(Set<UsuarioDTO> usuarios) {
+        this.usuarios = usuarios;
+    }
 
     @Override
     public boolean equals(Object o) {

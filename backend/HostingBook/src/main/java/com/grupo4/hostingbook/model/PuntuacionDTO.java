@@ -13,7 +13,8 @@ public class PuntuacionDTO implements Serializable {
     private ProductoDTO producto;
     private UsuarioDTO usuario;
 
-    public PuntuacionDTO() {}
+    public PuntuacionDTO() {
+    }
 
     public PuntuacionDTO(Long id) {
         this.id = id;

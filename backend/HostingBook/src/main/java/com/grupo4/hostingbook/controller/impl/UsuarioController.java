@@ -19,7 +19,7 @@ import java.util.Set;
 
 @RestController
 @RequestMapping("/usuarios")
-@CrossOrigin(origins = "*", methods = { RequestMethod.GET, RequestMethod.POST }, allowedHeaders = "*")
+@CrossOrigin(origins = "*", methods = {RequestMethod.GET, RequestMethod.POST}, allowedHeaders = "*")
 public class UsuarioController implements IUsuarioController {
 
     @Qualifier("UsuarioService")
@@ -32,7 +32,7 @@ public class UsuarioController implements IUsuarioController {
 
     @Override
     @ApiOperation(value = "Lista todos los usuarios")
-    @ApiResponses(value = { @ApiResponse(code = 200, message = "Success") })
+    @ApiResponses(value = {@ApiResponse(code = 200, message = "Success")})
     @GetMapping
     public ResponseEntity<List<UsuarioDTO>> obtenerTodos() {
         List<UsuarioDTO> usuarios = usuarioService.consultarTodos();
@@ -41,8 +41,8 @@ public class UsuarioController implements IUsuarioController {
 
     @Override
     @ApiOperation(value = "Crea un nuevo usuario")
-    @ApiResponses(value = { @ApiResponse(code = 201, message = "Created"),
-                            @ApiResponse(code = 400, message = "Bad Request") })
+    @ApiResponses(value = {@ApiResponse(code = 201, message = "Created"),
+            @ApiResponse(code = 400, message = "Bad Request")})
     @PostMapping("/signup")
     public ResponseEntity<?> crear(@RequestBody UsuarioDTO usuario)
             throws BadRequestException, ResourceNotFoundException, RepeatedMailException, NotImplementedException {
@@ -52,9 +52,9 @@ public class UsuarioController implements IUsuarioController {
 
     @Override
     @ApiOperation(value = "Busca un usuario por ID")
-    @ApiResponses(value = { @ApiResponse(code = 200, message = "Success"),
-                            @ApiResponse(code = 404, message = "Not found"), 
-                            @ApiResponse(code = 400, message = "Bad Request") })
+    @ApiResponses(value = {@ApiResponse(code = 200, message = "Success"),
+            @ApiResponse(code = 404, message = "Not found"),
+            @ApiResponse(code = 400, message = "Bad Request")})
     @GetMapping("/{id}")
     public ResponseEntity<UsuarioDTO> buscarPorId(@PathVariable Long id)
             throws BadRequestException, ResourceNotFoundException {
@@ -64,8 +64,8 @@ public class UsuarioController implements IUsuarioController {
 
     @Override
     @ApiOperation(value = "Actualiza un usuario")
-    @ApiResponses(value = { @ApiResponse(code = 200, message = "Success"),
-            @ApiResponse(code = 404, message = "Not found"), @ApiResponse(code = 400, message = "Bad Request") })
+    @ApiResponses(value = {@ApiResponse(code = 200, message = "Success"),
+            @ApiResponse(code = 404, message = "Not found"), @ApiResponse(code = 400, message = "Bad Request")})
     @PutMapping
     public ResponseEntity<UsuarioDTO> actualizar(@RequestBody UsuarioDTO usuario)
             throws BadRequestException, ResourceNotFoundException, NotImplementedException {
@@ -75,8 +75,8 @@ public class UsuarioController implements IUsuarioController {
 
     @Override
     @ApiOperation(value = "Elimina un usuario")
-    @ApiResponses(value = { @ApiResponse(code = 200, message = "Success"),
-            @ApiResponse(code = 404, message = "Not found"), @ApiResponse(code = 400, message = "Bad Request") })
+    @ApiResponses(value = {@ApiResponse(code = 200, message = "Success"),
+            @ApiResponse(code = 404, message = "Not found"), @ApiResponse(code = 400, message = "Bad Request")})
     @DeleteMapping("/{id}")
     public ResponseEntity<String> eliminar(@PathVariable Long id)
             throws BadRequestException, ResourceNotFoundException {
@@ -86,8 +86,8 @@ public class UsuarioController implements IUsuarioController {
 
     @Override
     @ApiOperation(value = "Busca los productos favoritos de un usuario por su ID")
-    @ApiResponses(value = { @ApiResponse(code = 200, message = "Success"),
-            @ApiResponse(code = 404, message = "Not found"), @ApiResponse(code = 400, message = "Bad Request") })
+    @ApiResponses(value = {@ApiResponse(code = 200, message = "Success"),
+            @ApiResponse(code = 404, message = "Not found"), @ApiResponse(code = 400, message = "Bad Request")})
     @GetMapping("/{id}/favoritos")
     public ResponseEntity<Set<ProductoDTO>> buscarFavoritosPorId(@PathVariable Long id)
             throws BadRequestException, ResourceNotFoundException {

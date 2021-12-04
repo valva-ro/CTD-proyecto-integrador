@@ -41,23 +41,23 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         httpSecurity
                 .cors().and().csrf().disable()
                 .authorizeRequests()
-                    .antMatchers(
-                            "/categorias**",
-                            "/ciudades**",
-                            "/productos**",
-                            "/usuarios/login",
-                            "/usuarios/signup",
-                            "/usuarios",
-                            "/usuarios/{^[\\d]$}"
-                    ).permitAll()
-                    .antMatchers(
-                            "/reservas**",
-                            "/usuarios/{\\d+}/favoritos",
-                            "/productos/agregar/{^[\\d]$}/usuarios/{^[\\d]$}",
-                            "/productos/eliminar/{^[\\d]$}/usuarios/{^[\\d]$}"
-                    ).authenticated()
+                .antMatchers(
+                        "/categorias**",
+                        "/ciudades**",
+                        "/productos**",
+                        "/usuarios/login",
+                        "/usuarios/signup",
+                        "/usuarios",
+                        "/usuarios/{^[\\d]$}"
+                ).permitAll()
+                .antMatchers(
+                        "/reservas**",
+                        "/usuarios/{\\d+}/favoritos",
+                        "/productos/agregar/{^[\\d]$}/usuarios/{^[\\d]$}",
+                        "/productos/eliminar/{^[\\d]$}/usuarios/{^[\\d]$}"
+                ).authenticated()
                 .and()
-                    .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
         httpSecurity.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
     }
 

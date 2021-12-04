@@ -11,12 +11,12 @@ public class Producto {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="producto_id")
+    @Column(name = "producto_id")
     private Long id;
     private String nombre;
     private String descripcion;
     private String direccion;
-    @Column(name="horario_check_in")
+    @Column(name = "horario_check_in")
     private Integer horarioCheckIn;
 
     @ManyToOne(cascade = CascadeType.MERGE)
@@ -54,7 +54,7 @@ public class Producto {
     )
     private Set<Politica> politicas = new HashSet<>();
 
-    @ManyToMany (cascade = CascadeType.MERGE)
+    @ManyToMany(cascade = CascadeType.MERGE)
     @JoinTable(
             name = "producto_caracteristica",
             joinColumns = @JoinColumn(name = "producto_id"),
@@ -62,10 +62,11 @@ public class Producto {
     )
     private Set<Caracteristica> caracteristicas = new HashSet<>();
 
-    @ManyToMany (mappedBy = "productosFavoritos")
+    @ManyToMany(mappedBy = "productosFavoritos")
     private Set<Usuario> usuarios = new HashSet<>();
 
-    public Producto() {}
+    public Producto() {
+    }
 
     public Producto(String nombre, String descripcion) {
         this.nombre = nombre;
@@ -189,6 +190,7 @@ public class Producto {
     public void setPuntuaciones(List<Puntuacion> puntuaciones) {
         this.puntuaciones = puntuaciones;
     }
+
     public Set<Politica> getPoliticas() {
         return politicas;
     }

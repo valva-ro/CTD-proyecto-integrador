@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import java.util.Set;
 
 @Service
-public interface IReservaService extends CRUDService<ReservaDTO>{
+public interface IReservaService extends CRUDService<ReservaDTO> {
 
     Set<ReservaDTO> consultarPorIdProducto(Long id) throws ResourceNotFoundException;
 

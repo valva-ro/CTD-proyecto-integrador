@@ -8,7 +8,7 @@ import java.util.Objects;
 public class Politica {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="politica_id")
+    @Column(name = "politica_id")
     private Long id;
     private String nombre;
 
@@ -47,7 +47,7 @@ public class Politica {
         if (this == o) return true;
         if (!(o instanceof Politica)) return false;
         Politica politica = (Politica) o;
-        return getId().equals(politica.getId()) && getNombre().equals(politica.getNombre()) && getTipoPolitica().equals(politica.getTipoPolitica()) ;
+        return getId().equals(politica.getId()) && getNombre().equals(politica.getNombre()) && getTipoPolitica().equals(politica.getTipoPolitica());
     }
 
     @Override
