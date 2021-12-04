@@ -13,11 +13,36 @@ import ProductoLayout from "./components/Producto/ProductoLayout/ProductoLayout"
 import ProductoDetalle from "./components/Producto/ProductoDetalle/ProductoDetalle";
 import ProductoReserva from "./components/Producto/ProductoReserva/ProductoReserva";
 import Reservas from "./components/FavoritosYReservas/Reservas/Reservas";
+import get from "./utils/get";
 
 function App() {
   const [isLogged, setIsLogged] = useState(estaLogueado());
-  const [userInformation, setUserInformation] = useState(obtenerInformacionUsuario());
+  const [userInformation, setUserInformation] = useState(
+    obtenerInformacionUsuario()
+  );
+  let token = "";
+
   AOS.init();
+
+  if (localStorage.hasOwnProperty("jwt")) {
+    token = localStorage.getItem("jwt").replaceAll('"', "");
+  }
+
+  const comprobarToken = () => {
+    get("validateCurrentSession", {
+      "Content-Type": "application/json",
+      Authorization: token,
+    }).then((response) => {
+      if (response.status !== 200) {
+        setIsLogged(false);
+        localStorage.clear();
+      }
+    });
+  };
+
+  setInterval(function () {
+    comprobarToken();
+  }, 36000000);
 
   return (
     <loggedContext.Provider
@@ -39,13 +64,13 @@ function App() {
                 </ProductoLayout>
               </Route>
               <Route path="/product/:id/booking">
-                {!isLogged
-                  ? <Redirect to="/" />
-                  :
+                {!isLogged ? (
+                  <Redirect to="/" />
+                ) : (
                   <ProductoLayout>
                     <ProductoReserva />
                   </ProductoLayout>
-                }
+                )}
               </Route>
             </Switch>
           </Layout>
@@ -54,7 +79,6 @@ function App() {
     </loggedContext.Provider>
   );
 }
-
 
 function estaLogueado() {
   return localStorage.getItem("jwt") != null;
@@ -70,6 +94,5 @@ function obtenerInformacionUsuario() {
       : "",
   };
 }
-
 
 export default App;
