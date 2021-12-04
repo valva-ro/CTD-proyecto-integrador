@@ -1,7 +1,7 @@
-import styles from "../../../Producto/ProductoReserva/DetallesReserva/TarjetaReservaExitosa/TarjetaReservaExitosa.module.css";
-import FilledButton from "../../../Buttons/FilledButton";
 import { useState } from "react";
+import FilledButton from "../../../Buttons/FilledButton";
 import post from "../../../../utils/post";
+import styles from "../../../Producto/ProductoReserva/DetallesReserva/TarjetaReservaExitosa/TarjetaReservaExitosa.module.css";
 
 export default function TarjetaPuntuacionReserva({
   nombreAlojamiento,
@@ -12,7 +12,8 @@ export default function TarjetaPuntuacionReserva({
   const [commentText, setCommentText] = useState("");
   const [puntuadoConExito, setPuntuadoConExito] = useState(null);
 
-  const enviarPuntuacion = () => {
+  const enviarPuntuacion = (e) => {
+    e.preventDefault();
     post("puntuaciones", {
       puntuacion: puntuacion,
       comentario: commentText,

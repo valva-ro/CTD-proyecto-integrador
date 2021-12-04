@@ -5,7 +5,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faExclamationTriangle } from "@fortawesome/free-solid-svg-icons";
 import styles from "./Detalles.module.css";
 import post from "../../../../utils/post";
-import { useHistory } from "react-router";
 import { useState } from "react";
 import Modal from "../../../Modal/Modal";
 import TarjetaReservaExitosa from "./TarjetaReservaExitosa/TarjetaReservaExitosa";
@@ -31,10 +30,12 @@ export default function ProductoReserva({
   horarioLlegada,
 }) {
   const puntaje = calcularPromedioPuntuacion(puntuaciones);
-  const history = useHistory();
   const [isError, setIsError] = useState(false);
   const [showModal, setShowModal] = useState(false);
-  const token = localStorage.getItem("jwt").replaceAll("\"", "");
+  let token = "";
+  if (localStorage.hasOwnProperty("jwt")) {
+    token = localStorage.getItem("jwt").replaceAll('"', "");
+  }
   const idUsuario = parseInt(localStorage.getItem("id"));
 
   const checkinFormat = new Date(checkin)

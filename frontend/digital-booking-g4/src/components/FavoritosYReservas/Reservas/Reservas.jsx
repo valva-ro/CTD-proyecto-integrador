@@ -10,7 +10,10 @@ import styles from "../FavoritosYReservas.module.css";
 export default function Reservas() {
   const history = useHistory();
   const idUsuario = parseInt(localStorage.getItem("id"));
-  const token = localStorage.getItem("jwt").replaceAll('"', "");
+  let token = "";
+  if (localStorage.hasOwnProperty("jwt")) {
+    token = localStorage.getItem("jwt").replaceAll('"', "");
+  }
   const [reservas, setReservas] = useState([]);
   const { isLogged } = useContext(loggedContext);
   const {
