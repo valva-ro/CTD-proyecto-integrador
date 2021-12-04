@@ -6,8 +6,6 @@ const SALUD_SEGURIDAD = "Salud y seguridad";
 const CANCELACION = "Política de cancelación";
 
 export default function ProductoPoliticas({ alojamiento }) {
-  console.log(alojamiento);
-
   const politicasNormasCasa = filtrarPoliticasPorTipo(NORMAS_CASA);
   const politicasSaludSeguridad = filtrarPoliticasPorTipo(SALUD_SEGURIDAD);
   const politicasCancelacion = filtrarPoliticasPorTipo(CANCELACION);
