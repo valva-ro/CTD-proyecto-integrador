@@ -32,7 +32,7 @@ export default function DropDownMenu({
   function setInput(input, city) {
     input.target.value = city.nombre + ", " + city.pais;
     setOnChangeCity(city.nombre);
-    if(existeInputCountry) { setCountry({ campo: city.pais, valido: true }) } ;
+    if(existeInputCountry) { setCountry( city.pais) } ;
     setCityList(null);
   }
 

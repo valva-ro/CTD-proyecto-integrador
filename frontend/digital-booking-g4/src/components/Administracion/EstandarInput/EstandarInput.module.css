@@ -1,0 +1,36 @@
+.containerEstandarInput{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.labelEstandarInput{
+    color: var(--color-2);
+    font-weight: 700;
+    margin-top: 20px;
+    cursor: pointer;
+}
+
+.estandarInput{
+    background-color: var(--color-5);
+    border: 3px solid var(--color-5);
+    box-shadow: 0px 1px 5px rgb(0 0 0 / 15%);
+    color: var(--color-2);
+    font-size: 1rem;
+    padding: 1vh 40px 1vh 15px;
+    width: 100%;
+    margin-top: 5px;
+}
+
+
+@media (max-width: 480px) {
+  .labelEstandarInput{
+    margin-top: 7px;
+  }
+
+  .estandarInput {
+    padding: 0.8vh 40px 0.8vh 15px;
+  }
+}
+  
