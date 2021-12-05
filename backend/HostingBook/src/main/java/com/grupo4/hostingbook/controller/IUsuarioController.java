@@ -3,6 +3,7 @@ package com.grupo4.hostingbook.controller;
 import com.grupo4.hostingbook.exceptions.BadRequestException;
 import com.grupo4.hostingbook.exceptions.RepeatedMailException;
 import com.grupo4.hostingbook.exceptions.ResourceNotFoundException;
+import com.grupo4.hostingbook.exceptions.NotImplementedException;
 import com.grupo4.hostingbook.model.ProductoDTO;
 import com.grupo4.hostingbook.model.UsuarioDTO;
 import org.springframework.http.ResponseEntity;
@@ -15,5 +16,5 @@ import java.util.Set;
 public interface IUsuarioController extends CRUDController<UsuarioDTO> {
     ResponseEntity<Set<ProductoDTO>> buscarFavoritosPorId(@PathVariable Long id)
             throws BadRequestException, ResourceNotFoundException;
-    ResponseEntity<?> crear(@RequestBody UsuarioDTO usuario, HttpServletRequest request) throws BadRequestException, ResourceNotFoundException, RepeatedMailException;
+    ResponseEntity<?> crear(@RequestBody UsuarioDTO usuario, HttpServletRequest request) throws BadRequestException, ResourceNotFoundException, RepeatedMailException, NotImplementedException;
 }

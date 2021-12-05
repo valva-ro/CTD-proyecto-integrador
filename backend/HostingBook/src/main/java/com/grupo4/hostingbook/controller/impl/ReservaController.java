@@ -24,7 +24,7 @@ import java.util.Set;
 
 @RestController
 @RequestMapping("/reservas")
-@CrossOrigin(origins = "*", methods = { RequestMethod.GET, RequestMethod.POST }, allowedHeaders = "*")
+@CrossOrigin(origins = "*", methods = {RequestMethod.GET, RequestMethod.POST}, allowedHeaders = "*")
 public class ReservaController implements IReservaController {
 
     @Qualifier("ReservaService")
@@ -58,7 +58,7 @@ public class ReservaController implements IReservaController {
             @ApiResponse(code = 400, message = "Bad Request")
     })
     @PostMapping
-    public ResponseEntity<ReservaDTO> crear(@RequestBody ReservaDTO reserva) throws BadRequestException, ResourceNotFoundException, RepeatedMailException {
+    public ResponseEntity<ReservaDTO> crear(@RequestBody ReservaDTO reserva) throws BadRequestException, ResourceNotFoundException, RepeatedMailException, NotImplementedException {
         ReservaDTO reservaNueva = reservaService.crear(reserva);
         ProductoDTO producto = productoService.buscarPorId(reserva.getProducto().getId());
         final String email = reserva.getMail();

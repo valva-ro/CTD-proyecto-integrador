@@ -93,7 +93,7 @@ export default function SideNav() {
                   Favoritos
                 </Link>
                 <Link
-                  to="/bookings"
+                  to="/reservations"
                   className={styles.favoritosSidenav}
                   onClick={() => setIsOpened(false)}
                 >

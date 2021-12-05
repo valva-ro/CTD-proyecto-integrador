@@ -194,6 +194,8 @@ CREATE TABLE IF NOT EXISTS usuario_producto (
 CREATE TABLE IF NOT EXISTS puntuaciones (
   puntuacion_id INT UNSIGNED NOT NULL AUTO_INCREMENT,
   puntuacion INT UNSIGNED NOT NULL,
+  comentario TEXT,
+  fecha DATE,
   fk_producto INT UNSIGNED NOT NULL,
   fk_usuario INT UNSIGNED NOT NULL,
   PRIMARY KEY  (puntuacion_id),
@@ -745,13 +747,13 @@ COMMIT;
 --
 
 -- Producto 1
-INSERT INTO puntuaciones (puntuacion, fk_producto, fk_usuario) VALUES (2, 1, 1);
-INSERT INTO puntuaciones (puntuacion, fk_producto, fk_usuario) VALUES (4, 1, 2);
-INSERT INTO puntuaciones (puntuacion, fk_producto, fk_usuario) VALUES (3, 1, 3);
+INSERT INTO puntuaciones (puntuacion, comentario, fecha, fk_producto, fk_usuario) VALUES (2, "Lindo pero pésima la atención y la limpieza", "2021-11-18", 1, 1);
+INSERT INTO puntuaciones (puntuacion, comentario, fecha, fk_producto, fk_usuario) VALUES (4, "Todo impecable, me encantó!", "2021-09-23", 1, 2);
+INSERT INTO puntuaciones (puntuacion, comentario, fecha, fk_producto, fk_usuario) VALUES (3, "Está bien, sin más", "2021-10-16", 1, 3);
 -- Producto 2
-INSERT INTO puntuaciones (puntuacion, fk_producto, fk_usuario) VALUES (4, 2, 1);
-INSERT INTO puntuaciones (puntuacion, fk_producto, fk_usuario) VALUES (5, 2, 2);
-INSERT INTO puntuaciones (puntuacion, fk_producto, fk_usuario) VALUES (4, 2, 3);
+INSERT INTO puntuaciones (puntuacion, comentario, fecha, fk_producto, fk_usuario) VALUES (4, "Increíble este lugar, lo súper recomiendo", "2021-08-17", 2, 1);
+INSERT INTO puntuaciones (puntuacion, comentario, fecha, fk_producto, fk_usuario) VALUES (5, "Muy lindo el lugar, la atención, la limpieza. Volvería 100%", "2021-07-03", 2, 2);
+INSERT INTO puntuaciones (puntuacion, comentario, fecha, fk_producto, fk_usuario) VALUES (4, "Súper recomendable", "2021-09-28", 2, 3);
 -- Producto 3
 INSERT INTO puntuaciones (puntuacion, fk_producto, fk_usuario) VALUES (3, 3, 1);
 INSERT INTO puntuaciones (puntuacion, fk_producto, fk_usuario) VALUES (4, 3, 2);
@@ -811,7 +813,5 @@ VALUES ("Florencia", "Fazz", "ffazz@hb.com", "Caballito", 7, "2021-07-18", "2021
 INSERT INTO reservas (nombre, apellido, mail, ciudad, hora_entrada, fecha_ingreso, fecha_egreso, datos, vacuna_covid, fk_producto, fk_usuario) 
 VALUES ("Lucia", "Ramirez", "lucy@hb.com", "Caballito", 11, "2021-06-18", "2021-06-23", "Esto es una prueba 6 para ver si los datos de reserva funcionan correctamente, el vendedor es un genio!!!", false, 6, 1);
 INSERT INTO reservas (nombre, apellido, mail, ciudad, hora_entrada, fecha_ingreso, fecha_egreso, datos, vacuna_covid, fk_producto, fk_usuario) 
-VALUES ("Lucia", "Ramirez", "lucy@hb.com", "Caballito", 11, "2021-12-26", "2021-12-31", "Esto es una prueba 6 para ver si los datos de reserva funcionan correctamente, el vendedor es un genio!!!", false, 1, 1);
-INSERT INTO reservas (nombre, apellido, mail, ciudad, hora_entrada, fecha_ingreso, fecha_egreso, datos, vacuna_covid, fk_producto, fk_usuario) 
-VALUES ("Lucia", "Ramirez", "lucy@hb.com", "Caballito", 11, "2021-12-31", "2022-01-15", "Esto es una prueba 6 para ver si los datos de reserva funcionan correctamente, el vendedor es un genio!!!", false, 2, 1);
+VALUES ("Juan Carlos", "Megalodon", "juanca@hb.com", "Caballito", 11, "2021-12-01", "2021-12-23", "Esto es una prueba 7 para ver si los datos de reserva funcionan correctamente, el vendedor es un genio!!!", false, 6, 1);
 COMMIT;

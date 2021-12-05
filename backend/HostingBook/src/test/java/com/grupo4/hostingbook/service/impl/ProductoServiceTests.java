@@ -49,14 +49,14 @@ class ProductoServiceTests {
         Set<CaracteristicaDTO> caracteristicasIDs = Set.of(caracteristica1ID, caracteristica2ID);
 
         categoriaService.crear(new CategoriaDTO("Hotel", "807.105 hoteles", "https://via.placeholder.com/300"));
-        ciudadService.crear(new CiudadDTO("Manizales", "Colombia",5.067, -75.517));
+        ciudadService.crear(new CiudadDTO("Manizales", "Colombia", 5.067, -75.517));
         imagenService.crear(new ImagenDTO("Habitación doble", "https://via.placeholder.com/300"));
         imagenService.crear(new ImagenDTO("Baño", "https://via.placeholder.com/300"));
-        caracteristicaService.crear(new CaracteristicaDTO("WiFi","<i class='bx bx-wifi'></i>"));
-        caracteristicaService.crear(new CaracteristicaDTO("Parking","<i class='bx bxs-car'></i>"));
+        caracteristicaService.crear(new CaracteristicaDTO("WiFi", "<i class='bx bx-wifi'></i>"));
+        caracteristicaService.crear(new CaracteristicaDTO("Parking", "<i class='bx bxs-car'></i>"));
 
         productoPorCrear = new ProductoDTO("Hotel Melia", "Servicio all inclusive con vista al mar", 12, categoriaID, ciudadID, imagenesIDs, caracteristicasIDs);
-        productoPorActualizar = new ProductoDTO(1L,"Hotel Grand Meliá", "", 10, null,null, null, null, null);
+        productoPorActualizar = new ProductoDTO(1L, "Hotel Grand Meliá", "", 10, null, null, null, null, null);
     }
 
     @Test
@@ -66,21 +66,21 @@ class ProductoServiceTests {
 
     @Test
     @Transactional
-    public void test02AgregarProducto() throws BadRequestException, ResourceNotFoundException, RepeatedMailException {
+    public void test02AgregarProducto() throws BadRequestException, ResourceNotFoundException, RepeatedMailException, NotImplementedException {
         ProductoDTO p = productoService.crear(productoPorCrear);
-        assertNotEquals( null, p);
+        assertNotEquals(null, p);
     }
 
     @Test
     @Transactional
-    public void test03ObtenerTodosLosProductos() throws BadRequestException, ResourceNotFoundException, RepeatedMailException {
+    public void test03ObtenerTodosLosProductos() throws BadRequestException, ResourceNotFoundException, RepeatedMailException, NotImplementedException {
         productoService.crear(productoPorCrear);
         assertNotEquals(0, productoService.consultarTodos().size());
     }
 
     @Test
     @Transactional
-    public void test04EliminarProductoPorId() throws BadRequestException, ResourceNotFoundException, RepeatedMailException {
+    public void test04EliminarProductoPorId() throws BadRequestException, ResourceNotFoundException, RepeatedMailException, NotImplementedException {
         productoService.crear(productoPorCrear);
         assertNotEquals(0, productoService.consultarTodos().size());
 
@@ -118,7 +118,7 @@ class ProductoServiceTests {
 
     @Test
     @Transactional
-    public void test10BuscarProductoPorIdExistente() throws BadRequestException, ResourceNotFoundException, RepeatedMailException {
+    public void test10BuscarProductoPorIdExistente() throws BadRequestException, ResourceNotFoundException, RepeatedMailException, NotImplementedException {
         productoService.crear(productoPorCrear);
         ProductoDTO productoEncontrado = productoService.buscarPorId(1L);
         assertNotEquals(null, productoEncontrado);
@@ -137,7 +137,7 @@ class ProductoServiceTests {
 
     @Test
     @Transactional
-    void test13ConsultarPorCategoriaExistente() throws BadRequestException, ResourceNotFoundException, RepeatedMailException {
+    void test13ConsultarPorCategoriaExistente() throws BadRequestException, ResourceNotFoundException, RepeatedMailException, NotImplementedException {
         productoService.crear(productoPorCrear);
         Set<ProductoDTO> productoFiltradoPorCategoria = productoService.consultarPorCategoria("Hotel");
         assertEquals(1, productoFiltradoPorCategoria.size());
@@ -145,14 +145,14 @@ class ProductoServiceTests {
 
     @Test
     @Transactional
-    void test14ConsultarPorCategoriaInexistente() throws BadRequestException, ResourceNotFoundException, RepeatedMailException {
+    void test14ConsultarPorCategoriaInexistente() throws BadRequestException, ResourceNotFoundException, RepeatedMailException, NotImplementedException {
         productoService.crear(productoPorCrear);
         assertThrows(ResourceNotFoundException.class, () -> productoService.consultarPorCategoria("Cabañas"));
     }
 
     @Test
     @Transactional
-    void test15ConsultarPorCiudadExistente() throws BadRequestException, ResourceNotFoundException, RepeatedMailException {
+    void test15ConsultarPorCiudadExistente() throws BadRequestException, ResourceNotFoundException, RepeatedMailException, NotImplementedException {
         productoService.crear(productoPorCrear);
         Set<ProductoDTO> productoFiltradoPorCiudad = productoService.consultarPorCiudad("Manizales");
         assertEquals(1, productoFiltradoPorCiudad.size());
@@ -160,7 +160,7 @@ class ProductoServiceTests {
 
     @Test
     @Transactional
-    void test16ConsultarPorCiudadInexistente() throws BadRequestException, ResourceNotFoundException, RepeatedMailException {
+    void test16ConsultarPorCiudadInexistente() throws BadRequestException, ResourceNotFoundException, RepeatedMailException, NotImplementedException {
         productoService.crear(productoPorCrear);
         assertThrows(ResourceNotFoundException.class, () -> productoService.consultarPorCiudad("Mendoza"));
     }

@@ -29,12 +29,6 @@ public class GlobalExceptionsHandler {
         return ResponseEntity.status(HttpStatus.NOT_IMPLEMENTED).body(e.getMessage());
     }
 
-    @ExceptionHandler({BadCredentialsException.class})
-    public ResponseEntity<String> procesarErrorNotImplemented(BadCredentialsException e) {
-        logger.error(e.getMessage());
-        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(e.getMessage());
-    }
-
     @ExceptionHandler({RepeatedMailException.class})
     public ResponseEntity<String> procesarRepeatMail(RepeatedMailException e) {
         logger.error(e.getMessage());

@@ -8,6 +8,8 @@ export default function OutlinedButton(props) {
       value={props.children}
       onClick={props.onClick}
       data-testid={props.testId}
+      disabled={props.disabled}
+      title={props.title}
     />
   );
 }

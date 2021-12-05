@@ -19,7 +19,7 @@
 }
 
 .gpsEmpty {
-  color: var(--color-2--opaco);
+  color: var(--color-2-opaco);
 }
 
 @media (max-width: 768px) {

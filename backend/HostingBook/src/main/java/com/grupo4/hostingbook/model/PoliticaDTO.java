@@ -63,7 +63,7 @@ public class PoliticaDTO implements Serializable {
         if (this == o) return true;
         if (!(o instanceof PoliticaDTO)) return false;
         PoliticaDTO that = (PoliticaDTO) o;
-        return getId().equals(that.getId()) && getNombre().equals(that.getNombre()) && getTipoPolitica().equals(that.getTipoPolitica()) ;
+        return getId().equals(that.getId()) && getNombre().equals(that.getNombre()) && getTipoPolitica().equals(that.getTipoPolitica());
     }
 
     @Override

@@ -53,12 +53,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                             "/categorias**",
                             "/ciudades**",
                             "/productos**",
+                            "/usuarios",
                             "/usuarios/login",
                             "/usuarios/signup",
                             "/usuarios/{^[\\d]$}"
                     ).permitAll()
                 .and()
-                    .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
         httpSecurity.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
     }
 

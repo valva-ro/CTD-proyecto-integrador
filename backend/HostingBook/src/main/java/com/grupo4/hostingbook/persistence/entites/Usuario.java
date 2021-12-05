@@ -13,13 +13,13 @@ public class Usuario {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="usuario_id")
+    @Column(name = "usuario_id")
     private Long id;
     private String nombre;
     private String apellido;
     private String mail;
     private String contrasenia;
-    @Column(name="cuenta_validada")
+    @Column(name = "cuenta_validada")
     private Boolean cuentaValidada;
 
     @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)

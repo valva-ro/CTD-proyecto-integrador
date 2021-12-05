@@ -41,7 +41,7 @@ public class CaracteristicaController implements CRUDController<CaracteristicaDT
     @ApiResponses(value = { @ApiResponse(code = 200, message = "Success"),
                             @ApiResponse(code = 400, message = "Bad Request") })
     @PostMapping
-    public ResponseEntity<CaracteristicaDTO> crear(@RequestBody CaracteristicaDTO caracteristica) throws BadRequestException, ResourceNotFoundException, RepeatedMailException {
+    public ResponseEntity<CaracteristicaDTO> crear(@RequestBody CaracteristicaDTO caracteristica) throws BadRequestException, ResourceNotFoundException, RepeatedMailException, NotImplementedException{
         CaracteristicaDTO caracteristicaNueva = caracteristicaService.crear(caracteristica);
         return ResponseEntity.ok(caracteristicaNueva);
     }

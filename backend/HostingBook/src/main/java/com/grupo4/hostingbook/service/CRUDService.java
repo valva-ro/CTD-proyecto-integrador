@@ -10,10 +10,14 @@ import java.util.List;
 
 @Service
 public interface CRUDService<T> {
-     T crear(T t) throws BadRequestException, ResourceNotFoundException, RepeatedMailException;
-     T buscarPorId(Long id) throws BadRequestException, ResourceNotFoundException;
-     List<T> consultarTodos();
-     T actualizar(T t) throws BadRequestException, ResourceNotFoundException, NotImplementedException;
-     void eliminar(Long id) throws ResourceNotFoundException, BadRequestException;
+    T crear(T t) throws BadRequestException, ResourceNotFoundException, RepeatedMailException, NotImplementedException;
+
+    T buscarPorId(Long id) throws BadRequestException, ResourceNotFoundException;
+
+    List<T> consultarTodos();
+
+    T actualizar(T t) throws BadRequestException, ResourceNotFoundException, NotImplementedException;
+
+    void eliminar(Long id) throws ResourceNotFoundException, BadRequestException;
 
 }

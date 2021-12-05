@@ -4,6 +4,7 @@ import ProductoUbicacion from "./ProductoUbicacion/ProductoUbicacion";
 import ProductoMapa from "./ProductoMapa/ProductoMapa";
 import ProductoCaracteristicas from "./ProductoCaracteristicas/ProductoCaracteristicas";
 import ProductoDescripcion from "./ProductoDescripcion/ProductoDescripcion";
+import ProductoComentarios from "./ProductoComentarios/ProductoComentarios";
 
 export default function ProductoDetalle(producto) {
   return (
@@ -14,6 +15,7 @@ export default function ProductoDetalle(producto) {
       <ProductoCaracteristicas alojamiento={producto} />
       <ProductoFechasDisponibles />
       <ProductoMapa alojamiento={producto} />
+      <ProductoComentarios alojamiento={producto} />
     </>
   );
 }

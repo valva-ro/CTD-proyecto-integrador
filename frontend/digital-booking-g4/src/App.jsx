@@ -1,10 +1,10 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 import Layout from "./components/Layout/Layout";
 import Home from "./components/Home/Home";
 import Login from "./components/Forms/Login";
 import Register from "./components/Forms/Register";
-import Favoritos from "./components/Favoritos/Favoritos";
+import Favoritos from "./components/FavoritosYReservas/Favoritos/Favoritos";
 import ScrollToTop from "./components/ScrollToTop";
 import loggedContext from "./contexts/loggedContext";
 import AOS from "aos";
@@ -13,11 +13,40 @@ import ProductoLayout from "./components/Producto/ProductoLayout/ProductoLayout"
 import ProductoDetalle from "./components/Producto/ProductoDetalle/ProductoDetalle";
 import ProductoReserva from "./components/Producto/ProductoReserva/ProductoReserva";
 import ConfirmacionCuenta from "./components/ConfirmacionCuenta/ConfirmacionCuenta";
+import Reservas from "./components/FavoritosYReservas/Reservas/Reservas";
+import jwtDecode from "jwt-decode";
 
 function App() {
-  const [isLogged, setIsLogged] = useState(estaLogueado());
-  const [userInformation, setUserInformation] = useState(obtenerInformacionUsuario());
   AOS.init();
+  const [isLogged, setIsLogged] = useState(estaLogueado());
+  const [userInformation, setUserInformation] = useState(
+    obtenerInformacionUsuario()
+  );
+  let token = "";
+  if (localStorage.hasOwnProperty("jwt")) {
+    token = localStorage.getItem("jwt").replaceAll('"', "");
+  }
+
+  useEffect(() => {
+    setInterval(function () {
+      comprobarToken();
+    }, 1000 * 60 * 10);
+  }, []);
+
+  useEffect(() => {}, [isLogged]);
+
+  const comprobarToken = () => {
+    if (token === "") {
+      localStorage.clear();
+      setIsLogged(false);
+    } else {
+      const decodedToken = jwtDecode(token);
+      if (decodedToken.exp < Date.now() / 1000) {
+        localStorage.clear();
+        setIsLogged(false);
+      }
+    }
+  };
 
   return (
     <loggedContext.Provider
@@ -37,6 +66,7 @@ function App() {
                 component={ConfirmacionCuenta}
               />
               <Route path="/favorites" component={Favoritos} />
+              <Route path="/reservations" component={Reservas} />
               <Route path="/product/:id/features">
                 <ProductoLayout>
                   <ProductoDetalle />
@@ -59,7 +89,6 @@ function App() {
   );
 }
 
-
 function estaLogueado() {
   return localStorage.getItem("jwt") != null;
 }
@@ -74,6 +103,5 @@ function obtenerInformacionUsuario() {
       : "",
   };
 }
-
 
 export default App;

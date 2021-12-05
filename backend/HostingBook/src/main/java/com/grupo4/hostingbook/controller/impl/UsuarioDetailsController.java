@@ -22,7 +22,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.ArrayList;
 
 @RestController
-@CrossOrigin(origins = "*", methods = { RequestMethod.GET, RequestMethod.POST }, allowedHeaders = "*")
+@CrossOrigin(origins = "*", methods = {RequestMethod.GET, RequestMethod.POST}, allowedHeaders = "*")
 public class UsuarioDetailsController {
 
     private final UsuarioDetailsService usuarioDetailsService;
@@ -32,7 +32,7 @@ public class UsuarioDetailsController {
 
     @Autowired
     public UsuarioDetailsController(UsuarioDetailsService usuarioDetailsService,
-            AuthenticationManager authenticationManager, JWTUtil jwtTokenUtil, UsuarioService usuarioService) {
+                                    AuthenticationManager authenticationManager, JWTUtil jwtTokenUtil, UsuarioService usuarioService) {
         this.usuarioDetailsService = usuarioDetailsService;
         this.authenticationManager = authenticationManager;
         this.jwtTokenUtil = jwtTokenUtil;
@@ -53,7 +53,7 @@ public class UsuarioDetailsController {
                     new ArrayList<>()
             );
             authenticationManager.authenticate(authentication);
-        } catch(BadCredentialsException e) {
+        } catch (BadCredentialsException e) {
             throw new BadCredentialsException(Mensajes.ERROR_CREDENCIALES_INVALIDAS);
         }
         final UserDetails userDetails = usuarioDetailsService.loadUserByUsername(authenticationRequest.getMail());

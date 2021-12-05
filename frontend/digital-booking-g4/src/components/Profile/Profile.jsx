@@ -41,7 +41,7 @@ export default function Profile() {
           <Link to="/favorites" className={styles.itemDropdown}>
             Favoritos
           </Link>
-          <Link to="/bookings" className={styles.itemDropdown}>
+          <Link to="/reservations" className={styles.itemDropdown}>
             Reservas
           </Link>
           <span

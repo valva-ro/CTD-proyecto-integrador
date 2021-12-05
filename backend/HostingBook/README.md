@@ -33,7 +33,7 @@
 
 ## Documentación
 
-Una vez que la aplicación esté corriendo se puede visualizar la documentación completa de la API con JSONs de ejemplo en 
+Una vez que la aplicación esté corriendo se puede visualizar la documentación completa de la API con JSONs de ejemplo en
 [http://localhost:8080/swagger-ui/](http://localhost:8080/swagger-ui/).
 
 ![Swagger UI](./img/swagger.png)
