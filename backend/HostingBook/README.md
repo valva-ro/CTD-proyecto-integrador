@@ -1,4 +1,6 @@
-# API Rest Categorias
+# HostingBook - API Rest
+
+[[_TOC_]]
 
 ## Requerimientos
 
