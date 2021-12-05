@@ -10,16 +10,24 @@
 ## Instalación
 
 1. Clonar el proyecto
-    ```bash
-   git clone https://gitlab.com/proyecto-integrador-0321/camada-3/grupo-4.git
-    ```
-2. Desde workbench 
-   1. Correr el script `../db_scripts/db_scripts.sql` para crear el schema y la tabla categorias
-   2. Correr el script `../db_scripts/db_data.sql` para insertar algunos datos
-3. Cambiar el usuario y contraseña para que coincida con los configurados en el workbench
-   1. Abrir el archivo `src/main/resources/application.properties`
-   2. Configurar la información en las líneas `spring.datasource.username` y `spring.datasource.password`
-4. Correr la aplicación. Esto se puede hacer desde un IDE o desde la terminal con el comando `mvn spring-boot:run`.
+
+   ```shell
+    git clone https://gitlab.com/proyecto-integrador-0321/camada-3/grupo-4.git
+   ```
+
+
+2. Desde workbench
+   1. Crear una nueva conexión:
+      - Hostname: `localhost`
+      - Port: `3306`
+      - Username: `root`
+      - Password: `root`
+   2. Abrir y ejecutar el script `../db_scripts/script_develop.sql` que va a crear los schemas e insertar datos en la BD
+
+
+3. Correr el backend con el perfil `develop`
+   1. Desde la terminal pararse en la carpeta `/grupo-4/backend/HostingBook`
+   2. Ejecutar el comando `mvn spring-boot:run -Dspring-boot.run.profiles=develop`
 
 ## Documentación
 
@@ -27,11 +35,3 @@ Una vez que la aplicación esté corriendo se puede visualizar la documentación
 [http://localhost:8080/swagger-ui/](http://localhost:8080/swagger-ui/).
 
 ![Swagger UI](./img/swagger.png)
-
-| Método | Endpoint              | Descripción |
-| ------ | --------              | ----------- | 
-| GET    | `/categorias`         | Obtiene un array con todas las categorias | 
-| GET    | `/categorias/{id}`    | Busca una categoría por ID | 
-| POST   | `/categorias`         | Agrega una nueva categoría |
-| PUT    | `/categorias`         | Actualiza una categoría existente | 
-| DELETE | `/categorias/{id}`    | Elimina una categoría existente por ID |

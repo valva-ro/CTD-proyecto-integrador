@@ -1,0 +1,78 @@
+@startuml
+allowmixing
+hide circle
+
+skinparam database {
+    BorderColor #383b58
+    BackgroundColor #1dbeb4
+    ArrowColor #383b58
+    FontColor #545776
+}
+
+skinparam rectangle {
+    BorderColor #383b58
+    BackgroundColor #1dbeb4
+    ArrowColor #383b58
+}
+
+skinparam class {
+    BorderColor #383b58
+    BackgroundColor #1dbeb4
+    ArrowColor #383b58
+    AttributeIconSize 0
+}
+
+skinparam note {
+    BorderColor #545776
+    BackgroundColor #f3f1ed
+    FontColor #545776
+}
+
+component Application {
+    package com.grupo4.hostingbook #757ba3 {
+
+        package service
+
+        package controller {
+            interface CRUDController {
+                + buscarPorId(Long id) : ResponseEntity<?>
+                + crear(T t) : ResponseEntity<?>
+                + actualizar(T t) : ResponseEntity<?>
+                + obtenerTodos() : ResponseEntity<?>
+                + eliminar(Long id) : ResponseEntity<?>
+            }
+            interface "<<Interface>> IProductoController" extends CRUDController {
+                + obtenerPorCategoria(String tituloCategoria) : ResponseEntity<?>
+                + obtenerPorCiudad(String nombreCiudad) : ResponseEntity<?>
+                + obtenerPorCiudadYFechas(String nombre, LocalDate fechaIngreso, LocalDate fechaEgreso) : ResponseEntity<?>
+                + obtenerPorFechas(LocalDate fechaIngreso, LocalDate fechaEgreso) : ResponseEntity<?>
+                + agregarAFavoritos(Long idProducto, Long idUsuario) : ResponseEntity<?>
+                + quitarDeFavoritos(Long idProducto, Long idUsuario) : ResponseEntity<?>
+            }
+            interface "<<Interface>> IReservaController" extends CRUDController {
+                + obtenerPorIdProducto(Long id) : ResponseEntity<?>
+                + obtenerPorIdUsuario(Long id) : ResponseEntity<?>
+            }
+        }
+
+        package model {
+            class CaracteristicaDTO
+            class CategoriaDTO
+            class CiudadDTO
+            class ImagenDTO
+            class PoliticaDTO
+            class PuntuacionDTO
+            class ProductoDTO
+            class ReservaDTO
+            class RolDTO
+            class TipoPoliticaDTO
+            class UsuarioDTO
+        }
+
+        controller ..> model
+        service .> model
+        controller o-- service
+    }
+
+}
+@enduml
