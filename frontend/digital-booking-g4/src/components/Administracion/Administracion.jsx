@@ -6,6 +6,7 @@ import InputComponent from "../Forms/formComponents/Input";
 import NumberInput from "./NumberInput/NumberInput";
 import CityInput from "../Searcher/CityInput/CityInput"
 import styles from "./Administracion.module.css";
+import caracteristicas from "../../resources/caracteristicas.json"
 import stylesInputsFromOtherside from "../Producto/ProductoReserva/ProductoFormDatos/InputsFromOtherside.module.css"
 
 
@@ -59,14 +60,14 @@ export default function Administracion() {
     
     const handleChangeCategory = e => setOnChangeCategory(e.target.value) 
 
-    console.log(country)
+    console.log(caracteristicas)
     
     return (
         <>
             <HeaderSecundario>Administración</HeaderSecundario>
             <section className={styles.containerPrincipal}>
                 <TituloBloque>Crear propiedad</TituloBloque>
-                <p>(Los campos identificados con * son obligatorios)</p>
+                <p className={styles.camposObligatorios }>(Los campos identificados con * son obligatorios)</p>
                 <form className={styles.formAdmin}>
                     <div className={styles.subContainer}>
                         <div className={styles.lineContainerInformacion}>
@@ -161,22 +162,29 @@ export default function Administracion() {
                     </div>
                     <div className={styles.subContainer}>
                         <TituloBloque>Agregar atributos</TituloBloque>
-                        <div className={styles.checkboxes}>
-                        <input
-                            type="checkbox"
-                            name="caracteristicas"
-                            id="false"
-                            value={false}
-                            //onClick={() => setCovid(false)}
-                            required
-                        />
-                        <label htmlFor="false">
-                            NO
-                        </label>
-                        </div>
-                        <div></div>
+                        <ul className={styles.checkboxes}>
+                            {caracteristicas.map((caracteristica) => (
+                                <li key={caracteristica.id}>
+                                    <input
+                                        type="checkbox"
+                                        name="caracteristicas"
+                                        id={caracteristica.id}
+                                        value={caracteristica.nombre}
+                                        //onClick={() => setCaracteritica(false)}
+                                    />
+                                    <label htmlFor={caracteristica.id}>
+                                        <i className= {caracteristica.icono}></i>
+                                        <span>{caracteristica.nombre}</span>
+                                    </label>
+                                </li>
+                            ))}
+                        </ul>
                     </div>
-                    <div></div>
+                    <div className={styles.subContainer}>
+                        <TituloBloque>Políticas del producto</TituloBloque>
+
+
+                    </div>
                     <div></div>
                     <div></div>
                 </form>

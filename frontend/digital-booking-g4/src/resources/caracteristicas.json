@@ -1,0 +1,52 @@
+[
+    {
+        "id": 1,
+        "nombre": "Wifi",
+        "icono": "fas fa-wifi"
+    },
+    {
+        "id": 2,
+        "nombre": "Piscina",
+        "icono": "fas fa-swimmer"
+    },
+    {
+        "id": 3,
+        "nombre": "Estacionamiento gratuito",
+        "icono": "fas fa-car"
+    }, 
+    {
+        "id": 4,
+        "nombre": "Aire acondicionado",
+        "icono": "fas fa-snowflake"
+    }, 
+    {
+        "id": 5,
+        "nombre": "No fumador",
+        "icono": "fas fa-smoking-ban"
+    }, 
+    {
+        "id": 6,
+        "nombre": "Televisor",
+        "icono": "fas fa-tv"
+    }, 
+    {
+        "id": 7,
+        "nombre": "Apto para mascotas",
+        "icono": "fas fa-paw"
+    }, 
+    {
+        "id": 8,
+        "nombre": "Barra libre",
+        "icono": "fas fa-cocktail"
+    }, 
+    {
+        "id": 9,
+        "nombre": "Tarjeta de crédito",
+        "icono": "fas fa-credit-card"
+    }, 
+    {
+        "id": 10,
+        "nombre": "Check-in",
+        "icono": "fas fa-clock"
+    }
+] 

@@ -1,3 +1,7 @@
+.camposObligatorios{
+    color: var(--color-2);
+    font-size: 0.875rem;
+}
 .containerPrincipal{
     background-color: var(--color-inputs-form-datos);
 }
@@ -12,7 +16,7 @@
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border: 1px solid #dfe4ea;
     color: var(--color-2);
-    margin: 2vh 0 5vh 0;
+    margin: 2vh 0 64px 0;
     padding: 0 20px;
 }
 
@@ -116,6 +120,74 @@ select:-moz-focusring {
     text-shadow: 0 0 0 #000;
 }
  
+/* Checkboxes de atributos*/
+.checkboxes{
+    background-color: var(--color-inputs-form-datos);
+    border-radius: 5px;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.checkboxes li{   
+    width: 25%;
+}
+
+
+.checkboxes input[type="checkbox"]{
+    display: none;
+}
+
+.checkboxes label {
+    font-weight: 700;
+    font-size: 1rem;
+    padding: 5px 15px 5px 15px;
+    gap: 15px;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin: 5px 7px ;
+    display: flex;
+       
+}
+
+.checkboxes label i{
+    color: var(--color-5);
+    font-size: 1.25rem;
+}
+.checkboxes label span{
+    color: var(--color-2);
+}
+
+.checkboxes label:hover {
+    background-color: var(--color-inputs-form-datos);
+    box-shadow: 0px 1px 5px rgb(0 0 0 / 15%);
+    color: var(--color-2);
+    
+} 
+
+.checkboxes label i:hover{
+    color: var(--color-2);
+}
+
+.checkboxes input[type="checkbox"]:checked + label{
+    padding: 5px 15px;
+    background-color: var(--color-5);
+    box-shadow: 0px 1px 5px rgb(0 0 0 / 15%);
+    border-radius: 3px;
+}
+
+.checkboxes input[type="checkbox"]:checked + label i{
+    color: var(--color-principal);
+}  
+
+@media (max-width: 768px) {
+    .checkboxes li{   
+        width: 50%;
+    }
+}
 @media (max-width: 480px) {
     .containerSelect select{
         /* styling */
@@ -130,5 +202,9 @@ select:-moz-focusring {
 
     .containerSelect label{
         margin-top: 7px;
+    }
+
+    .checkboxes li{   
+        width: 100%;
     }
 }
