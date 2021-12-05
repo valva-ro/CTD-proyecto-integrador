@@ -58,6 +58,11 @@ export default function Administracion() {
 
     const handleChangeCategory = e => setOnChangeCategory(e.target.value)
 
+    const [imagenes, setImagenes] = useState([])
+    const handleAddImg = () => {
+        
+    }
+
     return (
         <>
             <HeaderSecundario>Administración</HeaderSecundario>
@@ -100,7 +105,7 @@ export default function Administracion() {
                             />
                         </div>
                         <div className={styles.lineContainerInformacion}>
-                            <div className={styles.containerSelect}>
+                            <div className={styles.containerCityInput}>
                                 <label>* Ciudad</label>
                                 <CityInput
                                     setOnChangeCity={setOnChangeCity}
@@ -217,9 +222,11 @@ export default function Administracion() {
                                 onChangeItem={descripcionImagen}
                                 placeholder="Descripción"
                             />
-                            
+                            <button onClick={handleAddImg}><i class="fas fa-plus"></i></button>
+                            <button onclick='eliminarTarea(${tarea.id})'><i className="fas fa-times"></i></button>
 
                         </div>
+                        
                     </div>
                     <div></div>
                 </form>
