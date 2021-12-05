@@ -67,6 +67,7 @@ export default function ProductoFormDatos({ setNombre, setApellido, setMail, set
             <label>Ciudad</label>
             <CityInput
               setOnChangeCity={setOnChangeCity}
+              onChangeCity={onChangeCity}
               specificStyle1={stylesInputsFromOtherside.ocultar}
               specificStyle2={stylesInputsFromOtherside.inputFormDatos}
               specificStyle3={stylesInputsFromOtherside.divDrawer}
@@ -85,7 +86,7 @@ export default function ProductoFormDatos({ setNombre, setApellido, setMail, set
           ></textarea>
         </div>
         <div className={styles.radioButtons}>
-          <h4>¿Estás vacunado contra el COVID-19?</h4>
+          <h4>¿Te colocaste las dos vacunas contra COVID-19?</h4>
           <div>
             <input
               type="radio"

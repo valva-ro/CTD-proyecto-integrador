@@ -1,0 +1,134 @@
+.containerPrincipal{
+    background-color: var(--color-inputs-form-datos);
+}
+
+.formAdmin{
+    background-color: var(--color-5);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border: 1px solid #dfe4ea;
+    color: var(--color-2);
+    margin: 2vh 0 5vh 0;
+    padding: 0 20px;
+}
+
+.subContainer{
+    width: 100%;
+    padding: 2vh 0;
+}
+
+.lineContainerInformacion{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+}
+
+.containerTexto p{
+    font-size: 0.875rem;
+}
+
+.containerSelect{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    
+}
+
+.containerSelect label{
+    color: var(--color-2);
+    font-weight: 700;
+    margin-top: 20px;
+    cursor: pointer;
+}
+
+ .containerSelect select{
+    /* reset */
+    margin: 0;      
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+
+} 
+
+option {
+    font-size: 1rem ;
+    color: var(--color-3);
+    font-weight: 700;
+
+}
+
+
+select.minimal {
+    /* styling */
+    background-color: var(--color-5);
+    border: 3px solid var(--color-5);
+    box-shadow: 0px 1px 5px rgb(0 0 0 / 15%);
+    color: var(--color-2);
+    font-size: 1rem;
+    padding: 1vh 40px 1vh 15px;
+    width: 100%;
+    margin-top: 5px;
+
+    /* Cambiar la flecha del select solo con css*/
+    background-image:
+      linear-gradient(45deg, transparent 50%, var(--color-principal) 50%),
+      linear-gradient(135deg, var(--color-principal) 50%, transparent 50%),
+      linear-gradient(to right, var(--color-principal), var(--color-principal));
+    background-position:
+      calc(100% - 20px) calc(1em + 2px),
+      calc(100% - 15px) calc(1em + 2px),
+      calc(100% - 2.5em) 0.5em;
+    background-size:
+      5px 5px,
+      5px 5px,
+      1px 1.5em;
+    background-repeat: no-repeat;
+}
+  
+select.minimal:focus {
+    background-image:
+      linear-gradient(45deg, var(--color-principal) 50%, transparent 50%),
+      linear-gradient(135deg, transparent 50%, var(--color-principal) 50%),
+      linear-gradient(to right, var(--color-principal), var(--color-principal));
+    background-position:
+      calc(100% - 15px) 1em,
+      calc(100% - 20px) 1em,
+      calc(100% - 2.5em) 0.5em;
+    background-size:
+      5px 5px,
+      5px 5px,
+      1px 1.5em;
+    background-repeat: no-repeat;
+    border-color: var(--color-principal);
+    outline: 0;
+}
+  
+  
+select:-moz-focusring {
+    color: transparent;
+    text-shadow: 0 0 0 #000;
+}
+ 
+@media (max-width: 480px) {
+    .containerSelect select{
+        /* styling */
+        width: 100%;
+    }
+
+    .lineContainerInformacion{
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+    }
+
+    .containerSelect label{
+        margin-top: 7px;
+    }
+}

@@ -13,15 +13,17 @@ import ProductoLayout from "./components/Producto/ProductoLayout/ProductoLayout"
 import ProductoDetalle from "./components/Producto/ProductoDetalle/ProductoDetalle";
 import ProductoReserva from "./components/Producto/ProductoReserva/ProductoReserva";
 import ConfirmacionCuenta from "./components/ConfirmacionCuenta/ConfirmacionCuenta";
+import Administracion from "./components/Administracion/Administracion";
 
 function App() {
   const [isLogged, setIsLogged] = useState(estaLogueado());
   const [userInformation, setUserInformation] = useState(obtenerInformacionUsuario());
+  const [rol, setRol] = useState( obtenerRolUsusario())
   AOS.init();
 
   return (
     <loggedContext.Provider
-      value={{ isLogged, setIsLogged, userInformation, setUserInformation }}
+      value={{ isLogged, setIsLogged, userInformation, setUserInformation, rol, setRol }}
     >
       <div className="App">
         <BrowserRouter>
@@ -47,6 +49,7 @@ function App() {
                   </ProductoLayout>
                 }
               </Route>
+              <Route path="/management" component={Administracion} />
             </Switch>
           </Layout>
         </BrowserRouter>
@@ -69,6 +72,14 @@ function obtenerInformacionUsuario() {
       ? JSON.parse(localStorage.getItem("apellido"))
       : "",
   };
+}
+
+function obtenerRolUsusario() {
+  return (
+    localStorage.hasOwnProperty("rol")
+    ? JSON.parse(localStorage.getItem("rol"))
+    : ""
+  )
 }
 
 

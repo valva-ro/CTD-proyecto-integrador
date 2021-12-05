@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import { Redirect, useHistory } from "react-router-dom";
-import TituloBloque from "../TituloBloque/TituloBloque";
+import HeaderSecundario from "../HeaderSecundario/HeaderSecundario";
 import TarjetaAlojamiento from "../BloqueAlojamientos/TarjetaAlojamiento/TarjetaAlojamiento";
 import SkeletonTarjetaAlojamiento from "../BloqueAlojamientos/TarjetaAlojamiento/SkeletonTarjetaAlojamiento";
 import useFetch from "../../hooks/useFetch";
@@ -9,7 +9,6 @@ import get from "../../utils/get";
 import styles from "./Favoritos.module.css";
 
 export default function Favoritos() {
-  const history = useHistory();
   const idUsuario = parseInt(localStorage.getItem("id"));
   const [favoritos, setFavoritos] = useState([]);
   const { isLoaded, items } = useFetch(`usuarios/${idUsuario}`);
@@ -34,19 +33,7 @@ export default function Favoritos() {
 
   return (
     <>
-      <div className={styles.contenedorHeader}>
-        <div className={styles.headerIzquierda}>
-          <div className={styles.a} onClick={history.goBack}>
-            <span>
-              <i className="fas fa-chevron-left" aria-hidden="true"></i>
-            </span>
-            <span>ATRÁS</span>
-          </div>
-        </div>
-        <div className={styles.headerDerecha}>
-          <TituloBloque styles={styles.favTitle}>Tus favoritos</TituloBloque>
-        </div>
-      </div>
+      <HeaderSecundario>Tus favoritos</HeaderSecundario>
       <section className={styles.favoritosContainer}>
         {isLoaded && favoritos.length === 0 ? (
           <div className={styles.avisoNoFavs}>
