@@ -13,7 +13,7 @@ export default function ProductoDetalle(producto) {
       <ProductoImagenes alojamiento={producto} />
       <ProductoDescripcion alojamiento={producto} />
       <ProductoCaracteristicas alojamiento={producto} />
-      <ProductoFechasDisponibles />
+      <ProductoFechasDisponibles idProducto={producto.id}/>
       <ProductoMapa alojamiento={producto} />
       <ProductoComentarios alojamiento={producto} />
     </>

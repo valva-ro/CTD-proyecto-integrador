@@ -25,7 +25,6 @@ export default function Reservas() {
 
   useEffect(() => {
     if (isLogged && isLoadedReservas) {
-      console.log(itemsReservas);
      setReservas(itemsReservas);
     }
   }, [isLoadedReservas, isLogged, itemsReservas, reservas]);

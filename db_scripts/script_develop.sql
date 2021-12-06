@@ -747,9 +747,9 @@ COMMIT;
 --
 
 -- Producto 1
-INSERT INTO puntuaciones (puntuacion, comentario, fecha, fk_producto, fk_usuario) VALUES (2, "Lindo pero pésima la atención y la limpieza", "2021-11-18", 1, 1);
+INSERT INTO puntuaciones (puntuacion, comentario, fecha, fk_producto, fk_usuario) VALUES (2, "Lindo pero pésima la atención y la limpieza, además el wifi no llegaba bien a la habitación", "2021-11-18", 1, 1);
 INSERT INTO puntuaciones (puntuacion, comentario, fecha, fk_producto, fk_usuario) VALUES (4, "Todo impecable, me encantó!", "2021-09-23", 1, 2);
-INSERT INTO puntuaciones (puntuacion, comentario, fecha, fk_producto, fk_usuario) VALUES (3, "Está bien, sin más", "2021-10-16", 1, 3);
+INSERT INTO puntuaciones (puntuacion, comentario, fecha, fk_producto, fk_usuario) VALUES (3, "El wifi funciona cuando quiere", "2021-10-16", 1, 3);
 -- Producto 2
 INSERT INTO puntuaciones (puntuacion, comentario, fecha, fk_producto, fk_usuario) VALUES (4, "Increíble este lugar, lo súper recomiendo", "2021-08-17", 2, 1);
 INSERT INTO puntuaciones (puntuacion, comentario, fecha, fk_producto, fk_usuario) VALUES (5, "Muy lindo el lugar, la atención, la limpieza. Volvería 100%", "2021-07-03", 2, 2);
@@ -800,18 +800,30 @@ COMMIT;
 -- Dumping data for table `reservas`
 --
 SET AUTOCOMMIT=0;
-INSERT INTO reservas (nombre, apellido, mail, ciudad, hora_entrada, fecha_ingreso, fecha_egreso, datos, vacuna_covid, fk_producto, fk_usuario) 
-VALUES ("Jorgito", "Ramirez", "jorgito@hb.com", "Caballito", 10, "2021-11-18", "2021-11-23", "Esto es una prueba para ver si los datos de reserva funcionan correctamente, el vendedor es un genio!!!", true, 1, 1);
-INSERT INTO reservas (nombre, apellido, mail, ciudad, hora_entrada, fecha_ingreso, fecha_egreso, datos, vacuna_covid, fk_producto, fk_usuario) 
-VALUES ("Jorgelina", "Gutierrez", "jorgelina@hb.com", "Caballito", 8, "2021-10-18", "2021-10-23", "", true, 2, 1);
-INSERT INTO reservas (nombre, apellido, mail, ciudad, hora_entrada, fecha_ingreso, fecha_egreso, datos, vacuna_covid, fk_producto, fk_usuario) 
-VALUES ("Gustavo", "Fernandez", "gusti@hb.com", "Caballito", 12, "2021-09-18", "2021-09-23", null, true, 3, 1);
-INSERT INTO reservas (nombre, apellido, mail, ciudad, hora_entrada, fecha_ingreso, fecha_egreso, datos, vacuna_covid, fk_producto, fk_usuario) 
-VALUES ("Manuela", "Manolita", "mmanolita@hb.com", "Caballito", 9, "2021-08-18", "2021-08-23", "Esto es una prueba 4 para ver si los datos de reserva funcionan correctamente, el vendedor es un genio!!!", false, 4, 1);
-INSERT INTO reservas (nombre, apellido, mail, ciudad, hora_entrada, fecha_ingreso, fecha_egreso, datos, vacuna_covid, fk_producto, fk_usuario) 
-VALUES ("Florencia", "Fazz", "ffazz@hb.com", "Caballito", 7, "2021-07-18", "2021-07-23", "Esto es una prueba 5 para ver si los datos de reserva funcionan correctamente, el vendedor es un genio!!!", false, 5, 1);
-INSERT INTO reservas (nombre, apellido, mail, ciudad, hora_entrada, fecha_ingreso, fecha_egreso, datos, vacuna_covid, fk_producto, fk_usuario) 
-VALUES ("Lucia", "Ramirez", "lucy@hb.com", "Caballito", 11, "2021-06-18", "2021-06-23", "Esto es una prueba 6 para ver si los datos de reserva funcionan correctamente, el vendedor es un genio!!!", false, 6, 1);
-INSERT INTO reservas (nombre, apellido, mail, ciudad, hora_entrada, fecha_ingreso, fecha_egreso, datos, vacuna_covid, fk_producto, fk_usuario) 
-VALUES ("Juan Carlos", "Megalodon", "juanca@hb.com", "Caballito", 11, "2021-12-01", "2021-12-23", "Esto es una prueba 7 para ver si los datos de reserva funcionan correctamente, el vendedor es un genio!!!", false, 6, 1);
+-- Producto 1
+INSERT INTO reservas (nombre, apellido, mail, ciudad, hora_entrada, fecha_ingreso, fecha_egreso, vacuna_covid, fk_producto, fk_usuario) 
+    VALUES ("Pepe", "Pepardo", "pepe@gmail.com", "Capital Federal", 10, "2021-12-18", "2021-12-23", true, 1, 1);
+INSERT INTO reservas (nombre, apellido, mail, ciudad, hora_entrada, fecha_ingreso, fecha_egreso, vacuna_covid, fk_producto, fk_usuario) 
+    VALUES ("Jorgito", "Ramirez", "jorgito@hb.com", "Capital Federal", 10, "2022-01-02", "2022-01-05", true, 1, 2);
+INSERT INTO reservas (nombre, apellido, mail, ciudad, hora_entrada, fecha_ingreso, fecha_egreso, vacuna_covid, fk_producto, fk_usuario) 
+    VALUES ("Ernesto", "González", "ernesto@hb.com", "Mendoza", 10, "2022-01-10", "2022-01-20", true, 1, 3);
+-- Producto 2
+INSERT INTO reservas (nombre, apellido, mail, ciudad, hora_entrada, fecha_ingreso, fecha_egreso, vacuna_covid, fk_producto, fk_usuario) 
+    VALUES ("Jorgelina", "Gutierrez", "jorgelina@hb.com", "Caballito", 8, "2021-12-18", "2021-12-23", true, 2, 1);
+INSERT INTO reservas (nombre, apellido, mail, ciudad, hora_entrada, fecha_ingreso, fecha_egreso, vacuna_covid, fk_producto, fk_usuario) 
+    VALUES ("José", "Gómez", "jose@gmail.com", "Palermo", 10, "2022-01-16", "2022-01-30", true, 2, 3);
+-- Producto 3
+INSERT INTO reservas (nombre, apellido, mail, ciudad, hora_entrada, fecha_ingreso, fecha_egreso, vacuna_covid, fk_producto, fk_usuario) 
+    VALUES ("Gustavo", "Fernandez", "gusti@gmail.com", "Caballito", 12, "2021-12-10", "2021-12-14", true, 3, 1);
+-- Producto 4
+INSERT INTO reservas (nombre, apellido, mail, ciudad, hora_entrada, fecha_ingreso, fecha_egreso, vacuna_covid, fk_producto, fk_usuario) 
+    VALUES ("Manuela", "Manolita", "manolita@gmail.com", "Caballito", 9, "2021-12-18", "2021-12-25", false, 4, 1);
+-- Producto 5
+INSERT INTO reservas (nombre, apellido, mail, ciudad, hora_entrada, fecha_ingreso, fecha_egreso, vacuna_covid, fk_producto, fk_usuario) 
+    VALUES ("Florencia", "Fazz", "ffazz@hb.com", "Caballito", 7, "2021-01-08", "2021-01-15", false, 5, 1);
+-- Producto 6
+INSERT INTO reservas (nombre, apellido, mail, ciudad, hora_entrada, fecha_ingreso, fecha_egreso, vacuna_covid, fk_producto, fk_usuario) 
+    VALUES ("Lucia", "Ramirez", "lucy@hb.com", "Caballito", 11, "2021-12-18", "2021-12-23", false, 6, 1);
+INSERT INTO reservas (nombre, apellido, mail, ciudad, hora_entrada, fecha_ingreso, fecha_egreso, vacuna_covid, fk_producto, fk_usuario) 
+    VALUES ("Juan Carlos", "Megalodon", "juanca@hb.com", "Caballito", 11, "2021-12-01", "2021-12-23", false, 6, 1);
 COMMIT;

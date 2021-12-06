@@ -1,21 +1,35 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useReducer } from "react";
+import obtenerFechasNoSeleccionables from "../utils/obtenerFechasNoSeleccionables";
+import useFetchFechasReservadas from "./useFetchFechasReservadas";
 
-export default function useDisabledDates(fechasReservadas,fechasNoSeleccionables,startDate,endDate){
-    const [excludeDatesDinamico, setExcludeDatesDinamico] = useState(fechasReservadas)
+function reducer(state, newState) {
+  return {
+    ...state,
+    ...newState,
+  };
+}
 
-    useEffect (() => {    
-        if (startDate != null && endDate == null)  {
-            setExcludeDatesDinamico (fechasNoSeleccionables)
-        }
-        if (endDate != null){
-            setExcludeDatesDinamico (fechasReservadas)
-        }
-                
-        return () => {
-            setExcludeDatesDinamico (fechasReservadas)
-        }
+export default function useDisabledDates(id, startDate, endDate) {
+  const { isLoaded, fechasReservadas } = useFetchFechasReservadas(id);
+  const [excludeDatesDinamico, setExcludeDatesDinamico] = useState([]);
 
-    }, [startDate, endDate]); 
+  useEffect(() => {
+    if (isLoaded) {
+      setExcludeDatesDinamico(fechasReservadas);
+    }
+  }, [isLoaded]);
 
-    return excludeDatesDinamico;
+  useEffect(() => {
+    if (startDate != null && endDate == null) {
+      setExcludeDatesDinamico(
+        obtenerFechasNoSeleccionables(startDate, fechasReservadas)
+      );
+    }
+
+    return () => {
+      setExcludeDatesDinamico(fechasReservadas);
+    };
+  }, [startDate, endDate]);
+
+  return excludeDatesDinamico;
 }

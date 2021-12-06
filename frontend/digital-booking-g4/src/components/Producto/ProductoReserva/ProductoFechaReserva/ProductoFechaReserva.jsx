@@ -1,19 +1,19 @@
 import { useState, useEffect } from "react";
-import TituloBloque from "../../../TituloBloque/TituloBloque";
+import { useParams } from "react-router-dom";
 import DatePicker, {
   CalendarContainer,
   registerLocale,
 } from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import es from "date-fns/locale/es";
+import TituloBloque from "../../../TituloBloque/TituloBloque";
 import useScreenWidth from "../../../../hooks/useScreenWidth";
-import obtenerFechasReservadas from "../../../../utils/obtenerFechasReservadas.js";
-import obtenerFechasNoSeleccionables from "../../../../utils/obtenerFechasNoSeleccionables.js";
 import useDisabledDate from "../../../../hooks/useDisabledDates";
 
 registerLocale("es", es);
 
 export default function ProductoFechaReserva({ setCheckin, setCheckout }) {
+  const { id } = useParams();
   const startDateStorage = localStorage.hasOwnProperty("startDate")
     ? new Date(JSON.parse(localStorage.getItem("startDate")))
     : null;
@@ -25,14 +25,7 @@ export default function ProductoFechaReserva({ setCheckin, setCheckout }) {
     endDateStorage,
   ]);
   const [startDate, endDate] = dateRange;
-  const fechasReservadas = obtenerFechasReservadas();
-  const fechasNoSeleccionables = obtenerFechasNoSeleccionables(startDate);
-  const excludeDatesDinamico = useDisabledDate(
-    fechasReservadas,
-    fechasNoSeleccionables,
-    startDate,
-    endDate
-  );
+  const excludeDatesDinamico = useDisabledDate(id, startDate, endDate);
   const anchoPantalla = useScreenWidth();
 
   const MyContainer = ({ className, children }) => {

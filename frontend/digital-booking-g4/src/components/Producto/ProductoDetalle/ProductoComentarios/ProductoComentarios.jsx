@@ -62,7 +62,7 @@ export default function ProductoComentarios({ alojamiento: { id } }) {
           <h3 className={styles.sinResultados}>Todavía no hay comentarios</h3>
         ) : isLoaded ? (
           puntuaciones.slice(0, cantidadComentariosActual).map((puntuacion) => (
-            <div className={styles.comentarioContainer}>
+            <div className={styles.comentarioContainer} key={puntuacion.id}>
               <div className={styles.estrellasContainer}>
                 <Estrellas puntaje={puntuacion.puntuacion} />
                 <p className={styles.fecha}>
