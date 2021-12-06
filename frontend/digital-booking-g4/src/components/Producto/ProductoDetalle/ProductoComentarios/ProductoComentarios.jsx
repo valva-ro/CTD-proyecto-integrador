@@ -10,6 +10,7 @@ const CANTIDAD_COMENTARIOS = 3;
 export default function ProductoComentarios({ alojamiento: { id } }) {
   const { isLoaded, items } = useFetch(`puntuaciones/producto/${id}`);
   const [puntuaciones, setPuntuaciones] = useState([]);
+  const [mostrarBotonVerMenos, setMostrarBotonVerMenos] = useState(false);
   const [cantidadComentariosActual, setCantidadComentariosActual] =
     useState(CANTIDAD_COMENTARIOS);
   const [
@@ -33,7 +34,10 @@ export default function ProductoComentarios({ alojamiento: { id } }) {
         puntuaciones.length < cantidadComentariosActual + CANTIDAD_COMENTARIOS
       );
       setCargarMenosComentarioDeshabilitado(
-        puntuaciones.length > cantidadComentariosActual + CANTIDAD_COMENTARIOS
+        cantidadComentariosActual < CANTIDAD_COMENTARIOS * 2
+      );
+      setMostrarBotonVerMenos(
+        cantidadComentariosActual >= CANTIDAD_COMENTARIOS * 2
       );
     }
   }, [isLoaded, puntuaciones, cantidadComentariosActual]);
@@ -45,12 +49,11 @@ export default function ProductoComentarios({ alojamiento: { id } }) {
   };
 
   const mostrarMenosComentarios = () => {
-    if (cantidadComentariosActual >= 6) {
+    if (cantidadComentariosActual >= CANTIDAD_COMENTARIOS * 2) {
       setCantidadComentariosActual(
         cantidadComentariosActual - CANTIDAD_COMENTARIOS
-      ); 
-    } 
-    
+      );
+    }
   };
 
   return (
@@ -91,16 +94,22 @@ export default function ProductoComentarios({ alojamiento: { id } }) {
           >
             Más comentarios
           </FilledButton>
-          <FilledButton
-            styles={styles.btnCargarComentarios}
-            onClick={mostrarMenosComentarios}
-            disabled={cargarMenosComentariosDeshabilitado}
-            title={
-              cargarMenosComentariosDeshabilitado ? "Este es el mínimo de comentarios posibles" : ""
-            }
-          >
-            Menos comentarios
-          </FilledButton>
+          {mostrarBotonVerMenos ? (
+            <FilledButton
+              styles={styles.btnCargarComentarios}
+              onClick={mostrarMenosComentarios}
+              disabled={cargarMenosComentariosDeshabilitado}
+              title={
+                cargarMenosComentariosDeshabilitado
+                  ? "Este es el mínimo de comentarios posibles"
+                  : ""
+              }
+            >
+              Menos comentarios
+            </FilledButton>
+          ) : (
+            ""
+          )}
         </div>
       ) : null}
     </section>
