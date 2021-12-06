@@ -10,10 +10,11 @@ import obtenerClasificacion from "../../../utils/obtenerClasificacion";
 import calcularPromedioPuntuacion from "../../../utils/calcularPromedioPuntuacion";
 import get from "../../../utils/get";
 import Modal from "../../Modal/Modal";
+import Mapa from "../../Mapa/Mapa";
 import TarjetaPuntuacionReserva from "./TarjetaPuntuacionReserva/TarjetaPuntuacionReserva";
 
 export default function ReservaCard({
-  alojamiento: { id, nombre, categoria, ciudad, imagenes, caracteristicas },
+  alojamiento: { id, nombre, categoria, ciudad, imagenes, caracteristicas, direccion },
   reserva: {
     id: idReserva,
     horaEntrada,
@@ -26,13 +27,18 @@ export default function ReservaCard({
 }) {
   const { isLogged } = useContext(loggedContext);
   const [puntuaciones, setPuntuaciones] = useState([]);
+  const [isMapOpen, setIsMapOpen] = useState(false);
   const puntaje = calcularPromedioPuntuacion(puntuaciones);
   const [puntuacionDeshabilitada, setpuntuacionDeshabilitada] = useState(false);
-  const [showModal, setShowModal] = useState(false);
+  const [showModalCalification, setShowModalCalification] = useState(false);
+  const [calificadoPreviamente, setCalificadoPreviamente] = useState(null);
   const fechaActual = new Date();
   const fechaCheckout = new Date(fechaEgreso);
   const idUsuario = parseInt(localStorage.getItem("id"));
-  const [calificadoPreviamente, setCalificadoPreviamente] = useState(null);
+  const coordenadas = {
+    lat: ciudad.latitud,
+    lng: ciudad.longitud,
+  };
 
   useEffect(() => {
     get(`puntuaciones/producto/${id}`)
@@ -57,7 +63,7 @@ export default function ReservaCard({
     if (fechaActual < fechaCheckout) {
       setpuntuacionDeshabilitada(true);
     }
-  }, [calificadoPreviamente, showModal]);
+  }, [calificadoPreviamente, showModalCalification]);
 
   const buscarImagenPrincipal = () => {
     let imagen = imagenes.find((imagen) => {
@@ -69,7 +75,9 @@ export default function ReservaCard({
     return imagen;
   };
 
-  const handleQualification = () => setShowModal(true);
+  const handleQualification = () => setShowModalCalification(true);
+  const openMap = () => setIsMapOpen(true);
+  const closeMap = () => setIsMapOpen(false);
 
   if (!isLogged) {
     return <Redirect to="/" />;
@@ -110,9 +118,9 @@ export default function ReservaCard({
               <i className="fas fa-map-marker-alt"></i>
               <p>
                 {ciudad.nombre}
-                <Link to={`product/${id}/features#mapa`}>
+                <span className={styles.mostrarEnMapa} onClick={openMap}>
                   Mostrar en el mapa
-                </Link>
+                </span>
               </p>
             </div>
             <div className={styles.servicios}>
@@ -177,8 +185,8 @@ export default function ReservaCard({
         </div>
       </div>
       <Modal
-        estaAbierto={showModal}
-        onCloseRequest={() => setShowModal(false)}
+        estaAbierto={showModalCalification}
+        onCloseRequest={() => setShowModalCalification(false)}
         colorBtnCerrar="#383b58"
         colorFondo="#383b5853"
       >
@@ -186,6 +194,18 @@ export default function ReservaCard({
           nombreAlojamiento={nombre}
           idAlojamiento={id}
         />
+      </Modal>
+      <Modal
+        estaAbierto={isMapOpen}
+        onCloseRequest={closeMap}
+        colorBtnCerrar="#000000"
+      >
+        <div className={styles.contenedorMapa}>
+          <h2 className={styles.tituloMapa}>
+            {`${direccion}, ${ciudad.nombre}, ${ciudad.pais}`}
+          </h2>
+          <Mapa coordenadas={coordenadas} />
+        </div>
       </Modal>
     </>
   );
