@@ -1,5 +1,5 @@
 .containerDropInput{
-  width: 100%;
+  width: 40%;
   display: flex;
   flex-direction: column;
   gap: 0;
@@ -41,6 +41,9 @@
 }
 
 @media (max-width: 480px) {
+  .containerDropInput{
+    width: 100%;
+  }
   .labelDropInput{
     font-size: .9rem;
     margin-top: 7px;

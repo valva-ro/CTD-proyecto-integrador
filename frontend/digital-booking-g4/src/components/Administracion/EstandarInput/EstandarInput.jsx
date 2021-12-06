@@ -5,7 +5,9 @@ export default function EstandarInput({
     name,
     onChangeItem,
     setOnChangeItem,
-    placeholder
+    placeholder,
+    id,
+    dataId
 }){
     return(
         <div className={styles.containerEstandarInput}>
@@ -19,6 +21,8 @@ export default function EstandarInput({
                 value={onChangeItem}
                 name={name}
                 placeholder={placeholder}
+                id={id}
+                dataId={dataId}
                 required
 
             />

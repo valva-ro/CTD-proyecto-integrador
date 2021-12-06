@@ -1,4 +1,4 @@
-import { React, useState, useEffect } from "react";
+import { React, useState, useEffect, useCallback } from "react";
 import useFetch from "../../hooks/useFetch";
 import HeaderSecundario from "../HeaderSecundario/HeaderSecundario";
 import TituloBloque from "../TituloBloque/TituloBloque";
@@ -10,7 +10,8 @@ import CityInput from "../Searcher/CityInput/CityInput"
 import styles from "./Administracion.module.css";
 import caracteristicas from "../../resources/caracteristicas.json"
 import stylesInputsFromOtherside from "../Producto/ProductoReserva/ProductoFormDatos/InputsFromOtherside.module.css"
-import DropInput from "./DropInput/DropInput";
+import RowImagenes from "./RowImagenes/RowImagenes";
+import FilledButton from "../Buttons/FilledButton";
 
 
 export default function Administracion() {
@@ -58,10 +59,33 @@ export default function Administracion() {
 
     const handleChangeCategory = e => setOnChangeCategory(e.target.value)
 
-    const [imagenes, setImagenes] = useState([])
-    const handleAddImg = () => {
-        
+    /*Imagenes */
+    const [imagenesDetails, setImagenesDetails]= useState([
+        {
+            index: Math.random(),
+            url: "",
+            descripcion: ""
+
+        }
+    ])
+
+    //const [record, setRecord] = useState("");
+
+    const handleAdd = (e) => {
+        setImagenesDetails([...imagenesDetails,{
+            index: Math.random(),
+            url: "",
+            descripcion: ""
+        }])
     }
+
+    const handleDelete = (val)=>{
+        setImagenesDetails([...imagenesDetails.filter(r => r !== val)])
+    }
+
+    //console.log(record)
+    
+
 
     return (
         <>
@@ -78,13 +102,13 @@ export default function Administracion() {
                                 label="* Nombre de la propiedad"
                                 name="nombre"
                             />
-                            
+
                             <SelectInput
                                 label="* Categoría"
-                                name= "tituloCategoria"
+                                name="tituloCategoria"
                                 handleChange={handleChangeCategory}
                                 opcionesDisponibles={categoriasDisponibles}
-                                showOptions= {false}
+                                showOptions={false}
                             />
 
                         </div>
@@ -98,10 +122,10 @@ export default function Administracion() {
 
                             <SelectInput
                                 label="* CheckIn (horario min)"
-                                name= "horarioCheckIn"
+                                name="horarioCheckIn"
                                 handleChange={handleChangeCheckIn}
                                 opcionesDisponibles={horasDisponibles}
-                                showOptions= {true}
+                                showOptions={true}
                             />
                         </div>
                         <div className={styles.lineContainerInformacion}>
@@ -173,7 +197,7 @@ export default function Administracion() {
                     <div className={styles.subContainer}>
                         <TituloBloque>Políticas del producto</TituloBloque>
                         <div className={styles.bloquePoliticas}>
-                            <div>
+                            <div className={styles.columnPolitica}>
                                 <h3 className={styles.tipoPolitica}>Normas de la casa</h3>
                                 <TextAreaInput
                                     onChangeItem={normasDeLaCasa}
@@ -184,7 +208,7 @@ export default function Administracion() {
                                 />
 
                             </div>
-                            <div>
+                            <div className={styles.columnPolitica}>
                                 <h3 className={styles.tipoPolitica}>Salud y seguridad</h3>
                                 <TextAreaInput
                                     onChangeItem={saludSeguridad}
@@ -194,7 +218,7 @@ export default function Administracion() {
                                     placeholder="Escribir aquí"
                                 />
                             </div>
-                            <div>
+                            <div className={styles.columnPolitica}>
                                 <h3 className={styles.tipoPolitica}>Política de cancelación</h3>
                                 <TextAreaInput
                                     onChangeItem={cancelacion}
@@ -210,25 +234,16 @@ export default function Administracion() {
                     </div>
                     <div className={styles.subContainer}>
                         <TituloBloque>Cargar imágenes</TituloBloque>
-                        <div>
-                            <EstandarInput
-                                onChangeItem={propertyName}
-                                setOnChangeItem={setPropertyName}
-                                name="nombre"
-                                placeholder="Insertar https://"
-                            />
-                            <DropInput 
-                                setOnChangeItem={setDescripcionImagen}
-                                onChangeItem={descripcionImagen}
-                                placeholder="Descripción"
-                            />
-                            <button onClick={handleAddImg}><i class="fas fa-plus"></i></button>
-                            <button onclick='eliminarTarea(${tarea.id})'><i className="fas fa-times"></i></button>
+                        <RowImagenes
+                            handleAdd={handleAdd}
+                            handleDelete={handleDelete}
+                            imagenesDetails={imagenesDetails}
+                        />
 
-                        </div>
-                        
                     </div>
-                    <div></div>
+                    <div className={styles.subContainer}>
+                        <FilledButton styles={styles.buttonSubmit}>Crear</FilledButton>
+                    </div>
                 </form>
 
 
