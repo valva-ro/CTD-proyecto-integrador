@@ -12,6 +12,8 @@ import com.grupo4.hostingbook.service.IUsuarioService;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
+
+import org.apache.struts.chain.commands.UnauthorizedActionException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.ApplicationEventPublisher;
@@ -121,16 +123,16 @@ public class UsuarioController implements IUsuarioController {
     }
 
     @GetMapping("/confirmarRegistro")
-    public ResponseEntity confirmRegistration(@RequestParam("token") String token) throws NotImplementedException, BadRequestException, ResourceNotFoundException {
+    public ResponseEntity confirmRegistration(@RequestParam("token") String token) throws NotImplementedException, BadRequestException, ResourceNotFoundException, UnauthorizedActionException {
         VerificationToken verificationToken = usuarioService.getVerificationToken(token);
         Usuario usuario = verificationToken.getUsuario();
         Calendar cal = Calendar.getInstance();
 
         if (verificationToken == null) {
-            // TODO throw token invalido
+            throw new UnauthorizedActionException("El token no es válido");
         }
         if ((verificationToken.getExpiracion().getTime() - cal.getTime().getTime()) <= 0) {
-            // TODO throw token expirado
+            throw new UnauthorizedActionException("El token expiró");
         }
 
         usuario.setCuentaValidada(true);
