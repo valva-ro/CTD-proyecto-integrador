@@ -750,6 +750,10 @@ COMMIT;
 INSERT INTO puntuaciones (puntuacion, comentario, fecha, fk_producto, fk_usuario) VALUES (2, "Lindo pero pésima la atención y la limpieza, además el wifi no llegaba bien a la habitación", "2021-11-18", 1, 1);
 INSERT INTO puntuaciones (puntuacion, comentario, fecha, fk_producto, fk_usuario) VALUES (4, "Todo impecable, me encantó!", "2021-09-23", 1, 2);
 INSERT INTO puntuaciones (puntuacion, comentario, fecha, fk_producto, fk_usuario) VALUES (3, "El wifi funciona cuando quiere", "2021-10-16", 1, 3);
+INSERT INTO puntuaciones (puntuacion, comentario, fecha, fk_producto, fk_usuario) VALUES (2, "Lindo pero pésima la atención y la limpieza, además el wifi no llegaba bien a la habitación", "2021-11-18", 1, 1);
+INSERT INTO puntuaciones (puntuacion, comentario, fecha, fk_producto, fk_usuario) VALUES (3, "Buena relación calidad / precio", "2020-12-01", 1, 2);
+INSERT INTO puntuaciones (puntuacion, comentario, fecha, fk_producto, fk_usuario) VALUES (2, "Hay muchos microcortes de internet, no funciona para nada bien", "2021-04-15", 1, 2);
+INSERT INTO puntuaciones (puntuacion, comentario, fecha, fk_producto, fk_usuario) VALUES (5, "Me encantó!!!", "2019-10-16", 1, 3);
 -- Producto 2
 INSERT INTO puntuaciones (puntuacion, comentario, fecha, fk_producto, fk_usuario) VALUES (4, "Increíble este lugar, lo súper recomiendo", "2021-08-17", 2, 1);
 INSERT INTO puntuaciones (puntuacion, comentario, fecha, fk_producto, fk_usuario) VALUES (5, "Muy lindo el lugar, la atención, la limpieza. Volvería 100%", "2021-07-03", 2, 2);
