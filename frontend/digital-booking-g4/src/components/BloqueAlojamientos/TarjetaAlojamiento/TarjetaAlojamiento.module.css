@@ -118,11 +118,6 @@
   font-size: 16px;
 }
 
-.informacionDetalle a {
-  color: var(--color-principal);
-  text-transform: uppercase;
-}
-
 .informacionDetalle {
   display: flex;
   flex-direction: column;
@@ -151,12 +146,15 @@
   font-size: 1.25rem;
 }
 
-.ubicacion a {
+.mostrarEnMapa {
   margin-left: 0.25rem;
   transition: color ease-in-out 50ms;
+  text-transform: uppercase;
+  color: var(--color-principal);
 }
 
-.ubicacion a:hover {
+.mostrarEnMapa:hover {
+  cursor: pointer;
   color: var(--color-principal-opaco);
 }
 
@@ -174,6 +172,18 @@
   width: 100%;
   margin-top: 1.5rem;
   padding: 10px 0;
+}
+
+.contenedorMapa {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.tituloMapa {
+  margin: 1rem 0;
+  color: var(--color-2);
 }
 
 /*_________Skeleton_______________*/
