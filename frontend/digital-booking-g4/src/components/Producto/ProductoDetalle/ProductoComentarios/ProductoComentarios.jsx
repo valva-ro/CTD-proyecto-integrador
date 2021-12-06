@@ -31,7 +31,7 @@ export default function ProductoComentarios({ alojamiento: { id } }) {
   useEffect(() => {
     if (isLoaded) {
       setCargarMasComentarioDeshabilitado(
-        puntuaciones.length < cantidadComentariosActual
+        puntuaciones.length <= cantidadComentariosActual
       );
       setCargarMenosComentarioDeshabilitado(
         cantidadComentariosActual < CANTIDAD_COMENTARIOS * 2
@@ -49,11 +49,9 @@ export default function ProductoComentarios({ alojamiento: { id } }) {
   };
 
   const mostrarMenosComentarios = () => {
-    if (cantidadComentariosActual >= CANTIDAD_COMENTARIOS * 2) {
-      setCantidadComentariosActual(
-        cantidadComentariosActual - CANTIDAD_COMENTARIOS
-      );
-    }
+    setCantidadComentariosActual(
+      cantidadComentariosActual - CANTIDAD_COMENTARIOS
+    );
   };
 
   return (
@@ -64,29 +62,22 @@ export default function ProductoComentarios({ alojamiento: { id } }) {
         {isLoaded && puntuaciones.length === 0 ? (
           <h3 className={styles.sinResultados}>Todavía no hay comentarios</h3>
         ) : isLoaded ? (
-          puntuaciones
-            .slice(
-              0,
-              puntuaciones.length < cantidadComentariosActual
-                ? puntuaciones.length
-                : cantidadComentariosActual
-            )
-            .map((puntuacion) => (
-              <div className={styles.comentarioContainer} key={puntuacion.id}>
-                <div className={styles.estrellasContainer}>
-                  <Estrellas puntaje={puntuacion.puntuacion} />
-                  <p className={styles.fecha}>
-                    {formatearFecha(puntuacion.fecha)}
-                  </p>
-                </div>
-                <h3 className={styles.nombreComentario}>
-                  {`${puntuacion.usuario.nombre} ${puntuacion.usuario.apellido}`}
-                </h3>
-                <p
-                  className={styles.comentario}
-                >{`"${puntuacion.comentario}"`}</p>
+          puntuaciones.slice(0, cantidadComentariosActual).map((puntuacion) => (
+            <div className={styles.comentarioContainer} key={puntuacion.id}>
+              <div className={styles.estrellasContainer}>
+                <Estrellas puntaje={puntuacion.puntuacion} />
+                <p className={styles.fecha}>
+                  {formatearFecha(puntuacion.fecha)}
+                </p>
               </div>
-            ))
+              <h3 className={styles.nombreComentario}>
+                {`${puntuacion.usuario.nombre} ${puntuacion.usuario.apellido}`}
+              </h3>
+              <p
+                className={styles.comentario}
+              >{`"${puntuacion.comentario}"`}</p>
+            </div>
+          ))
         ) : null}
       </div>
       {isLoaded && puntuaciones.length > 0 ? (
