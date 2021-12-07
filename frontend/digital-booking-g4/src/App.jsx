@@ -15,6 +15,7 @@ import ProductoReserva from "./components/Producto/ProductoReserva/ProductoReser
 import ConfirmacionCuenta from "./components/ConfirmacionCuenta/ConfirmacionCuenta";
 import Reservas from "./components/FavoritosYReservas/Reservas/Reservas";
 import jwtDecode from "jwt-decode";
+import AsistenteVirtual from "./components/AsistenteVirtual/AsistenteVirtual";
 
 function App() {
   AOS.init();
@@ -84,6 +85,7 @@ function App() {
             </Switch>
           </Layout>
         </BrowserRouter>
+        <AsistenteVirtual/>
       </div>
     </loggedContext.Provider>
   );
