@@ -16,16 +16,16 @@ export default function Reservas() {
   }
   const [reservas, setReservas] = useState([]);
   const { isLogged } = useContext(loggedContext);
-  const {
-    isLoaded: isLoadedReservas,
-    items: itemsReservas,
-  } = useFetch(`reservas/usuario/${idUsuario}`, {
-    headers: { Authorization: token },
-  });
+  const { isLoaded: isLoadedReservas, items: itemsReservas } = useFetch(
+    `reservas/usuario/${idUsuario}`,
+    {
+      headers: { Authorization: token },
+    }
+  );
 
   useEffect(() => {
     if (isLogged && isLoadedReservas) {
-     setReservas(itemsReservas);
+      setReservas(itemsReservas);
     }
   }, [isLoadedReservas, isLogged, itemsReservas, reservas]);
 
@@ -67,14 +67,18 @@ export default function Reservas() {
           </ul>
         ) : (
           <ul className={styles.alojamientosContainer}>
-            {reservas.map((reserva) => (
-              <li key={reserva.id} className={styles.alojamiento}>
-                <ReservaCard
-                  alojamiento={reserva.producto}
-                  reserva={reserva}
-                />
-              </li>
-            ))}
+            {reservas
+              .sort((reservaA, reservaB) => {
+                return reservaA.id < reservaB.id ? -1 : 1;
+              })
+              .map((reserva) => (
+                <li key={reserva.id} className={styles.alojamiento}>
+                  <ReservaCard
+                    alojamiento={reserva.producto}
+                    reserva={reserva}
+                  />
+                </li>
+              ))}
           </ul>
         )}
       </section>
