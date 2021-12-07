@@ -55,6 +55,11 @@ button{
     border: 3px solid var(--color-2);
 }
 
+.containerBotones {
+    display: flex;
+    gap: 6px;
+}
+
 @media (max-width: 480px) {
     .fila{
         display: flex;
