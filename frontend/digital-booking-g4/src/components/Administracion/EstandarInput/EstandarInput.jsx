@@ -1,4 +1,4 @@
-import styles from "./EstandarInput.module.css"
+import styles from "./EstandarInput.module.css";
 
 export default function EstandarInput({
     label,
