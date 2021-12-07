@@ -297,22 +297,41 @@
 }
 .reservaButtonsContainer {
   display: flex;
+  flex-direction: column;
   gap: 10px;
   height: 50px;
-  margin-top: 1.5rem;
-  justify-content: stretch;
+  margin-top: .5rem;
+  margin-bottom: 1rem;
+  width: 100%;
+}
+.reservaButtonsContainerVerMasCancelar {
+  display: inline-block;
   width: 100%;
 }
 .reservaBtnVerMas,
-.reservaBtnCalificar {
+.reservaBtnCalificar,
+.reservaBtnCancelar {
   height: 100%;
-  width: 100%;
+  padding: 1%;
+}
+.reservaBtnVerMas,
+.reservaBtnCancelar {
+  width: 49%;
+}
+.reservaBtnVerMas {
+  margin-right: 1%;
+}
+.reservaBtnCancelar {
+  margin-left: 1%;
+  background-color: var(--color-5);
+  border: solid 2px var(--color-principal);
+  color: var(--color-principal);
 }
 .reservaBtnCalificar {
+  width: 100%;
   color: white;
   background-color: var(--color-3);
   border: 3px solid var(--color-3);
-  padding: 1%;
 }
 .reservaBtnCalificar:hover {
   background-color: var(--color-2);
@@ -326,6 +345,18 @@
 }
 .reservaBtnCalificar:disabled:hover {
   cursor: initial;
+}
+.confirmButton {
+  background-color: var(--color-principal) !important;
+  border: solid 3px var(--color-principal) !important;
+  color: var(--color-5) !important;
+  outline: var(--color-principal) !important;
+}
+.cancelButton {
+  color: white !important;
+  background-color: var(--color-3) !important;
+  border: 3px solid var(--color-3) !important;
+  outline: var(--color-3) !important;
 }
 
 @media (max-width: 980px) {

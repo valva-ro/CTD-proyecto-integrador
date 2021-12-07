@@ -31,7 +31,7 @@ public class Producto {
     @JoinColumn(name = "fk_producto")
     private Set<Imagen> imagenes = new HashSet<>();
 
-    @OneToMany(mappedBy = "producto")
+    @OneToMany(mappedBy = "producto", cascade = CascadeType.MERGE)
     @JsonIgnore
     @Transient
     private Set<Reserva> reservas = new HashSet<>();
@@ -167,6 +167,14 @@ public class Producto {
 
     public void setImagenes(Set<Imagen> imagenes) {
         this.imagenes = imagenes;
+    }
+
+    public Set<Reserva> getReservas() {
+        return this.reservas;
+    }
+
+    public void setReservas(Set<Reserva> reservas) {
+        this.reservas = reservas;
     }
 
     public Set<Caracteristica> getCaracteristicas() {
