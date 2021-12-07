@@ -34,8 +34,15 @@ public class PoliticaService implements IPoliticaService {
     @Override
     public PoliticaDTO crear(PoliticaDTO politicaDTO) throws BadRequestException, ResourceNotFoundException {
         validarCamposRequeridosCreacion(politicaDTO);
+        Politica guardada;
         Politica entidadPolitica = mapper.convertValue(politicaDTO, Politica.class);
-        Politica guardada = politicaRepository.save(entidadPolitica);
+        Optional<TipoPolitica> tipoPolitica = tipoPoliticaRepository.findById(politicaDTO.getTipoPolitica().getId());
+        if (tipoPolitica.isPresent()) {
+            guardada = politicaRepository.save(entidadPolitica);
+            guardada.setTipoPolitica(tipoPolitica.get());
+        } else {
+            throw new ResourceNotFoundException(String.format(Mensajes.ERROR_NO_EXISTE, "El 'tipo política'", politicaDTO.getTipoPolitica().getId()));
+        }
         return mapper.convertValue(guardada, PoliticaDTO.class);
     }
 

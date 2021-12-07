@@ -196,7 +196,6 @@ public class ProductoService implements IProductoService {
     @Transactional
     public UsuarioDTO quitarDeFavoritos(Long idProducto, Long idUsuario)
             throws ResourceNotFoundException, BadRequestException {
-        ProductoDTO producto = buscarPorId(idProducto);
         UsuarioDTO usuario = usuarioService.buscarPorId(idUsuario);
         Set<ProductoDTO> productosFavoritos = usuario.getProductosFavoritos();
         Set<ProductoDTO> productosActualizados = new HashSet<>();

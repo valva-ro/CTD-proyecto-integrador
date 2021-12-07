@@ -3,18 +3,28 @@ import { Link, Redirect } from "react-router-dom";
 import FilledButton from "../../Buttons/FilledButton";
 import OutlinedButton from "../../Buttons/OutlinedButton";
 import Estrellas from "../../Estrellas/Estrellas";
+import Modal from "../../Modal/Modal";
+import Mapa from "../../Mapa/Mapa";
+import TarjetaPuntuacionReserva from "./TarjetaPuntuacionReserva/TarjetaPuntuacionReserva";
 // Estilos importados desde la carpeta TarjetaAlojamiento para reutilizar codigo
 import styles from "../../BloqueAlojamientos/TarjetaAlojamiento/TarjetaAlojamiento.module.css";
 import loggedContext from "../../../contexts/loggedContext";
 import obtenerClasificacion from "../../../utils/obtenerClasificacion";
 import calcularPromedioPuntuacion from "../../../utils/calcularPromedioPuntuacion";
 import get from "../../../utils/get";
-import Modal from "../../Modal/Modal";
-import Mapa from "../../Mapa/Mapa";
-import TarjetaPuntuacionReserva from "./TarjetaPuntuacionReserva/TarjetaPuntuacionReserva";
+import deleteRequest from "../../../utils/deleteRequest";
+import Swal from "sweetalert2";
 
 export default function ReservaCard({
-  alojamiento: { id, nombre, categoria, ciudad, imagenes, caracteristicas, direccion },
+  alojamiento: {
+    id,
+    nombre,
+    categoria,
+    ciudad,
+    imagenes,
+    caracteristicas,
+    direccion,
+  },
   reserva: {
     id: idReserva,
     horaEntrada,
@@ -78,6 +88,51 @@ export default function ReservaCard({
   const handleQualification = () => setShowModalCalification(true);
   const openMap = () => setIsMapOpen(true);
   const closeMap = () => setIsMapOpen(false);
+
+  const eliminarReserva = () => {
+    Swal.fire({
+      title: "¿Seguro que quiere cancelar su reserva?",
+      icon: "question",
+      html: "Esta acción no puede deshacerse",
+      showCloseButton: true,
+      showCancelButton: true,
+      focusConfirm: false,
+      confirmButtonText: "Sí, quiero cancelar la reserva",
+      cancelButtonText: "No",
+      customClass: {
+        confirmButton: styles.confirmButton,
+        cancelButton: styles.cancelButton,
+      },
+    })
+      .then((result) => {
+        if (result.isConfirmed) {
+          return deleteRequest(`reservas/${idReserva}`);
+        }
+      })
+      .then((data) => {
+        if (data.status === 200) {
+          Swal.fire({
+            title: "Reserva eliminada",
+            icon: "success",
+            html: "Su reserva ha sido eliminada con éxito",
+            confirmButtonText: "OK",
+            customClass: {
+              confirmButton: styles.confirmButton,
+            },
+          });
+        } else {
+          Swal.fire({
+            title: "No se pudo eliminar la reserva",
+            icon: "error",
+            html: "Intente de nuevo más tarde",
+            confirmButtonText: "OK",
+            customClass: {
+              confirmButton: styles.confirmButton,
+            },
+          });
+        }
+      });
+  };
 
   if (!isLogged) {
     return <Redirect to="/" />;
@@ -164,12 +219,7 @@ export default function ReservaCard({
           </div>
 
           <div className={styles.reservaButtonsContainer}>
-            <Link to={`product/${id}/features`}>
-              <FilledButton styles={styles.reservaBtnVerMas}>
-                Ver más
-              </FilledButton>
-            </Link>
-            <OutlinedButton
+            <FilledButton
               styles={styles.reservaBtnCalificar}
               disabled={puntuacionDeshabilitada}
               onClick={() => handleQualification()}
@@ -180,7 +230,20 @@ export default function ReservaCard({
               }
             >
               {calificadoPreviamente ? "Editar calificación" : "Calificar"}
-            </OutlinedButton>
+            </FilledButton>
+            <div className={styles.reservaButtonsContainerVerMasCancelar}>
+              <Link to={`product/${id}/features`}>
+                <FilledButton styles={styles.reservaBtnVerMas}>
+                  Ver más
+                </FilledButton>
+              </Link>
+              <OutlinedButton
+                styles={styles.reservaBtnCancelar}
+                onClick={eliminarReserva}
+              >
+                Cancelar reserva
+              </OutlinedButton>
+            </div>
           </div>
         </div>
       </div>

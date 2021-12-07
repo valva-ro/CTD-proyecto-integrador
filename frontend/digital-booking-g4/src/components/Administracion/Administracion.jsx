@@ -100,17 +100,6 @@ export default function Administracion() {
     setImagenes([...imagenes.filter((r) => r !== imagen)]);
   };
 
-  /* ------- Atributos (características) ------- */
-
-  // const handleAtributos = e => {
-  //     let filtrados = [];
-  //     if (e.target.checked === true) {
-  //          setAtributos([...atributos, e.target.value])
-  //     } else {
-
-  //     }
-  // }
-
 
   return (
     <>
