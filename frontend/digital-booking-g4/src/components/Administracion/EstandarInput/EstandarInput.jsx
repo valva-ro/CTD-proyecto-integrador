@@ -12,6 +12,7 @@ export default function EstandarInput({
     return(
         <div className={styles.containerEstandarInput}>
             <label className={styles.labelEstandarInput}>{label}</label>
+            <div className={styles.sombraConAutocompletado} >
             <input
                 type="text"
                 className={`${styles.estandarInput}`}
@@ -26,6 +27,8 @@ export default function EstandarInput({
                 required
 
             />
+
+            </div>
         </div>
     )
 }
