@@ -26,7 +26,7 @@ public class Usuario {
     @JoinColumn(name = "fk_rol")
     private Rol rol;
 
-    @OneToMany(mappedBy = "usuario")
+    @OneToMany(mappedBy = "usuario", cascade = CascadeType.MERGE)
     @JsonIgnore
     private Set<Reserva> reservas = new HashSet<>();
 
