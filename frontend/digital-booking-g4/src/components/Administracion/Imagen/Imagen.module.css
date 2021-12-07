@@ -1,83 +1,96 @@
-.fila{
-    display: flex;
-    flex-direction: row;
-    align-items: flex-end;
-    gap: 15px;
-    background-color: rgba(190, 190, 190, 0.1);
-    border-radius: 5px;
-    padding: 0 15px 20px 15px;
-    margin-top: 20px;
-
-
+.fila {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  gap: 15px;
+  background-color: rgba(190, 190, 190, 0.1);
+  border-radius: 5px;
+  padding: 0 15px 20px 15px;
+  margin-top: 20px;
 }
 
-button{
-    outline: none;
+button {
+  outline: none;
 }
 
-.add{
-    font-size: 2rem;
-    font-weight: 700;
-    color: var(--color-5);
-    cursor: pointer;
-    background-color: var(--color-principal);
-    border: 3px solid var(--color-principal);
-    border-radius: 5px;
-    filter: drop-shadow(0px 2px 4px rgba(0, 0, 0, 0.12));
-    padding: 0 0.5vw;
-    margin-top: 25px;
-    transition: all ease-in-out 250ms;
-
+.add {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--color-5);
+  cursor: pointer;
+  background-color: var(--color-principal);
+  border: 3px solid var(--color-principal);
+  border-radius: 5px;
+  filter: drop-shadow(0px 2px 4px rgba(0, 0, 0, 0.12));
+  padding: 0 0.5vw;
+  margin-top: 25px;
+  transition: all ease-in-out 250ms;
 }
 
-.add:hover{
-    background-color: var(--color-principal-opaco);
-    border: 3px solid var(--color-principal-opaco);
+.add:hover {
+  background-color: var(--color-principal-opaco);
+  border: 3px solid var(--color-principal-opaco);
 }
 
-.add:disabled{
-    color: white;
-    background-color: grey;
-    border: 3px solid grey;
-    opacity: 0.25;
+.add:disabled {
+  color: white;
+  background-color: grey;
+  border: 3px solid grey;
+  opacity: 0.25;
 }
 
-.delete{
-    font-size: 2rem;
-    font-weight: 700;
-    color: var(--color-5);
-    cursor: pointer;
-    background-color: var(--color-3);
-    border: 3px solid var(--color-3);
-    border-radius: 5px;
-    filter: drop-shadow(0px 2px 4px rgba(0, 0, 0, 0.12));
-    padding: 0 0.75vw;
-    margin-top: 25px;
-    transition: all ease-in-out 250ms;
-
+.delete {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--color-5);
+  cursor: pointer;
+  background-color: var(--color-3);
+  border: 3px solid var(--color-3);
+  border-radius: 5px;
+  filter: drop-shadow(0px 2px 4px rgba(0, 0, 0, 0.12));
+  padding: 0 0.75vw;
+  margin-top: 25px;
+  transition: all ease-in-out 250ms;
 }
 
-.delete:hover{
-    background-color: var(--color-2);
-    border: 3px solid var(--color-2);
+.delete:hover {
+  background-color: var(--color-2);
+  border: 3px solid var(--color-2);
 }
 
 .containerBotones {
-    display: flex;
-    gap: 6px;
+  display: flex;
+  gap: 6px;
+}
+
+.invalidURL {
+  background-color: #da5456;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  color: #000;
+  gap: 10px;
+  margin: 0 20px;
+}
+
+.errorMsjContainer p {
+  color: #000;
+  text-align: start;
 }
 
 @media (max-width: 480px) {
-    .fila{
-        display: flex;
-        flex-direction: column;
-        gap: 0px;
-    }
-    .containerButton{
-        width: 100%;
-    }
-    .add, .delete{
-        width: 100%;
-        margin-top: 9px;
-    }
+  .fila {
+    display: flex;
+    flex-direction: column;
+    gap: 0px;
+  }
+  .containerButton {
+    width: 100%;
+  }
+  .add,
+  .delete {
+    width: 100%;
+    margin-top: 9px;
+  }
 }
