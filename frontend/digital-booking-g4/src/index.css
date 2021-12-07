@@ -80,10 +80,10 @@ hr {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--color-3);
+  background: var(--color-2);
   border-radius: 5px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--color-2);
+  background: rgb(74, 77, 116);
 }

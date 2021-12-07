@@ -29,7 +29,7 @@ export default function TarjetaAlojamiento({
   const [esVerMas, setEsVerMas] = useState(true);
   const puntaje = calcularPromedioPuntuacion(puntuaciones);
   const idUsuario = parseInt(localStorage.getItem("id"));
-  const { isLoaded, items } = useFetch(`usuarios/${idUsuario}`);
+  const { isLoaded, items } = useFetch(`usuarios/${isNaN(idUsuario) ? "" : idUsuario}`);
   const coordenadas = {
     lat: ciudad.latitud,
     lng: ciudad.longitud,

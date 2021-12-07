@@ -13,9 +13,7 @@ export default function Profile() {
     userInformation: { nombre, apellido },
   } = useContext(loggedContext);
   const [dropdownDesplegado, setDropdownDesplegado] = useState(false);
-  const iniciales = `${nombre.charAt(0).toUpperCase()}${apellido
-    .charAt(0)
-    .toUpperCase()}`;
+  const iniciales = `${nombre.charAt(0).toUpperCase()}${apellido.charAt(0).toUpperCase()}`;
   const nombreCapitalized = capitalizeString(nombre);
   const apellidoCapitalized = capitalizeString(apellido);
   const dropdownRef = useRef(null);
@@ -26,6 +24,7 @@ export default function Profile() {
 
   function cerrarSesion() {
     setIsLogged(false);
+    setDropdownDesplegado(false);
     localStorage.clear();
   }
 
@@ -38,10 +37,18 @@ export default function Profile() {
     if (rol === ROL_USER) {
       items = (
         <>
-          <Link to="/favorites" className={styles.itemDropdown}>
+          <Link
+            to="/favorites"
+            onClick={toggleDropdown}
+            className={styles.itemDropdown}
+          >
             Favoritos
           </Link>
-          <Link to="/reservations" className={styles.itemDropdown}>
+          <Link
+            to="/reservations"
+            onClick={toggleDropdown}
+            className={styles.itemDropdown}
+          >
             Reservas
           </Link>
           <span
@@ -57,7 +64,7 @@ export default function Profile() {
     } else if (rol === ROL_ADMIN) {
       items = (
         <>
-          <Link to="/administration" className={styles.itemDropdown}>
+          <Link to="/administration" onClick={toggleDropdown} className={styles.itemDropdown}>
             Administración
           </Link>
           <span
