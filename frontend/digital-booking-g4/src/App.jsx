@@ -15,13 +15,16 @@ import ProductoReserva from "./components/Producto/ProductoReserva/ProductoReser
 import ConfirmacionCuenta from "./components/ConfirmacionCuenta/ConfirmacionCuenta";
 import Reservas from "./components/FavoritosYReservas/Reservas/Reservas";
 import jwtDecode from "jwt-decode";
+import Administracion from "./components/Administracion/Administracion";
+
 
 function App() {
-  AOS.init();
   const [isLogged, setIsLogged] = useState(estaLogueado());
-  const [userInformation, setUserInformation] = useState(
-    obtenerInformacionUsuario()
-  );
+  const [userInformation, setUserInformation] = useState(obtenerInformacionUsuario());
+  const [rol, setRol] = useState( obtenerRolUsusario())
+
+  AOS.init();
+
   let token = "";
   if (localStorage.hasOwnProperty("jwt")) {
     token = localStorage.getItem("jwt").replaceAll('"', "");
@@ -50,7 +53,7 @@ function App() {
 
   return (
     <loggedContext.Provider
-      value={{ isLogged, setIsLogged, userInformation, setUserInformation }}
+      value={{ isLogged, setIsLogged, userInformation, setUserInformation, rol, setRol }}
     >
       <div className="App">
         <BrowserRouter>
@@ -81,6 +84,7 @@ function App() {
                   </ProductoLayout>
                 )}
               </Route>
+              <Route path="/management" component={Administracion} />
             </Switch>
           </Layout>
         </BrowserRouter>
@@ -103,5 +107,14 @@ function obtenerInformacionUsuario() {
       : "",
   };
 }
+
+function obtenerRolUsusario() {
+  return (
+    localStorage.hasOwnProperty("rol")
+    ? JSON.parse(localStorage.getItem("rol"))
+    : ""
+  )
+}
+
 
 export default App;

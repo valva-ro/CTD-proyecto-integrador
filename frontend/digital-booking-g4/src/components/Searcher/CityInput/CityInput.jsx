@@ -4,11 +4,12 @@ import useClickOutside from "../../../hooks/useOnClickOutside";
 import useFetch from "../../../hooks/useFetch.js";
 import styles from "./CityInput.module.css";
 
-export default function CityInput({ setOnChangeCity, onChangeCity, specificStyle1, specificStyle2, specificStyle3, setReset, reset, setDateRange}) {
+export default function CityInput({ setOnChangeCity, onChangeCity, specificStyle1, specificStyle2, specificStyle3, setReset, reset, setDateRange, setCountry, autocompletadoInputCountry = false}) {
   const [iconGps, setIconGps] = useState(styles.gpsEmpty);
   const [cityList, setCityList] = useState(null);
   const [inputContent, setInputContent] = useState("");
   const [ciudades, setCiudades] = useState([]);
+  const [existeInputCountry, setExisteInputCountry] = useState(false);
   const wrapperRef = useRef(null);
   const data = useFetch("ciudades");
   useClickOutside(wrapperRef, () => setCityList(null));
@@ -17,6 +18,11 @@ export default function CityInput({ setOnChangeCity, onChangeCity, specificStyle
     if (data.isLoaded) {
       setCiudades(data.items);
     }
+
+    if(autocompletadoInputCountry){
+      setExisteInputCountry(true)
+    }
+
   }, [data.isLoaded, data.items]);
 
   const changeIconStyle = (inputText) => {
@@ -35,6 +41,8 @@ export default function CityInput({ setOnChangeCity, onChangeCity, specificStyle
           input={input}
           setCityList={setCityList}
           setOnChangeCity={setOnChangeCity}
+          setCountry={setCountry}
+          existeInputCountry={existeInputCountry}
         />
       );
     } else {
@@ -66,6 +74,7 @@ export default function CityInput({ setOnChangeCity, onChangeCity, specificStyle
               setOnChangeCity(e.target.value)
           }}
           value={reset ? "" : onChangeCity}
+          autoComplete="off"
         />
       </div>
     </>
