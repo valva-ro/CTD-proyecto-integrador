@@ -72,15 +72,15 @@ public class ReservaController implements IReservaController {
         return ResponseEntity.status(HttpStatus.CREATED).body(reservaNueva);
     }
 
-    //metodos aun sin implementar -  NO los pedia
     @Override
     @ApiOperation(value = "Busca una reserva por ID")
     @ApiResponses(value = {
             @ApiResponse(code = 501, message = "Not implemented")
     })
     @GetMapping("/{id}")
-    public ResponseEntity<ReservaDTO> buscarPorId(@PathVariable Long id) throws NotImplementedException {
-        throw new NotImplementedException(Mensajes.ERROR_FUNCIONALIDAD_SIN_DESARROLLAR);
+    public ResponseEntity<ReservaDTO> buscarPorId(@PathVariable Long id) throws BadRequestException, ResourceNotFoundException {
+        ReservaDTO reserva = reservaService.buscarPorId(id);
+        return ResponseEntity.ok(reserva);
     }
 
     @Override
@@ -96,13 +96,15 @@ public class ReservaController implements IReservaController {
     @Override
     @ApiOperation(value = "Elimina una reserva")
     @ApiResponses(value = {
-            @ApiResponse(code = 501, message = "Not implemented")
+            @ApiResponse(code = 200, message = "Success"),
+            @ApiResponse(code = 404, message = "Not found"),
+            @ApiResponse(code = 400, message = "Bad Request")
     })
     @DeleteMapping("/{id}")
-    public ResponseEntity<String> eliminar(@PathVariable Long id) throws NotImplementedException {
-        throw new NotImplementedException(Mensajes.ERROR_FUNCIONALIDAD_SIN_DESARROLLAR);
+    public ResponseEntity<String> eliminar(@PathVariable Long id) throws BadRequestException, ResourceNotFoundException {
+        reservaService.eliminar(id);
+        return ResponseEntity.ok(String.format(Mensajes.ELIMINADO_CON_EXITO, "Reserva", id));
     }
-    /*hasta acá*/
 
     @Override
     @ApiOperation(value = "Lista todas las reservas según id de producto especificado")
