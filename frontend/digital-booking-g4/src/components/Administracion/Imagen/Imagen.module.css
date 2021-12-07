@@ -35,6 +35,13 @@ button{
     border: 3px solid var(--color-principal-opaco);
 }
 
+.add:disabled{
+    color: white;
+    background-color: grey;
+    border: 3px solid grey;
+    opacity: 0.25;
+}
+
 .delete{
     font-size: 2rem;
     font-weight: 700;

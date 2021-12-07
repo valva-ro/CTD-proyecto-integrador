@@ -68,8 +68,7 @@ export default function DropInput({ setOnChangeItem, onChangeItem, label, pathna
           }}
           value={onChangeItem}
           placeholder={placeholder}
-          id={id}
-          dataId={dataId}
+          autoComplete="off"
         />
       </div>
     </div >

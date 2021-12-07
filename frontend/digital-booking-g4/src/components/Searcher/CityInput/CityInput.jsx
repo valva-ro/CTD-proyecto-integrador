@@ -74,6 +74,7 @@ export default function CityInput({ setOnChangeCity, onChangeCity, specificStyle
               setOnChangeCity(e.target.value)
           }}
           value={reset ? "" : onChangeCity}
+          autoComplete="off"
         />
       </div>
     </>
