@@ -56,7 +56,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                             "/usuarios",
                             "/usuarios/login",
                             "/usuarios/signup",
-                            "/usuarios/{^[\\d]$}"
+                            "/usuarios/{^[\\d]$}",
+                            "/politicas"
                     ).permitAll()
                 .and()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
