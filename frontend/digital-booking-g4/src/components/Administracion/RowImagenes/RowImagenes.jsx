@@ -1,4 +1,3 @@
-import { useState } from "react";
 import Imagen from "../Imagen/Imagen";
 
 export default function RowImagenes({
@@ -7,7 +6,6 @@ export default function RowImagenes({
   handleDelete,
   agregarImagen,
 }) {
-
   return (
     <>
       {imagenesDetails.map((val, idx) => (
@@ -20,7 +18,6 @@ export default function RowImagenes({
           key={`imagen-${idx}`}
         />
       ))}
-     
     </>
   );
 }
