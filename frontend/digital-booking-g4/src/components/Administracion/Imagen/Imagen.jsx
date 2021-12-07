@@ -60,7 +60,7 @@ export default function Imagen({
                   <i className="fas fa-check"></i>
                 </button>
                 <button className={styles.add} onClick={handleAdd}>
-                  <i className="fas fa-plus"></i>
+                  <i className="fas fa-plus" title="Clic aquí para agregar otra imágen"></i>
                 </button>
               </div>
             ) : (
@@ -73,13 +73,13 @@ export default function Imagen({
                     setBotonHabilitado(false)
                   }}
                 >
-                  <i className="fas fa-check"></i>
+                  <i className="fas fa-check" title="Clic aquí para confirmar esta imágen"></i>
                 </button>
                 <button
                   className={styles.delete}
                   onClick={() => handleDelete(value, imagenDetails)}
                 >
-                  <i className="fas fa-times"></i>
+                  <i className="fas fa-times" title="Clic aquí para borrar esta imágen"></i>
                 </button>
               </div>
             )}
