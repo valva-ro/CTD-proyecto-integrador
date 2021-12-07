@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 @Controller
 public interface CRUDController<T> {
-    ResponseEntity<?> obtenerTodos() throws BadRequestException, ResourceNotFoundException;
+    ResponseEntity<?> obtenerTodos() throws BadRequestException, ResourceNotFoundException, NotImplementedException;
 
     ResponseEntity<?> crear(@RequestBody T t) throws BadRequestException, ResourceNotFoundException, RepeatedMailException, NotImplementedException;
 
