@@ -154,10 +154,10 @@ export default function ReservaCard({
                   Horario de llegada: <span>{horaEntrada}hs</span>
                 </li>
                 <li>
-                  Check in: <span>{fechaIngreso}</span>
+                  Check in: <span>{formatearFecha(fechaIngreso)}</span>
                 </li>
                 <li>
-                  Check out: <span>{fechaEgreso}</span>
+                  Check out: <span>{formatearFecha(fechaEgreso)}</span>
                 </li>
               </ul>
             </div>
@@ -209,4 +209,8 @@ export default function ReservaCard({
       </Modal>
     </>
   );
+}
+
+function formatearFecha(fecha) {
+  return fecha.split("-").reverse().join("/");
 }
