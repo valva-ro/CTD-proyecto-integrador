@@ -40,12 +40,7 @@ public class Producto {
     @JsonIgnore
     private List<Puntuacion> puntuaciones = new ArrayList<>();
 
-    @ManyToMany(cascade = {
-            CascadeType.PERSIST,
-            CascadeType.DETACH,
-            CascadeType.REFRESH,
-            CascadeType.REMOVE
-    }, fetch = FetchType.EAGER)
+    @ManyToMany(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
     @JoinTable(
             name = "politica_producto",
             joinColumns = @JoinColumn(name = "producto_id"),

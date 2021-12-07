@@ -289,6 +289,7 @@ public class ProductoService implements IProductoService {
         productoDTO.setImagenes(obtenerImagenesRelacionadas(producto));
         productoDTO.setCaracteristicas(caracteristicaService.consultarPorProductoID(producto.getId()));
         productoDTO.setPuntuaciones(puntuacionService.consultarPorProductoID(producto.getId()));
+        productoDTO.setPoliticas(obtenerPoliticasRelacionadas(producto));
         return productoDTO;
     }
 
@@ -315,5 +316,17 @@ public class ProductoService implements IProductoService {
             }
         }
         return imagenes;
+    }
+
+    private Set<PoliticaDTO> obtenerPoliticasRelacionadas(Producto producto) {
+        Set<PoliticaDTO> politicas = new HashSet<>();
+        for (PoliticaDTO politicaEnBD : politicaService.consultarTodos()) {
+            for (Politica politicaEnProducto : producto.getPoliticas()) {
+                if (Objects.equals(politicaEnBD.getId(), politicaEnProducto.getId())) {
+                    politicas.add(politicaEnBD);
+                }
+            }
+        }
+        return politicas;
     }
 }
