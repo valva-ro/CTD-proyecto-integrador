@@ -9,6 +9,7 @@ public class AuthenticationResponse {
     private final String nombre;
     private final String apellido;
     private final Boolean cuentaValidada;
+    private final String rol;
 
     public AuthenticationResponse(String jwt, UsuarioDTO usuarioDTO) {
         this.jwt = jwt;
@@ -16,6 +17,7 @@ public class AuthenticationResponse {
         this.nombre = usuarioDTO.getNombre();
         this.apellido = usuarioDTO.getApellido();
         this.cuentaValidada = usuarioDTO.getCuentaValidada();
+        this.rol = usuarioDTO.getRol().getNombre();
     }
 
     public String getJwt() {
@@ -36,5 +38,9 @@ public class AuthenticationResponse {
 
     public Boolean getCuentaValidada() {
         return cuentaValidada;
+    }
+
+    public String getRol() {
+        return rol;
     }
 }

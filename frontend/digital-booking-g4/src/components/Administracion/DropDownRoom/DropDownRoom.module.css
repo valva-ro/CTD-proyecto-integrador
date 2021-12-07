@@ -6,8 +6,8 @@
   gap:0;
 }
 
-.cities {
-  z-index: 100;
+.rooms {
+  z-index: 10;
   position: absolute;
   top: 40px;
   width: 30.89311859443631vw;
@@ -16,8 +16,9 @@
   overflow: auto;
 }
 
-.cities li {
+.rooms li {
   display: flex;
+  z-index: 100;
   border-width: 0px;
   border-bottom-width: 1px;
   border-style: solid;
@@ -26,12 +27,12 @@
   transition: background-color 250ms ease-in ;
 }
 
-.cities li:hover {
+.rooms li:hover {
   cursor: pointer;
   background-color: var(--color-principal);
 }
 
-.cities li i {
+.rooms li i {
   position: relative;
   left: 0;
   top: 6px;
@@ -39,24 +40,20 @@
   color: var(--color-3);
 }
 
-.city {
+.room {
   font-size: 1rem;
   font-weight: bold;
 }
 
-.country {
-  font-size: 0.875rem;
-  color: var(--color-3);
-}
 
 @media (max-width: 768px) {
-  .cities {
+  .rooms {
     top: 6.4vh;
   }
 }
 
 @media (max-width: 480px) {
-  .cities {
-    width: 85vw;
+  .rooms {
+    width: 95vw;
   }
 }
