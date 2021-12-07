@@ -12,6 +12,7 @@ import caracteristicas from "../../resources/caracteristicas.json";
 import stylesInputsFromOtherside from "../Producto/ProductoReserva/ProductoFormDatos/InputsFromOtherside.module.css";
 import RowImagenes from "./RowImagenes/RowImagenes";
 import FilledButton from "../Buttons/FilledButton";
+import post from "../../utils/post";
 
 export default function Administracion() {
   const [propertyName, setPropertyName] = useState("");
@@ -29,7 +30,11 @@ export default function Administracion() {
   const [cancelacion, setCancelacion] = useState("");
   const [imagenes, setImagenes] = useState([]);
   const [atributos, setAtributos] = useState([]);
-  
+  const [idCiudad, setIdCiudad] = useState(null);
+  const [idCategoria, setIdCategoria] = useState(null);
+  const [idPoliticas, setIdPoliticas] = useState([]);
+  const [idImagenes, setIdImagenes] = useState(null);
+
   console.log(propertyName);
   console.log(onChangeCategory);
   console.log(address);
@@ -44,7 +49,6 @@ export default function Administracion() {
   console.log(cancelacion);
   console.log(imagenes);
   console.log(atributos);
-  
 
   const data = useFetch("categorias");
 
@@ -100,6 +104,71 @@ export default function Administracion() {
     setImagenes([...imagenes.filter((r) => r !== imagen)]);
   };
 
+  const handleSubmit = (e) => e.preventDefault();
+
+  const postearCiudad = () => {
+    post("ciudades", {
+      nombre: onChangeCity,
+      pais: country,
+      latitud,
+      longitud,
+    })
+      .then((response) => response.json())
+      .then((data) => setIdCiudad(data.id));
+  };
+
+  const obtenerIdCategoria = (nombreCategoria) => {
+    switch (nombreCategoria) {
+      case "Hoteles":
+        setIdCategoria(1);
+        break;
+      case "Hostels":
+        setIdCategoria(2);
+        break;
+      case "Bed & Breakfasts":
+        setIdCategoria(3);
+        break;
+      case "Departamentos":
+        setIdCategoria(4);
+        break;
+    }
+  };
+
+  const postearImagenes = () => {
+    
+  }
+
+  // const postearPoliticas = () => {
+  //   post("politicas", {
+  //     nombre: normasDeLaCasa,
+  //     tipoPolitica: 1,
+  //   })
+  //     .then((response) => response.json())
+  //     .then((data) => setIdPoliticas([...idPoliticas, data.id]));
+
+  //   post("politicas", {
+  //     nombre: saludSeguridad,
+  //     tipoPolitica: 2,
+  //   })
+  //     .then((response) => response.json())
+  //     .then((data) => setIdPoliticas([...idPoliticas, data.id]));
+
+  //   post("politicas", {
+  //     nombre: cancelacion,
+  //     tipoPolitica: 3,
+  //   })
+  //     .then((response) => response.json())
+  //     .then((data) => setIdPoliticas([...idPoliticas, data.id]));
+  // };
+
+  console.log(idPoliticas);
+
+  const handleCreacionProducto = () => {
+    // postearCiudad();
+    // obtenerIdCategoria(onChangeCategory);
+    // postearPoliticas();
+
+  };
 
   return (
     <>
@@ -109,7 +178,7 @@ export default function Administracion() {
         <p className={styles.camposObligatorios}>
           (Los campos identificados con * son obligatorios)
         </p>
-        <form className={styles.formAdmin}>
+        <form className={styles.formAdmin} onSubmit={handleSubmit}>
           <div className={styles.subContainer}>
             <div className={styles.lineContainerInformacion}>
               <EstandarInput
@@ -259,7 +328,12 @@ export default function Administracion() {
             />
           </div>
           <div className={styles.subContainer}>
-            <FilledButton styles={styles.buttonSubmit}>Crear</FilledButton>
+            <FilledButton
+              styles={styles.buttonSubmit}
+              onClick={handleCreacionProducto}
+            >
+              Crear
+            </FilledButton>
           </div>
         </form>
       </section>

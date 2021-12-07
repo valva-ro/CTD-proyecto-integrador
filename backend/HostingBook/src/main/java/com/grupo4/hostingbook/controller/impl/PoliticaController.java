@@ -26,7 +26,8 @@ public class PoliticaController implements CRUDController<PoliticaDTO> {
     @Override
     @ApiOperation(value = "Lista todas las politicas")
     @ApiResponses(value = {
-            @ApiResponse(code = 200, message = "Success")
+            @ApiResponse(code = 200, message = "Success"),
+            @ApiResponse(code = 501, message = "Not implemented")
     })
     @GetMapping
     public ResponseEntity<?> obtenerTodos() throws NotImplementedException {
