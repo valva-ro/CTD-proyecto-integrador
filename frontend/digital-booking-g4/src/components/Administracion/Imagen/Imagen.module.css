@@ -74,6 +74,10 @@ button {
   margin: 0 20px;
 }
 
+.invalidURL p {
+  color: #000;
+}
+
 .errorMsjContainer p {
   color: #000;
   text-align: start;
