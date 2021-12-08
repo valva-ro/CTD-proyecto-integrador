@@ -25,7 +25,7 @@ export default function TarjetaAlojamiento({
 }) {
   const [isFavorito, setIsFavorito] = useState();
   const [isMapOpen, setIsMapOpen] = useState(false);
-  const { isLogged } = useContext(loggedContext);
+  const { isLogged, rol } = useContext(loggedContext);
   const [esVerMas, setEsVerMas] = useState(true);
   const puntaje = calcularPromedioPuntuacion(puntuaciones);
   const idUsuario = parseInt(localStorage.getItem("id"));
@@ -36,7 +36,7 @@ export default function TarjetaAlojamiento({
   };
 
   useEffect(() => {
-    if (isLogged && isLoaded) {
+    if (isLogged && isLoaded ) {
       setIsFavorito(
         items.productosFavoritos.find((fav) => fav.id === id) !== undefined
       );
@@ -83,13 +83,18 @@ export default function TarjetaAlojamiento({
             backgroundImage: `url(${buscarImagenPrincipal().imagenUrl})`,
           }}
         >
-          {isLogged && isLoaded ? (
+          {isLogged && isLoaded && rol === "ROLE_USER" ? (
             <i
               onClick={() => handleFav()}
               className={`${isFavorito ? "fas" : "far"} fa-heart ${
                 styles.corazon
               }`}
             ></i>
+          ) : isLogged && rol === "ROLE_ADMIN" ? (
+            <div className={styles.containerAdmin}>
+              <i className={`fas fa-pen ${styles.admin}`}></i>
+              <i className={`fas fa-trash ${styles.admin}`}></i>
+            </div>
           ) : null}
         </div>
 
