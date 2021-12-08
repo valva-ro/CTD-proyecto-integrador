@@ -6,7 +6,7 @@ import styles from "./SideNav.module.css";
 import loggedContext from "../../contexts/loggedContext";
 
 export default function SideNav() {
-  const { isLogged, setIsLogged } = useContext(loggedContext);
+  const { isLogged, setIsLogged, rol } = useContext(loggedContext);
   const location = useLocation();
   const [isOpened, setIsOpened] = useState(false);
 
@@ -54,6 +54,54 @@ export default function SideNav() {
         );
     }
   };
+
+  const RenderUserComponent = () => {
+    switch (location.pathname) {
+      default:
+        return (
+          <>
+            <Link
+              to="/favorites"
+            >
+              <Options
+                contenido={"Favoritos"}
+                onClick={() => setIsOpened(false)}
+              />
+            </Link>
+            <Link
+              to="/reservations"
+            >
+              <Options
+                contenido={"Reservas"}
+                onClick={() => setIsOpened(false)}
+              />
+            </Link>
+          </>
+        );
+      case "/favorites":
+        return (
+          <Link
+            to="/reservations"
+          >
+            <Options
+              contenido={"Reservas"}
+              onClick={() => setIsOpened(false)}
+            />
+          </Link>
+        );
+      case "/reservations":
+        return (
+          <Link
+            to="/favorites"
+          >
+            <Options
+              contenido={"Favoritos"}
+              onClick={() => setIsOpened(false)}
+            />
+          </Link>
+        );
+    }
+  };
   return (
     <>
       <div className={styles.menuHamburguesa} onClick={() => setIsOpened(true)}>
@@ -86,22 +134,17 @@ export default function SideNav() {
             ) : (
               <div className={styles.containerLoggeado}>
                 <div className={styles.opciones}>
-                <Link
-                  to="/favorites"
-                >
-                  <Options
-                    contenido={"Favoritos"}
-                    onClick={() => setIsOpened(false)}
-                  />
-                </Link>
-                <Link
-                  to="/reservations"
-                >
-                  <Options
-                    contenido={"Reservas"}
-                    onClick={() => setIsOpened(false)}
-                  />
-                </Link>
+                  {rol === "ROLE_ADMIN" ?
+                  <Link
+                    to="/management"
+                  >
+                    <Options
+                      contenido={"Administración"}
+                      onClick={() => setIsOpened(false)}
+                    />
+                  </Link>
+                  : <RenderUserComponent/> 
+                  }
                 </div>
                 <div>
                   <p className={styles.cerrarSesion}>

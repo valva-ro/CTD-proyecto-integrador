@@ -33,6 +33,10 @@ function App() {
     setIsLogged(false);
   };
 
+  useEffect(() => {
+    setRol( obtenerRolUsusario())
+  }, [isLogged])
+
   return (
     <loggedContext.Provider
       value={{

@@ -1,4 +1,4 @@
-import { React, useState, useEffect, useCallback } from "react";
+import { React, useState, useEffect, useContext } from "react";
 import useFetch from "../../hooks/useFetch";
 import HeaderSecundario from "../HeaderSecundario/HeaderSecundario";
 import TituloBloque from "../TituloBloque/TituloBloque";
@@ -13,8 +13,11 @@ import stylesInputsFromOtherside from "../Producto/ProductoReserva/ProductoFormD
 import RowImagenes from "./RowImagenes/RowImagenes";
 import FilledButton from "../Buttons/FilledButton";
 import post from "../../utils/post";
+import loggedContext from "../../contexts/loggedContext";
+import { Redirect } from "react-router-dom";
 
 export default function Administracion() {
+  const { isLogged, rol } = useContext(loggedContext);
   const [propertyName, setPropertyName] = useState("");
   const [onChangeCategory, setOnChangeCategory] = useState("");
   const [address, setAddress] = useState("");
@@ -169,6 +172,10 @@ export default function Administracion() {
     // postearPoliticas();
 
   };
+
+  if (!isLogged || rol !== "ROLE_ADMIN") {
+    return <Redirect to="/" />;
+  }
 
   return (
     <>
