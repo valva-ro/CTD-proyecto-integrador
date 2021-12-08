@@ -114,7 +114,7 @@ const config = {
                 options: [
                     {
                       text: "Contactanos",
-                      url: "https://google.com",    //aca va la pagina de contacto
+                      url: "http://hostingbook.one/contact",    //Pagina de contacto deployada (sino localhost:3000/contact)
                       id: 1
                     }
                 ]
