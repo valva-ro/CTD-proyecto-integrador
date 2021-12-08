@@ -7,7 +7,7 @@ import styles from "./Detalles.module.css";
 import post from "../../../../utils/post";
 import { useState } from "react";
 import Modal from "../../../Modal/Modal";
-import TarjetaReservaExitosa from "./TarjetaReservaExitosa/TarjetaReservaExitosa";
+import TarjetaPostExitoso from "../../../TarjetaPostExitoso/TarjetaPostExitoso";
 import formatearFecha from "../../../../utils/formatearFecha"
 
 export default function ProductoReserva({
@@ -128,7 +128,10 @@ export default function ProductoReserva({
         </div>
       </div>
       <Modal estaAbierto={showModal} onCloseRequest={() => setShowModal(false)} colorBtnCerrar="#383b58" colorFondo="#383b5853">
-        <TarjetaReservaExitosa />
+        <TarjetaPostExitoso
+          contenidoH2={"¡Muchas gracias!"}
+          contenidoP={"Su reserva ha sido realizada con éxito"}
+        />
       </Modal>
       {!isError ? null : (
         <div className={styles.errorMsjContainer}>
