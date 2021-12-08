@@ -229,8 +229,10 @@ export default function Administracion() {
       ).then((response) => {
         if (response.status === 201) {
           setShowMsjError(false);
+          console.log("Se creó el alojamiento con éxito.");
           // Agregar mensaje exitoso
         } else {
+          console.log("Hubo un error al crear el alojamiento.");
           setShowMsjError(true);
         }
       });
@@ -402,7 +404,7 @@ export default function Administracion() {
           <div className={styles.subContainer}>
             <TituloBloque>Cargar imágenes</TituloBloque>
             <p className={styles.camposObligatorios}>
-              (Se debe cargar al menos una imagen.)
+              (Se debe cargar al menos una imagen)
             </p>
             <RowImagenes
               handleAdd={handleAdd}
