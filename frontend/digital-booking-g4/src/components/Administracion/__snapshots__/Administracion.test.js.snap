@@ -1,0 +1,1508 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Administracion Input test Renderiza Por default 1`] = `
+Object {
+  "asFragment": [Function],
+  "baseElement": <body>
+    <div>
+      <div
+        class="contenedorHeader"
+      >
+        <div
+          class="headerIzquierda"
+        >
+          <div
+            class="a"
+          >
+            <span>
+              <i
+                aria-hidden="true"
+                class="fas fa-chevron-left"
+              />
+            </span>
+            <span>
+              ATRÁS
+            </span>
+          </div>
+        </div>
+        <div
+          class="headerDerecha"
+        >
+          <h3
+            class="subtituloBloque favTitle"
+          >
+            Administración
+          </h3>
+        </div>
+      </div>
+      <section
+        class="containerPrincipal"
+      >
+        <h3
+          class="subtituloBloque undefined"
+        >
+          Crear propiedad
+        </h3>
+        <p
+          class="camposObligatorios"
+        >
+          (Los campos identificados con * son obligatorios)
+        </p>
+        <form
+          class="formAdmin"
+        >
+          <div
+            class="subContainer"
+          >
+            <div
+              class="lineContainerInformacion"
+            >
+              <div
+                class="containerEstandarInput"
+              >
+                <label
+                  class="labelEstandarInput"
+                >
+                  * Nombre de la propiedad
+                </label>
+                <div
+                  class="sombraConAutocompletado"
+                >
+                  <input
+                    class="estandarInput"
+                    name="nombre"
+                    required=""
+                    type="text"
+                    value=""
+                  />
+                </div>
+              </div>
+              <div
+                class="containerSelect"
+              >
+                <label>
+                  * Categoría
+                </label>
+                <select
+                  class="minimal"
+                  name="tituloCategoria"
+                  required=""
+                >
+                  <option
+                    class="optionDefault"
+                    hidden=""
+                    value="tituloCategoria"
+                  />
+                </select>
+              </div>
+            </div>
+            <div
+              class="lineContainerInformacion"
+            >
+              <div
+                class="containerEstandarInput"
+              >
+                <label
+                  class="labelEstandarInput"
+                >
+                  * Dirección
+                </label>
+                <div
+                  class="sombraConAutocompletado"
+                >
+                  <input
+                    class="estandarInput"
+                    name="direccion"
+                    required=""
+                    type="text"
+                    value=""
+                  />
+                </div>
+              </div>
+              <div
+                class="containerSelect"
+              >
+                <label>
+                  * CheckIn (horario min)
+                </label>
+                <select
+                  class="minimal"
+                  name="horarioCheckIn"
+                  required=""
+                >
+                  <option
+                    class="optionDefault"
+                    hidden=""
+                    value="horarioCheckIn"
+                  />
+                  <option
+                    value="0"
+                  >
+                    00:00 AM
+                  </option>
+                  <option
+                    value="1"
+                  >
+                    01:00 AM
+                  </option>
+                  <option
+                    value="2"
+                  >
+                    02:00 AM
+                  </option>
+                  <option
+                    value="3"
+                  >
+                    03:00 AM
+                  </option>
+                  <option
+                    value="4"
+                  >
+                    04:00 AM
+                  </option>
+                  <option
+                    value="5"
+                  >
+                    05:00 AM
+                  </option>
+                  <option
+                    value="6"
+                  >
+                    06:00 AM
+                  </option>
+                  <option
+                    value="7"
+                  >
+                    07:00 AM
+                  </option>
+                  <option
+                    value="8"
+                  >
+                    08:00 AM
+                  </option>
+                  <option
+                    value="9"
+                  >
+                    09:00 AM
+                  </option>
+                  <option
+                    value="10"
+                  >
+                    10:00 AM
+                  </option>
+                  <option
+                    value="11"
+                  >
+                    11:00 AM
+                  </option>
+                  <option
+                    value="12"
+                  >
+                    12:00 AM
+                  </option>
+                  <option
+                    value="13"
+                  >
+                    01:00 PM
+                  </option>
+                  <option
+                    value="14"
+                  >
+                    02:00 PM
+                  </option>
+                  <option
+                    value="15"
+                  >
+                    03:00 PM
+                  </option>
+                  <option
+                    value="16"
+                  >
+                    04:00 PM
+                  </option>
+                  <option
+                    value="17"
+                  >
+                    05:00 PM
+                  </option>
+                  <option
+                    value="18"
+                  >
+                    06:00 PM
+                  </option>
+                  <option
+                    value="19"
+                  >
+                    07:00 PM
+                  </option>
+                  <option
+                    value="20"
+                  >
+                    08:00 PM
+                  </option>
+                  <option
+                    value="21"
+                  >
+                    09:00 PM
+                  </option>
+                  <option
+                    value="22"
+                  >
+                    10:00 PM
+                  </option>
+                  <option
+                    value="23"
+                  >
+                    11:00 PM
+                  </option>
+                </select>
+              </div>
+            </div>
+            <div
+              class="lineContainerInformacion"
+            >
+              <div
+                class="containerCityInput"
+              >
+                <label>
+                  * Ciudad
+                </label>
+                <div
+                  class="cityContainer divDrawer"
+                >
+                  
+                  <span
+                    class="gpsEmpty ocultar"
+                  >
+                    <i
+                      class="fas fa-map-marker-alt"
+                    />
+                  </span>
+                  <input
+                    autocomplete="off"
+                    class="input inputFormDatos"
+                    placeholder="¿A dónde vamos?"
+                    type="text"
+                    value=""
+                  />
+                </div>
+              </div>
+              <div
+                class="containerEstandarInput"
+              >
+                <label
+                  class="labelEstandarInput"
+                >
+                  * País
+                </label>
+                <div
+                  class="sombraConAutocompletado"
+                >
+                  <input
+                    class="estandarInput"
+                    name="pais"
+                    required=""
+                    type="text"
+                    value=""
+                  />
+                </div>
+              </div>
+            </div>
+            <div
+              class="lineContainerInformacion"
+            >
+              <div
+                class="containerNumberInput"
+              >
+                <label
+                  class="labelNumberInput"
+                >
+                  Latitud
+                </label>
+                <input
+                  class="numberInput"
+                  name="latitud"
+                  step="any"
+                  type="number"
+                  value=""
+                />
+              </div>
+              <div
+                class="containerNumberInput"
+              >
+                <label
+                  class="labelNumberInput"
+                >
+                  Longitud
+                </label>
+                <input
+                  class="numberInput"
+                  name="longitud"
+                  step="any"
+                  type="number"
+                  value=""
+                />
+              </div>
+            </div>
+            <div
+              class="lineContainerInformacion"
+            >
+              <div
+                class="containerTextArea"
+              >
+                <label>
+                  Descripción
+                </label>
+                <textarea
+                  cols="30"
+                  id="descripcion"
+                  name="descripcion"
+                  rows="6"
+                />
+              </div>
+            </div>
+          </div>
+          <div
+            class="subContainer"
+          >
+            <h3
+              class="subtituloBloque undefined"
+            >
+              Agregar atributos
+            </h3>
+            <ul
+              class="checkboxes"
+            >
+              <li>
+                <input
+                  id="1"
+                  name="caracteristicas"
+                  type="checkbox"
+                  value="Wifi"
+                />
+                <label
+                  for="1"
+                >
+                  <i
+                    class="fas fa-wifi"
+                  />
+                  <span>
+                    Wifi
+                  </span>
+                </label>
+              </li>
+              <li>
+                <input
+                  id="2"
+                  name="caracteristicas"
+                  type="checkbox"
+                  value="Piscina"
+                />
+                <label
+                  for="2"
+                >
+                  <i
+                    class="fas fa-swimmer"
+                  />
+                  <span>
+                    Piscina
+                  </span>
+                </label>
+              </li>
+              <li>
+                <input
+                  id="3"
+                  name="caracteristicas"
+                  type="checkbox"
+                  value="Estacionamiento gratuito"
+                />
+                <label
+                  for="3"
+                >
+                  <i
+                    class="fas fa-car"
+                  />
+                  <span>
+                    Estacionamiento gratuito
+                  </span>
+                </label>
+              </li>
+              <li>
+                <input
+                  id="4"
+                  name="caracteristicas"
+                  type="checkbox"
+                  value="Aire acondicionado"
+                />
+                <label
+                  for="4"
+                >
+                  <i
+                    class="fas fa-snowflake"
+                  />
+                  <span>
+                    Aire acondicionado
+                  </span>
+                </label>
+              </li>
+              <li>
+                <input
+                  id="5"
+                  name="caracteristicas"
+                  type="checkbox"
+                  value="No fumador"
+                />
+                <label
+                  for="5"
+                >
+                  <i
+                    class="fas fa-smoking-ban"
+                  />
+                  <span>
+                    No fumador
+                  </span>
+                </label>
+              </li>
+              <li>
+                <input
+                  id="6"
+                  name="caracteristicas"
+                  type="checkbox"
+                  value="Televisor"
+                />
+                <label
+                  for="6"
+                >
+                  <i
+                    class="fas fa-tv"
+                  />
+                  <span>
+                    Televisor
+                  </span>
+                </label>
+              </li>
+              <li>
+                <input
+                  id="7"
+                  name="caracteristicas"
+                  type="checkbox"
+                  value="Apto para mascotas"
+                />
+                <label
+                  for="7"
+                >
+                  <i
+                    class="fas fa-paw"
+                  />
+                  <span>
+                    Apto para mascotas
+                  </span>
+                </label>
+              </li>
+              <li>
+                <input
+                  id="8"
+                  name="caracteristicas"
+                  type="checkbox"
+                  value="Barra libre"
+                />
+                <label
+                  for="8"
+                >
+                  <i
+                    class="fas fa-cocktail"
+                  />
+                  <span>
+                    Barra libre
+                  </span>
+                </label>
+              </li>
+              <li>
+                <input
+                  id="9"
+                  name="caracteristicas"
+                  type="checkbox"
+                  value="Tarjeta de crédito"
+                />
+                <label
+                  for="9"
+                >
+                  <i
+                    class="fas fa-credit-card"
+                  />
+                  <span>
+                    Tarjeta de crédito
+                  </span>
+                </label>
+              </li>
+              <li>
+                <input
+                  id="10"
+                  name="caracteristicas"
+                  type="checkbox"
+                  value="Check-in"
+                />
+                <label
+                  for="10"
+                >
+                  <i
+                    class="fas fa-clock"
+                  />
+                  <span>
+                    Check-in
+                  </span>
+                </label>
+              </li>
+            </ul>
+          </div>
+          <div
+            class="subContainer"
+          >
+            <h3
+              class="subtituloBloque undefined"
+            >
+              Políticas del producto
+            </h3>
+            <div
+              class="bloquePoliticas"
+            >
+              <div
+                class="columnPolitica"
+              >
+                <h3
+                  class="tipoPolitica"
+                >
+                  Normas de la casa
+                </h3>
+                <div
+                  class="containerTextArea"
+                >
+                  <label>
+                    Descripción
+                  </label>
+                  <textarea
+                    cols="30"
+                    id="normasDeLaCasa"
+                    name="normasDeLaCasa"
+                    placeholder="Escribir aquí"
+                    rows="6"
+                  />
+                </div>
+              </div>
+              <div
+                class="columnPolitica"
+              >
+                <h3
+                  class="tipoPolitica"
+                >
+                  Salud y seguridad
+                </h3>
+                <div
+                  class="containerTextArea"
+                >
+                  <label>
+                    Descripción
+                  </label>
+                  <textarea
+                    cols="30"
+                    id="saludSeguridad"
+                    name="saludSeguridad"
+                    placeholder="Escribir aquí"
+                    rows="6"
+                  />
+                </div>
+              </div>
+              <div
+                class="columnPolitica"
+              >
+                <h3
+                  class="tipoPolitica"
+                >
+                  Política de cancelación
+                </h3>
+                <div
+                  class="containerTextArea"
+                >
+                  <label>
+                    Descripción
+                  </label>
+                  <textarea
+                    cols="30"
+                    id="cancelacion"
+                    name="cancelacion"
+                    placeholder="Escribir aquí"
+                    rows="6"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            class="subContainer"
+          >
+            <h3
+              class="subtituloBloque undefined"
+            >
+              Cargar imágenes
+            </h3>
+            <div
+              class="container"
+            >
+              <div
+                class="fila"
+              >
+                <div
+                  class="containerEstandarInput"
+                >
+                  <label
+                    class="labelEstandarInput"
+                  />
+                  <div
+                    class="sombraConAutocompletado"
+                  >
+                    <input
+                      class="estandarInput"
+                      name="url"
+                      placeholder="Insertar https://"
+                      required=""
+                      type="text"
+                      value=""
+                    />
+                  </div>
+                </div>
+                <div
+                  class="containerDropInput"
+                >
+                  <label
+                    class="labelDropInput"
+                  />
+                  <div
+                    class="cityContainer divDrawer"
+                  >
+                    
+                    <input
+                      autocomplete="off"
+                      class="input"
+                      placeholder="Descripción"
+                      type="text"
+                      value=""
+                    />
+                  </div>
+                </div>
+                <div
+                  class="containerButton"
+                >
+                  <div
+                    class="containerBotones"
+                  >
+                    <button
+                      class="add"
+                      disabled=""
+                    >
+                      <i
+                        class="fas fa-check"
+                      />
+                    </button>
+                    <button
+                      class="add"
+                    >
+                      <i
+                        class="fas fa-plus"
+                      />
+                    </button>
+                  </div>
+                </div>
+              </div>
+              
+            </div>
+          </div>
+          <div
+            class="subContainer"
+          >
+            <input
+              class="filledButton buttonSubmit"
+              type="submit"
+              value="Crear"
+            />
+          </div>
+        </form>
+      </section>
+    </div>
+  </body>,
+  "container": <div>
+    <div
+      class="contenedorHeader"
+    >
+      <div
+        class="headerIzquierda"
+      >
+        <div
+          class="a"
+        >
+          <span>
+            <i
+              aria-hidden="true"
+              class="fas fa-chevron-left"
+            />
+          </span>
+          <span>
+            ATRÁS
+          </span>
+        </div>
+      </div>
+      <div
+        class="headerDerecha"
+      >
+        <h3
+          class="subtituloBloque favTitle"
+        >
+          Administración
+        </h3>
+      </div>
+    </div>
+    <section
+      class="containerPrincipal"
+    >
+      <h3
+        class="subtituloBloque undefined"
+      >
+        Crear propiedad
+      </h3>
+      <p
+        class="camposObligatorios"
+      >
+        (Los campos identificados con * son obligatorios)
+      </p>
+      <form
+        class="formAdmin"
+      >
+        <div
+          class="subContainer"
+        >
+          <div
+            class="lineContainerInformacion"
+          >
+            <div
+              class="containerEstandarInput"
+            >
+              <label
+                class="labelEstandarInput"
+              >
+                * Nombre de la propiedad
+              </label>
+              <div
+                class="sombraConAutocompletado"
+              >
+                <input
+                  class="estandarInput"
+                  name="nombre"
+                  required=""
+                  type="text"
+                  value=""
+                />
+              </div>
+            </div>
+            <div
+              class="containerSelect"
+            >
+              <label>
+                * Categoría
+              </label>
+              <select
+                class="minimal"
+                name="tituloCategoria"
+                required=""
+              >
+                <option
+                  class="optionDefault"
+                  hidden=""
+                  value="tituloCategoria"
+                />
+              </select>
+            </div>
+          </div>
+          <div
+            class="lineContainerInformacion"
+          >
+            <div
+              class="containerEstandarInput"
+            >
+              <label
+                class="labelEstandarInput"
+              >
+                * Dirección
+              </label>
+              <div
+                class="sombraConAutocompletado"
+              >
+                <input
+                  class="estandarInput"
+                  name="direccion"
+                  required=""
+                  type="text"
+                  value=""
+                />
+              </div>
+            </div>
+            <div
+              class="containerSelect"
+            >
+              <label>
+                * CheckIn (horario min)
+              </label>
+              <select
+                class="minimal"
+                name="horarioCheckIn"
+                required=""
+              >
+                <option
+                  class="optionDefault"
+                  hidden=""
+                  value="horarioCheckIn"
+                />
+                <option
+                  value="0"
+                >
+                  00:00 AM
+                </option>
+                <option
+                  value="1"
+                >
+                  01:00 AM
+                </option>
+                <option
+                  value="2"
+                >
+                  02:00 AM
+                </option>
+                <option
+                  value="3"
+                >
+                  03:00 AM
+                </option>
+                <option
+                  value="4"
+                >
+                  04:00 AM
+                </option>
+                <option
+                  value="5"
+                >
+                  05:00 AM
+                </option>
+                <option
+                  value="6"
+                >
+                  06:00 AM
+                </option>
+                <option
+                  value="7"
+                >
+                  07:00 AM
+                </option>
+                <option
+                  value="8"
+                >
+                  08:00 AM
+                </option>
+                <option
+                  value="9"
+                >
+                  09:00 AM
+                </option>
+                <option
+                  value="10"
+                >
+                  10:00 AM
+                </option>
+                <option
+                  value="11"
+                >
+                  11:00 AM
+                </option>
+                <option
+                  value="12"
+                >
+                  12:00 AM
+                </option>
+                <option
+                  value="13"
+                >
+                  01:00 PM
+                </option>
+                <option
+                  value="14"
+                >
+                  02:00 PM
+                </option>
+                <option
+                  value="15"
+                >
+                  03:00 PM
+                </option>
+                <option
+                  value="16"
+                >
+                  04:00 PM
+                </option>
+                <option
+                  value="17"
+                >
+                  05:00 PM
+                </option>
+                <option
+                  value="18"
+                >
+                  06:00 PM
+                </option>
+                <option
+                  value="19"
+                >
+                  07:00 PM
+                </option>
+                <option
+                  value="20"
+                >
+                  08:00 PM
+                </option>
+                <option
+                  value="21"
+                >
+                  09:00 PM
+                </option>
+                <option
+                  value="22"
+                >
+                  10:00 PM
+                </option>
+                <option
+                  value="23"
+                >
+                  11:00 PM
+                </option>
+              </select>
+            </div>
+          </div>
+          <div
+            class="lineContainerInformacion"
+          >
+            <div
+              class="containerCityInput"
+            >
+              <label>
+                * Ciudad
+              </label>
+              <div
+                class="cityContainer divDrawer"
+              >
+                
+                <span
+                  class="gpsEmpty ocultar"
+                >
+                  <i
+                    class="fas fa-map-marker-alt"
+                  />
+                </span>
+                <input
+                  autocomplete="off"
+                  class="input inputFormDatos"
+                  placeholder="¿A dónde vamos?"
+                  type="text"
+                  value=""
+                />
+              </div>
+            </div>
+            <div
+              class="containerEstandarInput"
+            >
+              <label
+                class="labelEstandarInput"
+              >
+                * País
+              </label>
+              <div
+                class="sombraConAutocompletado"
+              >
+                <input
+                  class="estandarInput"
+                  name="pais"
+                  required=""
+                  type="text"
+                  value=""
+                />
+              </div>
+            </div>
+          </div>
+          <div
+            class="lineContainerInformacion"
+          >
+            <div
+              class="containerNumberInput"
+            >
+              <label
+                class="labelNumberInput"
+              >
+                Latitud
+              </label>
+              <input
+                class="numberInput"
+                name="latitud"
+                step="any"
+                type="number"
+                value=""
+              />
+            </div>
+            <div
+              class="containerNumberInput"
+            >
+              <label
+                class="labelNumberInput"
+              >
+                Longitud
+              </label>
+              <input
+                class="numberInput"
+                name="longitud"
+                step="any"
+                type="number"
+                value=""
+              />
+            </div>
+          </div>
+          <div
+            class="lineContainerInformacion"
+          >
+            <div
+              class="containerTextArea"
+            >
+              <label>
+                Descripción
+              </label>
+              <textarea
+                cols="30"
+                id="descripcion"
+                name="descripcion"
+                rows="6"
+              />
+            </div>
+          </div>
+        </div>
+        <div
+          class="subContainer"
+        >
+          <h3
+            class="subtituloBloque undefined"
+          >
+            Agregar atributos
+          </h3>
+          <ul
+            class="checkboxes"
+          >
+            <li>
+              <input
+                id="1"
+                name="caracteristicas"
+                type="checkbox"
+                value="Wifi"
+              />
+              <label
+                for="1"
+              >
+                <i
+                  class="fas fa-wifi"
+                />
+                <span>
+                  Wifi
+                </span>
+              </label>
+            </li>
+            <li>
+              <input
+                id="2"
+                name="caracteristicas"
+                type="checkbox"
+                value="Piscina"
+              />
+              <label
+                for="2"
+              >
+                <i
+                  class="fas fa-swimmer"
+                />
+                <span>
+                  Piscina
+                </span>
+              </label>
+            </li>
+            <li>
+              <input
+                id="3"
+                name="caracteristicas"
+                type="checkbox"
+                value="Estacionamiento gratuito"
+              />
+              <label
+                for="3"
+              >
+                <i
+                  class="fas fa-car"
+                />
+                <span>
+                  Estacionamiento gratuito
+                </span>
+              </label>
+            </li>
+            <li>
+              <input
+                id="4"
+                name="caracteristicas"
+                type="checkbox"
+                value="Aire acondicionado"
+              />
+              <label
+                for="4"
+              >
+                <i
+                  class="fas fa-snowflake"
+                />
+                <span>
+                  Aire acondicionado
+                </span>
+              </label>
+            </li>
+            <li>
+              <input
+                id="5"
+                name="caracteristicas"
+                type="checkbox"
+                value="No fumador"
+              />
+              <label
+                for="5"
+              >
+                <i
+                  class="fas fa-smoking-ban"
+                />
+                <span>
+                  No fumador
+                </span>
+              </label>
+            </li>
+            <li>
+              <input
+                id="6"
+                name="caracteristicas"
+                type="checkbox"
+                value="Televisor"
+              />
+              <label
+                for="6"
+              >
+                <i
+                  class="fas fa-tv"
+                />
+                <span>
+                  Televisor
+                </span>
+              </label>
+            </li>
+            <li>
+              <input
+                id="7"
+                name="caracteristicas"
+                type="checkbox"
+                value="Apto para mascotas"
+              />
+              <label
+                for="7"
+              >
+                <i
+                  class="fas fa-paw"
+                />
+                <span>
+                  Apto para mascotas
+                </span>
+              </label>
+            </li>
+            <li>
+              <input
+                id="8"
+                name="caracteristicas"
+                type="checkbox"
+                value="Barra libre"
+              />
+              <label
+                for="8"
+              >
+                <i
+                  class="fas fa-cocktail"
+                />
+                <span>
+                  Barra libre
+                </span>
+              </label>
+            </li>
+            <li>
+              <input
+                id="9"
+                name="caracteristicas"
+                type="checkbox"
+                value="Tarjeta de crédito"
+              />
+              <label
+                for="9"
+              >
+                <i
+                  class="fas fa-credit-card"
+                />
+                <span>
+                  Tarjeta de crédito
+                </span>
+              </label>
+            </li>
+            <li>
+              <input
+                id="10"
+                name="caracteristicas"
+                type="checkbox"
+                value="Check-in"
+              />
+              <label
+                for="10"
+              >
+                <i
+                  class="fas fa-clock"
+                />
+                <span>
+                  Check-in
+                </span>
+              </label>
+            </li>
+          </ul>
+        </div>
+        <div
+          class="subContainer"
+        >
+          <h3
+            class="subtituloBloque undefined"
+          >
+            Políticas del producto
+          </h3>
+          <div
+            class="bloquePoliticas"
+          >
+            <div
+              class="columnPolitica"
+            >
+              <h3
+                class="tipoPolitica"
+              >
+                Normas de la casa
+              </h3>
+              <div
+                class="containerTextArea"
+              >
+                <label>
+                  Descripción
+                </label>
+                <textarea
+                  cols="30"
+                  id="normasDeLaCasa"
+                  name="normasDeLaCasa"
+                  placeholder="Escribir aquí"
+                  rows="6"
+                />
+              </div>
+            </div>
+            <div
+              class="columnPolitica"
+            >
+              <h3
+                class="tipoPolitica"
+              >
+                Salud y seguridad
+              </h3>
+              <div
+                class="containerTextArea"
+              >
+                <label>
+                  Descripción
+                </label>
+                <textarea
+                  cols="30"
+                  id="saludSeguridad"
+                  name="saludSeguridad"
+                  placeholder="Escribir aquí"
+                  rows="6"
+                />
+              </div>
+            </div>
+            <div
+              class="columnPolitica"
+            >
+              <h3
+                class="tipoPolitica"
+              >
+                Política de cancelación
+              </h3>
+              <div
+                class="containerTextArea"
+              >
+                <label>
+                  Descripción
+                </label>
+                <textarea
+                  cols="30"
+                  id="cancelacion"
+                  name="cancelacion"
+                  placeholder="Escribir aquí"
+                  rows="6"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="subContainer"
+        >
+          <h3
+            class="subtituloBloque undefined"
+          >
+            Cargar imágenes
+          </h3>
+          <div
+            class="container"
+          >
+            <div
+              class="fila"
+            >
+              <div
+                class="containerEstandarInput"
+              >
+                <label
+                  class="labelEstandarInput"
+                />
+                <div
+                  class="sombraConAutocompletado"
+                >
+                  <input
+                    class="estandarInput"
+                    name="url"
+                    placeholder="Insertar https://"
+                    required=""
+                    type="text"
+                    value=""
+                  />
+                </div>
+              </div>
+              <div
+                class="containerDropInput"
+              >
+                <label
+                  class="labelDropInput"
+                />
+                <div
+                  class="cityContainer divDrawer"
+                >
+                  
+                  <input
+                    autocomplete="off"
+                    class="input"
+                    placeholder="Descripción"
+                    type="text"
+                    value=""
+                  />
+                </div>
+              </div>
+              <div
+                class="containerButton"
+              >
+                <div
+                  class="containerBotones"
+                >
+                  <button
+                    class="add"
+                    disabled=""
+                  >
+                    <i
+                      class="fas fa-check"
+                    />
+                  </button>
+                  <button
+                    class="add"
+                  >
+                    <i
+                      class="fas fa-plus"
+                    />
+                  </button>
+                </div>
+              </div>
+            </div>
+            
+          </div>
+        </div>
+        <div
+          class="subContainer"
+        >
+          <input
+            class="filledButton buttonSubmit"
+            type="submit"
+            value="Crear"
+          />
+        </div>
+      </form>
+    </section>
+  </div>,
+  "debug": [Function],
+  "findAllByAltText": [Function],
+  "findAllByDisplayValue": [Function],
+  "findAllByLabelText": [Function],
+  "findAllByPlaceholderText": [Function],
+  "findAllByRole": [Function],
+  "findAllByTestId": [Function],
+  "findAllByText": [Function],
+  "findAllByTitle": [Function],
+  "findByAltText": [Function],
+  "findByDisplayValue": [Function],
+  "findByLabelText": [Function],
+  "findByPlaceholderText": [Function],
+  "findByRole": [Function],
+  "findByTestId": [Function],
+  "findByText": [Function],
+  "findByTitle": [Function],
+  "getAllByAltText": [Function],
+  "getAllByDisplayValue": [Function],
+  "getAllByLabelText": [Function],
+  "getAllByPlaceholderText": [Function],
+  "getAllByRole": [Function],
+  "getAllByTestId": [Function],
+  "getAllByText": [Function],
+  "getAllByTitle": [Function],
+  "getByAltText": [Function],
+  "getByDisplayValue": [Function],
+  "getByLabelText": [Function],
+  "getByPlaceholderText": [Function],
+  "getByRole": [Function],
+  "getByTestId": [Function],
+  "getByText": [Function],
+  "getByTitle": [Function],
+  "queryAllByAltText": [Function],
+  "queryAllByDisplayValue": [Function],
+  "queryAllByLabelText": [Function],
+  "queryAllByPlaceholderText": [Function],
+  "queryAllByRole": [Function],
+  "queryAllByTestId": [Function],
+  "queryAllByText": [Function],
+  "queryAllByTitle": [Function],
+  "queryByAltText": [Function],
+  "queryByDisplayValue": [Function],
+  "queryByLabelText": [Function],
+  "queryByPlaceholderText": [Function],
+  "queryByRole": [Function],
+  "queryByTestId": [Function],
+  "queryByText": [Function],
+  "queryByTitle": [Function],
+  "rerender": [Function],
+  "unmount": [Function],
+}
+`;

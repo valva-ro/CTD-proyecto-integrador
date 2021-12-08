@@ -1,11 +1,14 @@
 export default function formatearFecha(date) {
-    const dateFormat = new Date(date)
+    if (typeof date == "string") {
+        date = new Date(date)
+    }
+    const dateFormat = date
         .toLocaleDateString("en-GB", {
             year: "numeric",
             month: "2-digit",
             day: "2-digit",
         })
-        .replaceAll("/", "-")
+        .replace("/", "-")
         .split("-")
         .reverse()
         .join("-")

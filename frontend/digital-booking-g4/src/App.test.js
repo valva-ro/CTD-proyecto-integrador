@@ -1,11 +1,9 @@
 import Enzyme from "enzyme";
 import React from "react";
 import { render, screen, fireEvent } from "@testing-library/react";
-import { shallow } from "enzyme";
 import {
     createSerializer
 } from "enzyme-to-json";
-import Adapter from "@wojtekmaj/enzyme-adapter-react-17";
 import App from "./App.jsx"
 Enzyme.configure({
 });
