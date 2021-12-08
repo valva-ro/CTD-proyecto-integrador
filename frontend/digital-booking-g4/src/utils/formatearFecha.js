@@ -1,5 +1,5 @@
 export default function formatearFecha(date) {
-  if (typeof date == "string") {
+  if (typeof date == "string" || date == null) {
     date = new Date(date);
   }
   const dateFormat = date
