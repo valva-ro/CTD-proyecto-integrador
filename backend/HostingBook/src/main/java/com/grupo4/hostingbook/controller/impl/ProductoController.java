@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.security.access.prepost.PreAuthorize;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -48,6 +49,7 @@ public class ProductoController implements IProductoController {
             @ApiResponse(code = 400, message = "Bad Request")
     })
     @PostMapping
+    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<ProductoDTO> crear(@RequestBody ProductoDTO producto) throws BadRequestException, ResourceNotFoundException, RepeatedMailException, NotImplementedException {
         ProductoDTO productoNuevo = productoService.crear(producto);
         return ResponseEntity.ok(productoNuevo);

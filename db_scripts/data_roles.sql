@@ -18,6 +18,6 @@ USE booking;
 -- Dumping data for table `roles`
 --
 SET AUTOCOMMIT=0;
-INSERT INTO roles (rol_nombre) VALUES ("ADMIN");
-INSERT INTO roles (rol_nombre) VALUES ("USER");
+INSERT INTO roles (rol_nombre) VALUES ("ROLE_ADMIN");
+INSERT INTO roles (rol_nombre) VALUES ("ROLE_USER");
 COMMIT;
