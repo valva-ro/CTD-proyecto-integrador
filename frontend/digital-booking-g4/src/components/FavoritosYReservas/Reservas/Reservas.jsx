@@ -6,6 +6,7 @@ import SkeletonTarjetaAlojamiento from "../../BloqueAlojamientos/TarjetaAlojamie
 import useFetch from "../../../hooks/useFetch";
 import loggedContext from "../../../contexts/loggedContext";
 import styles from "../FavoritosYReservas.module.css";
+import HeaderSecundario from "../../HeaderSecundario/HeaderSecundario";
 
 export default function Reservas() {
   const history = useHistory();
@@ -35,19 +36,7 @@ export default function Reservas() {
 
   return (
     <>
-      <div className={styles.contenedorHeader}>
-        <div className={styles.headerIzquierda}>
-          <div className={styles.a} onClick={history.goBack}>
-            <span>
-              <i className="fas fa-chevron-left" aria-hidden="true"></i>
-            </span>
-            <span>ATRÁS</span>
-          </div>
-        </div>
-        <div className={styles.headerDerecha}>
-          <TituloBloque styles={styles.favTitle}>Tus reservas</TituloBloque>
-        </div>
-      </div>
+      <HeaderSecundario>Tus reservas</HeaderSecundario>
       <section className={styles.favoritosContainer}>
         {isLoadedReservas && reservas.length === 0 ? (
           <div className={styles.avisoNoReservas}>

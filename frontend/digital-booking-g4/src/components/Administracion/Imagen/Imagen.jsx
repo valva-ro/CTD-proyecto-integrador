@@ -25,7 +25,7 @@ export default function Imagen({
   }, [imagenDetails]);
 
   const setUrl = (url) => {
-    validateURL();
+    // validateURL();
     setImagenDetails({
       url: url,
       descripcion: imagenDetails.descripcion,
@@ -39,16 +39,16 @@ export default function Imagen({
     });
 
   const handleAddImage = () => {
-    if (isURLValidImage()) {
+    // if (isURLValidImage()) {
       agregarImagen(imagenDetails);
       setBotonHabilitado(false);
-    }
+    // }
   };
 
-  const validateURL = () => {
-    const regex = /(http)?s?:?(\/\/[^"']*\.(?:png|jpg|jpeg|png|svg))/g;
-    setIsURLValidImage(imagenDetails.url.match(regex));
-  };
+  // const validateURL = () => {
+  //   const regex = /(http)?s?:?(\/\/[^"']*\.(?:png|jpg|jpeg|png|svg))/g;
+  //   setIsURLValidImage(imagenDetails.url.match(regex));
+  // };
 
   return (
     <div className={styles.container}>

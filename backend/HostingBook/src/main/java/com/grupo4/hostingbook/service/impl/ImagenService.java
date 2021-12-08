@@ -15,7 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-@Service
+@Service("ImagenService")
 public class ImagenService implements CRUDService<ImagenDTO> {
 
     private final IImagenRepository imagenRepository;
@@ -33,8 +33,6 @@ public class ImagenService implements CRUDService<ImagenDTO> {
         Imagen entidadImagen = mapper.convertValue(imagenDTO, Imagen.class);
         Imagen guardada = imagenRepository.save(entidadImagen);
         ImagenDTO guardadaDTO = mapper.convertValue(guardada, ImagenDTO.class);
-        System.out.println("Guardada " + guardada.getId());
-        System.out.println("Guardada DTO " + guardadaDTO.getId());
         return guardadaDTO;
     }
 

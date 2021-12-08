@@ -84,26 +84,32 @@ export default function SideNav() {
                 <RenderComponent />
               </div>
             ) : (
-              <>
+              <div className={styles.containerLoggeado}>
+                <div className={styles.opciones}>
                 <Link
                   to="/favorites"
-                  className={styles.favoritosSidenav}
-                  onClick={() => setIsOpened(false)}
                 >
-                  Favoritos
+                  <Options
+                    contenido={"Favoritos"}
+                    onClick={() => setIsOpened(false)}
+                  />
                 </Link>
                 <Link
                   to="/reservations"
-                  className={styles.favoritosSidenav}
-                  onClick={() => setIsOpened(false)}
                 >
-                  Reservas
+                  <Options
+                    contenido={"Reservas"}
+                    onClick={() => setIsOpened(false)}
+                  />
                 </Link>
-                <p className={styles.cerrarSesion}>
-                  ¿Deseas
-                  <span onClick={cerrarSesion}> cerrar sesión</span>?
-                </p>
-              </>
+                </div>
+                <div>
+                  <p className={styles.cerrarSesion}>
+                    ¿Deseas
+                    <span onClick={cerrarSesion}> cerrar sesión</span>?
+                  </p>
+                </div>
+              </div>
             )}
           </div>
           <div className={styles.footer}>
