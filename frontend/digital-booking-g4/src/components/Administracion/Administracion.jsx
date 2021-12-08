@@ -31,9 +31,17 @@ export default function Administracion() {
   const [cancelacion, setCancelacion] = useState("");
   const [imagenes, setImagenes] = useState([]);
   const [atributosId, setAtributosId] = useState([]);
-  const [showMsjError, setShowMsjError] = useState(true);
+  const [showMsjError, setShowMsjError] = useState(false);
+  const [city, setCity] = useState({});
+  const data = useFetch("categorias");
+
+  let token = "";
+  if (localStorage.hasOwnProperty("jwt")) {
+    token = localStorage.getItem("jwt").replaceAll('"', "");
+  }
 
   const validarCampos = () => {
+    let camposValidos = true;
     if (
       !(
         propertyName !== "" &&
@@ -48,19 +56,14 @@ export default function Administracion() {
         normasDeLaCasa !== "" &&
         saludSeguridad !== "" &&
         cancelacion !== "" &&
-        imagenes.length !== 0
+        imagenes.length > 0
       )
     ) {
       setShowMsjError(true);
+      camposValidos = false;
     }
+    return camposValidos;
   };
-
-  let token = "";
-  if (localStorage.hasOwnProperty("jwt")) {
-    token = localStorage.getItem("jwt").replaceAll('"', "");
-  }
-
-  const data = useFetch("categorias");
 
   /* ------- CheckIn (horarioCheckInrio min) ------- */
   let horarioCheckInsDisponibles = [];
@@ -75,6 +78,7 @@ export default function Administracion() {
   /* ------- Categoría ------- */
   const [categoryItems, setCategoryItems] = useState([]);
   let categoriasDisponibles = [];
+
   useEffect(() => {
     if (data.isLoaded) {
       setCategoryItems(data.items);
@@ -111,8 +115,6 @@ export default function Administracion() {
     setImagenesDetails([...imagenesDetails.filter((r) => r !== val)]);
     setImagenes([...imagenes.filter((r) => r !== imagen)]);
   };
-
-  const handleSubmit = (e) => e.preventDefault();
 
   const handleCreacionProducto = () => {
     let idDeCategoria;
@@ -199,7 +201,6 @@ export default function Administracion() {
       postearCiudad(),
       postearPoliticas(),
     ];
-    console.log(promises);
 
     Promise.all(promises).then(() => {
       post(
@@ -225,13 +226,23 @@ export default function Administracion() {
           "Content-Type": "application/json",
           Authorization: token,
         }
-      )
-        .then((response) => {
-          console.log(response);
-          return response.json();
-        })
-        .then((data) => console.log(data));
+      ).then((response) => {
+        if (response.status === 201) {
+          setShowMsjError(false);
+          // Agregar mensaje exitoso
+        } else {
+          setShowMsjError(true);
+        }
+      });
     });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const camposValidados = validarCampos();
+    if (camposValidados) {
+      handleCreacionProducto();
+    }
   };
 
   return (
@@ -286,6 +297,7 @@ export default function Administracion() {
                   specificStyle2={stylesInputsFromOtherside.inputFormDatos}
                   specificStyle3={stylesInputsFromOtherside.divDrawer}
                   setCountry={setCountry}
+                  setCity={setCity}
                   autocompletadoInputCountry={autocompletadoInputCountry}
                 />
               </div>
@@ -295,6 +307,7 @@ export default function Administracion() {
                 setOnChangeItem={setCountry}
                 label="* País"
                 name="pais"
+                value={city.pais}
               />
             </div>
             <div className={styles.lineContainerInformacion}>
@@ -303,12 +316,16 @@ export default function Administracion() {
                 setOnChangeItem={setLatitud}
                 label="* Latitud"
                 name="latitud"
+                value={city.latitud}
+                showValue={city.latitud != null}
               />
               <NumberInput
                 onChangeItem={longitud}
                 setOnChangeItem={setLongitud}
                 label="* Longitud"
                 name="longitud"
+                value={city.longitud}
+                showValue={city.longitud != null}
               />
             </div>
             <div className={`${styles.lineContainerInformacion}`}>
@@ -385,8 +402,7 @@ export default function Administracion() {
           <div className={styles.subContainer}>
             <TituloBloque>Cargar imágenes</TituloBloque>
             <p className={styles.camposObligatorios}>
-              (Al completar los campos se requiere hacer clic en el símbolo:{" "}
-              {<i class="fas fa-check"></i>} )
+              (Se debe cargar al menos una imagen.)
             </p>
             <RowImagenes
               handleAdd={handleAdd}
@@ -399,13 +415,13 @@ export default function Administracion() {
             {showMsjError ? (
               <div className={styles.invalidURL}>
                 <i className="fas fa-exclamation-triangle"></i>
-                <p>Han quedado campos sin completar. Por favor, revise el formulario y vuelva a intentarlo.</p>
+                <p>
+                  Han quedado campos sin completar. Por favor, revise el
+                  formulario y vuelva a intentarlo.
+                </p>
               </div>
             ) : null}
-            <FilledButton
-              styles={styles.buttonSubmit}
-              onClick={handleCreacionProducto}
-            >
+            <FilledButton styles={styles.buttonSubmit} onClick={handleSubmit}>
               Crear
             </FilledButton>
           </div>

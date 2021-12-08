@@ -16,13 +16,17 @@ export default function Imagen({
   });
 
   const [botonHabilitado, setBotonHabilitado] = useState(true);
-  const [isURLValidImage, setIsURLValidImage] = useState(true);
+  const [isShownError, setIsShownError] = useState(false);
 
   useEffect(() => {
     const botonHabilitado =
       imagenDetails.url !== "" && imagenDetails.descripcion !== "";
     setBotonHabilitado(botonHabilitado);
   }, [imagenDetails]);
+
+  useEffect(() => {
+    setIsShownError(botonHabilitado);
+  }, [botonHabilitado]);
 
   const setUrl = (url) => {
     // validateURL();
@@ -32,23 +36,26 @@ export default function Imagen({
     });
   };
 
-  const setDescripcion = (descripcion) =>
+  const setDescripcion = (descripcion) => {
     setImagenDetails({
       url: imagenDetails.url,
       descripcion: descripcion,
     });
+  };
 
   const handleAddImage = () => {
     // if (isURLValidImage()) {
-      agregarImagen(imagenDetails);
-      setBotonHabilitado(false);
+    agregarImagen(imagenDetails);
+    setBotonHabilitado(false);
     // }
   };
 
   // const validateURL = () => {
   //   const regex = /(http)?s?:?(\/\/[^"']*\.(?:png|jpg|jpeg|png|svg))/g;
-  //   setIsURLValidImage(imagenDetails.url.match(regex));
+  //   setIsShownError(imagenDetails.url.match(regex));
   // };
+
+  const handleCheck = () => {};
 
   return (
     <div className={styles.container}>
@@ -57,11 +64,13 @@ export default function Imagen({
           setOnChangeItem={setUrl}
           name="url"
           placeholder="Insertar https://"
+          onBlur={handleCheck}
         />
         <DropInput
           setOnChangeItem={setDescripcion}
           name="descripcion"
           placeholder="Descripción"
+          onBlur={handleCheck}
         />
         <div className={styles.containerButton}>
           {index === 0 ? (
@@ -96,12 +105,14 @@ export default function Imagen({
           )}
         </div>
       </div>
-      {isURLValidImage ? (
+      {!isShownError ? (
         ""
       ) : (
         <div className={styles.invalidURL}>
           <i className="fas fa-exclamation-triangle"></i>
-          <p>La URL ingresada no es una imagen</p>
+          <p>
+            Por favor, recuerde confirmar la imagen antes de crear el producto.
+          </p>
         </div>
       )}
     </div>

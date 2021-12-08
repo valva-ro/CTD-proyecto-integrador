@@ -64,6 +64,7 @@
   z-index: 1;
   transition: all 200ms ease-in;
   border-radius: 1px;
+  user-select: none;
 }
 
 .itemDropdown:hover {
