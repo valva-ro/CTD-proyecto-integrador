@@ -14,46 +14,35 @@ import ProductoDetalle from "./components/Producto/ProductoDetalle/ProductoDetal
 import ProductoReserva from "./components/Producto/ProductoReserva/ProductoReserva";
 import ConfirmacionCuenta from "./components/ConfirmacionCuenta/ConfirmacionCuenta";
 import Reservas from "./components/FavoritosYReservas/Reservas/Reservas";
-import jwtDecode from "jwt-decode";
 import Administracion from "./components/Administracion/Administracion";
-
+import AuthenticationVerify from "./components/AuthenticationVerify/AuthenticationVerify";
 
 function App() {
   const [isLogged, setIsLogged] = useState(estaLogueado());
-  const [userInformation, setUserInformation] = useState(obtenerInformacionUsuario());
-  const [rol, setRol] = useState( obtenerRolUsusario())
+  const [userInformation, setUserInformation] = useState(
+    obtenerInformacionUsuario()
+  );
+  const [rol, setRol] = useState(obtenerRolUsusario());
 
   AOS.init();
 
-  let token = "";
-  if (localStorage.hasOwnProperty("jwt")) {
-    token = localStorage.getItem("jwt").replaceAll('"', "");
-  }
-
-  useEffect(() => {
-    setInterval(function () {
-      comprobarToken();
-    }, 1000 * 60 * 10);
-  }, []);
-
   useEffect(() => {}, [isLogged]);
 
-  const comprobarToken = () => {
-    if (token === "") {
-      localStorage.clear();
-      setIsLogged(false);
-    } else {
-      const decodedToken = jwtDecode(token);
-      if (decodedToken.exp < Date.now() / 1000) {
-        localStorage.clear();
-        setIsLogged(false);
-      }
-    }
+  const cleanUserInfo = () => {
+    localStorage.clear();
+    setIsLogged(false);
   };
 
   return (
     <loggedContext.Provider
-      value={{ isLogged, setIsLogged, userInformation, setUserInformation, rol, setRol }}
+      value={{
+        isLogged,
+        setIsLogged,
+        userInformation,
+        setUserInformation,
+        rol,
+        setRol,
+      }}
     >
       <div className="App">
         <BrowserRouter>
@@ -87,6 +76,7 @@ function App() {
               <Route path="/management" component={Administracion} />
             </Switch>
           </Layout>
+          <AuthenticationVerify cleanUserInfo={cleanUserInfo}/>
         </BrowserRouter>
       </div>
     </loggedContext.Provider>
@@ -109,12 +99,9 @@ function obtenerInformacionUsuario() {
 }
 
 function obtenerRolUsusario() {
-  return (
-    localStorage.hasOwnProperty("rol")
+  return localStorage.hasOwnProperty("rol")
     ? JSON.parse(localStorage.getItem("rol"))
-    : ""
-  )
+    : "";
 }
-
 
 export default App;
