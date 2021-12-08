@@ -709,8 +709,8 @@ INSERT INTO politica_producto (politica_id, producto_id) VALUES (14,14);
 --
 -- Dumping data for table `roles`
 --
-INSERT INTO roles (rol_nombre) VALUES ("ADMIN");
-INSERT INTO roles (rol_nombre) VALUES ("USER");
+INSERT INTO roles (rol_nombre) VALUES ("ROLE_ADMIN");
+INSERT INTO roles (rol_nombre) VALUES ("ROLE_USER");
 COMMIT;
 
 --
