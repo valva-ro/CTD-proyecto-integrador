@@ -112,93 +112,168 @@ export default function Administracion() {
 
   const handleSubmit = (e) => e.preventDefault();
 
-  const obtenerIdCategoria = (nombreCategoria) => {
-    switch (nombreCategoria) {
-      case "Hoteles":
-        setIdCategoria(1);
-        break;
-      case "Hostels":
-        setIdCategoria(2);
-        break;
-      case "Bed & Breakfasts":
-        setIdCategoria(3);
-        break;
-      case "Departamentos":
-        setIdCategoria(4);
-        break;
-    }
-  };
+  // const obtenerIdCategoria = (nombreCategoria) => {
+  //   switch (nombreCategoria) {
+  //     case "Hoteles":
+  //       setIdCategoria(1);
+  //       break;
+  //     case "Hostels":
+  //       setIdCategoria(2);
+  //       break;
+  //     case "Bed & Breakfasts":
+  //       setIdCategoria(3);
+  //       break;
+  //     case "Departamentos":
+  //       setIdCategoria(4);
+  //       break;
+  //   }
+  // };
 
-  const postearCiudad = () => {
-    return get("ciudades").then((data) => {
-      const filtradoCiudad = data.find(
-        (ciudad) => ciudad.nombre === onChangeCity
-      );
-      if (filtradoCiudad !== undefined) {
-        setIdCiudad(filtradoCiudad.id);
-      } else {
-        return post("ciudades", {
-          nombre: onChangeCity,
-          pais: country,
-          latitud,
-          longitud,
-        })
-          .then((response) => response.json())
-          .then((data) => setIdCiudad(parseInt(data.id)));
-      }
-    });
-  };
+  // const postearCiudad = () => {
+  //   return get("ciudades").then((data) => {
+  //     const filtradoCiudad = data.find(
+  //       (ciudad) => ciudad.nombre === onChangeCity
+  //     );
+  //     if (filtradoCiudad !== undefined) {
+  //       setIdCiudad(filtradoCiudad.id);
+  //     } else {
+  //       return post("ciudades", {
+  //         nombre: onChangeCity,
+  //         pais: country,
+  //         latitud,
+  //         longitud,
+  //       })
+  //         .then((response) => response.json())
+  //         .then((data) => setIdCiudad(parseInt(data.id)));
+  //     }
+  //   });
+  // };
 
-  const postearPoliticas = () => {
-    const politicas = [];
+  // const postearPoliticas = () => {
+  //   const politicas = [];
 
-    return post("politicas", {
-      nombre: normasDeLaCasa,
-      tipoPolitica: 1,
-    })
-      .then((response) => response.json())
-      .then((data) => politicas.push(parseInt(data.id)))
-      .then(() =>
-        post("politicas", {
-          nombre: saludSeguridad,
-          tipoPolitica: 2,
-        })
-      )
-      .then((response) => response.json())
-      .then((data) => politicas.push(parseInt(data.id)))
-      .then(() =>
-        post("politicas", {
-          nombre: cancelacion,
-          tipoPolitica: 3,
-        })
-      )
-      .then((response) => response.json())
-      .then((data) => politicas.push(parseInt(data.id)))
-      .then(() => setIdPoliticas(politicas));
-  };
+  //   return post("politicas", {
+  //     nombre: normasDeLaCasa,
+  //     tipoPolitica: 1,
+  //   })
+  //     .then((response) => response.json())
+  //     .then((data) => politicas.push(parseInt(data.id)))
+  //     .then(() =>
+  //       post("politicas", {
+  //         nombre: saludSeguridad,
+  //         tipoPolitica: 2,
+  //       })
+  //     )
+  //     .then((response) => response.json())
+  //     .then((data) => politicas.push(parseInt(data.id)))
+  //     .then(() =>
+  //       post("politicas", {
+  //         nombre: cancelacion,
+  //         tipoPolitica: 3,
+  //       })
+  //     )
+  //     .then((response) => response.json())
+  //     .then((data) => politicas.push(parseInt(data.id)))
+  //     .then(() => setIdPoliticas(politicas));
+  // };
 
-  const postearImagenes = () => {
-    const imagenesId = [];
-    const promises = imagenes.map((imagen) =>
-      post("imagenes", {
-        imagenTitulo: imagen.descripcion,
-        imagenUrl: imagen.url,
-      })
-        .then((response) => response.json())
-        .then((data) => imagenesId.push(parseInt(data.id)))
-    );
+  // const postearImagenes = () => {
+  //   const imagenesId = [];
+  //   const promises = imagenes.map((imagen) =>
+  //     post("imagenes", {
+  //       imagenTitulo: imagen.descripcion,
+  //       imagenUrl: imagen.url,
+  //     })
+  //       .then((response) => response.json())
+  //       .then((data) => imagenesId.push(parseInt(data.id)))
+  //   );
 
-    return Promise.all(promises).then(() => {
-      setIdImagenes(imagenesId);
-    });
-  };
+  //   return Promise.all(promises).then(() => {
+  //     setIdImagenes(imagenesId);
+  //   });
+  // };
 
   const handleCreacionProducto = () => {
-    console.log("Iniciando handle..");
-    obtenerIdCategoria(onChangeCategory);
+    let idDeCategoria;
+    let idDeCiudad;
+    let idsDePoliticas = [];
+    let idsDeImagenes = [];
 
+    const obtenerIdCategoria = (nombreCategoria) => {
+      switch (nombreCategoria) {
+        case "Hoteles":
+          idDeCategoria = 1;
+          break;
+        case "Hostels":
+          idDeCategoria = 2;
+          break;
+        case "Bed & Breakfasts":
+          idDeCategoria = 3;
+          break;
+        case "Departamentos":
+          idDeCategoria = 4;
+          break;
+      }
+    };
+
+    const postearCiudad = () => {
+      return get("ciudades").then((data) => {
+        const filtradoCiudad = data.find(
+          (ciudad) => ciudad.nombre === onChangeCity
+        );
+        if (filtradoCiudad !== undefined) {
+          setIdCiudad(filtradoCiudad.id);
+        } else {
+          return post("ciudades", {
+            nombre: onChangeCity,
+            pais: country,
+            latitud,
+            longitud,
+          })
+            .then((response) => response.json())
+            .then((data) => (idDeCiudad = parseInt(data.id)));
+        }
+      });
+    };
+
+    const postearPoliticas = () => {
+      post("politicas", {
+        nombre: normasDeLaCasa,
+        tipoPolitica: 1,
+      })
+        .then((response) => response.json())
+        .then((data) => idsDePoliticas.push(parseInt(data.id)))
+        .then(() =>
+          post("politicas", {
+            nombre: saludSeguridad,
+            tipoPolitica: 2,
+          })
+        )
+        .then((response) => response.json())
+        .then((data) => idsDePoliticas.push(parseInt(data.id)))
+        .then(() =>
+          post("politicas", {
+            nombre: cancelacion,
+            tipoPolitica: 3,
+          })
+        )
+        .then((response) => response.json())
+        .then((data) => idsDePoliticas.push(parseInt(data.id)));
+    };
+
+    const postearImagenes = () => {
+       imagenes.map((imagen) =>
+        post("imagenes", {
+          imagenTitulo: imagen.descripcion,
+          imagenUrl: imagen.url,
+        })
+          .then((response) => response.json())
+          .then((data) => idsDeImagenes.push(parseInt(data.id)))
+      );
+    };
+
+    obtenerIdCategoria(onChangeCategory);
     const promises = [postearImagenes(), postearCiudad(), postearPoliticas()];
-    console.log("Post promises..");
     console.log(promises);
 
     Promise.all(promises).then(() => {
@@ -209,15 +284,15 @@ export default function Administracion() {
           descripcion,
           direccion: address,
           horarioCheckIn: hora,
-          categoria: { id: idCategoria },
-          ciudad: { id: idCiudad },
-          imagenes: idImagenes.map((id) => {
+          categoria: { id: idDeCategoria },
+          ciudad: { id: idDeCiudad },
+          imagenes: idsDeImagenes.map((id) => {
             return { id };
           }),
           caracteristicas: atributosId.map((id) => {
             return { id };
           }),
-          politicas: idPoliticas.map((id) => {
+          politicas: idsDePoliticas.map((id) => {
             return { id };
           }),
         },
@@ -231,11 +306,37 @@ export default function Administracion() {
           return response.json();
         })
         .then((data) => console.log(data));
-    });
+      });
 
-    // postearImagenes();
-    // postearCiudad();
-    // postearPoliticas();
+      // post(
+      //   "productos",
+      //   {
+      //     nombre: propertyName,
+      //     descripcion,
+      //     direccion: address,
+      //     horarioCheckIn: hora,
+      //     categoria: { id: idCategoria },
+      //     ciudad: { id: idCiudad },
+      //     imagenes: idImagenes.map((id) => {
+      //       return { id };
+      //     }),
+      //     caracteristicas: atributosId.map((id) => {
+      //       return { id };
+      //     }),
+      //     politicas: idPoliticas.map((id) => {
+      //       return { id };
+      //     }),
+      //   },
+      //   {
+      //     "Content-Type": "application/json",
+      //     Authorization: token,
+      //   }
+      // )
+      //   .then((response) => {
+      //     console.log(response);
+      //     return response.json();
+      //   })
+      //   .then((data) => console.log(data));
   };
 
   return (
