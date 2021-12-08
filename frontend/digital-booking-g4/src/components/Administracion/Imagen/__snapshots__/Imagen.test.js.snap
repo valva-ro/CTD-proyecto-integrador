@@ -71,16 +71,6 @@ exports[`Imagen test Renderiza Componente Por Url invalida 1`] = `
       </div>
     </div>
   </div>
-  <div
-    className="invalidURL"
-  >
-    <i
-      className="fas fa-exclamation-triangle"
-    />
-    <p>
-      La URL ingresada no es una imagen
-    </p>
-  </div>
 </div>
 `;
 
