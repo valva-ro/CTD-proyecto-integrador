@@ -3,6 +3,7 @@
   justify-content: space-between;
   align-items: center;
   position: relative;
+  gap:12px;
 }
 
 .avatar {
@@ -18,7 +19,6 @@
   color: rgba(0, 0, 0, 0.5);
   font-size: 1rem;
   font-weight: 700;
-  padding-top: 12px;
 }
 
 .nombre {
@@ -81,6 +81,7 @@
     flex-direction: column;
     justify-content: flex-end;
     align-items: flex-end;
+    gap:0;
   }
 
   .contenedorNombre {
@@ -97,6 +98,7 @@
 
   .saludo {
     color: var(--color-5);
+    padding-top: 12px;
   }
 
   .nombre {

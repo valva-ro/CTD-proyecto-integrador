@@ -4,21 +4,17 @@ import loggedContext from "../../contexts/loggedContext";
 import useOnClickOutside from "../../hooks/useOnClickOutside";
 import styles from "./Profile.module.css";
 
-const ROL_USER = "USER";
-const ROL_ADMIN = "ADMIN";
-
 export default function Profile() {
   const {
     setIsLogged,
     userInformation: { nombre, apellido },
+    rol
   } = useContext(loggedContext);
   const [dropdownDesplegado, setDropdownDesplegado] = useState(false);
   const iniciales = `${nombre.charAt(0).toUpperCase()}${apellido.charAt(0).toUpperCase()}`;
   const nombreCapitalized = capitalizeString(nombre);
   const apellidoCapitalized = capitalizeString(apellido);
   const dropdownRef = useRef(null);
-  // TODO: obtener de la API
-  const rol = "USER";
 
   useOnClickOutside(dropdownRef, () => setDropdownDesplegado(false));
 
@@ -34,7 +30,7 @@ export default function Profile() {
 
   function obtenerItems() {
     let items;
-    if (rol === ROL_USER) {
+    if (rol === "ROLE_USER") {
       items = (
         <>
           <Link
@@ -61,10 +57,10 @@ export default function Profile() {
           </span>
         </>
       );
-    } else if (rol === ROL_ADMIN) {
+    } else if (rol === "ROLE_ADMIN") {
       items = (
         <>
-          <Link to="/administration" onClick={toggleDropdown} className={styles.itemDropdown}>
+          <Link to="/management" onClick={toggleDropdown} className={styles.itemDropdown}>
             Administración
           </Link>
           <span
@@ -72,6 +68,7 @@ export default function Profile() {
             className={styles.itemDropdown}
             data-testid="btnCerrarSesion"
           >
+            <i className={`fas fa-sign-out-alt ${styles.cerrarSesion}`}></i>
             Cerrar Sesión
           </span>
         </>

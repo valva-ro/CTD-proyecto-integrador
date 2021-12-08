@@ -14,7 +14,7 @@ export default function Favoritos() {
   const idUsuario = parseInt(localStorage.getItem("id"));
   const [favoritos, setFavoritos] = useState([]);
   const { isLoaded, items } = useFetch(`usuarios/${idUsuario}`);
-  const { isLogged } = useContext(loggedContext);
+  const { isLogged, rol } = useContext(loggedContext);
 
   useEffect(() => {
     if (isLogged && isLoaded) {
@@ -29,7 +29,7 @@ export default function Favoritos() {
     }
   }, [isLoaded, isLogged, items, favoritos]);
 
-  if (!isLogged) {
+  if (!isLogged || rol !== "ROLE_USER") {
     return <Redirect to="/" />;
   }
 

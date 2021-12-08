@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
 import { Redirect, useHistory } from "react-router-dom";
-import TituloBloque from "../../TituloBloque/TituloBloque";
 import ReservaCard from "./ReservaCard";
 import SkeletonTarjetaAlojamiento from "../../BloqueAlojamientos/TarjetaAlojamiento/SkeletonTarjetaAlojamiento";
 import useFetch from "../../../hooks/useFetch";
@@ -16,7 +15,7 @@ export default function Reservas() {
     token = localStorage.getItem("jwt").replaceAll('"', "");
   }
   const [reservas, setReservas] = useState([]);
-  const { isLogged } = useContext(loggedContext);
+  const { isLogged, rol} = useContext(loggedContext);
   const { isLoaded: isLoadedReservas, items: itemsReservas } = useFetch(
     `reservas/usuario/${idUsuario}`,
     {
@@ -30,7 +29,7 @@ export default function Reservas() {
     }
   }, [isLoadedReservas, isLogged, itemsReservas, reservas]);
 
-  if (!isLogged) {
+  if (!isLogged || rol !== "ROLE_USER") {
     return <Redirect to="/" />;
   }
 
