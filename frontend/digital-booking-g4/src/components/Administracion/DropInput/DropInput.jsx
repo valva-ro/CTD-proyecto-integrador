@@ -4,7 +4,7 @@ import useClickOutside from "../../../hooks/useOnClickOutside";
 import useFetch from "../../../hooks/useFetch.js";
 import styles from "./DropInput.module.css";
 
-export default function DropInput({ setOnChangeItem, onChangeItem, label, pathname, placeholder, id, dataId}) {
+export default function DropInput({ setOnChangeItem, onChangeItem, label, pathname, placeholder}) {
   const [list, setList] = useState(null);
   const [inputContent, setInputContent] = useState("");
   const [dropItems, setDropItems] = useState([

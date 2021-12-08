@@ -15,9 +15,12 @@ import FilledButton from "../Buttons/FilledButton";
 import post from "../../utils/post";
 import loggedContext from "../../contexts/loggedContext";
 import { Redirect } from "react-router-dom";
+import Modal from "../Modal/Modal"
+import TarjetaPostExitoso from "../TarjetaPostExitoso/TarjetaPostExitoso";
 
 export default function Administracion() {
   const { isLogged, rol } = useContext(loggedContext);
+  const [showModal, setShowModal] = useState(true);
   const [propertyName, setPropertyName] = useState("");
   const [onChangeCategory, setOnChangeCategory] = useState("");
   const [address, setAddress] = useState("");
@@ -344,6 +347,11 @@ export default function Administracion() {
           </div>
         </form>
       </section>
+      <Modal estaAbierto={showModal} onCloseRequest={() => setShowModal(false)} colorBtnCerrar="#383b58" colorFondo="#383b5853">
+        <TarjetaPostExitoso
+          contenidoP={"La propiedad se ha creado con éxito"}
+        />
+      </Modal>
     </>
   );
 }

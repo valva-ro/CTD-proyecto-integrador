@@ -1,7 +1,7 @@
 import { useState } from "react";
 import FilledButton from "../../../Buttons/FilledButton";
 import post from "../../../../utils/post";
-import styles from "../../../Producto/ProductoReserva/DetallesReserva/TarjetaReservaExitosa/TarjetaReservaExitosa.module.css";
+import styles from "../../../TarjetaPostExitoso/TarjetaPostExitoso.module.css";
 
 export default function TarjetaPuntuacionReserva({
   nombreAlojamiento,

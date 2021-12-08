@@ -24,6 +24,12 @@ input[type="password"] {
   gap: 1.5vw;
   justify-content: space-between;
 }
+
+.formContact div {
+  display: flex;
+  justify-content: space-between;
+}
+
 .generalForms div label {
   min-width: 48%;
 }
