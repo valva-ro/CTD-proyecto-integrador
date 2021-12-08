@@ -46,7 +46,7 @@ export default function TarjetaPuntuacionReserva({
               value={5}
               onClick={() => setPuntuacion(5)}
             />
-            <label htmlFor="rate5" className="fas fa-star"></label>
+            <label htmlFor="rate5" className={`fas fa-star ${styles.estrellaPuntuacion}`} ></label>
             <input
               type="radio"
               name="rate"
@@ -54,7 +54,7 @@ export default function TarjetaPuntuacionReserva({
               value={4}
               onClick={() => setPuntuacion(4)}
             />
-            <label htmlFor="rate4" className="fas fa-star"></label>
+            <label htmlFor="rate4" className={`fas fa-star ${styles.estrellaPuntuacion}`}></label>
             <input
               type="radio"
               name="rate"
@@ -62,7 +62,7 @@ export default function TarjetaPuntuacionReserva({
               value={3}
               onClick={() => setPuntuacion(3)}
             />
-            <label htmlFor="rate3" className="fas fa-star"></label>
+            <label htmlFor="rate3" className={`fas fa-star ${styles.estrellaPuntuacion}`}></label>
             <input
               type="radio"
               name="rate"
@@ -70,7 +70,7 @@ export default function TarjetaPuntuacionReserva({
               value={2}
               onClick={() => setPuntuacion(2)}
             />
-            <label htmlFor="rate2" className="fas fa-star"></label>
+            <label htmlFor="rate2" className={`fas fa-star ${styles.estrellaPuntuacion}`}></label>
             <input
               type="radio"
               name="rate"
@@ -78,7 +78,7 @@ export default function TarjetaPuntuacionReserva({
               value={1}
               onClick={() => setPuntuacion(1)}
             />
-            <label htmlFor="rate1" className="fas fa-star"></label>
+            <label htmlFor="rate1" className={`fas fa-star ${styles.estrellaPuntuacion}`}></label>
           </div>
           <textarea
             className={styles.puntuacionComentarios}

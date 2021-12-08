@@ -1,6 +1,6 @@
 .btnOK {
   width: 206px;
-  margin-top: 1.5rem;
+  margin-top: .5rem !important;
   padding: 10px 0;
 }
 
@@ -60,14 +60,14 @@
   float: right;
   transition: all 0.2s ease;
 }
-input:not(:checked) ~ label:hover,
-input:not(:checked) ~ label:hover ~ label {
+input:not(:checked) ~ label.estrellaPuntuacion:hover,
+input:not(:checked) ~ label.estrellaPuntuacion:hover ~ label.estrellaPuntuacion {
   color: #fd4;
 }
-input:checked ~ label {
+input:checked ~ label.estrellaPuntuacion {
   color: #fd4;
 }
-input#rate5:checked label {
+input#rate5:checked label.estrellaPuntuacion {
   color: #fe7;
   text-shadow: 0 0 20px #952;
 }
