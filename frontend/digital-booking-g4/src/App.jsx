@@ -5,6 +5,7 @@ import Home from "./components/Home/Home";
 import Login from "./components/Forms/Login";
 import Register from "./components/Forms/Register";
 import Favoritos from "./components/FavoritosYReservas/Favoritos/Favoritos";
+import Contact from "./components/Forms/Contact";
 import ScrollToTop from "./components/ScrollToTop";
 import loggedContext from "./contexts/loggedContext";
 import AOS from "aos";
@@ -66,6 +67,7 @@ function App() {
             <Switch>
               <Route exact path="/" component={Home} />
               <Route path="/login" component={Login} />
+              <Route path="/contact" component={Contact} />
               <Route path="/login-redirect-booking/:id" component={Login} />
               <Route path="/register" component={Register} />
               <Route

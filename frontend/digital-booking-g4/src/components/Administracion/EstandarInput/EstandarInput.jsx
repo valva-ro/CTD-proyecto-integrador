@@ -6,8 +6,6 @@ export default function EstandarInput({
     onChangeItem,
     setOnChangeItem,
     placeholder,
-    id,
-    dataId
 }) {
     return (
         <div className={styles.containerEstandarInput}>
