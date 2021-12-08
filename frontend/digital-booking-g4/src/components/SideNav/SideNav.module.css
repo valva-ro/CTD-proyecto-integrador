@@ -71,6 +71,13 @@
   color: var(--color-2);
   font-size: 1rem;
   font-weight: 700;
+  transition: all 200ms ease-in;
+}
+
+.opciones a:hover {
+  cursor: pointer;
+  color: var(--color-principal);
+  
 }
 
 .opciones a p {
