@@ -1,4 +1,4 @@
-import { React, useState, useEffect, useCallback } from "react";
+import { React, useState, useEffect } from "react";
 import useFetch from "../../hooks/useFetch";
 import HeaderSecundario from "../HeaderSecundario/HeaderSecundario";
 import TituloBloque from "../TituloBloque/TituloBloque";
@@ -19,7 +19,7 @@ export default function Administracion() {
   const [propertyName, setPropertyName] = useState("");
   const [onChangeCategory, setOnChangeCategory] = useState("");
   const [address, setAddress] = useState("");
-  const [hora, setHora] = useState(null);
+  const [horarioCheckIn, setHorarioCheckIn] = useState(null);
   const [onChangeCity, setOnChangeCity] = useState("");
   const [country, setCountry] = useState("");
   const autocompletadoInputCountry = true;
@@ -31,45 +31,48 @@ export default function Administracion() {
   const [cancelacion, setCancelacion] = useState("");
   const [imagenes, setImagenes] = useState([]);
   const [atributosId, setAtributosId] = useState([]);
-  const [idCiudad, setIdCiudad] = useState("");
-  const [idCategoria, setIdCategoria] = useState("");
-  const [idPoliticas, setIdPoliticas] = useState([]);
-  const [idImagenes, setIdImagenes] = useState([]);
+  const [showMsjError, setShowMsjError] = useState(true);
+
+  const validarCampos = () => {
+    if (
+      !(
+        propertyName !== "" &&
+        onChangeCategory !== "" &&
+        address !== "" &&
+        horarioCheckIn !== null &&
+        onChangeCity !== "" &&
+        country !== "" &&
+        latitud !== "" &&
+        longitud !== "" &&
+        descripcion !== "" &&
+        normasDeLaCasa !== "" &&
+        saludSeguridad !== "" &&
+        cancelacion !== "" &&
+        imagenes.length !== 0
+      )
+    ) {
+      setShowMsjError(true);
+    }
+  };
 
   let token = "";
   if (localStorage.hasOwnProperty("jwt")) {
     token = localStorage.getItem("jwt").replaceAll('"', "");
   }
 
-  // console.log(propertyName);
-  // console.log(onChangeCategory);
-  // console.log(address);
-  //console.log(hora);
-  // console.log(onChangeCity);
-  // console.log(country);
-  // console.log(latitud);
-  // console.log(longitud);
-  // console.log(descripcion);
-  // console.log(normasDeLaCasa);
-  // console.log(saludSeguridad);
-  // console.log(cancelacion);
-  // console.log(imagenes);
-  // console.log(atributosId);
-
   const data = useFetch("categorias");
 
-  /* ------- CheckIn (horario min) ------- */
-
-  let horasDisponibles = [];
+  /* ------- CheckIn (horarioCheckInrio min) ------- */
+  let horarioCheckInsDisponibles = [];
 
   for (let i = 0; i <= 23; i++) {
-    horasDisponibles.push(i);
+    horarioCheckInsDisponibles.push(i);
   }
 
-  const handleChangeCheckIn = (e) => setHora(parseInt(e.target.value));
+  const handleChangeCheckIn = (e) =>
+    setHorarioCheckIn(parseInt(e.target.value));
 
   /* ------- Categoría ------- */
-
   const [categoryItems, setCategoryItems] = useState([]);
   let categoriasDisponibles = [];
   useEffect(() => {
@@ -85,7 +88,6 @@ export default function Administracion() {
   const handleChangeCategory = (e) => setOnChangeCategory(e.target.value);
 
   /* ------- Imagenes ------- */
-
   const [imagenesDetails, setImagenesDetails] = useState([
     {
       url: "",
@@ -111,87 +113,6 @@ export default function Administracion() {
   };
 
   const handleSubmit = (e) => e.preventDefault();
-
-  // const obtenerIdCategoria = (nombreCategoria) => {
-  //   switch (nombreCategoria) {
-  //     case "Hoteles":
-  //       setIdCategoria(1);
-  //       break;
-  //     case "Hostels":
-  //       setIdCategoria(2);
-  //       break;
-  //     case "Bed & Breakfasts":
-  //       setIdCategoria(3);
-  //       break;
-  //     case "Departamentos":
-  //       setIdCategoria(4);
-  //       break;
-  //   }
-  // };
-
-  // const postearCiudad = () => {
-  //   return get("ciudades").then((data) => {
-  //     const filtradoCiudad = data.find(
-  //       (ciudad) => ciudad.nombre === onChangeCity
-  //     );
-  //     if (filtradoCiudad !== undefined) {
-  //       setIdCiudad(filtradoCiudad.id);
-  //     } else {
-  //       return post("ciudades", {
-  //         nombre: onChangeCity,
-  //         pais: country,
-  //         latitud,
-  //         longitud,
-  //       })
-  //         .then((response) => response.json())
-  //         .then((data) => setIdCiudad(parseInt(data.id)));
-  //     }
-  //   });
-  // };
-
-  // const postearPoliticas = () => {
-  //   const politicas = [];
-
-  //   return post("politicas", {
-  //     nombre: normasDeLaCasa,
-  //     tipoPolitica: 1,
-  //   })
-  //     .then((response) => response.json())
-  //     .then((data) => politicas.push(parseInt(data.id)))
-  //     .then(() =>
-  //       post("politicas", {
-  //         nombre: saludSeguridad,
-  //         tipoPolitica: 2,
-  //       })
-  //     )
-  //     .then((response) => response.json())
-  //     .then((data) => politicas.push(parseInt(data.id)))
-  //     .then(() =>
-  //       post("politicas", {
-  //         nombre: cancelacion,
-  //         tipoPolitica: 3,
-  //       })
-  //     )
-  //     .then((response) => response.json())
-  //     .then((data) => politicas.push(parseInt(data.id)))
-  //     .then(() => setIdPoliticas(politicas));
-  // };
-
-  // const postearImagenes = () => {
-  //   const imagenesId = [];
-  //   const promises = imagenes.map((imagen) =>
-  //     post("imagenes", {
-  //       imagenTitulo: imagen.descripcion,
-  //       imagenUrl: imagen.url,
-  //     })
-  //       .then((response) => response.json())
-  //       .then((data) => imagenesId.push(parseInt(data.id)))
-  //   );
-
-  //   return Promise.all(promises).then(() => {
-  //     setIdImagenes(imagenesId);
-  //   });
-  // };
 
   const handleCreacionProducto = () => {
     let idDeCategoria;
@@ -222,7 +143,7 @@ export default function Administracion() {
           (ciudad) => ciudad.nombre === onChangeCity
         );
         if (filtradoCiudad !== undefined) {
-          setIdCiudad(filtradoCiudad.id);
+          idDeCiudad = filtradoCiudad.id;
         } else {
           return post("ciudades", {
             nombre: onChangeCity,
@@ -237,7 +158,7 @@ export default function Administracion() {
     };
 
     const postearPoliticas = () => {
-      post("politicas", {
+      return post("politicas", {
         nombre: normasDeLaCasa,
         tipoPolitica: 1,
       })
@@ -262,7 +183,7 @@ export default function Administracion() {
     };
 
     const postearImagenes = () => {
-       imagenes.map((imagen) =>
+      return imagenes.map((imagen) =>
         post("imagenes", {
           imagenTitulo: imagen.descripcion,
           imagenUrl: imagen.url,
@@ -273,7 +194,11 @@ export default function Administracion() {
     };
 
     obtenerIdCategoria(onChangeCategory);
-    const promises = [postearImagenes(), postearCiudad(), postearPoliticas()];
+    const promises = [
+      ...postearImagenes(),
+      postearCiudad(),
+      postearPoliticas(),
+    ];
     console.log(promises);
 
     Promise.all(promises).then(() => {
@@ -283,7 +208,7 @@ export default function Administracion() {
           nombre: propertyName,
           descripcion,
           direccion: address,
-          horarioCheckIn: hora,
+          horarioCheckIn: horarioCheckIn,
           categoria: { id: idDeCategoria },
           ciudad: { id: idDeCiudad },
           imagenes: idsDeImagenes.map((id) => {
@@ -306,37 +231,7 @@ export default function Administracion() {
           return response.json();
         })
         .then((data) => console.log(data));
-      });
-
-      // post(
-      //   "productos",
-      //   {
-      //     nombre: propertyName,
-      //     descripcion,
-      //     direccion: address,
-      //     horarioCheckIn: hora,
-      //     categoria: { id: idCategoria },
-      //     ciudad: { id: idCiudad },
-      //     imagenes: idImagenes.map((id) => {
-      //       return { id };
-      //     }),
-      //     caracteristicas: atributosId.map((id) => {
-      //       return { id };
-      //     }),
-      //     politicas: idPoliticas.map((id) => {
-      //       return { id };
-      //     }),
-      //   },
-      //   {
-      //     "Content-Type": "application/json",
-      //     Authorization: token,
-      //   }
-      // )
-      //   .then((response) => {
-      //     console.log(response);
-      //     return response.json();
-      //   })
-      //   .then((data) => console.log(data));
+    });
   };
 
   return (
@@ -377,7 +272,7 @@ export default function Administracion() {
                 label="* CheckIn (horario min)"
                 name="horarioCheckIn"
                 handleChange={handleChangeCheckIn}
-                opcionesDisponibles={horasDisponibles}
+                opcionesDisponibles={horarioCheckInsDisponibles}
                 showOptions={true}
               />
             </div>
@@ -406,13 +301,13 @@ export default function Administracion() {
               <NumberInput
                 onChangeItem={latitud}
                 setOnChangeItem={setLatitud}
-                label="Latitud"
+                label="* Latitud"
                 name="latitud"
               />
               <NumberInput
                 onChangeItem={longitud}
                 setOnChangeItem={setLongitud}
-                label="Longitud"
+                label="* Longitud"
                 name="longitud"
               />
             </div>
@@ -420,7 +315,7 @@ export default function Administracion() {
               <TextAreaInput
                 onChangeItem={descripcion}
                 setOnChangeItem={setDescripcion}
-                label="Descripción"
+                label="* Descripción"
                 name="descripcion"
               />
             </div>
@@ -460,7 +355,7 @@ export default function Administracion() {
                 <TextAreaInput
                   onChangeItem={normasDeLaCasa}
                   setOnChangeItem={setNormasDeLaCasa}
-                  label="Descripción"
+                  label="* Descripción"
                   name="normasDeLaCasa"
                   placeholder="Escribir aquí"
                 />
@@ -470,7 +365,7 @@ export default function Administracion() {
                 <TextAreaInput
                   onChangeItem={saludSeguridad}
                   setOnChangeItem={setSaludSeguridad}
-                  label="Descripción"
+                  label="* Descripción"
                   name="saludSeguridad"
                   placeholder="Escribir aquí"
                 />
@@ -480,7 +375,7 @@ export default function Administracion() {
                 <TextAreaInput
                   onChangeItem={cancelacion}
                   setOnChangeItem={setCancelacion}
-                  label="Descripción"
+                  label="* Descripción"
                   name="cancelacion"
                   placeholder="Escribir aquí"
                 />
@@ -489,6 +384,10 @@ export default function Administracion() {
           </div>
           <div className={styles.subContainer}>
             <TituloBloque>Cargar imágenes</TituloBloque>
+            <p className={styles.camposObligatorios}>
+              (Al completar los campos se requiere hacer clic en el símbolo:{" "}
+              {<i class="fas fa-check"></i>} )
+            </p>
             <RowImagenes
               handleAdd={handleAdd}
               handleDelete={handleDelete}
@@ -497,6 +396,12 @@ export default function Administracion() {
             />
           </div>
           <div className={styles.subContainer}>
+            {showMsjError ? (
+              <div className={styles.invalidURL}>
+                <i className="fas fa-exclamation-triangle"></i>
+                <p>Han quedado campos sin completar. Por favor, revise el formulario y vuelva a intentarlo.</p>
+              </div>
+            ) : null}
             <FilledButton
               styles={styles.buttonSubmit}
               onClick={handleCreacionProducto}
