@@ -13,6 +13,7 @@ import stylesInputsFromOtherside from "../Producto/ProductoReserva/ProductoFormD
 import RowImagenes from "./RowImagenes/RowImagenes";
 import FilledButton from "../Buttons/FilledButton";
 import post from "../../utils/post";
+import get from "../../utils/get";
 
 export default function Administracion() {
   const [propertyName, setPropertyName] = useState("");
@@ -29,26 +30,31 @@ export default function Administracion() {
   const [saludSeguridad, setSaludSeguridad] = useState("");
   const [cancelacion, setCancelacion] = useState("");
   const [imagenes, setImagenes] = useState([]);
-  const [atributos, setAtributos] = useState([]);
-  const [idCiudad, setIdCiudad] = useState(null);
-  const [idCategoria, setIdCategoria] = useState(null);
+  const [atributosId, setAtributosId] = useState([]);
+  const [idCiudad, setIdCiudad] = useState("");
+  const [idCategoria, setIdCategoria] = useState("");
   const [idPoliticas, setIdPoliticas] = useState([]);
-  const [idImagenes, setIdImagenes] = useState(null);
+  const [idImagenes, setIdImagenes] = useState([]);
 
-  console.log(propertyName);
-  console.log(onChangeCategory);
-  console.log(address);
-  console.log(hora);
-  console.log(onChangeCity);
-  console.log(country);
-  console.log(latitud);
-  console.log(longitud);
-  console.log(descripcion);
-  console.log(normasDeLaCasa);
-  console.log(saludSeguridad);
-  console.log(cancelacion);
-  console.log(imagenes);
-  console.log(atributos);
+  let token = "";
+  if (localStorage.hasOwnProperty("jwt")) {
+    token = localStorage.getItem("jwt").replaceAll('"', "");
+  }
+
+  // console.log(propertyName);
+  // console.log(onChangeCategory);
+  // console.log(address);
+  //console.log(hora);
+  // console.log(onChangeCity);
+  // console.log(country);
+  // console.log(latitud);
+  // console.log(longitud);
+  // console.log(descripcion);
+  // console.log(normasDeLaCasa);
+  // console.log(saludSeguridad);
+  // console.log(cancelacion);
+  // console.log(imagenes);
+  // console.log(atributosId);
 
   const data = useFetch("categorias");
 
@@ -60,7 +66,7 @@ export default function Administracion() {
     horasDisponibles.push(i);
   }
 
-  const handleChangeCheckIn = (e) => setHora(e.target.value);
+  const handleChangeCheckIn = (e) => setHora(parseInt(e.target.value));
 
   /* ------- Categoría ------- */
 
@@ -106,17 +112,6 @@ export default function Administracion() {
 
   const handleSubmit = (e) => e.preventDefault();
 
-  const postearCiudad = () => {
-    post("ciudades", {
-      nombre: onChangeCity,
-      pais: country,
-      latitud,
-      longitud,
-    })
-      .then((response) => response.json())
-      .then((data) => setIdCiudad(data.id));
-  };
-
   const obtenerIdCategoria = (nombreCategoria) => {
     switch (nombreCategoria) {
       case "Hoteles":
@@ -134,40 +129,113 @@ export default function Administracion() {
     }
   };
 
+  const postearCiudad = () => {
+    return get("ciudades").then((data) => {
+      const filtradoCiudad = data.find(
+        (ciudad) => ciudad.nombre === onChangeCity
+      );
+      if (filtradoCiudad !== undefined) {
+        setIdCiudad(filtradoCiudad.id);
+      } else {
+        return post("ciudades", {
+          nombre: onChangeCity,
+          pais: country,
+          latitud,
+          longitud,
+        })
+          .then((response) => response.json())
+          .then((data) => setIdCiudad(parseInt(data.id)));
+      }
+    });
+  };
+
+  const postearPoliticas = () => {
+    const politicas = [];
+
+    return post("politicas", {
+      nombre: normasDeLaCasa,
+      tipoPolitica: 1,
+    })
+      .then((response) => response.json())
+      .then((data) => politicas.push(parseInt(data.id)))
+      .then(() =>
+        post("politicas", {
+          nombre: saludSeguridad,
+          tipoPolitica: 2,
+        })
+      )
+      .then((response) => response.json())
+      .then((data) => politicas.push(parseInt(data.id)))
+      .then(() =>
+        post("politicas", {
+          nombre: cancelacion,
+          tipoPolitica: 3,
+        })
+      )
+      .then((response) => response.json())
+      .then((data) => politicas.push(parseInt(data.id)))
+      .then(() => setIdPoliticas(politicas));
+  };
+
   const postearImagenes = () => {
-    
-  }
+    const imagenesId = [];
+    const promises = imagenes.map((imagen) =>
+      post("imagenes", {
+        imagenTitulo: imagen.descripcion,
+        imagenUrl: imagen.url,
+      })
+        .then((response) => response.json())
+        .then((data) => imagenesId.push(parseInt(data.id)))
+    );
 
-  // const postearPoliticas = () => {
-  //   post("politicas", {
-  //     nombre: normasDeLaCasa,
-  //     tipoPolitica: 1,
-  //   })
-  //     .then((response) => response.json())
-  //     .then((data) => setIdPoliticas([...idPoliticas, data.id]));
-
-  //   post("politicas", {
-  //     nombre: saludSeguridad,
-  //     tipoPolitica: 2,
-  //   })
-  //     .then((response) => response.json())
-  //     .then((data) => setIdPoliticas([...idPoliticas, data.id]));
-
-  //   post("politicas", {
-  //     nombre: cancelacion,
-  //     tipoPolitica: 3,
-  //   })
-  //     .then((response) => response.json())
-  //     .then((data) => setIdPoliticas([...idPoliticas, data.id]));
-  // };
-
-  console.log(idPoliticas);
+    return Promise.all(promises).then(() => {
+      setIdImagenes(imagenesId);
+    });
+  };
 
   const handleCreacionProducto = () => {
-    // postearCiudad();
-    // obtenerIdCategoria(onChangeCategory);
-    // postearPoliticas();
+    console.log("Iniciando handle..");
+    obtenerIdCategoria(onChangeCategory);
 
+    const promises = [postearImagenes(), postearCiudad(), postearPoliticas()];
+    console.log("Post promises..");
+    console.log(promises);
+
+    Promise.all(promises).then(() => {
+      post(
+        "productos",
+        {
+          nombre: propertyName,
+          descripcion,
+          direccion: address,
+          horarioCheckIn: hora,
+          categoria: { id: idCategoria },
+          ciudad: { id: idCiudad },
+          imagenes: idImagenes.map((id) => {
+            return { id };
+          }),
+          caracteristicas: atributosId.map((id) => {
+            return { id };
+          }),
+          politicas: idPoliticas.map((id) => {
+            return { id };
+          }),
+        },
+        {
+          "Content-Type": "application/json",
+          Authorization: token,
+        }
+      )
+        .then((response) => {
+          console.log(response);
+          return response.json();
+        })
+        .then((data) => console.log(data));
+    });
+
+    // postearImagenes();
+    // postearCiudad();
+    // postearPoliticas();
   };
 
   return (
@@ -268,9 +336,9 @@ export default function Administracion() {
                     value={caracteristica.nombre}
                     onChange={(e) =>
                       e.target.checked === true
-                        ? setAtributos([...atributos, caracteristica.id])
-                        : atributos.splice(
-                            atributos.indexOf(caracteristica.id),
+                        ? setAtributosId([...atributosId, caracteristica.id])
+                        : atributosId.splice(
+                            atributosId.indexOf(caracteristica.id),
                             1
                           )
                     }

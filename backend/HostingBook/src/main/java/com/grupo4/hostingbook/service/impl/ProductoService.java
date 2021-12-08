@@ -227,12 +227,15 @@ public class ProductoService implements IProductoService {
             if (productoDTO.getCiudad() == null || productoDTO.getCiudad().getId() == null)
                 throw new BadRequestException(
                         String.format(Mensajes.ERROR_CREACION_CAMPO_REQUERIDO, "producto", "ciudad"));
-            if (productoDTO.getCaracteristicas() == null || productoDTO.getCaracteristicas().size() == 0)
+            if (productoDTO.getCaracteristicas() == null)
                 throw new BadRequestException(
                         String.format(Mensajes.ERROR_CREACION_CAMPO_REQUERIDO, "producto", "características"));
             if (productoDTO.getImagenes() == null || productoDTO.getImagenes().size() == 0)
                 throw new BadRequestException(
                         String.format(Mensajes.ERROR_CREACION_CAMPO_REQUERIDO, "producto", "imágenes"));
+            if (productoDTO.getHorarioCheckIn() == null)
+                throw new BadRequestException(
+                        String.format(Mensajes.ERROR_CREACION_CAMPO_REQUERIDO, "producto", "horario de checkin"));
             if (productoDTO.getHorarioCheckIn() < 0 || productoDTO.getHorarioCheckIn() > 23)
                 throw new BadRequestException(
                         String.format(Mensajes.ERROR_CAMPO_FUERA_DE_RANGO, "horario de check-in", "0", "23"));
@@ -266,7 +269,6 @@ public class ProductoService implements IProductoService {
         Producto entidadActualizada = productoRepository.save(entidad);
         return mapper.convertValue(entidadActualizada, ProductoDTO.class);
     }
-
 
     private void validarId(Long id) throws BadRequestException, ResourceNotFoundException {
         if (id < 1)
