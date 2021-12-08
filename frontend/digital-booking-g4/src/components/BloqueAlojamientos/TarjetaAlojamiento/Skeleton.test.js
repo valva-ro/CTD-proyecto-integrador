@@ -1,1 +1,0 @@
-import SkeletonTarjetaAlojamiento from "./SkeletonTarjetaAlojamiento";
