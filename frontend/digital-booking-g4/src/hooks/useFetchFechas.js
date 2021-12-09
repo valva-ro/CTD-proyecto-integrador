@@ -3,6 +3,7 @@ import {
   useEffect
 } from "react";
 
+import backUrl from "../resources/backUrl"
 export default function useFetchFechas(inicio, fin, currentCity, currentCategory) {
   let [itemsFechas, setItemsFechas] = useState(null);
   let [isLoadedFechas, setIsLoadedFechas] = useState(false);
@@ -12,7 +13,7 @@ export default function useFetchFechas(inicio, fin, currentCity, currentCategory
   useEffect(() => {
     async function fetchData() {
       try {
-        let response = await fetch(`http://localhost:8080/productos/?fechaIngreso=${inicio}&fechaEgreso=${fin}`);
+        let response = await fetch(`${backUrl()}productos/?fechaIngreso=${inicio}&fechaEgreso=${fin}`);
         let datos = await response.json();
         setItemsFechas(datos);
         setIsLoadedFechas(true);
@@ -21,7 +22,7 @@ export default function useFetchFechas(inicio, fin, currentCity, currentCategory
         setErrorFechas(err);
       }
 
-      return(
+      return (
         setIsLoadedFechas(false)
       )
     }

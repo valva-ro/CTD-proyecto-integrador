@@ -21,7 +21,7 @@ export default function ProductoImagenes({ alojamiento }) {
   const { imagenes } = alojamiento;
   const idUsuario = parseInt(localStorage.getItem("id"));
   const [isFavorito, setIsFavorito] = useState();
-  const { isLogged } = useContext(loggedContext);
+  const { isLogged, rol } = useContext(loggedContext);
   const [favoritos, setFavoritos] = useState([]);
   const { isLoaded, items } = useFetch(`usuarios/${idUsuario}`);
 
@@ -85,22 +85,31 @@ export default function ProductoImagenes({ alojamiento }) {
   return (
     <section className={styles.sectionImagenes}>
       <div className={styles.iconos}>
-        <i className="bx bx-share-alt" onClick={abrirRedesSociales}></i>
-        {isLogged ? (
-          isLoaded ? (
-            isFavorito ? (
-              <i
-                onClick={() => handleFav()}
-                className={`fas fa-heart ${styles.corazon}`}
-              ></i>
-            ) : (
-              <i
-                onClick={() => handleFav()}
-                className={`far fa-heart ${styles.corazon}`}
-              ></i>
-            )
-          ) : null
-        ) : null}
+        {rol === "ROLE_USER" ? (
+          <>
+            <i className="bx bx-share-alt" onClick={abrirRedesSociales}></i>
+            {isLogged ? (
+              isLoaded ? (
+                isFavorito ? (
+                  <i
+                    onClick={() => handleFav()}
+                    className={`fas fa-heart ${styles.corazon}`}
+                  ></i>
+                ) : (
+                  <i
+                    onClick={() => handleFav()}
+                    className={`far fa-heart ${styles.corazon}`}
+                  ></i>
+                )
+              ) : null
+            ) : null}
+          </>
+        ) : (
+          <>
+            <i className={`fa fa-pen`}></i>
+            <i className={`fa fa-trash`}></i>
+          </>
+        )}
       </div>
       <div className={styles.imagenesDesktop}>
         <div

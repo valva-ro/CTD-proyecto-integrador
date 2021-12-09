@@ -72,7 +72,7 @@ function App() {
                 </ProductoLayout>
               </Route>
               <Route path="/product/:id/booking">
-                {!isLogged ? (
+                {!isLogged || rol !== "ROLE_USER" ? (
                   <Redirect to="/" />
                 ) : (
                   <ProductoLayout>
@@ -83,9 +83,9 @@ function App() {
               <Route path="/management" component={Administracion} />
             </Switch>
           </Layout>
-          <AuthenticationVerify cleanUserInfo={cleanUserInfo}/>
+          <AuthenticationVerify cleanUserInfo={cleanUserInfo} />
         </BrowserRouter>
-        <AsistenteVirtual/>
+        <AsistenteVirtual />
       </div>
     </loggedContext.Provider>
   );

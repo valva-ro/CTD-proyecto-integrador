@@ -17,15 +17,14 @@
     git clone https://gitlab.com/proyecto-integrador-0321/camada-3/grupo-4.git
    ```
 
-
 2. Desde workbench
+
    1. Crear una nueva conexión:
       - Hostname: `localhost`
       - Port: `3306`
       - Username: `root`
       - Password: `root`
    2. Abrir y ejecutar el script `../db_scripts/script_develop.sql` que va a crear los schemas e insertar datos en la BD
-
 
 3. Correr el backend con el perfil `develop`
    1. Desde la terminal pararse en la carpeta `/grupo-4/backend/HostingBook`
@@ -34,6 +33,6 @@
 ## Documentación
 
 Una vez que la aplicación esté corriendo se puede visualizar la documentación completa de la API con JSONs de ejemplo en
-[http://localhost:8080/swagger-ui/](http://localhost:8080/swagger-ui/).
+[http://3.133.206.239:8080/swagger-ui/](http://3.133.206.239:8080/swagger-ui/).
 
 ![Swagger UI](./img/swagger.png)

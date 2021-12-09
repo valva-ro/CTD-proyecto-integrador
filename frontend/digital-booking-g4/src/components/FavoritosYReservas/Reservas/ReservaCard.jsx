@@ -106,11 +106,13 @@ export default function ReservaCard({
     })
       .then((result) => {
         if (result.isConfirmed) {
-          return deleteRequest(`reservas/${idReserva}`);
+          deleteRequest(`reservas/${idReserva}`)
+        } else {
+          throw new Error("No se cancela la reserva");
         }
       })
-      .then((data) => {
-        if (data.status === 200) {
+      .then((response) => {
+        if (response.status === 200) {
           Swal.fire({
             title: "Reserva eliminada",
             icon: "success",
@@ -131,7 +133,8 @@ export default function ReservaCard({
             },
           });
         }
-      });
+      })
+      .catch(err => console.log());
   };
 
   if (!isLogged) {
