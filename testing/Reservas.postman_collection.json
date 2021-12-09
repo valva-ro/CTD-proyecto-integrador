@@ -6,96 +6,6 @@
 	},
 	"item": [
 		{
-			"name": "Obtener",
-			"item": [
-				{
-					"name": "Todas las reservas",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"pm.test(\"Status code is 200\", function () {\r",
-									"    pm.response.to.have.status(200);\r",
-									"});\r",
-									"\r",
-									"pm.test(\"Hay al menos un dato en la BD\", function () {\r",
-									"    const jsonData = pm.response.json();\r",
-									"    pm.expect(jsonData.length).not.to.eql(0);\r",
-									"});"
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "{{TOKEN}}",
-								"type": "text"
-							}
-						],
-						"url": {
-							"raw": "{{URL}}/reservas/",
-							"host": [
-								"{{URL}}"
-							],
-							"path": [
-								"reservas",
-								""
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Obtener por producto",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"pm.test(\"Status code is 200\", function () {\r",
-									"    pm.response.to.have.status(200);\r",
-									"});\r",
-									"\r",
-									"pm.test(\"Hay al menos un dato en la BD\", function () {\r",
-									"    const jsonData = pm.response.json();\r",
-									"    pm.expect(jsonData.length).not.to.eql(0);\r",
-									"});"
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "{{TOKEN}}",
-								"type": "text"
-							}
-						],
-						"url": {
-							"raw": "{{URL}}/reservas/producto/3",
-							"host": [
-								"{{URL}}"
-							],
-							"path": [
-								"reservas",
-								"producto",
-								"3"
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		},
-		{
 			"name": "Crear",
 			"item": [
 				{
@@ -125,7 +35,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "  {\r\n    \"nombre\": \"Jorgito\",\r\n    \"apellido\": \"Ramirez\",\r\n    \"mail\": \"jorgito@hb.com\",\r\n    \"ciudad\": \"Caballito\",\r\n    \"horaEntrada\": 10,\r\n    \"fechaIngreso\": \"2021-11-18\",\r\n    \"fechaEgreso\": \"2021-11-23\",\r\n    \"datos\": \"Esto es una prueba para ver si los datos de reserva funcionan correctamente, el vendedor es un genio!!!\",\r\n    \"vacunaCovid\": true,\r\n    \"producto\": {\"id\": 1},\r\n    \"usuario\": {\"id\": 1}\r\n  }",
+							"raw": "  {\r\n    \"nombre\": \"Juancito\",\r\n    \"apellido\": \"Perez\",\r\n    \"mail\": \"valvarodriguez1708@gmail.com\",\r\n    \"ciudad\": \"La Plata\",\r\n    \"horaEntrada\": 10,\r\n    \"fechaIngreso\": \"2021-12-26\",\r\n    \"fechaEgreso\": \"2021-12-29\",\r\n    \"datos\": \"Esto es una prueba para ver si los datos de reserva funcionan correctamente, el vendedor es un genio!!!\",\r\n    \"vacunaCovid\": true,\r\n    \"producto\": {\"id\": 1},\r\n    \"usuario\": {\"id\": 2}\r\n  }",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -133,13 +43,12 @@
 							}
 						},
 						"url": {
-							"raw": "{{URL}}/reservas/",
+							"raw": "{{URL}}/reservas",
 							"host": [
 								"{{URL}}"
 							],
 							"path": [
-								"reservas",
-								""
+								"reservas"
 							]
 						}
 					},
@@ -502,13 +411,10 @@
 							"listen": "test",
 							"script": {
 								"exec": [
-									"pm.test(\"Status code is 400\", function () {\r",
-									"    pm.response.to.have.status(400);\r",
+									"pm.test(\"Creacion exitosa\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
 									"});\r",
-									"\r",
-									"pm.test(\"Mensaje de error creación\", function () {\r",
-									"    pm.response.to.have.body(\"Ha ocurrido un error en la creación de 'reserva', 'datos' no puede estar vacío\");\r",
-									"});"
+									""
 								],
 								"type": "text/javascript"
 							}
@@ -552,13 +458,10 @@
 							"listen": "test",
 							"script": {
 								"exec": [
-									"pm.test(\"Status code is 400\", function () {\r",
-									"    pm.response.to.have.status(400);\r",
+									"pm.test(\"Creacion exitosa\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
 									"});\r",
-									"\r",
-									"pm.test(\"Mensaje de error creación\", function () {\r",
-									"    pm.response.to.have.body(\"Ha ocurrido un error en la creación de 'reserva', 'datos' no puede estar vacío\");\r",
-									"});"
+									""
 								],
 								"type": "text/javascript"
 							}
@@ -602,13 +505,10 @@
 							"listen": "test",
 							"script": {
 								"exec": [
-									"pm.test(\"Status code is 400\", function () {\r",
-									"    pm.response.to.have.status(400);\r",
+									"pm.test(\"Creacion exitosa\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
 									"});\r",
-									"\r",
-									"pm.test(\"Mensaje de error creación\", function () {\r",
-									"    pm.response.to.have.body(\"Ha ocurrido un error en la creación de 'reserva', 'datos' no puede estar vacío\");\r",
-									"});"
+									""
 								],
 								"type": "text/javascript"
 							}
@@ -790,6 +690,279 @@
 							"path": [
 								"reservas",
 								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Obtener",
+			"item": [
+				{
+					"name": "Todas las reservas",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Hay al menos un dato en la BD\", function () {\r",
+									"    const jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.length).not.to.eql(0);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{TOKEN}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{URL}}/reservas/",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"reservas",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener por producto",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Hay al menos un dato en la BD\", function () {\r",
+									"    const jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.length).not.to.eql(0);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{TOKEN}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{URL}}/reservas/producto/1",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"reservas",
+								"producto",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener por usuario existente con reservas",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Hay al menos un dato en la BD\", function () {\r",
+									"    const jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.length).not.to.eql(0);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{TOKEN}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{URL}}/reservas/usuario/1",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"reservas",
+								"usuario",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Error por usuario existente sin reservas",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Obtencion exitosa\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{TOKEN}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{URL}}/reservas/usuario/1",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"reservas",
+								"usuario",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Error por usuario inexistente",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {\r",
+									"    pm.response.to.have.status(404);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Mensaje de error consulta\", function () {\r",
+									"    pm.response.to.have.body(\"El 'usuario' con id 995 no está registrado en la base de datos.\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{TOKEN}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{URL}}/reservas/usuario/995",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"reservas",
+								"usuario",
+								"995"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Eliminar",
+			"item": [
+				{
+					"name": "Reserva existente",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/reservas/1",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"reservas",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Error eliminar id inexistente",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/reservas/995",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"reservas",
+								"995"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Error eliminar id negativo",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/reservas/-5",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"reservas",
+								"-5"
 							]
 						}
 					},

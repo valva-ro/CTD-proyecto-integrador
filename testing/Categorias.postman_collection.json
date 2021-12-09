@@ -1140,7 +1140,7 @@
 									"});\r",
 									"\r",
 									"pm.test(\"Mensaje de error legible\", function () {\r",
-									"    pm.response.to.have.body(\"Categoria con id 10 eliminado(a) con éxito\");\r",
+									"    pm.response.to.have.body(\"Categoria con id 5 eliminado(a) con éxito\");\r",
 									"});"
 								],
 								"type": "text/javascript"

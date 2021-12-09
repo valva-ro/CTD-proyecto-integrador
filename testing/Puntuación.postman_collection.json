@@ -9,7 +9,53 @@
 			"name": "Crear",
 			"item": [
 				{
-					"name": "Puntuaciones con todos los datos validos",
+					"name": "Puntuación con todos los datos validos",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Creación exitosa\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": " {\r\n    \"puntuacion\": 3,\r\n    \"comentario\": \"Muy lindo pero me fui una noche antes y no me quieren devolver la plata!\",\r\n    \"producto\": {\"id\": 1},\r\n    \"usuario\": {\"id\": 3}\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/puntuaciones",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"puntuaciones"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Puntuación con usuario y producto duplicada",
 					"event": [
 						{
 							"listen": "test",
@@ -26,10 +72,16 @@
 					],
 					"request": {
 						"method": "POST",
-						"header": [],
+						"header": [
+							{
+								"key": "",
+								"value": "",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "raw",
-							"raw": " {\r\n    \"puntuacion\": 3,\r\n    \"producto\": {\"id\": 1},\r\n    \"usuario\": {\"id\": 3}\r\n}",
+							"raw": " {\r\n    \"puntuacion\": 5,\r\n    \"comentario\": \"Al final me devolvieron la plata sin problemas! Impecable todo\",\r\n    \"producto\": {\"id\": 1},\r\n    \"usuario\": {\"id\": 3}\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -499,6 +551,25 @@
 								"puntuaciones",
 								"producto",
 								"-5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Puntuaciones por ID usuario existente",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/puntuaciones/usuario/1",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"puntuaciones",
+								"usuario",
+								"1"
 							]
 						}
 					},

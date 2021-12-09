@@ -15,10 +15,9 @@
 							"listen": "test",
 							"script": {
 								"exec": [
-									"pm.test(\"Creacion exitosa\", function () {\r",
-									"    pm.response.to.have.status(200);\r",
-									"});\r",
-									""
+									"pm.test(\"Creación exitosa\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
+									"});"
 								],
 								"type": "text/javascript"
 							}
@@ -26,10 +25,16 @@
 					],
 					"request": {
 						"method": "POST",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{TOKEN}}",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"nombre\": \"PRODUCTO NUEVO\",\r\n  \"descripcion\": \"PRODUCTO NUEVO\",\r\n  \"direccion\": \"DIRECCION NUEVA\",\r\n  \"horarioCheckIn\": 10,\r\n  \"categoria\": {\"id\": 1},\r\n  \"ciudad\": {\"id\": 1},\r\n  \"imagenes\": [\r\n      {\"id\": 1},\r\n      {\"id\": 2}\r\n  ],\r\n  \"reservas\": [\r\n      {\"id\":1}\r\n  ],\r\n  \"puntuaciones\": [\r\n    {\"id\": 1}\r\n  ],\r\n  \"caracteristicas\": [\r\n    {\"id\": 1}\r\n  ]\r\n}",
+							"raw": "{\r\n  \"nombre\": \"PRODUCTO NUEVO\",\r\n  \"descripcion\": \"PRODUCTO NUEVO\",\r\n  \"direccion\": \"DIRECCION NUEVA\",\r\n  \"horarioCheckIn\": 10,\r\n  \"categoria\": {\"id\": 1},\r\n  \"ciudad\": {\"id\": 1},\r\n  \"imagenes\": [\r\n      {\"id\": 1},\r\n      {\"id\": 2}\r\n  ],\r\n  \"caracteristicas\": [\r\n    {\"id\": 1}\r\n  ], \r\n  \"politicas\": [\r\n    { \"id\": 1 },\r\n    { \"id\": 3 }\r\n  ]\r\n}\r\n\r\n",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -57,7 +62,7 @@
 							"script": {
 								"exec": [
 									"pm.test(\"Status code is 400\", function () {\r",
-									"    pm.response.to.have.status(400);\r",
+									"    pm.response.to.have.status(403);\r",
 									"});\r",
 									"\r",
 									"pm.test(\"Mensaje de error creación\", function () {\r",
@@ -101,7 +106,7 @@
 							"script": {
 								"exec": [
 									"pm.test(\"Status code is 400\", function () {\r",
-									"    pm.response.to.have.status(400);\r",
+									"    pm.response.to.have.status(403);\r",
 									"});\r",
 									"\r",
 									"pm.test(\"Mensaje de error creación\", function () {\r",
@@ -145,7 +150,7 @@
 							"script": {
 								"exec": [
 									"pm.test(\"Status code is 400\", function () {\r",
-									"    pm.response.to.have.status(400);\r",
+									"    pm.response.to.have.status(403);\r",
 									"});\r",
 									"\r",
 									"pm.test(\"Mensaje de error creación\", function () {\r",
@@ -189,7 +194,7 @@
 							"script": {
 								"exec": [
 									"pm.test(\"Status code is 400\", function () {\r",
-									"    pm.response.to.have.status(400);\r",
+									"    pm.response.to.have.status(403);\r",
 									"});\r",
 									"\r",
 									"pm.test(\"Mensaje de error creación\", function () {\r",
@@ -233,7 +238,7 @@
 							"script": {
 								"exec": [
 									"pm.test(\"Status code is 400\", function () {\r",
-									"    pm.response.to.have.status(400);\r",
+									"    pm.response.to.have.status(403);\r",
 									"});\r",
 									"\r",
 									"pm.test(\"Mensaje de error creación\", function () {\r",
@@ -277,7 +282,7 @@
 							"script": {
 								"exec": [
 									"pm.test(\"Status code is 400\", function () {\r",
-									"    pm.response.to.have.status(400);\r",
+									"    pm.response.to.have.status(403);\r",
 									"});\r",
 									"\r",
 									"pm.test(\"Mensaje de error creación\", function () {\r",
@@ -321,7 +326,7 @@
 							"script": {
 								"exec": [
 									"pm.test(\"Status code is 400\", function () {\r",
-									"    pm.response.to.have.status(400);\r",
+									"    pm.response.to.have.status(403);\r",
 									"});\r",
 									"\r",
 									"pm.test(\"Mensaje de error creación\", function () {\r",
@@ -365,7 +370,7 @@
 							"script": {
 								"exec": [
 									"pm.test(\"Status code is 400\", function () {\r",
-									"    pm.response.to.have.status(400);\r",
+									"    pm.response.to.have.status(403);\r",
 									"});\r",
 									"\r",
 									"pm.test(\"Mensaje de error creación\", function () {\r",
@@ -409,7 +414,7 @@
 							"script": {
 								"exec": [
 									"pm.test(\"Status code is 400\", function () {\r",
-									"    pm.response.to.have.status(400);\r",
+									"    pm.response.to.have.status(403);\r",
 									"});\r",
 									"\r",
 									"pm.test(\"Mensaje de error creación\", function () {\r",
@@ -453,7 +458,7 @@
 							"script": {
 								"exec": [
 									"pm.test(\"Status code is 400\", function () {\r",
-									"    pm.response.to.have.status(400);\r",
+									"    pm.response.to.have.status(403);\r",
 									"});\r",
 									"\r",
 									"pm.test(\"Mensaje de error creación\", function () {\r",
@@ -497,7 +502,7 @@
 							"script": {
 								"exec": [
 									"pm.test(\"Status code is 400\", function () {\r",
-									"    pm.response.to.have.status(400);\r",
+									"    pm.response.to.have.status(403);\r",
 									"});\r",
 									"\r",
 									"pm.test(\"Mensaje de error creación\", function () {\r",
@@ -541,7 +546,7 @@
 							"script": {
 								"exec": [
 									"pm.test(\"Status code is 400\", function () {\r",
-									"    pm.response.to.have.status(400);\r",
+									"    pm.response.to.have.status(403);\r",
 									"});\r",
 									"\r",
 									"pm.test(\"Mensaje de error creación\", function () {\r",
@@ -585,7 +590,7 @@
 							"script": {
 								"exec": [
 									"pm.test(\"Status code is 400\", function () {\r",
-									"    pm.response.to.have.status(400);\r",
+									"    pm.response.to.have.status(403);\r",
 									"});\r",
 									"\r",
 									"pm.test(\"Mensaje de error creación\", function () {\r",
@@ -629,7 +634,7 @@
 							"script": {
 								"exec": [
 									"pm.test(\"Status code is 400\", function () {\r",
-									"    pm.response.to.have.status(400);\r",
+									"    pm.response.to.have.status(403);\r",
 									"});\r",
 									"\r",
 									"pm.test(\"Mensaje de error creación\", function () {\r",
@@ -1040,7 +1045,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{URL}}/productos?fechaIngreso=2021-01-18&fechaEgreso=2021-01-23",
+							"raw": "{{URL}}/productos?fechaIngreso=2021-12-07&fechaEgreso=2021-12-31",
 							"host": [
 								"{{URL}}"
 							],
@@ -1050,11 +1055,11 @@
 							"query": [
 								{
 									"key": "fechaIngreso",
-									"value": "2021-01-18"
+									"value": "2021-12-07"
 								},
 								{
 									"key": "fechaEgreso",
-									"value": "2021-01-23"
+									"value": "2021-12-31"
 								}
 							]
 						}
@@ -1164,6 +1169,600 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "Producto existente con todos los datos",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{TOKEN}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"id\": 14,\r\n        \"nombre\": \"Ana Bistró\",\r\n        \"direccion\": \"Calle 66a #80-10\",\r\n        \"descripcion\": \"Anna Bistro es un paraíso en la ciudad, un lugar que recuerda al propio hogar. Desestructurado y relajado, al encontrarse en medio de un gran jardín logra que los espacios interiores y exteriores interactúen constantemente. Este lugar no posee la formalidad de un clásico restaurante ya que dentro de un mismo lugar es posible encontrar una opción para el desayuno y cafetería abastecida con excelente pastelería propia, petites dejeuners y american breakfast cuyas cartas se complementan con coisantes, facturas, tostados, jugos, huevos, yogur con ensalada de frutas, frutas secas y miel que complementan la propuesta matutina.\",\r\n        \"horarioCheckIn\": 10,\r\n        \"categoria\": {\"id\": 3},\r\n        \"ciudad\": {\"id\": 8}\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/productos/",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"productos",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Producto existente nombre vacio",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{TOKEN}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"id\": 14,\r\n        \"nombre\": \"\",\r\n        \"direccion\": \"Calle 66a #80-10\",\r\n        \"descripcion\": \"Anna Bistro es un paraíso en la ciudad, un lugar que recuerda al propio hogar. Desestructurado y relajado, al encontrarse en medio de un gran jardín logra que los espacios interiores y exteriores interactúen constantemente. Este lugar no posee la formalidad de un clásico restaurante ya que dentro de un mismo lugar es posible encontrar una opción para el desayuno y cafetería abastecida con excelente pastelería propia, petites dejeuners y american breakfast cuyas cartas se complementan con coisantes, facturas, tostados, jugos, huevos, yogur con ensalada de frutas, frutas secas y miel que complementan la propuesta matutina.\",\r\n        \"horarioCheckIn\": 10,\r\n        \"categoria\": {\"id\": 3},\r\n        \"ciudad\": {\"id\": 8}\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/productos/",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"productos",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Producto existente nombre vacio con espacios",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{TOKEN}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"id\": 14,\r\n        \"nombre\": \"         \",\r\n        \"direccion\": \"Calle 66a #80-10\",\r\n        \"descripcion\": \"Anna Bistro es un paraíso en la ciudad, un lugar que recuerda al propio hogar. Desestructurado y relajado, al encontrarse en medio de un gran jardín logra que los espacios interiores y exteriores interactúen constantemente. Este lugar no posee la formalidad de un clásico restaurante ya que dentro de un mismo lugar es posible encontrar una opción para el desayuno y cafetería abastecida con excelente pastelería propia, petites dejeuners y american breakfast cuyas cartas se complementan con coisantes, facturas, tostados, jugos, huevos, yogur con ensalada de frutas, frutas secas y miel que complementan la propuesta matutina.\",\r\n        \"horarioCheckIn\": 10,\r\n        \"categoria\": {\"id\": 3},\r\n        \"ciudad\": {\"id\": 8}\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/productos/",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"productos",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Producto existente nombre null",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{TOKEN}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"id\": 14,\r\n        \"direccion\": \"Calle 66a #80-10\",\r\n        \"descripcion\": \"Anna Bistro es un paraíso en la ciudad, un lugar que recuerda al propio hogar. Desestructurado y relajado, al encontrarse en medio de un gran jardín logra que los espacios interiores y exteriores interactúen constantemente. Este lugar no posee la formalidad de un clásico restaurante ya que dentro de un mismo lugar es posible encontrar una opción para el desayuno y cafetería abastecida con excelente pastelería propia, petites dejeuners y american breakfast cuyas cartas se complementan con coisantes, facturas, tostados, jugos, huevos, yogur con ensalada de frutas, frutas secas y miel que complementan la propuesta matutina.\",\r\n        \"horarioCheckIn\": 10,\r\n        \"categoria\": {\"id\": 3},\r\n        \"ciudad\": {\"id\": 8}\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/productos/",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"productos",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Producto existente direccion vacia",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{TOKEN}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"id\": 14,\r\n        \"nombre\": \"Ana Bistró\",\r\n        \"direccion\": \"\",\r\n        \"descripcion\": \"Anna Bistro es un paraíso en la ciudad, un lugar que recuerda al propio hogar. Desestructurado y relajado, al encontrarse en medio de un gran jardín logra que los espacios interiores y exteriores interactúen constantemente. Este lugar no posee la formalidad de un clásico restaurante ya que dentro de un mismo lugar es posible encontrar una opción para el desayuno y cafetería abastecida con excelente pastelería propia, petites dejeuners y american breakfast cuyas cartas se complementan con coisantes, facturas, tostados, jugos, huevos, yogur con ensalada de frutas, frutas secas y miel que complementan la propuesta matutina.\",\r\n        \"horarioCheckIn\": 16,\r\n        \"categoria\": {\"id\": 3},\r\n        \"ciudad\": {\"id\": 8}\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/productos/",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"productos",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Producto existente direccion vacia con espacios",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{TOKEN}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"id\": 14,\r\n        \"nombre\": \"Ana Bistró\",\r\n        \"direccion\": \"           \",\r\n        \"descripcion\": \"Anna Bistro es un paraíso en la ciudad, un lugar que recuerda al propio hogar. Desestructurado y relajado, al encontrarse en medio de un gran jardín logra que los espacios interiores y exteriores interactúen constantemente. Este lugar no posee la formalidad de un clásico restaurante ya que dentro de un mismo lugar es posible encontrar una opción para el desayuno y cafetería abastecida con excelente pastelería propia, petites dejeuners y american breakfast cuyas cartas se complementan con coisantes, facturas, tostados, jugos, huevos, yogur con ensalada de frutas, frutas secas y miel que complementan la propuesta matutina.\",\r\n        \"horarioCheckIn\": 16,\r\n        \"categoria\": {\"id\": 3},\r\n        \"ciudad\": {\"id\": 8}\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/productos/",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"productos",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Producto existente direccion null",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{TOKEN}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"id\": 14,\r\n        \"nombre\": \"Ana Bistró\",\r\n        \"descripcion\": \"Anna Bistro es un paraíso en la ciudad, un lugar que recuerda al propio hogar. Desestructurado y relajado, al encontrarse en medio de un gran jardín logra que los espacios interiores y exteriores interactúen constantemente. Este lugar no posee la formalidad de un clásico restaurante ya que dentro de un mismo lugar es posible encontrar una opción para el desayuno y cafetería abastecida con excelente pastelería propia, petites dejeuners y american breakfast cuyas cartas se complementan con coisantes, facturas, tostados, jugos, huevos, yogur con ensalada de frutas, frutas secas y miel que complementan la propuesta matutina.\",\r\n        \"horarioCheckIn\": 16,\r\n        \"categoria\": {\"id\": 3},\r\n        \"ciudad\": {\"id\": 8}\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/productos/",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"productos",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Producto existente descripcion vacia",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{TOKEN}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"id\": 14,\r\n        \"nombre\": \"Ana Bistró\",\r\n        \"direccion\": \"Calle 66a #80-10\",\r\n        \"descripcion\": \"\",\r\n        \"horarioCheckIn\": 16,\r\n        \"categoria\": {\"id\": 3},\r\n        \"ciudad\": {\"id\": 8}\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/productos/",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"productos",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Producto existente descripcion vacia con espacios",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{TOKEN}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"id\": 14,\r\n        \"nombre\": \"Ana Bistró\",\r\n        \"direccion\": \"Calle 66a #80-10\",\r\n        \"descripcion\": \"                              \",\r\n        \"horarioCheckIn\": 16,\r\n        \"categoria\": {\"id\": 3},\r\n        \"ciudad\": {\"id\": 8}\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/productos/",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"productos",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Producto existente descripcion null",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{TOKEN}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"id\": 14,\r\n        \"nombre\": \"Ana Bistró\",\r\n        \"direccion\": \"Calle 66a #80-10\",\r\n        \"horarioCheckIn\": 16,\r\n        \"categoria\": {\"id\": 3},\r\n        \"ciudad\": {\"id\": 8}\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/productos/",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"productos",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Producto existente horario checkin null",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{TOKEN}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"id\": 14,\r\n        \"nombre\": \"Ana Bistró\",\r\n        \"direccion\": \"Calle 66a #80-10\",\r\n        \"descripcion\": \"Anna Bistro es un paraíso en la ciudad, un lugar que recuerda al propio hogar. Desestructurado y relajado, al encontrarse en medio de un gran jardín logra que los espacios interiores y exteriores interactúen constantemente. Este lugar no posee la formalidad de un clásico restaurante ya que dentro de un mismo lugar es posible encontrar una opción para el desayuno y cafetería abastecida con excelente pastelería propia, petites dejeuners y american breakfast cuyas cartas se complementan con coisantes, facturas, tostados, jugos, huevos, yogur con ensalada de frutas, frutas secas y miel que complementan la propuesta matutina.\",\r\n        \"categoria\": {\"id\": 3},\r\n        \"ciudad\": {\"id\": 8}\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/productos/",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"productos",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Producto existente categoría null",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{TOKEN}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 14,\r\n    \"nombre\": \"Ana Bistró\",\r\n    \"direccion\": \"Calle 66a #80-10\",\r\n    \"descripcion\": \"Anna Bistro es un paraíso en la ciudad, un lugar que recuerda al propio hogar. Desestructurado y relajado, al encontrarse en medio de un gran jardín logra que los espacios interiores y exteriores interactúen constantemente. Este lugar no posee la formalidad de un clásico restaurante ya que dentro de un mismo lugar es posible encontrar una opción para el desayuno y cafetería abastecida con excelente pastelería propia, petites dejeuners y american breakfast cuyas cartas se complementan con coisantes, facturas, tostados, jugos, huevos, yogur con ensalada de frutas, frutas secas y miel que complementan la propuesta matutina.\",\r\n    \"horarioCheckIn\": 16,\r\n    \"categoria\": {},\r\n    \"ciudad\": {\"id\": 8}\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/productos/",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"productos",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Producto existente ciudad null",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{TOKEN}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"id\": 14,\r\n        \"nombre\": \"Ana Bistró\",\r\n        \"direccion\": \"Calle 66a #80-10\",\r\n        \"descripcion\": \"Anna Bistro es un paraíso en la ciudad, un lugar que recuerda al propio hogar. Desestructurado y relajado, al encontrarse en medio de un gran jardín logra que los espacios interiores y exteriores interactúen constantemente. Este lugar no posee la formalidad de un clásico restaurante ya que dentro de un mismo lugar es posible encontrar una opción para el desayuno y cafetería abastecida con excelente pastelería propia, petites dejeuners y american breakfast cuyas cartas se complementan con coisantes, facturas, tostados, jugos, huevos, yogur con ensalada de frutas, frutas secas y miel que complementan la propuesta matutina.\",\r\n        \"horarioCheckIn\": 16,\r\n        \"categoria\": {\"id\": 3}\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/productos/",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"productos",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Error producto id inexistente",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{TOKEN}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"id\": 995,\r\n        \"nombre\": \"Ana Bistró\",\r\n        \"direccion\": \"Calle 66a #80-10\",\r\n        \"descripcion\": \"Anna Bistro es un paraíso en la ciudad, un lugar que recuerda al propio hogar. Desestructurado y relajado, al encontrarse en medio de un gran jardín logra que los espacios interiores y exteriores interactúen constantemente. Este lugar no posee la formalidad de un clásico restaurante ya que dentro de un mismo lugar es posible encontrar una opción para el desayuno y cafetería abastecida con excelente pastelería propia, petites dejeuners y american breakfast cuyas cartas se complementan con coisantes, facturas, tostados, jugos, huevos, yogur con ensalada de frutas, frutas secas y miel que complementan la propuesta matutina.\",\r\n        \"horarioCheckIn\": 16,\r\n        \"categoria\": {\"id\": 3},\r\n        \"ciudad\": {\"id\": 8}\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/productos/",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"productos",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Error producto id negativo",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{TOKEN}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"id\": -5,\r\n        \"nombre\": \"Ana Bistró\",\r\n        \"direccion\": \"Calle 66a #80-10\",\r\n        \"descripcion\": \"Anna Bistro es un paraíso en la ciudad, un lugar que recuerda al propio hogar. Desestructurado y relajado, al encontrarse en medio de un gran jardín logra que los espacios interiores y exteriores interactúen constantemente. Este lugar no posee la formalidad de un clásico restaurante ya que dentro de un mismo lugar es posible encontrar una opción para el desayuno y cafetería abastecida con excelente pastelería propia, petites dejeuners y american breakfast cuyas cartas se complementan con coisantes, facturas, tostados, jugos, huevos, yogur con ensalada de frutas, frutas secas y miel que complementan la propuesta matutina.\",\r\n        \"horarioCheckIn\": 16,\r\n        \"categoria\": {\"id\": 3},\r\n        \"ciudad\": {\"id\": 8}\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/productos/",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"productos",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Error producto id null",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{TOKEN}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"nombre\": \"Ana Bistró\",\r\n        \"direccion\": \"Calle 66a #80-10\",\r\n        \"descripcion\": \"Anna Bistro es un paraíso en la ciudad, un lugar que recuerda al propio hogar. Desestructurado y relajado, al encontrarse en medio de un gran jardín logra que los espacios interiores y exteriores interactúen constantemente. Este lugar no posee la formalidad de un clásico restaurante ya que dentro de un mismo lugar es posible encontrar una opción para el desayuno y cafetería abastecida con excelente pastelería propia, petites dejeuners y american breakfast cuyas cartas se complementan con coisantes, facturas, tostados, jugos, huevos, yogur con ensalada de frutas, frutas secas y miel que complementan la propuesta matutina.\",\r\n        \"horarioCheckIn\": 16,\r\n        \"categoria\": {\"id\": 3},\r\n        \"ciudad\": {\"id\": 8}\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/productos/",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"productos",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Producto existente ID de categoría null",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{TOKEN}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"id\": 14,\r\n        \"nombre\": \"Ana Bistró\",\r\n        \"direccion\": \"Calle 66a #80-10\",\r\n        \"descripcion\": \"Anna Bistro es un paraíso en la ciudad, un lugar que recuerda al propio hogar. Desestructurado y relajado, al encontrarse en medio de un gran jardín logra que los espacios interiores y exteriores interactúen constantemente. Este lugar no posee la formalidad de un clásico restaurante ya que dentro de un mismo lugar es posible encontrar una opción para el desayuno y cafetería abastecida con excelente pastelería propia, petites dejeuners y american breakfast cuyas cartas se complementan con coisantes, facturas, tostados, jugos, huevos, yogur con ensalada de frutas, frutas secas y miel que complementan la propuesta matutina.\",\r\n        \"horarioCheckIn\": 16,\r\n        \"categoria\": {},\r\n        \"ciudad\": {\"id\": 8}\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/productos/",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"productos",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Producto existente ID de ciudad null",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{TOKEN}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 14,\r\n    \"nombre\": \"Ana Bistró\",\r\n    \"direccion\": \"Calle 66a #80-10\",\r\n    \"descripcion\": \"Anna Bistro es un paraíso en la ciudad, un lugar que recuerda al propio hogar. Desestructurado y relajado, al encontrarse en medio de un gran jardín logra que los espacios interiores y exteriores interactúen constantemente. Este lugar no posee la formalidad de un clásico restaurante ya que dentro de un mismo lugar es posible encontrar una opción para el desayuno y cafetería abastecida con excelente pastelería propia, petites dejeuners y american breakfast cuyas cartas se complementan con coisantes, facturas, tostados, jugos, huevos, yogur con ensalada de frutas, frutas secas y miel que complementan la propuesta matutina.\",\r\n    \"horarioCheckIn\": 16,\r\n    \"categoria\": {\"id\": 1},\r\n    \"ciudad\": {}\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/productos/",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"productos",
+								""
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
@@ -1173,16 +1772,25 @@
 				{
 					"name": "Eliminar producto por ID existente",
 					"request": {
-						"method": "DELETE",
+						"method": "POST",
 						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "    {\r\n        \"nombre\": \"Rampas para discapacitados\",\r\n        \"icono\": \"fab fa-accessible-icon\"\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
-							"raw": "{{URL}}/productos/15",
+							"raw": "{{URL}}/productos/14",
 							"host": [
 								"{{URL}}"
 							],
 							"path": [
 								"productos",
-								"15"
+								"14"
 							]
 						}
 					},

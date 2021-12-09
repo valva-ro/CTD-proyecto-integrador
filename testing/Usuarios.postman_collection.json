@@ -9,13 +9,13 @@
 			"name": "Crear",
 			"item": [
 				{
-					"name": "Usuario con todos los datos válidos",
+					"name": "Crear usuario Valen",
 					"event": [
 						{
 							"listen": "test",
 							"script": {
 								"exec": [
-									"pm.test(\"Status code is 201\", function () {\r",
+									"pm.test(\"Creación exitosa\", function () {\r",
 									"    pm.response.to.have.status(201);\r",
 									"});"
 								],
@@ -28,7 +28,47 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"nombre\": \"Nuevo\",\r\n    \"apellido\": \"Nuevo\",\r\n    \"mail\": \"usuario@nuevo.com\",\r\n    \"contrasenia\": \"usuario1234\",\r\n    \"cuentaValidada\":true,\r\n    \"rol\": {\"id\": 2},\r\n    \"reservas\": [],\r\n    \"puntuaciones\": [],\r\n    \"productosFavoritos\": []\r\n}",
+							"raw": "{\r\n    \"nombre\": \"Valentina\",\r\n    \"apellido\": \"Varela\",\r\n    \"mail\": \"valvarodriguez1708@gmail.com\",\r\n    \"contrasenia\": \"valva1234\",\r\n    \"rol\": {\"id\": 2},\r\n    \"reservas\": [],\r\n    \"puntuaciones\": [],\r\n    \"productosFavoritos\": []\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/usuarios/signup",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"usuarios",
+								"signup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Crear admin Valen",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Creación exitosa\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\": \"Valentina\",\r\n    \"apellido\": \"Varela\",\r\n    \"mail\": \"vavarela.rodriguez@gmail.com\",\r\n    \"contrasenia\": \"valva1234\",\r\n    \"rol\": {\"id\": 1},\r\n    \"reservas\": [],\r\n    \"puntuaciones\": [],\r\n    \"productosFavoritos\": []\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1737,7 +1777,7 @@
 			"name": "Autenticar",
 			"item": [
 				{
-					"name": "Login usuario",
+					"name": "Login admin Pepe",
 					"event": [
 						{
 							"listen": "test",
@@ -1763,6 +1803,141 @@
 						"body": {
 							"mode": "raw",
 							"raw": "{\r\n    \"mail\": \"pepe@gmail.com\",\r\n    \"contrasenia\": \"pepe1234\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/login",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login user Jose",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const jsonData = JSON.parse(responseBody);\r",
+									"const token = jsonData.jwt;\r",
+									"pm.environment.set(\"TOKEN\", `${token}`);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"mail\": \"jose@gmail.com\",\r\n    \"contrasenia\": \"jose1234\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/login",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login usuario Valen",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const jsonData = JSON.parse(responseBody);\r",
+									"const token = jsonData.jwt;\r",
+									"pm.environment.set(\"TOKEN\", `${token}`);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"mail\": \"valvarodriguez1708@gmail.com\",\r\n    \"contrasenia\": \"valva1234\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/login",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login admin Valen",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const jsonData = JSON.parse(responseBody);\r",
+									"const token = jsonData.jwt;\r",
+									"pm.environment.set(\"TOKEN\", `${token}`);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"mail\": \"vavarela.rodriguez@gmail.com\",\r\n    \"contrasenia\": \"valva1234\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"

@@ -1,0 +1,53 @@
+{
+	"info": {
+		"_postman_id": "b62f6ed7-a650-4c13-8f62-d263efa212bc",
+		"name": "Imágenes",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Crear",
+			"item": [
+				{
+					"name": "Imágen con todos los datos válidos",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Creación exitosa\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"imagenTitulo\": \"Jacuzzi en el balcon\",\r\n    \"imagenUrl\": \"https://www.eluniversal.com.mx/sites/default/files/2020/03/19/como_extraer_un_texto_de_una_imagen.jpg\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/imagenes",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"imagenes"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
