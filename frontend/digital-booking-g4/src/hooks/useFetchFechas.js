@@ -13,7 +13,7 @@ export default function useFetchFechas(inicio, fin, currentCity, currentCategory
   useEffect(() => {
     async function fetchData() {
       try {
-        let response = await fetch(`${backUrl()}/productos/?fechaIngreso=${inicio}&fechaEgreso=${fin}`);
+        let response = await fetch(`${backUrl()}productos/?fechaIngreso=${inicio}&fechaEgreso=${fin}`);
         let datos = await response.json();
         setItemsFechas(datos);
         setIsLoadedFechas(true);
