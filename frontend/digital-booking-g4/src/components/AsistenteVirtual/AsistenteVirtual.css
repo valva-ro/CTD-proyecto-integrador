@@ -120,6 +120,7 @@
   z-index: 998;
   right: 15px;
   box-shadow: 6px 4px 4px rgb(0 0 0 / 25%);
+  cursor: pointer;
   /*animacion cambo de color background*/
   animation-name: anim;
   animation-duration: 5s;
@@ -143,4 +144,10 @@
 .react-chatbot-kit-chat-btn-send {
   width: 30px;
   border: 0;
+  cursor: pointer;
+  margin-left: 8px;
+}
+
+.react-chatbot-kit-chat-btn-send svg:hover {
+  transform: scale(1.1);
 }

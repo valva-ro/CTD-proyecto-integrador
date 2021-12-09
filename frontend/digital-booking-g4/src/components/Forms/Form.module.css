@@ -21,7 +21,7 @@ input[type="password"] {
 }
 .generalForms div {
   display: flex;
-  gap: 1.5vw;
+  gap: .5rem;
   justify-content: space-between;
 }
 
