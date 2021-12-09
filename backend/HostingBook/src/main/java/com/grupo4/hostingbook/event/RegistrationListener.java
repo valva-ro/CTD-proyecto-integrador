@@ -33,7 +33,7 @@ public class RegistrationListener implements ApplicationListener<OnRegistrationC
 
         final String email = user.getMail();
         final String subject = "Confirma tu cuenta en HostingBook";
-        final String confirmationUrl = "http://18.190.66.247/confirmAccount/" + token;
+        final String confirmationUrl = "http://hostingbook.one/confirmAccount/" + token;
         final String message = "¡Gracias por sumarte a HostingBook!\n\nPara completar tu registro por favor accedé al siguiente link:\r\n"
                 + confirmationUrl + "\n\nEste link es válido por 24hs, luego de ese plazo deberá volver a registrarse.";
         emailService.sendSimpleMessage(email, subject, message);
