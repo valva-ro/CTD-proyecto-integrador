@@ -9,8 +9,11 @@ import org.springframework.stereotype.Repository;
 import java.util.Set;
 
 @Repository
-public interface IReservaRepository extends JpaRepository<Reserva,Long> {
+public interface IReservaRepository extends JpaRepository<Reserva, Long> {
 
     @Query("FROM Reserva r WHERE r.producto.id = :id")
     Set<Reserva> buscarReservasPorIdProducto(@Param("id") Long id);
+
+    @Query("FROM Reserva r WHERE r.usuario.id = :id")
+    Set<Reserva> buscarReservasPorIdUsuario(@Param("id") Long id);
 }

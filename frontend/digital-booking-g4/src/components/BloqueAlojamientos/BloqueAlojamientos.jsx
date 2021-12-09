@@ -5,28 +5,49 @@ import TituloBloque from "../TituloBloque/TituloBloque.jsx";
 import SkeletonTarjetaAlojamiento from "./TarjetaAlojamiento/SkeletonTarjetaAlojamiento";
 import currentFilterContext from "../../contexts/currentFilterContext";
 import styles from "./BloqueAlojamientos.module.css";
-import useFetch from "../../hooks/useFetch";
+import useFetchFechas from "../../hooks/useFetchFechas";
 import useScreenWidth from "../../hooks/useScreenWidth";
+import obtenerFechasParaEndpointBuscarPorFechas from "../../utils/obtenerFechasParaEndpointBuscarPorFechas";
 
 const ALOJAMIENTOS_POR_PAGINA = 6;
 
-export default function BloqueAlojamientos() {
-  const { currentCity, setCurrentCity, currentCategory, setCurrentCategory } =
-    useContext(currentFilterContext);
-  const [alojamientos, setAlojamientos] = useState([]);
-  const { isLoaded, items } = useFetch("productos");
+export default function BloqueAlojamientos({ setReset }) {
+  const {
+    currentCity,
+    setCurrentCity,
+    currentCategory,
+    setCurrentCategory,
+    currentDateRange,
+    setCurrentDateRange,
+  } = useContext(currentFilterContext);
   const [currentPage, setCurrentPage] = useState(1);
   const anchoPantalla = useScreenWidth();
+  const [alojamientosFiltrados, setAlojamientosFiltrados] = useState([]);
+  const inicio = obtenerFechasParaEndpointBuscarPorFechas(
+    currentDateRange.fechaInicio
+  );
+  const fin = obtenerFechasParaEndpointBuscarPorFechas(
+    currentDateRange.fechaFin
+  );
+  const { isLoadedFechas, isLoaded, itemsFechas } = useFetchFechas(
+    inicio,
+    fin,
+    currentCity,
+    currentCategory
+  );
 
   useEffect(() => {
-    if (isLoaded) {
-      setAlojamientos(items);
+    if (isLoadedFechas) {
+      const alojamientos = itemsFechas;
+      setAlojamientosFiltrados(obtenerAlojamientosFiltrados(alojamientos));
     }
-  }, [isLoaded, items]);
+  }, [isLoadedFechas, inicio, fin, currentCity, currentCategory]);
 
   const toggleFiltrado = () => {
     setCurrentCategory("");
     setCurrentCity("");
+    setCurrentDateRange({ fechaInicio: null, fechaFin: null });
+    setReset(true);
   };
 
   const handleScrollPosition = () => {
@@ -46,23 +67,26 @@ export default function BloqueAlojamientos() {
     handleScrollPosition();
   };
 
-  const alojamientosFiltrados = alojamientos.filter((alojamiento) => {
-    let pasaElFiltro = true;
-    if (currentCategory !== "" && currentCity !== "") {
-      pasaElFiltro =
-        currentCategory.toLowerCase() ===
-          alojamiento.categoria.titulo.toLowerCase() &&
-        currentCity.toLowerCase() === alojamiento.ciudad.nombre.toLowerCase();
-    } else if (currentCity !== "") {
-      pasaElFiltro =
-        currentCity.toLowerCase() === alojamiento.ciudad.nombre.toLowerCase();
-    } else if (currentCategory !== "") {
-      pasaElFiltro =
-        currentCategory.toLowerCase() ===
-        alojamiento.categoria.titulo.toLowerCase();
-    }
-    return pasaElFiltro;
-  });
+  const obtenerAlojamientosFiltrados = (a) => {
+    setCurrentPage(1);
+    return a.filter((alojamiento) => {
+      let pasaElFiltro = true;
+      if (currentCategory !== "" && currentCity !== "") {
+        pasaElFiltro =
+          currentCategory.toLowerCase() ===
+            alojamiento.categoria.titulo.toLowerCase() &&
+          currentCity.toLowerCase() === alojamiento.ciudad.nombre.toLowerCase();
+      } else if (currentCity !== "") {
+        pasaElFiltro =
+          currentCity.toLowerCase() === alojamiento.ciudad.nombre.toLowerCase();
+      } else if (currentCategory !== "") {
+        pasaElFiltro =
+          currentCategory.toLowerCase() ===
+          alojamiento.categoria.titulo.toLowerCase();
+      }
+      return pasaElFiltro;
+    });
+  };
 
   function recortarAlojamientos() {
     const indiceInicial =
@@ -106,10 +130,7 @@ export default function BloqueAlojamientos() {
           <ul className={styles.alojamientos}>
             {recortarAlojamientos().map((alojamiento, i) => (
               <li key={i} className={styles.alojamiento}>
-                <TarjetaAlojamiento
-                  alojamiento={alojamiento}
-                  isLoaded={isLoaded}
-                />
+                <TarjetaAlojamiento alojamiento={alojamiento} />
               </li>
             ))}
           </ul>

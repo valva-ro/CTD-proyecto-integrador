@@ -10,8 +10,10 @@ import io.swagger.annotations.ApiResponses;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.security.access.prepost.PreAuthorize;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -19,7 +21,7 @@ import java.util.Set;
 
 @RestController
 @RequestMapping("/productos")
-@CrossOrigin(origins = "*", methods = { RequestMethod.GET, RequestMethod.POST }, allowedHeaders = "*")
+@CrossOrigin(origins = "*", methods = {RequestMethod.GET, RequestMethod.POST}, allowedHeaders = "*")
 public class ProductoController implements IProductoController {
 
     @Qualifier("ProductoService")
@@ -44,13 +46,14 @@ public class ProductoController implements IProductoController {
     @Override
     @ApiOperation(value = "Crea un nuevo producto")
     @ApiResponses(value = {
-            @ApiResponse(code = 200, message = "Success"),
+            @ApiResponse(code = 201, message = "Created"),
             @ApiResponse(code = 400, message = "Bad Request")
     })
     @PostMapping
-    public ResponseEntity<ProductoDTO> crear(@RequestBody ProductoDTO producto) throws BadRequestException, ResourceNotFoundException, RepeatedMailException {
+    @PreAuthorize("hasRole('ADMIN')")
+    public ResponseEntity<ProductoDTO> crear(@RequestBody ProductoDTO producto) throws BadRequestException, ResourceNotFoundException, RepeatedMailException, NotImplementedException {
         ProductoDTO productoNuevo = productoService.crear(producto);
-        return ResponseEntity.ok(productoNuevo);
+        return ResponseEntity.status(HttpStatus.CREATED).body(productoNuevo);
     }
 
     @Override
@@ -89,7 +92,7 @@ public class ProductoController implements IProductoController {
     @DeleteMapping("/{id}")
     public ResponseEntity<String> eliminar(@PathVariable Long id) throws BadRequestException, ResourceNotFoundException {
         productoService.eliminar(id);
-        return ResponseEntity.ok(String.format(Mensajes.ELIMINADO_CON_EXITO,"Producto", id));
+        return ResponseEntity.ok(String.format(Mensajes.ELIMINADO_CON_EXITO, "Producto", id));
     }
 
     @Override
@@ -122,8 +125,8 @@ public class ProductoController implements IProductoController {
     @GetMapping(params = {"ciudad", "fechaIngreso", "fechaEgreso"})
     public ResponseEntity<?> obtenerPorCiudadYFechas(@RequestParam("ciudad") String ciudad,
                                                      @RequestParam("fechaIngreso") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate fechaIngreso,
-                                                     @RequestParam("fechaEgreso") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate fechaEgreso ) throws ResourceNotFoundException {
-        Set<ProductoDTO> productos = productoService.consultarPorCiudadYFechas(ciudad,fechaIngreso,fechaEgreso);
+                                                     @RequestParam("fechaEgreso") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate fechaEgreso) throws ResourceNotFoundException {
+        Set<ProductoDTO> productos = productoService.consultarPorCiudadYFechas(ciudad, fechaIngreso, fechaEgreso);
         return ResponseEntity.ok(productos);
     }
 
@@ -134,8 +137,8 @@ public class ProductoController implements IProductoController {
     })
     @GetMapping(params = {"fechaIngreso", "fechaEgreso"})
     public ResponseEntity<?> obtenerPorFechas(@RequestParam("fechaIngreso") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate fechaIngreso,
-                                              @RequestParam("fechaEgreso") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate fechaEgreso ) throws ResourceNotFoundException {
-        Set<ProductoDTO> productos = productoService.consultarPorFechas(fechaIngreso,fechaEgreso);
+                                              @RequestParam("fechaEgreso") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate fechaEgreso) throws ResourceNotFoundException {
+        Set<ProductoDTO> productos = productoService.consultarPorFechas(fechaIngreso, fechaEgreso);
         return ResponseEntity.ok(productos);
     }
 

@@ -64,7 +64,7 @@ Object {
                     <p
                       class="avatar"
                     >
-                      BR
+                      NA
                     </p>
                     <div
                       class="contenedorNombre"
@@ -77,45 +77,99 @@ Object {
                       <p
                         class="nombre"
                       >
-                        Bruno Rodriguez
+                        N A
                       </p>
                     </div>
-                    <span
-                      class="cerrar"
-                      data-testid="btnCerrarSesion"
+                    <div
+                      class="containerDropdown"
                     >
-                      X
-                    </span>
+                      <i
+                        class="fas fa-chevron-down desplegarDropdown"
+                      />
+                      
+                    </div>
                   </div>
                 </div>
                 <div
                   class="main"
                 >
-                  <p
-                    class="cerrarSesion"
+                  <div
+                    class="containerLoggeado"
                   >
-                    ¿Deseas
-                    <span>
-                       cerrar sesión
-                    </span>
-                    ?
-                  </p>
+                    <div
+                      class="opciones"
+                    >
+                      <a
+                        href="/favorites"
+                      >
+                        <p>
+                          Favoritos
+                        </p>
+                      </a>
+                      <a
+                        href="/reservations"
+                      >
+                        <p>
+                          Reservas
+                        </p>
+                      </a>
+                    </div>
+                    <div>
+                      <p
+                        class="cerrarSesion"
+                      >
+                        ¿Deseas
+                        <span>
+                           cerrar sesión
+                        </span>
+                        ?
+                      </p>
+                    </div>
+                  </div>
                 </div>
                 <div
                   class="footer"
                 >
-                  <i
-                    class="bx bxl-facebook-circle"
-                  />
-                  <i
-                    class="bx bxl-linkedin"
-                  />
-                  <i
-                    class="bx bxl-twitter"
-                  />
-                  <i
-                    class="bx bxl-instagram-alt"
-                  />
+                  <a
+                    class="linkRedSocial"
+                    href="https://www.facebook.com/HostingBook-104939168676273"
+                    rel="noreferrer"
+                    target="_blank"
+                  >
+                    <i
+                      class="bx bxl-facebook-circle"
+                    />
+                  </a>
+                  <a
+                    class="linkRedSocial"
+                    href="https://www.linkedin.com/in/hostingbook/"
+                    rel="noreferrer"
+                    target="_blank"
+                  >
+                    <i
+                      class="bx bxl-linkedin"
+                    />
+                  </a>
+                  <a
+                    class="linkRedSocial"
+                    href="https://twitter.com/Hosting_Book"
+                    rel="noreferrer"
+                    target="_blank"
+                  >
+                    <i
+                      class="bx bxl-twitter"
+                    />
+                  </a>
+                  <a
+                    class="linkRedSocial"
+                    href="https://www.instagram.com/hostingbook/"
+                    rel="noreferrer"
+                    target="_blank"
+                  >
+                    <i
+                      class="bx bxl-instagram-alt"
+                    />
+                  </a>
                 </div>
               </div>
             </div>
@@ -129,7 +183,7 @@ Object {
               <p
                 class="avatar"
               >
-                BR
+                NA
               </p>
               <div
                 class="contenedorNombre"
@@ -142,15 +196,17 @@ Object {
                 <p
                   class="nombre"
                 >
-                  Bruno Rodriguez
+                  N A
                 </p>
               </div>
-              <span
-                class="cerrar"
-                data-testid="btnCerrarSesion"
+              <div
+                class="containerDropdown"
               >
-                X
-              </span>
+                <i
+                  class="fas fa-chevron-down desplegarDropdown"
+                />
+                
+              </div>
             </div>
           </div>
         </div>
@@ -174,18 +230,46 @@ Object {
           <div
             class="footerDerecha"
           >
-            <i
-              class="bx bxl-facebook-circle"
-            />
-            <i
-              class="bx bxl-linkedin"
-            />
-            <i
-              class="bx bxl-twitter"
-            />
-            <i
-              class="bx bxl-instagram-alt"
-            />
+            <a
+              class="linkRedSocial"
+              href="https://www.facebook.com/HostingBook-104939168676273"
+              rel="noreferrer"
+              target="_blank"
+            >
+              <i
+                class="bx bxl-facebook-circle"
+              />
+            </a>
+            <a
+              class="linkRedSocial"
+              href="https://www.linkedin.com/in/hostingbook/"
+              rel="noreferrer"
+              target="_blank"
+            >
+              <i
+                class="bx bxl-linkedin"
+              />
+            </a>
+            <a
+              class="linkRedSocial"
+              href="https://twitter.com/Hosting_Book"
+              rel="noreferrer"
+              target="_blank"
+            >
+              <i
+                class="bx bxl-twitter"
+              />
+            </a>
+            <a
+              class="linkRedSocial"
+              href="https://www.instagram.com/hostingbook/"
+              rel="noreferrer"
+              target="_blank"
+            >
+              <i
+                class="bx bxl-instagram-alt"
+              />
+            </a>
           </div>
         </div>
       </footer>
@@ -251,7 +335,7 @@ Object {
                   <p
                     class="avatar"
                   >
-                    BR
+                    NA
                   </p>
                   <div
                     class="contenedorNombre"
@@ -264,45 +348,99 @@ Object {
                     <p
                       class="nombre"
                     >
-                      Bruno Rodriguez
+                      N A
                     </p>
                   </div>
-                  <span
-                    class="cerrar"
-                    data-testid="btnCerrarSesion"
+                  <div
+                    class="containerDropdown"
                   >
-                    X
-                  </span>
+                    <i
+                      class="fas fa-chevron-down desplegarDropdown"
+                    />
+                    
+                  </div>
                 </div>
               </div>
               <div
                 class="main"
               >
-                <p
-                  class="cerrarSesion"
+                <div
+                  class="containerLoggeado"
                 >
-                  ¿Deseas
-                  <span>
-                     cerrar sesión
-                  </span>
-                  ?
-                </p>
+                  <div
+                    class="opciones"
+                  >
+                    <a
+                      href="/favorites"
+                    >
+                      <p>
+                        Favoritos
+                      </p>
+                    </a>
+                    <a
+                      href="/reservations"
+                    >
+                      <p>
+                        Reservas
+                      </p>
+                    </a>
+                  </div>
+                  <div>
+                    <p
+                      class="cerrarSesion"
+                    >
+                      ¿Deseas
+                      <span>
+                         cerrar sesión
+                      </span>
+                      ?
+                    </p>
+                  </div>
+                </div>
               </div>
               <div
                 class="footer"
               >
-                <i
-                  class="bx bxl-facebook-circle"
-                />
-                <i
-                  class="bx bxl-linkedin"
-                />
-                <i
-                  class="bx bxl-twitter"
-                />
-                <i
-                  class="bx bxl-instagram-alt"
-                />
+                <a
+                  class="linkRedSocial"
+                  href="https://www.facebook.com/HostingBook-104939168676273"
+                  rel="noreferrer"
+                  target="_blank"
+                >
+                  <i
+                    class="bx bxl-facebook-circle"
+                  />
+                </a>
+                <a
+                  class="linkRedSocial"
+                  href="https://www.linkedin.com/in/hostingbook/"
+                  rel="noreferrer"
+                  target="_blank"
+                >
+                  <i
+                    class="bx bxl-linkedin"
+                  />
+                </a>
+                <a
+                  class="linkRedSocial"
+                  href="https://twitter.com/Hosting_Book"
+                  rel="noreferrer"
+                  target="_blank"
+                >
+                  <i
+                    class="bx bxl-twitter"
+                  />
+                </a>
+                <a
+                  class="linkRedSocial"
+                  href="https://www.instagram.com/hostingbook/"
+                  rel="noreferrer"
+                  target="_blank"
+                >
+                  <i
+                    class="bx bxl-instagram-alt"
+                  />
+                </a>
               </div>
             </div>
           </div>
@@ -316,7 +454,7 @@ Object {
             <p
               class="avatar"
             >
-              BR
+              NA
             </p>
             <div
               class="contenedorNombre"
@@ -329,15 +467,17 @@ Object {
               <p
                 class="nombre"
               >
-                Bruno Rodriguez
+                N A
               </p>
             </div>
-            <span
-              class="cerrar"
-              data-testid="btnCerrarSesion"
+            <div
+              class="containerDropdown"
             >
-              X
-            </span>
+              <i
+                class="fas fa-chevron-down desplegarDropdown"
+              />
+              
+            </div>
           </div>
         </div>
       </div>
@@ -361,18 +501,46 @@ Object {
         <div
           class="footerDerecha"
         >
-          <i
-            class="bx bxl-facebook-circle"
-          />
-          <i
-            class="bx bxl-linkedin"
-          />
-          <i
-            class="bx bxl-twitter"
-          />
-          <i
-            class="bx bxl-instagram-alt"
-          />
+          <a
+            class="linkRedSocial"
+            href="https://www.facebook.com/HostingBook-104939168676273"
+            rel="noreferrer"
+            target="_blank"
+          >
+            <i
+              class="bx bxl-facebook-circle"
+            />
+          </a>
+          <a
+            class="linkRedSocial"
+            href="https://www.linkedin.com/in/hostingbook/"
+            rel="noreferrer"
+            target="_blank"
+          >
+            <i
+              class="bx bxl-linkedin"
+            />
+          </a>
+          <a
+            class="linkRedSocial"
+            href="https://twitter.com/Hosting_Book"
+            rel="noreferrer"
+            target="_blank"
+          >
+            <i
+              class="bx bxl-twitter"
+            />
+          </a>
+          <a
+            class="linkRedSocial"
+            href="https://www.instagram.com/hostingbook/"
+            rel="noreferrer"
+            target="_blank"
+          >
+            <i
+              class="bx bxl-instagram-alt"
+            />
+          </a>
         </div>
       </div>
     </footer>

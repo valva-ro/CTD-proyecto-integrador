@@ -1,0 +1,2261 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Tarjeta Alojamiento test Marca o no favorito 1`] = `
+Object {
+  "asFragment": [Function],
+  "baseElement": <body>
+    <div>
+      <div
+        class="tarjetaAlojamiento"
+        data-aos="fade-up"
+      >
+        <div
+          class="imagenAlojamiento"
+          style="background-image: url(https://proyectointegradorimagenes2.s3.us-east-2.amazonaws.com/Alojamientos/Producto1.jpg);"
+        />
+        <div
+          class="descripcionAlojamiento"
+        >
+          <div
+            class="informacionPrincipal"
+          >
+            <div
+              class="nombreAlojamiento"
+            >
+              <div
+                class="tipoYCalificacion"
+              >
+                <h4>
+                  Hoteles
+                </h4>
+                <span
+                  aria-label="Estrellas"
+                  class="estrellas"
+                >
+                  <i
+                    class="fas fa-star estrellaLlena"
+                  />
+                  <i
+                    class="fas fa-star estrellaLlena"
+                  />
+                  <i
+                    class="fas fa-star estrellaVacia"
+                  />
+                  <i
+                    class="fas fa-star estrellaVacia"
+                  />
+                  <i
+                    class="fas fa-star estrellaVacia"
+                  />
+                </span>
+              </div>
+              <h2>
+                Meliá
+              </h2>
+            </div>
+            <div
+              class="puntajeAlojamiento"
+            >
+              <div
+                class="puntajeNumerico"
+              >
+                4
+              </div>
+              <div
+                class="detalle"
+              >
+                Regular
+              </div>
+            </div>
+          </div>
+          <div
+            class="informacionDetalle"
+          >
+            <div
+              class="ubicacion"
+            >
+              <i
+                class="fas fa-map-marker-alt"
+              />
+              <p>
+                La Plata
+                <span
+                  class="mostrarEnMapa"
+                >
+                  Mostrar en el mapa
+                </span>
+              </p>
+            </div>
+            <div
+              class="servicios"
+            >
+              <i
+                class="fas fa-swimmer"
+              />
+            </div>
+          </div>
+          <p>
+            Complejos turísticos con servicio “todo incluido” para disfrutar de unas vacaciones de lujo, diseñados para mezclarse con su entorno natural en lugares muy exóticos donde disfrutar de una experiencia verdaderamente única.
+            <span
+              class="verMas"
+            >
+               Leer menos
+            </span>
+          </p>
+          <a
+            href="/product/1/features"
+          >
+            <input
+              class="filledButton btnVerMas"
+              type="submit"
+              value="Ver más"
+            />
+          </a>
+        </div>
+      </div>
+    </div>
+  </body>,
+  "container": <div>
+    <div
+      class="tarjetaAlojamiento"
+      data-aos="fade-up"
+    >
+      <div
+        class="imagenAlojamiento"
+        style="background-image: url(https://proyectointegradorimagenes2.s3.us-east-2.amazonaws.com/Alojamientos/Producto1.jpg);"
+      />
+      <div
+        class="descripcionAlojamiento"
+      >
+        <div
+          class="informacionPrincipal"
+        >
+          <div
+            class="nombreAlojamiento"
+          >
+            <div
+              class="tipoYCalificacion"
+            >
+              <h4>
+                Hoteles
+              </h4>
+              <span
+                aria-label="Estrellas"
+                class="estrellas"
+              >
+                <i
+                  class="fas fa-star estrellaLlena"
+                />
+                <i
+                  class="fas fa-star estrellaLlena"
+                />
+                <i
+                  class="fas fa-star estrellaVacia"
+                />
+                <i
+                  class="fas fa-star estrellaVacia"
+                />
+                <i
+                  class="fas fa-star estrellaVacia"
+                />
+              </span>
+            </div>
+            <h2>
+              Meliá
+            </h2>
+          </div>
+          <div
+            class="puntajeAlojamiento"
+          >
+            <div
+              class="puntajeNumerico"
+            >
+              4
+            </div>
+            <div
+              class="detalle"
+            >
+              Regular
+            </div>
+          </div>
+        </div>
+        <div
+          class="informacionDetalle"
+        >
+          <div
+            class="ubicacion"
+          >
+            <i
+              class="fas fa-map-marker-alt"
+            />
+            <p>
+              La Plata
+              <span
+                class="mostrarEnMapa"
+              >
+                Mostrar en el mapa
+              </span>
+            </p>
+          </div>
+          <div
+            class="servicios"
+          >
+            <i
+              class="fas fa-swimmer"
+            />
+          </div>
+        </div>
+        <p>
+          Complejos turísticos con servicio “todo incluido” para disfrutar de unas vacaciones de lujo, diseñados para mezclarse con su entorno natural en lugares muy exóticos donde disfrutar de una experiencia verdaderamente única.
+          <span
+            class="verMas"
+          >
+             Leer menos
+          </span>
+        </p>
+        <a
+          href="/product/1/features"
+        >
+          <input
+            class="filledButton btnVerMas"
+            type="submit"
+            value="Ver más"
+          />
+        </a>
+      </div>
+    </div>
+  </div>,
+  "debug": [Function],
+  "findAllByAltText": [Function],
+  "findAllByDisplayValue": [Function],
+  "findAllByLabelText": [Function],
+  "findAllByPlaceholderText": [Function],
+  "findAllByRole": [Function],
+  "findAllByTestId": [Function],
+  "findAllByText": [Function],
+  "findAllByTitle": [Function],
+  "findByAltText": [Function],
+  "findByDisplayValue": [Function],
+  "findByLabelText": [Function],
+  "findByPlaceholderText": [Function],
+  "findByRole": [Function],
+  "findByTestId": [Function],
+  "findByText": [Function],
+  "findByTitle": [Function],
+  "getAllByAltText": [Function],
+  "getAllByDisplayValue": [Function],
+  "getAllByLabelText": [Function],
+  "getAllByPlaceholderText": [Function],
+  "getAllByRole": [Function],
+  "getAllByTestId": [Function],
+  "getAllByText": [Function],
+  "getAllByTitle": [Function],
+  "getByAltText": [Function],
+  "getByDisplayValue": [Function],
+  "getByLabelText": [Function],
+  "getByPlaceholderText": [Function],
+  "getByRole": [Function],
+  "getByTestId": [Function],
+  "getByText": [Function],
+  "getByTitle": [Function],
+  "queryAllByAltText": [Function],
+  "queryAllByDisplayValue": [Function],
+  "queryAllByLabelText": [Function],
+  "queryAllByPlaceholderText": [Function],
+  "queryAllByRole": [Function],
+  "queryAllByTestId": [Function],
+  "queryAllByText": [Function],
+  "queryAllByTitle": [Function],
+  "queryByAltText": [Function],
+  "queryByDisplayValue": [Function],
+  "queryByLabelText": [Function],
+  "queryByPlaceholderText": [Function],
+  "queryByRole": [Function],
+  "queryByTestId": [Function],
+  "queryByText": [Function],
+  "queryByTitle": [Function],
+  "rerender": [Function],
+  "unmount": [Function],
+}
+`;
+
+exports[`Tarjeta Alojamiento test Me lleva a la pagina de features 1`] = `
+Object {
+  "asFragment": [Function],
+  "baseElement": <body>
+    <div>
+      <div
+        class="tarjetaAlojamiento"
+        data-aos="fade-up"
+      >
+        <div
+          class="imagenAlojamiento"
+          style="background-image: url(https://proyectointegradorimagenes2.s3.us-east-2.amazonaws.com/Alojamientos/Producto1.jpg);"
+        />
+        <div
+          class="descripcionAlojamiento"
+        >
+          <div
+            class="informacionPrincipal"
+          >
+            <div
+              class="nombreAlojamiento"
+            >
+              <div
+                class="tipoYCalificacion"
+              >
+                <h4>
+                  Hoteles
+                </h4>
+                <span
+                  aria-label="Estrellas"
+                  class="estrellas"
+                >
+                  <i
+                    class="fas fa-star estrellaLlena"
+                  />
+                  <i
+                    class="fas fa-star estrellaLlena"
+                  />
+                  <i
+                    class="fas fa-star estrellaVacia"
+                  />
+                  <i
+                    class="fas fa-star estrellaVacia"
+                  />
+                  <i
+                    class="fas fa-star estrellaVacia"
+                  />
+                </span>
+              </div>
+              <h2>
+                Meliá
+              </h2>
+            </div>
+            <div
+              class="puntajeAlojamiento"
+            >
+              <div
+                class="puntajeNumerico"
+              >
+                4
+              </div>
+              <div
+                class="detalle"
+              >
+                Regular
+              </div>
+            </div>
+          </div>
+          <div
+            class="informacionDetalle"
+          >
+            <div
+              class="ubicacion"
+            >
+              <i
+                class="fas fa-map-marker-alt"
+              />
+              <p>
+                La Plata
+                <span
+                  class="mostrarEnMapa"
+                >
+                  Mostrar en el mapa
+                </span>
+              </p>
+            </div>
+            <div
+              class="servicios"
+            >
+              <i
+                class="fas fa-swimmer"
+              />
+            </div>
+          </div>
+          <p>
+            Complejos turísticos con servicio “todo incluido” para disfrutar de unas vacaciones d...
+            <span
+              class="verMas"
+            >
+               Leer más
+            </span>
+          </p>
+          <a
+            href="/product/1/product/1/features"
+          >
+            <input
+              class="filledButton btnVerMas"
+              type="submit"
+              value="Ver más"
+            />
+          </a>
+        </div>
+      </div>
+    </div>
+  </body>,
+  "container": <div>
+    <div
+      class="tarjetaAlojamiento"
+      data-aos="fade-up"
+    >
+      <div
+        class="imagenAlojamiento"
+        style="background-image: url(https://proyectointegradorimagenes2.s3.us-east-2.amazonaws.com/Alojamientos/Producto1.jpg);"
+      />
+      <div
+        class="descripcionAlojamiento"
+      >
+        <div
+          class="informacionPrincipal"
+        >
+          <div
+            class="nombreAlojamiento"
+          >
+            <div
+              class="tipoYCalificacion"
+            >
+              <h4>
+                Hoteles
+              </h4>
+              <span
+                aria-label="Estrellas"
+                class="estrellas"
+              >
+                <i
+                  class="fas fa-star estrellaLlena"
+                />
+                <i
+                  class="fas fa-star estrellaLlena"
+                />
+                <i
+                  class="fas fa-star estrellaVacia"
+                />
+                <i
+                  class="fas fa-star estrellaVacia"
+                />
+                <i
+                  class="fas fa-star estrellaVacia"
+                />
+              </span>
+            </div>
+            <h2>
+              Meliá
+            </h2>
+          </div>
+          <div
+            class="puntajeAlojamiento"
+          >
+            <div
+              class="puntajeNumerico"
+            >
+              4
+            </div>
+            <div
+              class="detalle"
+            >
+              Regular
+            </div>
+          </div>
+        </div>
+        <div
+          class="informacionDetalle"
+        >
+          <div
+            class="ubicacion"
+          >
+            <i
+              class="fas fa-map-marker-alt"
+            />
+            <p>
+              La Plata
+              <span
+                class="mostrarEnMapa"
+              >
+                Mostrar en el mapa
+              </span>
+            </p>
+          </div>
+          <div
+            class="servicios"
+          >
+            <i
+              class="fas fa-swimmer"
+            />
+          </div>
+        </div>
+        <p>
+          Complejos turísticos con servicio “todo incluido” para disfrutar de unas vacaciones d...
+          <span
+            class="verMas"
+          >
+             Leer más
+          </span>
+        </p>
+        <a
+          href="/product/1/product/1/features"
+        >
+          <input
+            class="filledButton btnVerMas"
+            type="submit"
+            value="Ver más"
+          />
+        </a>
+      </div>
+    </div>
+  </div>,
+  "debug": [Function],
+  "findAllByAltText": [Function],
+  "findAllByDisplayValue": [Function],
+  "findAllByLabelText": [Function],
+  "findAllByPlaceholderText": [Function],
+  "findAllByRole": [Function],
+  "findAllByTestId": [Function],
+  "findAllByText": [Function],
+  "findAllByTitle": [Function],
+  "findByAltText": [Function],
+  "findByDisplayValue": [Function],
+  "findByLabelText": [Function],
+  "findByPlaceholderText": [Function],
+  "findByRole": [Function],
+  "findByTestId": [Function],
+  "findByText": [Function],
+  "findByTitle": [Function],
+  "getAllByAltText": [Function],
+  "getAllByDisplayValue": [Function],
+  "getAllByLabelText": [Function],
+  "getAllByPlaceholderText": [Function],
+  "getAllByRole": [Function],
+  "getAllByTestId": [Function],
+  "getAllByText": [Function],
+  "getAllByTitle": [Function],
+  "getByAltText": [Function],
+  "getByDisplayValue": [Function],
+  "getByLabelText": [Function],
+  "getByPlaceholderText": [Function],
+  "getByRole": [Function],
+  "getByTestId": [Function],
+  "getByText": [Function],
+  "getByTitle": [Function],
+  "queryAllByAltText": [Function],
+  "queryAllByDisplayValue": [Function],
+  "queryAllByLabelText": [Function],
+  "queryAllByPlaceholderText": [Function],
+  "queryAllByRole": [Function],
+  "queryAllByTestId": [Function],
+  "queryAllByText": [Function],
+  "queryAllByTitle": [Function],
+  "queryByAltText": [Function],
+  "queryByDisplayValue": [Function],
+  "queryByLabelText": [Function],
+  "queryByPlaceholderText": [Function],
+  "queryByRole": [Function],
+  "queryByTestId": [Function],
+  "queryByText": [Function],
+  "queryByTitle": [Function],
+  "rerender": [Function],
+  "unmount": [Function],
+}
+`;
+
+exports[`Tarjeta Alojamiento test Renderiza Componente is logged false , is loaded true 1`] = `
+Object {
+  "asFragment": [Function],
+  "baseElement": <body>
+    <div>
+      <div
+        class="tarjetaAlojamiento"
+        data-aos="fade-up"
+      >
+        <div
+          class="imagenAlojamiento"
+          style="background-image: url(https://proyectointegradorimagenes2.s3.us-east-2.amazonaws.com/Alojamientos/Producto1.jpg);"
+        />
+        <div
+          class="descripcionAlojamiento"
+        >
+          <div
+            class="informacionPrincipal"
+          >
+            <div
+              class="nombreAlojamiento"
+            >
+              <div
+                class="tipoYCalificacion"
+              >
+                <h4>
+                  Hoteles
+                </h4>
+                <span
+                  aria-label="Estrellas"
+                  class="estrellas"
+                >
+                  <i
+                    class="fas fa-star estrellaLlena"
+                  />
+                  <i
+                    class="fas fa-star estrellaLlena"
+                  />
+                  <i
+                    class="fas fa-star estrellaVacia"
+                  />
+                  <i
+                    class="fas fa-star estrellaVacia"
+                  />
+                  <i
+                    class="fas fa-star estrellaVacia"
+                  />
+                </span>
+              </div>
+              <h2>
+                Meliá
+              </h2>
+            </div>
+            <div
+              class="puntajeAlojamiento"
+            >
+              <div
+                class="puntajeNumerico"
+              >
+                4
+              </div>
+              <div
+                class="detalle"
+              >
+                Regular
+              </div>
+            </div>
+          </div>
+          <div
+            class="informacionDetalle"
+          >
+            <div
+              class="ubicacion"
+            >
+              <i
+                class="fas fa-map-marker-alt"
+              />
+              <p>
+                La Plata
+                <span
+                  class="mostrarEnMapa"
+                >
+                  Mostrar en el mapa
+                </span>
+              </p>
+            </div>
+            <div
+              class="servicios"
+            >
+              <i
+                class="fas fa-swimmer"
+              />
+            </div>
+          </div>
+          <p>
+            Complejos turísticos con servicio “todo incluido” para disfrutar de unas vacaciones d...
+            <span
+              class="verMas"
+            >
+               Leer más
+            </span>
+          </p>
+          <a
+            href="/product/1/features"
+          >
+            <input
+              class="filledButton btnVerMas"
+              type="submit"
+              value="Ver más"
+            />
+          </a>
+        </div>
+      </div>
+    </div>
+  </body>,
+  "container": <div>
+    <div
+      class="tarjetaAlojamiento"
+      data-aos="fade-up"
+    >
+      <div
+        class="imagenAlojamiento"
+        style="background-image: url(https://proyectointegradorimagenes2.s3.us-east-2.amazonaws.com/Alojamientos/Producto1.jpg);"
+      />
+      <div
+        class="descripcionAlojamiento"
+      >
+        <div
+          class="informacionPrincipal"
+        >
+          <div
+            class="nombreAlojamiento"
+          >
+            <div
+              class="tipoYCalificacion"
+            >
+              <h4>
+                Hoteles
+              </h4>
+              <span
+                aria-label="Estrellas"
+                class="estrellas"
+              >
+                <i
+                  class="fas fa-star estrellaLlena"
+                />
+                <i
+                  class="fas fa-star estrellaLlena"
+                />
+                <i
+                  class="fas fa-star estrellaVacia"
+                />
+                <i
+                  class="fas fa-star estrellaVacia"
+                />
+                <i
+                  class="fas fa-star estrellaVacia"
+                />
+              </span>
+            </div>
+            <h2>
+              Meliá
+            </h2>
+          </div>
+          <div
+            class="puntajeAlojamiento"
+          >
+            <div
+              class="puntajeNumerico"
+            >
+              4
+            </div>
+            <div
+              class="detalle"
+            >
+              Regular
+            </div>
+          </div>
+        </div>
+        <div
+          class="informacionDetalle"
+        >
+          <div
+            class="ubicacion"
+          >
+            <i
+              class="fas fa-map-marker-alt"
+            />
+            <p>
+              La Plata
+              <span
+                class="mostrarEnMapa"
+              >
+                Mostrar en el mapa
+              </span>
+            </p>
+          </div>
+          <div
+            class="servicios"
+          >
+            <i
+              class="fas fa-swimmer"
+            />
+          </div>
+        </div>
+        <p>
+          Complejos turísticos con servicio “todo incluido” para disfrutar de unas vacaciones d...
+          <span
+            class="verMas"
+          >
+             Leer más
+          </span>
+        </p>
+        <a
+          href="/product/1/features"
+        >
+          <input
+            class="filledButton btnVerMas"
+            type="submit"
+            value="Ver más"
+          />
+        </a>
+      </div>
+    </div>
+  </div>,
+  "debug": [Function],
+  "findAllByAltText": [Function],
+  "findAllByDisplayValue": [Function],
+  "findAllByLabelText": [Function],
+  "findAllByPlaceholderText": [Function],
+  "findAllByRole": [Function],
+  "findAllByTestId": [Function],
+  "findAllByText": [Function],
+  "findAllByTitle": [Function],
+  "findByAltText": [Function],
+  "findByDisplayValue": [Function],
+  "findByLabelText": [Function],
+  "findByPlaceholderText": [Function],
+  "findByRole": [Function],
+  "findByTestId": [Function],
+  "findByText": [Function],
+  "findByTitle": [Function],
+  "getAllByAltText": [Function],
+  "getAllByDisplayValue": [Function],
+  "getAllByLabelText": [Function],
+  "getAllByPlaceholderText": [Function],
+  "getAllByRole": [Function],
+  "getAllByTestId": [Function],
+  "getAllByText": [Function],
+  "getAllByTitle": [Function],
+  "getByAltText": [Function],
+  "getByDisplayValue": [Function],
+  "getByLabelText": [Function],
+  "getByPlaceholderText": [Function],
+  "getByRole": [Function],
+  "getByTestId": [Function],
+  "getByText": [Function],
+  "getByTitle": [Function],
+  "queryAllByAltText": [Function],
+  "queryAllByDisplayValue": [Function],
+  "queryAllByLabelText": [Function],
+  "queryAllByPlaceholderText": [Function],
+  "queryAllByRole": [Function],
+  "queryAllByTestId": [Function],
+  "queryAllByText": [Function],
+  "queryAllByTitle": [Function],
+  "queryByAltText": [Function],
+  "queryByDisplayValue": [Function],
+  "queryByLabelText": [Function],
+  "queryByPlaceholderText": [Function],
+  "queryByRole": [Function],
+  "queryByTestId": [Function],
+  "queryByText": [Function],
+  "queryByTitle": [Function],
+  "rerender": [Function],
+  "unmount": [Function],
+}
+`;
+
+exports[`Tarjeta Alojamiento test Renderiza Componente is logged true , is loaded true 1`] = `
+Object {
+  "asFragment": [Function],
+  "baseElement": <body>
+    <div>
+      <div
+        class="tarjetaAlojamiento"
+        data-aos="fade-up"
+      >
+        <div
+          class="imagenAlojamiento"
+          style="background-image: url(https://proyectointegradorimagenes2.s3.us-east-2.amazonaws.com/Alojamientos/Producto1.jpg);"
+        />
+        <div
+          class="descripcionAlojamiento"
+        >
+          <div
+            class="informacionPrincipal"
+          >
+            <div
+              class="nombreAlojamiento"
+            >
+              <div
+                class="tipoYCalificacion"
+              >
+                <h4>
+                  Hoteles
+                </h4>
+                <span
+                  aria-label="Estrellas"
+                  class="estrellas"
+                >
+                  <i
+                    class="fas fa-star estrellaLlena"
+                  />
+                  <i
+                    class="fas fa-star estrellaLlena"
+                  />
+                  <i
+                    class="fas fa-star estrellaVacia"
+                  />
+                  <i
+                    class="fas fa-star estrellaVacia"
+                  />
+                  <i
+                    class="fas fa-star estrellaVacia"
+                  />
+                </span>
+              </div>
+              <h2>
+                Meliá
+              </h2>
+            </div>
+            <div
+              class="puntajeAlojamiento"
+            >
+              <div
+                class="puntajeNumerico"
+              >
+                4
+              </div>
+              <div
+                class="detalle"
+              >
+                Regular
+              </div>
+            </div>
+          </div>
+          <div
+            class="informacionDetalle"
+          >
+            <div
+              class="ubicacion"
+            >
+              <i
+                class="fas fa-map-marker-alt"
+              />
+              <p>
+                La Plata
+                <span
+                  class="mostrarEnMapa"
+                >
+                  Mostrar en el mapa
+                </span>
+              </p>
+            </div>
+            <div
+              class="servicios"
+            >
+              <i
+                class="fas fa-swimmer"
+              />
+            </div>
+          </div>
+          <p>
+            Complejos turísticos con servicio “todo incluido” para disfrutar de unas vacaciones d...
+            <span
+              class="verMas"
+            >
+               Leer más
+            </span>
+          </p>
+          <a
+            href="/product/1/features"
+          >
+            <input
+              class="filledButton btnVerMas"
+              type="submit"
+              value="Ver más"
+            />
+          </a>
+        </div>
+      </div>
+    </div>
+  </body>,
+  "container": <div>
+    <div
+      class="tarjetaAlojamiento"
+      data-aos="fade-up"
+    >
+      <div
+        class="imagenAlojamiento"
+        style="background-image: url(https://proyectointegradorimagenes2.s3.us-east-2.amazonaws.com/Alojamientos/Producto1.jpg);"
+      />
+      <div
+        class="descripcionAlojamiento"
+      >
+        <div
+          class="informacionPrincipal"
+        >
+          <div
+            class="nombreAlojamiento"
+          >
+            <div
+              class="tipoYCalificacion"
+            >
+              <h4>
+                Hoteles
+              </h4>
+              <span
+                aria-label="Estrellas"
+                class="estrellas"
+              >
+                <i
+                  class="fas fa-star estrellaLlena"
+                />
+                <i
+                  class="fas fa-star estrellaLlena"
+                />
+                <i
+                  class="fas fa-star estrellaVacia"
+                />
+                <i
+                  class="fas fa-star estrellaVacia"
+                />
+                <i
+                  class="fas fa-star estrellaVacia"
+                />
+              </span>
+            </div>
+            <h2>
+              Meliá
+            </h2>
+          </div>
+          <div
+            class="puntajeAlojamiento"
+          >
+            <div
+              class="puntajeNumerico"
+            >
+              4
+            </div>
+            <div
+              class="detalle"
+            >
+              Regular
+            </div>
+          </div>
+        </div>
+        <div
+          class="informacionDetalle"
+        >
+          <div
+            class="ubicacion"
+          >
+            <i
+              class="fas fa-map-marker-alt"
+            />
+            <p>
+              La Plata
+              <span
+                class="mostrarEnMapa"
+              >
+                Mostrar en el mapa
+              </span>
+            </p>
+          </div>
+          <div
+            class="servicios"
+          >
+            <i
+              class="fas fa-swimmer"
+            />
+          </div>
+        </div>
+        <p>
+          Complejos turísticos con servicio “todo incluido” para disfrutar de unas vacaciones d...
+          <span
+            class="verMas"
+          >
+             Leer más
+          </span>
+        </p>
+        <a
+          href="/product/1/features"
+        >
+          <input
+            class="filledButton btnVerMas"
+            type="submit"
+            value="Ver más"
+          />
+        </a>
+      </div>
+    </div>
+  </div>,
+  "debug": [Function],
+  "findAllByAltText": [Function],
+  "findAllByDisplayValue": [Function],
+  "findAllByLabelText": [Function],
+  "findAllByPlaceholderText": [Function],
+  "findAllByRole": [Function],
+  "findAllByTestId": [Function],
+  "findAllByText": [Function],
+  "findAllByTitle": [Function],
+  "findByAltText": [Function],
+  "findByDisplayValue": [Function],
+  "findByLabelText": [Function],
+  "findByPlaceholderText": [Function],
+  "findByRole": [Function],
+  "findByTestId": [Function],
+  "findByText": [Function],
+  "findByTitle": [Function],
+  "getAllByAltText": [Function],
+  "getAllByDisplayValue": [Function],
+  "getAllByLabelText": [Function],
+  "getAllByPlaceholderText": [Function],
+  "getAllByRole": [Function],
+  "getAllByTestId": [Function],
+  "getAllByText": [Function],
+  "getAllByTitle": [Function],
+  "getByAltText": [Function],
+  "getByDisplayValue": [Function],
+  "getByLabelText": [Function],
+  "getByPlaceholderText": [Function],
+  "getByRole": [Function],
+  "getByTestId": [Function],
+  "getByText": [Function],
+  "getByTitle": [Function],
+  "queryAllByAltText": [Function],
+  "queryAllByDisplayValue": [Function],
+  "queryAllByLabelText": [Function],
+  "queryAllByPlaceholderText": [Function],
+  "queryAllByRole": [Function],
+  "queryAllByTestId": [Function],
+  "queryAllByText": [Function],
+  "queryAllByTitle": [Function],
+  "queryByAltText": [Function],
+  "queryByDisplayValue": [Function],
+  "queryByLabelText": [Function],
+  "queryByPlaceholderText": [Function],
+  "queryByRole": [Function],
+  "queryByTestId": [Function],
+  "queryByText": [Function],
+  "queryByTitle": [Function],
+  "rerender": [Function],
+  "unmount": [Function],
+}
+`;
+
+exports[`Tarjeta Alojamiento test Renderiza Componente sin con descripcion menor de 85 1`] = `
+Object {
+  "asFragment": [Function],
+  "baseElement": <body>
+    <div>
+      <div
+        class="tarjetaAlojamiento"
+        data-aos="fade-up"
+      >
+        <div
+          class="imagenAlojamiento"
+          style="background-image: url(https://proyectointegradorimagenes2.s3.us-east-2.amazonaws.com/Alojamientos/Producto1.jpg);"
+        />
+        <div
+          class="descripcionAlojamiento"
+        >
+          <div
+            class="informacionPrincipal"
+          >
+            <div
+              class="nombreAlojamiento"
+            >
+              <div
+                class="tipoYCalificacion"
+              >
+                <h4>
+                  Hoteles
+                </h4>
+                <span
+                  aria-label="Estrellas"
+                  class="estrellas"
+                >
+                  <i
+                    class="fas fa-star estrellaLlena"
+                  />
+                  <i
+                    class="fas fa-star estrellaLlena"
+                  />
+                  <i
+                    class="fas fa-star estrellaVacia"
+                  />
+                  <i
+                    class="fas fa-star estrellaVacia"
+                  />
+                  <i
+                    class="fas fa-star estrellaVacia"
+                  />
+                </span>
+              </div>
+              <h2>
+                Meliá
+              </h2>
+            </div>
+            <div
+              class="puntajeAlojamiento"
+            >
+              <div
+                class="puntajeNumerico"
+              >
+                4
+              </div>
+              <div
+                class="detalle"
+              >
+                Regular
+              </div>
+            </div>
+          </div>
+          <div
+            class="informacionDetalle"
+          >
+            <div
+              class="ubicacion"
+            >
+              <i
+                class="fas fa-map-marker-alt"
+              />
+              <p>
+                La Plata
+                <span
+                  class="mostrarEnMapa"
+                >
+                  Mostrar en el mapa
+                </span>
+              </p>
+            </div>
+            <div
+              class="servicios"
+            >
+              <i
+                class="fas fa-swimmer"
+              />
+            </div>
+          </div>
+          <p>
+            ayuda
+          </p>
+          <a
+            href="/product/1/features"
+          >
+            <input
+              class="filledButton btnVerMas"
+              type="submit"
+              value="Ver más"
+            />
+          </a>
+        </div>
+      </div>
+    </div>
+  </body>,
+  "container": <div>
+    <div
+      class="tarjetaAlojamiento"
+      data-aos="fade-up"
+    >
+      <div
+        class="imagenAlojamiento"
+        style="background-image: url(https://proyectointegradorimagenes2.s3.us-east-2.amazonaws.com/Alojamientos/Producto1.jpg);"
+      />
+      <div
+        class="descripcionAlojamiento"
+      >
+        <div
+          class="informacionPrincipal"
+        >
+          <div
+            class="nombreAlojamiento"
+          >
+            <div
+              class="tipoYCalificacion"
+            >
+              <h4>
+                Hoteles
+              </h4>
+              <span
+                aria-label="Estrellas"
+                class="estrellas"
+              >
+                <i
+                  class="fas fa-star estrellaLlena"
+                />
+                <i
+                  class="fas fa-star estrellaLlena"
+                />
+                <i
+                  class="fas fa-star estrellaVacia"
+                />
+                <i
+                  class="fas fa-star estrellaVacia"
+                />
+                <i
+                  class="fas fa-star estrellaVacia"
+                />
+              </span>
+            </div>
+            <h2>
+              Meliá
+            </h2>
+          </div>
+          <div
+            class="puntajeAlojamiento"
+          >
+            <div
+              class="puntajeNumerico"
+            >
+              4
+            </div>
+            <div
+              class="detalle"
+            >
+              Regular
+            </div>
+          </div>
+        </div>
+        <div
+          class="informacionDetalle"
+        >
+          <div
+            class="ubicacion"
+          >
+            <i
+              class="fas fa-map-marker-alt"
+            />
+            <p>
+              La Plata
+              <span
+                class="mostrarEnMapa"
+              >
+                Mostrar en el mapa
+              </span>
+            </p>
+          </div>
+          <div
+            class="servicios"
+          >
+            <i
+              class="fas fa-swimmer"
+            />
+          </div>
+        </div>
+        <p>
+          ayuda
+        </p>
+        <a
+          href="/product/1/features"
+        >
+          <input
+            class="filledButton btnVerMas"
+            type="submit"
+            value="Ver más"
+          />
+        </a>
+      </div>
+    </div>
+  </div>,
+  "debug": [Function],
+  "findAllByAltText": [Function],
+  "findAllByDisplayValue": [Function],
+  "findAllByLabelText": [Function],
+  "findAllByPlaceholderText": [Function],
+  "findAllByRole": [Function],
+  "findAllByTestId": [Function],
+  "findAllByText": [Function],
+  "findAllByTitle": [Function],
+  "findByAltText": [Function],
+  "findByDisplayValue": [Function],
+  "findByLabelText": [Function],
+  "findByPlaceholderText": [Function],
+  "findByRole": [Function],
+  "findByTestId": [Function],
+  "findByText": [Function],
+  "findByTitle": [Function],
+  "getAllByAltText": [Function],
+  "getAllByDisplayValue": [Function],
+  "getAllByLabelText": [Function],
+  "getAllByPlaceholderText": [Function],
+  "getAllByRole": [Function],
+  "getAllByTestId": [Function],
+  "getAllByText": [Function],
+  "getAllByTitle": [Function],
+  "getByAltText": [Function],
+  "getByDisplayValue": [Function],
+  "getByLabelText": [Function],
+  "getByPlaceholderText": [Function],
+  "getByRole": [Function],
+  "getByTestId": [Function],
+  "getByText": [Function],
+  "getByTitle": [Function],
+  "queryAllByAltText": [Function],
+  "queryAllByDisplayValue": [Function],
+  "queryAllByLabelText": [Function],
+  "queryAllByPlaceholderText": [Function],
+  "queryAllByRole": [Function],
+  "queryAllByTestId": [Function],
+  "queryAllByText": [Function],
+  "queryAllByTitle": [Function],
+  "queryByAltText": [Function],
+  "queryByDisplayValue": [Function],
+  "queryByLabelText": [Function],
+  "queryByPlaceholderText": [Function],
+  "queryByRole": [Function],
+  "queryByTestId": [Function],
+  "queryByText": [Function],
+  "queryByTitle": [Function],
+  "rerender": [Function],
+  "unmount": [Function],
+}
+`;
+
+exports[`Tarjeta Alojamiento test Renderiza Componente sin puntuaciones 1`] = `
+Object {
+  "asFragment": [Function],
+  "baseElement": <body>
+    <div>
+      <div
+        class="tarjetaAlojamiento"
+        data-aos="fade-up"
+      >
+        <div
+          class="imagenAlojamiento"
+          style="background-image: url(https://proyectointegradorimagenes2.s3.us-east-2.amazonaws.com/Alojamientos/Producto1.jpg);"
+        />
+        <div
+          class="descripcionAlojamiento"
+        >
+          <div
+            class="informacionPrincipal"
+          >
+            <div
+              class="nombreAlojamiento"
+            >
+              <div
+                class="tipoYCalificacion"
+              >
+                <h4>
+                  Hoteles
+                </h4>
+                <span
+                  aria-label="Estrellas"
+                  class="estrellas"
+                >
+                  <i
+                    class="fas fa-star estrellaVacia"
+                  />
+                  <i
+                    class="fas fa-star estrellaVacia"
+                  />
+                  <i
+                    class="fas fa-star estrellaVacia"
+                  />
+                  <i
+                    class="fas fa-star estrellaVacia"
+                  />
+                  <i
+                    class="fas fa-star estrellaVacia"
+                  />
+                </span>
+              </div>
+              <h2>
+                Meliá
+              </h2>
+            </div>
+            <div
+              class="puntajeAlojamiento"
+            >
+              
+              <div
+                class="detalle"
+              >
+                Sin calificaciones
+              </div>
+            </div>
+          </div>
+          <div
+            class="informacionDetalle"
+          >
+            <div
+              class="ubicacion"
+            >
+              <i
+                class="fas fa-map-marker-alt"
+              />
+              <p>
+                La Plata
+                <span
+                  class="mostrarEnMapa"
+                >
+                  Mostrar en el mapa
+                </span>
+              </p>
+            </div>
+            <div
+              class="servicios"
+            >
+              <i
+                class="fas fa-swimmer"
+              />
+            </div>
+          </div>
+          <p>
+            Complejos turísticos con servicio “todo incluido” para disfrutar de unas vacaciones d...
+            <span
+              class="verMas"
+            >
+               Leer más
+            </span>
+          </p>
+          <a
+            href="/product/1/features"
+          >
+            <input
+              class="filledButton btnVerMas"
+              type="submit"
+              value="Ver más"
+            />
+          </a>
+        </div>
+      </div>
+    </div>
+  </body>,
+  "container": <div>
+    <div
+      class="tarjetaAlojamiento"
+      data-aos="fade-up"
+    >
+      <div
+        class="imagenAlojamiento"
+        style="background-image: url(https://proyectointegradorimagenes2.s3.us-east-2.amazonaws.com/Alojamientos/Producto1.jpg);"
+      />
+      <div
+        class="descripcionAlojamiento"
+      >
+        <div
+          class="informacionPrincipal"
+        >
+          <div
+            class="nombreAlojamiento"
+          >
+            <div
+              class="tipoYCalificacion"
+            >
+              <h4>
+                Hoteles
+              </h4>
+              <span
+                aria-label="Estrellas"
+                class="estrellas"
+              >
+                <i
+                  class="fas fa-star estrellaVacia"
+                />
+                <i
+                  class="fas fa-star estrellaVacia"
+                />
+                <i
+                  class="fas fa-star estrellaVacia"
+                />
+                <i
+                  class="fas fa-star estrellaVacia"
+                />
+                <i
+                  class="fas fa-star estrellaVacia"
+                />
+              </span>
+            </div>
+            <h2>
+              Meliá
+            </h2>
+          </div>
+          <div
+            class="puntajeAlojamiento"
+          >
+            
+            <div
+              class="detalle"
+            >
+              Sin calificaciones
+            </div>
+          </div>
+        </div>
+        <div
+          class="informacionDetalle"
+        >
+          <div
+            class="ubicacion"
+          >
+            <i
+              class="fas fa-map-marker-alt"
+            />
+            <p>
+              La Plata
+              <span
+                class="mostrarEnMapa"
+              >
+                Mostrar en el mapa
+              </span>
+            </p>
+          </div>
+          <div
+            class="servicios"
+          >
+            <i
+              class="fas fa-swimmer"
+            />
+          </div>
+        </div>
+        <p>
+          Complejos turísticos con servicio “todo incluido” para disfrutar de unas vacaciones d...
+          <span
+            class="verMas"
+          >
+             Leer más
+          </span>
+        </p>
+        <a
+          href="/product/1/features"
+        >
+          <input
+            class="filledButton btnVerMas"
+            type="submit"
+            value="Ver más"
+          />
+        </a>
+      </div>
+    </div>
+  </div>,
+  "debug": [Function],
+  "findAllByAltText": [Function],
+  "findAllByDisplayValue": [Function],
+  "findAllByLabelText": [Function],
+  "findAllByPlaceholderText": [Function],
+  "findAllByRole": [Function],
+  "findAllByTestId": [Function],
+  "findAllByText": [Function],
+  "findAllByTitle": [Function],
+  "findByAltText": [Function],
+  "findByDisplayValue": [Function],
+  "findByLabelText": [Function],
+  "findByPlaceholderText": [Function],
+  "findByRole": [Function],
+  "findByTestId": [Function],
+  "findByText": [Function],
+  "findByTitle": [Function],
+  "getAllByAltText": [Function],
+  "getAllByDisplayValue": [Function],
+  "getAllByLabelText": [Function],
+  "getAllByPlaceholderText": [Function],
+  "getAllByRole": [Function],
+  "getAllByTestId": [Function],
+  "getAllByText": [Function],
+  "getAllByTitle": [Function],
+  "getByAltText": [Function],
+  "getByDisplayValue": [Function],
+  "getByLabelText": [Function],
+  "getByPlaceholderText": [Function],
+  "getByRole": [Function],
+  "getByTestId": [Function],
+  "getByText": [Function],
+  "getByTitle": [Function],
+  "queryAllByAltText": [Function],
+  "queryAllByDisplayValue": [Function],
+  "queryAllByLabelText": [Function],
+  "queryAllByPlaceholderText": [Function],
+  "queryAllByRole": [Function],
+  "queryAllByTestId": [Function],
+  "queryAllByText": [Function],
+  "queryAllByTitle": [Function],
+  "queryByAltText": [Function],
+  "queryByDisplayValue": [Function],
+  "queryByLabelText": [Function],
+  "queryByPlaceholderText": [Function],
+  "queryByRole": [Function],
+  "queryByTestId": [Function],
+  "queryByText": [Function],
+  "queryByTitle": [Function],
+  "rerender": [Function],
+  "unmount": [Function],
+}
+`;
+
+exports[`Tarjeta Alojamiento test Visualiza mapa  1`] = `
+Object {
+  "asFragment": [Function],
+  "baseElement": <body>
+    <div>
+      <div
+        class="tarjetaAlojamiento"
+        data-aos="fade-up"
+      >
+        <div
+          class="imagenAlojamiento"
+          style="background-image: url(https://proyectointegradorimagenes2.s3.us-east-2.amazonaws.com/Alojamientos/Producto1.jpg);"
+        />
+        <div
+          class="descripcionAlojamiento"
+        >
+          <div
+            class="informacionPrincipal"
+          >
+            <div
+              class="nombreAlojamiento"
+            >
+              <div
+                class="tipoYCalificacion"
+              >
+                <h4>
+                  Hoteles
+                </h4>
+                <span
+                  aria-label="Estrellas"
+                  class="estrellas"
+                >
+                  <i
+                    class="fas fa-star estrellaLlena"
+                  />
+                  <i
+                    class="fas fa-star estrellaLlena"
+                  />
+                  <i
+                    class="fas fa-star estrellaVacia"
+                  />
+                  <i
+                    class="fas fa-star estrellaVacia"
+                  />
+                  <i
+                    class="fas fa-star estrellaVacia"
+                  />
+                </span>
+              </div>
+              <h2>
+                Meliá
+              </h2>
+            </div>
+            <div
+              class="puntajeAlojamiento"
+            >
+              <div
+                class="puntajeNumerico"
+              >
+                4
+              </div>
+              <div
+                class="detalle"
+              >
+                Regular
+              </div>
+            </div>
+          </div>
+          <div
+            class="informacionDetalle"
+          >
+            <div
+              class="ubicacion"
+            >
+              <i
+                class="fas fa-map-marker-alt"
+              />
+              <p>
+                La Plata
+                <span
+                  class="mostrarEnMapa"
+                >
+                  Mostrar en el mapa
+                </span>
+              </p>
+            </div>
+            <div
+              class="servicios"
+            >
+              <i
+                class="fas fa-swimmer"
+              />
+            </div>
+          </div>
+          <p>
+            Complejos turísticos con servicio “todo incluido” para disfrutar de unas vacaciones d...
+            <span
+              class="verMas"
+            >
+               Leer más
+            </span>
+          </p>
+          <a
+            href="/product/1/features"
+          >
+            <input
+              class="filledButton btnVerMas"
+              type="submit"
+              value="Ver más"
+            />
+          </a>
+        </div>
+      </div>
+      <section
+        class="background"
+      >
+        <div
+          class="modal"
+        >
+          <span
+            class="close"
+            style="color: rgb(0, 0, 0);"
+          >
+            X
+          </span>
+          <div
+            class="contenedorMapa"
+          >
+            <h2
+              class="tituloMapa"
+            >
+              , La Plata, Argentina
+            </h2>
+          </div>
+        </div>
+      </section>
+    </div>
+  </body>,
+  "container": <div>
+    <div
+      class="tarjetaAlojamiento"
+      data-aos="fade-up"
+    >
+      <div
+        class="imagenAlojamiento"
+        style="background-image: url(https://proyectointegradorimagenes2.s3.us-east-2.amazonaws.com/Alojamientos/Producto1.jpg);"
+      />
+      <div
+        class="descripcionAlojamiento"
+      >
+        <div
+          class="informacionPrincipal"
+        >
+          <div
+            class="nombreAlojamiento"
+          >
+            <div
+              class="tipoYCalificacion"
+            >
+              <h4>
+                Hoteles
+              </h4>
+              <span
+                aria-label="Estrellas"
+                class="estrellas"
+              >
+                <i
+                  class="fas fa-star estrellaLlena"
+                />
+                <i
+                  class="fas fa-star estrellaLlena"
+                />
+                <i
+                  class="fas fa-star estrellaVacia"
+                />
+                <i
+                  class="fas fa-star estrellaVacia"
+                />
+                <i
+                  class="fas fa-star estrellaVacia"
+                />
+              </span>
+            </div>
+            <h2>
+              Meliá
+            </h2>
+          </div>
+          <div
+            class="puntajeAlojamiento"
+          >
+            <div
+              class="puntajeNumerico"
+            >
+              4
+            </div>
+            <div
+              class="detalle"
+            >
+              Regular
+            </div>
+          </div>
+        </div>
+        <div
+          class="informacionDetalle"
+        >
+          <div
+            class="ubicacion"
+          >
+            <i
+              class="fas fa-map-marker-alt"
+            />
+            <p>
+              La Plata
+              <span
+                class="mostrarEnMapa"
+              >
+                Mostrar en el mapa
+              </span>
+            </p>
+          </div>
+          <div
+            class="servicios"
+          >
+            <i
+              class="fas fa-swimmer"
+            />
+          </div>
+        </div>
+        <p>
+          Complejos turísticos con servicio “todo incluido” para disfrutar de unas vacaciones d...
+          <span
+            class="verMas"
+          >
+             Leer más
+          </span>
+        </p>
+        <a
+          href="/product/1/features"
+        >
+          <input
+            class="filledButton btnVerMas"
+            type="submit"
+            value="Ver más"
+          />
+        </a>
+      </div>
+    </div>
+    <section
+      class="background"
+    >
+      <div
+        class="modal"
+      >
+        <span
+          class="close"
+          style="color: rgb(0, 0, 0);"
+        >
+          X
+        </span>
+        <div
+          class="contenedorMapa"
+        >
+          <h2
+            class="tituloMapa"
+          >
+            , La Plata, Argentina
+          </h2>
+        </div>
+      </div>
+    </section>
+  </div>,
+  "debug": [Function],
+  "findAllByAltText": [Function],
+  "findAllByDisplayValue": [Function],
+  "findAllByLabelText": [Function],
+  "findAllByPlaceholderText": [Function],
+  "findAllByRole": [Function],
+  "findAllByTestId": [Function],
+  "findAllByText": [Function],
+  "findAllByTitle": [Function],
+  "findByAltText": [Function],
+  "findByDisplayValue": [Function],
+  "findByLabelText": [Function],
+  "findByPlaceholderText": [Function],
+  "findByRole": [Function],
+  "findByTestId": [Function],
+  "findByText": [Function],
+  "findByTitle": [Function],
+  "getAllByAltText": [Function],
+  "getAllByDisplayValue": [Function],
+  "getAllByLabelText": [Function],
+  "getAllByPlaceholderText": [Function],
+  "getAllByRole": [Function],
+  "getAllByTestId": [Function],
+  "getAllByText": [Function],
+  "getAllByTitle": [Function],
+  "getByAltText": [Function],
+  "getByDisplayValue": [Function],
+  "getByLabelText": [Function],
+  "getByPlaceholderText": [Function],
+  "getByRole": [Function],
+  "getByTestId": [Function],
+  "getByText": [Function],
+  "getByTitle": [Function],
+  "queryAllByAltText": [Function],
+  "queryAllByDisplayValue": [Function],
+  "queryAllByLabelText": [Function],
+  "queryAllByPlaceholderText": [Function],
+  "queryAllByRole": [Function],
+  "queryAllByTestId": [Function],
+  "queryAllByText": [Function],
+  "queryAllByTitle": [Function],
+  "queryByAltText": [Function],
+  "queryByDisplayValue": [Function],
+  "queryByLabelText": [Function],
+  "queryByPlaceholderText": [Function],
+  "queryByRole": [Function],
+  "queryByTestId": [Function],
+  "queryByText": [Function],
+  "queryByTitle": [Function],
+  "rerender": [Function],
+  "unmount": [Function],
+}
+`;
+
+exports[`Tarjeta Alojamiento test Visualiza mapa  2`] = `
+Object {
+  "asFragment": [Function],
+  "baseElement": <body>
+    <div>
+      <div
+        class="tarjetaAlojamiento"
+        data-aos="fade-up"
+      >
+        <div
+          class="imagenAlojamiento"
+          style="background-image: url(https://proyectointegradorimagenes2.s3.us-east-2.amazonaws.com/Alojamientos/Producto1.jpg);"
+        />
+        <div
+          class="descripcionAlojamiento"
+        >
+          <div
+            class="informacionPrincipal"
+          >
+            <div
+              class="nombreAlojamiento"
+            >
+              <div
+                class="tipoYCalificacion"
+              >
+                <h4>
+                  Hoteles
+                </h4>
+                <span
+                  aria-label="Estrellas"
+                  class="estrellas"
+                >
+                  <i
+                    class="fas fa-star estrellaLlena"
+                  />
+                  <i
+                    class="fas fa-star estrellaLlena"
+                  />
+                  <i
+                    class="fas fa-star estrellaVacia"
+                  />
+                  <i
+                    class="fas fa-star estrellaVacia"
+                  />
+                  <i
+                    class="fas fa-star estrellaVacia"
+                  />
+                </span>
+              </div>
+              <h2>
+                Meliá
+              </h2>
+            </div>
+            <div
+              class="puntajeAlojamiento"
+            >
+              <div
+                class="puntajeNumerico"
+              >
+                4
+              </div>
+              <div
+                class="detalle"
+              >
+                Regular
+              </div>
+            </div>
+          </div>
+          <div
+            class="informacionDetalle"
+          >
+            <div
+              class="ubicacion"
+            >
+              <i
+                class="fas fa-map-marker-alt"
+              />
+              <p>
+                La Plata
+                <span
+                  class="mostrarEnMapa"
+                >
+                  Mostrar en el mapa
+                </span>
+              </p>
+            </div>
+            <div
+              class="servicios"
+            >
+              <i
+                class="fas fa-swimmer"
+              />
+            </div>
+          </div>
+          <p>
+            Complejos turísticos con servicio “todo incluido” para disfrutar de unas vacaciones d...
+            <span
+              class="verMas"
+            >
+               Leer más
+            </span>
+          </p>
+          <a
+            href="/product/1/features"
+          >
+            <input
+              class="filledButton btnVerMas"
+              type="submit"
+              value="Ver más"
+            />
+          </a>
+        </div>
+      </div>
+    </div>
+  </body>,
+  "container": <div>
+    <div
+      class="tarjetaAlojamiento"
+      data-aos="fade-up"
+    >
+      <div
+        class="imagenAlojamiento"
+        style="background-image: url(https://proyectointegradorimagenes2.s3.us-east-2.amazonaws.com/Alojamientos/Producto1.jpg);"
+      />
+      <div
+        class="descripcionAlojamiento"
+      >
+        <div
+          class="informacionPrincipal"
+        >
+          <div
+            class="nombreAlojamiento"
+          >
+            <div
+              class="tipoYCalificacion"
+            >
+              <h4>
+                Hoteles
+              </h4>
+              <span
+                aria-label="Estrellas"
+                class="estrellas"
+              >
+                <i
+                  class="fas fa-star estrellaLlena"
+                />
+                <i
+                  class="fas fa-star estrellaLlena"
+                />
+                <i
+                  class="fas fa-star estrellaVacia"
+                />
+                <i
+                  class="fas fa-star estrellaVacia"
+                />
+                <i
+                  class="fas fa-star estrellaVacia"
+                />
+              </span>
+            </div>
+            <h2>
+              Meliá
+            </h2>
+          </div>
+          <div
+            class="puntajeAlojamiento"
+          >
+            <div
+              class="puntajeNumerico"
+            >
+              4
+            </div>
+            <div
+              class="detalle"
+            >
+              Regular
+            </div>
+          </div>
+        </div>
+        <div
+          class="informacionDetalle"
+        >
+          <div
+            class="ubicacion"
+          >
+            <i
+              class="fas fa-map-marker-alt"
+            />
+            <p>
+              La Plata
+              <span
+                class="mostrarEnMapa"
+              >
+                Mostrar en el mapa
+              </span>
+            </p>
+          </div>
+          <div
+            class="servicios"
+          >
+            <i
+              class="fas fa-swimmer"
+            />
+          </div>
+        </div>
+        <p>
+          Complejos turísticos con servicio “todo incluido” para disfrutar de unas vacaciones d...
+          <span
+            class="verMas"
+          >
+             Leer más
+          </span>
+        </p>
+        <a
+          href="/product/1/features"
+        >
+          <input
+            class="filledButton btnVerMas"
+            type="submit"
+            value="Ver más"
+          />
+        </a>
+      </div>
+    </div>
+  </div>,
+  "debug": [Function],
+  "findAllByAltText": [Function],
+  "findAllByDisplayValue": [Function],
+  "findAllByLabelText": [Function],
+  "findAllByPlaceholderText": [Function],
+  "findAllByRole": [Function],
+  "findAllByTestId": [Function],
+  "findAllByText": [Function],
+  "findAllByTitle": [Function],
+  "findByAltText": [Function],
+  "findByDisplayValue": [Function],
+  "findByLabelText": [Function],
+  "findByPlaceholderText": [Function],
+  "findByRole": [Function],
+  "findByTestId": [Function],
+  "findByText": [Function],
+  "findByTitle": [Function],
+  "getAllByAltText": [Function],
+  "getAllByDisplayValue": [Function],
+  "getAllByLabelText": [Function],
+  "getAllByPlaceholderText": [Function],
+  "getAllByRole": [Function],
+  "getAllByTestId": [Function],
+  "getAllByText": [Function],
+  "getAllByTitle": [Function],
+  "getByAltText": [Function],
+  "getByDisplayValue": [Function],
+  "getByLabelText": [Function],
+  "getByPlaceholderText": [Function],
+  "getByRole": [Function],
+  "getByTestId": [Function],
+  "getByText": [Function],
+  "getByTitle": [Function],
+  "queryAllByAltText": [Function],
+  "queryAllByDisplayValue": [Function],
+  "queryAllByLabelText": [Function],
+  "queryAllByPlaceholderText": [Function],
+  "queryAllByRole": [Function],
+  "queryAllByTestId": [Function],
+  "queryAllByText": [Function],
+  "queryAllByTitle": [Function],
+  "queryByAltText": [Function],
+  "queryByDisplayValue": [Function],
+  "queryByLabelText": [Function],
+  "queryByPlaceholderText": [Function],
+  "queryByRole": [Function],
+  "queryByTestId": [Function],
+  "queryByText": [Function],
+  "queryByTitle": [Function],
+  "rerender": [Function],
+  "unmount": [Function],
+}
+`;

@@ -1,0 +1,177 @@
+.camposObligatorios{
+    color: var(--color-2);
+    font-size: 0.875rem;
+    text-align: left;
+    margin-top: 2px;
+}
+
+.containerPrincipal{
+    background-color: var(--color-inputs-form-datos);
+}
+
+.formAdmin{
+    background-color: var(--color-5);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border: 1px solid #dfe4ea;
+    color: var(--color-2);
+    margin: 2vh 0 84px 0;
+    padding: 0 20px;
+}
+
+.subContainer{
+    width: 100%;
+    padding: 2vh 0;
+}
+
+.lineContainerInformacion{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+}
+
+.containerTexto p{
+    font-size: 0.875rem;
+}
+
+.containerCityInput{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    
+}
+ 
+/* Checkboxes de atributos*/
+.checkboxes{
+    background-color: rgba(190, 190, 190, 0.1);
+    border-radius: 5px;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+    width: 100%;
+    margin-top: 20px;
+    padding: 20px 0;
+}
+
+.checkboxes li{   
+    width: 25%;
+}
+
+
+.checkboxes input[type="checkbox"]{
+    display: none;
+}
+
+.checkboxes label {
+    font-weight: 700;
+    font-size: 1rem;
+    padding: 5px 15px 5px 15px;
+    gap: 15px;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin: 5px 7px ;
+    display: flex;
+       
+}
+
+.checkboxes label i{
+    color: var(--color-inputs-form-datos);
+    font-size: 1.25rem;
+}
+.checkboxes label span{
+    color: var(--color-2);
+    user-select: none;
+}
+
+.checkboxes label:hover {
+    background-color: rgba(190, 190, 190, 0.1);
+    box-shadow: 0px 1px 5px rgb(0 0 0 / 15%);
+    color: var(--color-2);
+} 
+
+.checkboxes label i:hover{
+    color: var(--color-2);
+}
+
+.checkboxes input[type="checkbox"]:checked + label{
+    padding: 5px 15px;
+    background-color: var(--color-5);
+    box-shadow: 0px 1px 5px rgb(0 0 0 / 15%);
+    border-radius: 3px;
+}
+
+.checkboxes input[type="checkbox"]:checked + label i{
+    color: var(--color-principal);
+}  
+
+.bloquePoliticas{
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    background-color: var(--color-5);
+    border: 3px solid var(--color-5);
+    border-radius: 5px;
+    box-shadow: 0px 1px 5px rgb(0 0 0 / 15%);
+    font-size: 1rem;
+    padding: 2vh 15px;
+    width: 100%;
+    margin-top: 20px;
+}
+.columnPolitica{
+    width: 100%;
+}
+.tipoPolitica{
+    font-weight: 700;
+    color: var(--color-3);
+}
+
+.buttonSubmit{
+    font-size: 1.25rem;
+    padding: 7px 15vw;
+    
+}
+
+.invalidURL {
+    background-color: #da5456;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    color: #000;
+    gap: 10px;
+    margin: 0 20px;
+  }
+
+  .invalidURL p {
+    color: #000;
+    text-align: left;
+  }
+
+@media (max-width: 768px) {
+    .checkboxes li{   
+        width: 50%;
+    }
+
+    .bloquePoliticas{
+        display: flex;
+        flex-direction: column;
+    }
+}
+@media (max-width: 480px) {
+
+    .lineContainerInformacion{
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+    }
+
+    .checkboxes li{   
+        width: 100%;
+    }
+}

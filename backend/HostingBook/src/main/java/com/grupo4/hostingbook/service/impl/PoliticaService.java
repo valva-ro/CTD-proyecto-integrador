@@ -34,8 +34,15 @@ public class PoliticaService implements IPoliticaService {
     @Override
     public PoliticaDTO crear(PoliticaDTO politicaDTO) throws BadRequestException, ResourceNotFoundException {
         validarCamposRequeridosCreacion(politicaDTO);
+        Politica guardada;
         Politica entidadPolitica = mapper.convertValue(politicaDTO, Politica.class);
-        Politica guardada = politicaRepository.save(entidadPolitica);
+        Optional<TipoPolitica> tipoPolitica = tipoPoliticaRepository.findById(politicaDTO.getTipoPolitica().getId());
+        if (tipoPolitica.isPresent()) {
+            guardada = politicaRepository.save(entidadPolitica);
+            guardada.setTipoPolitica(tipoPolitica.get());
+        } else {
+            throw new ResourceNotFoundException(String.format(Mensajes.ERROR_NO_EXISTE, "El 'tipo política'", politicaDTO.getTipoPolitica().getId()));
+        }
         return mapper.convertValue(guardada, PoliticaDTO.class);
     }
 
@@ -91,7 +98,6 @@ public class PoliticaService implements IPoliticaService {
     }
 
 
-
     @Override
     public TipoPoliticaDTO crearTipoPolitica(TipoPoliticaDTO tipoPoliticaDTO) throws BadRequestException {
         validarCamposRequeridosCreacionTipoPolitica(tipoPoliticaDTO);
@@ -99,17 +105,19 @@ public class PoliticaService implements IPoliticaService {
         TipoPolitica guardada = tipoPoliticaRepository.save(entidadTipoPolitica);
         return mapper.convertValue(guardada, TipoPoliticaDTO.class);
     }
+
     private void validarCamposRequeridosCreacion(PoliticaDTO politicaDTO) throws BadRequestException {
         if (politicaDTO == null) {
             throw new BadRequestException(String.format(Mensajes.ERROR_DTO_NO_EXISTE, "política"));
         } else {
-            if (politicaDTO.getTipoPolitica() == null )
+            if (politicaDTO.getTipoPolitica() == null)
                 throw new BadRequestException(String.format(Mensajes.ERROR_CREACION_CAMPO_REQUERIDO, "política", "tipo política"));
             if (politicaDTO.getNombre() == null || politicaDTO.getNombre().isEmpty() || politicaDTO.getNombre().isBlank())
                 throw new BadRequestException(String.format(Mensajes.ERROR_CREACION_CAMPO_REQUERIDO, "política", "nombre"));
 
         }
     }
+
     private void validarCamposRequeridosCreacionTipoPolitica(TipoPoliticaDTO tipoPoliticaDTO) throws BadRequestException {
         if (tipoPoliticaDTO == null) {
             throw new BadRequestException(String.format(Mensajes.ERROR_DTO_NO_EXISTE, "Tipo política"));
@@ -117,13 +125,15 @@ public class PoliticaService implements IPoliticaService {
             if (tipoPoliticaDTO.getNombre() == null || tipoPoliticaDTO.getNombre().isEmpty() || tipoPoliticaDTO.getNombre().isBlank())
                 throw new BadRequestException(String.format(Mensajes.ERROR_CREACION_CAMPO_REQUERIDO, "tipo política", "nombre"));
         }
-        }
+    }
+
     private void validarId(Long id) throws BadRequestException, ResourceNotFoundException {
         if (id < 1)
             throw new BadRequestException(Mensajes.ERROR_ID_FUERA_DE_RANGO);
-            if (!politicaRepository.existsById(id))
+        if (!politicaRepository.existsById(id))
             throw new ResourceNotFoundException(String.format(Mensajes.ERROR_NO_EXISTE, "La 'política'", id));
     }
+
     private void validarCamposRequeridosActualizacion(PoliticaDTO politicaDTO) throws BadRequestException {
         if (politicaDTO == null) {
             throw new BadRequestException(String.format(Mensajes.ERROR_DTO_NO_EXISTE, "política"));
@@ -134,10 +144,11 @@ public class PoliticaService implements IPoliticaService {
                 throw new BadRequestException(Mensajes.ERROR_ID_FUERA_DE_RANGO);
         }
     }
+
     private PoliticaDTO actualizar(PoliticaDTO politicaDTO, Politica entidad) {
         if (politicaDTO.getNombre() != null && !politicaDTO.getNombre().isEmpty() && !politicaDTO.getNombre().isBlank())
             entidad.setNombre(politicaDTO.getNombre());
-                Politica entidadActualizada = politicaRepository.save(entidad);
+        Politica entidadActualizada = politicaRepository.save(entidad);
         return mapper.convertValue(entidadActualizada, PoliticaDTO.class);
     }
 

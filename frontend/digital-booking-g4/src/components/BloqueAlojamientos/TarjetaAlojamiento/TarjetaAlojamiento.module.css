@@ -49,9 +49,9 @@
   content: "";
   display: block;
   position: absolute;
-  border-radius: .3em;
+  border-radius: 0.3em;
   left: 0;
-  top:0;
+  top: 0;
   width: 100%;
   height: 100%;
   opacity: 0;
@@ -64,9 +64,39 @@
   position: absolute;
   border-radius: 14em;
   left: 0;
-  top:0;
+  top: 0;
   opacity: 1;
   transition: 0s;
+}
+
+.containerAdmin{
+  display:flex;
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: var(--color-2);
+  border-radius: 300px 0px 5px 90px / 0px 30px 0px 90px;
+  padding-left: 5px;
+}
+
+.admin {
+  -webkit-text-fill-color: rgb(255, 255, 255, 0.1);
+  -webkit-text-stroke: 0.7px var(--color-5);
+
+  font-size: 1.5rem;
+  transition: all ease 350ms;
+  padding: 10px;
+  text-shadow: 2px 2px 1.5px rgba(0, 0, 0, 0.25), 2px -2px 1.5px rgba(0, 0, 0, 0.25);
+
+  
+}
+
+.admin:hover {
+  cursor: pointer;
+  -webkit-text-fill-color: var(--color-principal);
+  -webkit-text-stroke: 0.7px var(--color-principal);
+  opacity: 100;
+  text-shadow:none
 }
 
 .descripcionAlojamiento {
@@ -118,11 +148,6 @@
   font-size: 16px;
 }
 
-.informacionDetalle a {
-  color: var(--color-principal);
-  text-transform: uppercase;
-}
-
 .informacionDetalle {
   display: flex;
   flex-direction: column;
@@ -151,12 +176,15 @@
   font-size: 1.25rem;
 }
 
-.ubicacion a {
+.mostrarEnMapa {
   margin-left: 0.25rem;
   transition: color ease-in-out 50ms;
+  text-transform: uppercase;
+  color: var(--color-principal);
 }
 
-.ubicacion a:hover {
+.mostrarEnMapa:hover {
+  cursor: pointer;
   color: var(--color-principal-opaco);
 }
 
@@ -174,6 +202,18 @@
   width: 100%;
   margin-top: 1.5rem;
   padding: 10px 0;
+}
+
+.contenedorMapa {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.tituloMapa {
+  margin: 1rem 0;
+  color: var(--color-2);
 }
 
 /*_________Skeleton_______________*/
@@ -195,11 +235,11 @@
   animation: loadingAnimation 5s infinite;
 }
 
-.disabled{
-  pointer-events:none;
+.disabled {
+  pointer-events: none;
 }
 
-.infoLoader{
+.infoLoader {
   width: 50px;
   height: 1rem;
   margin-top: 0.3rem;
@@ -218,7 +258,7 @@
   border-radius: 7px;
   width: 100%;
   padding: 15px 5vw;
-  margin: 1.5rem 0; 
+  margin: 1.5rem 0;
 }
 
 @media screen and (max-width: 1280px) {
@@ -252,5 +292,109 @@
   }
   .tipoYCalificacion {
     flex-direction: row;
+  }
+}
+
+/* Estilos pertenecientes al componente ReservaCard */
+.reservaDetalleCard {
+  padding: 10px 0;
+  border: 2px var(--color-2);
+  border-radius: 10px;
+}
+.reservaDetalleCard li {
+  list-style: disc;
+  display: inline;
+  margin-bottom: 5px;
+  font-weight: 700;
+}
+.reservaDetalleCard h3 {
+  text-align: left;
+  font-weight: 900;
+  font-size: 1.3rem;
+  margin-bottom: 8px;
+  font-style: italic;
+}
+.reservaDetalleCard div {
+  display: flex;
+}
+.reservaDetalleCard div ul {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+}
+.reservaDetalleCard div ul span {
+  font-weight: 400;
+}
+.reservaButtonsContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  height: 50px;
+  margin-top: .5rem;
+  margin-bottom: 1rem;
+  width: 100%;
+}
+.reservaButtonsContainerVerMasCancelar {
+  display: inline-block;
+  width: 100%;
+}
+.reservaBtnVerMas,
+.reservaBtnCalificar,
+.reservaBtnCancelar {
+  height: 100%;
+  padding: 1%;
+}
+.reservaBtnVerMas,
+.reservaBtnCancelar {
+  width: 49%;
+}
+.reservaBtnVerMas {
+  margin-right: 1%;
+}
+.reservaBtnCancelar {
+  margin-left: 1%;
+  background-color: var(--color-5);
+  border: solid 2px var(--color-principal);
+  color: var(--color-principal);
+}
+.reservaBtnCalificar {
+  width: 100%;
+  color: white;
+  background-color: var(--color-3);
+  border: 3px solid var(--color-3);
+}
+.reservaBtnCalificar:hover {
+  background-color: var(--color-2);
+  border: 3px solid var(--color-2);
+}
+.reservaBtnCalificar:disabled {
+  color: white;
+  background-color: grey;
+  border: 3px solid grey;
+  opacity: 0.25;
+}
+.reservaBtnCalificar:disabled:hover {
+  cursor: initial;
+}
+.confirmButton {
+  background-color: var(--color-principal) !important;
+  border: solid 3px var(--color-principal) !important;
+  color: var(--color-5) !important;
+  outline: var(--color-principal) !important;
+}
+.cancelButton {
+  color: white !important;
+  background-color: var(--color-3) !important;
+  border: 3px solid var(--color-3) !important;
+  outline: var(--color-3) !important;
+}
+
+@media (max-width: 980px) {
+  .reservaDetalleCard div {
+    display: flex;
+    flex-direction: column;
+  }
+  .reservaDetalleCard div ul {
+    width: 100%;
   }
 }

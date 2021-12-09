@@ -9,7 +9,7 @@ import java.util.Set;
 public class Caracteristica {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="caracteristica_id")
+    @Column(name = "caracteristica_id")
     private Long id;
     private String nombre;
     private String icono;

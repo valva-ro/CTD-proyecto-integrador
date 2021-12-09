@@ -59,7 +59,7 @@
   flex-direction: column;
   align-items: flex-end;
   justify-content: flex-start;
-  padding: 0 10px 15px 10px;
+  padding: 0 10px ;
 }
 
 .opciones {
@@ -71,6 +71,13 @@
   color: var(--color-2);
   font-size: 1rem;
   font-weight: 700;
+  transition: all 200ms ease-in;
+}
+
+.opciones a:hover {
+  cursor: pointer;
+  color: var(--color-principal);
+  
 }
 
 .opciones a p {
@@ -87,7 +94,16 @@
   padding: 2vh 0;
   color: black;
   cursor: pointer;
-  
+  width: 100%;
+  text-align: right;
+}
+
+.containerLoggeado{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+  height: 100%;
 }
 
 .cerrarSesion {
@@ -95,8 +111,6 @@
   font-weight: 500;
   border-bottom: 1px solid var(--color-3);
   opacity: 0.7;
-  position: relative;
-  top: 90%;
   padding-bottom: 0.5vh;
   text-align: end;
   width: 100%;

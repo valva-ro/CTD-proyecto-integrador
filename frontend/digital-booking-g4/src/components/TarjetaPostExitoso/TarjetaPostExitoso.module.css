@@ -1,0 +1,106 @@
+.btnOK {
+  width: 206px;
+  margin-top: .5rem !important;
+  padding: 10px 0;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-5);
+  border: 1px solid #dfe4ea;
+  box-sizing: border-box;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 8px;
+  gap: 10px;
+  padding: 2.75rem 1.25rem;
+}
+
+.reservaExitosaMsj {
+  color: var(--color-2);
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+.title,
+.icono {
+  color: var(--color-principal);
+}
+
+.icono {
+  font-size: 4.625rem;
+}
+
+@media (max-width: 768px) {
+  .mainSuccess {
+    height: calc(100vh - 176px);
+    margin-top: 112px;
+  }
+  .card{
+    padding: 1.75rem 1.25rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .mainSuccess {
+    height: calc(100vh - 139px);
+    margin-top: 82px;
+  }
+  .card{
+    padding: 1.25rem;
+  }
+}
+
+/* Estilos pertenecientes al componente TarjetaPuntuacionReserva*/
+.starWidget input {
+  display: none;
+}
+.starWidget label {
+  font-size: 2.5rem;
+  color: #444;
+  padding: 10px;
+  margin: 0;
+  float: right;
+  transition: all 0.2s ease;
+}
+input:not(:checked) ~ label.estrellaPuntuacion:hover,
+input:not(:checked) ~ label.estrellaPuntuacion:hover ~ label.estrellaPuntuacion {
+  color: #fd4;
+}
+input:checked ~ label.estrellaPuntuacion {
+  color: #fd4;
+}
+input#rate5:checked label.estrellaPuntuacion {
+  color: #fe7;
+  text-shadow: 0 0 20px #952;
+}
+.calificarTitle {
+  margin-top: 2rem;
+  text-align: center;
+}
+.msjPuntuacionExitosa, .msjPuntuacionFallida {
+  font-size: 1.5rem !important;
+  margin-bottom: 20px;
+  text-align: center;
+}
+.msjPuntuacionExitosa, .iconoPuntuacionExitosa {
+  color: var(--color-principal);
+}
+.iconoPuntuacionExitosa, .iconoPuntuacionFallida {
+  font-size: 6rem;
+}
+.msjPuntuacionFallida, .iconoPuntuacionFallida  {
+  color: rgba(255, 0, 0, .75);
+}
+.puntuacionComentarios {
+  width: 100%;
+  height: 100%;
+}
+
+@media (max-width: 920px) {
+  .starWidget label {
+    font-size: 2rem;
+  }
+}

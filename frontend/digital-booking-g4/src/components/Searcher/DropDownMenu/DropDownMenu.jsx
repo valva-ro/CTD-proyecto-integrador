@@ -6,6 +6,9 @@ export default function DropDownMenu({
   setCityList,
   input,
   setOnChangeCity,
+  setCountry,
+  setCity,
+  existeInputCountry
 }) {
   const [ulClassname, setUlclassName] = useState(null);
 
@@ -30,6 +33,10 @@ export default function DropDownMenu({
   function setInput(input, city) {
     input.target.value = city.nombre + ", " + city.pais;
     setOnChangeCity(city.nombre);
+    if(existeInputCountry) { 
+      setCountry(city.pais)
+      setCity(city)
+     }
     setCityList(null);
   }
 

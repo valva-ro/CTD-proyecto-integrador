@@ -64,7 +64,7 @@ const Input = styled.input`
 const LeyendaError = styled.p`
   text-align: start;
   color: ${colores.error};
-  margin-top: 5px;
+  margin-top: 2.5px;
   display: none;
 
   @media (max-width: 480px) {

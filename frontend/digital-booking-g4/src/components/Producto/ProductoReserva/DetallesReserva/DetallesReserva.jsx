@@ -5,10 +5,10 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faExclamationTriangle } from "@fortawesome/free-solid-svg-icons";
 import styles from "./Detalles.module.css";
 import post from "../../../../utils/post";
-import { useHistory } from "react-router";
 import { useState } from "react";
 import Modal from "../../../Modal/Modal";
-import TarjetaReservaExitosa from "./TarjetaReservaExitosa/TarjetaReservaExitosa";
+import TarjetaPostExitoso from "../../../TarjetaPostExitoso/TarjetaPostExitoso";
+import formatearFecha from "../../../../utils/formatearFecha"
 
 export default function ProductoReserva({
   alojamiento: {
@@ -31,31 +31,16 @@ export default function ProductoReserva({
   horarioLlegada,
 }) {
   const puntaje = calcularPromedioPuntuacion(puntuaciones);
-  const history = useHistory();
   const [isError, setIsError] = useState(false);
   const [showModal, setShowModal] = useState(false);
+  let token = "";
+  if (localStorage.hasOwnProperty("jwt")) {
+    token = localStorage.getItem("jwt").replaceAll('"', "");
+  }
+  const idUsuario = parseInt(localStorage.getItem("id"));
 
-  const checkinFormat = new Date(checkin)
-    .toLocaleDateString("en-GB", {
-      year: "numeric",
-      month: "2-digit",
-      day: "2-digit",
-    })
-    .replaceAll("/", "-")
-    .split("-")
-    .reverse()
-    .join("-");
-
-  const checkoutFormat = new Date(checkout)
-    .toLocaleDateString("en-GB", {
-      year: "numeric",
-      month: "2-digit",
-      day: "2-digit",
-    })
-    .replaceAll("/", "-")
-    .split("-")
-    .reverse()
-    .join("-");
+  const checkinFormat = formatearFecha(checkin);
+  const checkoutFormat = formatearFecha(checkout);
 
   const buscarImagenPrincipal = () => {
     let imagen = imagenes.find((imagen) => {
@@ -81,39 +66,22 @@ export default function ProductoReserva({
         datos: textArea,
         vacunaCovid: isVacunadx,
         producto: { id },
-        usuario: { id: localStorage.getItem("id") },
+        usuario: { id: idUsuario},
       },
       {
         "Content-Type": "application/json",
-        Authorization: localStorage.getItem("jwt"),
+        Authorization: token,
       }
     ).then((response) => {
       if (response.status === 201) {
-        history.push("/succes");
+        setShowModal(true);
+        setIsError(false);
       } else {
+        setShowModal(false);
         setIsError(true);
       }
-    });
-  }
-
-  function handleSubmit(e) {
-    e.preventDefault();
-    //realizarReserva();
-    if (
-      !nombreUsuario ||
-      !apellido ||
-      !mail ||
-      !ciudadUsuario ||
-      !horarioLlegada ||
-      !checkinFormat ||
-      !checkoutFormat
-    ) {
-      setShowModal(false);
-      setIsError(true);
-    } else {
-      setIsError(false);
-      setShowModal(true);
-    }
+    })
+    .catch((err) => console.log(err));
   }
 
   return (
@@ -136,7 +104,6 @@ export default function ProductoReserva({
               {direccion}, {ciudad.nombre}, {ciudad.pais}
             </p>
           </div>
-          <hr />
           <div className={styles.fecha}>
             <p>Check in</p>
             <p>
@@ -145,7 +112,6 @@ export default function ProductoReserva({
                 : new Date(checkin).toLocaleDateString()}
             </p>
           </div>
-          <hr />
           <div className={styles.fecha}>
             <p>Check out</p>
             <p>
@@ -154,16 +120,18 @@ export default function ProductoReserva({
                 : new Date(checkout).toLocaleDateString()}
             </p>
           </div>
-          <hr />
           <div className={styles.buttonContainer}>
-            <FilledButton onClick={handleSubmit} styles={styles.buttonSubmit}>
+            <FilledButton onClick={realizarReserva} styles={styles.buttonSubmit}>
               Confirmar reserva
             </FilledButton>
           </div>
         </div>
       </div>
       <Modal estaAbierto={showModal} onCloseRequest={() => setShowModal(false)} colorBtnCerrar="#383b58" colorFondo="#383b5853">
-        <TarjetaReservaExitosa />
+        <TarjetaPostExitoso
+          contenidoH2={"¡Muchas gracias!"}
+          contenidoP={"Su reserva ha sido realizada con éxito"}
+        />
       </Modal>
       {!isError ? null : (
         <div className={styles.errorMsjContainer}>

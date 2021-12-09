@@ -1,0 +1,86 @@
+@startuml
+allowmixing
+hide circle
+
+skinparam database {
+    BorderColor #383b58
+    BackgroundColor #1dbeb4
+    ArrowColor #383b58
+    FontColor #545776
+}
+
+skinparam rectangle {
+    BorderColor #383b58
+    BackgroundColor #1dbeb4
+    ArrowColor #383b58
+}
+
+skinparam class {
+    BorderColor #383b58
+    BackgroundColor #1dbeb4
+    ArrowColor #383b58
+    AttributeIconSize 0
+}
+
+skinparam note {
+    BorderColor #545776
+    BackgroundColor #f3f1ed
+    FontColor #545776
+}
+
+component Application {
+    package com.valva.proyectointegrador #757ba3 {
+
+        package persistence {
+            package repository
+            package entities
+        }
+
+        package service {
+
+            interface CRUDService {
+                + crear(T t) : T
+                + buscarPorId(Integer id) : T
+                + consultarTodos() : List<T>
+                + actualizar(T t) : T
+                + eliminar(Integer id) : void
+            }
+
+            interface "<<Interface>> IPoliticaService" extends CRUDService {
+                + crearTipoPolitica(TipoPoliticaDTO tipoPolitica) : TipoPoliticaDTO
+                + buscarPorTipoPolitica(Long politicaId) : Set<PoliticaDTO>
+            }
+
+            interface "<<Interface>> IProductoService" extends CRUDService {
+                + consultarPorCategoria(String titulo) : Set<ProductoDTO>
+                + consultarPorCiudad(String nombreCiudad) : Set<ProductoDTO>
+                + agregarAFavoritos(Long idProducto, Long idUsuario) : UsuarioDTO
+                + quitarDeFavoritos(Long idProducto, Long idUsuario) : UsuarioDTO
+                + consultarPorCiudadYFechas(String nombre, LocalDate fechaIngreso, LocalDate fechaEgreso) : Set<ProductoDTO>
+                + consultarPorFechas(LocalDate fechaIngreso, LocalDate fechaEgreso) : Set<ProductoDTO>
+                + consultarProductosReservadosEntreFechas(LocalDate fechaIngreso, LocalDate fechaEgreso) : Set<Long>
+            }
+
+            interface "<<Interface>> IPuntuacionService" extends CRUDService {
+                + consultarPorProductoID(Long id) : PuntuacionDTO
+                + consultarPorUsuarioID(Long id) : Set<PuntuacionDTO>
+            }
+
+            interface "<<Interface>> IReservaService" extends CRUDService {
+                + consultarPorProductoID(Long id) : ReservaDTO
+                + consultarPorUsuarioID(Long id) : Set<ReservaDTO>
+            }
+
+            interface "<<Interface>> IUsuarioService" extends CRUDService {
+                + obtenerPorEmail(String email) : UsuarioDTO
+            }
+        }
+
+        package controller
+
+        controller o-- service
+        service o-- persistence
+    }
+
+}
+@enduml

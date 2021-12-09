@@ -7,7 +7,7 @@
 }
 
 .cities {
-  z-index: 10;
+  z-index: 100;
   position: absolute;
   top: 40px;
   width: 30.89311859443631vw;
@@ -57,6 +57,6 @@
 
 @media (max-width: 480px) {
   .cities {
-    width: 95vw;
+    width: 85vw;
   }
 }

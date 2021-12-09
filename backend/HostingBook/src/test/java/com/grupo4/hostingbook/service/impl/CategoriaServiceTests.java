@@ -23,8 +23,8 @@ public class CategoriaServiceTests {
 
     private final CategoriaDTO categoriaPorCrear = new CategoriaDTO("Hotel", "807.105 hoteles", "https://via.placeholder.com/300");
     private final CategoriaDTO categoriaCreada = new CategoriaDTO(1L, "Hotel", "807.105 hoteles", "https://via.placeholder.com/300");
-    private final CategoriaDTO categoriaPorActualizar = new CategoriaDTO(1L,"", "900.000 hoteles", "");
-    private final CategoriaDTO categoriaActualizada = new CategoriaDTO(1L,"Hotel", "900.000 hoteles", "https://via.placeholder.com/300");
+    private final CategoriaDTO categoriaPorActualizar = new CategoriaDTO(1L, "", "900.000 hoteles", "");
+    private final CategoriaDTO categoriaActualizada = new CategoriaDTO(1L, "Hotel", "900.000 hoteles", "https://via.placeholder.com/300");
 
     @Test
     public void test01ObtenerTodasLasCategoriasEstaVacio() {
@@ -32,19 +32,19 @@ public class CategoriaServiceTests {
     }
 
     @Test
-    public void test02AgregarCategoria() throws BadRequestException, ResourceNotFoundException, RepeatedMailException {
+    public void test02AgregarCategoria() throws BadRequestException, ResourceNotFoundException, RepeatedMailException, NotImplementedException {
         CategoriaDTO c = categoriaService.crear(categoriaPorCrear);
         assertEquals(categoriaCreada, c);
     }
 
     @Test
-    public void test03ObtenerTodasLasCategorias() throws BadRequestException, ResourceNotFoundException, RepeatedMailException {
+    public void test03ObtenerTodasLasCategorias() throws BadRequestException, ResourceNotFoundException, RepeatedMailException, NotImplementedException {
         categoriaService.crear(categoriaPorCrear);
         assertNotEquals(0, categoriaService.consultarTodos().size());
     }
 
     @Test
-    public void test04EliminarCategoriaPorId() throws BadRequestException, ResourceNotFoundException, RepeatedMailException {
+    public void test04EliminarCategoriaPorId() throws BadRequestException, ResourceNotFoundException, RepeatedMailException, NotImplementedException {
         categoriaService.crear(categoriaPorCrear);
         assertNotEquals(0, categoriaService.consultarTodos().size());
 
@@ -81,7 +81,7 @@ public class CategoriaServiceTests {
 
     @Test
     @Transactional
-    public void test10BuscarCategoriaPorIdExistente() throws BadRequestException, ResourceNotFoundException, RepeatedMailException {
+    public void test10BuscarCategoriaPorIdExistente() throws BadRequestException, ResourceNotFoundException, RepeatedMailException, NotImplementedException {
         categoriaService.crear(categoriaPorCrear);
         CategoriaDTO categoriaEncontrada = categoriaService.buscarPorId(1L);
         assertEquals(categoriaCreada, categoriaEncontrada);

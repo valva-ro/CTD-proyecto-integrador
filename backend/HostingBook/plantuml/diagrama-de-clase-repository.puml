@@ -1,0 +1,76 @@
+@startuml
+allowmixing
+hide circle
+
+skinparam database {
+    BorderColor #383b58
+    BackgroundColor #1dbeb4
+    ArrowColor #383b58
+    FontColor #545776
+}
+
+skinparam rectangle {
+    BorderColor #383b58
+    BackgroundColor #1dbeb4
+    ArrowColor #383b58
+}
+
+skinparam class {
+    BorderColor #383b58
+    BackgroundColor #1dbeb4
+    ArrowColor #383b58
+    AttributeIconSize 0
+}
+
+skinparam note {
+    BorderColor #545776
+    BackgroundColor #f3f1ed
+    FontColor #545776
+}
+
+component Application {
+    package com.grupo4.hostingbook #757ba3 {
+
+        package persistence {
+            package repository {
+                interface "<<Interface>> ICaracteristicaRepository" {
+                 consultarPorProductoID(Long id) : Set<Caracteristica>
+                }
+'                interface "ICategoriaRepository"
+'                interface "ICiudadRepository"
+'                interface "IImagenRepository"
+'                interface "IPoliticaRepository"
+'                interface "IRolRepository"
+'                interface "ITipoPoliticaRepository"
+                interface "<<Interface>> IProductoRepository" {
+                 buscarProductosPorCategoria(String titulo) : Set<Producto>
+                 buscarProductosPorCiudad(String nombre) : Set<Producto>
+                 buscarProductosReservadosEntreFechas(LocalDate fechaIngreso, LocalDate fechaEgreso) : Set<Long>
+                }
+                interface "<<Interface>> IPuntuacionRepository" {
+                 consultarPorProductoID(Long id) : Set<Puntuacion>
+                 consultarPorUsuarioID(Long id) : Set<Puntuacion>
+                 consultarPorUsuarioYProducto(Long idUsuario, Long idProducto) : Set<Puntuacion>
+                }
+                interface "<<Interface>> IReservaRepository" {
+                 buscarReservasPorIdProducto(Long id) : Set<Reserva>
+                 buscarReservasPorIdUsuario(Long id) : Set<Reserva>
+                }
+                interface "<<Interface>> IUsuarioRepository" {
+                 obtenerPorEmail(String mail) : Usuario
+                }
+            }
+
+            repository ---up|> JpaRepository
+
+            package entities {
+            }
+        }
+
+        repository .right> entities
+    }
+    database "RDS con MySQL"
+    repository --> "RDS con MySQL"
+
+}
+@enduml

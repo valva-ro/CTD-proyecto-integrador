@@ -1,0 +1,52 @@
+@startuml
+allowmixing
+hide circle
+
+skinparam database {
+    BorderColor #383b58
+    BackgroundColor #1dbeb4
+    ArrowColor #383b58
+    FontColor #545776
+}
+
+skinparam rectangle {
+    BorderColor #383b58
+    BackgroundColor #1dbeb4
+    ArrowColor #383b58
+}
+
+skinparam class {
+    BorderColor #383b58
+    BackgroundColor #1dbeb4
+    ArrowColor #383b58
+    AttributeIconSize 0
+}
+
+skinparam note {
+    BorderColor #545776
+    BackgroundColor #f3f1ed
+    FontColor #545776
+}
+component Application {
+    package com.grupo4.hostingbook #757ba3 {
+
+        package persistence {
+            package repository
+            package entities
+        }
+        package service
+        package exceptions
+        package controller
+        package model
+
+        service ..> exceptions
+        controller ..> exceptions
+        controller o-- service
+        service o-- repository
+        controller .> model
+        service .> model
+    }
+    database "RDS con MySQL"
+    repository --> "RDS con MySQL"
+}
+@enduml

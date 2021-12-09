@@ -16,9 +16,9 @@ USE booking;
 -- Dumping data for table `usuarios`
 --
 SET AUTOCOMMIT=0;
-INSERT INTO usuarios (nombre, apellido, mail, contrasenia, cuenta_validada, fk_rol) VALUES ("Pepe", "Pepardo", "pepe@gmail.com", "$2a$12$km8QmiuebecWgzJobSXFa.OWee9gCwWXgyPDeEQJg03bt/Ney2T.u", FALSE, 1);
-INSERT INTO usuarios (nombre, apellido, mail, contrasenia, cuenta_validada, fk_rol) VALUES ("José", "Gómez", "jose@gmail.com", "$2a$12$nZP6qmpNe.O83nHMB4Y/BeQjum0CaEpA2wtSLlWzcb6jZZg80buda", FALSE, 2);
-INSERT INTO usuarios (nombre, apellido, mail, contrasenia, cuenta_validada, fk_rol) VALUES ("Josefina", "Gómez", "josefina@gmail.com", "$2a$12$XY8De0gZH4T7PB9ODzWKgedt5VbxihC/hxG5x1OzfX5eIj1bss31m", FALSE, 2);
+INSERT INTO usuarios (nombre, apellido, mail, contrasenia, cuenta_validada, fk_rol) VALUES ("Pepe", "Pepardo", "pepe@gmail.com", "$2a$12$km8QmiuebecWgzJobSXFa.OWee9gCwWXgyPDeEQJg03bt/Ney2T.u", TRUE, 1);
+INSERT INTO usuarios (nombre, apellido, mail, contrasenia, cuenta_validada, fk_rol) VALUES ("José", "Gómez", "jose@gmail.com", "$2a$12$nZP6qmpNe.O83nHMB4Y/BeQjum0CaEpA2wtSLlWzcb6jZZg80buda", TRUE, 2);
+INSERT INTO usuarios (nombre, apellido, mail, contrasenia, cuenta_validada, fk_rol) VALUES ("Josefina", "Gómez", "josefina@gmail.com", "$2a$12$XY8De0gZH4T7PB9ODzWKgedt5VbxihC/hxG5x1OzfX5eIj1bss31m", TRUE, 2);
 COMMIT;
 
 --

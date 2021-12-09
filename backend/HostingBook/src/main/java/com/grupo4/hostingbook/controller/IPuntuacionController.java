@@ -6,4 +6,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 public interface IPuntuacionController extends CRUDController<PuntuacionDTO> {
     ResponseEntity<?> consultarPorProductoID(@PathVariable Long id);
+
+    ResponseEntity<?> consultarPorUsuarioID(@PathVariable Long id);
 }

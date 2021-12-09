@@ -4,11 +4,24 @@ import useClickOutside from "../../../hooks/useOnClickOutside";
 import useFetch from "../../../hooks/useFetch.js";
 import styles from "./CityInput.module.css";
 
-export default function CityInput({ setOnChangeCity, specificStyle1, specificStyle2, specificStyle3}) {
+export default function CityInput({
+  setOnChangeCity,
+  onChangeCity,
+  specificStyle1,
+  specificStyle2,
+  specificStyle3,
+  setReset,
+  reset,
+  setDateRange,
+  setCountry,
+  setCity,
+  autocompletadoInputCountry = false,
+}) {
   const [iconGps, setIconGps] = useState(styles.gpsEmpty);
   const [cityList, setCityList] = useState(null);
   const [inputContent, setInputContent] = useState("");
   const [ciudades, setCiudades] = useState([]);
+  const [existeInputCountry, setExisteInputCountry] = useState(false);
   const wrapperRef = useRef(null);
   const data = useFetch("ciudades");
   useClickOutside(wrapperRef, () => setCityList(null));
@@ -16,6 +29,10 @@ export default function CityInput({ setOnChangeCity, specificStyle1, specificSty
   useEffect(() => {
     if (data.isLoaded) {
       setCiudades(data.items);
+    }
+
+    if (autocompletadoInputCountry) {
+      setExisteInputCountry(true);
     }
   }, [data.isLoaded, data.items]);
 
@@ -35,6 +52,9 @@ export default function CityInput({ setOnChangeCity, specificStyle1, specificSty
           input={input}
           setCityList={setCityList}
           setOnChangeCity={setOnChangeCity}
+          setCountry={setCountry}
+          existeInputCountry={existeInputCountry}
+          setCity={setCity}
         />
       );
     } else {
@@ -44,8 +64,15 @@ export default function CityInput({ setOnChangeCity, specificStyle1, specificSty
 
   return (
     <>
-      <div className={`${styles.cityContainer} ${specificStyle3}`} ref={wrapperRef}>
-        {inputContent !== "" ? <div className={`${specificStyle3}`}>{cityList}</div> : ""}
+      <div
+        className={`${styles.cityContainer} ${specificStyle3}`}
+        ref={wrapperRef}
+      >
+        {inputContent !== "" ? (
+          <div className={`${specificStyle3}`}>{cityList}</div>
+        ) : (
+          ""
+        )}
         <span className={`${iconGps} ${specificStyle1}`}>
           <i className="fas fa-map-marker-alt"></i>
         </span>
@@ -57,10 +84,16 @@ export default function CityInput({ setOnChangeCity, specificStyle1, specificSty
             lister(e);
             changeIconStyle(e.target.value);
             setInputContent(e.target.value);
+            if (reset) {
+              setReset(false);
+              setDateRange([null, null]);
+            }
           }}
           onChange={(e) => {
             setOnChangeCity(e.target.value);
           }}
+          value={reset ? "" : onChangeCity}
+          autoComplete="off"
         />
       </div>
     </>

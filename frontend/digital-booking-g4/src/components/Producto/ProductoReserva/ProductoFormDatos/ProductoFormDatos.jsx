@@ -16,7 +16,7 @@ export default function ProductoFormDatos({ setNombre, setApellido, setMail, set
   const expresiones = {
     nombre: /^[a-zA-ZÀ-ÿ\s]{2,25}$/,
     apellido: /^[a-zA-ZÀ-ÿ\s]{2,25}$/,
-    correo: /[A-z]+@[A-z]+.[A-z]{3}/,
+    correo: /[A-z0-9]+@[A-z]+.[A-z]{3}/,
   };
 
   useEffect(() => {
@@ -67,6 +67,7 @@ export default function ProductoFormDatos({ setNombre, setApellido, setMail, set
             <label>Ciudad</label>
             <CityInput
               setOnChangeCity={setOnChangeCity}
+              onChangeCity={onChangeCity}
               specificStyle1={stylesInputsFromOtherside.ocultar}
               specificStyle2={stylesInputsFromOtherside.inputFormDatos}
               specificStyle3={stylesInputsFromOtherside.divDrawer}
@@ -81,16 +82,34 @@ export default function ProductoFormDatos({ setNombre, setApellido, setMail, set
             cols="30"
             rows="6"
             value={commentText}
-            onChange={e => setCommentText(e.target.value)}
+            onChange={(e) => setCommentText(e.target.value)}
           ></textarea>
         </div>
         <div className={styles.radioButtons}>
-          <h4>¿Estás vacunado contra el COVID-19?</h4>
+          <h4>¿Te colocaste las dos vacunas contra COVID-19?</h4>
           <div>
-            <input type="radio" name="covid" id="true" value={true} onClick={() => setCovid(true)} required />
-            <label htmlFor="true">SI</label>
-            <input type="radio" name="covid" id="false" value={false} onClick={() => setCovid(false)} required />
-            <label htmlFor="false">NO</label>
+            <input
+              type="radio"
+              name="covid"
+              id="true"
+              value={true}
+              onClick={() => setCovid(true)}
+              required
+            />
+            <label htmlFor="true">
+              SI
+            </label>
+            <input
+              type="radio"
+              name="covid"
+              id="false"
+              value={false}
+              onClick={() => setCovid(false)}
+              required
+            />
+            <label htmlFor="false">
+              NO
+            </label>
           </div>
         </div>
       </div>

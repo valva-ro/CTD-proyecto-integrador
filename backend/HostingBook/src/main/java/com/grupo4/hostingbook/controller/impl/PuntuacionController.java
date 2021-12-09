@@ -1,8 +1,7 @@
 package com.grupo4.hostingbook.controller.impl;
 
-import com.grupo4.hostingbook.controller.CRUDController;
-import com.grupo4.hostingbook.exceptions.*;
 import com.grupo4.hostingbook.controller.IPuntuacionController;
+import com.grupo4.hostingbook.exceptions.*;
 import com.grupo4.hostingbook.model.PuntuacionDTO;
 import com.grupo4.hostingbook.service.IPuntuacionService;
 import io.swagger.annotations.ApiOperation;
@@ -18,7 +17,7 @@ import java.util.Set;
 
 @RestController
 @RequestMapping("/puntuaciones")
-@CrossOrigin(origins = "*", methods = { RequestMethod.GET, RequestMethod.POST }, allowedHeaders = "*")
+@CrossOrigin(origins = "*", methods = {RequestMethod.GET, RequestMethod.POST}, allowedHeaders = "*")
 public class PuntuacionController implements IPuntuacionController {
 
     @Qualifier("PuntuacionService")
@@ -30,7 +29,7 @@ public class PuntuacionController implements IPuntuacionController {
     }
 
     @Override
-    @ApiOperation(value = "Lista todas las puntuacions")
+    @ApiOperation(value = "Lista todas las puntuaciones")
     @ApiResponses(value = { @ApiResponse(code = 200, message = "Success") })
     @GetMapping
     public ResponseEntity<List<PuntuacionDTO>> obtenerTodos() {
@@ -40,19 +39,19 @@ public class PuntuacionController implements IPuntuacionController {
 
     @Override
     @ApiOperation(value = "Crea una nueva puntuacion")
-    @ApiResponses(value = { @ApiResponse(code = 200, message = "Success"),
-                            @ApiResponse(code = 400, message = "Bad Request") })
+    @ApiResponses(value = {@ApiResponse(code = 200, message = "Success"),
+            @ApiResponse(code = 400, message = "Bad Request")})
     @PostMapping
-    public ResponseEntity<PuntuacionDTO> crear(@RequestBody PuntuacionDTO puntuacion) throws BadRequestException, ResourceNotFoundException, RepeatedMailException {
+    public ResponseEntity<PuntuacionDTO> crear(@RequestBody PuntuacionDTO puntuacion) throws BadRequestException, ResourceNotFoundException, RepeatedMailException, NotImplementedException {
         PuntuacionDTO puntuacionNueva = puntuacionService.crear(puntuacion);
         return ResponseEntity.ok(puntuacionNueva);
     }
 
     @Override
     @ApiOperation(value = "Busca una puntuación por ID")
-    @ApiResponses(value = { @ApiResponse(code = 200, message = "Success"),
-                            @ApiResponse(code = 404, message = "Not found"), 
-                            @ApiResponse(code = 400, message = "Bad Request") })
+    @ApiResponses(value = {@ApiResponse(code = 200, message = "Success"),
+            @ApiResponse(code = 404, message = "Not found"),
+            @ApiResponse(code = 400, message = "Bad Request")})
     @GetMapping("/{id}")
     public ResponseEntity<PuntuacionDTO> buscarPorId(@PathVariable Long id)
             throws BadRequestException, ResourceNotFoundException {
@@ -62,9 +61,9 @@ public class PuntuacionController implements IPuntuacionController {
 
     @Override
     @ApiOperation(value = "Actualiza una puntuación")
-    @ApiResponses(value = { @ApiResponse(code = 200, message = "Success"),
-                            @ApiResponse(code = 404, message = "Not found"), 
-                            @ApiResponse(code = 400, message = "Bad Request") })
+    @ApiResponses(value = {@ApiResponse(code = 200, message = "Success"),
+            @ApiResponse(code = 404, message = "Not found"),
+            @ApiResponse(code = 400, message = "Bad Request")})
     @PutMapping
     public ResponseEntity<PuntuacionDTO> actualizar(@RequestBody PuntuacionDTO puntuacion)
             throws BadRequestException, ResourceNotFoundException, NotImplementedException {
@@ -74,9 +73,9 @@ public class PuntuacionController implements IPuntuacionController {
 
     @Override
     @ApiOperation(value = "Elimina una puntuación")
-    @ApiResponses(value = { @ApiResponse(code = 200, message = "Success"),
-                            @ApiResponse(code = 404, message = "Not found"), 
-                            @ApiResponse(code = 400, message = "Bad Request") })
+    @ApiResponses(value = {@ApiResponse(code = 200, message = "Success"),
+            @ApiResponse(code = 404, message = "Not found"),
+            @ApiResponse(code = 400, message = "Bad Request")})
     @DeleteMapping("/{id}")
     public ResponseEntity<String> eliminar(@PathVariable Long id)
             throws BadRequestException, ResourceNotFoundException {
@@ -85,8 +84,18 @@ public class PuntuacionController implements IPuntuacionController {
     }
 
     @Override
+    @ApiOperation(value = "Lista todas las puntuaciones de un producto")
+    @ApiResponses(value = { @ApiResponse(code = 200, message = "Success") })
     @GetMapping("/producto/{id}")
     public ResponseEntity<Set<PuntuacionDTO>> consultarPorProductoID(@PathVariable Long id) {
         return ResponseEntity.ok(puntuacionService.consultarPorProductoID(id));
+    }
+
+    @Override
+    @ApiOperation(value = "Lista todas las puntuaciones de un usuario")
+    @ApiResponses(value = { @ApiResponse(code = 200, message = "Success") })
+    @GetMapping("/usuario/{id}")
+    public ResponseEntity<Set<PuntuacionDTO>> consultarPorUsuarioID(@PathVariable Long id) {
+        return ResponseEntity.ok(puntuacionService.consultarPorUsuarioID(id));
     }
 }

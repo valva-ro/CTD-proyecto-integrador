@@ -5,8 +5,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
@@ -17,6 +19,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 
 @Configuration
 @EnableWebSecurity
+@EnableGlobalMethodSecurity(prePostEnabled = true)
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Qualifier("UsuarioService")
@@ -39,26 +42,25 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity httpSecurity) throws Exception {
         httpSecurity
-                .httpBasic().disable()
-                .csrf().disable()
+                .cors().and().csrf().disable()
                 .authorizeRequests()
                     .antMatchers(
-                            "/categorias**",
-                            "/ciudades**",
-                            "/productos**",
-                            "/usuarios/login",
-                            "/usuarios/signup",
-                            "/usuarios",
-                            "/usuarios/{^[\\d]$}"
-                    ).permitAll()
-                    .antMatchers(
-                            "/reservas**",
+                            "/reservas",
                             "/usuarios/{\\d+}/favoritos",
                             "/productos/agregar/{^[\\d]$}/usuarios/{^[\\d]$}",
                             "/productos/eliminar/{^[\\d]$}/usuarios/{^[\\d]$}"
                     ).authenticated()
+                    .antMatchers("/categorias**",
+                            "/ciudades**",
+                            "/productos**",
+                            "/usuarios/login",
+                            "/usuarios/signup",
+                            "/usuarios/{^[\\d]$}",
+                            "/politicas",
+                            "/imagenes"
+                    ).permitAll()
                 .and()
-                    .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
         httpSecurity.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
     }
 

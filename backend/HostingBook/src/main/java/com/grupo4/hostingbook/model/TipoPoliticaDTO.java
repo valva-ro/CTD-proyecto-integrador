@@ -41,13 +41,12 @@ public class TipoPoliticaDTO implements Serializable {
     }
 
 
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof TipoPoliticaDTO)) return false;
         TipoPoliticaDTO that = (TipoPoliticaDTO) o;
-        return id.equals(that.id) && nombre.equals(that.nombre) ;
+        return id.equals(that.id) && nombre.equals(that.nombre);
     }
 
     @Override

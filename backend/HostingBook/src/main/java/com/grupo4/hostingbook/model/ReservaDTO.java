@@ -2,7 +2,6 @@ package com.grupo4.hostingbook.model;
 
 import java.io.Serializable;
 import java.time.LocalDate;
-import java.time.LocalTime;
 import java.util.Objects;
 
 public class ReservaDTO implements Serializable {
@@ -56,13 +55,21 @@ public class ReservaDTO implements Serializable {
         this.producto = producto;
     }
 
-    public Long getId() {return id;}
+    public Long getId() {
+        return id;
+    }
 
-    public void setId(Long id) {this.id = id;}
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-    public Integer getHoraEntrada() {return horaEntrada;}
+    public Integer getHoraEntrada() {
+        return horaEntrada;
+    }
 
-    public void setHoraEntrada(Integer horaEntrada) {this.horaEntrada = horaEntrada;}
+    public void setHoraEntrada(Integer horaEntrada) {
+        this.horaEntrada = horaEntrada;
+    }
 
     public String getNombre() {
         return nombre;
@@ -96,29 +103,53 @@ public class ReservaDTO implements Serializable {
         this.ciudad = ciudad;
     }
 
-    public LocalDate getFechaIngreso() {return fechaIngreso;}
+    public LocalDate getFechaIngreso() {
+        return fechaIngreso;
+    }
 
-    public void setFechaIngreso(LocalDate fechaIngreso) {this.fechaIngreso = fechaIngreso;}
+    public void setFechaIngreso(LocalDate fechaIngreso) {
+        this.fechaIngreso = fechaIngreso;
+    }
 
-    public LocalDate getFechaEgreso() {return fechaEgreso;}
+    public LocalDate getFechaEgreso() {
+        return fechaEgreso;
+    }
 
-    public void setFechaEgreso(LocalDate fechaEgreso) {this.fechaEgreso = fechaEgreso;}
+    public void setFechaEgreso(LocalDate fechaEgreso) {
+        this.fechaEgreso = fechaEgreso;
+    }
 
-    public String getDatos() {return datos;}
+    public String getDatos() {
+        return datos;
+    }
 
-    public void setDatos(String datos) {this.datos = datos;}
+    public void setDatos(String datos) {
+        this.datos = datos;
+    }
 
-    public Boolean getVacunaCovid() {return vacunaCovid;}
+    public Boolean getVacunaCovid() {
+        return vacunaCovid;
+    }
 
-    public void setVacunaCovid(Boolean vacunaCovid) {this.vacunaCovid = vacunaCovid;}
+    public void setVacunaCovid(Boolean vacunaCovid) {
+        this.vacunaCovid = vacunaCovid;
+    }
 
-    public UsuarioDTO getUsuario() {return usuario;}
+    public UsuarioDTO getUsuario() {
+        return usuario;
+    }
 
-    public void setUsuario(UsuarioDTO usuario) {this.usuario = usuario;}
+    public void setUsuario(UsuarioDTO usuario) {
+        this.usuario = usuario;
+    }
 
-    public ProductoDTO getProducto() {return producto;}
+    public ProductoDTO getProducto() {
+        return producto;
+    }
 
-    public void setProducto(ProductoDTO producto) {this.producto = producto;}
+    public void setProducto(ProductoDTO producto) {
+        this.producto = producto;
+    }
 
     @Override
     public boolean equals(Object o) {

@@ -1,0 +1,67 @@
+.comentariosSection {
+  position: relative;
+}
+
+.comentariosContainer {
+  padding: 24px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.comentarioContainer {
+  width: 100%;
+  border-bottom: 1px solid #1dbeb350;
+  padding: 12px 0;
+}
+
+.nombreComentario {
+  color: var(--color-2);
+  padding: 6px 0;
+}
+
+.estrellasContainer {
+  display: flex;
+  justify-content: space-between;
+}
+
+.fecha {
+  display: inline-block;
+  color: var(--color-2);
+  font-weight: 400;
+}
+
+.comentario {
+  color: black;
+  font-style: italic;
+  font-weight: 400;
+}
+.cargarComentariosContainer {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+}
+.btnCargarComentarios {
+  padding: 7px 20px;
+}
+.btnCargarComentarios:disabled {
+  color: white;
+  background-color: grey;
+  border: 3px solid grey;
+  opacity: 0.25;
+}
+.btnCargarComentarios:disabled:hover {
+  cursor: initial;
+}
+.sinResultados {
+  text-align: center;
+  padding-top: 16px;
+  width: 100%;
+  color: var(--color-3);
+}
+@media (max-width: 380px) {
+  .cargarComentariosContainer {
+    flex-direction: column;
+  }
+}

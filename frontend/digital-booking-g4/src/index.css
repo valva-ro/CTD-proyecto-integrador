@@ -6,7 +6,7 @@
   --color-principal: #1dbeb4;
   --color-principal-opaco: #1e978f;
   --color-2: #383b58;
-  --color-2--opaco:#383b585b;
+  --color-2-opaco:#383b585b;
   --color-3: #545776;
   --color-4: #f3f1ed;
   --color-5: #ffffff;
@@ -50,6 +50,14 @@ section {
   padding: 15px 50px;
 }
 
+hr {
+  position: absolute;
+  left: 0;
+  border-top: 1px solid var(--color-principal);
+  width: calc(100vw - 1rem);
+  margin: 8px 0;
+}
+
 @media screen and (max-width:768px) {
   section {
     padding: 20px 30px;
@@ -72,10 +80,10 @@ section {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--color-3);
+  background: var(--color-2);
   border-radius: 5px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--color-2);
+  background: rgb(74, 77, 116);
 }

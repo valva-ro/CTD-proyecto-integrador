@@ -9,8 +9,6 @@ import TituloBloque from "../../../TituloBloque/TituloBloque";
 import FilledButton from "../../../Buttons/FilledButton";
 import es from "date-fns/locale/es";
 import useScreenWidth from "../../../../hooks/useScreenWidth";
-import obtenerFechasReservadas from "../../../../utils/obtenerFechasReservadas.js";
-import obtenerFechasNoSeleccionables from "../../../../utils/obtenerFechasNoSeleccionables.js";
 import useDisabledDate from "../../../../hooks/useDisabledDates";
 import loggedContext from "../../../../contexts/loggedContext";
 import styles from "./ProductoFechasDisponibles.module.css";
@@ -18,6 +16,7 @@ import styles from "./ProductoFechasDisponibles.module.css";
 registerLocale("es", es);
 
 export default function ProductoFechasDisponibles() {
+  const { id } = useParams();
   const startDateStorage = localStorage.hasOwnProperty("startDate")
     ? new Date(JSON.parse(localStorage.getItem("startDate")))
     : null;
@@ -29,18 +28,8 @@ export default function ProductoFechasDisponibles() {
     endDateStorage,
   ]);
   const [startDate, endDate] = dateRange;
-  const fechasReservadas = obtenerFechasReservadas();
-  const fechasNoSeleccionables = obtenerFechasNoSeleccionables(startDate);
-  const excludeDatesDinamico = useDisabledDate(
-    fechasReservadas,
-    fechasNoSeleccionables,
-    startDate,
-    endDate
-  );
-  const { id } = useParams();
-
+  const excludeDatesDinamico = useDisabledDate(id, startDate, endDate);
   const anchoPantalla = useScreenWidth();
-  
   const { isLogged } = useContext(loggedContext);
 
   const MyContainer = ({ className, children }) => {
@@ -72,8 +61,21 @@ export default function ProductoFechasDisponibles() {
         />
         <div className={styles.agregarReservas}>
           <p>Agregá tus fechas de viaje para obtener precios exactos</p>
-          <Link to={isLogged ? `/product/${id}/booking` : `/login`}>
-            <FilledButton styles={styles.reservaButton} onClick={!isLogged ? localStorage.setItem("previousAction", "Iniciar reserva") : null}>
+          <Link
+            to={
+              isLogged
+                ? `/product/${id}/booking`
+                : `/login-redirect-booking/${id}`
+            }
+          >
+            <FilledButton
+              styles={styles.reservaButton}
+              onClick={
+                !isLogged
+                  ? localStorage.setItem("previousAction", "Iniciar reserva")
+                  : null
+              }
+            >
               Iniciar reserva
             </FilledButton>
           </Link>

@@ -9,10 +9,10 @@ public class Imagen {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="imagen_id")
+    @Column(name = "imagen_id")
     private Long id;
     private String imagenTitulo;
-    @Column(name="imagen_URL")
+    @Column(name = "imagen_URL")
     private String imagenUrl;
 
     public Long getId() {

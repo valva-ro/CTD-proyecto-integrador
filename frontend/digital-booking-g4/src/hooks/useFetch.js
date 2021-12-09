@@ -1,7 +1,4 @@
-import {
-  useState,
-  useEffect
-} from "react";
+import { useState, useEffect } from "react";
 
 import backUrl from "../resources/backUrl"
 

@@ -22,13 +22,13 @@ public class CiudadService implements CRUDService<CiudadDTO> {
     private final ObjectMapper mapper;
 
     @Autowired
-    public CiudadService(ICiudadRepository ciudadRepository, ObjectMapper mapper){
+    public CiudadService(ICiudadRepository ciudadRepository, ObjectMapper mapper) {
         this.ciudadRepository = ciudadRepository;
         this.mapper = mapper;
     }
 
     @Override
-    public CiudadDTO crear(CiudadDTO ciudadDTO) throws BadRequestException{
+    public CiudadDTO crear(CiudadDTO ciudadDTO) throws BadRequestException {
         validarCamposRequeridosCreacion(ciudadDTO);
         Ciudad entidadCiudad = mapper.convertValue(ciudadDTO, Ciudad.class);
         Ciudad guardada = ciudadRepository.save(entidadCiudad);
@@ -84,9 +84,9 @@ public class CiudadService implements CRUDService<CiudadDTO> {
         } else {
             if (ciudadDTO.getNombre() == null || ciudadDTO.getNombre().isEmpty() || ciudadDTO.getNombre().isBlank())
                 throw new BadRequestException(String.format(Mensajes.ERROR_CREACION_CAMPO_REQUERIDO, "ciudad", "nombre"));
-            if (ciudadDTO.getPais() == null ||ciudadDTO.getPais().isEmpty() || ciudadDTO.getPais().isBlank())
+            if (ciudadDTO.getPais() == null || ciudadDTO.getPais().isEmpty() || ciudadDTO.getPais().isBlank())
                 throw new BadRequestException(String.format(Mensajes.ERROR_CREACION_CAMPO_REQUERIDO, "ciudad", "pais"));
-            if (ciudadDTO.getLatitud()== null)
+            if (ciudadDTO.getLatitud() == null)
                 throw new BadRequestException(String.format(Mensajes.ERROR_CREACION_CAMPO_REQUERIDO, "ciudad", "latitud"));
             if (ciudadDTO.getLongitud() == null)
                 throw new BadRequestException(String.format(Mensajes.ERROR_CREACION_CAMPO_REQUERIDO, "ciudad", "longitud"));

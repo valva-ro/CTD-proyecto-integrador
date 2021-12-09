@@ -26,6 +26,10 @@ select * from tipo_politica;
 select * from roles;
 select * from usuarios;
 
+select * from categorias;
+select * from politicas;
+select * from imagenes;
 select * from reservas;
 select * from roles;
 select * from usuarios;
+select * from puntuaciones;

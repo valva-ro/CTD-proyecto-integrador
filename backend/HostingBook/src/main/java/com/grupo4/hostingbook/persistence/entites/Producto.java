@@ -11,12 +11,12 @@ public class Producto {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="producto_id")
+    @Column(name = "producto_id")
     private Long id;
     private String nombre;
     private String descripcion;
     private String direccion;
-    @Column(name="horario_check_in")
+    @Column(name = "horario_check_in")
     private Integer horarioCheckIn;
 
     @ManyToOne(cascade = CascadeType.MERGE)
@@ -31,7 +31,7 @@ public class Producto {
     @JoinColumn(name = "fk_producto")
     private Set<Imagen> imagenes = new HashSet<>();
 
-    @OneToMany(mappedBy = "producto")
+    @OneToMany(mappedBy = "producto", cascade = CascadeType.MERGE)
     @JsonIgnore
     @Transient
     private Set<Reserva> reservas = new HashSet<>();
@@ -40,13 +40,7 @@ public class Producto {
     @JsonIgnore
     private List<Puntuacion> puntuaciones = new ArrayList<>();
 
-    @ManyToMany(cascade = {
-            CascadeType.PERSIST,
-            CascadeType.DETACH,
-            CascadeType.REFRESH,
-            CascadeType.REMOVE
-    })
-    @JsonIgnore
+    @ManyToMany(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
     @JoinTable(
             name = "politica_producto",
             joinColumns = @JoinColumn(name = "producto_id"),
@@ -54,7 +48,7 @@ public class Producto {
     )
     private Set<Politica> politicas = new HashSet<>();
 
-    @ManyToMany (cascade = CascadeType.MERGE)
+    @ManyToMany(cascade = CascadeType.MERGE)
     @JoinTable(
             name = "producto_caracteristica",
             joinColumns = @JoinColumn(name = "producto_id"),
@@ -62,10 +56,11 @@ public class Producto {
     )
     private Set<Caracteristica> caracteristicas = new HashSet<>();
 
-    @ManyToMany (mappedBy = "productosFavoritos")
+    @ManyToMany(mappedBy = "productosFavoritos")
     private Set<Usuario> usuarios = new HashSet<>();
 
-    public Producto() {}
+    public Producto() {
+    }
 
     public Producto(String nombre, String descripcion) {
         this.nombre = nombre;
@@ -174,6 +169,14 @@ public class Producto {
         this.imagenes = imagenes;
     }
 
+    public Set<Reserva> getReservas() {
+        return this.reservas;
+    }
+
+    public void setReservas(Set<Reserva> reservas) {
+        this.reservas = reservas;
+    }
+
     public Set<Caracteristica> getCaracteristicas() {
         return caracteristicas;
     }
@@ -189,6 +192,7 @@ public class Producto {
     public void setPuntuaciones(List<Puntuacion> puntuaciones) {
         this.puntuaciones = puntuaciones;
     }
+
     public Set<Politica> getPoliticas() {
         return politicas;
     }

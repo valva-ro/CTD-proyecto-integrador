@@ -16,8 +16,8 @@ describe("Estrellas tests", function () {
     expect(node.length).toEqual(5);
   });
 
-  test("El componente renderiza 3 estrellas llenas si el puntaje es 6", () => {
-    let estrellas = shallow(<Estrellas puntaje={6} />);
+  test("El componente renderiza 3 estrellas llenas si el puntaje es 3", () => {
+    let estrellas = shallow(<Estrellas puntaje={3} />);
     let estrellasLlenas = estrellas.find(".estrellaLlena");
     let estrellasVacias = estrellas.find(".estrellaVacia");
     expect(estrellasLlenas.length).toEqual(3);
@@ -30,8 +30,8 @@ describe("Estrellas tests", function () {
     expect(estrellasVacias.length).toEqual(5);
   });
 
-  test("El componente renderiza 4 estrellas llenas si el puntaje es 8.5", () => {
-    let estrellas = shallow(<Estrellas puntaje={8.5} />);
+  test("El componente renderiza 4 estrellas llenas si el puntaje es 4", () => {
+    let estrellas = shallow(<Estrellas puntaje={4} />);
     let estrellasLlenas = estrellas.find(".estrellaLlena");
     let estrellasVacias = estrellas.find(".estrellaVacia");
     expect(estrellasLlenas.length).toEqual(4);

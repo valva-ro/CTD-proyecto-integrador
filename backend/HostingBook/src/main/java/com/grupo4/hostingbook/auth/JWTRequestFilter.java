@@ -38,20 +38,20 @@ public class JWTRequestFilter extends OncePerRequestFilter {
     protected void doFilterInternal(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, FilterChain filterChain) throws ServletException, IOException {
 
         final String authorizationHeader = httpServletRequest.getHeader("Authorization");
-        String username= null;
+        String username = null;
 
         if (authorizationHeader != null) {
             username = jwtUtil.extractUserName(authorizationHeader);
         }
 
         if (username != null && SecurityContextHolder.getContext().getAuthentication() == null) {
-            UserDetails userDetails  = this.usuarioService.loadUserByUsername(username);
+            UserDetails userDetails = this.usuarioService.loadUserByUsername(username);
             if (jwtUtil.validateToken(authorizationHeader, userDetails)) {
                 UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken =
                         new UsernamePasswordAuthenticationToken(
-                            userDetails,
-                            null,
-                            userDetails.getAuthorities()
+                                userDetails,
+                                null,
+                                userDetails.getAuthorities()
                         );
                 usernamePasswordAuthenticationToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(httpServletRequest));
                 SecurityContextHolder.getContext().setAuthentication(usernamePasswordAuthenticationToken);

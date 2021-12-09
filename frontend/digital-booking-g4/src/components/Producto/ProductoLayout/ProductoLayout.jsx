@@ -6,7 +6,6 @@ import ProductoPoliticas from "./ProductoPoliticas/ProductoPoliticas";
 import ProductoHeader from "./ProductoHeader/ProductoHeader";
 import Loader from "../../Loader/Loader";
 import styles from "./ProductoLayout.module.css";
-import alojamientosJson from "../../../resources/alojamientos.json";
 
 export default function ProductoLayout(props) {
   const { id } = useParams();
@@ -24,7 +23,7 @@ export default function ProductoLayout(props) {
         <>
           <ProductoHeader alojamiento={producto} />
           <div>{React.cloneElement(props.children, producto)}</div>
-          <ProductoPoliticas alojamientos={alojamientosJson} />
+          <ProductoPoliticas alojamiento={producto} />
         </>
       ) : error === null ? (
         <Loader />

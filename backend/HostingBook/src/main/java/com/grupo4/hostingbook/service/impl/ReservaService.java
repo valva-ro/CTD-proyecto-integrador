@@ -5,6 +5,7 @@ import com.grupo4.hostingbook.exceptions.BadRequestException;
 import com.grupo4.hostingbook.exceptions.Mensajes;
 import com.grupo4.hostingbook.exceptions.ResourceNotFoundException;
 import com.grupo4.hostingbook.model.ReservaDTO;
+import com.grupo4.hostingbook.persistence.entites.Producto;
 import com.grupo4.hostingbook.persistence.entites.Reserva;
 import com.grupo4.hostingbook.persistence.repository.IReservaRepository;
 import com.grupo4.hostingbook.service.IReservaService;
@@ -17,11 +18,15 @@ import java.util.*;
 public class ReservaService implements IReservaService {
 
     private final IReservaRepository reservaRepository;
+    private final UsuarioService usuarioService;
+    private final ProductoService productoService;
     private final ObjectMapper mapper;
 
     @Autowired
-    public ReservaService(IReservaRepository reservaRepository, ObjectMapper mapper) {
+    public ReservaService(IReservaRepository reservaRepository, UsuarioService usuarioService, ProductoService productoService, ObjectMapper mapper) {
         this.reservaRepository = reservaRepository;
+        this.usuarioService = usuarioService;
+        this.productoService = productoService;
         this.mapper = mapper;
     }
 
@@ -70,18 +75,28 @@ public class ReservaService implements IReservaService {
     }
 
     @Override
-    public Set<ReservaDTO> consultarPorIdProducto(Long id) throws ResourceNotFoundException {
+    public Set<ReservaDTO> consultarPorIdProducto(Long id) throws BadRequestException, ResourceNotFoundException {
+        productoService.buscarPorId(id);
         Set<Reserva> entidades = reservaRepository.buscarReservasPorIdProducto(id);
         Set<ReservaDTO> dtos = new HashSet<>();
         for (Reserva entidad : entidades) {
             dtos.add(mapper.convertValue(entidad, ReservaDTO.class));
         }
-        if (dtos.size() == 0) {
-            throw new ResourceNotFoundException(
-                    String.format(Mensajes.ERROR_CRITERIO_DE_BUSQUEDA_NO_EXISTE, "El id", id));
+        return dtos;
+    }
+
+
+    @Override
+    public Set<ReservaDTO> consultarPorIdUsuario(Long id) throws BadRequestException, ResourceNotFoundException {
+        usuarioService.buscarPorId(id);
+        Set<Reserva> entidades = reservaRepository.buscarReservasPorIdUsuario(id);
+        Set<ReservaDTO> dtos = new HashSet<>();
+        for (Reserva entidad : entidades) {
+            dtos.add(mapper.convertValue(entidad, ReservaDTO.class));
         }
         return dtos;
     }
+
 
     private void validarCamposRequeridosCreacion(ReservaDTO reservaDTO) throws BadRequestException {
         if (reservaDTO == null) {

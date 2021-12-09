@@ -10,19 +10,15 @@ import useScreenWidth from "../../hooks/useScreenWidth";
 
 registerLocale("es", es);
 
-export default function Searcher() {
+export default function Searcher({ setReset, reset }) {
   const [iconDate, setIconDate] = useState(styles.dateIcon);
   const [dateRange, setDateRange] = useState([null, null]);
   const [onChangeCity, setOnChangeCity] = useState("");
-  const [selectedCity, setSelectedCity] = useState("");
-  const { setCurrentCity } = useContext(currentCityContext);
+  const { setCurrentCity, setCurrentDateRange } =
+    useContext(currentCityContext);
   const [startDate, endDate] = dateRange;
   const anchoPantalla = useScreenWidth();
   let datePickerRef = useRef(null);
-
-  useEffect(() => {
-    setCurrentCity(selectedCity);
-  }, [setCurrentCity, selectedCity]);
 
   const handleCloseCalendar = () => {
     datePickerRef.setOpen(false);
@@ -36,6 +32,11 @@ export default function Searcher() {
     } else {
       setIconDate(styles.dateIcon);
     }
+
+    if (reset) {
+      setReset(false);
+      setOnChangeCity("");
+    }
   };
 
   const styleChangeClick = (input) => {
@@ -44,10 +45,15 @@ export default function Searcher() {
     } else {
       setIconDate(styles.dateIcon);
     }
+    if (reset) {
+      setReset(false);
+      setOnChangeCity("");
+    }
   };
 
   const handleSubmit = () => {
-    setSelectedCity(onChangeCity);
+    setCurrentCity(onChangeCity);
+    setCurrentDateRange({ fechaInicio: startDate, fechaFin: endDate });
   };
 
   return (
@@ -57,7 +63,15 @@ export default function Searcher() {
           Busca ofertas en hoteles, casas y mucho más
         </h2>
         <div className={styles.inputs}>
-          <div className={styles.anchoFijo}><CityInput setOnChangeCity={setOnChangeCity} /></div>
+          <div className={styles.anchoFijo}>
+            <CityInput
+              setOnChangeCity={setOnChangeCity}
+              onChangeCity={onChangeCity}
+              setReset={setReset}
+              reset={reset}
+              setDateRange={setDateRange}
+            />
+          </div>
           <div className={styles.dateContainer}>
             <span className={iconDate}>
               <i className="far fa-calendar-alt"></i>
@@ -70,8 +84,8 @@ export default function Searcher() {
             placeholderText="Check in  -  Check out"
             locale={es}
             selectsRange={true}
-            startDate={startDate}
-            endDate={endDate}
+            startDate={reset ? null : startDate}
+            endDate={reset ? null : endDate}
             shouldCloseOnSelect={false}
             monthsShown={anchoPantalla <= 480 ? 1 : 2}
             minDate={new Date()}

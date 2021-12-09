@@ -1,0 +1,216 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[` Tarjeta Puntuacion Reserva test Renderiza Default 1`] = `
+Object {
+  "asFragment": [Function],
+  "baseElement": <body>
+    <div>
+      <form
+        class="card"
+      >
+        <h2
+          class="title calificarTitle"
+        >
+          Calificá tu experiencia en 
+          Meliá
+          !
+        </h2>
+        <div
+          class="starWidget"
+        >
+          <input
+            id="rate5"
+            name="rate"
+            type="radio"
+            value="5"
+          />
+          <label
+            class="fas fa-star estrellaPuntuacion"
+            for="rate5"
+          />
+          <input
+            id="rate4"
+            name="rate"
+            type="radio"
+            value="4"
+          />
+          <label
+            class="fas fa-star estrellaPuntuacion"
+            for="rate4"
+          />
+          <input
+            id="rate3"
+            name="rate"
+            type="radio"
+            value="3"
+          />
+          <label
+            class="fas fa-star estrellaPuntuacion"
+            for="rate3"
+          />
+          <input
+            id="rate2"
+            name="rate"
+            type="radio"
+            value="2"
+          />
+          <label
+            class="fas fa-star estrellaPuntuacion"
+            for="rate2"
+          />
+          <input
+            id="rate1"
+            name="rate"
+            type="radio"
+            value="1"
+          />
+          <label
+            class="fas fa-star estrellaPuntuacion"
+            for="rate1"
+          />
+        </div>
+        <textarea
+          class="puntuacionComentarios"
+          id="comentario"
+          name="comentario"
+          placeholder="Contanos tu experiencia (Opcional)"
+        />
+        <input
+          class="filledButton btnOK"
+          type="submit"
+          value="Confirmar"
+        />
+      </form>
+    </div>
+  </body>,
+  "container": <div>
+    <form
+      class="card"
+    >
+      <h2
+        class="title calificarTitle"
+      >
+        Calificá tu experiencia en 
+        Meliá
+        !
+      </h2>
+      <div
+        class="starWidget"
+      >
+        <input
+          id="rate5"
+          name="rate"
+          type="radio"
+          value="5"
+        />
+        <label
+          class="fas fa-star estrellaPuntuacion"
+          for="rate5"
+        />
+        <input
+          id="rate4"
+          name="rate"
+          type="radio"
+          value="4"
+        />
+        <label
+          class="fas fa-star estrellaPuntuacion"
+          for="rate4"
+        />
+        <input
+          id="rate3"
+          name="rate"
+          type="radio"
+          value="3"
+        />
+        <label
+          class="fas fa-star estrellaPuntuacion"
+          for="rate3"
+        />
+        <input
+          id="rate2"
+          name="rate"
+          type="radio"
+          value="2"
+        />
+        <label
+          class="fas fa-star estrellaPuntuacion"
+          for="rate2"
+        />
+        <input
+          id="rate1"
+          name="rate"
+          type="radio"
+          value="1"
+        />
+        <label
+          class="fas fa-star estrellaPuntuacion"
+          for="rate1"
+        />
+      </div>
+      <textarea
+        class="puntuacionComentarios"
+        id="comentario"
+        name="comentario"
+        placeholder="Contanos tu experiencia (Opcional)"
+      />
+      <input
+        class="filledButton btnOK"
+        type="submit"
+        value="Confirmar"
+      />
+    </form>
+  </div>,
+  "debug": [Function],
+  "findAllByAltText": [Function],
+  "findAllByDisplayValue": [Function],
+  "findAllByLabelText": [Function],
+  "findAllByPlaceholderText": [Function],
+  "findAllByRole": [Function],
+  "findAllByTestId": [Function],
+  "findAllByText": [Function],
+  "findAllByTitle": [Function],
+  "findByAltText": [Function],
+  "findByDisplayValue": [Function],
+  "findByLabelText": [Function],
+  "findByPlaceholderText": [Function],
+  "findByRole": [Function],
+  "findByTestId": [Function],
+  "findByText": [Function],
+  "findByTitle": [Function],
+  "getAllByAltText": [Function],
+  "getAllByDisplayValue": [Function],
+  "getAllByLabelText": [Function],
+  "getAllByPlaceholderText": [Function],
+  "getAllByRole": [Function],
+  "getAllByTestId": [Function],
+  "getAllByText": [Function],
+  "getAllByTitle": [Function],
+  "getByAltText": [Function],
+  "getByDisplayValue": [Function],
+  "getByLabelText": [Function],
+  "getByPlaceholderText": [Function],
+  "getByRole": [Function],
+  "getByTestId": [Function],
+  "getByText": [Function],
+  "getByTitle": [Function],
+  "queryAllByAltText": [Function],
+  "queryAllByDisplayValue": [Function],
+  "queryAllByLabelText": [Function],
+  "queryAllByPlaceholderText": [Function],
+  "queryAllByRole": [Function],
+  "queryAllByTestId": [Function],
+  "queryAllByText": [Function],
+  "queryAllByTitle": [Function],
+  "queryByAltText": [Function],
+  "queryByDisplayValue": [Function],
+  "queryByLabelText": [Function],
+  "queryByPlaceholderText": [Function],
+  "queryByRole": [Function],
+  "queryByTestId": [Function],
+  "queryByText": [Function],
+  "queryByTitle": [Function],
+  "rerender": [Function],
+  "unmount": [Function],
+}
+`;

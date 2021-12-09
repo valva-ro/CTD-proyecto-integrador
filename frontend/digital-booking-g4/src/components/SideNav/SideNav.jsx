@@ -6,7 +6,7 @@ import styles from "./SideNav.module.css";
 import loggedContext from "../../contexts/loggedContext";
 
 export default function SideNav() {
-  const { isLogged, setIsLogged } = useContext(loggedContext);
+  const { isLogged, setIsLogged, rol } = useContext(loggedContext);
   const location = useLocation();
   const [isOpened, setIsOpened] = useState(false);
 
@@ -54,6 +54,54 @@ export default function SideNav() {
         );
     }
   };
+
+  const RenderUserComponent = () => {
+    switch (location.pathname) {
+      default:
+        return (
+          <>
+            <Link
+              to="/favorites"
+            >
+              <Options
+                contenido={"Favoritos"}
+                onClick={() => setIsOpened(false)}
+              />
+            </Link>
+            <Link
+              to="/reservations"
+            >
+              <Options
+                contenido={"Reservas"}
+                onClick={() => setIsOpened(false)}
+              />
+            </Link>
+          </>
+        );
+      case "/favorites":
+        return (
+          <Link
+            to="/reservations"
+          >
+            <Options
+              contenido={"Reservas"}
+              onClick={() => setIsOpened(false)}
+            />
+          </Link>
+        );
+      case "/reservations":
+        return (
+          <Link
+            to="/favorites"
+          >
+            <Options
+              contenido={"Favoritos"}
+              onClick={() => setIsOpened(false)}
+            />
+          </Link>
+        );
+    }
+  };
   return (
     <>
       <div className={styles.menuHamburguesa} onClick={() => setIsOpened(true)}>
@@ -84,17 +132,30 @@ export default function SideNav() {
                 <RenderComponent />
               </div>
             ) : (
-              <>
-              <Link to="/favorites" className={styles.favoritosSidenav} onClick={() => setIsOpened(false)}>Favoritos</Link>
-              <p className={styles.cerrarSesion}>
-                ¿Deseas
-                <span onClick={cerrarSesion}> cerrar sesión</span>?
-              </p>
-              </>
+              <div className={styles.containerLoggeado}>
+                <div className={styles.opciones}>
+                  {rol === "ROLE_ADMIN" ?
+                  <Link
+                    to="/management"
+                  >
+                    <Options
+                      contenido={"Administración"}
+                      onClick={() => setIsOpened(false)}
+                    />
+                  </Link>
+                  : <RenderUserComponent/> 
+                  }
+                </div>
+                <div>
+                  <p className={styles.cerrarSesion}>
+                    ¿Deseas
+                    <span onClick={cerrarSesion}> cerrar sesión</span>?
+                  </p>
+                </div>
+              </div>
             )}
           </div>
           <div className={styles.footer}>
-            {" "}
             <a
               className={styles.linkRedSocial}
               href="https://www.facebook.com/HostingBook-104939168676273"

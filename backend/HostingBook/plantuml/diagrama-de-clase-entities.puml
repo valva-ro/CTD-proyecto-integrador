@@ -1,0 +1,72 @@
+@startuml
+allowmixing
+hide circle
+
+skinparam database {
+    BorderColor #383b58
+    BackgroundColor #1dbeb4
+    ArrowColor #383b58
+    FontColor #545776
+}
+
+skinparam rectangle {
+    BorderColor #383b58
+    BackgroundColor #1dbeb4
+    ArrowColor #383b58
+}
+
+skinparam class {
+    BorderColor #383b58
+    BackgroundColor #1dbeb4
+    ArrowColor #383b58
+    AttributeIconSize 0
+}
+
+skinparam note {
+    BorderColor #545776
+    BackgroundColor #f3f1ed
+    FontColor #545776
+}
+
+'component Application {
+'    package com.grupo4.hostingbook #757ba3 {
+'
+'        package persistence {
+'            package repository {
+'            }
+
+            package entities #757ba3 {
+                class Caracteristica
+                class Categoria
+                class Ciudad
+                class Imagen
+                class Politica
+                class Puntuacion
+                class Producto
+                class Rol
+                class TipoPolitica
+                class Reserva
+                class Usuario
+
+                Producto "*" --> "*" Caracteristica
+                Producto "*" --l> "*" Usuario
+                Producto "*" --> "*" Politica
+                Producto "1" --> "*" Puntuacion
+                Producto "1" --> "*" Reserva
+                Producto "1" --> "*" Imagen
+                Producto "1" --> "*" Ciudad
+                Producto "1" --> "*" Categoria
+                Usuario "1" --> "*" Puntuacion
+                Usuario "1" --> "*" Reserva
+                Usuario "1" o-- "1" Rol
+                Rol "1" o-- "*" Usuario
+                Politica "1" o-- "1" TipoPolitica
+                TipoPolitica "1" o-- "*" Politica
+            }
+'        }
+'
+'        repository ..> entities
+'    }
+
+'}
+@enduml
