@@ -798,6 +798,13 @@ INSERT INTO puntuaciones (puntuacion, fk_producto, fk_usuario) VALUES (3, 11, 3)
 INSERT INTO puntuaciones (puntuacion, fk_producto, fk_usuario) VALUES (2, 12, 1);
 INSERT INTO puntuaciones (puntuacion, fk_producto, fk_usuario) VALUES (5, 12, 2);
 INSERT INTO puntuaciones (puntuacion, fk_producto, fk_usuario) VALUES (3, 12, 3);
+-- Producto 14
+INSERT INTO booking.puntuaciones (puntuacion, comentario, fecha, fk_producto, fk_usuario) VALUES (4, "Todo impecable, me encantó!", "2021-09-23", 14, 1);
+INSERT INTO booking.puntuaciones (puntuacion, comentario, fecha, fk_producto, fk_usuario) VALUES (4, "Es precioso!", "2021-04-15", 14, 2);
+INSERT INTO booking.puntuaciones (puntuacion, comentario, fecha, fk_producto, fk_usuario) VALUES (5, "Me encantó!!!", "2019-10-16", 14, 3);
+INSERT INTO booking.puntuaciones (puntuacion, comentario, fecha, fk_producto, fk_usuario) VALUES (3, "El wifi funciona cuando quiere", "2021-10-16", 14, 3);
+INSERT INTO booking.puntuaciones (puntuacion, comentario, fecha, fk_producto, fk_usuario) VALUES (2, "El lugar es lindo pero pésima la atención", "2021-11-18", 14, 1);
+INSERT INTO booking.puntuaciones (puntuacion, comentario, fecha, fk_producto, fk_usuario) VALUES (3, "Buena relación calidad / precio", "2020-12-01", 14, 2);
 COMMIT;
 
 --
