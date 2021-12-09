@@ -39,6 +39,7 @@ export default function Administracion() {
   const [caracteristicas, setCaracteristicas] = useState([]);
   const [error, setError] = useState({ message: "", isError: false });
   const [city, setCity] = useState({});
+  const [cantidadInputsImg, setCantidadInputsImg] = useState(1);
   const { isLoaded: isLoadedCategorias, items: itemsCategorias } =
     useFetch("categorias");
   const { isLoaded: isLoadedCaracteristicas, items: itemsCaracteristicas } =
@@ -149,7 +150,7 @@ export default function Administracion() {
   const handleChangeCheckIn = (e) =>
     setHorarioCheckIn(parseInt(e.target.value));
 
-  /* ------- Categoría ------- */
+  /* --------- Categoría --------- */
   let categoriasDisponibles = [];
 
   useEffect(() => {
@@ -165,38 +166,27 @@ export default function Administracion() {
   const handleChangeCategory = (e) => setOnChangeCategory(e.target.value);
 
   /* ------- Característica ------- */
-
   useEffect(() => {
     if (isLoadedCaracteristicas) {
       setCaracteristicas(itemsCaracteristicas);
     }
   }, [isLoadedCaracteristicas, itemsCaracteristicas]);
 
-  /* ------- Imagenes ------- */
-  const [imagenesDetails, setImagenesDetails] = useState([
-    {
-      url: "",
-      descripcion: "",
-    },
-  ]);
-
-  const agregarImagen = (imagen) => setImagenes([...imagenes, imagen]);
-
-  const handleAdd = (e) => {
-    setImagenesDetails([
-      ...imagenesDetails,
-      {
-        url: "",
-        descripcion: "",
-      },
-    ]);
+  /* ---------- Imagenes -------- */
+  const subirImagen = (imagen) => {
+    setImagenes([imagen, ...imagenes]);
   };
 
-  const handleDelete = (val, imagen) => {
-    setImagenesDetails([...imagenesDetails.filter((r) => r !== val)]);
+  const agregarImagen = (e) => {
+    setCantidadInputsImg(cantidadInputsImg + 1);
+  };
+
+  const eliminarImagen = (val, imagen) => {
+    setCantidadInputsImg([...cantidadInputsImg.filter((r) => r !== val)]);
     setImagenes([...imagenes.filter((r) => r !== imagen)]);
   };
 
+  /* ---------- Producto -------- */
   const handleSubmit = (e) => {
     e.preventDefault();
     const camposValidados = validarCampos();
@@ -422,10 +412,10 @@ export default function Administracion() {
               (Se debe cargar al menos una imagen)
             </p>
             <RowImagenes
-              handleAdd={handleAdd}
-              handleDelete={handleDelete}
-              imagenesDetails={imagenesDetails}
               agregarImagen={agregarImagen}
+              eliminarImagen={eliminarImagen}
+              cantidadInputsImg={cantidadInputsImg}
+              subirImagen={subirImagen}
             />
           </div>
           <div className={styles.subContainer}>

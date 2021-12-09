@@ -25,7 +25,7 @@ function App() {
     obtenerInformacionUsuario()
   );
   const [rol, setRol] = useState(obtenerRolUsusario());
-
+  
   AOS.init();
 
   useEffect(() => {}, [isLogged]);
@@ -102,6 +102,9 @@ function obtenerInformacionUsuario() {
       : "",
     apellido: localStorage.hasOwnProperty("apellido")
       ? JSON.parse(localStorage.getItem("apellido"))
+      : "",
+    email: localStorage.hasOwnProperty("email")
+      ? JSON.parse(localStorage.getItem("email"))
       : "",
   };
 }

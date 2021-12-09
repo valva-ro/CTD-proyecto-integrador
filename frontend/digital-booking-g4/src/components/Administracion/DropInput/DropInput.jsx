@@ -54,7 +54,9 @@ export default function DropInput({
 
   return (
     <div className={styles.containerDropInput}>
-      <label className={styles.labelDropInput}>{label}</label>
+      {label != null ? (
+        <label className={styles.labelDropInput}>{label}</label>
+      ) : null}
       <div
         className={`${styles.cityContainer} ${styles.divDrawer}`}
         ref={wrapperRef}

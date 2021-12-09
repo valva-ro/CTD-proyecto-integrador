@@ -1,19 +1,23 @@
 .fila {
   display: flex;
-  flex-direction: row;
-  align-items: flex-end;
-  gap: 15px;
+  flex-direction: column;
+  align-items: center;
   background-color: rgba(190, 190, 190, 0.1);
   border-radius: 5px;
-  padding: 0 15px 20px 15px;
+  padding: 15px;
+  gap: 15px;
   margin-top: 20px;
 }
 
-button {
-  outline: none;
+.inputs {
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  width: 100%;
+  gap: 15px;
 }
 
-.add {
+.imageButton {
   font-size: 2rem;
   font-weight: 700;
   color: var(--color-5);
@@ -22,39 +26,35 @@ button {
   border: 3px solid var(--color-principal);
   border-radius: 5px;
   filter: drop-shadow(0px 2px 4px rgba(0, 0, 0, 0.12));
-  padding: 0 0.5vw;
-  margin-top: 25px;
+  width: 48px;
   transition: all ease-in-out 250ms;
 }
 
-.add:hover {
+.imageButton:hover {
   background-color: var(--color-principal-opaco);
   border: 3px solid var(--color-principal-opaco);
 }
 
-.add:disabled {
+.imageButton:disabled {
   color: white;
   background-color: grey;
   border: 3px solid grey;
   opacity: 0.25;
 }
 
-.add:disabled:hover {
+.imageButton:disabled:hover {
   cursor: unset;
 }
 
+.add {
+  width: 98px;
+  font-size: 1.5rem;
+}
+
 .delete {
-  font-size: 2rem;
-  font-weight: 700;
   color: var(--color-5);
-  cursor: pointer;
   background-color: var(--color-3);
   border: 3px solid var(--color-3);
-  border-radius: 5px;
-  filter: drop-shadow(0px 2px 4px rgba(0, 0, 0, 0.12));
-  padding: 0 0.75vw;
-  margin-top: 25px;
-  transition: all ease-in-out 250ms;
 }
 
 .delete:hover {
@@ -67,7 +67,7 @@ button {
   gap: 6px;
 }
 
-.invalidURL {
+.errorMsjContainer {
   background-color: #da5456;
   border-radius: 5px;
   display: flex;
@@ -75,11 +75,7 @@ button {
   padding: 10px;
   color: #000;
   gap: 10px;
-  margin: 10px 20px;
-}
-
-.invalidURL p {
-  color: #000;
+  width: 100%;
 }
 
 .errorMsjContainer p {

@@ -1,14 +1,19 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import TituloBloque from "../../../TituloBloque/TituloBloque";
 import InputComponent from "../../../Forms/formComponents/Input";
 import CityInput from "../../../Searcher/CityInput/CityInput";
 import stylesInputsFromOtherside from "./InputsFromOtherside.module.css";
+import loggedContext from "../../../../contexts/loggedContext";
 import styles from "./ProductoFormDatos.module.css";
 
 export default function ProductoFormDatos({ setNombre, setApellido, setMail, setCiudad, setTextArea, setIsVacunadx }) {
-  const [name, setName] = useState({ campo: "", valido: null });
-  const [surname, setSurname] = useState({ campo: "", valido: null });
-  const [email, setEmail] = useState({ campo: "", valido: null });
+  const { isLogged, userInformation } = useContext(loggedContext);
+  const loadedName = isLogged ? userInformation.nombre : "";
+  const loadedLastname = isLogged ? userInformation.apellido : "";
+  const loadedEmail = isLogged ? userInformation.email : "";
+  const [name, setName] = useState({ campo: loadedName, valido: null });
+  const [surname, setSurname] = useState({ campo: loadedLastname, valido: null });
+  const [email, setEmail] = useState({ campo: loadedEmail, valido: null });
   const [onChangeCity, setOnChangeCity] = useState("");
   const [commentText, setCommentText] = useState("");
   const [covid, setCovid] = useState(null);
@@ -86,7 +91,7 @@ export default function ProductoFormDatos({ setNombre, setApellido, setMail, set
           ></textarea>
         </div>
         <div className={styles.radioButtons}>
-          <h4>¿Te colocaste las dos vacunas contra COVID-19?</h4>
+          <h4>¿Te aplicaste ambas dosis de la vacuna contra COVID-19?</h4>
           <div>
             <input
               type="radio"

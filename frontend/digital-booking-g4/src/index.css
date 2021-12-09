@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
 @import url("./components/Searcher/DatePickerStyles.css");
 
 :root {
@@ -6,12 +6,12 @@
   --color-principal: #1dbeb4;
   --color-principal-opaco: #1e978f;
   --color-2: #383b58;
-  --color-2-opaco:#383b585b;
+  --color-2-opaco: #383b585b;
   --color-3: #545776;
   --color-4: #f3f1ed;
   --color-5: #ffffff;
   --color-background-gris: rgb(56, 59, 88, 0.1);
-  --color-inputs-form-datos: #DFE4EA;
+  --color-inputs-form-datos: #dfe4ea;
 }
 
 * {
@@ -30,21 +30,28 @@ a {
   text-decoration: none;
 }
 
-input, select {
+button {
+  outline: none;
+}
+
+input,
+select {
   border-radius: 5px;
   border: 3px solid white;
   outline: none;
 }
 
-input:focus, textarea:focus , select:focus{
+input:focus,
+textarea:focus,
+select:focus {
   border: solid 3px var(--color-principal);
 }
 
 /* Permite modificar el background de un input cuando se usa el autocompletado sugreido por el navegador*/
 input:-webkit-autofill {
-  box-shadow:0 0 0 50px white inset; 
-  -webkit-box-shadow:0 0 0 50px white inset; 
-} 
+  box-shadow: 0 0 0 50px white inset;
+  -webkit-box-shadow: 0 0 0 50px white inset;
+}
 
 section {
   padding: 15px 50px;
@@ -58,13 +65,13 @@ hr {
   margin: 8px 0;
 }
 
-@media screen and (max-width:768px) {
+@media screen and (max-width: 768px) {
   section {
     padding: 20px 30px;
   }
 }
 
-@media screen and (max-width:480px) {
+@media screen and (max-width: 480px) {
   section {
     padding: 20px 10px;
   }

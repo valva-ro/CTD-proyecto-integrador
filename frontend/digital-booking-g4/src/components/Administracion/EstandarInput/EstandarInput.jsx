@@ -9,22 +9,24 @@ export default function EstandarInput({
     value
 }) {
     return (
-        <div className={styles.containerEstandarInput}>
-            <label className={styles.labelEstandarInput}>{label}</label>
-            <div className={styles.sombraConAutocompletado} >
-                <input
-                    type="text"
-                    className={`${styles.estandarInput}`}
-                    onChange={(e) => {
-                        setOnChangeItem(e.target.value)
-                    }}
-                    value={value == null ? onChangeItem : value}
-                    name={name}
-                    placeholder={placeholder}
-                    required
-                    disabled={value != null}
-                />
-            </div>
+      <div className={styles.containerEstandarInput}>
+        {label != null ? (
+          <label className={styles.labelEstandarInput}>{label}</label>
+        ) : null}
+        <div className={styles.sombraConAutocompletado}>
+          <input
+            type="text"
+            className={`${styles.estandarInput}`}
+            onChange={(e) => {
+              setOnChangeItem(e.target.value);
+            }}
+            value={value == null ? onChangeItem : value}
+            name={name}
+            placeholder={placeholder}
+            required
+            disabled={value != null}
+          />
         </div>
-    )
+      </div>
+    );
 }
