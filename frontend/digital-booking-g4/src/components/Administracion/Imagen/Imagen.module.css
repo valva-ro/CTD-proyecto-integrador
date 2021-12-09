@@ -39,6 +39,10 @@ button {
   opacity: 0.25;
 }
 
+.add:disabled:hover {
+  cursor: unset;
+}
+
 .delete {
   font-size: 2rem;
   font-weight: 700;

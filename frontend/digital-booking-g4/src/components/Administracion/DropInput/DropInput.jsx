@@ -1,13 +1,22 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef } from "react";
 import DropDownRoom from "../DropDownRoom/DropDownRoom";
 import useClickOutside from "../../../hooks/useOnClickOutside";
-import useFetch from "../../../hooks/useFetch.js";
 import styles from "./DropInput.module.css";
 
-export default function DropInput({ setOnChangeItem, onChangeItem, label, pathname, placeholder, id, dataId}) {
+export default function DropInput({
+  setOnChangeItem,
+  onChangeItem,
+  label,
+  pathname,
+  placeholder,
+  id,
+  dataId,
+  value = null,
+  disabled = false,
+}) {
   const [list, setList] = useState(null);
   const [inputContent, setInputContent] = useState("");
-  const [dropItems, setDropItems] = useState([
+  const dropItems = [
     "Principal",
     "Habitación doble",
     "Habitación simple",
@@ -17,27 +26,19 @@ export default function DropInput({ setOnChangeItem, onChangeItem, label, pathna
     "Hall de entrada",
     "Balcón",
     "Piscina",
-    "Churrasquera",
+    "Parrilla",
     "Cochera",
     "Patio",
     "Sala de estar",
     "Comedor",
     "Recepción",
-    "Ambientes compartidos"
-  ]);
+    "Ambientes compartidos",
+  ];
   const wrapperRef = useRef(null);
-  //const data = useFetch(pathname);
   useClickOutside(wrapperRef, () => setList(null));
 
-  /* useEffect(() => {
-    if (data.isLoaded) {
-      setDropItems(data.items);
-    }
-  }, [data.isLoaded, data.items]); */
-
-
   const lister = (input) => {
-    if (dropItems.length > 0) {
+    if (dropItems.length > 0 && !disabled) {
       setList(
         <DropDownRoom
           rooms={dropItems}
@@ -54,23 +55,39 @@ export default function DropInput({ setOnChangeItem, onChangeItem, label, pathna
   return (
     <div className={styles.containerDropInput}>
       <label className={styles.labelDropInput}>{label}</label>
-      <div className={`${styles.cityContainer} ${styles.divDrawer}`} ref={wrapperRef}>
-        {inputContent !== "" ? <div className={`${styles.divDrawer}`}>{list}</div> : ""}
-        <input
-          type="text"
-          className={`${styles.input}`}
-          onKeyUp={(e) => {
-            lister(e);
-            setInputContent(e.target.value);
-          }}
-          onChange={(e) => {
-            setOnChangeItem(e.target.value)
-          }}
-          value={onChangeItem}
-          placeholder={placeholder}
-          autoComplete="off"
-        />
+      <div
+        className={`${styles.cityContainer} ${styles.divDrawer}`}
+        ref={wrapperRef}
+      >
+        {inputContent !== "" ? (
+          <div className={`${styles.divDrawer}`}>{list}</div>
+        ) : (
+          ""
+        )}
+        {!disabled ? (
+          <input
+            type="text"
+            className={`${styles.input}`}
+            onKeyUp={(e) => {
+              lister(e);
+              setInputContent(e.target.value);
+            }}
+            onChange={(e) => {
+              setOnChangeItem(e.target.value);
+            }}
+            value={onChangeItem}
+            placeholder={placeholder}
+            autoComplete="off"
+          />
+        ) : (
+          <input
+            type="text"
+            className={`${styles.input}`}
+            value={value}
+            disabled={disabled}
+          />
+        )}
       </div>
-    </div >
+    </div>
   );
 }

@@ -10,9 +10,10 @@ export default function Imagen({
   handleAdd,
   handleDelete,
 }) {
+  const esImagenPrincipal = index === 0;
   const [imagenDetails, setImagenDetails] = useState({
     url: "",
-    descripcion: "",
+    descripcion: esImagenPrincipal ? "Principal" : "",
   });
 
   const [botonHabilitado, setBotonHabilitado] = useState(true);
@@ -29,7 +30,6 @@ export default function Imagen({
   }, [botonHabilitado]);
 
   const setUrl = (url) => {
-    // validateURL();
     setImagenDetails({
       url: url,
       descripcion: imagenDetails.descripcion,
@@ -44,18 +44,9 @@ export default function Imagen({
   };
 
   const handleAddImage = () => {
-    // if (isURLValidImage()) {
     agregarImagen(imagenDetails);
     setBotonHabilitado(false);
-    // }
   };
-
-  // const validateURL = () => {
-  //   const regex = /(http)?s?:?(\/\/[^"']*\.(?:png|jpg|jpeg|png|svg))/g;
-  //   setIsShownError(imagenDetails.url.match(regex));
-  // };
-
-  const handleCheck = () => {};
 
   return (
     <div className={styles.container}>
@@ -64,16 +55,23 @@ export default function Imagen({
           setOnChangeItem={setUrl}
           name="url"
           placeholder="Insertar https://"
-          onBlur={handleCheck}
         />
-        <DropInput
-          setOnChangeItem={setDescripcion}
-          name="descripcion"
-          placeholder="Descripción"
-          onBlur={handleCheck}
-        />
+        {esImagenPrincipal ? (
+          <DropInput
+            setOnChangeItem={setDescripcion}
+            name="descripcion"
+            value="Principal"
+            disabled={true}
+          />
+        ) : (
+          <DropInput
+            setOnChangeItem={setDescripcion}
+            name="descripcion"
+            placeholder="Descripción"
+          />
+        )}
         <div className={styles.containerButton}>
-          {index === 0 ? (
+          {esImagenPrincipal ? (
             <div className={styles.containerBotones}>
               <button
                 className={styles.add}
