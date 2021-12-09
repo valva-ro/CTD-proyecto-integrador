@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
-import { Redirect, useHistory } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 import ReservaCard from "./ReservaCard";
 import SkeletonTarjetaAlojamiento from "../../BloqueAlojamientos/TarjetaAlojamiento/SkeletonTarjetaAlojamiento";
 import useFetch from "../../../hooks/useFetch";
@@ -8,7 +8,6 @@ import styles from "../FavoritosYReservas.module.css";
 import HeaderSecundario from "../../HeaderSecundario/HeaderSecundario";
 
 export default function Reservas() {
-  const history = useHistory();
   const idUsuario = parseInt(localStorage.getItem("id"));
   let token = "";
   if (localStorage.hasOwnProperty("jwt")) {
