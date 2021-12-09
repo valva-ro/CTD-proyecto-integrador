@@ -27,7 +27,7 @@ export default function Register() {
   const expresiones = {
     nombre: /^[a-zA-ZÀ-ÿ\s]{2,25}$/,
     apellido: /^[a-zA-ZÀ-ÿ\s]{2,25}$/,
-    clave: /^.{7,20}$/,
+    clave: /^.{7,}$/,
     correo: /[A-z0-9]+@[A-z]+.[A-z]{3}/,
   };
 
@@ -142,7 +142,7 @@ export default function Register() {
             label="Contraseña"
             name="contrasenia"
             expresionRegular={expresiones.clave}
-            leyendaError="La contraseña debe tener entre 7 y 20 caracteres."
+            leyendaError="La contraseña debe tener al menos 7 caracteres."
             tieneIcono={true}
           />
           <InputComponent
