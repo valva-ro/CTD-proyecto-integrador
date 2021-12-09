@@ -1,20 +1,22 @@
 import Imagen from "../Imagen/Imagen";
 
 export default function RowImagenes({
-  imagenesDetails,
-  handleAdd,
-  handleDelete,
+  cantidadInputsImg,
   agregarImagen,
+  eliminarImagen,
+  subirImagen,
 }) {
   return (
     <>
-      {imagenesDetails.map((val, idx) => (
+      {Array.apply(0, Array(cantidadInputsImg)).map((val, idx) => (
         <Imagen
           value={val}
-          index={idx}
+          esImagenPrincipal={idx === 0}
+          esUltimaImagen={idx === cantidadInputsImg - 1}
+          cantidadInputsImg={cantidadInputsImg}
+          subirImagen={subirImagen}
           agregarImagen={agregarImagen}
-          handleAdd={handleAdd}
-          handleDelete={handleDelete}
+          eliminarImagen={eliminarImagen}
           key={`imagen-${idx}`}
         />
       ))}

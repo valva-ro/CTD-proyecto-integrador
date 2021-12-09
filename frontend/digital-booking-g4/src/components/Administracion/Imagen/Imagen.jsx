@@ -5,114 +5,113 @@ import styles from "./Imagen.module.css";
 
 export default function Imagen({
   value,
-  index,
+  esImagenPrincipal,
+  esUltimaImagen,
   agregarImagen,
-  handleAdd,
-  handleDelete,
+  eliminarImagen,
+  subirImagen,
 }) {
-  const esImagenPrincipal = index === 0;
-  const [imagenDetails, setImagenDetails] = useState({
+  const [informacionImagen, setInformacionImagen] = useState({
     url: "",
     descripcion: esImagenPrincipal ? "Principal" : "",
   });
-
   const [botonHabilitado, setBotonHabilitado] = useState(true);
   const [isShownError, setIsShownError] = useState(false);
 
   useEffect(() => {
     const botonHabilitado =
-      imagenDetails.url !== "" && imagenDetails.descripcion !== "";
+      informacionImagen.url !== "" && informacionImagen.descripcion !== "";
     setBotonHabilitado(botonHabilitado);
-  }, [imagenDetails]);
+  }, [informacionImagen]);
 
   useEffect(() => {
     setIsShownError(botonHabilitado);
   }, [botonHabilitado]);
 
   const setUrl = (url) => {
-    setImagenDetails({
+    setInformacionImagen({
       url: url,
-      descripcion: imagenDetails.descripcion,
+      descripcion: informacionImagen.descripcion,
     });
   };
 
   const setDescripcion = (descripcion) => {
-    setImagenDetails({
-      url: imagenDetails.url,
+    setInformacionImagen({
+      url: informacionImagen.url,
       descripcion: descripcion,
     });
   };
 
-  const handleAddImage = () => {
-    agregarImagen(imagenDetails);
+  const handleSaveImage = () => {
+    subirImagen(informacionImagen);
     setBotonHabilitado(false);
   };
 
   return (
     <div className={styles.container}>
       <div className={styles.fila}>
-        <EstandarInput
-          setOnChangeItem={setUrl}
-          name="url"
-          placeholder="Insertar https://"
-        />
-        {esImagenPrincipal ? (
-          <DropInput
-            setOnChangeItem={setDescripcion}
-            name="descripcion"
-            value="Principal"
-            disabled={true}
+        <div className={styles.inputs}>
+          <EstandarInput
+            setOnChangeItem={setUrl}
+            name="url"
+            placeholder="Insertar https://"
           />
-        ) : (
-          <DropInput
-            setOnChangeItem={setDescripcion}
-            name="descripcion"
-            placeholder="Descripción"
-          />
-        )}
-        <div className={styles.containerButton}>
           {esImagenPrincipal ? (
-            <div className={styles.containerBotones}>
-              <button
-                className={styles.add}
-                disabled={!botonHabilitado}
-                onClick={handleAddImage}
-              >
-                <i className="fas fa-check"></i>
-              </button>
-              <button className={styles.add} onClick={handleAdd}>
-                <i className="fas fa-plus"></i>
-              </button>
-            </div>
+            <DropInput
+              setOnChangeItem={setDescripcion}
+              name="descripcion"
+              value="Principal"
+              disabled={true}
+            />
           ) : (
-            <div className={styles.containerBotones}>
+            <DropInput
+              setOnChangeItem={setDescripcion}
+              name="descripcion"
+              placeholder="Descripción"
+            />
+          )}
+          <div className={styles.containerBotones}>
+            <>
               <button
-                className={styles.add}
+                className={styles.imageButton}
                 disabled={!botonHabilitado}
-                onClick={handleAddImage}
+                onClick={handleSaveImage}
               >
                 <i className="fas fa-check"></i>
               </button>
-              <button
-                className={styles.delete}
-                onClick={() => handleDelete(value, imagenDetails)}
-              >
-                <i className="fas fa-times"></i>
-              </button>
-            </div>
-          )}
+              {!esImagenPrincipal ? (
+                <button
+                  className={`${styles.imageButton} ${styles.delete}`}
+                  onClick={() => eliminarImagen(value, informacionImagen)}
+                >
+                  <i className="fas fa-times"></i>
+                </button>
+              ) : null}
+            </>
+          </div>
         </div>
+        {!isShownError ? (
+          ""
+        ) : (
+          <div className={styles.errorMsjContainer}>
+            <i className="fas fa-exclamation-triangle"></i>
+            <p>
+              Por favor, recuerde confirmar la imagen antes de crear el
+              producto.
+            </p>
+          </div>
+        )}
+        {esUltimaImagen ? (
+          <>
+            <button
+              className={`${styles.imageButton} ${styles.add}`}
+              onClick={agregarImagen}
+            >
+              <i className="fas fa-plus"></i>
+            </button>
+          </>
+        ) : null}
       </div>
-      {!isShownError ? (
-        ""
-      ) : (
-        <div className={styles.invalidURL}>
-          <i className="fas fa-exclamation-triangle"></i>
-          <p>
-            Por favor, recuerde confirmar la imagen antes de crear el producto.
-          </p>
-        </div>
-      )}
     </div>
   );
 }
