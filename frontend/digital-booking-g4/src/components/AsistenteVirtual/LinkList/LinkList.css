@@ -1,0 +1,31 @@
+.link-list {
+    padding: 0;
+  }
+  
+  .link-list-item {
+    text-align: left;
+    font-size: 0.9rem;
+    list-style: none;
+  }
+  
+  .link-list-item a{
+    transition: all ease 250ms;
+    }
+  
+  .link-list-item a:hover{
+    background-color: var(--color-principal);
+    border: 2px solid var(--color-2);
+  }
+
+  .link-list-item-url {
+    text-decoration: none;
+    margin: 10px;
+    display: block;
+    color: rgb(0,0,0);
+    border: 2px solid rgb(0,0,0);
+    text-align: center;
+    padding: 8px;
+    border-radius: 10px;
+    box-shadow: 2px 2px 4px rgba(150, 149, 149, 0.4);
+  }
+  

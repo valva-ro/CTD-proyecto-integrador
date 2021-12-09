@@ -17,6 +17,7 @@ import ConfirmacionCuenta from "./components/ConfirmacionCuenta/ConfirmacionCuen
 import Reservas from "./components/FavoritosYReservas/Reservas/Reservas";
 import Administracion from "./components/Administracion/Administracion";
 import AuthenticationVerify from "./components/AuthenticationVerify/AuthenticationVerify";
+import AsistenteVirtual from "./components/AsistenteVirtual/AsistenteVirtual";
 
 function App() {
   const [isLogged, setIsLogged] = useState(estaLogueado());
@@ -84,6 +85,7 @@ function App() {
           </Layout>
           <AuthenticationVerify cleanUserInfo={cleanUserInfo}/>
         </BrowserRouter>
+        <AsistenteVirtual/>
       </div>
     </loggedContext.Provider>
   );

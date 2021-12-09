@@ -1,0 +1,146 @@
+.react-chatbot-kit-chat-message-container div p button {
+  font-size: 0.9rem;
+  background: transparent;
+  border-color: #28334aff;
+  padding: 8px;
+  margin: 10px;
+  border-radius: 10px;
+  display: block;
+  box-shadow: 2px 2px 4px rgb(150 149 149 / 40%);
+  width: -webkit-fill-available;
+  cursor: pointer;
+  transition: all ease 250ms;
+}
+
+.react-chatbot-kit-chat-message-container div p button:hover {
+  background-color: var(--color-principal);
+  border: 2px solid var(--color-2);
+}
+
+/*fondo donde está el chat y las opciones*/
+.react-chatbot-kit-chat-message-container {
+  background: rgb(234, 235, 238);
+  overflow-y: scroll;
+  max-width: 300px;
+  max-height: 343px;
+}
+
+/*contenedor general del chatbox*/
+.react-chatbot-kit-chat-container {
+  max-width: 300px;
+  position: fixed;
+  display: inline;
+  bottom: 145px;
+  right: 60px;
+  z-index: 998;
+  box-shadow: -8px -4px 4px rgb(0 0 0 / 25%);
+}
+
+/*input ingreso de texto usuario*/
+.react-chatbot-kit-chat-input {
+  width: 230px;
+  border: 3px solid rgb(86, 117, 114);
+}
+
+/*Borrar el mensaje del input que viene por defecto*/
+.react-chatbot-kit-chat-input::placeholder {
+  color: white;
+}
+
+/*burbuja de mensaje de MarcoBot*/
+.react-chatbot-kit-chat-bot-message {
+  border-end-end-radius: 10px;
+  border-top-right-radius: 10px;
+  border-bottom-left-radius: 20px;
+  margin: 18px 50px 0px 0px;
+  box-shadow: -2px 2px 4px rgb(0 0 0 / 25%);
+}
+
+/*letra de burbuja de mensaje de MarcoBot*/
+.react-chatbot-kit-chat-bot-message span {
+  color: rgb(255, 255, 255);
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 1rem;
+}
+
+/*contenedor de avatar y mensaje de chat*/
+.react-chatbot-kit-chat-bot-message-container {
+  display: inline-flex;
+  justify-content: flex-start;
+  max-width: inherit;
+  margin-left: 8px;
+}
+
+/*contenedor de avatar y mensaje de usuario*/
+.react-chatbot-kit-user-chat-message-container {
+  display: flex;
+  justify-content: flex-end;
+  max-width: inherit;
+  margin-right: 8px;
+}
+
+/*burbuja de mensaje de usuario*/
+.react-chatbot-kit-user-chat-message {
+  border-end-end-radius: 10px;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  background-color: rgb(84, 87, 118);
+  margin: 17px -5px 0px 0px;
+  padding: 10px;
+  border: 1px solid;
+  box-shadow: 3px 3px 2px 1px rgb(0 0 0 / 40%);
+  color: rgb(255, 255, 255);
+}
+
+/*animación para background Marco*/
+@keyframes anim {
+  0% {
+    background-color: rgb(40, 51, 74);
+  }
+  50% {
+    background-color: var(--color-principal);
+  } /*Negro*/
+  100% {
+    background-color: rgb(40, 51, 74);
+  }
+}
+
+/*boton fijo de MarcoBot (toggle)*/
+.app-chatbot-button {
+  width: 75px;
+  height: 75px;
+  border-radius: 50%;
+  background-color: rgb(40, 51, 74);
+  border: none;
+  position: fixed;
+  bottom: 100px;
+  z-index: 998;
+  right: 15px;
+  box-shadow: 6px 4px 4px rgb(0 0 0 / 25%);
+  /*animacion cambo de color background*/
+  animation-name: anim;
+  animation-duration: 5s;
+  animation-iteration-count: infinite;
+}
+
+/*icono dentro del boton toggle*/
+.app-chatbot-button-icon {
+  width: 40px;
+  height: 35px;
+}
+
+/*contenedor boton enviar mensaje*/
+.react-chatbot-kit-chat-input-form {
+  display: flex;
+  background: #567572ff;
+  height: 40px;
+}
+
+/*boton enviar*/
+.react-chatbot-kit-chat-btn-send {
+  width: 30px;
+  border: 0;
+}
