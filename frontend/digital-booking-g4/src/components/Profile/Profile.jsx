@@ -64,7 +64,7 @@ export default function Profile() {
       items = (
         <>
           <Link
-            to="/administration"
+            to="/management"
             onClick={toggleDropdown}
             className={styles.itemDropdown}
           >
