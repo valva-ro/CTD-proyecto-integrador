@@ -17,7 +17,6 @@ import post from "../../utils/post";
 import get from "../../utils/get";
 import stylesInputsFromOtherside from "../Producto/ProductoReserva/ProductoFormDatos/InputsFromOtherside.module.css";
 import styles from "./Administracion.module.css";
-import caracteristicas from "../../resources/caracteristicas.json";
 
 export default function Administracion() {
   const { isLogged, rol } = useContext(loggedContext);
@@ -28,7 +27,6 @@ export default function Administracion() {
   const [horarioCheckIn, setHorarioCheckIn] = useState(null);
   const [onChangeCity, setOnChangeCity] = useState("");
   const [country, setCountry] = useState("");
-  const autocompletadoInputCountry = true;
   const [latitud, setLatitud] = useState("");
   const [longitud, setLongitud] = useState("");
   const [descripcion, setDescripcion] = useState("");
@@ -37,9 +35,12 @@ export default function Administracion() {
   const [cancelacion, setCancelacion] = useState("");
   const [imagenes, setImagenes] = useState([]);
   const [atributosId, setAtributosId] = useState([]);
+  const [categoryItems, setCategoryItems] = useState([]);
+  const [caracteristicas, setCaracteristicas] = useState([]);
   const [error, setError] = useState({ message: "", isError: false });
   const [city, setCity] = useState({});
-  const data = useFetch("categorias");
+  const { isLoaded: isLoadedCategorias, items: itemsCategorias } = useFetch("categorias");
+  const { isLoaded: isLoadedCaracteristicas, items: itemsCaracteristicas } = useFetch("caracteristicas");
 
   let token = "";
   if (localStorage.hasOwnProperty("jwt")) {
@@ -70,7 +71,8 @@ export default function Administracion() {
     }
     if (horarioCheckIn === null) {
       setError({
-        message: "El horario de check-in del alojamiento es un campo obligatorio",
+        message:
+          "El horario de check-in del alojamiento es un campo obligatorio",
         isError: true,
       });
       return false;
@@ -118,8 +120,7 @@ export default function Administracion() {
     }
     if (saludSeguridad === "") {
       setError({
-        message:
-          "Las políticas salud y seguridad son un campo obligatorio",
+        message: "Las políticas salud y seguridad son un campo obligatorio",
         isError: true,
       });
       return false;
@@ -131,7 +132,7 @@ export default function Administracion() {
       });
       return false;
     }
-    if (imagenes.length > 0) {
+    if (imagenes.length < 1) {
       setError({
         message: "Debe cargar al menos una imagen",
         isError: true,
@@ -152,20 +153,27 @@ export default function Administracion() {
     setHorarioCheckIn(parseInt(e.target.value));
 
   /* ------- Categoría ------- */
-  const [categoryItems, setCategoryItems] = useState([]);
   let categoriasDisponibles = [];
 
   useEffect(() => {
-    if (data.isLoaded) {
-      setCategoryItems(data.items);
+    if (isLoadedCategorias) {
+      setCategoryItems(itemsCategorias);
     }
-  }, [data.isLoaded, data.items]);
+  }, [isLoadedCategorias, itemsCategorias]);
 
   categoryItems.forEach((item) => {
     categoriasDisponibles.push(item.titulo);
   });
 
   const handleChangeCategory = (e) => setOnChangeCategory(e.target.value);
+
+  /* ------- Característica ------- */
+
+  useEffect(() => {
+    if (isLoadedCaracteristicas) {
+      setCaracteristicas(itemsCaracteristicas);
+    }
+  }, [isLoadedCaracteristicas, itemsCaracteristicas]);
 
   /* ------- Imagenes ------- */
   const [imagenesDetails, setImagenesDetails] = useState([
@@ -382,7 +390,7 @@ export default function Administracion() {
                   specificStyle3={stylesInputsFromOtherside.divDrawer}
                   setCountry={setCountry}
                   setCity={setCity}
-                  autocompletadoInputCountry={autocompletadoInputCountry}
+                  autocompletadoInputCountry={true}
                 />
               </div>
 
