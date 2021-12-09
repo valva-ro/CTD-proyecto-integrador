@@ -1,5 +1,5 @@
 import { React, useState, useEffect, useContext } from "react";
-import useFetch from "../../hooks/useFetch";
+import { Redirect } from "react-router-dom";
 import HeaderSecundario from "../HeaderSecundario/HeaderSecundario";
 import TituloBloque from "../TituloBloque/TituloBloque";
 import NumberInput from "./NumberInput/NumberInput";
@@ -7,16 +7,17 @@ import EstandarInput from "./EstandarInput/EstandarInput";
 import TextAreaInput from "./TextAreaInput/TextAreaInput";
 import SelectInput from "./SelectInput/SelectInput";
 import CityInput from "../Searcher/CityInput/CityInput";
-import styles from "./Administracion.module.css";
-import caracteristicas from "../../resources/caracteristicas.json";
-import stylesInputsFromOtherside from "../Producto/ProductoReserva/ProductoFormDatos/InputsFromOtherside.module.css";
 import RowImagenes from "./RowImagenes/RowImagenes";
 import FilledButton from "../Buttons/FilledButton";
-import post from "../../utils/post";
-import loggedContext from "../../contexts/loggedContext";
-import { Redirect } from "react-router-dom";
 import Modal from "../Modal/Modal"
 import TarjetaPostExitoso from "../TarjetaPostExitoso/TarjetaPostExitoso";
+import loggedContext from "../../contexts/loggedContext";
+import useFetch from "../../hooks/useFetch";
+import post from "../../utils/post";
+import get from "../../utils/get";
+import stylesInputsFromOtherside from "../Producto/ProductoReserva/ProductoFormDatos/InputsFromOtherside.module.css";
+import styles from "./Administracion.module.css";
+import caracteristicas from "../../resources/caracteristicas.json";
 
 export default function Administracion() {
   const { isLogged, rol } = useContext(loggedContext);
@@ -24,7 +25,7 @@ export default function Administracion() {
   const [propertyName, setPropertyName] = useState("");
   const [onChangeCategory, setOnChangeCategory] = useState("");
   const [address, setAddress] = useState("");
-  const [hora, setHora] = useState(null);
+  const [horarioCheckIn, setHorarioCheckIn] = useState(null);
   const [onChangeCity, setOnChangeCity] = useState("");
   const [country, setCountry] = useState("");
   const autocompletadoInputCountry = true;
@@ -35,43 +36,55 @@ export default function Administracion() {
   const [saludSeguridad, setSaludSeguridad] = useState("");
   const [cancelacion, setCancelacion] = useState("");
   const [imagenes, setImagenes] = useState([]);
-  const [atributos, setAtributos] = useState([]);
-  const [idCiudad, setIdCiudad] = useState(null);
-  const [idCategoria, setIdCategoria] = useState(null);
-  const [idPoliticas, setIdPoliticas] = useState([]);
-  const [idImagenes, setIdImagenes] = useState(null);
-
-  console.log(propertyName);
-  console.log(onChangeCategory);
-  console.log(address);
-  console.log(hora);
-  console.log(onChangeCity);
-  console.log(country);
-  console.log(latitud);
-  console.log(longitud);
-  console.log(descripcion);
-  console.log(normasDeLaCasa);
-  console.log(saludSeguridad);
-  console.log(cancelacion);
-  console.log(imagenes);
-  console.log(atributos);
-
+  const [atributosId, setAtributosId] = useState([]);
+  const [showMsjError, setShowMsjError] = useState(false);
+  const [city, setCity] = useState({});
   const data = useFetch("categorias");
 
-  /* ------- CheckIn (horario min) ------- */
-
-  let horasDisponibles = [];
-
-  for (let i = 0; i <= 23; i++) {
-    horasDisponibles.push(i);
+  let token = "";
+  if (localStorage.hasOwnProperty("jwt")) {
+    token = localStorage.getItem("jwt").replaceAll('"', "");
   }
 
-  const handleChangeCheckIn = (e) => setHora(e.target.value);
+  const validarCampos = () => {
+    let camposValidos = true;
+    if (
+      !(
+        propertyName !== "" &&
+        onChangeCategory !== "" &&
+        address !== "" &&
+        horarioCheckIn !== null &&
+        onChangeCity !== "" &&
+        country !== "" &&
+        latitud !== "" &&
+        longitud !== "" &&
+        descripcion !== "" &&
+        normasDeLaCasa !== "" &&
+        saludSeguridad !== "" &&
+        cancelacion !== "" &&
+        imagenes.length > 0
+      )
+    ) {
+      setShowMsjError(true);
+      camposValidos = false;
+    }
+    return camposValidos;
+  };
+
+  /* ------- CheckIn (horarioCheckInrio min) ------- */
+  let horarioCheckInsDisponibles = [];
+
+  for (let i = 0; i <= 23; i++) {
+    horarioCheckInsDisponibles.push(i);
+  }
+
+  const handleChangeCheckIn = (e) =>
+    setHorarioCheckIn(parseInt(e.target.value));
 
   /* ------- Categoría ------- */
-
   const [categoryItems, setCategoryItems] = useState([]);
   let categoriasDisponibles = [];
+
   useEffect(() => {
     if (data.isLoaded) {
       setCategoryItems(data.items);
@@ -85,7 +98,6 @@ export default function Administracion() {
   const handleChangeCategory = (e) => setOnChangeCategory(e.target.value);
 
   /* ------- Imagenes ------- */
-
   const [imagenesDetails, setImagenesDetails] = useState([
     {
       url: "",
@@ -110,70 +122,135 @@ export default function Administracion() {
     setImagenes([...imagenes.filter((r) => r !== imagen)]);
   };
 
-  const handleSubmit = (e) => e.preventDefault();
-
-  const postearCiudad = () => {
-    post("ciudades", {
-      nombre: onChangeCity,
-      pais: country,
-      latitud,
-      longitud,
-    })
-      .then((response) => response.json())
-      .then((data) => setIdCiudad(data.id));
-  };
-
-  const obtenerIdCategoria = (nombreCategoria) => {
-    switch (nombreCategoria) {
-      case "Hoteles":
-        setIdCategoria(1);
-        break;
-      case "Hostels":
-        setIdCategoria(2);
-        break;
-      case "Bed & Breakfasts":
-        setIdCategoria(3);
-        break;
-      case "Departamentos":
-        setIdCategoria(4);
-        break;
-    }
-  };
-
-  const postearImagenes = () => {
-    
-  }
-
-  // const postearPoliticas = () => {
-  //   post("politicas", {
-  //     nombre: normasDeLaCasa,
-  //     tipoPolitica: 1,
-  //   })
-  //     .then((response) => response.json())
-  //     .then((data) => setIdPoliticas([...idPoliticas, data.id]));
-
-  //   post("politicas", {
-  //     nombre: saludSeguridad,
-  //     tipoPolitica: 2,
-  //   })
-  //     .then((response) => response.json())
-  //     .then((data) => setIdPoliticas([...idPoliticas, data.id]));
-
-  //   post("politicas", {
-  //     nombre: cancelacion,
-  //     tipoPolitica: 3,
-  //   })
-  //     .then((response) => response.json())
-  //     .then((data) => setIdPoliticas([...idPoliticas, data.id]));
-  // };
-
-  console.log(idPoliticas);
-
   const handleCreacionProducto = () => {
-    // postearCiudad();
-    // obtenerIdCategoria(onChangeCategory);
-    // postearPoliticas();
+    let idDeCategoria;
+    let idDeCiudad;
+    let idsDePoliticas = [];
+    let idsDeImagenes = [];
 
+    const obtenerIdCategoria = (nombreCategoria) => {
+      switch (nombreCategoria) {
+        case "Hoteles":
+          idDeCategoria = 1;
+          break;
+        case "Hostels":
+          idDeCategoria = 2;
+          break;
+        case "Bed & Breakfasts":
+          idDeCategoria = 3;
+          break;
+        case "Departamentos":
+          idDeCategoria = 4;
+          break;
+      }
+    };
+
+    const postearCiudad = () => {
+      return get("ciudades").then((data) => {
+        const filtradoCiudad = data.find(
+          (ciudad) => ciudad.nombre === onChangeCity
+        );
+        if (filtradoCiudad !== undefined) {
+          idDeCiudad = filtradoCiudad.id;
+        } else {
+          return post("ciudades", {
+            nombre: onChangeCity,
+            pais: country,
+            latitud,
+            longitud,
+          })
+            .then((response) => response.json())
+            .then((data) => (idDeCiudad = parseInt(data.id)));
+        }
+      });
+    };
+
+    const postearPoliticas = () => {
+      return post("politicas", {
+        nombre: normasDeLaCasa,
+        tipoPolitica: 1,
+      })
+        .then((response) => response.json())
+        .then((data) => idsDePoliticas.push(parseInt(data.id)))
+        .then(() =>
+          post("politicas", {
+            nombre: saludSeguridad,
+            tipoPolitica: 2,
+          })
+        )
+        .then((response) => response.json())
+        .then((data) => idsDePoliticas.push(parseInt(data.id)))
+        .then(() =>
+          post("politicas", {
+            nombre: cancelacion,
+            tipoPolitica: 3,
+          })
+        )
+        .then((response) => response.json())
+        .then((data) => idsDePoliticas.push(parseInt(data.id)));
+    };
+
+    const postearImagenes = () => {
+      return imagenes.map((imagen) =>
+        post("imagenes", {
+          imagenTitulo: imagen.descripcion,
+          imagenUrl: imagen.url,
+        })
+          .then((response) => response.json())
+          .then((data) => idsDeImagenes.push(parseInt(data.id)))
+      );
+    };
+
+    obtenerIdCategoria(onChangeCategory);
+    const promises = [
+      ...postearImagenes(),
+      postearCiudad(),
+      postearPoliticas(),
+    ];
+
+    Promise.all(promises).then(() => {
+      post(
+        "productos",
+        {
+          nombre: propertyName,
+          descripcion,
+          direccion: address,
+          horarioCheckIn: horarioCheckIn,
+          categoria: { id: idDeCategoria },
+          ciudad: { id: idDeCiudad },
+          imagenes: idsDeImagenes.map((id) => {
+            return { id };
+          }),
+          caracteristicas: atributosId.map((id) => {
+            return { id };
+          }),
+          politicas: idsDePoliticas.map((id) => {
+            return { id };
+          }),
+        },
+        {
+          "Content-Type": "application/json",
+          Authorization: token,
+        }
+      ).then((response) => {
+        if (response.status === 201) {
+          setShowMsjError(false);
+          console.log("Se creó el alojamiento con éxito.");
+          // Agregar mensaje exitoso
+        } else {
+          console.log("Hubo un error al crear el alojamiento.");
+          setShowMsjError(true);
+        }
+      });
+    });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const camposValidados = validarCampos();
+    if (camposValidados) {
+      handleCreacionProducto();
+    }
   };
 
   if (!isLogged || rol !== "ROLE_ADMIN") {
@@ -218,7 +295,7 @@ export default function Administracion() {
                 label="* CheckIn (horario min)"
                 name="horarioCheckIn"
                 handleChange={handleChangeCheckIn}
-                opcionesDisponibles={horasDisponibles}
+                opcionesDisponibles={horarioCheckInsDisponibles}
                 showOptions={true}
               />
             </div>
@@ -232,6 +309,7 @@ export default function Administracion() {
                   specificStyle2={stylesInputsFromOtherside.inputFormDatos}
                   specificStyle3={stylesInputsFromOtherside.divDrawer}
                   setCountry={setCountry}
+                  setCity={setCity}
                   autocompletadoInputCountry={autocompletadoInputCountry}
                 />
               </div>
@@ -241,27 +319,32 @@ export default function Administracion() {
                 setOnChangeItem={setCountry}
                 label="* País"
                 name="pais"
+                value={city.pais}
               />
             </div>
             <div className={styles.lineContainerInformacion}>
               <NumberInput
                 onChangeItem={latitud}
                 setOnChangeItem={setLatitud}
-                label="Latitud"
+                label="* Latitud"
                 name="latitud"
+                value={city.latitud}
+                showValue={city.latitud != null}
               />
               <NumberInput
                 onChangeItem={longitud}
                 setOnChangeItem={setLongitud}
-                label="Longitud"
+                label="* Longitud"
                 name="longitud"
+                value={city.longitud}
+                showValue={city.longitud != null}
               />
             </div>
             <div className={`${styles.lineContainerInformacion}`}>
               <TextAreaInput
                 onChangeItem={descripcion}
                 setOnChangeItem={setDescripcion}
-                label="Descripción"
+                label="* Descripción"
                 name="descripcion"
               />
             </div>
@@ -278,9 +361,9 @@ export default function Administracion() {
                     value={caracteristica.nombre}
                     onChange={(e) =>
                       e.target.checked === true
-                        ? setAtributos([...atributos, caracteristica.id])
-                        : atributos.splice(
-                            atributos.indexOf(caracteristica.id),
+                        ? setAtributosId([...atributosId, caracteristica.id])
+                        : atributosId.splice(
+                            atributosId.indexOf(caracteristica.id),
                             1
                           )
                     }
@@ -301,7 +384,7 @@ export default function Administracion() {
                 <TextAreaInput
                   onChangeItem={normasDeLaCasa}
                   setOnChangeItem={setNormasDeLaCasa}
-                  label="Descripción"
+                  label="* Descripción"
                   name="normasDeLaCasa"
                   placeholder="Escribir aquí"
                 />
@@ -311,7 +394,7 @@ export default function Administracion() {
                 <TextAreaInput
                   onChangeItem={saludSeguridad}
                   setOnChangeItem={setSaludSeguridad}
-                  label="Descripción"
+                  label="* Descripción"
                   name="saludSeguridad"
                   placeholder="Escribir aquí"
                 />
@@ -321,7 +404,7 @@ export default function Administracion() {
                 <TextAreaInput
                   onChangeItem={cancelacion}
                   setOnChangeItem={setCancelacion}
-                  label="Descripción"
+                  label="* Descripción"
                   name="cancelacion"
                   placeholder="Escribir aquí"
                 />
@@ -330,6 +413,9 @@ export default function Administracion() {
           </div>
           <div className={styles.subContainer}>
             <TituloBloque>Cargar imágenes</TituloBloque>
+            <p className={styles.camposObligatorios}>
+              (Se debe cargar al menos una imagen)
+            </p>
             <RowImagenes
               handleAdd={handleAdd}
               handleDelete={handleDelete}
@@ -338,10 +424,16 @@ export default function Administracion() {
             />
           </div>
           <div className={styles.subContainer}>
-            <FilledButton
-              styles={styles.buttonSubmit}
-              onClick={handleCreacionProducto}
-            >
+            {showMsjError ? (
+              <div className={styles.invalidURL}>
+                <i className="fas fa-exclamation-triangle"></i>
+                <p>
+                  Han quedado campos sin completar. Por favor, revise el
+                  formulario y vuelva a intentarlo.
+                </p>
+              </div>
+            ) : null}
+            <FilledButton styles={styles.buttonSubmit} onClick={handleSubmit}>
               Crear
             </FilledButton>
           </div>

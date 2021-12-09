@@ -3,7 +3,7 @@
   justify-content: space-between;
   align-items: center;
   position: relative;
-  gap:12px;
+  gap: 10px;
 }
 
 .avatar {
@@ -63,6 +63,7 @@
   z-index: 1;
   transition: all 200ms ease-in;
   border-radius: 1px;
+  user-select: none;
 }
 
 .itemDropdown:hover {

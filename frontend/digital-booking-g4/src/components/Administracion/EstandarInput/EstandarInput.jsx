@@ -6,6 +6,7 @@ export default function EstandarInput({
     onChangeItem,
     setOnChangeItem,
     placeholder,
+    value
 }) {
     return (
         <div className={styles.containerEstandarInput}>
@@ -17,10 +18,11 @@ export default function EstandarInput({
                     onChange={(e) => {
                         setOnChangeItem(e.target.value)
                     }}
-                    value={onChangeItem}
+                    value={value == null ? onChangeItem : value}
                     name={name}
                     placeholder={placeholder}
                     required
+                    disabled={value != null}
                 />
             </div>
         </div>

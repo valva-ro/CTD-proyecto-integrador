@@ -26,6 +26,12 @@
     width: 100%;
 }
 
+.estandarInput:disabled {
+  color: rgb(70, 70, 70);
+  background-color: rgba(128, 128, 128, 0.25);
+  border: 3px solid #DFDFDF;
+}
+
 
 @media (max-width: 480px) {
   .labelEstandarInput{

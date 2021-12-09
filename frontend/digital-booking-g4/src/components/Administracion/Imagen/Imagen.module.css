@@ -39,6 +39,10 @@ button {
   opacity: 0.25;
 }
 
+.add:disabled:hover {
+  cursor: unset;
+}
+
 .delete {
   font-size: 2rem;
   font-weight: 700;
@@ -71,7 +75,7 @@ button {
   padding: 10px;
   color: #000;
   gap: 10px;
-  margin: 0 20px;
+  margin: 10px 20px;
 }
 
 .invalidURL p {

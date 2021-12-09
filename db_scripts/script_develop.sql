@@ -83,7 +83,7 @@ CREATE TABLE IF NOT EXISTS imagenes (
   imagen_id INT UNSIGNED NOT NULL AUTO_INCREMENT COMMENT "id de la tabla imagenes", 
   imagen_titulo VARCHAR(50) NOT NULL  COMMENT "titulo de la imagen",
   imagen_URL TEXT NOT NULL COMMENT "url de la imagen",
-  fk_producto INT UNSIGNED NOT NULL,
+  fk_producto INT UNSIGNED,
   PRIMARY KEY (imagen_id),
   CONSTRAINT productos
 		FOREIGN KEY (fk_producto)

@@ -1,7 +1,10 @@
 .camposObligatorios{
     color: var(--color-2);
     font-size: 0.875rem;
+    text-align: left;
+    margin-top: 2px;
 }
+
 .containerPrincipal{
     background-color: var(--color-inputs-form-datos);
 }
@@ -83,13 +86,13 @@
 }
 .checkboxes label span{
     color: var(--color-2);
+    user-select: none;
 }
 
 .checkboxes label:hover {
     background-color: rgba(190, 190, 190, 0.1);
     box-shadow: 0px 1px 5px rgb(0 0 0 / 15%);
     color: var(--color-2);
-    
 } 
 
 .checkboxes label i:hover{
@@ -133,6 +136,22 @@
     padding: 7px 15vw;
     
 }
+
+.invalidURL {
+    background-color: #da5456;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    color: #000;
+    gap: 10px;
+    margin: 0 20px;
+  }
+
+  .invalidURL p {
+    color: #000;
+    text-align: left;
+  }
 
 @media (max-width: 768px) {
     .checkboxes li{   
