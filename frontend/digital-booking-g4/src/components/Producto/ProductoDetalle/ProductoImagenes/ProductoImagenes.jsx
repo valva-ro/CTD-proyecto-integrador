@@ -85,31 +85,30 @@ export default function ProductoImagenes({ alojamiento }) {
   return (
     <section className={styles.sectionImagenes}>
       <div className={styles.iconos}>
-        {rol === "ROLE_USER" ? (
-          <>
-            <i className="bx bx-share-alt" onClick={abrirRedesSociales}></i>
-            {isLogged ? (
-              isLoaded ? (
-                isFavorito ? (
-                  <i
-                    onClick={() => handleFav()}
-                    className={`fas fa-heart ${styles.corazon}`}
-                  ></i>
-                ) : (
-                  <i
-                    onClick={() => handleFav()}
-                    className={`far fa-heart ${styles.corazon}`}
-                  ></i>
-                )
-              ) : null
-            ) : null}
-          </>
-        ) : (
-          <>
-            <i className={`fa fa-pen`}></i>
-            <i className={`fa fa-trash`}></i>
-          </>
-        )}
+        {isLoaded && rol !== "ROLE_ADMIN" ? (
+          <i className="bx bx-share-alt" onClick={abrirRedesSociales}></i>
+        ) : null}
+        {isLogged && isLoaded && rol === "ROLE_USER" ? (
+          isFavorito ? (
+            <i
+              onClick={() => handleFav()}
+              className={`fas fa-heart ${styles.corazon}`}
+            ></i>
+          ) : (
+            <i
+              onClick={() => handleFav()}
+              className={`far fa-heart ${styles.corazon}`}
+            ></i>
+          )
+        ) : null}
+        <>
+          {isLogged && isLoaded && rol === "ROLE_ADMIN" ? (
+            <>
+              <i className={`fas fa-pen`}></i>
+              <i className={`fas fa-trash`}></i>
+            </>
+          ) : null}
+        </>
       </div>
       <div className={styles.imagenesDesktop}>
         <div
