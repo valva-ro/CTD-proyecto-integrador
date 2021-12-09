@@ -8,10 +8,13 @@ export default function Profile() {
   const {
     setIsLogged,
     userInformation: { nombre, apellido },
-    rol
+    rol,
   } = useContext(loggedContext);
+
   const [dropdownDesplegado, setDropdownDesplegado] = useState(false);
-  const iniciales = `${nombre.charAt(0).toUpperCase()}${apellido.charAt(0).toUpperCase()}`;
+  const iniciales = `${nombre.charAt(0).toUpperCase()}${apellido
+    .charAt(0)
+    .toUpperCase()}`;
   const nombreCapitalized = capitalizeString(nombre);
   const apellidoCapitalized = capitalizeString(apellido);
   const dropdownRef = useRef(null);
@@ -60,13 +63,17 @@ export default function Profile() {
     } else if (rol === "ROLE_ADMIN") {
       items = (
         <>
-          <Link to="/management" onClick={toggleDropdown} className={styles.itemDropdown}>
+          <Link
+            to="/administration"
+            onClick={toggleDropdown}
+            className={styles.itemDropdown}
+          >
             Administración
           </Link>
           <span
             onClick={cerrarSesion}
             className={styles.itemDropdown}
-            data-testid="btnCerrarSesion"
+            dataTestid="btnCerrarSesion"
           >
             <i className={`fas fa-sign-out-alt ${styles.cerrarSesion}`}></i>
             Cerrar Sesión

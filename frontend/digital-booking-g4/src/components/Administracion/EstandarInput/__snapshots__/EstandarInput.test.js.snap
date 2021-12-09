@@ -14,6 +14,7 @@ exports[`Estandar Input Room test Cambia el valor apartir del input 1`] = `
   >
     <input
       className="estandarInput"
+      disabled={false}
       onChange={[Function]}
       required={true}
       type="text"

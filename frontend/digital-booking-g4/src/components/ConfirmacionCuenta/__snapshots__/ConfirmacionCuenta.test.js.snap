@@ -1,12 +1,72 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Administracion Input test Renderiza Por default 1`] = `
+exports[`Confirmacion cuenta test Renderiza Por default 1`] = `
 Object {
   "asFragment": [Function],
   "baseElement": <body>
-    <div />
+    <div>
+      <div
+        class="container"
+      >
+        <h3
+          class="subtituloBloque undefined"
+        >
+          Estamos confirmando tu cuenta
+        </h3>
+        <div
+          class="containerLoader loaderContainer"
+        >
+          <div
+            class="loader"
+          >
+            <div />
+            <div />
+            <div />
+            <div />
+            <div />
+            <div />
+            <div />
+            <div />
+            <div />
+            <div />
+            <div />
+            <div />
+          </div>
+        </div>
+      </div>
+    </div>
   </body>,
-  "container": <div />,
+  "container": <div>
+    <div
+      class="container"
+    >
+      <h3
+        class="subtituloBloque undefined"
+      >
+        Estamos confirmando tu cuenta
+      </h3>
+      <div
+        class="containerLoader loaderContainer"
+      >
+        <div
+          class="loader"
+        >
+          <div />
+          <div />
+          <div />
+          <div />
+          <div />
+          <div />
+          <div />
+          <div />
+          <div />
+          <div />
+          <div />
+          <div />
+        </div>
+      </div>
+    </div>
+  </div>,
   "debug": [Function],
   "findAllByAltText": [Function],
   "findAllByDisplayValue": [Function],

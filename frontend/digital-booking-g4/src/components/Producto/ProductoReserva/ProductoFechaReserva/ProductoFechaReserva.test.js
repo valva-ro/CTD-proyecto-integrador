@@ -1,8 +1,31 @@
 import ProductoFechaReserva from "./ProductoFechaReserva";
 import React from "react";
 import { render, screen } from "@testing-library/react";
+import { MemoryRouter } from "react-router-dom";
 
 describe("ProductoFechaReserva tests", function () {
+    beforeEach(() => {
+        jest.mock('react-router-dom', () => ({
+            ...jest.requireActual('react-router-dom'),
+            useParams: jest.fn(() => {
+                return object = {
+                    id: 1
+                }
+            }),
+            useParams: () => ({
+                push: jest.fn(),
+                goBack: jest.fn()
+            })
+        }));
+        jest.spyOn(window.localStorage.__proto__, 'setItem');
+        window.localStorage.__proto__.getItem = jest.fn((param) => {
+            return false
+        });
+        jest.spyOn(window.localStorage.__proto__, 'hasOwnProperty');
+        window.localStorage.__proto__.hasOwnProperty = jest.fn((param) => {
+            return null
+        });
+    })
     let checkin = null
     let checkuot = null
     const setChecikn = (date) => {
@@ -12,13 +35,13 @@ describe("ProductoFechaReserva tests", function () {
         date = checkuot
     }
 
-    test("Renderiza Card correctamente", () => {
-        render(<ProductoFechaReserva setCheckin={setChecikn} setCheckout={setChecout} />)
-        expect.anything(screen.getByText("Seleccioná tu fecha de reserva"))
+    test("Renderizacion por default", () => {
+
+        render(
+            <MemoryRouter>
+                <ProductoFechaReserva setCheckin={setChecikn} setCheckout={setChecout} />
+            </MemoryRouter>)
+
     })
-    test("Altera las fechas", () => {
-        /*         render(<ProductoFechaReserva setCheckin={setChecikn} setCheckout={setChecout} />)
-                const datePicker = screen.getByText("DatePicker")
-                expect(datePicker).toBeNaN() */
-    })
+
 })

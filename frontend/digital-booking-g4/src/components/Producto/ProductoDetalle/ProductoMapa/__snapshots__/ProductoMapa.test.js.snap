@@ -1,12 +1,46 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Administracion Input test Renderiza Por default 1`] = `
+exports[`Producto ,mapa Test renderiza por default 1`] = `
 Object {
   "asFragment": [Function],
   "baseElement": <body>
-    <div />
+    <div>
+      <section
+        class="containerUbicacion"
+        id="mapa"
+      >
+        <h3
+          class="subtituloBloque undefined"
+        >
+          ¿Dónde vas a estar?
+        </h3>
+        <hr />
+        <h4
+          class="textoUbicacion"
+        >
+          [object Object], undefined, undefined
+        </h4>
+      </section>
+    </div>
   </body>,
-  "container": <div />,
+  "container": <div>
+    <section
+      class="containerUbicacion"
+      id="mapa"
+    >
+      <h3
+        class="subtituloBloque undefined"
+      >
+        ¿Dónde vas a estar?
+      </h3>
+      <hr />
+      <h4
+        class="textoUbicacion"
+      >
+        [object Object], undefined, undefined
+      </h4>
+    </section>
+  </div>,
   "debug": [Function],
   "findAllByAltText": [Function],
   "findAllByDisplayValue": [Function],
