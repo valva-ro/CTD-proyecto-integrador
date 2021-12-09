@@ -9,7 +9,7 @@ import SelectInput from "./SelectInput/SelectInput";
 import CityInput from "../Searcher/CityInput/CityInput";
 import RowImagenes from "./RowImagenes/RowImagenes";
 import FilledButton from "../Buttons/FilledButton";
-import Modal from "../Modal/Modal"
+import Modal from "../Modal/Modal";
 import TarjetaPostExitoso from "../TarjetaPostExitoso/TarjetaPostExitoso";
 import loggedContext from "../../contexts/loggedContext";
 import useFetch from "../../hooks/useFetch";
@@ -17,18 +17,16 @@ import post from "../../utils/post";
 import get from "../../utils/get";
 import stylesInputsFromOtherside from "../Producto/ProductoReserva/ProductoFormDatos/InputsFromOtherside.module.css";
 import styles from "./Administracion.module.css";
-import caracteristicas from "../../resources/caracteristicas.json";
 
 export default function Administracion() {
   const { isLogged, rol } = useContext(loggedContext);
-  const [showModal, setShowModal] = useState(true);
+  const [showModal, setShowModal] = useState(false);
   const [propertyName, setPropertyName] = useState("");
   const [onChangeCategory, setOnChangeCategory] = useState("");
   const [address, setAddress] = useState("");
   const [horarioCheckIn, setHorarioCheckIn] = useState(null);
   const [onChangeCity, setOnChangeCity] = useState("");
   const [country, setCountry] = useState("");
-  const autocompletadoInputCountry = true;
   const [latitud, setLatitud] = useState("");
   const [longitud, setLongitud] = useState("");
   const [descripcion, setDescripcion] = useState("");
@@ -37,9 +35,12 @@ export default function Administracion() {
   const [cancelacion, setCancelacion] = useState("");
   const [imagenes, setImagenes] = useState([]);
   const [atributosId, setAtributosId] = useState([]);
-  const [showMsjError, setShowMsjError] = useState(false);
+  const [categoryItems, setCategoryItems] = useState([]);
+  const [caracteristicas, setCaracteristicas] = useState([]);
+  const [error, setError] = useState({ message: "", isError: false });
   const [city, setCity] = useState({});
-  const data = useFetch("categorias");
+  const { isLoaded: isLoadedCategorias, items: itemsCategorias } = useFetch("categorias");
+  const { isLoaded: isLoadedCaracteristicas, items: itemsCaracteristicas } = useFetch("caracteristicas");
 
   let token = "";
   if (localStorage.hasOwnProperty("jwt")) {
@@ -47,28 +48,98 @@ export default function Administracion() {
   }
 
   const validarCampos = () => {
-    let camposValidos = true;
-    if (
-      !(
-        propertyName !== "" &&
-        onChangeCategory !== "" &&
-        address !== "" &&
-        horarioCheckIn !== null &&
-        onChangeCity !== "" &&
-        country !== "" &&
-        latitud !== "" &&
-        longitud !== "" &&
-        descripcion !== "" &&
-        normasDeLaCasa !== "" &&
-        saludSeguridad !== "" &&
-        cancelacion !== "" &&
-        imagenes.length > 0
-      )
-    ) {
-      setShowMsjError(true);
-      camposValidos = false;
+    if (propertyName === "") {
+      setError({
+        message: "El nombre del alojamiento es un campo obligatorio",
+        isError: true,
+      });
+      return false;
     }
-    return camposValidos;
+    if (onChangeCategory === "") {
+      setError({
+        message: "La categoría del alojamiento es un campo obligatorio",
+        isError: true,
+      });
+      return false;
+    }
+    if (address === "") {
+      setError({
+        message: "La dirección del alojamiento es un campo obligatorio",
+        isError: true,
+      });
+      return false;
+    }
+    if (horarioCheckIn === null) {
+      setError({
+        message:
+          "El horario de check-in del alojamiento es un campo obligatorio",
+        isError: true,
+      });
+      return false;
+    }
+    if (onChangeCity === "") {
+      setError({
+        message: "La ciudad del alojamiento es un campo obligatorio",
+        isError: true,
+      });
+      return false;
+    }
+    if (country === "") {
+      setError({
+        message: "El país de la ciudad es un campo obligatorio",
+        isError: true,
+      });
+      return false;
+    }
+    if (latitud === "") {
+      setError({
+        message: "La latitud de la ciudad es un campo obligatorio",
+        isError: true,
+      });
+    }
+    if (longitud === "") {
+      setError({
+        message: "La longitud de la ciudad es un campo obligatorio",
+        isError: true,
+      });
+      return false;
+    }
+    if (descripcion === "") {
+      setError({
+        message: "La descripción del alojamiento es un campo obligatorio",
+        isError: true,
+      });
+      return false;
+    }
+    if (normasDeLaCasa === "") {
+      setError({
+        message: "Las normas del alojamiento son un campo obligatorio",
+        isError: true,
+      });
+      return false;
+    }
+    if (saludSeguridad === "") {
+      setError({
+        message: "Las políticas salud y seguridad son un campo obligatorio",
+        isError: true,
+      });
+      return false;
+    }
+    if (cancelacion === "") {
+      setError({
+        message: "Las políticas de cancelación son un campo obligatorio",
+        isError: true,
+      });
+      return false;
+    }
+    if (imagenes.length < 1) {
+      setError({
+        message: "Debe cargar al menos una imagen",
+        isError: true,
+      });
+      return false;
+    }
+    return true;
   };
 
   /* ------- CheckIn (horarioCheckInrio min) ------- */
@@ -82,20 +153,27 @@ export default function Administracion() {
     setHorarioCheckIn(parseInt(e.target.value));
 
   /* ------- Categoría ------- */
-  const [categoryItems, setCategoryItems] = useState([]);
   let categoriasDisponibles = [];
 
   useEffect(() => {
-    if (data.isLoaded) {
-      setCategoryItems(data.items);
+    if (isLoadedCategorias) {
+      setCategoryItems(itemsCategorias);
     }
-  }, [data.isLoaded, data.items]);
+  }, [isLoadedCategorias, itemsCategorias]);
 
   categoryItems.forEach((item) => {
     categoriasDisponibles.push(item.titulo);
   });
 
   const handleChangeCategory = (e) => setOnChangeCategory(e.target.value);
+
+  /* ------- Característica ------- */
+
+  useEffect(() => {
+    if (isLoadedCaracteristicas) {
+      setCaracteristicas(itemsCaracteristicas);
+    }
+  }, [isLoadedCaracteristicas, itemsCaracteristicas]);
 
   /* ------- Imagenes ------- */
   const [imagenesDetails, setImagenesDetails] = useState([
@@ -234,12 +312,14 @@ export default function Administracion() {
         }
       ).then((response) => {
         if (response.status === 201) {
-          setShowMsjError(false);
-          console.log("Se creó el alojamiento con éxito.");
-          // Agregar mensaje exitoso
+          setError({ message: error.message, isError: false });
+          setShowModal(true);
         } else {
-          console.log("Hubo un error al crear el alojamiento.");
-          setShowMsjError(true);
+          setError({
+            message:
+              "Hubo un problema al cargar el producto, por favor vuelva a intentarlo más tarde",
+            isError: true,
+          });
         }
       });
     });
@@ -310,7 +390,7 @@ export default function Administracion() {
                   specificStyle3={stylesInputsFromOtherside.divDrawer}
                   setCountry={setCountry}
                   setCity={setCity}
-                  autocompletadoInputCountry={autocompletadoInputCountry}
+                  autocompletadoInputCountry={true}
                 />
               </div>
 
@@ -424,13 +504,10 @@ export default function Administracion() {
             />
           </div>
           <div className={styles.subContainer}>
-            {showMsjError ? (
+            {error.isError ? (
               <div className={styles.invalidURL}>
                 <i className="fas fa-exclamation-triangle"></i>
-                <p>
-                  Han quedado campos sin completar. Por favor, revise el
-                  formulario y vuelva a intentarlo.
-                </p>
+                <p>{error.message}</p>
               </div>
             ) : null}
             <FilledButton styles={styles.buttonSubmit} onClick={handleSubmit}>
@@ -439,7 +516,12 @@ export default function Administracion() {
           </div>
         </form>
       </section>
-      <Modal estaAbierto={showModal} onCloseRequest={() => setShowModal(false)} colorBtnCerrar="#383b58" colorFondo="#383b5853">
+      <Modal
+        estaAbierto={showModal}
+        onCloseRequest={() => setShowModal(false)}
+        colorBtnCerrar="#383b58"
+        colorFondo="#383b5853"
+      >
         <TarjetaPostExitoso
           contenidoP={"La propiedad se ha creado con éxito"}
         />
