@@ -39,13 +39,10 @@ export default function Administracion() {
   const [caracteristicas, setCaracteristicas] = useState([]);
   const [error, setError] = useState({ message: "", isError: false });
   const [city, setCity] = useState({});
-  const { isLoaded: isLoadedCategorias, items: itemsCategorias } = useFetch("categorias");
-  const { isLoaded: isLoadedCaracteristicas, items: itemsCaracteristicas } = useFetch("caracteristicas");
-
-  let token = "";
-  if (localStorage.hasOwnProperty("jwt")) {
-    token = localStorage.getItem("jwt").replaceAll('"', "");
-  }
+  const { isLoaded: isLoadedCategorias, items: itemsCategorias } =
+    useFetch("categorias");
+  const { isLoaded: isLoadedCaracteristicas, items: itemsCaracteristicas } =
+    useFetch("caracteristicas");
 
   const validarCampos = () => {
     if (propertyName === "") {
@@ -200,137 +197,65 @@ export default function Administracion() {
     setImagenes([...imagenes.filter((r) => r !== imagen)]);
   };
 
-  const handleCreacionProducto = () => {
-    let idDeCategoria;
-    let idDeCiudad;
-    let idsDePoliticas = [];
-    let idsDeImagenes = [];
-
-    const obtenerIdCategoria = (nombreCategoria) => {
-      switch (nombreCategoria) {
-        case "Hoteles":
-          idDeCategoria = 1;
-          break;
-        case "Hostels":
-          idDeCategoria = 2;
-          break;
-        case "Bed & Breakfasts":
-          idDeCategoria = 3;
-          break;
-        case "Departamentos":
-          idDeCategoria = 4;
-          break;
-      }
-    };
-
-    const postearCiudad = () => {
-      return get("ciudades").then((data) => {
-        const filtradoCiudad = data.find(
-          (ciudad) => ciudad.nombre === onChangeCity
-        );
-        if (filtradoCiudad !== undefined) {
-          idDeCiudad = filtradoCiudad.id;
-        } else {
-          return post("ciudades", {
-            nombre: onChangeCity,
-            pais: country,
-            latitud,
-            longitud,
-          })
-            .then((response) => response.json())
-            .then((data) => (idDeCiudad = parseInt(data.id)));
-        }
-      });
-    };
-
-    const postearPoliticas = () => {
-      return post("politicas", {
-        nombre: normasDeLaCasa,
-        tipoPolitica: 1,
-      })
-        .then((response) => response.json())
-        .then((data) => idsDePoliticas.push(parseInt(data.id)))
-        .then(() =>
-          post("politicas", {
-            nombre: saludSeguridad,
-            tipoPolitica: 2,
-          })
-        )
-        .then((response) => response.json())
-        .then((data) => idsDePoliticas.push(parseInt(data.id)))
-        .then(() =>
-          post("politicas", {
-            nombre: cancelacion,
-            tipoPolitica: 3,
-          })
-        )
-        .then((response) => response.json())
-        .then((data) => idsDePoliticas.push(parseInt(data.id)));
-    };
-
-    const postearImagenes = () => {
-      return imagenes.map((imagen) =>
-        post("imagenes", {
-          imagenTitulo: imagen.descripcion,
-          imagenUrl: imagen.url,
-        })
-          .then((response) => response.json())
-          .then((data) => idsDeImagenes.push(parseInt(data.id)))
-      );
-    };
-
-    obtenerIdCategoria(onChangeCategory);
-    const promises = [
-      ...postearImagenes(),
-      postearCiudad(),
-      postearPoliticas(),
-    ];
-
-    Promise.all(promises).then(() => {
-      post(
-        "productos",
-        {
-          nombre: propertyName,
-          descripcion,
-          direccion: address,
-          horarioCheckIn: horarioCheckIn,
-          categoria: { id: idDeCategoria },
-          ciudad: { id: idDeCiudad },
-          imagenes: idsDeImagenes.map((id) => {
-            return { id };
-          }),
-          caracteristicas: atributosId.map((id) => {
-            return { id };
-          }),
-          politicas: idsDePoliticas.map((id) => {
-            return { id };
-          }),
-        },
-        {
-          "Content-Type": "application/json",
-          Authorization: token,
-        }
-      ).then((response) => {
-        if (response.status === 201) {
-          setError({ message: error.message, isError: false });
-          setShowModal(true);
-        } else {
-          setError({
-            message:
-              "Hubo un problema al cargar el producto, por favor vuelva a intentarlo más tarde",
-            isError: true,
-          });
-        }
-      });
-    });
-  };
-
   const handleSubmit = (e) => {
     e.preventDefault();
     const camposValidados = validarCampos();
     if (camposValidados) {
       handleCreacionProducto();
     }
+  };
+
+  const handleCreacionProducto = async () => {
+    let token = obtenerToken();
+    let categoriaID = obtenerIdCategoria(onChangeCategory);
+    let ciudadID = await postearCiudad(
+      onChangeCity,
+      country,
+      latitud,
+      longitud
+    );
+    let imagenesIDs = await postearImagenes(imagenes);
+    let politicasIDs = await postearPoliticas(
+      normasDeLaCasa,
+      saludSeguridad,
+      cancelacion
+    );
+    let atributosIDs = atributosId;
+
+    const body = {
+      nombre: propertyName,
+      descripcion,
+      direccion: address,
+      horarioCheckIn: horarioCheckIn,
+      categoria: { id: categoriaID },
+      ciudad: { id: ciudadID },
+      imagenes: imagenesIDs.map((id) => {
+        return { id };
+      }),
+      caracteristicas: atributosIDs.map((id) => {
+        return { id };
+      }),
+      politicas: politicasIDs.map((id) => {
+        return { id };
+      }),
+    };
+    const header = {
+      "Content-Type": "application/json",
+      Authorization: token,
+    };
+
+    post("productos", body, header).then((response) => {
+      if (response.status === 201) {
+        setError({ message: error.message, isError: false });
+        setShowModal(true);
+      } else {
+        setError({
+          message:
+            "Hubo un problema al cargar el alojamiento, por favor vuelva a intentarlo más tarde",
+          isError: true,
+        });
+      }
+    });
   };
 
   if (!isLogged || rol !== "ROLE_ADMIN") {
@@ -523,9 +448,92 @@ export default function Administracion() {
         colorFondo="#383b5853"
       >
         <TarjetaPostExitoso
-          contenidoP={"La propiedad se ha creado con éxito"}
+          contenidoP={"El alojamiento se ha creado con éxito"}
         />
       </Modal>
     </>
   );
+}
+
+function obtenerToken() {
+  let token = "";
+  if (localStorage.hasOwnProperty("jwt")) {
+    token = localStorage.getItem("jwt").replaceAll('"', "");
+  }
+  return token;
+}
+
+function obtenerIdCategoria(nombreCategoria) {
+  switch (nombreCategoria) {
+    case "Hoteles":
+      return 1;
+    case "Hostels":
+      return 2;
+    case "Bed & Breakfasts":
+      return 3;
+    case "Departamentos":
+      return 4;
+  }
+}
+
+async function postearCiudad(ciudad, pais, lat, lng) {
+  let id;
+  const data = await get("ciudades");
+  const ciudadFiltrada = data.find((c) => c.nombre === ciudad);
+  if (ciudadFiltrada !== undefined) {
+    id = ciudadFiltrada.id;
+  } else {
+    const response = await post("ciudades", {
+      nombre: ciudad,
+      pais: pais,
+      latitud: lat,
+      longitud: lng,
+    });
+    const data = await response.json();
+    id = parseInt(data.id);
+  }
+  return id;
+}
+
+async function postearPoliticas(normasDeLaCasa, saludSeguridad, cancelacion) {
+  const politicas = [];
+
+  await post("politicas", {
+    nombre: normasDeLaCasa,
+    tipoPolitica: 1,
+  })
+    .then((response) => response.json())
+    .then((data) => politicas.push(parseInt(data.id)))
+    .then(() =>
+      post("politicas", {
+        nombre: saludSeguridad,
+        tipoPolitica: 2,
+      })
+    )
+    .then((response) => response.json())
+    .then((data) => politicas.push(parseInt(data.id)))
+    .then(() =>
+      post("politicas", {
+        nombre: cancelacion,
+        tipoPolitica: 3,
+      })
+    )
+    .then((response) => response.json())
+    .then((data) => politicas.push(parseInt(data.id)));
+
+  return politicas;
+}
+
+async function postearImagenes(imagenes) {
+  const imagenesId = [];
+  imagenes.forEach(async (imagen) => {
+    const response = await post("imagenes", {
+      imagenTitulo: imagen.descripcion,
+      imagenUrl: imagen.url,
+    });
+    const data = await response.json();
+    imagenesId.push(parseInt(data.id));
+  });
+
+  return imagenesId;
 }
