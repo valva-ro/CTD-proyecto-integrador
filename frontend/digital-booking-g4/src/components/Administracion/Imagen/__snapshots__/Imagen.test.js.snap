@@ -18,6 +18,7 @@ exports[`Imagen test Renderiza Componente Por Url invalida 1`] = `
       >
         <input
           className="estandarInput"
+          disabled={false}
           name="url"
           onChange={[Function]}
           placeholder="Insertar https://"
@@ -115,11 +116,10 @@ Object {
             >
               
               <input
-                autocomplete="off"
                 class="input"
-                placeholder="Descripción"
+                disabled=""
                 type="text"
-                value=""
+                value="Principal"
               />
             </div>
           </div>
@@ -188,11 +188,10 @@ Object {
           >
             
             <input
-              autocomplete="off"
               class="input"
-              placeholder="Descripción"
+              disabled=""
               type="text"
-              value=""
+              value="Principal"
             />
           </div>
         </div>

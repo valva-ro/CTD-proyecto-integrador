@@ -13,10 +13,14 @@ expect.addSnapshotSerializer(createSerializer({ mode: "deep" }));
 
 describe("Profile tests", function () {
   let componente;
+  const userInformation = {
+    nombre: "n",
+    apellido: "a"
+  }
 
   beforeEach(() => {
     componente = render(
-      <loggedContext.Provider value={{ isLogged: true }}>
+      <loggedContext.Provider value={{ isLogged: true, userInformation }}>
         <Layout>Hola Mundo</Layout>
       </loggedContext.Provider>,
       { wrapper: MemoryRouter }

@@ -1,12 +1,44 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Administracion Input test Renderiza Por default 1`] = `
+exports[`Producto drescripcion  test Renderizado Por defaulto 1`] = `
 Object {
   "asFragment": [Function],
   "baseElement": <body>
-    <div />
+    <div>
+      <section
+        class="bloqueProductoDescripcion"
+      >
+        <h3
+          class="subtituloBloque undefined"
+        >
+          Alojate en el corazón de este es el nombre de la ciudad
+        </h3>
+        <p>
+          esta es la descriopcion
+        </p>
+        <div
+          class="bloqueProductoInfo"
+        />
+      </section>
+    </div>
   </body>,
-  "container": <div />,
+  "container": <div>
+    <section
+      class="bloqueProductoDescripcion"
+    >
+      <h3
+        class="subtituloBloque undefined"
+      >
+        Alojate en el corazón de este es el nombre de la ciudad
+      </h3>
+      <p>
+        esta es la descriopcion
+      </p>
+      <div
+        class="bloqueProductoInfo"
+      />
+    </section>
+  </div>,
   "debug": [Function],
   "findAllByAltText": [Function],
   "findAllByDisplayValue": [Function],

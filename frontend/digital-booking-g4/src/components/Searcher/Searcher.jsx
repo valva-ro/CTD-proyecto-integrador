@@ -10,11 +10,12 @@ import useScreenWidth from "../../hooks/useScreenWidth";
 
 registerLocale("es", es);
 
-export default function Searcher({setReset, reset}) {
+export default function Searcher({ setReset, reset }) {
   const [iconDate, setIconDate] = useState(styles.dateIcon);
   const [dateRange, setDateRange] = useState([null, null]);
   const [onChangeCity, setOnChangeCity] = useState("");
-  const { setCurrentCity, setCurrentDateRange } = useContext(currentCityContext);
+  const { setCurrentCity, setCurrentDateRange } =
+    useContext(currentCityContext);
   const [startDate, endDate] = dateRange;
   const anchoPantalla = useScreenWidth();
   let datePickerRef = useRef(null);
@@ -32,7 +33,7 @@ export default function Searcher({setReset, reset}) {
       setIconDate(styles.dateIcon);
     }
 
-    if(reset){
+    if (reset) {
       setReset(false);
       setOnChangeCity("");
     }
@@ -44,7 +45,7 @@ export default function Searcher({setReset, reset}) {
     } else {
       setIconDate(styles.dateIcon);
     }
-    if(reset){
+    if (reset) {
       setReset(false);
       setOnChangeCity("");
     }
@@ -52,9 +53,9 @@ export default function Searcher({setReset, reset}) {
 
   const handleSubmit = () => {
     setCurrentCity(onChangeCity);
-    setCurrentDateRange({fechaInicio:startDate , fechaFin:endDate});
+    setCurrentDateRange({ fechaInicio: startDate, fechaFin: endDate });
   };
-  
+
   return (
     <div className={styles.globalContainer}>
       <div className={styles.boxing}>
@@ -62,7 +63,15 @@ export default function Searcher({setReset, reset}) {
           Busca ofertas en hoteles, casas y mucho más
         </h2>
         <div className={styles.inputs}>
-          <div className={styles.anchoFijo}><CityInput setOnChangeCity={setOnChangeCity} onChangeCity={onChangeCity} setReset={setReset} reset={reset} setDateRange={setDateRange} /></div>
+          <div className={styles.anchoFijo}>
+            <CityInput
+              setOnChangeCity={setOnChangeCity}
+              onChangeCity={onChangeCity}
+              setReset={setReset}
+              reset={reset}
+              setDateRange={setDateRange}
+            />
+          </div>
           <div className={styles.dateContainer}>
             <span className={iconDate}>
               <i className="far fa-calendar-alt"></i>
@@ -70,7 +79,7 @@ export default function Searcher({setReset, reset}) {
           </div>
           <DatePicker
             onSelect={(e) => styleChangeClick(e)}
-            onChangeRaw={(e) => styleChange(e) }
+            onChangeRaw={(e) => styleChange(e)}
             dateFormat="dd 'de' MMM."
             placeholderText="Check in  -  Check out"
             locale={es}

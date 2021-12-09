@@ -1,0 +1,412 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[` Reservas card Reserva test Renderiza Default 1`] = `
+Object {
+  "asFragment": [Function],
+  "baseElement": <body>
+    <div>
+      <div
+        class="tarjetaAlojamiento"
+        data-aos="fade-up"
+      >
+        <div
+          class="imagenAlojamiento"
+          style="background-image: url(https://proyectointegradorimagenes2.s3.us-east-2.amazonaws.com/Alojamientos/Producto1.jpg);"
+        />
+        <div
+          class="descripcionAlojamiento"
+        >
+          <div
+            class="informacionPrincipal"
+          >
+            <div
+              class="nombreAlojamiento"
+            >
+              <div
+                class="tipoYCalificacion"
+              >
+                <h4>
+                  Hoteles
+                </h4>
+                <span
+                  aria-label="Estrellas"
+                  class="estrellas"
+                >
+                  <i
+                    class="fas fa-star estrellaVacia"
+                  />
+                  <i
+                    class="fas fa-star estrellaVacia"
+                  />
+                  <i
+                    class="fas fa-star estrellaVacia"
+                  />
+                  <i
+                    class="fas fa-star estrellaVacia"
+                  />
+                  <i
+                    class="fas fa-star estrellaVacia"
+                  />
+                </span>
+              </div>
+              <h2>
+                meliá
+              </h2>
+            </div>
+            <div
+              class="puntajeAlojamiento"
+            >
+              
+              <div
+                class="detalle"
+              >
+                Sin calificaciones
+              </div>
+            </div>
+          </div>
+          <div
+            class="informacionDetalle"
+          >
+            <div
+              class="ubicacion"
+            >
+              <i
+                class="fas fa-map-marker-alt"
+              />
+              <p>
+                La Plata
+                <span
+                  class="mostrarEnMapa"
+                >
+                  Mostrar en el mapa
+                </span>
+              </p>
+            </div>
+            <div
+              class="servicios"
+            >
+              <i
+                class="fas fa-swimmer"
+              />
+            </div>
+          </div>
+          <div
+            class="reservaDetalleCard"
+          >
+            <h3>
+              Datos de la reserva
+            </h3>
+            <div>
+              <ul
+                class="reservaDetalleCardLeft"
+              >
+                <li>
+                  Número de reserva: 
+                  <span>
+                    1
+                  </span>
+                </li>
+                <li>
+                  Nombre: 
+                  <span>
+                    este Es el nombre de la reserva
+                  </span>
+                </li>
+                <li>
+                  Apellido: 
+                  <span>
+                    Este es el apellido de la reserva
+                  </span>
+                </li>
+                <li>
+                  Mail: 
+                  <span>
+                    este es el mail de la reserva
+                  </span>
+                </li>
+              </ul>
+              <ul
+                class="reservaDetalleCardRight"
+              >
+                <li>
+                  Horario de llegada: 
+                  <span>
+                    2
+                    hs
+                  </span>
+                </li>
+                <li>
+                  Check in: 
+                  <span>
+                    2022/03/22
+                  </span>
+                </li>
+                <li>
+                  Check out: 
+                  <span>
+                    2022/03/22
+                  </span>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div
+            class="reservaButtonsContainer"
+          >
+            <input
+              class="filledButton reservaBtnCalificar"
+              type="submit"
+              value="Calificar"
+            />
+            <div
+              class="reservaButtonsContainerVerMasCancelar"
+            >
+              <a
+                href="/product/1/features"
+              >
+                <input
+                  class="filledButton reservaBtnVerMas"
+                  type="submit"
+                  value="Ver más"
+                />
+              </a>
+              <input
+                class="outlinedButton reservaBtnCancelar"
+                type="submit"
+                value="Cancelar reserva"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>,
+  "container": <div>
+    <div
+      class="tarjetaAlojamiento"
+      data-aos="fade-up"
+    >
+      <div
+        class="imagenAlojamiento"
+        style="background-image: url(https://proyectointegradorimagenes2.s3.us-east-2.amazonaws.com/Alojamientos/Producto1.jpg);"
+      />
+      <div
+        class="descripcionAlojamiento"
+      >
+        <div
+          class="informacionPrincipal"
+        >
+          <div
+            class="nombreAlojamiento"
+          >
+            <div
+              class="tipoYCalificacion"
+            >
+              <h4>
+                Hoteles
+              </h4>
+              <span
+                aria-label="Estrellas"
+                class="estrellas"
+              >
+                <i
+                  class="fas fa-star estrellaVacia"
+                />
+                <i
+                  class="fas fa-star estrellaVacia"
+                />
+                <i
+                  class="fas fa-star estrellaVacia"
+                />
+                <i
+                  class="fas fa-star estrellaVacia"
+                />
+                <i
+                  class="fas fa-star estrellaVacia"
+                />
+              </span>
+            </div>
+            <h2>
+              meliá
+            </h2>
+          </div>
+          <div
+            class="puntajeAlojamiento"
+          >
+            
+            <div
+              class="detalle"
+            >
+              Sin calificaciones
+            </div>
+          </div>
+        </div>
+        <div
+          class="informacionDetalle"
+        >
+          <div
+            class="ubicacion"
+          >
+            <i
+              class="fas fa-map-marker-alt"
+            />
+            <p>
+              La Plata
+              <span
+                class="mostrarEnMapa"
+              >
+                Mostrar en el mapa
+              </span>
+            </p>
+          </div>
+          <div
+            class="servicios"
+          >
+            <i
+              class="fas fa-swimmer"
+            />
+          </div>
+        </div>
+        <div
+          class="reservaDetalleCard"
+        >
+          <h3>
+            Datos de la reserva
+          </h3>
+          <div>
+            <ul
+              class="reservaDetalleCardLeft"
+            >
+              <li>
+                Número de reserva: 
+                <span>
+                  1
+                </span>
+              </li>
+              <li>
+                Nombre: 
+                <span>
+                  este Es el nombre de la reserva
+                </span>
+              </li>
+              <li>
+                Apellido: 
+                <span>
+                  Este es el apellido de la reserva
+                </span>
+              </li>
+              <li>
+                Mail: 
+                <span>
+                  este es el mail de la reserva
+                </span>
+              </li>
+            </ul>
+            <ul
+              class="reservaDetalleCardRight"
+            >
+              <li>
+                Horario de llegada: 
+                <span>
+                  2
+                  hs
+                </span>
+              </li>
+              <li>
+                Check in: 
+                <span>
+                  2022/03/22
+                </span>
+              </li>
+              <li>
+                Check out: 
+                <span>
+                  2022/03/22
+                </span>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div
+          class="reservaButtonsContainer"
+        >
+          <input
+            class="filledButton reservaBtnCalificar"
+            type="submit"
+            value="Calificar"
+          />
+          <div
+            class="reservaButtonsContainerVerMasCancelar"
+          >
+            <a
+              href="/product/1/features"
+            >
+              <input
+                class="filledButton reservaBtnVerMas"
+                type="submit"
+                value="Ver más"
+              />
+            </a>
+            <input
+              class="outlinedButton reservaBtnCancelar"
+              type="submit"
+              value="Cancelar reserva"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>,
+  "debug": [Function],
+  "findAllByAltText": [Function],
+  "findAllByDisplayValue": [Function],
+  "findAllByLabelText": [Function],
+  "findAllByPlaceholderText": [Function],
+  "findAllByRole": [Function],
+  "findAllByTestId": [Function],
+  "findAllByText": [Function],
+  "findAllByTitle": [Function],
+  "findByAltText": [Function],
+  "findByDisplayValue": [Function],
+  "findByLabelText": [Function],
+  "findByPlaceholderText": [Function],
+  "findByRole": [Function],
+  "findByTestId": [Function],
+  "findByText": [Function],
+  "findByTitle": [Function],
+  "getAllByAltText": [Function],
+  "getAllByDisplayValue": [Function],
+  "getAllByLabelText": [Function],
+  "getAllByPlaceholderText": [Function],
+  "getAllByRole": [Function],
+  "getAllByTestId": [Function],
+  "getAllByText": [Function],
+  "getAllByTitle": [Function],
+  "getByAltText": [Function],
+  "getByDisplayValue": [Function],
+  "getByLabelText": [Function],
+  "getByPlaceholderText": [Function],
+  "getByRole": [Function],
+  "getByTestId": [Function],
+  "getByText": [Function],
+  "getByTitle": [Function],
+  "queryAllByAltText": [Function],
+  "queryAllByDisplayValue": [Function],
+  "queryAllByLabelText": [Function],
+  "queryAllByPlaceholderText": [Function],
+  "queryAllByRole": [Function],
+  "queryAllByTestId": [Function],
+  "queryAllByText": [Function],
+  "queryAllByTitle": [Function],
+  "queryByAltText": [Function],
+  "queryByDisplayValue": [Function],
+  "queryByLabelText": [Function],
+  "queryByPlaceholderText": [Function],
+  "queryByRole": [Function],
+  "queryByTestId": [Function],
+  "queryByText": [Function],
+  "queryByTitle": [Function],
+  "rerender": [Function],
+  "unmount": [Function],
+}
+`;

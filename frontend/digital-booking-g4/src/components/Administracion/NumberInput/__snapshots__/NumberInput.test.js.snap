@@ -17,7 +17,6 @@ Object {
           class="numberInput"
           step="any"
           type="number"
-          value=""
         />
       </div>
     </div>
@@ -35,7 +34,6 @@ Object {
         class="numberInput"
         step="any"
         type="number"
-        value=""
       />
     </div>
   </div>,

@@ -41,11 +41,10 @@ Object {
             >
               
               <input
-                autocomplete="off"
                 class="input"
-                placeholder="Descripción"
+                disabled=""
                 type="text"
-                value=""
+                value="Principal"
               />
             </div>
           </div>
@@ -324,11 +323,10 @@ Object {
           >
             
             <input
-              autocomplete="off"
               class="input"
-              placeholder="Descripción"
+              disabled=""
               type="text"
-              value=""
+              value="Principal"
             />
           </div>
         </div>
