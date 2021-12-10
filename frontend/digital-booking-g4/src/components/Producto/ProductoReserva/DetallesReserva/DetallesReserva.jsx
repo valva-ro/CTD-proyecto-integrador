@@ -1,14 +1,14 @@
-import Estrellas from "../../../Estrellas/Estrellas";
-import FilledButton from "../../../Buttons/FilledButton";
-import calcularPromedioPuntuacion from "../../../../utils/calcularPromedioPuntuacion";
+import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faExclamationTriangle } from "@fortawesome/free-solid-svg-icons";
-import styles from "./Detalles.module.css";
-import post from "../../../../utils/post";
-import { useState } from "react";
+import Estrellas from "../../../Estrellas/Estrellas";
+import FilledButton from "../../../Buttons/FilledButton";
 import Modal from "../../../Modal/Modal";
 import TarjetaPostExitoso from "../../../TarjetaPostExitoso/TarjetaPostExitoso";
+import calcularPromedioPuntuacion from "../../../../utils/calcularPromedioPuntuacion";
 import formatearFecha from "../../../../utils/formatearFecha";
+import post from "../../../../utils/post";
+import styles from "./Detalles.module.css";
 
 export default function ProductoReserva({
   alojamiento: {
@@ -29,9 +29,9 @@ export default function ProductoReserva({
   textArea,
   isVacunadx,
   horarioLlegada,
+  setShowLoader,
 }) {
   const puntaje = calcularPromedioPuntuacion(puntuaciones);
-  //const [isError, setIsError] = useState(false);
   const [error, setError] = useState({ message: "", isError: false });
   const [showModal, setShowModal] = useState(false);
   let token = "";
@@ -77,8 +77,7 @@ export default function ProductoReserva({
     }
     if (ciudadUsuario === "") {
       setError({
-        message:
-          "La ciudad es un campo obligatorio",
+        message: "La ciudad es un campo obligatorio",
         isError: true,
       });
       return false;
@@ -114,35 +113,35 @@ export default function ProductoReserva({
   };
 
   function realizarReserva() {
-    post(
-      "reservas",
-      {
-        nombre: nombreUsuario,
-        apellido,
-        mail,
-        ciudad: ciudadUsuario,
-        horaEntrada: horarioLlegada,
-        fechaIngreso: checkinFormat,
-        fechaEgreso: checkoutFormat,
-        datos: textArea,
-        vacunaCovid: isVacunadx,
-        producto: { id },
-        usuario: { id: idUsuario },
-      },
-      {
-        "Content-Type": "application/json",
-        Authorization: token,
-      }
-    )
+    setShowLoader(true);
+    const body = {
+      nombre: nombreUsuario,
+      apellido,
+      mail,
+      ciudad: ciudadUsuario,
+      horaEntrada: horarioLlegada,
+      fechaIngreso: checkinFormat,
+      fechaEgreso: checkoutFormat,
+      datos: textArea,
+      vacunaCovid: isVacunadx,
+      producto: { id },
+      usuario: { id: idUsuario },
+    };
+    const header = {
+      "Content-Type": "application/json",
+      Authorization: token,
+    };
+    post("reservas", body, header)
       .then((response) => {
         if (response.status === 201) {
           setShowModal(true);
           setError({
             isError: false,
-          })
+          });
         } else {
           setShowModal(false);
         }
+        setShowLoader(false);
       })
       .catch((err) => console.log(err));
   }
@@ -152,7 +151,7 @@ export default function ProductoReserva({
     if (camposValidados) {
       realizarReserva();
     }
-  }
+  };
 
   return (
     <div className={styles.detallesContainer}>
@@ -191,10 +190,7 @@ export default function ProductoReserva({
             </p>
           </div>
           <div className={styles.buttonContainer}>
-            <FilledButton
-              onClick={handleSubmit}
-              styles={styles.buttonSubmit}
-            >
+            <FilledButton onClick={handleSubmit} styles={styles.buttonSubmit}>
               Confirmar reserva
             </FilledButton>
           </div>
