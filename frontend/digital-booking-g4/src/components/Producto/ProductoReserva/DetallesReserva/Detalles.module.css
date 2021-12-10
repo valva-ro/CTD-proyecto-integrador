@@ -95,7 +95,8 @@
   padding: 10px;
   color: #000;
   gap: 10px;
-  margin: 0 20px;
+  width: 90%;
+  align-self: center;
 }
 .errorMsjContainer p {
   color: #000;

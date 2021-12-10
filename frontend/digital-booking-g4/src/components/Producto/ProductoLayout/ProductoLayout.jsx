@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import React from "react";
 import { useParams } from "react-router-dom";
 import useFetch from "../../../hooks/useFetch";
-import ProductoPoliticas from "./ProductoPoliticas/ProductoPoliticas";
 import ProductoHeader from "./ProductoHeader/ProductoHeader";
 import Loader from "../../Loader/Loader";
 import styles from "./ProductoLayout.module.css";
@@ -23,7 +22,6 @@ export default function ProductoLayout(props) {
         <>
           <ProductoHeader alojamiento={producto} />
           <div>{React.cloneElement(props.children, producto)}</div>
-          <ProductoPoliticas alojamiento={producto} />
         </>
       ) : error === null ? (
         <Loader />

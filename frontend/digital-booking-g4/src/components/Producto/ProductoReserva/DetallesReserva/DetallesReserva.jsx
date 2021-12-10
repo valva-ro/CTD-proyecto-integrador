@@ -1,14 +1,14 @@
-import Estrellas from "../../../Estrellas/Estrellas";
-import FilledButton from "../../../Buttons/FilledButton";
-import calcularPromedioPuntuacion from "../../../../utils/calcularPromedioPuntuacion";
+import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faExclamationTriangle } from "@fortawesome/free-solid-svg-icons";
-import styles from "./Detalles.module.css";
-import post from "../../../../utils/post";
-import { useState } from "react";
+import Estrellas from "../../../Estrellas/Estrellas";
+import FilledButton from "../../../Buttons/FilledButton";
 import Modal from "../../../Modal/Modal";
 import TarjetaPostExitoso from "../../../TarjetaPostExitoso/TarjetaPostExitoso";
-import formatearFecha from "../../../../utils/formatearFecha"
+import calcularPromedioPuntuacion from "../../../../utils/calcularPromedioPuntuacion";
+import formatearFecha from "../../../../utils/formatearFecha";
+import post from "../../../../utils/post";
+import styles from "./Detalles.module.css";
 
 export default function ProductoReserva({
   alojamiento: {
@@ -29,9 +29,10 @@ export default function ProductoReserva({
   textArea,
   isVacunadx,
   horarioLlegada,
+  setShowLoader,
 }) {
   const puntaje = calcularPromedioPuntuacion(puntuaciones);
-  const [isError, setIsError] = useState(false);
+  const [error, setError] = useState({ message: "", isError: false });
   const [showModal, setShowModal] = useState(false);
   let token = "";
   if (localStorage.hasOwnProperty("jwt")) {
@@ -52,37 +53,105 @@ export default function ProductoReserva({
     return imagen;
   };
 
+  const validarCampos = () => {
+    if (nombreUsuario === "") {
+      setError({
+        message: "El nombre es un campo obligatorio",
+        isError: true,
+      });
+      return false;
+    }
+    if (apellido === "") {
+      setError({
+        message: "El apellido es un campo obligatorio",
+        isError: true,
+      });
+      return false;
+    }
+    if (mail === "") {
+      setError({
+        message: "El correo electrónico es un campo obligatorio",
+        isError: true,
+      });
+      return false;
+    }
+    if (ciudadUsuario === "") {
+      setError({
+        message: "La ciudad es un campo obligatorio",
+        isError: true,
+      });
+      return false;
+    }
+    if (isVacunadx === null) {
+      setError({
+        message: "El campo de covid es obligatorio",
+        isError: true,
+      });
+      return false;
+    }
+    if (checkin === null) {
+      setError({
+        message: "El checkin es un campo obligatorio",
+        isError: true,
+      });
+      return false;
+    }
+    if (checkout === null) {
+      setError({
+        message: "El checkout es un campo obligatorio",
+        isError: true,
+      });
+    }
+    if (horarioLlegada === null) {
+      setError({
+        message: "El horario de llegada un campo obligatorio",
+        isError: true,
+      });
+      return false;
+    }
+    return true;
+  };
+
   function realizarReserva() {
-    post(
-      "reservas",
-      {
-        nombre: nombreUsuario,
-        apellido,
-        mail,
-        ciudad: ciudadUsuario,
-        horaEntrada: horarioLlegada,
-        fechaIngreso: checkinFormat,
-        fechaEgreso: checkoutFormat,
-        datos: textArea,
-        vacunaCovid: isVacunadx,
-        producto: { id },
-        usuario: { id: idUsuario},
-      },
-      {
-        "Content-Type": "application/json",
-        Authorization: token,
-      }
-    ).then((response) => {
-      if (response.status === 201) {
-        setShowModal(true);
-        setIsError(false);
-      } else {
-        setShowModal(false);
-        setIsError(true);
-      }
-    })
-    .catch((err) => console.log(err));
+    setShowLoader(true);
+    const body = {
+      nombre: nombreUsuario,
+      apellido,
+      mail,
+      ciudad: ciudadUsuario,
+      horaEntrada: horarioLlegada,
+      fechaIngreso: checkinFormat,
+      fechaEgreso: checkoutFormat,
+      datos: textArea,
+      vacunaCovid: isVacunadx,
+      producto: { id },
+      usuario: { id: idUsuario },
+    };
+    const header = {
+      "Content-Type": "application/json",
+      Authorization: token,
+    };
+    post("reservas", body, header)
+      .then((response) => {
+        if (response.status === 201) {
+          setShowModal(true);
+          setError({
+            isError: false,
+          });
+        } else {
+          setShowModal(false);
+        }
+        setShowLoader(false);
+      })
+      .catch((err) => console.log(err));
   }
+
+  const handleSubmit = () => {
+    const camposValidados = validarCampos();
+    if (camposValidados) {
+      realizarReserva();
+    }
+  };
 
   return (
     <div className={styles.detallesContainer}>
@@ -121,25 +190,27 @@ export default function ProductoReserva({
             </p>
           </div>
           <div className={styles.buttonContainer}>
-            <FilledButton onClick={realizarReserva} styles={styles.buttonSubmit}>
+            <FilledButton onClick={handleSubmit} styles={styles.buttonSubmit}>
               Confirmar reserva
             </FilledButton>
           </div>
         </div>
       </div>
-      <Modal estaAbierto={showModal} onCloseRequest={() => setShowModal(false)} colorBtnCerrar="#383b58" colorFondo="#383b5853">
+      <Modal
+        estaAbierto={showModal}
+        onCloseRequest={() => setShowModal(false)}
+        colorBtnCerrar="#383b58"
+        colorFondo="#383b5853"
+      >
         <TarjetaPostExitoso
           contenidoH2={"¡Muchas gracias!"}
           contenidoP={"Su reserva ha sido realizada con éxito"}
         />
       </Modal>
-      {!isError ? null : (
+      {!error.isError ? null : (
         <div className={styles.errorMsjContainer}>
           <FontAwesomeIcon icon={faExclamationTriangle} />
-          <p>
-            Lamentablemente la reserva no ha podido realizarse. Por favor,
-            vuelva a intentarlo.
-          </p>
+          <p>{error.message}</p>
         </div>
       )}
     </div>

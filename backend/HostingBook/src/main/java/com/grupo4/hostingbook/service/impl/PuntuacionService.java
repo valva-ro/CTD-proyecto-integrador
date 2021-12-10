@@ -45,6 +45,7 @@ public class PuntuacionService implements IPuntuacionService {
             guardada = actualizar(puntuacionDTO, puntuacionEnBD);
         } else {
             guardarEntidadesAsociadas(puntuacionDTO);
+            puntuacionDTO.setFecha(LocalDate.now());
             guardada = puntuacionRepository.save(mapper.convertValue(puntuacionDTO, Puntuacion.class));
         }
         return setearEntidadesDeLaBaseDeDatos(guardada);
