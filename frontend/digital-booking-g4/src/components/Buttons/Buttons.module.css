@@ -17,6 +17,17 @@
   background-color: var(--color-principal-opaco);
   border: 3px solid var(--color-principal-opaco);
 }
+.filledButton:disabled {
+  color: white;
+  background-color: rgb(200, 200, 200);
+  border: 3px solid rgb(200, 200, 200);
+}
+.filledButton:disabled:hover {
+  cursor: initial;
+  color: white;
+  background-color: rgb(200, 200, 200);
+  border: 3px solid rgb(200, 200, 200);
+}
 
 .outlinedButton {
   background-color: var(--color-5);
@@ -26,4 +37,43 @@
 .outlinedButton:hover {
   background-color: var(--color-principal);
   color: var(--color-5);
+}
+.outlinedButton:disabled {
+  background-color: var(--color-5);
+  border: solid 3px rgb(200, 200, 200);
+  color: rgb(200, 200, 200);
+}
+.outlinedButton:disabled:hover {
+  cursor: initial;
+  background-color: var(--color-5);
+  border: solid 3px rgb(200, 200, 200);
+  color: rgb(200, 200, 200);
+}
+
+.tooltip {
+  display: inline;
+  position: relative;
+}
+
+.tooltip:hover::after {
+  content: attr(alt);
+  background: rgba(0, 0, 0, 0.75);
+  border-radius: 5px;
+  bottom: 26px;
+  color: #fff;
+  left: 20%;
+  padding: 5px 10px;
+  position: absolute;
+  z-index: 98;
+}
+
+.tooltip:hover::before {
+  border: solid;
+  border-color: #333 transparent;
+  border-width: 6px 6px 0 6px;
+  bottom: 20px;
+  content: "";
+  left: 50%;
+  position: absolute;
+  z-index: 99;
 }

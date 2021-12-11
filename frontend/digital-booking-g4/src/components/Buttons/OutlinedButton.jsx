@@ -1,15 +1,26 @@
 import styles from "./Buttons.module.css";
 
-export default function OutlinedButton(props) {
+export default function OutlinedButton({
+  title = "",
+  onClick,
+  testId,
+  disabled,
+  children,
+  styles: foreignStyles,
+}) {
   return (
-    <input
-      type="submit"
-      className={`${styles.outlinedButton} ${props.styles}`}
-      value={props.children}
-      onClick={props.onClick}
-      data-testid={props.testId}
-      disabled={props.disabled}
-      title={props.title}
-    />
+    <span
+      className={title !== "" && disabled ? `${styles.tooltip}` : ""}
+      alt={title}
+    >
+      <input
+        type="submit"
+        className={`${styles.outlinedButton} ${foreignStyles}`}
+        value={children}
+        onClick={onClick}
+        data-testid={testId}
+        disabled={disabled}
+      />
+    </span>
   );
 }

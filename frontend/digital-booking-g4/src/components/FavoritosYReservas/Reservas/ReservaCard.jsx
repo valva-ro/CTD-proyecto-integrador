@@ -39,11 +39,14 @@ export default function ReservaCard({
   const [puntuaciones, setPuntuaciones] = useState([]);
   const [isMapOpen, setIsMapOpen] = useState(false);
   const puntaje = calcularPromedioPuntuacion(puntuaciones);
-  const [puntuacionDeshabilitada, setpuntuacionDeshabilitada] = useState(false);
   const [showModalCalification, setShowModalCalification] = useState(false);
   const [calificadoPreviamente, setCalificadoPreviamente] = useState(null);
   const fechaActual = new Date();
   const fechaCheckout = new Date(fechaEgreso);
+  const fechaCheckin = new Date(fechaIngreso);
+  const puntuacionDeshabilitada = fechaActual < fechaCheckout;
+  const cancelarDeshabilitado = fechaActual >= fechaCheckin;
+
   const idUsuario = parseInt(localStorage.getItem("id"));
   const coordenadas = {
     lat: ciudad.latitud,
@@ -59,20 +62,10 @@ export default function ReservaCard({
 
     get(`puntuaciones/usuario/${idUsuario}`)
       .then((puntuaciones) => {
-        if (
-          puntuaciones.find((puntuacion) => puntuacion.producto.id === id) !==
-          undefined
-        ) {
-          setCalificadoPreviamente(true);
-        } else {
-          setCalificadoPreviamente(false);
-        }
+        const existePuntuacion = puntuaciones.find((puntuacion) => puntuacion.producto.id === id) !== undefined;
+        setCalificadoPreviamente(existePuntuacion);
       })
       .catch((err) => console.log(err));
-
-    if (fechaActual < fechaCheckout) {
-      setpuntuacionDeshabilitada(true);
-    }
   }, [calificadoPreviamente, showModalCalification]);
 
   const buscarImagenPrincipal = () => {
@@ -106,7 +99,7 @@ export default function ReservaCard({
     })
       .then((result) => {
         if (result.isConfirmed) {
-          deleteRequest(`reservas/${idReserva}`)
+          deleteRequest(`reservas/${idReserva}`);
         } else {
           throw new Error("No se cancela la reserva");
         }
@@ -134,7 +127,7 @@ export default function ReservaCard({
           });
         }
       })
-      .catch(err => console.log());
+      .catch((err) => console.log());
   };
 
   if (!isLogged) {
@@ -229,7 +222,7 @@ export default function ReservaCard({
               title={
                 !puntuacionDeshabilitada
                   ? null
-                  : "Los alojamientos sólo pueden ser calificados si la fecha actual es posterior al checkout"
+                  : "Los alojamientos sólo pueden ser calificados luego del checkout"
               }
             >
               {calificadoPreviamente ? "Editar calificación" : "Calificar"}
@@ -243,6 +236,12 @@ export default function ReservaCard({
               <OutlinedButton
                 styles={styles.reservaBtnCancelar}
                 onClick={eliminarReserva}
+                disabled={cancelarDeshabilitado}
+                title={
+                  !cancelarDeshabilitado
+                    ? null
+                    : "No puede cancelar una reserva pasada"
+                }
               >
                 Cancelar reserva
               </OutlinedButton>

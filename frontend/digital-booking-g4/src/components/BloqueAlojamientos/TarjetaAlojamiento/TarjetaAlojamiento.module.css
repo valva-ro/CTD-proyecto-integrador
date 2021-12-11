@@ -69,8 +69,8 @@
   transition: 0s;
 }
 
-.containerAdmin{
-  display:flex;
+.containerAdmin {
+  display: flex;
   position: absolute;
   top: 0;
   right: 0;
@@ -86,9 +86,8 @@
   font-size: 1.5rem;
   transition: all ease 350ms;
   padding: 10px;
-  text-shadow: 2px 2px 1.5px rgba(0, 0, 0, 0.25), 2px -2px 1.5px rgba(0, 0, 0, 0.25);
-
-  
+  text-shadow: 2px 2px 1.5px rgba(0, 0, 0, 0.25),
+    2px -2px 1.5px rgba(0, 0, 0, 0.25);
 }
 
 .admin:hover {
@@ -96,7 +95,7 @@
   -webkit-text-fill-color: var(--color-principal);
   -webkit-text-stroke: 0.7px var(--color-principal);
   opacity: 100;
-  text-shadow:none
+  text-shadow: none;
 }
 
 .descripcionAlojamiento {
@@ -330,7 +329,7 @@
   flex-direction: column;
   gap: 10px;
   height: 50px;
-  margin-top: .5rem;
+  margin-top: 0.5rem;
   margin-bottom: 1rem;
   width: 100%;
 }
@@ -366,27 +365,6 @@
 .reservaBtnCalificar:hover {
   background-color: var(--color-2);
   border: 3px solid var(--color-2);
-}
-.reservaBtnCalificar:disabled {
-  color: white;
-  background-color: grey;
-  border: 3px solid grey;
-  opacity: 0.25;
-}
-.reservaBtnCalificar:disabled:hover {
-  cursor: initial;
-}
-.confirmButton {
-  background-color: var(--color-principal) !important;
-  border: solid 3px var(--color-principal) !important;
-  color: var(--color-5) !important;
-  outline: var(--color-principal) !important;
-}
-.cancelButton {
-  color: white !important;
-  background-color: var(--color-3) !important;
-  border: 3px solid var(--color-3) !important;
-  outline: var(--color-3) !important;
 }
 
 @media (max-width: 980px) {
